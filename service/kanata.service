@@ -18,7 +18,7 @@ Wants=systemd-udev-settle.service
 
 [Service]
 Type=simple
-Environment="PATH=%h/.local/bin:/usr/bin:/bin"
+Environment="PATH=%h/bin:%h/.local/bin:/usr/bin:/bin"
 ExecStart=%h/.local/bin/kanata -p 10101 -c %h/.config/kanata/kanata.kbd
 Restart=No
 
