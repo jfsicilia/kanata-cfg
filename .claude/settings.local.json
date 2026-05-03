@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(./scripts/kanata_sync_all_apps_interfaces.sh:*)",
+      "Bash(./scripts/kanata_sync_apps.py:*)",
+      "Bash(time ~/.config/kanata/scripts/kanata_sync_all_apps_interfaces.sh:*)",
+      "Bash(time /home/juan/settings/linux/dotfiles/kanata/scripts/kanata_sync_all_apps_interfaces.sh:*)",
+      "Bash(chmod +x:*)",
+      "Bash(rm:*)",
+      "Bash(./scripts/kanata_sync.sh:*)",
+      "Bash(systemctl:*)",
+      "Bash(python3 *)"
+    ]
+  }
+}

@@ -2,6 +2,9 @@
 (deflayermap (opts_layer)
   (t! map_layers _ "opts" (lsft rsft))
 
+  1 (multi (cmd asusctl profile set Quiet)       (push-msg "NOTIFY: Quiet profile"))
+  2 (multi (cmd asusctl profile set Balanced)    (push-msg "NOTIFY: Balanced profile"))
+  3 (multi (cmd asusctl profile set Performance) (push-msg "NOTIFY: Performance profile"))
   k lrld
   d (push-msg "DEBUG: This is a DEBUG message to check communication")
   p prnt
