@@ -4,18 +4,18 @@
   ;; == search ============================================================
   ;; search + spc 
   action_search (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_search break
     ((input virtual vk_zapzap)) $zapzap_action_search break
-    ((input virtual vk_nvim)) $nvim_action_search break
+    ((input virtual vk_obsidian)) $obsidian_action_search break
     ((input virtual vk_dolphin)) $dolphin_action_search break
+    ((input virtual vk_nvim)) $nvim_action_search break
     () XX break
   ))
   ;; search + lsft + spc 
   action_search+lsft (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_search+lsft break
     ((input virtual vk_zapzap)) $zapzap_action_search+lsft break
-    ((input virtual vk_nvim)) $nvim_action_search+lsft break
+    ((input virtual vk_obsidian)) $obsidian_action_search+lsft break
     ((input virtual vk_dolphin)) $dolphin_action_search+lsft break
+    ((input virtual vk_nvim)) $nvim_action_search+lsft break
     () XX break
   ))
   ;; search + rsft + spc 

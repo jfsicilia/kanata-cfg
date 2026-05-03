@@ -11,70 +11,70 @@
   ;; panes + ent
   action_panes+max (t! unmod_all (switch ;;@iface@ 
     ((input virtual vk_obsidian)) $obsidian_action_panes+max break
-    ((input virtual vk_nvim)) $nvim_action_panes+max break
     ((input virtual vk_dolphin)) $dolphin_action_panes+max break
-    ((input virtual vk_zellij)) $zellij_action_panes+max break
+    ((input virtual vk_nvim)) $nvim_action_panes+max break
     ((input virtual vk_tmux)) $tmux_action_panes+max break
+    ((input virtual vk_zellij)) $zellij_action_panes+max break
     () XX break
   ))
 
   ;; panes + h | panes + left 
   action_panes+h (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+h break
-    ((input virtual vk_nvim)) $nvim_action_panes+h break
     ((input virtual vk_dolphin)) $dolphin_action_panes+h break
     ((input virtual vk_colab)) $colab_action_panes+h break
-    ((input virtual vk_zellij)) $zellij_action_panes+h break
+    ((input virtual vk_nvim)) $nvim_action_panes+h break
     ((input virtual vk_tmux)) $tmux_action_panes+h break
+    ((input virtual vk_zellij)) $zellij_action_panes+h break
     () XX break
   ))
   ;; panes + l | panes + right 
   action_panes+l (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+l break
-    ((input virtual vk_nvim)) $nvim_action_panes+l break
     ((input virtual vk_dolphin)) $dolphin_action_panes+l break
     ((input virtual vk_colab)) $colab_action_panes+l break
-    ((input virtual vk_zellij)) $zellij_action_panes+l break
+    ((input virtual vk_nvim)) $nvim_action_panes+l break
     ((input virtual vk_tmux)) $tmux_action_panes+l break
+    ((input virtual vk_zellij)) $zellij_action_panes+l break
     () XX break
   ))
   ;; panes + k | panes + up 
   action_panes+k (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+k break
-    ((input virtual vk_nvim)) $nvim_action_panes+k break
     ((input virtual vk_dolphin)) $dolphin_action_panes+k break
     ((input virtual vk_colab)) $colab_action_panes+k break
-    ((input virtual vk_zellij)) $zellij_action_panes+k break
+    ((input virtual vk_nvim)) $nvim_action_panes+k break
     ((input virtual vk_tmux)) $tmux_action_panes+k break
+    ((input virtual vk_zellij)) $zellij_action_panes+k break
     () XX break
   ))
   ;; panes + j | panes + down 
   action_panes+j (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+j break
-    ((input virtual vk_nvim)) $nvim_action_panes+j break
     ((input virtual vk_dolphin)) $dolphin_action_panes+j break
     ((input virtual vk_colab)) $colab_action_panes+j break
-    ((input virtual vk_zellij)) $zellij_action_panes+j break
+    ((input virtual vk_nvim)) $nvim_action_panes+j break
     ((input virtual vk_tmux)) $tmux_action_panes+j break
+    ((input virtual vk_zellij)) $zellij_action_panes+j break
     () XX break
   ))
 
   ;; panes + -
   action_panes+- (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+- break
-    ((input virtual vk_nvim)) $nvim_action_panes+- break
     ((input virtual vk_dolphin)) $dolphin_action_panes+- break
+    ((input virtual vk_nvim)) $nvim_action_panes+- break
     ((input virtual vk_tmux)) $tmux_action_panes+- break
     () XX break
   ))
   ;; panes + \
   action_panes+\ (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_chrome)) $chrome_action_panes+\ break
     ((input virtual vk_obsidian)) $obsidian_action_panes+\ break
-    ((input virtual vk_nvim)) $nvim_action_panes+\ break
     ((input virtual vk_dolphin)) $dolphin_action_panes+\ break
     ((input virtual vk_firefox)) $firefox_action_panes+\ break
+    ((input virtual vk_nvim)) $nvim_action_panes+\ break
     ((input virtual vk_tmux)) $tmux_action_panes+\ break
-    ((input virtual vk_chrome)) $chrome_action_panes+\ break
     () XX break
   ))
 
@@ -90,8 +90,8 @@
   ;; panes + toggle | 2x !lalt
   action_panes+toggle (t! unmod_all (switch ;;@iface@ 
     ((input virtual vk_obsidian)) $obsidian_action_panes+toggle break
-    ((input virtual vk_nvim)) $nvim_action_panes+toggle break
     ((input virtual vk_dolphin)) $dolphin_action_panes+toggle break
+    ((input virtual vk_nvim)) $nvim_action_panes+toggle break
     ((input virtual vk_tmux)) $tmux_action_panes+toggle break
     () XX break
   ))
@@ -132,26 +132,26 @@
   ;; == panes + resize ====================================================
   ;; panes + resize + h | panes + resize + left
   action_panes_resize_left (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_panes_resize_left break
     ((input virtual vk_dolphin)) $dolphin_action_panes_resize_left break
+    ((input virtual vk_nvim)) $nvim_action_panes_resize_left break
     () XX break
   ))
   ;; panes + resize + l | panes + resize + right
   action_panes_resize_right (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_panes_resize_right break
     ((input virtual vk_dolphin)) $dolphin_action_panes_resize_right break
+    ((input virtual vk_nvim)) $nvim_action_panes_resize_right break
     () XX break
   ))
   ;; panes + resize + k | panes + resize + up
   action_panes_resize_above (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_panes_resize_above break
     ((input virtual vk_dolphin)) $dolphin_action_panes_resize_above break
+    ((input virtual vk_nvim)) $nvim_action_panes_resize_above break
     () XX break
   ))
   ;; panes + resize + j | panes + resize + down
   action_panes_resize_below (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_panes_resize_below break
     ((input virtual vk_dolphin)) $dolphin_action_panes_resize_below break
+    ((input virtual vk_nvim)) $nvim_action_panes_resize_below break
     () XX break
   ))
 
@@ -235,8 +235,8 @@
   ;; panes + e
   action_panes+e (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+e break
-    ((input virtual vk_nvim)) $nvim_action_panes+e break
     ((input virtual vk_dolphin)) $dolphin_action_panes+e break
+    ((input virtual vk_nvim)) $nvim_action_panes+e break
     () XX break
   ))
   ;; panes + lsft + e

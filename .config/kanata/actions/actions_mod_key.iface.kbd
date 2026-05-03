@@ -3,8 +3,8 @@
 
   ;; modA + spc
   action_modA+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modA+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modA+spc break
+    ((input virtual vk_nvim)) $nvim_action_modA+spc break
     () XX break
   ))
 
@@ -22,8 +22,8 @@
 
   ;; modD + spc 
   action_modD+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modD+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modD+spc break
+    ((input virtual vk_nvim)) $nvim_action_modD+spc break
     () XX break
   ))
 
@@ -41,15 +41,15 @@
 
   ;; modG + spc 
   action_modG+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modG+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modG+spc break
+    ((input virtual vk_nvim)) $nvim_action_modG+spc break
     () XX break
   ))
   ;; modG + modL
   action_modG_modL (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_modG_modL break
     ((input virtual vk_foot)) $foot_action_modG_modL break
     ((input virtual vk_nvim)) $nvim_action_modG_modL break
-    ((input virtual vk_dolphin)) $dolphin_action_modG_modL break
     () XX break
   ))
 
@@ -67,25 +67,25 @@
 
   ;; modJ + spc 
   action_modJ+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modJ+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modJ+spc break
+    ((input virtual vk_nvim)) $nvim_action_modJ+spc break
     ()                        C-spc break  ;; Autofill
   ))
 
   ;; modK + spc 
   action_modK+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modK+spc break
-    ((input virtual vk_dolphin)) $dolphin_action_modK+spc break
-    ((input virtual vk_colab)) $colab_action_modK+spc break
-    ((input virtual vk_firefox)) $firefox_action_modK+spc break
     ((input virtual vk_chrome)) $chrome_action_modK+spc break
+    ((input virtual vk_dolphin)) $dolphin_action_modK+spc break
+    ((input virtual vk_firefox)) $firefox_action_modK+spc break
+    ((input virtual vk_colab)) $colab_action_modK+spc break
+    ((input virtual vk_nvim)) $nvim_action_modK+spc break
     () XX break
   ))
 
   ;; modL + spc 
   action_modL+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modL+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modL+spc break
+    ((input virtual vk_nvim)) $nvim_action_modL+spc break
     () XX break
   ))
 
@@ -103,8 +103,8 @@
 
   ;; modO + spc
   action_modO+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modO+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modO+spc break
+    ((input virtual vk_nvim)) $nvim_action_modO+spc break
     () XX break
   ))
 
@@ -116,41 +116,41 @@
   
   ;; modQ + spc
   action_modQ+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modQ+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modQ+spc break
+    ((input virtual vk_nvim)) $nvim_action_modQ+spc break
     () XX break
   ))
 
   ;; modR + spc
   action_modR+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modR+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modR+spc break
+    ((input virtual vk_nvim)) $nvim_action_modR+spc break
     () XX break
   ))
   ;; modR + lsft + spc
   action_modR+lsft+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modR+lsft+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modR+lsft+spc break
+    ((input virtual vk_nvim)) $nvim_action_modR+lsft+spc break
     () XX break
   ))
   ;; modR + rsft + spc
   action_modR+rsft+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modR+rsft+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modR+rsft+spc break
+    ((input virtual vk_nvim)) $nvim_action_modR+rsft+spc break
     () XX break
   ))
 
   ;; modS + spc 
   action_modS+spc (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_modS+spc break
-    ((input virtual vk_nvim)) $nvim_action_modS+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modS+spc break
+    ((input virtual vk_nvim)) $nvim_action_modS+spc break
     () XX break
   ))
   ;; modS + lsft + spc 
   action_modS+lsft+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modS+lsft+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modS+lsft+spc break
+    ((input virtual vk_nvim)) $nvim_action_modS+lsft+spc break
     () XX break
   ))
 
@@ -196,20 +196,20 @@
 
   ;; modY + spc
   action_modY+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modY+spc break
     ((input virtual vk_dolphin)) $dolphin_action_modY+spc break
+    ((input virtual vk_nvim)) $nvim_action_modY+spc break
     () XX break
   ))
   ;; modY + mod;
   action_modY_mod; (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modY_mod; break
     ((input virtual vk_dolphin)) $dolphin_action_modY_mod; break
+    ((input virtual vk_nvim)) $nvim_action_modY_mod; break
     () XX break
   )) ;;""
   ;; modY + search 
   action_modY_search (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modY_search break
     ((input virtual vk_dolphin)) $dolphin_action_modY_search break
+    ((input virtual vk_nvim)) $nvim_action_modY_search break
     () XX break
   ))
 
@@ -251,33 +251,33 @@
 
   ;; mod\ + spc 
   action_mod\+spc (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_mod\+spc break
     ((input virtual vk_foot)) $foot_action_mod\+spc break
     ((input virtual vk_nvim)) $nvim_action_mod\+spc break
-    ((input virtual vk_dolphin)) $dolphin_action_mod\+spc break
     () XX break
   )) ;;""
   ;; mod\ + j
   action_mod\+j (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_mod\+j break
     ((input virtual vk_dolphin)) $dolphin_action_mod\+j break
+    ((input virtual vk_nvim)) $nvim_action_mod\+j break
     () XX break
   )) ;;""
   ;; mod\ + k
   action_mod\+k (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_mod\+k break
     ((input virtual vk_dolphin)) $dolphin_action_mod\+k break
+    ((input virtual vk_nvim)) $nvim_action_mod\+k break
     () XX break
   )) ;;""
   ;; mod\ + o
   action_mod\+o (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_mod\+o break
     ((input virtual vk_dolphin)) $dolphin_action_mod\+o break
+    ((input virtual vk_nvim)) $nvim_action_mod\+o break
     () XX break
   )) ;;""
   ;; mod\ + p
   action_mod\+p (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_mod\+p break
     ((input virtual vk_dolphin)) $dolphin_action_mod\+p break
+    ((input virtual vk_nvim)) $nvim_action_mod\+p break
     () XX break
   )) ;;""
   ;; mod\ + ent
@@ -289,42 +289,42 @@
   ;; mod; + spc 
   action_mod;+spc (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_mod;+spc break
-    ((input virtual vk_nvim)) $nvim_action_mod;+spc break
     ((input virtual vk_dolphin)) $dolphin_action_mod;+spc break
     ((input virtual vk_colab)) $colab_action_mod;+spc break
+    ((input virtual vk_nvim)) $nvim_action_mod;+spc break
     ((input virtual vk_tmux)) $tmux_action_mod;+spc break
     () XX break
   )) ;;""
 
   ;; mod' + spc 
   action_mod'+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_mod'+spc break
     ((input virtual vk_dolphin)) $dolphin_action_mod'+spc break
+    ((input virtual vk_nvim)) $nvim_action_mod'+spc break
     () XX break
   ))
 
   ;; mod, + spc 
   action_mod,+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_mod,+spc break
+    ((input virtual vk_chrome)) $chrome_action_mod,+spc break
     ((input virtual vk_zapzap)) $zapzap_action_mod,+spc break
-    ((input virtual vk_nvim)) $nvim_action_mod,+spc break
+    ((input virtual vk_obsidian)) $obsidian_action_mod,+spc break
     ((input virtual vk_dolphin)) $dolphin_action_mod,+spc break
     ((input virtual vk_firefox)) $firefox_action_mod,+spc break
-    ((input virtual vk_chrome)) $chrome_action_mod,+spc break
+    ((input virtual vk_nvim)) $nvim_action_mod,+spc break
     () XX break
   ))
 
   ;; mod. + spc
   action_mod.+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_mod.+spc break
     ((input virtual vk_dolphin)) $dolphin_action_mod.+spc break
+    ((input virtual vk_nvim)) $nvim_action_mod.+spc break
     () XX break
   ))
 
   ;; mod/ + spc 
   action_mod/+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_mod/+spc break
     ((input virtual vk_dolphin)) $dolphin_action_mod/+spc break
+    ((input virtual vk_nvim)) $nvim_action_mod/+spc break
     () XX break
   )) ;;""
 

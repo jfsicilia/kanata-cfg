@@ -5,15 +5,15 @@
   ;; replace + spc 
   action_replace (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_replace break
-    ((input virtual vk_nvim)) $nvim_action_replace break
     ((input virtual vk_dolphin)) $dolphin_action_replace break
+    ((input virtual vk_nvim)) $nvim_action_replace break
     () XX break
   ))
   ;; replace + lsft + spc 
   action_replace+lsft (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_replace+lsft break
-    ((input virtual vk_nvim)) $nvim_action_replace+lsft break
     ((input virtual vk_dolphin)) $dolphin_action_replace+lsft break
+    ((input virtual vk_nvim)) $nvim_action_replace+lsft break
     () XX break
   ))
   ;; replace + rsft + spc 
