@@ -1,5 +1,10 @@
 (defvar
   ;; Lang layer
-  toggle_lang_layer                  (t! toggle_layer             lang_layer)
-  toggle_lang_alt_layer              (t! toggle_layer             lang_alt_layer)
+  toggle_alt_chars         (multi (on-press toggle-virtualkey vk_alt_chars) (switch
+                             ((input virtual vk_alt_chars)) (push-msg "NOTIFY:US keyboard")  break
+                             ()                             (push-msg "NOTIFY:ESP keyboard") break
+                           ))
+
+  toggle_lang_layer        (t! toggle_layer lang_layer)
 )
+
