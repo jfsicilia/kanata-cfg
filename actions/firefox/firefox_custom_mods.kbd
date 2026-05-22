@@ -1,11 +1,4 @@
 (defvar
-;; modK
-;; modK + spc
-firefox_action_modK+spc                   $firefox_keybindings
-;; mod,
-;; mod, + spc
-firefox_action_mod,+spc                   $firefox_settings
-
 ;; modA + modA
 ;; ___TO_SET___ firefox_action_modA+modA              
 
@@ -39,7 +32,7 @@ firefox_action_mod,+spc                   $firefox_settings
 ;; ___TO_SET___ firefox_action_modJ+modJ              
 
 ;; modK + modK
-;; ___TO_SET___ firefox_action_modK+modK              
+firefox_action_modK+modK                   $firefox_keybindings
 
 ;; modL + modL
 ;; ___TO_SET___ firefox_action_modL+modL              
@@ -137,7 +130,7 @@ firefox_action_mod,+spc                   $firefox_settings
 ;; ___TO_SET___ firefox_action_mod'+mod'              
 
 ;; mod, + mod,
-;; ___TO_SET___ firefox_action_mod,+mod,              
+firefox_action_mod,+mod,                   $firefox_settings
 
 ;; mod. + mod.
 ;; ___TO_SET___ firefox_action_mod.+mod.              
