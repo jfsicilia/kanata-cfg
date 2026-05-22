@@ -4,25 +4,25 @@
   toggle_rsft_layer                  (t! toggle_mod_layer   rsft  rsft_layer)
 
   ;; LCtl layers.
-  toggle_lctl_layer                  $toggle_modF_&_lctl_layer           
-  toggle_lctl+lsft_layer             $toggle_modF_&_lctl_+lsft_layer     
-  toggle_lctl+rsft_layer             $toggle_modF_&_lctl_+rsft_layer     
+  toggle_lctl_layer                  (t! toggle_mod_layer  lctl  lctl_layer  ) 
+  toggle_lctl+lsft_layer             (t! toggle_2mod_layer lctl lsft  lctl+lsft_layer)
+  toggle_lctl+rsft_layer             (t! toggle_2mod_layer lctl rsft  lctl+rsft_layer)
   toggle_!lctl_layer                 $toggle_seek_n_select_&_!lctl_layer          
   toggle_!lctl+lsft_layer            $toggle_seek_n_select_&_!lctl+lsft_layer     
   toggle_!lctl+rsft_layer            $toggle_seek_n_select_&_!lctl+rsft_layer     
 
   ;; LAlt layers.
-  toggle_lalt_layer                  $toggle_modL_&_lalt_layer           
-  toggle_lalt+lsft_layer             $toggle_modL_&_lalt_+lsft_layer     
-  toggle_lalt+rsft_layer             $toggle_modL_&_lalt_+rsft_layer     
+  toggle_lalt_layer                  (t! toggle_mod_layer  lalt       lalt_layer  ) 
+  toggle_lalt+lsft_layer             (t! toggle_2mod_layer lalt lsft  lalt+lsft_layer)
+  toggle_lalt+rsft_layer             (t! toggle_2mod_layer lalt rsft  lalt+rsft_layer)
   toggle_!lalt_layer                 $toggle_search_&_!lalt_layer        
   toggle_!lalt+lsft_layer            $toggle_search_&_!lalt+lsft_layer   
   toggle_!lalt+rsft_layer            $toggle_search_&_!lalt+rsft_layer   
 
   ;; LMet layers.
-  toggle_lmet_layer                  $toggle_modA_&_lmet_layer           
-  toggle_lmet+lsft_layer             $toggle_modA_&_lmet_+lsft_layer     
-  toggle_lmet+rsft_layer             $toggle_modA_&_lmet_+rsft_layer     
+  toggle_lmet_layer                  (t! toggle_mod_layer  lmet       lmet_layer  ) 
+  toggle_lmet+lsft_layer             (t! toggle_2mod_layer lmet lsft  lmet+lsft_layer)
+  toggle_lmet+rsft_layer             (t! toggle_2mod_layer lmet rsft  lmet+rsft_layer)
   toggle_!lmet_layer                 $toggle_replace_&_!lmet_layer       
   toggle_!lmet+lsft_layer            $toggle_replace_&_!lmet+lsft_layer  
   toggle_!lmet+rsft_layer            $toggle_replace_&_!lmet+rsft_layer  

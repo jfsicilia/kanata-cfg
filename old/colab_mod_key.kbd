@@ -33,6 +33,7 @@
 ;; ___TO_SET___ colab_action_modJ+spc               
 
 ;; modK + spc
+;; modK
 colab_action_modK+spc                   $colab_keybindings
 
 ;; modL + spc
@@ -123,6 +124,7 @@ colab_action_modK+spc                   $colab_keybindings
 ;; ___TO_SET___ colab_action_mod\+ent               
 
 ;; mod; + spc
+;; mod;
 colab_action_mod;+spc                   $colab_command_palette
 
 ;; mod' + spc

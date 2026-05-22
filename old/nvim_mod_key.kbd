@@ -1,6 +1,7 @@
 (defvar
 
 ;; modA + spc
+;; modA
 ;; nvim_action_modA+spc                `{esc}:Telescope autocommands{ret}`
 nvim_action_modA+spc                $nvim_autocommands
 
@@ -11,6 +12,7 @@ nvim_action_modA+spc                $nvim_autocommands
 ;; ___TO_SET___ nvim_action_modC+spc               
 
 ;; modD + spc
+;; modD
 ;; nvim_action_modD+spc                   `{esc}:Telescope lsp_definitions{ret}`
 nvim_action_modD+spc                   $nvim_definitions
 
@@ -21,6 +23,7 @@ nvim_action_modD+spc                   $nvim_definitions
 ;; ___TO_SET___ nvim_action_modF+spc               
 
 ;; modG + spc
+;; modG
 ;; nvim_action_modG+spc                 `{esc}:Telescope git_files{ret}`
 nvim_action_modG+spc                    $nvim_git  ;;""
 ;; modG + modL
@@ -34,14 +37,17 @@ nvim_action_modG_modL              $nvim_lazygit
 ;; ___TO_SET___ nvim_action_modI+spc               
 
 ;; modJ + spc
+;; modJ
 ;; nvim_action_modJ+spc                  `{esc}:Telescope jumplist{ret}`
 nvim_action_modJ+spc                  $nvim_jumps
 
 ;; modK + spc
+;; modK
 ;; nvim_action_modK+spc                `{esc}:Telescope keymaps{ret}`
 nvim_action_modK+spc                $nvim_keymaps
 
 ;; modL + spc
+;; modL
 ;; nvim_action_modL+spc              `{esc}:Telescope loclist{ret}`
 nvim_action_modL+spc              $nvim_locations
 
@@ -52,6 +58,7 @@ nvim_action_modL+spc              $nvim_locations
 ;; ___TO_SET___ nvim_action_modN+spc               
 
 ;; modO + spc
+;; modO
 ;; nvim_action_modO+spc                 `{esc}:Telescope lsp_implementations{ret}`
 nvim_action_modO+spc                 $nvim_source
 
@@ -59,12 +66,14 @@ nvim_action_modO+spc                 $nvim_source
 ;; ___TO_SET___ nvim_action_modP+spc               
 
 ;; modQ + spc
+;; modQ
 ;; nvim_action_modQ+spc               `{esc}:Telescope quickfix{ret}`
 ;; nvim_action_modQ+spc               (macro esc S-; S-t e l e s c o p e spc q u i c k f i x ret)   ;;""
 ;; nvim_action_modQ+spc               `{esc}:Telescope diagnostics{ret}`
 nvim_action_modQ+spc               $nvim_quickfix
 
 ;; modR + spc
+;; modR
 ;; nvim_action_modR+spc                   `{esc}:Telescope lsp_references{ret}`
 nvim_action_modR+spc                   $nvim_references
 ;; modR + lsft + spc
@@ -75,6 +84,7 @@ nvim_action_modR+lsft+spc                $nvim_references_incoming
 nvim_action_modR+rsft+spc               $nvim_references_outgoing
 
 ;; modS + spc
+;; modS
 ;; nvim_action_modS+spc                 `{esc}:Telescope lsp_document_symbols{ret}`
 nvim_action_modS+spc                 $nvim_symbols
 ;; modS + lsft + spc
@@ -101,6 +111,7 @@ nvim_action_modT+toggle            $nvim_terminal
 ;; ___TO_SET___ nvim_action_modX+spc               
 
 ;; modY + spc
+;; modY
 ;; nvim_action_modY+spc                `{esc}:Telescope oldfiles{ret}`
 nvim_action_modY+spc                $nvim_history  ;;""
 ;; modY + mod;
@@ -142,22 +153,27 @@ nvim_action_mod\+p                 $nvim_compare_push  ;; Push changes to the ot
 ;; ___TO_SET___ nvim_action_mod\+ent               
 
 ;; mod; + spc
+;; mod;
 ;; nvim_action_mod;+spc               `{esc}:Telescope commands{ret}`
 nvim_action_mod;+spc               $nvim_commands   ;;""
 
 ;; mod' + spc
+;; mod'
 ;; nvim_action_mod'+spc             `{esc}:Telescope registers{ret}`
 nvim_action_mod'+spc             $nvim_registers
 
 ;; mod, + spc
+;; mod,
 ;; nvim_action_mod,+spc                `{esc}:Telescope vim_options{ret}`
 nvim_action_mod,+spc                $nvim_settings
 
 ;; mod. + spc
+;; mod.
 ;; nvim_action_mod.+spc                   `{esc}:Telescope tags{ret}`
 nvim_action_mod.+spc                   $nvim_tags  ;;""
 
 ;; mod/ + spc
+;; mod/
 ;; nvim_action_mod/+spc                   `{esc}:help{ret}`
 nvim_action_mod/+spc                   $nvim_help
 

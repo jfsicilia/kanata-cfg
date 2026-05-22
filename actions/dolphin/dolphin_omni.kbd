@@ -76,7 +76,7 @@ dolphin_action_omni+i          $dolphin_info
 ;; ___TO_SET___ dolphin_action_omni+l                 
 
 ;; omni + m
-;; If not implemented, defaults to: action_modM+spc
+;; If not implemented, defaults to: action_modM+modM
 ;; ___TO_SET___ dolphin_action_omni+m                 
 
 ;; omni + n
@@ -204,14 +204,14 @@ dolphin_action_omni+;          (push-msg "NOTIFY:No comments behaviour implement
 dolphin_action_omni+'          $dolphin_filter
 
 ;; omni + ,
-;; If not implemented, defaults to: action_mod,+spc
+;; If not implemented, defaults to: action_mod,+mod,
 ;; ___TO_SET___ dolphin_action_omni+,                 
 ;; omni + .
-;; If not implemented, defaults to: action_mod.+spc
+;; If not implemented, defaults to: action_mod.+mod.
 ;; see mod.
 dolphin_action_omni+.          $dolphin_tags
 ;; omni + /
-;; If not implemented, defaults to: action_mod/+spc
+;; If not implemented, defaults to: action_mod/+mod/
 ;; ___TO_SET___ dolphin_action_omni+/                 
 
 ;; omni + !lmet|desktops

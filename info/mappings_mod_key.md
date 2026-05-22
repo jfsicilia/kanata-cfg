@@ -17,7 +17,7 @@
 | M        | mem (clipboard)     | mem (clipboard)     |                  |                  |                    |                            |          |
 | N        | sessions (GUI)      | !sessions (GUI)     | sessions (GUI)   | sessions (GUI)   |                    | sessions (GUI)             |          |
 | O        | source              |                     |                  |                  |                    |                            |          |
-| P        |                     |                     |                  |                  |                    |                            |          |
+| P        |                     | preview?            |                  |                  |                    |                            |          |
 | Q        | quickfix            |                     |                  |                  |                    |                            |          |
 | R        | references          |                     |                  |                  |                    |                            |          |
 | S        | symbols             |                     |                  |                  | Symbols            |                            |          |

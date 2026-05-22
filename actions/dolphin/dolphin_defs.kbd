@@ -20,8 +20,8 @@
     )
     (switch
       ((input virtual vk_dolphin_sort1)) C-A-n break  ;; CUSTOM sort by name
-      ((input virtual vk_dolphin_sort2)) C-A-s break  ;; CUSTOM sort by date
-      ()                                 C-A-d break  ;; CUSTOM sort by size
+      ((input virtual vk_dolphin_sort2)) C-A-m break  ;; CUSTOM sort by date
+      ()                                 C-A-s break  ;; CUSTOM sort by size
     )
   )
   ;; Toggles sort ordering A-Z / Z-A
@@ -62,7 +62,7 @@
   dolphin_compress                       (macro S-f10 10 up up up right down down ent)
   dolphin_go                             C-l
   dolphin_info                           A-ret
-  dolphin_new                            A-n
+  dolphin_new                            A-S-n   ;; Custom
   dolphin_new_folder                     C-S-n
   dolphin_new_window                     C-n
   dolphin_open                           ent

@@ -64,6 +64,7 @@ obsidian_settings        C-A-,
 ;; ___TO_SET___ obsidian_action_modR+rsft+spc          
 
 ;; modS + spc
+;; modS
 ;; == modS =============================================================
 obsidian_action_modS+spc                  $obsidian_symbols
 ;; modS + lsft + spc
@@ -127,6 +128,7 @@ obsidian_action_modS+spc                  $obsidian_symbols
 ;; ___TO_SET___ obsidian_action_mod\+ent               
 
 ;; mod; + spc
+;; mod;
 ;; == mod; ===========================================================
 obsidian_action_mod;+spc                 $obsidian_commands
 
@@ -134,6 +136,7 @@ obsidian_action_mod;+spc                 $obsidian_commands
 ;; ___TO_SET___ obsidian_action_mod'+spc               
 
 ;; mod, + spc
+;; mod,
 ;; == mod, ==========================================================
 obsidian_action_mod,+spc                       $obsidian_settings
 

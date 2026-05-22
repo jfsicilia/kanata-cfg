@@ -278,10 +278,10 @@
   )
 
   ;; omni + m
-  ;; If not implemented, defaults to: action_modM+spc
+  ;; If not implemented, defaults to: action_modM+modM
   action_omni+m (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_omni+m break
-    () $action_modM+spc break
+    () $action_modM+modM break
   ))
 
   ;; omni + n
@@ -641,29 +641,29 @@
   )) ;;""
 
   ;; omni + ,
-  ;; If not implemented, defaults to: action_mod,+spc
+  ;; If not implemented, defaults to: action_mod,+mod,
   action_omni+, (t! unmod_all (switch ;;@iface@
     ((input virtual vk_chrome)) $chrome_action_omni+, break
     ((input virtual vk_zapzap)) $zapzap_action_omni+, break
     ((input virtual vk_firefox)) $firefox_action_omni+, break
     ((input virtual vk_nvim)) $nvim_action_omni+, break
     ((input virtual vk_tmux)) $tmux_action_omni+, break
-    () $action_mod,+spc break
+    () $action_mod,+mod, break
   ))
   ;; omni + .
-  ;; If not implemented, defaults to: action_mod.+spc
+  ;; If not implemented, defaults to: action_mod.+mod.
   action_omni+. (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_omni+. break
     ((input virtual vk_nvim)) $nvim_action_omni+. break
     ((input virtual vk_tmux)) $tmux_action_omni+. break
-    () $action_mod.+spc break
+    () $action_mod.+mod. break
   ))
   ;; omni + /
-  ;; If not implemented, defaults to: action_mod/+spc
+  ;; If not implemented, defaults to: action_mod/+mod/
   action_omni+/ (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_omni+/ break
     ((input virtual vk_tmux)) $tmux_action_omni+/ break
-    () $action_mod/+spc break
+    () $action_mod/+mod/ break
   )) ;;""
 
   ;; omni + !lmet|desktops

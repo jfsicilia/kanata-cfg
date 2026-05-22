@@ -1,60 +1,78 @@
 (defvar
 
 ;; modA + spc
+;; modA
 dolphin_action_modA+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modB + spc
+;; modB
 dolphin_action_modB+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modC + spc
+;; modC
 dolphin_action_modC+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modD + spc
+;; modD
 dolphin_action_modD+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modE + spc
+;; modE
 dolphin_action_modE+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modF + spc
+;; modF
 dolphin_action_modF+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modG + spc
+;; modG
 dolphin_action_modG+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 ;; modG + modL
 dolphin_action_modG_modL               (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modH + spc
+;; modH
 dolphin_action_modH+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modI + spc
+;; modI
 dolphin_action_modI+spc                    $dolphin_info
 
 ;; modJ + spc
+;; modJ
 dolphin_action_modJ+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modK + spc
+;; modK
 ;; == modK =============================================================
 dolphin_action_modK+spc                  $dolphin_keymaps 
 
 ;; modL + spc
+;; modL
 dolphin_action_modL+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modM + spc
+;; modM
 dolphin_action_modM+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modN + spc
+;; modN
 dolphin_action_modN+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modO + spc
+;; modO
 dolphin_action_modO+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modP + spc
+;; modP
 dolphin_action_modP+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modQ + spc
+;; modQ
 dolphin_action_modQ+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modR + spc
+;; modR
 dolphin_action_modR+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 ;; modR + lsft + spc
 dolphin_action_modR+lsft+spc               (push-msg "NOTIFY:ModKey+spc not implemented!")
@@ -62,11 +80,13 @@ dolphin_action_modR+lsft+spc               (push-msg "NOTIFY:ModKey+spc not impl
 dolphin_action_modR+rsft+spc               (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modS + spc
+;; modS
 dolphin_action_modS+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 ;; modS + lsft + spc
 dolphin_action_modS+lsft+spc               (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modT + spc
+;; modT
 dolphin_action_modT+spc                    $dolphin_terminal
 ;; modT + lsft + spc
 ;; modT + n
@@ -75,18 +95,23 @@ dolphin_action_modT+lsft+spc               (push-msg "NOTIFY:ModKey+spc not impl
 ;; ___TO_SET___ dolphin_action_modT+toggle            
 
 ;; modU + spc
+;; modU
 dolphin_action_modU+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modV + spc
+;; modV
 dolphin_action_modV+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modW + spc
+;; modW
 dolphin_action_modW+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modX + spc
+;; modX
 dolphin_action_modX+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modY + spc
+;; modY
 dolphin_action_modY+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 ;; modY + mod;
 ;; modY + mod; + spc
@@ -96,21 +121,27 @@ dolphin_action_modY_mod;               (push-msg "NOTIFY:ModKey+spc not implemen
 dolphin_action_modY_search             (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; modZ + spc
+;; modZ
 dolphin_action_modZ+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod` + spc
+;; mod`
 dolphin_action_mod`+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod- + spc
+;; mod-
 dolphin_action_mod-+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod= + spc
+;; mod=
 dolphin_action_mod=+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod[ + spc
+;; mod[
 dolphin_action_mod[+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod] + spc
+;; mod]
 dolphin_action_mod]+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod\ + spc
@@ -127,47 +158,62 @@ dolphin_action_mod\+p                  (push-msg "NOTIFY:ModKey+spc not implemen
 dolphin_action_mod\+ent                (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod; + spc
+;; mod;
 dolphin_action_mod;+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod' + spc
+;; mod'
 dolphin_action_mod'+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod, + spc
+;; mod,
 dolphin_action_mod,+spc                    $dolphin_settings 
 
 ;; mod. + spc
+;; mod.
 dolphin_action_mod.+spc                    $dolphin_tags
 
 ;; mod/ + spc
+;; mod/
 dolphin_action_mod/+spc                    $dolphin_help 
 
 ;; mod0 + spc
+;; mod0
 dolphin_action_mod0+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod1 + spc
+;; mod1
 dolphin_action_mod1+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod2 + spc
+;; mod2
 dolphin_action_mod2+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod3 + spc
+;; mod3
 dolphin_action_mod3+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod4 + spc
+;; mod4
 dolphin_action_mod4+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod5 + spc
+;; mod5
 dolphin_action_mod5+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod6 + spc
+;; mod6
 dolphin_action_mod6+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod7 + spc
+;; mod7
 dolphin_action_mod7+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod8 + spc
+;; mod8
 dolphin_action_mod8+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 
 ;; mod9 + spc
+;; mod9
 dolphin_action_mod9+spc                    (push-msg "NOTIFY:ModKey+spc not implemented!")
 )

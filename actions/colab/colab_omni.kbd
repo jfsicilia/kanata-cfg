@@ -76,7 +76,7 @@ colab_action_omni+bcsp              $colab_delete
 ;; ___TO_SET___ colab_action_omni+l                 
 
 ;; omni + m
-;; If not implemented, defaults to: action_modM+spc
+;; If not implemented, defaults to: action_modM+modM
 ;; ___TO_SET___ colab_action_omni+m                 
 
 ;; omni + n
@@ -200,13 +200,13 @@ colab_action_omni+rsft+n            $colab_new_cell_above
 ;; ___TO_SET___ colab_action_omni+'                 
 
 ;; omni + ,
-;; If not implemented, defaults to: action_mod,+spc
+;; If not implemented, defaults to: action_mod,+mod,
 ;; ___TO_SET___ colab_action_omni+,                 
 ;; omni + .
-;; If not implemented, defaults to: action_mod.+spc
+;; If not implemented, defaults to: action_mod.+mod.
 ;; ___TO_SET___ colab_action_omni+.                 
 ;; omni + /
-;; If not implemented, defaults to: action_mod/+spc
+;; If not implemented, defaults to: action_mod/+mod/
 ;; ___TO_SET___ colab_action_omni+/                 
 
 ;; omni + !lmet|desktops

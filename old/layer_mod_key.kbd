@@ -1,0 +1,307 @@
+(t! mod_key_layer "modA" $action_modA+spc XX XX)
+(t! mod_key_layer "modB" $action_modB+spc XX XX)
+(t! mod_key_layer "modC" $action_modC+spc XX XX)
+(t! mod_key_layer "modD" $action_modD+spc XX XX)
+(t! mod_key_layer "modE" $action_modE+spc XX XX)
+(t! mod_key_layer "modF" $action_modF+spc XX XX)
+;; modG has its own iplementation, see below.
+(t! mod_key_layer "modH" $action_modH+spc XX XX)
+(t! mod_key_layer "modI" $action_modI+spc XX XX)
+(t! mod_key_layer "modJ" $action_modJ+spc XX XX)
+(t! mod_key_layer "modK" $action_modK+spc XX XX)
+(t! mod_key_layer "modL" $action_modL+spc XX XX)
+(t! mod_key_layer "modM" $action_modM+spc XX XX)
+(t! mod_key_layer "modN" $action_modN+spc XX XX)
+(t! mod_key_layer "modO" $action_modO+spc XX XX)
+(t! mod_key_layer "modP" $action_modP+spc XX XX)
+(t! mod_key_layer "modQ" $action_modQ+spc XX XX)
+(t! mod_key_layer "modR" $action_modR+spc $action_modR+lsft+spc $action_modR+rsft+spc)
+(t! mod_key_layer "modS" $action_modS+spc XX XX)
+(t! mod_key_layer "modT" $action_modT+spc XX XX)
+(t! mod_key_layer "modU" $action_modU+spc XX XX)
+(t! mod_key_layer "modV" $action_modV+spc XX XX)
+(t! mod_key_layer "modW" $action_modW+spc XX XX)
+(t! mod_key_layer "modX" $action_modX+spc XX XX)
+;; modY has its own implemetation, see below.
+(t! mod_key_layer "modZ" $action_modZ+spc XX XX)
+(t! mod_key_layer "mod;" $action_mod;+spc XX XX)
+(t! mod_key_layer "mod'" $action_mod'+spc XX XX)
+(t! mod_key_layer "mod," $action_mod,+spc XX XX)
+(t! mod_key_layer "mod." $action_mod.+spc XX XX)
+(t! mod_key_layer "mod/" $action_mod/+spc XX XX)
+(t! mod_key_layer "mod[" $action_mod[+spc XX XX)
+(t! mod_key_layer "mod]" $action_mod]+spc XX XX)
+(t! mod_key_layer "mod`" $action_mod`+spc XX XX)
+(t! mod_key_layer "mod-" $action_mod-+spc XX XX)
+(t! mod_key_layer "mod=" $action_mod=+spc XX XX)
+(t! mod_key_layer "mod0" $action_mod0+spc XX XX)
+(t! mod_key_layer "mod1" $action_mod1+spc XX XX) 
+(t! mod_key_layer "mod2" $action_mod2+spc XX XX)
+(t! mod_key_layer "mod3" $action_mod3+spc XX XX) 
+(t! mod_key_layer "mod4" $action_mod4+spc XX XX)
+(t! mod_key_layer "mod5" $action_mod5+spc XX XX)
+(t! mod_key_layer "mod6" $action_mod6+spc XX XX)
+(t! mod_key_layer "mod7" $action_mod7+spc XX XX)
+(t! mod_key_layer "mod8" $action_mod8+spc XX XX)
+(t! mod_key_layer "mod9" $action_mod9+spc XX XX)
+
+;;(deftemplate spc+key (vk key)
+;;  (switch 
+;;      ((input virtual modA)) (concat "$action_modA+" $key) break
+;;      ((input virtual modB)) (concat "$action_modB+" $key) break
+;;      ((input virtual modC)) (concat "$action_modC+" $key) break
+;;      ((input virtual modD)) (concat "$action_modD+" $key) break
+;;      ((input virtual modE)) (concat "$action_modE+" $key) break
+;;      ((input virtual modF)) (concat "$action_modF+" $key) break
+;;      ((input virtual modG)) (concat "$action_modG+" $key) break
+;;      ((input virtual modH)) (concat "$action_modH+" $key) break
+;;      ((input virtual modI)) (concat "$action_modI+" $key) break
+;;      ((input virtual modJ)) (concat "$action_modJ+" $key) break
+;;      ((input virtual modK)) (concat "$action_modK+" $key) break
+;;      ((input virtual modL)) (concat "$action_modL+" $key) break
+;;      ((input virtual modM)) (concat "$action_modM+" $key) break
+;;      ((input virtual modN)) (concat "$action_modN+" $key) break
+;;      ((input virtual modO)) (concat "$action_modO+" $key) break
+;;      ((input virtual modP)) (concat "$action_modP+" $key) break
+;;      ((input virtual modQ)) (concat "$action_modQ+" $key) break
+;;      ((input virtual modR)) (concat "$action_modR+" $key) break
+;;      ((input virtual modS)) (concat "$action_modS+" $key) break
+;;      ((input virtual modT)) (concat "$action_modT+" $key) break
+;;      ((input virtual modU)) (concat "$action_modU+" $key) break
+;;      ((input virtual modV)) (concat "$action_modV+" $key) break
+;;      ((input virtual modW)) (concat "$action_modW+" $key) break
+;;      ((input virtual modX)) (concat "$action_modX+" $key) break
+;;      ((input virtual modY)) (concat "$action_modY+" $key) break
+;;      ((input virtual modZ)) (concat "$action_modZ+" $key) break
+;;      ((input virtual mod;)) (concat "$action_mod;+" $key) break
+;;      ((input virtual mod')) (concat "$action_mod'+" $key) break
+;;      ((input virtual mod,)) (concat "$action_mod,+" $key) break
+;;      ((input virtual mod.)) (concat "$action_mod.+" $key) break
+;;      ((input virtual mod/)) (concat "$action_mod/+" $key) break
+;;      ((input virtual mod\)) (concat "$action_mod\+" $key) break
+;;      ((input virtual mod[)) (concat "$action_mod[+" $key) break
+;;      ((input virtual mod])) (concat "$action_mod]+" $key) break
+;;      ((input virtual mod`)) (concat "$action_mod`+" $key) break
+;;      ((input virtual mod-)) (concat "$action_mod-+" $key) break
+;;      ((input virtual mod=)) (concat "$action_mod=+" $key) break
+;;      ((input virtual mod0)) (concat "$action_mod0+" $key) break
+;;      ((input virtual mod1)) (concat "$action_mod1+" $key) break
+;;      ((input virtual mod2)) (concat "$action_mod2+" $key) break
+;;      ((input virtual mod3)) (concat "$action_mod3+" $key) break
+;;      ((input virtual mod4)) (concat "$action_mod4+" $key) break
+;;      ((input virtual mod5)) (concat "$action_mod5+" $key) break
+;;      ((input virtual mod6)) (concat "$action_mod6+" $key) break
+;;      ((input virtual mod7)) (concat "$action_mod7+" $key) break
+;;      ((input virtual mod8)) (concat "$action_mod8+" $key) break
+;;      ((input virtual mod9)) (concat "$action_mod9+" $key) break
+;;      ()                     (multi (on-press press-virtualkey $vk) (concat "$action_" $vk "+spc")) break
+;;  ) 
+;;)
+
+(deflayermap (_modA_layer))
+(deflayermap (_modB_layer))
+(deflayermap (_modC_layer))
+(deflayermap (_modD_layer))
+(deflayermap (_modE_layer))
+(deflayermap (_modF_layer))
+(deflayermap (_modG_layer))
+(deflayermap (_modH_layer))
+(deflayermap (_modI_layer))
+(deflayermap (_modJ_layer))
+(deflayermap (_modK_layer))
+(deflayermap (_modL_layer))
+(deflayermap (_modM_layer))
+(deflayermap (_modN_layer))
+(deflayermap (_modO_layer))
+(deflayermap (_modP_layer))
+(deflayermap (_modQ_layer))
+(deflayermap (_modR_layer))
+(deflayermap (_modS_layer)
+  a (multi (macro a d i o s) (on-press release-vkey vk_default_mod_action))
+)
+(deflayermap (_modT_layer)
+  t $action_modT+spc
+  a (multi (macro h o l a) (on-press release-vkey vk_default_mod_action))
+  _ XX
+)
+(deflayermap (_modU_layer))
+(deflayermap (_modV_layer))
+(deflayermap (_modW_layer))
+(deflayermap (_modX_layer))
+(deflayermap (_modY_layer))
+(deflayermap (_modZ_layer))
+(deflayermap (_mod;_layer))
+(deflayermap (_mod'_layer))
+(deflayermap (_mod,_layer))
+(deflayermap (_mod._layer))
+(deflayermap (_mod/_layer))
+(deflayermap (_mod\_layer))
+(deflayermap (_mod[_layer))
+(deflayermap (_mod]_layer))
+(deflayermap (_mod`_layer))
+(deflayermap (_mod-_layer))
+(deflayermap (_mod=_layer))
+(deflayermap (_mod0_layer))
+(deflayermap (_mod1_layer))
+(deflayermap (_mod2_layer))
+(deflayermap (_mod3_layer))
+(deflayermap (_mod4_layer))
+(deflayermap (_mod5_layer))
+(deflayermap (_mod6_layer))
+(deflayermap (_mod7_layer))
+(deflayermap (_mod8_layer))
+(deflayermap (_mod9_layer))
+
+(deflayermap (custom_mods_layer)
+  a (on-press press-vkey vk_modA)
+  b (on-press press-vkey vk_modB)
+  c (on-press press-vkey vk_modC)
+  d (on-press press-vkey vk_modD)
+  e (on-press press-vkey vk_modE)
+  f (on-press press-vkey vk_modF)
+  g (on-press press-vkey vk_modG)
+  h (on-press press-vkey vk_modH)
+  i (on-press press-vkey vk_modI)
+  j (on-press press-vkey vk_modJ)
+  k (on-press press-vkey vk_modK)
+  l (on-press press-vkey vk_modL)
+  m (on-press press-vkey vk_modM)
+  n (on-press press-vkey vk_modN)
+  o (on-press press-vkey vk_modO)
+  p (on-press press-vkey vk_modP)
+  q (on-press press-vkey vk_modQ)
+  r (on-press press-vkey vk_modR)
+  s (on-press press-vkey vk_modS)
+  t (on-press press-vkey vk_modT)
+  u (on-press press-vkey vk_modU)
+  v (on-press press-vkey vk_modV)
+  w (on-press press-vkey vk_modW)
+  x (on-press press-vkey vk_modX)
+  y (on-press press-vkey vk_modY)
+  z (on-press press-vkey vk_modZ)
+  ; (on-press press-vkey vk_mod;)
+  ' (on-press press-vkey vk_mod')
+  , (on-press press-vkey vk_mod,)
+  . (on-press press-vkey vk_mod.)
+  / (on-press press-vkey vk_mod/)
+  \ (on-press press-vkey vk_mod\)
+  [ (on-press press-vkey vk_mod[)
+  ] (on-press press-vkey vk_mod])
+  ` (on-press press-vkey vk_mod`)
+  - (on-press press-vkey vk_mod-)
+  = (on-press press-vkey vk_mod=)
+  0 (on-press press-vkey vk_mod0)
+  1 (on-press press-vkey vk_mod1)
+  2 (on-press press-vkey vk_mod2)
+  3 (on-press press-vkey vk_mod3)
+  4 (on-press press-vkey vk_mod4)
+  5 (on-press press-vkey vk_mod5)
+  6 (on-press press-vkey vk_mod6)
+  7 (on-press press-vkey vk_mod7)
+  8 (on-press press-vkey vk_mod8)
+  9 (on-press press-vkey vk_mod9) ;;""
+) ;;""
+
+;;(deflayermap (spc_layer)
+;;  a (multi (on-press press-vkey vk_modA) (on-release release-vkey vk_modA))
+;;  b (multi (on-press press-vkey vk_modB) (on-release release-vkey vk_modB))
+;;  c (multi (on-press press-vkey vk_modC) (on-release release-vkey vk_modC))
+;;  d (multi (on-press press-vkey vk_modD) (on-release release-vkey vk_modD))
+;;  e (multi (on-press press-vkey vk_modE) (on-release release-vkey vk_modE))
+;;  f (multi (on-press press-vkey vk_modF) (on-release release-vkey vk_modF))
+;;  g (multi (on-press press-vkey vk_modG) (on-release release-vkey vk_modG))
+;;  h (multi (on-press press-vkey vk_modH) (on-release release-vkey vk_modH))
+;;  i (multi (on-press press-vkey vk_modI) (on-release release-vkey vk_modI))
+;;  j (multi (on-press press-vkey vk_modJ) (on-release release-vkey vk_modJ))
+;;  k (multi (on-press press-vkey vk_modK) (on-release release-vkey vk_modK))
+;;  l (multi (on-press press-vkey vk_modL) (on-release release-vkey vk_modL))
+;;  m (multi (on-press press-vkey vk_modM) (on-release release-vkey vk_modM))
+;;  n (multi (on-press press-vkey vk_modN) (on-release release-vkey vk_modN))
+;;  o (multi (on-press press-vkey vk_modO) (on-release release-vkey vk_modO))
+;;  p (multi (on-press press-vkey vk_modP) (on-release release-vkey vk_modP))
+;;  q (multi (on-press press-vkey vk_modQ) (on-release release-vkey vk_modQ))
+;;  r (multi (on-press press-vkey vk_modR) (on-release release-vkey vk_modR))
+;;  s (multi (on-press press-vkey vk_modS) (on-release release-vkey vk_modS))
+;;  t (multi (on-press press-vkey vk_modT) (on-release release-vkey vk_modT))
+;;  u (multi (on-press press-vkey vk_modU) (on-release release-vkey vk_modU))
+;;  v (multi (on-press press-vkey vk_modV) (on-release release-vkey vk_modV))
+;;  w (multi (on-press press-vkey vk_modW) (on-release release-vkey vk_modW))
+;;  x (multi (on-press press-vkey vk_modX) (on-release release-vkey vk_modX))
+;;  y (multi (on-press press-vkey vk_modY) (on-release release-vkey vk_modY))
+;;  z (multi (on-press press-vkey vk_modZ) (on-release release-vkey vk_modZ))
+;;  ; (multi (on-press press-vkey vk_mod;) (on-release release-vkey vk_mod;))
+;;  ' (multi (on-press press-vkey vk_mod') (on-release release-vkey vk_mod'))
+;;  , (multi (on-press press-vkey vk_mod,) (on-release release-vkey vk_mod,))
+;;  . (multi (on-press press-vkey vk_mod.) (on-release release-vkey vk_mod.))
+;;  / (multi (on-press press-vkey vk_mod/) (on-release release-vkey vk_mod/))
+;;  \ (multi (on-press press-vkey vk_mod\) (on-release release-vkey vk_mod\))
+;;  [ (multi (on-press press-vkey vk_mod[) (on-release release-vkey vk_mod[))
+;;  ] (multi (on-press press-vkey vk_mod]) (on-release release-vkey vk_mod]))
+;;  ` (multi (on-press press-vkey vk_mod`) (on-release release-vkey vk_mod`))
+;;  - (multi (on-press press-vkey vk_mod-) (on-release release-vkey vk_mod-))
+;;  = (multi (on-press press-vkey vk_mod=) (on-release release-vkey vk_mod=))
+;;  0 (multi (on-press press-vkey vk_mod0) (on-release release-vkey vk_mod0))
+;;  1 (multi (on-press press-vkey vk_mod1) (on-release release-vkey vk_mod1))
+;;  2 (multi (on-press press-vkey vk_mod2) (on-release release-vkey vk_mod2))
+;;  3 (multi (on-press press-vkey vk_mod3) (on-release release-vkey vk_mod3))
+;;  4 (multi (on-press press-vkey vk_mod4) (on-release release-vkey vk_mod4))
+;;  5 (multi (on-press press-vkey vk_mod5) (on-release release-vkey vk_mod5))
+;;  6 (multi (on-press press-vkey vk_mod6) (on-release release-vkey vk_mod6))
+;;  7 (multi (on-press press-vkey vk_mod7) (on-release release-vkey vk_mod7))
+;;  8 (multi (on-press press-vkey vk_mod8) (on-release release-vkey vk_mod8))
+;;  9 (multi (on-press press-vkey vk_mod9) (on-release release-vkey vk_mod9))
+;;) ;;""
+
+;; "" mod\_LAYER """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (mod\_layer)
+  (t! map_layers _ mod\ (lsft rsft))
+
+  spc $action_mod\+spc
+
+  j $action_mod\+j
+  k $action_mod\+k
+
+  o $action_mod\+o
+  p $action_mod\+p
+
+  ent $action_mod\+ent
+
+  $omni (t! th _ $toggle_mod\_layer)
+)
+(deflayermap (mod\+lsft_layer)
+)
+(deflayermap (mod\+rsft_layer)
+) ;;""
+
+;; "" modG_LAYER """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (modG_layer)
+  (t! map_layers _ "modG" (lsft rsft))
+  spc $action_modG+spc
+
+  l      $action_modG_modL
+
+  $omni (t! th _ $toggle_modG_layer)
+)
+
+(deflayermap (modG+lsft_layer)
+)
+
+(deflayermap (modG+rsft_layer)
+)
+
+;; "" modY_LAYER """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (modY_layer)
+  (t! map_layers _ "modY" (lsft rsft))
+  spc $action_modY+spc
+
+  $mod;      $action_modY_mod;
+  $search    $action_modY_search
+
+  $omni (t! th _ $toggle_modY_layer)
+)
+
+(deflayermap (modY+lsft_layer)
+)
+
+(deflayermap (modY+rsft_layer)
+)

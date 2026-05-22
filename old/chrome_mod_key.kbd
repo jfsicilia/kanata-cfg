@@ -33,6 +33,7 @@
 ;; ___TO_SET___ chrome_action_modJ+spc               
 
 ;; modK + spc
+;; modK
 chrome_action_modK+spc                   $chrome_keybindings
 
 ;; modL + spc
@@ -129,6 +130,7 @@ chrome_action_modK+spc                   $chrome_keybindings
 ;; ___TO_SET___ chrome_action_mod'+spc               
 
 ;; mod, + spc
+;; mod,
 chrome_action_mod,+spc                   $chrome_settings
 
 ;; mod. + spc

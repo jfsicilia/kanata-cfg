@@ -1,0 +1,338 @@
+(defvar
+  ;; @start@ ====== DON'T REMOVE THIS LINE =================================
+
+  ;; modA + modA
+  action_modA+modA (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modA+modA break
+    () XX break
+  ))
+
+  ;; modB + modB
+  action_modB+modB (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; modC + modC
+  action_modC+modC (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; modD + modD
+  action_modD+modD (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modD+modD break
+    () XX break
+  ))
+
+  ;; modE + modE
+  action_modE+modE (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; modF + modF
+  action_modF+modF (t! unmod_all (switch ;;@iface@
+    ()                              C-spc break  ;; Autofill
+  ))
+
+  ;; modG + modG
+  action_modG+modG (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_foot)) $foot_action_modG+modG break
+    ((input virtual vk_nvim)) $nvim_action_modG+modG break
+    () XX break
+  ))
+  ;; modG + modL
+  action_modG+modL (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_foot)) $foot_action_modG+modL break
+    ((input virtual vk_nvim)) $nvim_action_modG+modL break
+    () XX break
+  ))
+
+  ;; modH + modH
+  action_modH+modH (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; modI + modI
+  action_modI+modI (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_modI+modI break
+    () XX break
+  ))
+
+  ;; modJ + modJ
+  action_modJ+modJ (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modJ+modJ break
+    ()                        C-spc break  ;; Autofill
+  ))
+
+  ;; modK + modK
+  action_modK+modK (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_modK+modK break
+    ((input virtual vk_nvim)) $nvim_action_modK+modK break
+    () XX break
+  ))
+
+  ;; modL + modL
+  action_modL+modL (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modL+modL break
+    () XX break
+  ))
+
+  ;; modM + modM
+  action_modM+modM (t! unmod_all (switch ;;@iface@
+    ()                      M-v break  ;; Clipboard history
+  ))
+
+  ;; modN + modN
+  action_modN+modN (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; modO + modO
+  action_modO+modO (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modO+modO break
+    () XX break
+  ))
+
+  ;; modP + modP
+  action_modP+modP (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+  
+  ;; modQ + modQ
+  action_modQ+modQ (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modQ+modQ break
+    () XX break
+  ))
+
+  ;; modR + modR
+  action_modR+modR (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modR+modR break
+    () XX break
+  ))
+  ;; modR + lsft + modR
+  action_modR+lsft+modR (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modR+lsft+modR break
+    () XX break
+  ))
+  ;; modR + rsft + modR
+  action_modR+rsft+modR (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modR+rsft+modR break
+    () XX break
+  ))
+
+  ;; modS + modS
+  action_modS+modS (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modS+modS break
+    () XX break
+  ))
+  ;; modS + lsft + modS
+  action_modS+lsft+modS (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modS+lsft+modS break
+    () XX break
+  ))
+
+  ;; modT + modT
+  action_modT+modT (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_modT+modT break
+    () XX break
+  ))
+  ;; modT + lsft + modT
+  action_modT+lsft+modT (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+  ;; modT + toggle
+  action_modT+toggle (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modT+toggle break
+    () XX break
+  ))
+
+  ;; modU + modU
+  action_modU+modU (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; modV + modV
+  action_modV+modV (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; modW + modW
+  action_modW+modW (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; modX + modX
+  action_modX+modX (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; modY + modY
+  action_modY+modY (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modY+modY break
+    () XX break
+  ))
+  ;; modY + mod;
+  action_modY+mod; (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modY+mod; break
+    () XX break
+  )) ;;""
+  ;; modY + search 
+  action_modY+search (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modY+search break
+    () XX break
+  ))
+
+  ;; modZ + modZ
+  action_modZ+modZ (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod` + mod`
+  action_mod`+mod` (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod- + mod-
+  action_mod-+mod- (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod= + mod=
+  action_mod=+mod= (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) ;;""
+
+  ;; mod[ + mod[
+  action_mod[+mod[ (t! unmod_all (switch ;;@iface@ 
+    () XX break
+  )) ;;""
+
+  ;; mod] + mod]
+  action_mod]+mod] (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) ;;""
+
+  ;; mod\ + mod\
+  action_mod\+mod\ (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_foot)) $foot_action_mod\+mod\ break
+    ((input virtual vk_nvim)) $nvim_action_mod\+mod\ break
+    () XX break
+  )) ;;""
+  ;; mod\ + lsft + mod\
+  action_mod\+lsft+mod\ (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_foot)) $foot_action_mod\+lsft+mod\ break
+    () XX break
+  )) ;;""
+  ;; mod\ + j
+  action_mod\+j (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_mod\+j break
+    ((input virtual vk_nvim)) $nvim_action_mod\+j break
+    () XX break
+  )) ;;""
+  ;; mod\ + k
+  action_mod\+k (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_mod\+k break
+    ((input virtual vk_nvim)) $nvim_action_mod\+k break
+    () XX break
+  )) ;;""
+  ;; mod\ + o
+  action_mod\+o (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_mod\+o break
+    ((input virtual vk_nvim)) $nvim_action_mod\+o break
+    () XX break
+  )) ;;""
+  ;; mod\ + p
+  action_mod\+p (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_mod\+p break
+    ((input virtual vk_nvim)) $nvim_action_mod\+p break
+    () XX break
+  )) ;;""
+  ;; mod\ + ent
+  action_mod\+ent (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_mod\+ent break
+    () XX break
+  )) ;;""
+
+  ;; mod; + mod;
+  action_mod;+mod; (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_mod;+mod; break
+    () XX break
+  )) ;;""
+
+  ;; mod' + mod'
+  action_mod'+mod' (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_mod'+mod' break
+    () XX break
+  ))
+
+  ;; mod, + mod,
+  action_mod,+mod, (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_mod,+mod, break
+    ((input virtual vk_nvim)) $nvim_action_mod,+mod, break
+    () XX break
+  ))
+
+  ;; mod. + mod.
+  action_mod.+mod. (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_mod.+mod. break
+    ((input virtual vk_nvim)) $nvim_action_mod.+mod. break
+    () XX break
+  ))
+
+  ;; mod/ + mod/ 
+  action_mod/+mod/ (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_mod/+mod/ break
+    ((input virtual vk_nvim)) $nvim_action_mod/+mod/ break
+    () XX break
+  )) ;;""
+
+  ;; mod0 + mod0
+  action_mod0+mod0 (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod1 + mod1
+  action_mod1+mod1 (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod2 + mod2
+  action_mod2+mod2 (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod3 + mod3
+  action_mod3+mod3 (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod4 + mod4
+  action_mod4+mod4 (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod5 + mod5
+  action_mod5+mod5 (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod6 + mod6
+  action_mod6+mod6 (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod7 + mod7
+  action_mod7+mod7 (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod8 + mod8
+  action_mod8+mod8 (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+  ;; mod9 + mod9
+  action_mod9+mod9 (t! unmod_all (switch ;;@iface@
+    () XX break
+  ))
+
+)

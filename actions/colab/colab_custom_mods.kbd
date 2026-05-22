@@ -1,0 +1,177 @@
+(defvar
+;; modK
+;; modK + spc
+colab_action_modK+spc                   $colab_keybindings
+;; mod;
+;; mod; + spc
+colab_action_mod;+spc                   $colab_command_palette
+
+;; modA + modA
+;; ___TO_SET___ colab_action_modA+modA              
+
+;; modB + modB
+;; ___TO_SET___ colab_action_modB+modB              
+
+;; modC + modC
+;; ___TO_SET___ colab_action_modC+modC              
+
+;; modD + modD
+;; ___TO_SET___ colab_action_modD+modD              
+
+;; modE + modE
+;; ___TO_SET___ colab_action_modE+modE              
+
+;; modF + modF
+;; ___TO_SET___ colab_action_modF+modF              
+
+;; modG + modG
+;; ___TO_SET___ colab_action_modG+modG              
+;; modG + modL
+;; ___TO_SET___ colab_action_modG+modL              
+
+;; modH + modH
+;; ___TO_SET___ colab_action_modH+modH              
+
+;; modI + modI
+;; ___TO_SET___ colab_action_modI+modI              
+
+;; modJ + modJ
+;; ___TO_SET___ colab_action_modJ+modJ              
+
+;; modK + modK
+;; ___TO_SET___ colab_action_modK+modK              
+
+;; modL + modL
+;; ___TO_SET___ colab_action_modL+modL              
+
+;; modM + modM
+;; ___TO_SET___ colab_action_modM+modM              
+
+;; modN + modN
+;; ___TO_SET___ colab_action_modN+modN              
+
+;; modO + modO
+;; ___TO_SET___ colab_action_modO+modO              
+
+;; modP + modP
+;; ___TO_SET___ colab_action_modP+modP              
+
+;; modQ + modQ
+;; ___TO_SET___ colab_action_modQ+modQ              
+
+;; modR + modR
+;; ___TO_SET___ colab_action_modR+modR              
+;; modR + lsft + modR
+;; ___TO_SET___ colab_action_modR+lsft+modR         
+;; modR + rsft + modR
+;; ___TO_SET___ colab_action_modR+rsft+modR         
+
+;; modS + modS
+;; ___TO_SET___ colab_action_modS+modS              
+;; modS + lsft + modS
+;; ___TO_SET___ colab_action_modS+lsft+modS         
+
+;; modT + modT
+;; ___TO_SET___ colab_action_modT+modT              
+;; modT + lsft + modT
+;; ___TO_SET___ colab_action_modT+lsft+modT         
+;; modT + toggle
+;; ___TO_SET___ colab_action_modT+toggle            
+
+;; modU + modU
+;; ___TO_SET___ colab_action_modU+modU              
+
+;; modV + modV
+;; ___TO_SET___ colab_action_modV+modV              
+
+;; modW + modW
+;; ___TO_SET___ colab_action_modW+modW              
+
+;; modX + modX
+;; ___TO_SET___ colab_action_modX+modX              
+
+;; modY + modY
+;; ___TO_SET___ colab_action_modY+modY              
+;; modY + mod;
+;; ___TO_SET___ colab_action_modY+mod;              
+;; modY + search
+;; ___TO_SET___ colab_action_modY+search            
+
+;; modZ + modZ
+;; ___TO_SET___ colab_action_modZ+modZ              
+
+;; mod` + mod`
+;; ___TO_SET___ colab_action_mod`+mod`              
+
+;; mod- + mod-
+;; ___TO_SET___ colab_action_mod-+mod-              
+
+;; mod= + mod=
+;; ___TO_SET___ colab_action_mod=+mod=              
+
+;; mod[ + mod[
+;; ___TO_SET___ colab_action_mod[+mod[              
+
+;; mod] + mod]
+;; ___TO_SET___ colab_action_mod]+mod]              
+
+;; mod\ + mod\
+;; ___TO_SET___ colab_action_mod\+mod\              
+;; mod\ + lsft + mod\
+;; ___TO_SET___ colab_action_mod\+lsft+mod\         
+;; mod\ + j
+;; ___TO_SET___ colab_action_mod\+j                 
+;; mod\ + k
+;; ___TO_SET___ colab_action_mod\+k                 
+;; mod\ + o
+;; ___TO_SET___ colab_action_mod\+o                 
+;; mod\ + p
+;; ___TO_SET___ colab_action_mod\+p                 
+;; mod\ + ent
+;; ___TO_SET___ colab_action_mod\+ent               
+
+;; mod; + mod;
+;; ___TO_SET___ colab_action_mod;+mod;              
+
+;; mod' + mod'
+;; ___TO_SET___ colab_action_mod'+mod'              
+
+;; mod, + mod,
+;; ___TO_SET___ colab_action_mod,+mod,              
+
+;; mod. + mod.
+;; ___TO_SET___ colab_action_mod.+mod.              
+
+;; mod/ + mod/
+;; ___TO_SET___ colab_action_mod/+mod/              
+
+;; mod0 + mod0
+;; ___TO_SET___ colab_action_mod0+mod0              
+
+;; mod1 + mod1
+;; ___TO_SET___ colab_action_mod1+mod1              
+
+;; mod2 + mod2
+;; ___TO_SET___ colab_action_mod2+mod2              
+
+;; mod3 + mod3
+;; ___TO_SET___ colab_action_mod3+mod3              
+
+;; mod4 + mod4
+;; ___TO_SET___ colab_action_mod4+mod4              
+
+;; mod5 + mod5
+;; ___TO_SET___ colab_action_mod5+mod5              
+
+;; mod6 + mod6
+;; ___TO_SET___ colab_action_mod6+mod6              
+
+;; mod7 + mod7
+;; ___TO_SET___ colab_action_mod7+mod7              
+
+;; mod8 + mod8
+;; ___TO_SET___ colab_action_mod8+mod8              
+
+;; mod9 + mod9
+;; ___TO_SET___ colab_action_mod9+mod9              
+)

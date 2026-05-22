@@ -1,3 +1,16 @@
 (deftemplate foot_goto_folder (folder)
   (macro esc d d i c d spc $folder ent)
 )
+
+(defvar
+  foot_pgup                S-pgup
+  foot_copy                C-S-c
+  foot_extract             (macro esc d d i t a r spc - x a f spc S-, f i l e S-. esc v S-f S-,)
+  foot_compress            (macro esc d d i t a r spc - c z f spc S-, z i p f i l e S-. spc S-, f i l e s spc a n d / o r spc f o l d e r s S-. esc v S-f S-, ;)
+  foot_pgdn                S-pgdn
+  foot_paste               C-S-v
+  foot_history             C-y
+  foot_compare             (macro esc d d i n v i m spc - d spc S-, f i l e Digit1 S-. spc S-, f i l e Digit2 S-. esc v b b b b b)
+  foot_compare_dirs        (macro esc d d i n v i m spc - c spc S-' S-d i r S-d i f f spc S-, d i r Digit1 S-. spc S-, d i r Digit2 S-. S-' esc h v S-f S-, ;)
+  foot_lazygit             (macro esc d d i l a z y g i t ent)
+)

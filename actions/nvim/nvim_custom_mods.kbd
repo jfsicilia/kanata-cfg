@@ -1,0 +1,171 @@
+(defvar
+
+;; modA + modA
+nvim_action_modA+modA                $nvim_autocommands
+
+;; modB + modB
+;; ___TO_SET___ nvim_action_modB+modB              
+
+;; modC + modC
+;; ___TO_SET___ nvim_action_modC+modC              
+
+;; modD + modD
+nvim_action_modD+modD                   $nvim_definitions
+
+;; modE + modE
+;; ___TO_SET___ nvim_action_modE+modE              
+
+;; modF + modF
+;; ___TO_SET___ nvim_action_modF+modF              
+
+;; modG + modG
+nvim_action_modG+modG                    $nvim_git  ;;""
+;; modG + modL
+nvim_action_modG+modL                    $nvim_lazygit
+
+;; modH + modH
+;; ___TO_SET___ nvim_action_modH+modH              
+
+;; modI + modI
+;; ___TO_SET___ nvim_action_modI+modI              
+
+;; modJ + modJ
+nvim_action_modJ+modJ                  $nvim_jumps
+
+;; modK + modK
+nvim_action_modK+modK                $nvim_keymaps
+
+;; modL + modL
+nvim_action_modL+modL              $nvim_locations
+
+;; modM + modM
+;; ___TO_SET___ nvim_action_modM+modM              
+
+;; modN + modN
+;; ___TO_SET___ nvim_action_modN+modN              
+
+;; modO + modO
+nvim_action_modO+modO                 $nvim_source
+
+;; modP + modP
+;; ___TO_SET___ nvim_action_modP+modP              
+
+;; modQ + modQ
+nvim_action_modQ+modQ               $nvim_quickfix
+
+;; modR + modR
+nvim_action_modR+modR                   $nvim_references
+;; modR + lsft + modR
+nvim_action_modR+lsft+modR                $nvim_references_incoming
+;; modR + rsft + modR
+nvim_action_modR+rsft+modR               $nvim_references_outgoing
+
+;; modS + modS
+nvim_action_modS+modS                 $nvim_symbols
+;; modS + lsft + modS
+nvim_action_modS+lsft+modS            $nvim_symbols_workspace
+
+;; modT + modT
+;; ___TO_SET___ nvim_action_modT+modT              
+;; modT + lsft + modT
+;; ___TO_SET___ nvim_action_modT+lsft+modT         
+;; modT + toggle
+nvim_action_modT+toggle            $nvim_terminal
+
+;; modU + modU
+;; ___TO_SET___ nvim_action_modU+modU              
+
+;; modV + modV
+;; ___TO_SET___ nvim_action_modV+modV              
+
+;; modW + modW
+;; ___TO_SET___ nvim_action_modW+modW              
+
+;; modX + modX
+;; ___TO_SET___ nvim_action_modX+modX              
+
+;; modY + modY
+nvim_action_modY+modY                $nvim_history  ;;""
+;; modY + mod;
+nvim_action_modY+mod;          $nvim_history_commands  ;;""
+;; modY + search
+nvim_action_modY+search         $nvim_history_search  ;;""
+
+;; modZ + modZ
+;; ___TO_SET___ nvim_action_modZ+modZ              
+
+;; mod` + mod`
+;; ___TO_SET___ nvim_action_mod`+mod`              
+
+;; mod- + mod-
+;; ___TO_SET___ nvim_action_mod-+mod-              
+
+;; mod= + mod=
+;; ___TO_SET___ nvim_action_mod=+mod=              
+
+;; mod[ + mod[
+;; ___TO_SET___ nvim_action_mod[+mod[              
+
+;; mod] + mod]
+;; ___TO_SET___ nvim_action_mod]+mod]              
+
+;; mod\ + mod\
+nvim_action_mod\+mod\                   $nvim_compare_toggle 
+;; mod\ + lsft + mod\
+;; ___TO_SET___ nvim_action_mod\+lsft+mod\         
+;; mod\ + j
+nvim_action_mod\+j                 $nvim_compare_next
+;; mod\ + k
+nvim_action_mod\+k                 $nvim_compare_prev  ;;""
+;; mod\ + o
+nvim_action_mod\+o                 $nvim_compare_obtain  ;; Obtain changes from the other file.
+;; mod\ + p
+nvim_action_mod\+p                 $nvim_compare_push  ;; Push changes to the other file.""
+;; mod\ + ent
+;; ___TO_SET___ nvim_action_mod\+ent               
+
+;; mod; + mod;
+nvim_action_mod;+mod;               $nvim_commands   ;;""
+
+;; mod' + mod'
+nvim_action_mod'+mod'             $nvim_registers
+
+;; mod, + mod,
+nvim_action_mod,+mod,                $nvim_settings
+
+;; mod. + mod.
+nvim_action_mod.+mod.                   $nvim_tags  ;;""
+
+;; mod/ + mod/
+nvim_action_mod/+mod/                   $nvim_help
+
+;; mod0 + mod0
+;; ___TO_SET___ nvim_action_mod0+mod0              
+
+;; mod1 + mod1
+;; ___TO_SET___ nvim_action_mod1+mod1              
+
+;; mod2 + mod2
+;; ___TO_SET___ nvim_action_mod2+mod2              
+
+;; mod3 + mod3
+;; ___TO_SET___ nvim_action_mod3+mod3              
+
+;; mod4 + mod4
+;; ___TO_SET___ nvim_action_mod4+mod4              
+
+;; mod5 + mod5
+;; ___TO_SET___ nvim_action_mod5+mod5              
+
+;; mod6 + mod6
+;; ___TO_SET___ nvim_action_mod6+mod6              
+
+;; mod7 + mod7
+;; ___TO_SET___ nvim_action_mod7+mod7              
+
+;; mod8 + mod8
+;; ___TO_SET___ nvim_action_mod8+mod8              
+
+;; mod9 + mod9
+;; ___TO_SET___ nvim_action_mod9+mod9              
+)

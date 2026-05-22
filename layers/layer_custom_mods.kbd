@@ -1,0 +1,295 @@
+(deflayermap (_modA_layer)
+  a $action_modA+modA
+  _ XX
+)
+
+(deflayermap (_modB_layer)
+  b $action_modB+modB
+  _ XX
+)
+
+(deflayermap (_modC_layer)
+  c $action_modC+modC
+  _ XX
+)
+
+(deflayermap (_modD_layer)
+  d $action_modD+modD
+  _ XX
+)
+
+(deflayermap (_modE_layer)
+  e $action_modE+modE
+  _ XX
+)
+
+(deflayermap (_modF_layer)
+  f $action_modF+modF
+  _ XX
+)
+
+(deflayermap (_modG_layer)
+  g $action_modG+modG
+  l $action_modG+modL
+  _ XX
+)
+
+(deflayermap (_modH_layer)
+  h $action_modH+modH
+  _ XX
+)
+
+(deflayermap (_modI_layer)
+  i $action_modI+modI
+  _ XX
+)
+
+(deflayermap (_modJ_layer)
+  j $action_modJ+modJ
+  _ XX
+)
+
+(deflayermap (_modK_layer)
+  k $action_modK+modK
+  _ XX
+)
+
+(deflayermap (_modL_layer)
+  l $action_modL+modL
+  _ XX
+)
+
+(deflayermap (_modM_layer)
+  m $action_modM+modM
+  _ XX
+)
+
+(deflayermap (_modN_layer)
+  n $action_modN+modN
+  _ XX
+)
+
+(deflayermap (_modO_layer)
+  o $action_modO+modO
+  _ XX
+)
+
+(deflayermap (_modP_layer)
+  p $action_modP+modP
+  _ XX
+)
+
+(deflayermap (_modQ_layer)
+  q $action_modQ+modQ
+  _ XX
+)
+
+(deflayermap (_modR_layer)
+  r $action_modR+modR
+  _ XX
+)
+
+(deflayermap (_modS_layer)
+  s $action_modS+modS
+  _ XX
+)
+
+(deflayermap (_modT_layer)
+  t $action_modT+modT
+  _ XX
+)
+
+(deflayermap (_modU_layer)
+  u $action_modU+modU
+  _ XX
+)
+
+(deflayermap (_modV_layer)
+  v $action_modV+modV
+  _ XX
+)
+
+(deflayermap (_modW_layer)
+  w $action_modW+modW
+  _ XX
+)
+
+(deflayermap (_modX_layer)
+  x $action_modX+modX
+  _ XX
+)
+
+(deflayermap (_modY_layer)
+  y $action_modY+modY
+
+  $mod;      $action_modY+mod;
+  $search    $action_modY+search
+)
+
+(deflayermap (_modZ_layer)
+  z $action_modZ+modZ
+  _ XX
+)
+
+(deflayermap (_mod;_layer)
+  ; $action_mod;+mod;
+  _ XX
+)
+
+(deflayermap (_mod'_layer)
+  ' $action_mod'+mod'
+  _ XX
+)
+
+(deflayermap (_mod,_layer)
+  , $action_mod,+mod,
+  _ XX
+)
+
+(deflayermap (_mod._layer)
+  . $action_mod.+mod.
+  _ XX
+)
+
+(deflayermap (_mod/_layer)
+  / $action_mod/+mod/
+  _ XX
+)
+
+(deflayermap (_mod\_layer)
+  \ (t! sft_switch $action_mod\+mod\ $action_mod\+lsft+mod\ $action_mod\+lsft+mod\)
+
+  j $action_mod\+j
+  k $action_mod\+k
+
+  o $action_mod\+o
+  p $action_mod\+p
+
+  ent $action_mod\+ent
+  _ XX
+)
+
+(deflayermap (_mod[_layer)
+  [ $action_mod[+mod[
+  _ XX
+)
+
+(deflayermap (_mod]_layer)
+  ] $action_mod]+mod]
+  _ XX
+)
+
+(deflayermap (_mod`_layer)
+  ` $action_mod`+mod`
+  _ XX
+)
+
+(deflayermap (_mod-_layer)
+  - $action_mod-+mod-
+  _ XX
+)
+
+(deflayermap (_mod=_layer)
+  = $action_mod=+mod=
+  _ XX
+)
+
+(deflayermap (_mod0_layer)
+  0 $action_mod0+mod0
+  _ XX
+)
+
+(deflayermap (_mod1_layer)
+  1 $action_mod1+mod1
+  _ XX
+)
+
+(deflayermap (_mod2_layer)
+  2 $action_mod2+mod2
+  _ XX
+)
+
+(deflayermap (_mod3_layer)
+  3 $action_mod3+mod3
+  _ XX
+)
+
+(deflayermap (_mod4_layer)
+  4 $action_mod4+mod4
+  _ XX
+)
+
+(deflayermap (_mod5_layer)
+  5 $action_mod5+mod5
+  _ XX
+)
+
+(deflayermap (_mod6_layer)
+  6 $action_mod6+mod6
+  _ XX
+)
+
+(deflayermap (_mod7_layer)
+  7 $action_mod7+mod7
+  _ XX
+)
+
+(deflayermap (_mod8_layer)
+  8 $action_mod8+mod8
+  _ XX
+)
+
+(deflayermap (_mod9_layer)
+  9 $action_mod9+mod9
+  _ XX
+)
+
+(deflayermap (custom_mods_layer)
+  a (on-press press-vkey vk_modA)
+  b (on-press press-vkey vk_modB)
+  c (on-press press-vkey vk_modC)
+  d (on-press press-vkey vk_modD)
+  e (on-press press-vkey vk_modE)
+  f (on-press press-vkey vk_modF)
+  g (on-press press-vkey vk_modG)
+  h (on-press press-vkey vk_modH)
+  i (on-press press-vkey vk_modI)
+  j (on-press press-vkey vk_modJ)
+  k (on-press press-vkey vk_modK)
+  l (on-press press-vkey vk_modL)
+  m (on-press press-vkey vk_modM)
+  n (on-press press-vkey vk_modN)
+  o (on-press press-vkey vk_modO)
+  p (on-press press-vkey vk_modP)
+  q (on-press press-vkey vk_modQ)
+  r (on-press press-vkey vk_modR)
+  s (on-press press-vkey vk_modS)
+  t (on-press press-vkey vk_modT)
+  u (on-press press-vkey vk_modU)
+  v (on-press press-vkey vk_modV)
+  w (on-press press-vkey vk_modW)
+  x (on-press press-vkey vk_modX)
+  y (on-press press-vkey vk_modY)
+  z (on-press press-vkey vk_modZ)
+  ; (on-press press-vkey vk_mod;)
+  ' (on-press press-vkey vk_mod')
+  , (on-press press-vkey vk_mod,)
+  . (on-press press-vkey vk_mod.)
+  / (on-press press-vkey vk_mod/)
+  \ (on-press press-vkey vk_mod\)
+  [ (on-press press-vkey vk_mod[)
+  ] (on-press press-vkey vk_mod])
+  ` (on-press press-vkey vk_mod`)
+  - (on-press press-vkey vk_mod-)
+  = (on-press press-vkey vk_mod=)
+  0 (on-press press-vkey vk_mod0)
+  1 (on-press press-vkey vk_mod1)
+  2 (on-press press-vkey vk_mod2)
+  3 (on-press press-vkey vk_mod3)
+  4 (on-press press-vkey vk_mod4)
+  5 (on-press press-vkey vk_mod5)
+  6 (on-press press-vkey vk_mod6)
+  7 (on-press press-vkey vk_mod7)
+  8 (on-press press-vkey vk_mod8)
+  9 (on-press press-vkey vk_mod9) ;;""
+) ;;""
