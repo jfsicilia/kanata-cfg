@@ -126,7 +126,6 @@ colab_action_modK+modK                   $colab_keybindings
 
 ;; mod; + mod;
 colab_action_mod;+mod;                   $colab_command_palette
-;; ___TO_SET___ colab_action_mod;+mod;              
 
 ;; mod' + mod'
 ;; ___TO_SET___ colab_action_mod'+mod'              

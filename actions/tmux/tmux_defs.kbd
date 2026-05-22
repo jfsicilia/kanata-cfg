@@ -1,0 +1,3 @@
+(defvar
+  tmux_commands              (macro $tmux_prefix S-;)
+)

@@ -1,11 +1,4 @@
 (defvar
-tmux_commands              (macro $tmux_prefix S-;)
-;; mod;
-;; mod; + spc
-;; == mod; ===========================================================
-;; == #mod; ===========================================================
-;; #mod; + spc
-tmux_action_mod;+spc                 $tmux_commands ;; prefix + : (command prompt)
 
 ;; modA + modA
 ;; ___TO_SET___ tmux_action_modA+modA              
@@ -132,7 +125,7 @@ tmux_action_mod;+spc                 $tmux_commands ;; prefix + : (command promp
 ;; ___TO_SET___ tmux_action_mod\+ent               
 
 ;; mod; + mod;
-;; ___TO_SET___ tmux_action_mod;+mod;              
+tmux_action_mod;+mod;                 $tmux_commands ;; prefix + : (command prompt)
 
 ;; mod' + mod'
 ;; ___TO_SET___ tmux_action_mod'+mod'              

@@ -68,6 +68,7 @@
     ((input virtual vk_chrome)) $chrome_action_modK+modK break
     ((input virtual vk_dolphin)) $dolphin_action_modK+modK break
     ((input virtual vk_firefox)) $firefox_action_modK+modK break
+    ((input virtual vk_colab)) $colab_action_modK+modK break
     ((input virtual vk_nvim)) $nvim_action_modK+modK break
     () XX break
   ))
@@ -258,7 +259,9 @@
   ;; mod; + mod;
   action_mod;+mod; (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_mod;+mod; break
+    ((input virtual vk_colab)) $colab_action_mod;+mod; break
     ((input virtual vk_nvim)) $nvim_action_mod;+mod; break
+    ((input virtual vk_tmux)) $tmux_action_mod;+mod; break
     () XX break
   )) ;;""
 

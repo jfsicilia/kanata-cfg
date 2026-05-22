@@ -163,6 +163,7 @@
 (include actions/obsidian/obsidian_seek_n_select.kbd)
 (include actions/obsidian/obsidian_tabs.kbd)
 (include actions/tmux/tmux_custom_mods.kbd)
+(include actions/tmux/tmux_defs.kbd)
 (include actions/tmux/tmux_groups.19.kbd)
 (include actions/tmux/tmux_mod_physical.kbd)
 (include actions/tmux/tmux_omni.kbd)
