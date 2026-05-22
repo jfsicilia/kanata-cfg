@@ -121,6 +121,7 @@
 
   ;; modS + modS
   action_modS+modS (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_modS+modS break
     ((input virtual vk_nvim)) $nvim_action_modS+modS break
     () XX break
   ))
@@ -254,6 +255,7 @@
 
   ;; mod; + mod;
   action_mod;+mod; (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_mod;+mod; break
     ((input virtual vk_nvim)) $nvim_action_mod;+mod; break
     () XX break
   )) ;;""
@@ -266,6 +268,7 @@
 
   ;; mod, + mod,
   action_mod,+mod, (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_mod,+mod, break
     ((input virtual vk_dolphin)) $dolphin_action_mod,+mod, break
     ((input virtual vk_nvim)) $nvim_action_mod,+mod, break
     () XX break

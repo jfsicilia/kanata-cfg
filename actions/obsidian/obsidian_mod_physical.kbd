@@ -1,15 +1,4 @@
 (defvar
-obsidian_vimola                                (macro C-A-M-e 50 ;) 
-obsidian_select_all_text                       (macro g g S-v S-g)
-obsidian_bold_text                             C-A-b
-obsidian_toggle_edit_mode                      C-A-e 
-obsidian_toggle_source_mode                    C-A-S-e
-obsidian_action_select_files                   C-A-o
-obsidian_action_page_up                        C-b
-obsidian_action_page_down                      C-f
-;; panes + .
-obsidian_action_panes_tag                      A-t
-obsidian_action_setting                        C-,
 
 ;; === 4. Physical modifiers actions ===================================
 ;; =====================================================================
@@ -225,7 +214,7 @@ obsidian_action_!lctl+,                        $obsidian_action_setting
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+m           
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+n           
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+o           
-obsidian_action_!lctl+lsft+p                   $obsidian_action_mod;+spc
+obsidian_action_!lctl+lsft+p                   $obsidian_action_mod;+mod;
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+q           
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+r           
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+s           

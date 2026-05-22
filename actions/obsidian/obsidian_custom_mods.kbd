@@ -1,20 +1,4 @@
 (defvar
-obsidian_symbols         A-S-o
-obsidian_commands        C-A-p
-obsidian_settings        C-A-,
-;; modS
-;; modS + spc
-;; == modS =============================================================
-obsidian_action_modS+spc                  $obsidian_symbols
-;; mod;
-;; mod; + spc
-;; == mod; ===========================================================
-obsidian_action_mod;+spc                 $obsidian_commands
-;; mod,
-;; mod, + spc
-;; == mod, ==========================================================
-obsidian_action_mod,+spc                       $obsidian_settings
-
 ;; modA + modA
 ;; ___TO_SET___ obsidian_action_modA+modA              
 
@@ -76,7 +60,7 @@ obsidian_action_mod,+spc                       $obsidian_settings
 ;; ___TO_SET___ obsidian_action_modR+rsft+modR         
 
 ;; modS + modS
-;; ___TO_SET___ obsidian_action_modS+modS              
+obsidian_action_modS+modS                  $obsidian_symbols
 ;; modS + lsft + modS
 ;; ___TO_SET___ obsidian_action_modS+lsft+modS         
 
@@ -140,13 +124,13 @@ obsidian_action_mod,+spc                       $obsidian_settings
 ;; ___TO_SET___ obsidian_action_mod\+ent               
 
 ;; mod; + mod;
-;; ___TO_SET___ obsidian_action_mod;+mod;              
+obsidian_action_mod;+mod;                 $obsidian_commands
 
 ;; mod' + mod'
 ;; ___TO_SET___ obsidian_action_mod'+mod'              
 
 ;; mod, + mod,
-;; ___TO_SET___ obsidian_action_mod,+mod,              
+obsidian_action_mod,+mod,                       $obsidian_settings
 
 ;; mod. + mod.
 ;; ___TO_SET___ obsidian_action_mod.+mod.              
