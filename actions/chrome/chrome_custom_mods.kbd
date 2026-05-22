@@ -1,10 +1,4 @@
 (defvar
-;; modK
-;; modK + spc
-chrome_action_modK+spc                   $chrome_keybindings
-;; mod,
-;; mod, + spc
-chrome_action_mod,+spc                   $chrome_settings
 
 ;; modA + modA
 ;; ___TO_SET___ chrome_action_modA+modA              
@@ -39,7 +33,7 @@ chrome_action_mod,+spc                   $chrome_settings
 ;; ___TO_SET___ chrome_action_modJ+modJ              
 
 ;; modK + modK
-;; ___TO_SET___ chrome_action_modK+modK              
+chrome_action_modK+modK                   $chrome_keybindings
 
 ;; modL + modL
 ;; ___TO_SET___ chrome_action_modL+modL              
@@ -137,7 +131,7 @@ chrome_action_mod,+spc                   $chrome_settings
 ;; ___TO_SET___ chrome_action_mod'+mod'              
 
 ;; mod, + mod,
-;; ___TO_SET___ chrome_action_mod,+mod,              
+chrome_action_mod,+mod,                   $chrome_settings
 
 ;; mod. + mod.
 ;; ___TO_SET___ chrome_action_mod.+mod.              
