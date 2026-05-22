@@ -1,8 +1,4 @@
 (defvar
-;; mod,
-;; mod, + spc
-zapzap_action_mod,+spc                   $zapzap_settings
-
 ;; modA + modA
 ;; ___TO_SET___ zapzap_action_modA+modA              
 
@@ -134,7 +130,7 @@ zapzap_action_mod,+spc                   $zapzap_settings
 ;; ___TO_SET___ zapzap_action_mod'+mod'              
 
 ;; mod, + mod,
-;; ___TO_SET___ zapzap_action_mod,+mod,              
+zapzap_action_mod,+mod,                   $zapzap_settings
 
 ;; mod. + mod.
 ;; ___TO_SET___ zapzap_action_mod.+mod.              
