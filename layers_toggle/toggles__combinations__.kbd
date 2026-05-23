@@ -1,89 +1,13 @@
 (defvar
-  toggle_seek_n_select_&_!lctl_layer          (t! toggle_mod_3layer  lctl       seek_n_select_layer         lctl_layer      !lctl_layer      )
-  toggle_seek_n_select_&_!lctl+lsft_layer     (t! toggle_2mod_3layer lctl lsft  seek_n_select+lsft_layer    lctl+lsft_layer !lctl+lsft_layer )
-  toggle_seek_n_select_&_!lctl+rsft_layer     (t! toggle_2mod_3layer lctl rsft  seek_n_select+rsft_layer    lctl+rsft_layer !lctl+rsft_layer )
+  toggle_seek_n_select_&_!lctl_layer       (t! toggle_mod_3layer  lctl       seek_n_select_layer         lctl_layer      !lctl_layer      )
+  toggle_seek_n_select_&_!lctl+lsft_layer  (t! toggle_2mod_3layer lctl lsft  seek_n_select+lsft_layer    lctl+lsft_layer !lctl+lsft_layer )
+  toggle_seek_n_select_&_!lctl+rsft_layer  (t! toggle_2mod_3layer lctl rsft  seek_n_select+rsft_layer    lctl+rsft_layer !lctl+rsft_layer )
 
-  toggle_replace_&_!lmet_layer       (t! toggle_mod_3layer  lmet       replace_layer      lmet_layer      !lmet_layer      )
-  toggle_replace_&_!lmet+lsft_layer  (t! toggle_2mod_3layer lmet lsft  replace+lsft_layer lmet+lsft_layer !lmet+lsft_layer) 
-  toggle_replace_&_!lmet+rsft_layer  (t! toggle_2mod_3layer lmet rsft  replace+rsft_layer lmet+rsft_layer !lmet+rsft_layer) 
+  toggle_replace_&_!lmet_layer             (t! toggle_mod_3layer  lmet       replace_layer      lmet_layer      !lmet_layer      )
+  toggle_replace_&_!lmet+lsft_layer        (t! toggle_2mod_3layer lmet lsft  replace+lsft_layer lmet+lsft_layer !lmet+lsft_layer) 
+  toggle_replace_&_!lmet+rsft_layer        (t! toggle_2mod_3layer lmet rsft  replace+rsft_layer lmet+rsft_layer !lmet+rsft_layer) 
 
-  toggle_search_&_!lalt_layer        (t! toggle_mod_3layer  lalt       search_layer       lalt_layer      !lalt_layer      )
-  toggle_search_&_!lalt+lsft_layer   (t! toggle_2mod_3layer lalt lsft  search+lsft_layer  lalt+lsft_layer !lalt+lsft_layer )
-  toggle_search_&_!lalt+rsft_layer   (t! toggle_2mod_3layer lalt rsft  search+rsft_layer  lalt+rsft_layer !lalt+rsft_layer )
-
-;;  toggle_modA_&_lmet_layer           (t! toggle_mod_2layer  lmet       modA_layer      lmet_layer  )
-;;  toggle_modA_&_lmet_+lsft_layer     (t! toggle_2mod_2layer lmet lsft  modA+lsft_layer lmet+lsft_layer)
-;;  toggle_modA_&_lmet_+rsft_layer     (t! toggle_2mod_2layer lmet rsft  modA+rsft_layer lmet+rsft_layer)
-;;
-;;  toggle_modB_&_groups_layer         (t! toggle_2layer                 modB_layer      groups_layer )
-;;  toggle_modB_&_groups+lsft_layer    (t! toggle_mod_2layer  lsft       modB+lsft_layer groups+lsft_layer )
-;;  toggle_modB_&_groups+rsft_layer    (t! toggle_mod_2layer  rsft       modB+rsft_layer groups+rsft_layer )
-;;
-;;  toggle_modC_&_panes_layer           (t! toggle_2layer                 modC_layer      panes_layer )
-;;  toggle_mobC_&_panes+lsft_layer      (t! toggle_mod_2layer  lsft       modC+lsft_layer panes+lsft_layer )
-;;  toggle_mobC_&_panes+rsft_layer      (t! toggle_mod_2layer  rsft       modC+rsft_layer panes+rsft_layer )
-;;
-;;  toggle_modD_&_lsft_layer           (t! toggle_mod_2layer  lsft       modD_layer      lsft_layer)
-;;  toggle_modD_&_lsft_+lsft_layer     (t! toggle_mod_2layer  lsft       modD+lsft_layer lsft_layer)
-;;  toggle_modD_&_lsft_+rsft_layer     (t! toggle_mod_2layer  rsft       modD+rsft_layer rsft_layer)
-;;
-;;  toggle_modF_&_lctl_layer           (t! toggle_mod_2layer  lctl       modF_layer      lctl_layer)
-;;  toggle_modF_&_lctl_+lsft_layer     (t! toggle_2mod_2layer lctl lsft  modF+lsft_layer lctl+lsft_layer)
-;;  toggle_modF_&_lctl_+rsft_layer     (t! toggle_2mod_2layer lctl rsft  modF+rsft_layer lctl+rsft_layer)
-;;
-;;  toggle_modJ_&_lctl_layer           (t! toggle_mod_2layer  lctl       modJ_layer      lctl_layer)
-;;  toggle_modJ_&_lctl_+lsft_layer     (t! toggle_2mod_2layer lctl lsft  modJ+lsft_layer lctl+lsft_layer)
-;;  toggle_modJ_&_lctl_+rsft_layer     (t! toggle_2mod_2layer lctl rsft  modJ+rsft_layer lctl+rsft_layer)
-;;
-;;  toggle_modK_&_rsft_layer           (t! toggle_mod_2layer  rsft       modK_layer      rsft_layer)
-;;  toggle_modK_&_rsft_+lsft_layer     (t! toggle_mod_2layer  lsft       modK+lsft_layer lsft_layer)
-;;  toggle_modK_&_rsft_+rsft_layer     (t! toggle_mod_2layer  rsft       modK+rsft_layer rsft_layer)
-;;
-;;  toggle_modL_&_lalt_layer           (t! toggle_mod_2layer  lalt       modL_layer      lalt_layer  )
-;;  toggle_modL_&_lalt_+lsft_layer     (t! toggle_2mod_2layer lalt lsft  modL+lsft_layer lalt+lsft_layer)
-;;  toggle_modL_&_lalt_+rsft_layer     (t! toggle_2mod_2layer lalt rsft  modL+rsft_layer lalt+rsft_layer)
-;;
-;;  toggle_tabs_layer_&_modM            (t! toggle_2layer                 tabs_layer      modM_layer     )
-;;  toggle_tabs+lsft_layer_&_modM       (t! toggle_mod_2layer  lsft       tabs+lsft_layer modM+lsft_layer)
-;;  toggle_tabs+rsft_layer_&_modM       (t! toggle_mod_2layer  rsft       tabs+rsft_layer modM+rsft_layer)
-;;
-;;  toggle_modN_&_sessions_layer        (t! toggle_2layer                 modN_layer      sessions_layer)
-;;  toggle_modN_&_sessions+lsft_layer   (t! toggle_mod_2layer  lsft       modN+lsft_layer sessions+lsft_layer )
-;;  toggle_modN_&_sessions+rsft_layer   (t! toggle_mod_2layer  rsft       modN+rsft_layer sessions+rsft_layer )
-;;
-;;  toggle_modS_&_lalt_layer           (t! toggle_mod_2layer  lalt       modS_layer      lalt_layer)
-;;  toggle_modS_&_lalt_+lsft_layer     (t! toggle_2mod_2layer lalt lsft  modS+lsft_layer lalt+lsft_layer)
-;;  toggle_modS_&_lalt_+rsft_layer     (t! toggle_2mod_2layer lalt rsft  modS+rsft_layer lalt+rsft_layer)
-
-;;  toggle_modV_&_tabs_layer            (t! toggle_2layer                 modV_layer      tabs_layer )
-;;  toggle_modV_&_tabs+lsft_layer       (t! toggle_mod_2layer  lsft       modV+lsft_layer tabs+lsft_layer )
-;;  toggle_modV_&_tabs+rsft_layer       (t! toggle_mod_2layer  rsft       modV+rsft_layer tabs+rsft_layer )
-;;
-;;  toggle_modX_&_workspaces_layer      (t! toggle_2layer                 modX_layer      workspaces_layer)
-;;  toggle_modX_&_workspaces+lsft_layer (t! toggle_mod_2layer  lsft       modX+lsft_layer workspaces+lsft_layer )
-;;  toggle_modX_&_workspaces+rsft_layer (t! toggle_mod_2layer  rsft       modX+rsft_layer workspaces+rsft_layer )
-;;
-;;  toggle_modZ_&_windows_layer         (t! toggle_2layer                 modZ_layer      windows_layer)
-;;  toggle_modZ_&_windows+lsft_layer    (t! toggle_mod_2layer  lsft       modZ+lsft_layer windows+lsft_layer )
-;;  toggle_modZ_&_windows+rsft_layer    (t! toggle_mod_2layer  rsft       modZ+rsft_layer windows+rsft_layer )
-;;
-;;  toggle_panes_layer_&_mod,           (t! toggle_2layer                 panes_layer      mod,_layer )
-;;  toggle_panes+lsft_layer_&_mod,      (t! toggle_mod_2layer  lsft       panes+lsft_layer mod,+lsft_layer )
-;;  toggle_panes+rsft_layer_&_mod,      (t! toggle_mod_2layer  rsft       panes+rsft_layer mod,+rsft_layer )
-;;
-;;  toggle_workspaces_layer_&_mod.      (t! toggle_2layer                 workspaces_layer      mod._layer       )
-;;  toggle_workspaces+lsft_layer_&_mod. (t! toggle_mod_2layer  lsft       workspaces+lsft_layer mod.+lsft_layer  )
-;;  toggle_workspaces+rsft_layer_&_mod. (t! toggle_mod_2layer  rsft       workspaces+rsft_layer mod.+rsft_layer  )
-;;
-;;  toggle_mod;_&_lmet_layer           (t! toggle_mod_2layer  lmet       mod;_layer      lmet_layer)
-;;  toggle_mod;_&_lmet_+lsft_layer     (t! toggle_2mod_2layer lmet lsft  mod;+lsft_layer lmet+lsft_layer)
-;;  toggle_mod;_&_lmet_+rsft_layer     (t! toggle_2mod_2layer lmet rsft  mod;+rsft_layer lmet+rsft_layer)
-;;
-;;  toggle_mod/_&_windows_layer         (t! toggle_2layer                 mod/_layer      windows_layer)
-;;  toggle_mod/_&_windows+lsft_layer    (t! toggle_mod_2layer  lsft       mod/+lsft_layer windows+lsft_layer )
-;;  toggle_mod/_&_windows+rsft_layer    (t! toggle_mod_2layer  rsft       mod/+rsft_layer windows+rsft_layer )
-;;
-;;  toggle_windows_layer_&_mod/         (t! toggle_2layer                 windows_layer      mod/_layer       )
-;;  toggle_windows+lsft_layer_&_mod/    (t! toggle_mod_2layer  lsft       windows+lsft_layer mod/+lsft_layer  )
-;;  toggle_windows+rsft_layer_&_mod/    (t! toggle_mod_2layer  rsft       windows+rsft_layer mod/+rsft_layer  )
+  toggle_search_&_!lalt_layer              (t! toggle_mod_3layer  lalt       search_layer       lalt_layer      !lalt_layer      )
+  toggle_search_&_!lalt+lsft_layer         (t! toggle_2mod_3layer lalt lsft  search+lsft_layer  lalt+lsft_layer !lalt+lsft_layer )
+  toggle_search_&_!lalt+rsft_layer         (t! toggle_2mod_3layer lalt rsft  search+rsft_layer  lalt+rsft_layer !lalt+rsft_layer )
 )

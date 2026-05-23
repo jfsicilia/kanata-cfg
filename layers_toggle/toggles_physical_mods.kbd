@@ -7,7 +7,7 @@
   toggle_lctl_layer                  (t! toggle_mod_layer  lctl  lctl_layer  ) 
   toggle_lctl+lsft_layer             (t! toggle_2mod_layer lctl lsft  lctl+lsft_layer)
   toggle_lctl+rsft_layer             (t! toggle_2mod_layer lctl rsft  lctl+rsft_layer)
-  toggle_!lctl_layer                 $toggle_seek_n_select_&_!lctl_layer          
+  toggle_!lctl_layer                 $toggle_seek_n_select_layer          
   toggle_!lctl+lsft_layer            $toggle_seek_n_select_&_!lctl+lsft_layer     
   toggle_!lctl+rsft_layer            $toggle_seek_n_select_&_!lctl+rsft_layer     
 

@@ -1,162 +1,194 @@
-(deflayermap (_modA_layer)
+;; Actions
+(deflayermap (spc+modA_layer)
   a $action_modA+modA
   _ XX
 )
 
-(deflayermap (_modB_layer)
+;; Bookmarks
+(deflayermap (spc+modB_layer)
   b $action_modB+modB
   _ XX
 )
 
-(deflayermap (_modC_layer)
+;; Calendar
+(deflayermap (spc+modC_layer)
   c $action_modC+modC
   _ XX
 )
 
-(deflayermap (_modD_layer)
+;; Definitions
+(deflayermap (spc+modD_layer)
   d $action_modD+modD
   _ XX
 )
 
-(deflayermap (_modE_layer)
+;; Explorer
+(deflayermap (spc+modE_layer)
   e $action_modE+modE
   _ XX
 )
 
-(deflayermap (_modF_layer)
+;; Filter
+(deflayermap (spc+modF_layer)
   f $action_modF+modF
   _ XX
 )
 
-(deflayermap (_modG_layer)
+;; Git
+(deflayermap (spc+modG_layer)
   g $action_modG+modG
   l $action_modG+modL
   _ XX
 )
 
-(deflayermap (_modH_layer)
+;; Hyperlinks
+(deflayermap (spc+modH_layer)
   h $action_modH+modH
   _ XX
 )
 
-(deflayermap (_modI_layer)
+;; AI
+(deflayermap (spc+modI_layer)
   i $action_modI+modI
   _ XX
 )
 
-(deflayermap (_modJ_layer)
+;; Jumps
+(deflayermap (spc+modJ_layer)
   j $action_modJ+modJ
   _ XX
 )
 
-(deflayermap (_modK_layer)
+;; Keymaps
+(deflayermap (spc+modK_layer)
   k $action_modK+modK
   _ XX
 )
 
-(deflayermap (_modL_layer)
+;; Locations
+(deflayermap (spc+modL_layer)
   l $action_modL+modL
   _ XX
 )
 
-(deflayermap (_modM_layer)
+;; Mem
+(deflayermap (spc+modM_layer)
   m $action_modM+modM
   _ XX
 )
 
-(deflayermap (_modN_layer)
+;; Notebooks
+(deflayermap (spc+modN_layer)
   n $action_modN+modN
   _ XX
 )
 
-(deflayermap (_modO_layer)
+;; Output
+(deflayermap (spc+modO_layer)
   o $action_modO+modO
   _ XX
 )
 
-(deflayermap (_modP_layer)
+;; Properties
+(deflayermap (spc+modP_layer)
   p $action_modP+modP
   _ XX
 )
 
-(deflayermap (_modQ_layer)
+;; Quickfix
+(deflayermap (spc+modQ_layer)
   q $action_modQ+modQ
   _ XX
 )
 
-(deflayermap (_modR_layer)
+;; References
+(deflayermap (spc+modR_layer)
   r $action_modR+modR
   _ XX
 )
 
-(deflayermap (_modS_layer)
+;; Symbols
+(deflayermap (spc+modS_layer)
   s $action_modS+modS
   _ XX
 )
 
-(deflayermap (_modT_layer)
+;; Terminal
+(deflayermap (spc+modT_layer)
   t $action_modT+modT
   _ XX
 )
 
-(deflayermap (_modU_layer)
+;; UI
+(deflayermap (spc+modU_layer)
   u $action_modU+modU
   _ XX
 )
 
-(deflayermap (_modV_layer)
+;; Virtualization
+(deflayermap (spc+modV_layer)
   v $action_modV+modV
   _ XX
 )
 
-(deflayermap (_modW_layer)
+;; Warnings
+(deflayermap (spc+modW_layer)
   w $action_modW+modW
   _ XX
 )
 
-(deflayermap (_modX_layer)
+;; Extensions
+(deflayermap (spc+modX_layer)
   x $action_modX+modX
   _ XX
 )
 
-(deflayermap (_modY_layer)
+;; History
+(deflayermap (spc+modY_layer)
   y $action_modY+modY
 
   $mod;      $action_modY+mod;
   $search    $action_modY+search
 )
 
-(deflayermap (_modZ_layer)
+;; Tests
+(deflayermap (spc+modZ_layer)
   z $action_modZ+modZ
   _ XX
 )
 
-(deflayermap (_mod;_layer)
+;; Commands
+(deflayermap (spc+mod;_layer)
   ; $action_mod;+mod;
   _ XX
 )
 
-(deflayermap (_mod'_layer)
+;; Registries
+(deflayermap (spc+mod'_layer)
   ' $action_mod'+mod'
   _ XX
 )
 
-(deflayermap (_mod,_layer)
+;; Settings
+(deflayermap (spc+mod,_layer)
   , $action_mod,+mod,
   _ XX
 )
 
-(deflayermap (_mod._layer)
+;; Tags
+(deflayermap (spc+mod._layer)
   . $action_mod.+mod.
   _ XX
 )
 
-(deflayermap (_mod/_layer)
+;; Help
+(deflayermap (spc+mod/_layer)
   / $action_mod/+mod/
   _ XX
 )
 
-(deflayermap (_mod\_layer)
+;; Compare
+(deflayermap (spc+mod\_layer)
   \ (t! sft_switch $action_mod\+mod\ $action_mod\+lsft+mod\ $action_mod\+lsft+mod\)
 
   j $action_mod\+j
@@ -167,84 +199,100 @@
 
   ent $action_mod\+ent
   _ XX
-)
+) ;;""
 
-(deflayermap (_mod[_layer)
+;; Backlinks
+(deflayermap (spc+mod[_layer)
   [ $action_mod[+mod[
   _ XX
-)
+) ;;""
 
-(deflayermap (_mod]_layer)
+;; Outlinks
+(deflayermap (spc+mod]_layer)
   ] $action_mod]+mod]
   _ XX
-)
+) ;;""
 
-(deflayermap (_mod`_layer)
+;; 
+(deflayermap (spc+mod`_layer)
   ` $action_mod`+mod`
   _ XX
 )
 
-(deflayermap (_mod-_layer)
+;; 
+(deflayermap (spc+mod-_layer)
   - $action_mod-+mod-
   _ XX
 )
 
-(deflayermap (_mod=_layer)
+;; Format
+(deflayermap (spc+mod=_layer)
   = $action_mod=+mod=
   _ XX
 )
 
-(deflayermap (_mod0_layer)
+;; 
+(deflayermap (spc+mod0_layer)
   0 $action_mod0+mod0
   _ XX
 )
 
-(deflayermap (_mod1_layer)
+;; 
+(deflayermap (spc+mod1_layer)
   1 $action_mod1+mod1
   _ XX
 )
 
-(deflayermap (_mod2_layer)
+;; 
+(deflayermap (spc+mod2_layer)
   2 $action_mod2+mod2
   _ XX
 )
 
-(deflayermap (_mod3_layer)
+;; 
+(deflayermap (spc+mod3_layer)
   3 $action_mod3+mod3
   _ XX
 )
 
-(deflayermap (_mod4_layer)
+;; 
+(deflayermap (spc+mod4_layer)
   4 $action_mod4+mod4
   _ XX
 )
 
-(deflayermap (_mod5_layer)
+;; 
+(deflayermap (spc+mod5_layer)
   5 $action_mod5+mod5
   _ XX
 )
 
-(deflayermap (_mod6_layer)
+;; 
+(deflayermap (spc+mod6_layer)
   6 $action_mod6+mod6
   _ XX
 )
 
-(deflayermap (_mod7_layer)
+;; 
+(deflayermap (spc+mod7_layer)
   7 $action_mod7+mod7
   _ XX
 )
 
-(deflayermap (_mod8_layer)
+;; 
+(deflayermap (spc+mod8_layer)
   8 $action_mod8+mod8
   _ XX
 )
 
-(deflayermap (_mod9_layer)
+;; 
+(deflayermap (spc+mod9_layer)
   9 $action_mod9+mod9
   _ XX
 )
 
-(deflayermap (custom_mods_layer)
+;; Activates corresponding layer.
+(deflayermap (spc_mods_layer)
   a (on-press press-vkey vk_modA)
   b (on-press press-vkey vk_modB)
   c (on-press press-vkey vk_modC)

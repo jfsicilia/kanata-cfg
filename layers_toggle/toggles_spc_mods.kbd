@@ -1,0 +1,3 @@
+(defvar
+  toggle_spc_mods_layer        (t! toggle_layer spc_mods_layer)
+)
