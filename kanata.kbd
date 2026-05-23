@@ -44,6 +44,7 @@
 (include layers/layer_panes.kbd)
 (include layers/layer_tabs.kbd)
 (include layers/layer_groups.kbd)
+(include layers/layer_layouts.kbd)
 (include layers/layer_sessions.kbd)
 (include layers/layer_seek_n_select.kbd)
 (include layers/layer_search.kbd)
@@ -67,6 +68,7 @@
 (include actions/actions_lang.kbd)
 (include actions/actions_opts.kbd)
 (include actions/actions_windows.kbd)
+(include actions/actions_layouts.kbd)
 (include actions/actions_workspaces.kbd)
 
 ;; Apps Interface Actions =====================================================

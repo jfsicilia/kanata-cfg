@@ -11,7 +11,7 @@
   $toggle $action_desktops+toggle
 
   ;; == SFT ======================
-  $d|modD_&_lsft     (t! th _                    $toggle_workspaces+lsft_layer)
+  $d|modD_&_lsft  (t! th _                    $toggle_workspaces+lsft_layer)
   $k|modK_&_rsft  (t! th $action_screens_prev $toggle_workspaces+rsft_layer)
   lsft            (t! th _                    $toggle_workspaces+lsft_layer)
   rsft            (t! th _                    $toggle_workspaces+rsft_layer)

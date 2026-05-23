@@ -40,4 +40,9 @@
   toggle_sessions_layer               (t! toggle_layer             sessions_layer)
   toggle_sessions+lsft_layer          (t! toggle_mod_layer   lsft  sessions+lsft_layer)
   toggle_sessions+rsft_layer          (t! toggle_mod_layer   rsft  sessions+rsft_layer)
+
+  ;; Layouts layer
+  toggle_layouts_layer               (t! toggle_layer             layouts_layer)
+  toggle_layouts+lsft_layer          (t! toggle_mod_layer   lsft  layouts+lsft_layer)
+  toggle_layouts+rsft_layer          (t! toggle_mod_layer   rsft  layouts+rsft_layer)
 )

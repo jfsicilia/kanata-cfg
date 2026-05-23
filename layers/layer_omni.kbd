@@ -7,6 +7,7 @@
 
   a    $action_omni+a
   b    $action_omni+b
+  ;;   Tapping c copies. Holding c allows you to copy to another view/pane/tab.
   c    (t! th $action_omni+c (t! toggle_layer omni+c_layer))
   d    $action_omni+d
   e    $action_omni+e
@@ -28,6 +29,7 @@
   u    $action_omni+u
   v    $action_omni+v
   w    $action_omni+w
+  ;;   Tapping x cuts. Holding x allows you to cut to another view/pane/tab.
   x    (t! th $action_omni+x (t! toggle_layer omni+x_layer))
   y    $action_omni+y
   z    $action_omni+z
