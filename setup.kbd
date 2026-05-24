@@ -259,8 +259,8 @@
       w|modW_&_refactor     w           ;; Tap: w,   spc+: spc+modW_layer Hold: refactor_layer 
       e|modE_&_AI           e           ;; Tap: e,   spc+: spc+modE_layer Hold: AI_layer 
       r|modR_&_run          r           ;; Tap: r,   spc+: spc+modR_layer Hold: run_layer 
-      t|modT_&_tabs         t           ;; Tap: t,   spc+: spc+modT_layer Hold: tabs_layer 
-      y|modY_&_tabs         y           ;; Tap: y,   spc+: spc+modY_layer Hold: tabs_layer
+      t|modT_&_layouts      t           ;; Tap: t,   spc+: spc+modT_layer Hold: layouts_layer 
+      y|modY_&_layouts      y           ;; Tap: y,   spc+: spc+modY_layer Hold: layouts_layer
       u|modU_&_run          u           ;; Tap: u,   spc+: spc+modU_layer Hold: run_layer 
       i|modI_&_AI           i           ;; Tap: i,   spc+: spc+modI_layer Hold: AI_layer 
       o|modO_&_refactor     o           ;; Tap: o,   spc+: spc+modO_layer Hold: refactor_layer 
@@ -287,16 +287,16 @@
   ;; Low row keys. 
                           ;; <> Key (Spanish keyboard) - 
   lang                      lsgt       ;; Tap: toggle ES/US                Hold: lang_layer
-      z|modZ_&_layouts      z          ;; Tap: z,    spc+: spc+modZ_layer  Hold: layouts_layer
-      x|modX_&_workspace    x          ;; Tap: x,    spc+: spc+modX_layer  Hold: workspaces_layer 
-      c|modC_&_groups       c          ;; Tap: c,    spc+: spc+modC_layer  Hold: groups_layer 
-      v|modV_&_panes        v          ;; Tap: v,    spc+: spc+modV_layer  Hold: panes_layer 
+      z|modZ_&_workspaces   z          ;; Tap: z,    spc+: spc+modZ_layer  Hold: workspaces_layer
+      x|modX_&_groups       x          ;; Tap: x,    spc+: spc+modX_layer  Hold: groups_layer 
+      c|modC_&_panes        c          ;; Tap: c,    spc+: spc+modC_layer  Hold: panes_layer 
+      v|modV_&_tabs         v          ;; Tap: v,    spc+: spc+modV_layer  Hold: tabs_layer 
       b|modB_&_sessions     b          ;; Tap: b,    spc+: spc+modB_layer  Hold: sessions_layer 
       n|modN_&_sessions     n          ;; Tap: n,    spc+: spc+modN_layer  Hold: sessions_layer 
-      m|modM_&_panes        m          ;; Tap: m,    spc+: spc+modM_layer  Hold: panes_layer 
-      ,|mod,_&_groups       ,          ;; Tap: ,,    spc+: spc+mod,_layer  Hold: groups_layer 
-      .|mod._&_workspace    .          ;; Tap: .,    spc+: spc+mod._layer  Hold: workspace 
-      /|mod/_&_layouts      /          ;; Tap: /,    spc+: spc+mod/_layer  Hold: layouts_layer
+      m|modM_&_tabs         m          ;; Tap: m,    spc+: spc+modM_layer  Hold: tabs_layer 
+      ,|mod,_&_panes        ,          ;; Tap: ,,    spc+: spc+mod,_layer  Hold: panes_layer 
+      .|mod._&_groups       .          ;; Tap: .,    spc+: spc+mod._layer  Hold: groups_layer
+      /|mod/_&_workspaces   /          ;; Tap: /,    spc+: spc+mod/_layer  Hold: workspaces_layer
   
   ;; Modifiers row
   !lmet|replace             $!lmet     ;; Physical lctl is used as lmet, in combo with space works as replace domain. 
@@ -423,8 +423,8 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
       $w|modW_&_refactor   (t! fast_th w                                         (layer-toggle void_layer)) 
       $e|modE_&_AI         (t! fast_th (t! char|alt_char e)                      (layer-toggle void_layer)) 
       $r|modR_&_run        (t! fast_th r                                         (layer-toggle void_layer)) 
-      $t|modT_&_tabs       (t! fast_th t                                         (layer-toggle void_layer)) 
-      $y|modY_&_tabs       (t! fast_th y                                         (layer-toggle void_layer)) 
+      $t|modT_&_layouts    (t! fast_th t                                         $toggle_layouts_layer)
+      $y|modY_&_layouts    (t! fast_th y                                         $toggle_layouts_layer)
       $u|modU_&_run        (t! fast_th (t! char|alt_char u)                      (layer-toggle void_layer)) 
       $i|modI_&_AI         (t! fast_th (t! char|alt_char i)                      (layer-toggle void_layer)) 
       $o|modO_&_refactor   (t! fast_th (t! char|alt_char o)                      (layer-toggle void_layer)) 
@@ -450,16 +450,16 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
   ;; Lower row keys (z, x, c, v, b, n, m, work as window, workspace, pane, tab, groups and session.
   lsft                     (t!      th (t! 2x $action_tabs_prev)                 $toggle_lsft_layer)
   $lang                    (t!      th $toggle_alt_chars                         $toggle_lang_layer)
-      $z|modZ_&_layouts    (t! fast_th z                                         $toggle_layouts_layer)
-      $x|modX_&_workspace  (t! fast_th x                                         $toggle_workspaces_layer)
-      $c|modC_&_groups     (t! fast_th c                                         $toggle_groups_layer)
-      $v|modV_&_panes      (t! fast_th v                                         $toggle_panes_layer)
+      $z|modZ_&_workspaces (t! fast_th z                                         $toggle_workspaces_layer)
+      $x|modX_&_groups     (t! fast_th x                                         $toggle_groups_layer)
+      $c|modC_&_panes      (t! fast_th c                                         $toggle_panes_layer)
+      $v|modV_&_tabs       (t! fast_th v                                         $toggle_tabs_layer)
       $b|modB_&_sessions   (t! fast_th b                                         $toggle_sessions_layer)
       $n|modN_&_sessions   (t! fast_th (t! char|alt_char n)                      $toggle_sessions_layer)
-      $m|modM_&_panes      (t! fast_th m                                         $toggle_panes_layer)
-      $,|mod,_&_groups     (t! fast_th ,                                         $toggle_groups_layer)
-      $.|mod._&_workspace  (t! fast_th .                                         $toggle_workspaces_layer)
-      $/|mod/_&_layouts    (t! fast_th /                                         $toggle_layouts_layer)
+      $m|modM_&_tabs       (t! fast_th m                                         $toggle_tabs_layer)
+      $,|mod,_&_panes      (t! fast_th ,                                         $toggle_panes_layer)
+      $.|mod._&_groups     (t! fast_th .                                         $toggle_groups_layer)
+      $/|mod/_&_workspaces (t! fast_th /                                         $toggle_workspaces_layer)
   rsft                     (t!      th (t! 2x $action_tabs_next)                 $toggle_rsft_layer)
 
   ;; Modifiers row.
