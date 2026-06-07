@@ -19,8 +19,11 @@ firefox_action_tabs_prev                       $firefox_tabs_prev
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 firefox_action_tabs_new                        $firefox_tabs_new
+;; tabs + v
+;; ___TO_SET___ firefox_action_tabs_vertical          
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
+;; tabs + v
 firefox_action_tabs_close                      $firefox_tabs_close
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t

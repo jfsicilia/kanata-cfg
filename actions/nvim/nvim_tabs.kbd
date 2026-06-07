@@ -19,8 +19,11 @@ nvim_action_tabs_prev                       (macro esc S-; b p r e v i o u s ret
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 ;; ___TO_SET___ nvim_action_tabs_new               
+;; tabs + v
+;; ___TO_SET___ nvim_action_tabs_vertical          
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
+;; tabs + v
 nvim_action_tabs_close                      C-w
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t

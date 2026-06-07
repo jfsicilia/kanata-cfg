@@ -1,41 +1,14 @@
 (defvar
-obsidian_pane_maximize   (macro A-s A-S-s)
-obsidian_pane_left       A-left
-obsidian_pane_right      A-right
-obsidian_pane_above      A-up
-obsidian_pane_below      A-down
-obsidian_pane_h_split    A--
-obsidian_pane_v_split    A-\  
-obsidian_pane_close      A-w
-obsidian_pane_toggle     A-q
-obsidian_file_explorer   A-e
-obsidian_file_explorer_reveal A-S-e
-obsidian_recent          A-r
-obsidian_outline         A-o
-obsidian_properties      A-p
-obsidian_properties_all  A-S-p
-obsidian_backlinks       A-,
-obsidian_outlinks        A-.
-obsidian_outlinks_all    A-S-.
-obsidian_sidebar         A-s
-obsidian_sidebar_right   A-S-s
-obsidian_graph           A-g
-obsidian_calendar        A-c
-obsidian_daily           A-d
-obsidian_daily_shift     A-S-d
-obsidian_vertical_tabs   (macro A-v m)
-obsidian_bookmarks       A-b
-obsidian_main            A-m   ;;""
 
 ;; == panes =============================================================
 ;; panes + spc
 ;; ___TO_SET___ obsidian_action_panes+spc              
 
 ;; panes + ent
-obsidian_action_panes+max                       $obsidian_pane_maximize
+obsidian_action_panes+ent                   $obsidian_pane_maximize
 
 ;; panes + h | panes + left
-obsidian_action_panes+h                      $obsidian_pane_left
+obsidian_action_panes+h                     $obsidian_pane_left
 ;; panes + l | panes + right
 obsidian_action_panes+l                     $obsidian_pane_right
 ;; panes + k | panes + up
@@ -44,16 +17,16 @@ obsidian_action_panes+k                     $obsidian_pane_above
 obsidian_action_panes+j                     $obsidian_pane_below
 
 ;; panes + -
-obsidian_action_panes+-                   $obsidian_pane_h_split       ;;""
+obsidian_action_panes+-                     $obsidian_pane_h_split       ;;""
 ;; panes + \
-obsidian_action_panes+\                   $obsidian_pane_v_split       ;;""
+obsidian_action_panes+\                     $obsidian_pane_v_split       ;;""
 
 ;; panes + w
 obsidian_action_panes+w                     $obsidian_pane_close
 
 ;; == panes + toggle ====================================================
 ;; panes + toggle | 2x !lalt
-obsidian_action_panes+toggle                    $obsidian_pane_toggle
+obsidian_action_panes+toggle                $obsidian_pane_toggle
 
 ;; == panes + float ====================================================
 ;; panes + float
@@ -109,17 +82,17 @@ obsidian_action_panes+toggle                    $obsidian_pane_toggle
 ;; panes + 9
 ;; ___TO_SET___ obsidian_action_panes+9                
 
-;; == panes show pane / focus (app-specific) =============================
+;; == Misc panes  ====================================================
 ;; panes + q
 ;; ___TO_SET___ obsidian_action_panes+q                
 ;; panes + w
 ;; see panes
 ;; panes + e
-obsidian_action_panes+e                  $obsidian_file_explorer
+;; ___TO_SET___ obsidian_action_panes+e                
 ;; panes + lsft + e
-obsidian_action_panes+lsft+e             $obsidian_file_explorer_reveal
+;; ___TO_SET___ obsidian_action_panes+lsft+e           
 ;; panes + r
-obsidian_action_panes+r                    $obsidian_recent
+;; ___TO_SET___ obsidian_action_panes+r                
 ;; panes + t
 ;; ___TO_SET___ obsidian_action_panes+t                
 ;; panes + u
@@ -129,24 +102,24 @@ obsidian_action_panes+r                    $obsidian_recent
 ;; panes + i
 ;; ___TO_SET___ obsidian_action_panes+i                
 ;; panes + o
-obsidian_action_panes+o                   $obsidian_outline
+;; ___TO_SET___ obsidian_action_panes+o                
 ;; panes + lsft + o
 ;; ___TO_SET___ obsidian_action_panes+lsft+o           
 ;; panes + p
-obsidian_action_panes+p                $obsidian_properties
+;; ___TO_SET___ obsidian_action_panes+p                
 ;; panes + lsft + p
-obsidian_action_panes+lsft+p           $obsidian_properties_all
+;; ___TO_SET___ obsidian_action_panes+lsft+p           
 ;; panes + [
-obsidian_action_panes+[                 $obsidian_backlinks
+;; ___TO_SET___ obsidian_action_panes+[                
 ;; panes + ]
-obsidian_action_panes+]                  $obsidian_outlinks
+;; ___TO_SET___ obsidian_action_panes+]                
 ;; panes + lsft + ]
-obsidian_action_panes+lsft+.             $obsidian_outlinks_all
+;; ___TO_SET___ obsidian_action_panes+lsft+.           
 
 ;; panes + a
 ;; ___TO_SET___ obsidian_action_panes+a                
 ;; panes + s
-obsidian_action_panes+s                   $obsidian_sidebar
+obsidian_action_panes+s                  $obsidian_sidebar
 ;; panes + lsft + s
 obsidian_action_panes+lsft+s             $obsidian_sidebar_right
 ;; panes + d
@@ -154,9 +127,9 @@ obsidian_action_panes+lsft+s             $obsidian_sidebar_right
 ;; panes + f
 ;; ___TO_SET___ obsidian_action_panes+f                
 ;; panes + g
-obsidian_action_panes+g                        $obsidian_action_select_files                  
+obsidian_action_panes+g                  $obsidian_action_select_files                  
 ;; panes + ;
-obsidian_action_panes+;                     $obsidian_graph
+;; ___TO_SET___ obsidian_action_panes+;                
 ;; panes + '
 ;; ___TO_SET___ obsidian_action_panes+'                
 
@@ -165,19 +138,19 @@ obsidian_action_panes+;                     $obsidian_graph
 ;; panes + x
 ;; ___TO_SET___ obsidian_action_panes+x                
 ;; panes + c
-obsidian_action_panes+c                  $obsidian_calendar
+;; ___TO_SET___ obsidian_action_panes+c                
 ;; panes + lsft + c
-obsidian_action_panes+lsft+c                       $obsidian_daily
+;; ___TO_SET___ obsidian_action_panes+lsft+c           
 ;; panes + rsft + c
-obsidian_action_panes+!day                      $obsidian_daily_shift
+;; ___TO_SET___ obsidian_action_panes+!day             
 ;; panes + v
-obsidian_action_panes+v             $obsidian_vertical_tabs
+;; ___TO_SET___ obsidian_action_panes+v                
 ;; panes + b
-obsidian_action_panes+b                 $obsidian_bookmarks
+;; ___TO_SET___ obsidian_action_panes+b                
 ;; panes + n
 ;; ___TO_SET___ obsidian_action_panes+n                
 ;; panes + m
-obsidian_action_panes+m                      $obsidian_main
+obsidian_action_panes+m                  $obsidian_main
 ;; panes + ,
 ;; ___TO_SET___ obsidian_action_panes+,                
 ;; panes + .

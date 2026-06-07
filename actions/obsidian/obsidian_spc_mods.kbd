@@ -4,16 +4,23 @@
 ;; ___TO_SET___ obsidian_action_modA+modA              
 
 ;; modB + modB
-;; ___TO_SET___ obsidian_action_modB+modB              
+obsidian_action_modB+modB              $obsidian_bookmarks
 
 ;; modC + modC
-;; ___TO_SET___ obsidian_action_modC+modC              
+obsidian_action_modC+modC              $obsidian_calendar
+;; modC + modD
+;; modC + modY
+obsidian_action_modC+modD              $obsidian_daily_shift
+;; modC + modY
+obsidian_action_modC+modY              $obsidian_calendar_daily
 
 ;; modD + modD
 ;; ___TO_SET___ obsidian_action_modD+modD              
 
 ;; modE + modE
-;; ___TO_SET___ obsidian_action_modE+modE              
+obsidian_action_modE+modE              $obsidian_file_explorer
+;; modE + modF
+obsidian_action_modE+modF              $obsidian_file_explorer_reveal
 
 ;; modF + modF
 ;; ___TO_SET___ obsidian_action_modF+modF              
@@ -46,34 +53,40 @@
 
 ;; modO + modO
 ;; ___TO_SET___ obsidian_action_modO+modO              
+;; modO + modL
+obsidian_action_modO+modL             $obsidian_outline 
 
 ;; modP + modP
-;; ___TO_SET___ obsidian_action_modP+modP              
+obsidian_action_modP+modP             $obsidian_properties
+;; modP + modA
+obsidian_action_modP+modA             $obsidian_properties_all
 
 ;; modQ + modQ
 ;; ___TO_SET___ obsidian_action_modQ+modQ              
 
 ;; modR + modR
 ;; ___TO_SET___ obsidian_action_modR+modR              
-;; modR + lsft + modR
-;; ___TO_SET___ obsidian_action_modR+lsft+modR         
-;; modR + rsft + modR
-;; ___TO_SET___ obsidian_action_modR+rsft+modR         
+;; modR + modE
+obsidian_action_modR+modE             $obsidian_recent
+;; modR + modI
+;; ___TO_SET___ obsidian_action_modR+modI              
+;; modR + modO
+;; ___TO_SET___ obsidian_action_modR+modO              
 
 ;; modS + modS
-obsidian_action_modS+modS                  $obsidian_symbols
-;; modS + lsft + modS
-;; ___TO_SET___ obsidian_action_modS+lsft+modS         
+obsidian_action_modS+modS             $obsidian_symbols
+;; modS + modW
+;; ___TO_SET___ obsidian_action_modS+modW              
 
 ;; modT + modT
 ;; ___TO_SET___ obsidian_action_modT+modT              
-;; modT + lsft + modT
-;; ___TO_SET___ obsidian_action_modT+lsft+modT         
 ;; modT + toggle
 ;; ___TO_SET___ obsidian_action_modT+toggle            
 
 ;; modU + modU
 ;; ___TO_SET___ obsidian_action_modU+modU              
+;; modU + modG
+nvim_action_modU+modG                 $obsidian_graph
 
 ;; modV + modV
 ;; ___TO_SET___ obsidian_action_modV+modV              
@@ -104,10 +117,12 @@ obsidian_action_modS+modS                  $obsidian_symbols
 ;; ___TO_SET___ obsidian_action_mod=+mod=              
 
 ;; mod[ + mod[
-;; ___TO_SET___ obsidian_action_mod[+mod[              
+obsidian_action_mod[+mod[             $obsidian_backlinks
 
 ;; mod] + mod]
-;; ___TO_SET___ obsidian_action_mod]+mod]              
+obsidian_action_mod]+mod]             $obsidian_outlinks ;;""
+;; mod] + modA
+obsidian_action_mod]+modA             $obsidian_outlinks_all ;;""
 
 ;; mod\ + mod\
 ;; ___TO_SET___ obsidian_action_mod\+mod\              
@@ -121,17 +136,15 @@ obsidian_action_modS+modS                  $obsidian_symbols
 ;; ___TO_SET___ obsidian_action_mod\+o                 
 ;; mod\ + p
 ;; ___TO_SET___ obsidian_action_mod\+p                 
-;; mod\ + ent
-;; ___TO_SET___ obsidian_action_mod\+ent               
 
 ;; mod; + mod;
-obsidian_action_mod;+mod;                 $obsidian_commands
+obsidian_action_mod;+mod;             $obsidian_commands
 
 ;; mod' + mod'
 ;; ___TO_SET___ obsidian_action_mod'+mod'              
 
 ;; mod, + mod,
-obsidian_action_mod,+mod,                       $obsidian_settings
+obsidian_action_mod,+mod,             $obsidian_settings
 
 ;; mod. + mod.
 ;; ___TO_SET___ obsidian_action_mod.+mod.              
@@ -168,4 +181,7 @@ obsidian_action_mod,+mod,                       $obsidian_settings
 
 ;; mod9 + mod9
 ;; ___TO_SET___ obsidian_action_mod9+mod9              
+
+;; omni + omni
+;; ___TO_SET___ obsidian_action_omni+omni              
 )

@@ -1,48 +1,4 @@
-(defvirtualkeys
-  vk_nvim_compare_toggle  XX
-)
 (defvar
-;; Toggles compare mode.
-nvim_compare_toggle (multi (on-press toggle-virtualkey vk_nvim_compare_toggle) 
-  (switch 
-    ;; `{esc}:diffthis{ent}{C-w}p:diffthis{ent}{C-w}p`
-    ((input virtual vk_nvim_compare_toggle)) (macro esc C-w h C-w l S-; d i f f t h i s ent C-w p S-; d i f f t h i s ent C-w p)  break 
-    ()                                       (macro esc C-w h C-w l S-; d i f f o f f ent C-w p S-; d i f f o f f ent C-w p)  break 
-  )
-)
-nvim_select_all                    (macro esc g g S-v S-g)
-nvim_copy                          y
-nvim_duplicate                     (macro esc S-; s a v e a s spc S-5 S-; r S-- c o p y . S-5 S-; e)
-nvim_new                           (macro esc S-; t a b n e w ent S-; e spc)
-nvim_new_folder                    (macro esc S-; S-1 m k d i r spc - p spc)
-nvim_open                          C-]
-nvim_parent                        C-t
-nvim_quit                          (macro esc S-; q a ent)
-nvim_rename                        (macro esc S-; s a v e a s spc)
-nvim_sort                          (macro S-; s o r t ent)
-nvim_sort_reverse                  (macro S-; s o r t S-1 ent)
-nvim_new_tab                       (macro esc S-; t a b n e w ent)
-nvim_undo_tab                      (multi $nvim_new_tab C-o)
-nvim_unique                        (macro S-; S-5 S-1 a w k spc ' s e e n [ S-4 Digit0 ] S-= S-= spc = = spc Digit0 ' ent)
-nvim_paste                         C-S-v
-nvim_close_tab                     (macro esc S-; b d e l e t e ent)
-nvim_cut                           d
-nvim_undo                          u
-nvim_redo                          C-r
-nvim_comment                       (macro esc g c c)
-nvim_forward                       C-i
-nvim_back                          C-o
-nvim_pgup                          C-b
-nvim_pgdn                          C-f
-nvim_tab_1                         (macro esc S-; l u a spc r e q u i r e S-9 ' b u f f e r l i n e ' S-0 . g o S-- t o S-- b u f f e r S-9 Digit1 , t r u e S-0 ent)
-nvim_tab_2                         (macro esc S-; l u a spc r e q u i r e S-9 ' b u f f e r l i n e ' S-0 . g o S-- t o S-- b u f f e r S-9 Digit2 , t r u e S-0 ent)
-nvim_tab_3                         (macro esc S-; l u a spc r e q u i r e S-9 ' b u f f e r l i n e ' S-0 . g o S-- t o S-- b u f f e r S-9 Digit3 , t r u e S-0 ent)
-nvim_tab_4                         (macro esc S-; l u a spc r e q u i r e S-9 ' b u f f e r l i n e ' S-0 . g o S-- t o S-- b u f f e r S-9 Digit4 , t r u e S-0 ent)
-nvim_tab_5                         (macro esc S-; l u a spc r e q u i r e S-9 ' b u f f e r l i n e ' S-0 . g o S-- t o S-- b u f f e r S-9 Digit5 , t r u e S-0 ent)
-nvim_tab_6                         (macro esc S-; l u a spc r e q u i r e S-9 ' b u f f e r l i n e ' S-0 . g o S-- t o S-- b u f f e r S-9 Digit6 , t r u e S-0 ent)
-nvim_tab_7                         (macro esc S-; l u a spc r e q u i r e S-9 ' b u f f e r l i n e ' S-0 . g o S-- t o S-- b u f f e r S-9 Digit7 , t r u e S-0 ent)
-nvim_tab_8                         (macro esc S-; l u a spc r e q u i r e S-9 ' b u f f e r l i n e ' S-0 . g o S-- t o S-- b u f f e r S-9 Digit8 , t r u e S-0 ent)
-nvim_tab_9                         (macro esc S-; l u a spc r e q u i r e S-9 ' b u f f e r l i n e ' S-0 . g o S-- t o S-- b u f f e r S-9 Digit0 , t r u e S-0 ent)
 
 ;; == omni ============================================================
 

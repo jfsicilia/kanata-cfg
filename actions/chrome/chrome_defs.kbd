@@ -22,5 +22,5 @@ chrome_tabs_goto_8         C-8
 chrome_tabs_goto_9         C-9
 chrome_panes_vsplit        A-S-n
 chrome_seek_and_select     C-S-a
-chrome_bookmarks+spc       A-S-h
+chrome_bookmarks           A-S-h
 )

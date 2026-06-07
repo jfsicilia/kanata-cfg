@@ -178,6 +178,7 @@
   vk_mod7 (layer-while-held spc+mod7_layer) 
   vk_mod8 (layer-while-held spc+mod8_layer) 
   vk_mod9 (layer-while-held spc+mod9_layer) ;;""
+  vk_omni (layer-while-held spc+omni_layer) ;;""
 )
 
 ;; Releases spc mods virtual keys
@@ -229,6 +230,7 @@
     (on-release release-vkey vk_mod7)
     (on-release release-vkey vk_mod8)
     (on-release release-vkey vk_mod9)
+    (on-release release-vkey vk_omni)
 ) ;;""
 
 ;; Variables ===============================================================
@@ -256,14 +258,14 @@
   ;; Upper row keys.
     tab|open                tab         ;; Tap: Tab,                      Hold: open_with_layer
       q|modQ_&_system       q           ;; Tap: q,   spc+: spc+modQ_layer Hold: system_layer
-      w|modW_&_refactor     w           ;; Tap: w,   spc+: spc+modW_layer Hold: refactor_layer 
-      e|modE_&_AI           e           ;; Tap: e,   spc+: spc+modE_layer Hold: AI_layer 
+      w|modW_&_workflow     w           ;; Tap: w,   spc+: spc+modW_layer Hold: workflow_layer 
+      e|modE_&_refactor     e           ;; Tap: e,   spc+: spc+modE_layer Hold: refactor_layer 
       r|modR_&_run          r           ;; Tap: r,   spc+: spc+modR_layer Hold: run_layer 
       t|modT_&_layouts      t           ;; Tap: t,   spc+: spc+modT_layer Hold: layouts_layer 
       y|modY_&_layouts      y           ;; Tap: y,   spc+: spc+modY_layer Hold: layouts_layer
       u|modU_&_run          u           ;; Tap: u,   spc+: spc+modU_layer Hold: run_layer 
-      i|modI_&_AI           i           ;; Tap: i,   spc+: spc+modI_layer Hold: AI_layer 
-      o|modO_&_refactor     o           ;; Tap: o,   spc+: spc+modO_layer Hold: refactor_layer 
+      i|modI_&_refactor     i           ;; Tap: i,   spc+: spc+modI_layer Hold: refactor_layer 
+      o|modO_&_workflow     o           ;; Tap: o,   spc+: spc+modO_layer Hold: workflow_layer 
       p|modP_&_system       p           ;; Tap: p,   spc+: spc+modP_layer Hold: system_layer 
       [|mod[                [           ;; Tap: [,   spc+: spc+mod[_layer Hold: 
       ]|mod]                ]           ;; Tap: ],   spc+: spc+mod[_layer Hold:
@@ -419,16 +421,16 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
 
   ;; Upper row keys
     $tab|open              (t! fast_th tab                                       $toggle_open_layer)   
-      $q|modQ_&_system     (t! fast_th q                                         (layer-toggle void_layer)) 
-      $w|modW_&_refactor   (t! fast_th w                                         (layer-toggle void_layer)) 
-      $e|modE_&_AI         (t! fast_th (t! char|alt_char e)                      (layer-toggle void_layer)) 
-      $r|modR_&_run        (t! fast_th r                                         (layer-toggle void_layer)) 
+      $q|modQ_&_system     (t! fast_th q                                         $toggle_system_layer)
+      $w|modW_&_workflow   (t! fast_th w                                         $toggle_workflow_layer)
+      $e|modE_&_refactor   (t! fast_th (t! char|alt_char e)                      $toggle_refactor_layer)
+      $r|modR_&_run        (t! fast_th r                                         $toggle_run_layer)
       $t|modT_&_layouts    (t! fast_th t                                         $toggle_layouts_layer)
       $y|modY_&_layouts    (t! fast_th y                                         $toggle_layouts_layer)
-      $u|modU_&_run        (t! fast_th (t! char|alt_char u)                      (layer-toggle void_layer)) 
-      $i|modI_&_AI         (t! fast_th (t! char|alt_char i)                      (layer-toggle void_layer)) 
-      $o|modO_&_refactor   (t! fast_th (t! char|alt_char o)                      (layer-toggle void_layer)) 
-      $p|modP_&_system     (t! fast_th p                                         (layer-toggle void_layer)) 
+      $u|modU_&_run        (t! fast_th (t! char|alt_char u)                      $toggle_run_layer) 
+      $i|modI_&_refactor   (t! fast_th (t! char|alt_char i)                      $toggle_refactor_layer) 
+      $o|modO_&_workflow   (t! fast_th (t! char|alt_char o)                      $toggle_workflow_layer) 
+      $p|modP_&_system     (t! fast_th p                                         $toggle_system_layer) 
       $[|mod[              (t! fast_th [                                         (layer-toggle void_layer)) 
       $]|mod]              (t! fast_th ]                                         (layer-toggle void_layer)) 
       $\|mod\              (t! fast_th \                                         (layer-toggle void_layer)) 

@@ -25,6 +25,7 @@
 ;; Explorer
 (deflayermap (spc+modE_layer)
   e $action_modE+modE
+  f $action_modE+modF
   _ XX
 )
 
@@ -47,7 +48,7 @@
   _ XX
 )
 
-;; AI
+;; Info
 (deflayermap (spc+modI_layer)
   i $action_modI+modI
   _ XX
@@ -197,7 +198,6 @@
   o $action_mod\+o
   p $action_mod\+p
 
-  ent $action_mod\+ent
   _ XX
 ) ;;""
 
@@ -291,6 +291,14 @@
   _ XX
 )
 
+;; 
+(deflayermap (spc+omni_layer)
+  $omni $action_omni+omni
+  _ XX
+)
+
+
+
 ;; Activates corresponding layer.
 (deflayermap (spc_mods_layer)
   a (on-press press-vkey vk_modA)
@@ -340,4 +348,5 @@
   7 (on-press press-vkey vk_mod7)
   8 (on-press press-vkey vk_mod8)
   9 (on-press press-vkey vk_mod9) ;;""
+  $omni (on-press press-vkey vk_omni)
 ) ;;""

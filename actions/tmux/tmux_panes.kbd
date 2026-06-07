@@ -16,7 +16,7 @@ tmux_pane_toggle         (macro $tmux_prefix ;)
 
 ;; panes + ent
 ;; #panes + ent
-tmux_action_panes+max                       $tmux_pane_maximize ;; prefix + z (zoom pane)
+tmux_action_panes+ent                       $tmux_pane_maximize ;; prefix + z (zoom pane)
 
 ;; panes + h | panes + left
 ;; #panes + h | #panes + left
@@ -102,7 +102,7 @@ tmux_action_panes+toggle                    $tmux_pane_toggle ;; prefix + ; (las
 ;; panes + 9
 ;; ___TO_SET___ tmux_action_panes+9                
 
-;; == panes show pane / focus (app-specific) =============================
+;; == Misc panes  ====================================================
 ;; panes + q
 ;; ___TO_SET___ tmux_action_panes+q                
 ;; panes + w

@@ -24,6 +24,6 @@ firefox_tabs_goto_9         A-9
 firefox_tabs_goto_0         C-0
 firefox_panes_vsplit        A-S-n
 firefox_seek_and_select     C-S-spc
-firefox_bookmarks+spc       A-S-spc
+firefox_bookmarks           A-S-spc
 )
 

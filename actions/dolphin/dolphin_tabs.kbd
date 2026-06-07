@@ -19,6 +19,8 @@ dolphin_action_tabs_last              (push-msg "NOTIFY:Select last tab not impl
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 ;; ___TO_SET___ dolphin_action_tabs_new               
+;; tabs + v
+;; ___TO_SET___ dolphin_action_tabs_vertical          
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
 ;; ___TO_SET___ dolphin_action_tabs_close             

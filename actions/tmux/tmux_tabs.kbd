@@ -19,8 +19,11 @@ tmux_action_tabs_prev                       (macro $tmux_prefix p)
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 tmux_action_tabs_new                        (macro $tmux_prefix c)
+;; tabs + v
+;; ___TO_SET___ tmux_action_tabs_vertical          
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
+;; tabs + v
 tmux_action_tabs_close                      (macro $tmux_prefix S-7) ;; prefix + & (kill window)
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t

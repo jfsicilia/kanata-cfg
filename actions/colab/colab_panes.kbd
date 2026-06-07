@@ -5,7 +5,7 @@
 ;; ___TO_SET___ colab_action_panes+spc              
 
 ;; panes + ent
-;; ___TO_SET___ colab_action_panes+max              
+;; ___TO_SET___ colab_action_panes+ent              
 
 ;; panes + h | panes + left
 colab_action_panes+h                $colab_prev_cell 
@@ -82,7 +82,7 @@ colab_action_panes_move_below       $colab_move_cell_down
 ;; panes + 9
 ;; ___TO_SET___ colab_action_panes+9                
 
-;; == panes show pane / focus (app-specific) =============================
+;; == Misc panes  ====================================================
 ;; panes + q
 ;; ___TO_SET___ colab_action_panes+q                
 ;; panes + w

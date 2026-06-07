@@ -1,42 +1,28 @@
 (defvar
-nvim_pane_maximize       (macro esc S-; S-p a n e S-m a x S-t o g g l e ret)
-nvim_pane_left           A-h
-nvim_pane_right          A-l
-nvim_pane_above          A-k
-nvim_pane_below          A-j
-nvim_pane_h_split        (macro esc S-; s p ret)
-nvim_pane_v_split        (macro esc S-; v s ret)
-nvim_pane_toggle         (macro C-w p)
-nvim_pane_resize_left    (macro C-w S-,)
-nvim_pane_resize_right   (macro C-w S-.)
-nvim_pane_resize_above   (macro C-w -)
-nvim_pane_resize_below   (macro C-w S-=)
-nvim_file_explorer       (macro esc S-; S-n e o t r e e spc t o g g l e ent)
 
 ;; == panes =============================================================
 ;; panes + spc
 ;; ___TO_SET___ nvim_action_panes+spc              
 
 ;; panes + ent
-;; nvim_action_panes+max               `{esc}:PaneMaxToggle{ret}`
-nvim_action_panes+max               $nvim_pane_maximize
+nvim_action_panes+ent               $nvim_pane_maximize
 
 ;; panes + h | panes + left
-nvim_action_panes+h                      $nvim_pane_left ;; Now has tmux integration  ;;""
+nvim_action_panes+h                 $nvim_pane_left ;; Now has tmux integration  ;;""
 ;; panes + l | panes + right
-nvim_action_panes+l                     $nvim_pane_right ;; Now has tmux integration  ;;""
+nvim_action_panes+l                 $nvim_pane_right ;; Now has tmux integration  ;;""
 ;; panes + k | panes + up
-nvim_action_panes+k                     $nvim_pane_above ;; Now has tmux integration  ;;""
+nvim_action_panes+k                 $nvim_pane_above ;; Now has tmux integration  ;;""
 ;; panes + j | panes + down
-nvim_action_panes+j                     $nvim_pane_below ;; Now has tmux integration  ;;""
+nvim_action_panes+j                 $nvim_pane_below ;; Now has tmux integration  ;;""
 
 ;; panes + -
-nvim_action_panes+-                   $nvim_pane_h_split  ;;""
+nvim_action_panes+-                 $nvim_pane_h_split  ;;""
 ;; panes + \
-nvim_action_panes+\                   $nvim_pane_v_split  ;;""
+nvim_action_panes+\                 $nvim_pane_v_split  ;;""
 
 ;; panes + w
-;; ___TO_SET___ nvim_action_panes+w                
+nvim_action_panes+w                 $nvim_close_tab
 
 ;; == panes + toggle ====================================================
 ;; panes + toggle | 2x !lalt
@@ -96,13 +82,13 @@ nvim_action_panes_resize_below      $nvim_pane_resize_below
 ;; panes + 9
 ;; ___TO_SET___ nvim_action_panes+9                
 
-;; == panes show pane / focus (app-specific) =============================
+;; == Misc panes  ====================================================
 ;; panes + q
 ;; ___TO_SET___ nvim_action_panes+q                
 ;; panes + w
 ;; see panes
 ;; panes + e
-nvim_action_panes+e                  $nvim_file_explorer  ;;""
+;; ___TO_SET___ nvim_action_panes+e                
 ;; panes + lsft + e
 ;; ___TO_SET___ nvim_action_panes+lsft+e           
 ;; panes + r

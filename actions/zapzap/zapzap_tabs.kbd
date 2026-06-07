@@ -22,6 +22,8 @@ zapzap_action_tabs_prev              C-A-S-tab
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 ;; ___TO_SET___ zapzap_action_tabs_new               
+;; tabs + v
+;; ___TO_SET___ zapzap_action_tabs_vertical          
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
 ;; ___TO_SET___ zapzap_action_tabs_close             

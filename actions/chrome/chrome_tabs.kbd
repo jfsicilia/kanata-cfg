@@ -19,8 +19,11 @@ chrome_action_tabs_prev                       $chrome_tabs_prev
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 chrome_action_tabs_new                        $chrome_tabs_new
+;; tabs + v
+;; ___TO_SET___ chrome_action_tabs_vertical          
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
+;; tabs + v
 chrome_action_tabs_close                      $chrome_tabs_close
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t

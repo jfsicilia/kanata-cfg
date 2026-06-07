@@ -4,18 +4,17 @@
   ;; == panes =============================================================
   ;; panes + spc
   action_panes+spc         (t! unmod_all (switch ;;@iface@ 
-    ((input virtual vk_dolphin)) $dolphin_action_panes+spc break
-    () XX break
+    () (push-msg "NOTIFY:Show panes not implemented!") break
   ))
 
   ;; panes + ent
-  action_panes+max (t! unmod_all (switch ;;@iface@ 
-    ((input virtual vk_obsidian)) $obsidian_action_panes+max break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+max break
-    ((input virtual vk_nvim)) $nvim_action_panes+max break
-    ((input virtual vk_tmux)) $tmux_action_panes+max break
-    ((input virtual vk_zellij)) $zellij_action_panes+max break
-    () XX break
+  action_panes+ent (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_obsidian)) $obsidian_action_panes+ent break
+    ((input virtual vk_dolphin)) $dolphin_action_panes+ent break
+    ((input virtual vk_nvim)) $nvim_action_panes+ent break
+    ((input virtual vk_tmux)) $tmux_action_panes+ent break
+    ((input virtual vk_zellij)) $zellij_action_panes+ent break
+    () (push-msg "NOTIFY:Maximize pane not implemented!") break
   ))
 
   ;; panes + h | panes + left 
@@ -26,7 +25,7 @@
     ((input virtual vk_nvim)) $nvim_action_panes+h break
     ((input virtual vk_tmux)) $tmux_action_panes+h break
     ((input virtual vk_zellij)) $zellij_action_panes+h break
-    () XX break
+    () (push-msg "NOTIFY:Select left pane not implemented!") break
   ))
   ;; panes + l | panes + right 
   action_panes+l (t! unmod_all (switch ;;@iface@
@@ -36,7 +35,7 @@
     ((input virtual vk_nvim)) $nvim_action_panes+l break
     ((input virtual vk_tmux)) $tmux_action_panes+l break
     ((input virtual vk_zellij)) $zellij_action_panes+l break
-    () XX break
+    () (push-msg "NOTIFY:Select right pane not implemented!") break
   ))
   ;; panes + k | panes + up 
   action_panes+k (t! unmod_all (switch ;;@iface@
@@ -46,7 +45,7 @@
     ((input virtual vk_nvim)) $nvim_action_panes+k break
     ((input virtual vk_tmux)) $tmux_action_panes+k break
     ((input virtual vk_zellij)) $zellij_action_panes+k break
-    () XX break
+    () (push-msg "NOTIFY:Select above pane not implemented!") break
   ))
   ;; panes + j | panes + down 
   action_panes+j (t! unmod_all (switch ;;@iface@
@@ -56,7 +55,7 @@
     ((input virtual vk_nvim)) $nvim_action_panes+j break
     ((input virtual vk_tmux)) $tmux_action_panes+j break
     ((input virtual vk_zellij)) $zellij_action_panes+j break
-    () XX break
+    () (push-msg "NOTIFY:Select below pane not implemented!") break
   ))
 
   ;; panes + -
@@ -65,7 +64,7 @@
     ((input virtual vk_dolphin)) $dolphin_action_panes+- break
     ((input virtual vk_nvim)) $nvim_action_panes+- break
     ((input virtual vk_tmux)) $tmux_action_panes+- break
-    () XX break
+    () (push-msg "NOTIFY: Horizontal split pane not implemented!") break
   ))
   ;; panes + \
   action_panes+\ (t! unmod_all (switch ;;@iface@
@@ -75,15 +74,16 @@
     ((input virtual vk_firefox)) $firefox_action_panes+\ break
     ((input virtual vk_nvim)) $nvim_action_panes+\ break
     ((input virtual vk_tmux)) $tmux_action_panes+\ break
-    () XX break
+    () (push-msg "NOTIFY: Vertical split pane not implemented!") break
   ))
 
   ;; panes + w
   action_panes+w (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+w break
     ((input virtual vk_dolphin)) $dolphin_action_panes+w break
+    ((input virtual vk_nvim)) $nvim_action_panes+w break
     ((input virtual vk_tmux)) $tmux_action_panes+w break
-    () XX break
+    () (push-msg "NOTIFY: Close pane not implemented!") break
   ))
 
   ;; == panes + toggle ====================================================
@@ -93,337 +93,268 @@
     ((input virtual vk_dolphin)) $dolphin_action_panes+toggle break
     ((input virtual vk_nvim)) $nvim_action_panes+toggle break
     ((input virtual vk_tmux)) $tmux_action_panes+toggle break
-    () XX break
+    () (push-msg "NOTIFY: Toggle pane not implemented!") break
   ))
   
   ;; == panes + float ====================================================
   ;; panes + float
   action_panes+float (t! unmod_all (switch ;;@iface@ 
-    ((input virtual vk_dolphin)) $dolphin_action_panes+float break
-    () XX break
+    () (push-msg "NOTIFY: Float pane not implemented!") break
   ))
 
   ;; == panes + move ======================================================
   ;; panes + move + h | panes + move + left
   action_panes_move_left (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_move_left break
     ((input virtual vk_colab)) $colab_action_panes_move_left break
-    () XX break
+    () (push-msg "NOTIFY: Move pane left not implemented!") break
   ))
   ;; panes + move + l | panes + move + right
   action_panes_move_right (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_move_right break
     ((input virtual vk_colab)) $colab_action_panes_move_right break
-    () XX break
+    () (push-msg "NOTIFY: Move pane right not implemented!") break
   ))
   ;; panes + move + k | panes + move + up
   action_panes_move_above (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_move_above break
     ((input virtual vk_colab)) $colab_action_panes_move_above break
-    () XX break
+    () (push-msg "NOTIFY: Move pane up not implemented!") break
   ))
   ;; panes + move + j | panes + move + down
   action_panes_move_below (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_move_below break
     ((input virtual vk_colab)) $colab_action_panes_move_below break
-    () XX break
+    () (push-msg "NOTIFY: Move pane down not implemented!") break
   ))
 
   ;; == panes + resize ====================================================
   ;; panes + resize + h | panes + resize + left
   action_panes_resize_left (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_resize_left break
     ((input virtual vk_nvim)) $nvim_action_panes_resize_left break
-    () XX break
+    () (push-msg "NOTIFY: Resize pane left not implemented!") break
   ))
   ;; panes + resize + l | panes + resize + right
   action_panes_resize_right (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_resize_right break
     ((input virtual vk_nvim)) $nvim_action_panes_resize_right break
-    () XX break
+    () (push-msg "NOTIFY: Resize pane right not implemented!") break
   ))
   ;; panes + resize + k | panes + resize + up
   action_panes_resize_above (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_resize_above break
     ((input virtual vk_nvim)) $nvim_action_panes_resize_above break
-    () XX break
+    () (push-msg "NOTIFY: Resize pane up not implemented!") break
   ))
   ;; panes + resize + j | panes + resize + down
   action_panes_resize_below (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_resize_below break
     ((input virtual vk_nvim)) $nvim_action_panes_resize_below break
-    () XX break
+    () (push-msg "NOTIFY: Resize pane down not implemented!") break
   ))
 
   ;; == panes + swap ======================================================
   ;; panes + swap + h | panes + swap + left
   action_panes_swap_left (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_swap_left break
-    () XX break
+    () (push-msg "NOTIFY: Swap pane left not implemented!") break
   ))
   ;; panes + swap + l | panes + swap + right
   action_panes_swap_right (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_swap_right break
-    () XX break
+    () (push-msg "NOTIFY: Swap pane right not implemented!") break
   ))
   ;; panes + swap + k | panes + swap + up
   action_panes_swap_above (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_swap_above break
-    () XX break
+    () (push-msg "NOTIFY: Swap pane up not implemented!") break
   ))
   ;; panes + swap + j | panes + swap + down
   action_panes_swap_below (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes_swap_below break
-    () XX break
+    () (push-msg "NOTIFY: Swap pane down not implemented!") break
   ))
 
   ;; == panes go by number ============================================
   ;; panes + 1
   action_panes+1 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+1 break
-    () XX break
+    () (push-msg "NOTIFY: Select pane 1 not implemented!") break
   ))
   ;; panes + 2
   action_panes+2 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+2 break
-    () XX break
+    () (push-msg "NOTIFY: Select pane 2 not implemented!") break
   ))
   ;; panes + 3
   action_panes+3 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+3 break
-    () XX break
+    () (push-msg "NOTIFY: Select pane 3 not implemented!") break
   ))
   ;; panes + 4
   action_panes+4 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+4 break
-    () XX break
+    () (push-msg "NOTIFY: Select pane 4 not implemented!") break
   ))
   ;; panes + 5
   action_panes+5 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+5 break
-    () XX break
+    () (push-msg "NOTIFY: Select pane 5 not implemented!") break
   ))
   ;; panes + 6
   action_panes+6 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+6 break
-    () XX break
+    () (push-msg "NOTIFY: Select pane 6 not implemented!") break
   ))
   ;; panes + 7
   action_panes+7 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+7 break
-    () XX break
+    () (push-msg "NOTIFY: Select pane 7 not implemented!") break
   ))
   ;; panes + 8
   action_panes+8 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+8 break
-    () XX break
+    () (push-msg "NOTIFY: Select pane 8 not implemented!") break
   ))
   ;; panes + 9
   action_panes+9 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+9 break
-    () XX break
+    () (push-msg "NOTIFY: Select pane 9 not implemented!") break
   ))
 
-  ;; == panes show pane / focus (app-specific) =============================
+  ;; == Misc panes  ====================================================
   ;; panes + q
   action_panes+q (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+q break
-    () XX break
+    () (push-msg "NOTIFY: Quit pane not implemented!") break
   ))
   ;; panes + w 
   ;; see panes 
   ;; panes + e
   action_panes+e (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+e break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+e break
-    ((input virtual vk_nvim)) $nvim_action_panes+e break
-    () XX break
+    () (push-msg "NOTIFY: Focus explorer pane not implemented!") break
   ))
   ;; panes + lsft + e
   action_panes+lsft+e (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+lsft+e break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+lsft+e break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + r
   action_panes+r (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+r break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+r break
-    () XX break
+    () (push-msg "NOTIFY: Rename pane not implemented!") break
   ))
   ;; panes + t
   action_panes+t (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+t break
-    () XX break
+    () (push-msg "NOTIFY: Focus title pane not implemented!") break
   ))
   ;; panes + u
   action_panes+u (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+u break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + y
   action_panes+y (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+y break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + i
   action_panes+i (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+i break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + o
   action_panes+o (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+o break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+o break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + lsft + o
   action_panes+lsft+o (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+lsft+o break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + p
   action_panes+p (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+p break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+p break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + lsft + p
   action_panes+lsft+p (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+lsft+p break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+lsft+p break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + [
   action_panes+[ (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+[ break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+[ break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + ]
   action_panes+] (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+] break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+] break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + lsft + ]
   action_panes+lsft+. (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+lsft+. break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+lsft+. break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
 
   ;; panes + a
   action_panes+a (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+a break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + s
   action_panes+s (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+s break
     ((input virtual vk_dolphin)) $dolphin_action_panes+s break
-    () XX break
+    () (push-msg "NOTIFY: Toggle left sidebar pane not implemented!") break
   ))
   ;; panes + lsft + s
   action_panes+lsft+s (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+lsft+s break
     ((input virtual vk_dolphin)) $dolphin_action_panes+lsft+s break
-    () XX break
+    () (push-msg "NOTIFY: Toggle right sidebar pane not implemented!") break
   ))
   ;; panes + d
   action_panes+d (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+d break
-    () XX break
+    () (push-msg "NOTIFY: Duplicate pane not implemented!") break
   ))
   ;; panes + f
   action_panes+f (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+f break
-    () XX break
+    () (push-msg "NOTIFY: Focus find pane not implemented!") break
   ))
   ;; panes + g
   action_panes+g (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+g break
     ((input virtual vk_dolphin)) $dolphin_action_panes+g break
-    () XX break
+    () (push-msg "NOTIFY: Focus Go pane not implemented!") break
   ))
   ;; panes + ;
   action_panes+; (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+; break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+; break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + '
   action_panes+' (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+' break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
 
   ;; panes + z
   action_panes+z (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+z break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + x
   action_panes+x (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+x break
     ((input virtual vk_firefox)) $firefox_action_panes+x break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + c
   action_panes+c (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+c break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+c break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + lsft + c
   action_panes+lsft+c (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+lsft+c break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+lsft+c break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + rsft + c
   action_panes+!day (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+!day break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+!day break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + v
   action_panes+v (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+v break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+v break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + b
   action_panes+b (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_panes+b break
-    ((input virtual vk_dolphin)) $dolphin_action_panes+b break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + n
   action_panes+n (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+n break
-    () XX break
+    () (push-msg "NOTIFY: New pane not implemented!") break
   ))
   ;; panes + m
   action_panes+m (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_panes+m break
     ((input virtual vk_dolphin)) $dolphin_action_panes+m break
-    () XX break
+    () (push-msg "NOTIFY: Focus main pane not implemented!") break
   ))
   ;; panes + ,
   action_panes+, (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+, break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + .
   action_panes+. (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+. break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
   ;; panes + /
   action_panes+/ (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_panes+/ break
-    () XX break
+    () (push-msg "NOTIFY: ... pane not implemented!") break
   ))
 
 )

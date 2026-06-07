@@ -13,4 +13,33 @@ obsidian_action_page_up                        C-b
 obsidian_action_page_down                      C-f
 obsidian_action_panes_tag                      A-t
 obsidian_action_setting                        C-,
+
+obsidian_pane_maximize   (macro A-s A-S-s)
+obsidian_pane_left       A-left
+obsidian_pane_right      A-right
+obsidian_pane_above      A-up
+obsidian_pane_below      A-down
+obsidian_pane_h_split    A--
+obsidian_pane_v_split    A-\  
+obsidian_pane_close      A-w
+obsidian_pane_toggle     A-q
+obsidian_file_explorer   A-e
+obsidian_file_explorer_reveal A-S-e
+obsidian_recent          A-r
+obsidian_outline         A-o
+obsidian_properties      A-p
+obsidian_properties_all  A-S-p
+obsidian_backlinks       A-,
+obsidian_outlinks        A-.
+obsidian_outlinks_all    A-S-.
+obsidian_sidebar         A-s
+obsidian_sidebar_right   A-S-s
+obsidian_graph           A-g
+obsidian_calendar        A-c
+obsidian_daily           A-d
+obsidian_daily_shift     A-S-d
+obsidian_vertical_tabs   (macro A-v m)
+obsidian_bookmarks       A-b
+obsidian_main            A-m   ;;""
+
 )

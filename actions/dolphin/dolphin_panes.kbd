@@ -2,10 +2,10 @@
 
 ;; == panes =============================================================
 ;; panes + spc
-dolphin_action_panes+spc              (push-msg "NOTIFY:Select panes not implemented!")
+;; ___TO_SET___ dolphin_action_panes+spc              
 
 ;; panes + ent
-dolphin_action_panes+max               $dolphin_pane_max
+dolphin_action_panes+ent               $dolphin_pane_max
 
 ;; panes + h | panes + left
 dolphin_action_panes+h                 $dolphin_pane_toggle
@@ -30,131 +30,131 @@ dolphin_action_panes+toggle            $dolphin_pane_toggle
 
 ;; == panes + float ====================================================
 ;; panes + float
-dolphin_action_panes+float             (push-msg "NOTIFY:Float pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+float            
 
 ;; == panes + move ======================================================
 ;; panes + move + h | panes + move + left
-dolphin_action_panes_move_left         (push-msg "NOTIFY:Move pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_move_left        
 ;; panes + move + l | panes + move + right
-dolphin_action_panes_move_right        (push-msg "NOTIFY:Move pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_move_right       
 ;; panes + move + k | panes + move + up
-dolphin_action_panes_move_above        (push-msg "NOTIFY:Move pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_move_above       
 ;; panes + move + j | panes + move + down
-dolphin_action_panes_move_below        (push-msg "NOTIFY:Move pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_move_below       
 
 ;; == panes + resize ====================================================
 ;; panes + resize + h | panes + resize + left
-dolphin_action_panes_resize_left      (push-msg "NOTIFY:Resize pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_resize_left      
 ;; panes + resize + l | panes + resize + right
-dolphin_action_panes_resize_right     (push-msg "NOTIFY:Resize pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_resize_right     
 ;; panes + resize + k | panes + resize + up
-dolphin_action_panes_resize_above     (push-msg "NOTIFY:Resize pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_resize_above     
 ;; panes + resize + j | panes + resize + down
-dolphin_action_panes_resize_below     (push-msg "NOTIFY:Resize pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_resize_below     
 
 ;; == panes + swap ======================================================
 ;; panes + swap + h | panes + swap + left
-dolphin_action_panes_swap_left        (push-msg "NOTIFY:Swap pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_swap_left        
 ;; panes + swap + l | panes + swap + right
-dolphin_action_panes_swap_right       (push-msg "NOTIFY:Swap pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_swap_right       
 ;; panes + swap + k | panes + swap + up
-dolphin_action_panes_swap_above       (push-msg "NOTIFY:Swap pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_swap_above       
 ;; panes + swap + j | panes + swap + down
-dolphin_action_panes_swap_below       (push-msg "NOTIFY:Swap pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes_swap_below       
 
 ;; == panes go by number ============================================
 ;; panes + 1
-dolphin_action_panes+1                (push-msg "NOTIFY:Go to pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+1                
 ;; panes + 2
-dolphin_action_panes+2                (push-msg "NOTIFY:Go to pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+2                
 ;; panes + 3
-dolphin_action_panes+3                (push-msg "NOTIFY:Go to pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+3                
 ;; panes + 4
-dolphin_action_panes+4                (push-msg "NOTIFY:Go to pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+4                
 ;; panes + 5
-dolphin_action_panes+5                (push-msg "NOTIFY:Go to pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+5                
 ;; panes + 6
-dolphin_action_panes+6                (push-msg "NOTIFY:Go to pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+6                
 ;; panes + 7
-dolphin_action_panes+7                (push-msg "NOTIFY:Go to pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+7                
 ;; panes + 8
-dolphin_action_panes+8                (push-msg "NOTIFY:Go to pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+8                
 ;; panes + 9
-dolphin_action_panes+9                (push-msg "NOTIFY:Go to pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+9                
 
-;; == panes show pane / focus (app-specific) =============================
+;; == Misc panes  ====================================================
 ;; panes + q
-dolphin_action_panes+q                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+q                
 ;; panes + w
 ;; see panes
 ;; panes + e
-dolphin_action_panes+e                $dolphin_toggle_left_sidebar            
+;; ___TO_SET___ dolphin_action_panes+e                
 ;; panes + lsft + e
-dolphin_action_panes+lsft+e           (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+lsft+e           
 ;; panes + r
-dolphin_action_panes+r                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+r                
 ;; panes + t
-dolphin_action_panes+t                $dolphin_terminal
+;; ___TO_SET___ dolphin_action_panes+t                
 ;; panes + u
-dolphin_action_panes+u                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+u                
 ;; panes + y
-dolphin_action_panes+y                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+y                
 ;; panes + i
-dolphin_action_panes+i                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+i                
 ;; panes + o
-dolphin_action_panes+o                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+o                
 ;; panes + lsft + o
-dolphin_action_panes+lsft+o           (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+lsft+o           
 ;; panes + p
-dolphin_action_panes+p                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+p                
 ;; panes + lsft + p
-dolphin_action_panes+lsft+p           (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+lsft+p           
 ;; panes + [
-dolphin_action_panes+[                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+[                
 ;; panes + ]
-dolphin_action_panes+]                (push-msg "NOTIFY:Show pane not implemented!") ;;""
+;; ___TO_SET___ dolphin_action_panes+]                
 ;; panes + lsft + ]
-dolphin_action_panes+lsft+.           (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+lsft+.           
 
 ;; panes + a
-dolphin_action_panes+a                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+a                
 ;; panes + s
 dolphin_action_panes+s                $dolphin_toggle_left_sidebar
 ;; panes + lsft + s
 dolphin_action_panes+lsft+s           $dolphin_toggle_right_sidebar
 ;; panes + d
-dolphin_action_panes+d                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+d                
 ;; panes + f
-dolphin_action_panes+f                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+f                
 ;; panes + g
 dolphin_action_panes+g                $dolphin_focus_address_bar
 ;; panes + ;
-dolphin_action_panes+;                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+;                
 ;; panes + '
-dolphin_action_panes+'                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+'                
 
 ;; panes + z
-dolphin_action_panes+z                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+z                
 ;; panes + x
-dolphin_action_panes+x                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+x                
 ;; panes + c
-dolphin_action_panes+c                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+c                
 ;; panes + lsft + c
-dolphin_action_panes+lsft+c           (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+lsft+c           
 ;; panes + rsft + c
-dolphin_action_panes+!day             (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+!day             
 ;; panes + v
-dolphin_action_panes+v                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+v                
 ;; panes + b
-dolphin_action_panes+b                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+b                
 ;; panes + n
-dolphin_action_panes+n                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+n                
 ;; panes + m
-dolphin_action_panes+m                $dolphin_focus_main
+dolphin_action_panes+m                 $dolphin_focus_main
 ;; panes + ,
-dolphin_action_panes+,                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+,                
 ;; panes + .
-dolphin_action_panes+.                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+.                
 ;; panes + /
-dolphin_action_panes+/                (push-msg "NOTIFY:Show pane not implemented!")
+;; ___TO_SET___ dolphin_action_panes+/                
 )

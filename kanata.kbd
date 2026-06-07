@@ -25,7 +25,6 @@
 
 ;; Layers =================================================================
 (include layers_toggle/toggles__combinations__.kbd)
-(include layers_toggle/toggles_gui.kbd)
 (include layers_toggle/toggles_apps.kbd)
 (include layers_toggle/toggles_bookmarks.kbd)
 (include layers_toggle/toggles_lang.kbd)
@@ -36,6 +35,8 @@
 (include layers_toggle/toggles_seek_n_select.kbd)
 (include layers_toggle/toggles_replace.kbd)
 (include layers_toggle/toggles_search.kbd)
+(include layers_toggle/toggles_custom_mods.kbd)
+(include layers_toggle/toggles_gui_mods.kbd)
 (include layers_toggle/toggles_physical_mods.kbd)
 (include layers_toggle/toggles_spc_mods.kbd)
 
@@ -56,6 +57,7 @@
 (include layers/layer_omni.kbd)
 (include layers/layer_num_sym.kbd)
 (include layers/layer_lang.kbd)
+(include layers/layer_custom_mods.kbd)
 (include layers/layer_physical_mods.kbd)
 (include layers/layer_spc_mods.kbd)
 

@@ -2,10 +2,10 @@
   ;; == bookmarks =========================================================
   ;; bookmarks + spc
   action_bookmarks+spc (t! unmod_all (switch 
-    ((input virtual vk_nvim)) $nvim_action_bookmarks+spc break
-    ((input virtual vk_obsidian)) $obsidian_action_bookmarks+spc break
-    ((input virtual vk_firefox))  $firefox_bookmarks+spc break
-    ((input virtual vk_chrome))   $chrome_bookmarks+spc break
+    ((input virtual vk_nvim))     $nvim_bookmarks break
+    ((input virtual vk_obsidian)) $obsidian_bookmarks break
+    ((input virtual vk_firefox))  $firefox_bookmarks break
+    ((input virtual vk_chrome))   $chrome_bookmarks break
     () XX break
   )) 
   action_bookmarks+a (t! unmod_all (switch 

@@ -1,6 +1,6 @@
 (deflayermap (panes_layer)
   spc   $action_panes+spc
-  ent   $action_panes+max
+  ent   $action_panes+ent
 
   h     $action_panes+h
   left  $action_panes+h

@@ -11,7 +11,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs+spc break
     ((input virtual vk_nvim)) $nvim_action_tabs+spc break
     ((input virtual vk_tmux)) $tmux_action_tabs+spc break
-    () XX break
+    () (push-msg "NOTIFY: Select tabs not implemented") break
   ))
 
   ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
@@ -41,12 +41,12 @@
   ;; tabs + j | tabs + down
   action_tabs_first  (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_tabs_first break
-    () XX break
+    () (push-msg "NOTIFY: Select first tab not implemented") break
   ))
   ;; tabs + k | tabs + up
   action_tabs_last  (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_tabs_last break
-    () XX break
+    () (push-msg "NOTIFY: Select last tab not implemented") break
   ))
   
   ;; tabs + t 
@@ -57,6 +57,11 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_new break
     ((input virtual vk_tmux)) $tmux_action_tabs_new break
     () C-t break
+  ))
+  ;; tabs + v 
+  action_tabs_vertical (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_tabs_vertical break
+    () (push-msg "NOTIFY: Tabs Vertical not implemented") break
   ))
   ;; tabs + w 
   ;; If not implemented, defaults to: C-w
@@ -196,7 +201,7 @@
     ((input virtual vk_nvim)) $nvim_action_tabs+toggle break
     ((input virtual vk_tmux)) $tmux_action_tabs+toggle break
     ((input virtual vk_zellij)) $zellij_action_tabs+toggle break
-    () XX break
+    () (push-msg "NOTIFY: Toggle recent tab not implemented") break
   ))
 
   ;; == tabs + move =====================================================
@@ -206,7 +211,7 @@
     ((input virtual vk_dolphin)) $dolphin_action_tabs_move_left break
     ((input virtual vk_firefox)) $firefox_action_tabs_move_left break
     ((input virtual vk_tmux)) $tmux_action_tabs_move_left break
-    () XX break
+    () (push-msg "NOTIFY: Move tab left not implemented") break
   ))
   ;; tabs + move + l | tabs + move + right
   action_tabs_move_right (t! unmod_all (switch ;;@iface@
@@ -214,21 +219,21 @@
     ((input virtual vk_dolphin)) $dolphin_action_tabs_move_right break
     ((input virtual vk_firefox)) $firefox_action_tabs_move_right break
     ((input virtual vk_tmux)) $tmux_action_tabs_move_right break
-    () XX break
+    () (push-msg "NOTIFY: Move tab right not implemented") break
   ))
   ;; tabs + move + k | tabs + move + up
   action_tabs_move_first (t! unmod_all (switch ;;@iface@
     ((input virtual vk_chrome)) $chrome_action_tabs_move_first break
     ((input virtual vk_dolphin)) $dolphin_action_tabs_move_first break
     ((input virtual vk_firefox)) $firefox_action_tabs_move_first break
-    () XX break
+    () (push-msg "NOTIFY: Move tab first not implemented") break
   ))
   ;; tabs + move + j | tabs + move + down
   action_tabs_move_last (t! unmod_all (switch ;;@iface@
     ((input virtual vk_chrome)) $chrome_action_tabs_move_last break
     ((input virtual vk_dolphin)) $dolphin_action_tabs_move_last break
     ((input virtual vk_firefox)) $firefox_action_tabs_move_last break
-    () XX break
+    () (push-msg "NOTIFY: Move tab last not implemented") break
   ))
 
 )

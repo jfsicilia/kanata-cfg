@@ -4,63 +4,92 @@
   ;; modA + modA
   action_modA+modA (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modA+modA break
-    () XX break
+    () (push-msg "NOTIFY: Actions not implemented") break
   ))
 
   ;; modB + modB
   action_modB+modB (t! unmod_all (switch ;;@iface@
-    () XX break
+    ((input virtual vk_obsidian)) $obsidian_action_modB+modB break
+    ((input virtual vk_nvim)) $nvim_action_modB+modB break
+    () (push-msg "NOTIFY: Bookmarks not implemented") break
   ))
 
   ;; modC + modC
   action_modC+modC (t! unmod_all (switch ;;@iface@
-    () XX break
+    ((input virtual vk_obsidian)) $obsidian_action_modC+modC break
+    () (push-msg "NOTIFY: Calendar not implemented") break
+  ))
+  ;; modC + modD
+  action_modC+modD (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_modC+modD break
+    () (push-msg "NOTIFY: Calendar (Day) not implemented") break
+  ))
+  ;; modC + modY
+  action_modC+modY (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_modC+modY break
+    () (push-msg "NOTIFY: Calendar (Daily) not implemented") break
   ))
 
   ;; modD + modD
   action_modD+modD (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modD+modD break
-    () XX break
+    () (push-msg "NOTIFY: Definitions not implemented") break
   ))
-
+  ;; modD + modS
+  action_modD+modS (t! unmod_all (switch ;;@ifaceS
+    () (push-msg "NOTIFY: Definition (Source) not implemented") break
+  ))
+ 
   ;; modE + modE
   action_modE+modE (t! unmod_all (switch ;;@iface@
-    () XX break
+    ((input virtual vk_obsidian)) $obsidian_action_modE+modE break
+    ((input virtual vk_dolphin)) $dolphin_action_modE+modE break
+    ((input virtual vk_nvim)) $nvim_action_modE+modE break
+    () (push-msg "NOTIFY: Explorer not implemented") break
+  ))
+  ;; modE + modR
+  action_modE+modR (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_modE+modR break
+    () (push-msg "NOTIFY: Explorer (Recents) not implemented") break
+  ))
+  action_modE+modF (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_modE+modF break
+    () (push-msg "NOTIFY: Explorer (Find/Focus) not implemented") break
   ))
 
   ;; modF + modF
   action_modF+modF (t! unmod_all (switch ;;@iface@
-    ()                              C-spc break  ;; Autofill
+    () (push-msg "NOTIFY: Filters not implemented") break
   ))
 
   ;; modG + modG
   action_modG+modG (t! unmod_all (switch ;;@iface@
     ((input virtual vk_foot)) $foot_action_modG+modG break
     ((input virtual vk_nvim)) $nvim_action_modG+modG break
-    () XX break
+    () (push-msg "NOTIFY: Git not implemented") break
   ))
   ;; modG + modL
   action_modG+modL (t! unmod_all (switch ;;@iface@
     ((input virtual vk_foot)) $foot_action_modG+modL break
     ((input virtual vk_nvim)) $nvim_action_modG+modL break
-    () XX break
+    () (push-msg "NOTIFY: Git (Lazygit) not implemented") break
   ))
 
   ;; modH + modH
   action_modH+modH (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: Hyperlinks not implemented") break
   ))
 
   ;; modI + modI
   action_modI+modI (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_modI+modI break
-    () XX break
+    () (push-msg "NOTIFY: Info not implemented") break
   ))
 
   ;; modJ + modJ
   action_modJ+modJ (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modJ+modJ break
-    ()                        C-spc break  ;; Autofill
+    () (push-msg "NOTIFY: Jumps not implemented") break
   ))
 
   ;; modK + modK
@@ -70,13 +99,13 @@
     ((input virtual vk_firefox)) $firefox_action_modK+modK break
     ((input virtual vk_colab)) $colab_action_modK+modK break
     ((input virtual vk_nvim)) $nvim_action_modK+modK break
-    () XX break
+    () (push-msg "NOTIFY: Keymaps not implemented") break
   ))
 
   ;; modL + modL
   action_modL+modL (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modL+modL break
-    () XX break
+    () (push-msg "NOTIFY: Locations not implemented") break
   ))
 
   ;; modM + modM
@@ -86,174 +115,187 @@
 
   ;; modN + modN
   action_modN+modN (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: notebooks not implemented") break
   ))
 
   ;; modO + modO
   action_modO+modO (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modO+modO break
-    () XX break
+    () (push-msg "NOTIFY: Output not implemented") break
+  ))
+  ;; modO + modL
+  action_modO+modL (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_modO+modL break
+    () (push-msg "NOTIFY: OutLine not implemented") break
   ))
 
   ;; modP + modP
   action_modP+modP (t! unmod_all (switch ;;@iface@
-    () XX break
+    ((input virtual vk_obsidian)) $obsidian_action_modP+modP break
+    () (push-msg "NOTIFY: Properties not implemented") break
+  ))
+  ;; modP + modA
+  action_modP+modA (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_modP+modA break
+    () (push-msg "NOTIFY: Properties All not implemented") break
   ))
   
   ;; modQ + modQ
   action_modQ+modQ (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modQ+modQ break
-    () XX break
+    () (push-msg "NOTIFY: Quickfix not implemented") break
   ))
 
   ;; modR + modR
   action_modR+modR (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modR+modR break
-    () XX break
+    () (push-msg "NOTIFY: References not implemented") break
   ))
-  ;; modR + lsft + modR
-  action_modR+lsft+modR (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modR+lsft+modR break
-    () XX break
+  ;; modR + modI
+  action_modR+modI (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modR+modI break
+    () (push-msg "NOTIFY: References (Incoming) not implemented") break
   ))
-  ;; modR + rsft + modR
-  action_modR+rsft+modR (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modR+rsft+modR break
-    () XX break
+  ;; modR + modO
+  action_modR+modO (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modR+modO break
+    () (push-msg "NOTIFY: References (Outgoing) not implemented") break
+  ))
+  ;; modR + modS
+  action_modR+modS (t! unmod_all (switch ;;@ifaceS
+    () (push-msg "NOTIFY: Source not implemented") break
   ))
 
   ;; modS + modS
   action_modS+modS (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_modS+modS break
     ((input virtual vk_nvim)) $nvim_action_modS+modS break
-    () XX break
+    () (push-msg "NOTIFY: Symbols not implemented") break
   ))
-  ;; modS + lsft + modS
-  action_modS+lsft+modS (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_modS+lsft+modS break
-    () XX break
+  ;; modS + modW
+  action_modS+modW (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_modS+modW break
+    () (push-msg "NOTIFY: Symbols (Workspace) not implemented") break
   ))
 
   ;; modT + modT
   action_modT+modT (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_modT+modT break
-    () XX break
-  ))
-  ;; modT + lsft + modT
-  action_modT+lsft+modT (t! unmod_all (switch ;;@iface@
-    () XX break
+    ((input virtual vk_nvim)) $nvim_action_modT+modT break
+    () (push-msg "NOTIFY: Terminal not implemented") break
   ))
   ;; modT + toggle
   action_modT+toggle (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modT+toggle break
-    () XX break
+    () (push-msg "NOTIFY: Toggle Terminal not implemented") break
   ))
 
   ;; modU + modU
   action_modU+modU (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: UI not implemented") break
+  ))
+  action_modU+modG (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY: UI Graph not implemented") break
   ))
 
   ;; modV + modV
   action_modV+modV (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: Virtualization not implemented") break
   ))
 
   ;; modW + modW
   action_modW+modW (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: Warnings not implemented") break
   ))
 
   ;; modX + modX
   action_modX+modX (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: Extensions not implemented") break
   ))
 
   ;; modY + modY
   action_modY+modY (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modY+modY break
-    () XX break
+    () (push-msg "NOTIFY: History not implemented") break
   ))
   ;; modY + mod;
   action_modY+mod; (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modY+mod; break
-    () XX break
+    () (push-msg "NOTIFY: History (commands) not implemented") break
   )) ;;""
   ;; modY + search 
   action_modY+search (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modY+search break
-    () XX break
+    () (push-msg "NOTIFY: History search not implemented") break
   ))
 
   ;; modZ + modZ
   action_modZ+modZ (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: Tests not implemented") break
   ))
 
   ;; mod` + mod`
   action_mod`+mod` (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod` not implemented") break
   ))
 
   ;; mod- + mod-
   action_mod-+mod- (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod- not implemented") break
   ))
 
   ;; mod= + mod=
   action_mod=+mod= (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: Format not implemented") break
   )) ;;""
 
   ;; mod[ + mod[
   action_mod[+mod[ (t! unmod_all (switch ;;@iface@ 
-    () XX break
+    ((input virtual vk_obsidian)) $obsidian_action_mod[+mod[ break
+    () (push-msg "NOTIFY: Backlinks not implemented") break
   )) ;;""
 
   ;; mod] + mod]
   action_mod]+mod] (t! unmod_all (switch ;;@iface@
-    () XX break
+    ((input virtual vk_obsidian)) $obsidian_action_mod]+mod] break
+    () (push-msg "NOTIFY: Outlinks not implemented") break
+  )) ;;""
+  ;; mod] + modA
+  action_mod]+modA (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_mod]+modA break
+    () (push-msg "NOTIFY: Outlinks All not implemented") break
   )) ;;""
 
   ;; mod\ + mod\
   action_mod\+mod\ (t! unmod_all (switch ;;@iface@
     ((input virtual vk_foot)) $foot_action_mod\+mod\ break
     ((input virtual vk_nvim)) $nvim_action_mod\+mod\ break
-    () XX break
+    () (push-msg "NOTIFY: Toggle compare files not implemented") break
   )) ;;""
   ;; mod\ + lsft + mod\
   action_mod\+lsft+mod\ (t! unmod_all (switch ;;@iface@
     ((input virtual vk_foot)) $foot_action_mod\+lsft+mod\ break
-    () XX break
+    () (push-msg "NOTIFY: Toggle compare folders not implemented") break
   )) ;;""
   ;; mod\ + j
   action_mod\+j (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_mod\+j break
     ((input virtual vk_nvim)) $nvim_action_mod\+j break
-    () XX break
+    () (push-msg "NOTIFY: Compare next not implemented") break
   )) ;;""
   ;; mod\ + k
   action_mod\+k (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_mod\+k break
     ((input virtual vk_nvim)) $nvim_action_mod\+k break
-    () XX break
+    () (push-msg "NOTIFY: Compare before not implemented") break
   )) ;;""
   ;; mod\ + o
   action_mod\+o (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_mod\+o break
     ((input virtual vk_nvim)) $nvim_action_mod\+o break
-    () XX break
+    () (push-msg "NOTIFY: Compare obtain not implemented") break
   )) ;;""
   ;; mod\ + p
   action_mod\+p (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_mod\+p break
     ((input virtual vk_nvim)) $nvim_action_mod\+p break
-    () XX break
-  )) ;;""
-  ;; mod\ + ent
-  action_mod\+ent (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_mod\+ent break
-    () XX break
+    () (push-msg "NOTIFY: Compare push not implemented") break
   )) ;;""
 
   ;; mod; + mod;
@@ -262,13 +304,13 @@
     ((input virtual vk_colab)) $colab_action_mod;+mod; break
     ((input virtual vk_nvim)) $nvim_action_mod;+mod; break
     ((input virtual vk_tmux)) $tmux_action_mod;+mod; break
-    () XX break
+    () (push-msg "NOTIFY: Commands not implemented") break
   )) ;;""
 
   ;; mod' + mod'
   action_mod'+mod' (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_mod'+mod' break
-    () XX break
+    () (push-msg "NOTIFY: Registries not implemented") break
   ))
 
   ;; mod, + mod,
@@ -279,71 +321,77 @@
     ((input virtual vk_dolphin)) $dolphin_action_mod,+mod, break
     ((input virtual vk_firefox)) $firefox_action_mod,+mod, break
     ((input virtual vk_nvim)) $nvim_action_mod,+mod, break
-    () XX break
+    () (push-msg "NOTIFY: Settings not implemented") break
   ))
 
   ;; mod. + mod.
   action_mod.+mod. (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_mod.+mod. break
     ((input virtual vk_nvim)) $nvim_action_mod.+mod. break
-    () XX break
+    () (push-msg "NOTIFY: Tags not implemented") break
   ))
 
   ;; mod/ + mod/ 
   action_mod/+mod/ (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_mod/+mod/ break
     ((input virtual vk_nvim)) $nvim_action_mod/+mod/ break
-    () XX break
+    () (push-msg "NOTIFY: Help not implemented") break
   )) ;;""
 
   ;; mod0 + mod0
   action_mod0+mod0 (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod0 not implemented") break
   ))
 
   ;; mod1 + mod1
   action_mod1+mod1 (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod1 not implemented") break
   ))
 
   ;; mod2 + mod2
   action_mod2+mod2 (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod2 not implemented") break
   ))
 
   ;; mod3 + mod3
   action_mod3+mod3 (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod3 not implemented") break
   ))
 
   ;; mod4 + mod4
   action_mod4+mod4 (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod4 not implemented") break
   ))
 
   ;; mod5 + mod5
   action_mod5+mod5 (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod5 not implemented") break
   ))
 
   ;; mod6 + mod6
   action_mod6+mod6 (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod6 not implemented") break
   ))
 
   ;; mod7 + mod7
   action_mod7+mod7 (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod7 not implemented") break
   ))
 
   ;; mod8 + mod8
   action_mod8+mod8 (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod8 not implemented") break
   ))
 
   ;; mod9 + mod9
   action_mod9+mod9 (t! unmod_all (switch ;;@iface@
-    () XX break
+    () (push-msg "NOTIFY: mod9 not implemented") break
   ))
+
+  ;; omni + omni
+  action_omni+omni (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY: AI") break
+  ))
+ 
 
 )

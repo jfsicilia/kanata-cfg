@@ -19,8 +19,11 @@ obsidian_action_tabs_prev                       C-pgup
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 obsidian_action_tabs_new                        A-C-t
+;; tabs + v
+obsidian_action_tabs_vertical                   $obsidian_vertical_tabs
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
+;; tabs + v
 obsidian_action_tabs_close                      A-C-w
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t

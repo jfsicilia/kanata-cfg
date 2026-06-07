@@ -8,12 +8,17 @@
 
 ;; modC + modC
 ;; ___TO_SET___ dolphin_action_modC+modC              
+;; modC + modD
+;; ___TO_SET___ dolphin_action_modC+modD              
+;; modC + modY
+;; ___TO_SET___ dolphin_action_modC+modY              
 
 ;; modD + modD
 ;; ___TO_SET___ dolphin_action_modD+modD              
 
 ;; modE + modE
-;; ___TO_SET___ dolphin_action_modE+modE              
+dolphin_action_modE+modE                 $dolphin_toggle_left_sidebar            
+;; ___TO_SET___ dolphin_action_modE+modF              
 
 ;; modF + modF
 ;; ___TO_SET___ dolphin_action_modF+modF              
@@ -46,34 +51,39 @@ dolphin_action_modK+modK                  $dolphin_keymaps
 
 ;; modO + modO
 ;; ___TO_SET___ dolphin_action_modO+modO              
+;; modO + modL
+;; ___TO_SET___ dolphin_action_modO+modL              
 
 ;; modP + modP
 ;; ___TO_SET___ dolphin_action_modP+modP              
+;; modP + modA
+;; ___TO_SET___ dolphin_action_modP+modA              
 
 ;; modQ + modQ
 ;; ___TO_SET___ dolphin_action_modQ+modQ              
 
 ;; modR + modR
 ;; ___TO_SET___ dolphin_action_modR+modR              
-;; modR + lsft + modR
-;; ___TO_SET___ dolphin_action_modR+lsft+modR         
-;; modR + rsft + modR
-;; ___TO_SET___ dolphin_action_modR+rsft+modR         
+;; modR + modE
+;; ___TO_SET___ dolphin_action_modR+modE              
+;; modR + modI
+;; ___TO_SET___ dolphin_action_modR+modI              
+;; modR + modO
+;; ___TO_SET___ dolphin_action_modR+modO              
 
 ;; modS + modS
 ;; ___TO_SET___ dolphin_action_modS+modS              
-;; modS + lsft + modS
-;; ___TO_SET___ dolphin_action_modS+lsft+modS         
+;; modS + modW
+;; ___TO_SET___ dolphin_action_modS+modW              
 
 ;; modT + modT
 dolphin_action_modT+modT                    $dolphin_terminal
-;; modT + lsft + modT
-;; ___TO_SET___ dolphin_action_modT+lsft+modT         
 ;; modT + toggle
 ;; ___TO_SET___ dolphin_action_modT+toggle            
 
 ;; modU + modU
 ;; ___TO_SET___ dolphin_action_modU+modU              
+;; ___TO_SET___ dolphin_action_modU+modG              
 
 ;; modV + modV
 ;; ___TO_SET___ dolphin_action_modV+modV              
@@ -108,21 +118,21 @@ dolphin_action_modT+modT                    $dolphin_terminal
 
 ;; mod] + mod]
 ;; ___TO_SET___ dolphin_action_mod]+mod]              
+;; mod] + modA
+;; ___TO_SET___ dolphin_action_mod]+modA              
 
 ;; mod\ + mod\
 ;; ___TO_SET___ dolphin_action_mod\+mod\              
 ;; mod\ + lsft + mod\
 ;; ___TO_SET___ dolphin_action_mod\+lsft+mod\         
 ;; mod\ + j
-dolphin_action_mod\+j                  (push-msg "NOTIFY:ModKey+spc not implemented!")
+;; ___TO_SET___ dolphin_action_mod\+j                 
 ;; mod\ + k
-dolphin_action_mod\+k                  (push-msg "NOTIFY:ModKey+spc not implemented!")
+;; ___TO_SET___ dolphin_action_mod\+k                 
 ;; mod\ + o
-dolphin_action_mod\+o                  (push-msg "NOTIFY:ModKey+spc not implemented!")
+;; ___TO_SET___ dolphin_action_mod\+o                 
 ;; mod\ + p
-dolphin_action_mod\+p                  (push-msg "NOTIFY:ModKey+spc not implemented!")
-;; mod\ + ent
-dolphin_action_mod\+ent                (push-msg "NOTIFY:ModKey+spc not implemented!") ;""
+;; ___TO_SET___ dolphin_action_mod\+p                 
 
 ;; mod; + mod;
 ;; ___TO_SET___ dolphin_action_mod;+mod;              
@@ -168,4 +178,7 @@ dolphin_action_mod/+mod/                    $dolphin_help
 
 ;; mod9 + mod9
 ;; ___TO_SET___ dolphin_action_mod9+mod9              
+
+;; omni + omni
+;; ___TO_SET___ dolphin_action_omni+omni              
 )
