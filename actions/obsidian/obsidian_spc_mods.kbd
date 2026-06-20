@@ -12,13 +12,15 @@ obsidian_action_modC+modC              $obsidian_calendar
 ;; modC + modY
 obsidian_action_modC+modD              $obsidian_daily_shift
 ;; modC + modY
-obsidian_action_modC+modY              $obsidian_calendar_daily
+obsidian_action_modC+modY              $obsidian_daily
 
 ;; modD + modD
 ;; ___TO_SET___ obsidian_action_modD+modD              
 
 ;; modE + modE
 obsidian_action_modE+modE              $obsidian_file_explorer
+;; modE + modR
+obsidian_action_modE+modR              $obsidian_recent
 ;; modE + modF
 obsidian_action_modE+modF              $obsidian_file_explorer_reveal
 
@@ -32,6 +34,8 @@ obsidian_action_modE+modF              $obsidian_file_explorer_reveal
 
 ;; modH + modH
 ;; ___TO_SET___ obsidian_action_modH+modH              
+;; modH + modO
+obsidian_action_modH+modO             $obsidian_outline 
 
 ;; modI + modI
 ;; ___TO_SET___ obsidian_action_modI+modI              
@@ -53,8 +57,6 @@ obsidian_action_modE+modF              $obsidian_file_explorer_reveal
 
 ;; modO + modO
 ;; ___TO_SET___ obsidian_action_modO+modO              
-;; modO + modL
-obsidian_action_modO+modL             $obsidian_outline 
 
 ;; modP + modP
 obsidian_action_modP+modP             $obsidian_properties
@@ -66,8 +68,6 @@ obsidian_action_modP+modA             $obsidian_properties_all
 
 ;; modR + modR
 ;; ___TO_SET___ obsidian_action_modR+modR              
-;; modR + modE
-obsidian_action_modR+modE             $obsidian_recent
 ;; modR + modI
 ;; ___TO_SET___ obsidian_action_modR+modI              
 ;; modR + modO

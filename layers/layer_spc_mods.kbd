@@ -13,19 +13,23 @@
 ;; Calendar
 (deflayermap (spc+modC_layer)
   c $action_modC+modC
+  d $action_modC+modD
+  y $action_modC+modY
   _ XX
 )
 
 ;; Definitions
 (deflayermap (spc+modD_layer)
   d $action_modD+modD
+  s $action_modD+modS
   _ XX
 )
 
 ;; Explorer
 (deflayermap (spc+modE_layer)
   e $action_modE+modE
-  f $action_modE+modF
+  f $action_modE+modF  
+  r $action_modE+modR  
   _ XX
 )
 
@@ -45,6 +49,7 @@
 ;; Hyperlinks
 (deflayermap (spc+modH_layer)
   h $action_modH+modH
+  o $action_modH+modO
   _ XX
 )
 
@@ -93,6 +98,7 @@
 ;; Properties
 (deflayermap (spc+modP_layer)
   p $action_modP+modP
+  a $action_modP+modA
   _ XX
 )
 
@@ -105,24 +111,29 @@
 ;; References
 (deflayermap (spc+modR_layer)
   r $action_modR+modR
+  i $action_modR+modI
+  o $action_modR+modO
   _ XX
 )
 
 ;; Symbols
 (deflayermap (spc+modS_layer)
   s $action_modS+modS
+  w $action_modS+modW
   _ XX
 )
 
 ;; Terminal
 (deflayermap (spc+modT_layer)
-  t $action_modT+modT
+  t       $action_modT+modT
+  $toggle $action_modT+toggle
   _ XX
 )
 
 ;; UI
 (deflayermap (spc+modU_layer)
   u $action_modU+modU
+  g $action_modU+modG
   _ XX
 )
 
@@ -150,6 +161,7 @@
 
   $mod;      $action_modY+mod;
   $search    $action_modY+search
+  _ XX
 )
 
 ;; Tests
@@ -210,6 +222,7 @@
 ;; Outlinks
 (deflayermap (spc+mod]_layer)
   ] $action_mod]+mod]
+  a $action_mod]+modA
   _ XX
 ) ;;""
 

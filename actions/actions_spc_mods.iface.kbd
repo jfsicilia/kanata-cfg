@@ -52,6 +52,7 @@
     ((input virtual vk_obsidian)) $obsidian_action_modE+modR break
     () (push-msg "NOTIFY: Explorer (Recents) not implemented") break
   ))
+  ;; modE + modF
   action_modE+modF (t! unmod_all (switch ;;@iface@
     ((input virtual vk_obsidian)) $obsidian_action_modE+modF break
     () (push-msg "NOTIFY: Explorer (Find/Focus) not implemented") break
@@ -78,6 +79,11 @@
   ;; modH + modH
   action_modH+modH (t! unmod_all (switch ;;@iface@
     () (push-msg "NOTIFY: Hyperlinks not implemented") break
+  ))
+  ;; modH + modO
+  action_modH+modO (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_modH+modO break
+    () (push-msg "NOTIFY: OutLine not implemented") break
   ))
 
   ;; modI + modI
@@ -110,6 +116,7 @@
 
   ;; modM + modM
   action_modM+modM (t! unmod_all (switch ;;@iface@
+    ;; () (push-msg "NOTIFY: Memory not implemented") break
     ()                      M-v break  ;; Clipboard history
   ))
 
@@ -122,11 +129,6 @@
   action_modO+modO (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_modO+modO break
     () (push-msg "NOTIFY: Output not implemented") break
-  ))
-  ;; modO + modL
-  action_modO+modL (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_modO+modL break
-    () (push-msg "NOTIFY: OutLine not implemented") break
   ))
 
   ;; modP + modP
@@ -194,6 +196,7 @@
   action_modU+modU (t! unmod_all (switch ;;@iface@
     () (push-msg "NOTIFY: UI not implemented") break
   ))
+  ;; modU + modG
   action_modU+modG (t! unmod_all (switch ;;@iface@
     () (push-msg "NOTIFY: UI Graph not implemented") break
   ))

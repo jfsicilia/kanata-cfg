@@ -22,6 +22,9 @@ nvim_action_modD+modD                $nvim_definitions
 
 ;; modE + modE
 nvim_action_modE+modE                $nvim_file_explorer  
+;; modE + modR
+;; ___TO_SET___ nvim_action_modE+modR              
+;; modE + modF
 ;; ___TO_SET___ nvim_action_modE+modF              
 
 ;; modF + modF
@@ -34,6 +37,8 @@ nvim_action_modG+modL                $nvim_lazygit
 
 ;; modH + modH
 ;; ___TO_SET___ nvim_action_modH+modH              
+;; modH + modO
+;; ___TO_SET___ nvim_action_modH+modO              
 
 ;; modI + modI
 ;; ___TO_SET___ nvim_action_modI+modI              
@@ -55,8 +60,6 @@ nvim_action_modL+modL                $nvim_locations
 
 ;; modO + modO
 nvim_action_modO+modO                 $nvim_source
-;; modO + modL
-;; ___TO_SET___ nvim_action_modO+modL              
 
 ;; modP + modP
 ;; ___TO_SET___ nvim_action_modP+modP              
@@ -68,8 +71,6 @@ nvim_action_modQ+modQ                 $nvim_quickfix
 
 ;; modR + modR
 nvim_action_modR+modR                 $nvim_references
-;; modR + modE
-;; ___TO_SET___ nvim_action_modR+modE              
 ;; modR + modI
 nvim_action_modR+modI                 $nvim_references_incoming
 ;; modR + modO
@@ -87,6 +88,7 @@ nvim_action_modT+toggle               $nvim_terminal
 
 ;; modU + modU
 ;; ___TO_SET___ nvim_action_modU+modU              
+;; modU + modG
 ;; ___TO_SET___ nvim_action_modU+modG              
 
 ;; modV + modV

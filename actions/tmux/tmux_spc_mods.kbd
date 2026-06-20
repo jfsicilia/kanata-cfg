@@ -18,6 +18,9 @@
 
 ;; modE + modE
 ;; ___TO_SET___ tmux_action_modE+modE              
+;; modE + modR
+;; ___TO_SET___ tmux_action_modE+modR              
+;; modE + modF
 ;; ___TO_SET___ tmux_action_modE+modF              
 
 ;; modF + modF
@@ -30,6 +33,8 @@
 
 ;; modH + modH
 ;; ___TO_SET___ tmux_action_modH+modH              
+;; modH + modO
+;; ___TO_SET___ tmux_action_modH+modO              
 
 ;; modI + modI
 ;; ___TO_SET___ tmux_action_modI+modI              
@@ -51,8 +56,6 @@
 
 ;; modO + modO
 ;; ___TO_SET___ tmux_action_modO+modO              
-;; modO + modL
-;; ___TO_SET___ tmux_action_modO+modL              
 
 ;; modP + modP
 ;; ___TO_SET___ tmux_action_modP+modP              
@@ -64,8 +67,6 @@
 
 ;; modR + modR
 ;; ___TO_SET___ tmux_action_modR+modR              
-;; modR + modE
-;; ___TO_SET___ tmux_action_modR+modE              
 ;; modR + modI
 ;; ___TO_SET___ tmux_action_modR+modI              
 ;; modR + modO
@@ -83,6 +84,7 @@
 
 ;; modU + modU
 ;; ___TO_SET___ tmux_action_modU+modU              
+;; modU + modG
 ;; ___TO_SET___ tmux_action_modU+modG              
 
 ;; modV + modV
