@@ -104,7 +104,7 @@
 ;; !lmet → tap: 2x desktop toggle   hold: !lmet_layer (physical lctl)
 ;; !lalt → tap: 2x pane toggle      hold: !lalt_layer (physical lmet)
 ;; !lctl → tap: 2x tab toggle       hold: !lctl_layer (physical lalt, mimics lalt+tab)
-;; spc   → tap: space               hold: num/sym_layer
+;; spc   → tap: space               hold: spc+mods layers
 ;; ralt  → tap: 2x app toggle       hold: apps_layer
 ;; prnt  → tap: 2x session toggle   hold: bookmarks_layer
 ;; rctl  → tap: 2x groups toggle     hold: opts_layer
@@ -129,6 +129,8 @@
 
   vk_fast_typing  XX ;; Used to allow fast typing without triggering modifier
                      ;; combos with homerowmod.
+
+  vk_help_mode XX    ;; Used to show help (keybindings) as a notification.
 
   ;; Spc modifiers (see spc+letter combos)
   vk_modA (layer-while-held spc+modA_layer) 
@@ -238,7 +240,8 @@
   ;; Time config
   retap_time  200
   hold_time 200
-  fast_type_time 55
+  help_hold_time 1000
+  fast_type_time 60
 
   ;; Number row keys.
       `|mod`                `           ;; Tap: `,   spc+: spc+mod`_layer 
@@ -465,15 +468,16 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
   rsft                     (t!      th (t! 2x $action_tabs_next)                 $toggle_rsft_layer)
 
   ;; Modifiers row.
-  $!lmet|replace           (t!      th (t! 2x $action_desktops+toggle)           $toggle_replace_&_!lmet_layer)
-  $!lalt|search            (t!      th (t! 2x $action_panes+toggle)              $toggle_search_&_!lalt_layer)
-  $!lctl|seek_sel   (multi (t!      th (t! 2x $action_tabs+toggle)               $toggle_seek_n_select_&_!lctl_layer) (on-release release-vkey vk_lalt))
-    $spc|spc_mods          (t! fast_th spc                                (multi $toggle_spc_mods_layer (t! release_spc_mods)))
-   $ralt|apps              (t!      th (t! 2x $action_apps+toggle)               $toggle_apps_layer)
-   $prnt|bookm             (t!      th (t! 2x $action_sessions+toggle)           $toggle_bookmarks_layer)
-$copilot|bookm             (t!      th (t! 2x $action_sessions+toggle)           $toggle_bookmarks_layer)
-   $rctl|opts              (t!      th (t! 2x $~action_!tabs+toggle)             $toggle_opts_layer)   
-    $esc|opts              (t!      th esc                                       $toggle_opts_layer)   
+  $!lmet|replace           (t!      th  (t! 2x $action_desktops+toggle)           $toggle_replace_&_!lmet_layer)
+  $!lalt|search            (t!      th  (t! 2x $action_panes+toggle)              $toggle_search_&_!lalt_layer)
+  $!lctl|seek_sel   (multi (t!      th  (t! 2x $action_tabs+toggle)               $toggle_seek_n_select_&_!lctl_layer) (on-release release-vkey vk_lalt))
+  ;;$spc|spc_mods          (t! fast_th  spc                                (multi $toggle_spc_mods_layer (t! release_spc_mods)))
+    $spc|spc_mods          (t! fast_thh spc                                (multi $toggle_spc_mods_layer (t! release_spc_mods)) $SPC_MODS_HELP_MSG)
+   $ralt|apps              (t!      thh (t! 2x $action_apps+toggle)               $toggle_apps_layer $APPS_HELP_MSG)
+   $prnt|bookm             (t!      th  (t! 2x $action_sessions+toggle)           $toggle_bookmarks_layer)
+$copilot|bookm             (t!      th  (t! 2x $action_sessions+toggle)           $toggle_bookmarks_layer)
+   $rctl|opts              (t!      th  (t! 2x $~action_!tabs+toggle)             $toggle_opts_layer)   
+    $esc|opts              (t!      th  esc                                       $toggle_opts_layer)   
 )
 
 (deflayermap (default)

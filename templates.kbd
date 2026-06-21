@@ -54,6 +54,32 @@
   )
 )
 
+(deftemplate fast_thh (tap hold help_msg)
+  (switch
+    ((input virtual vk_fast_typing)) (t! type $tap) break
+    () (tap-hold-press-timeout $retap_time $help_hold_time
+         (t! type $tap) 
+         $hold 
+         (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
+       ) break
+  )
+)
+
+(deftemplate thh (tap hold help_msg)
+  (tap-hold-press-timeout $retap_time $help_hold_time
+    $tap
+    $hold 
+    (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
+  )
+)
+
+(deftemplate help&action (help_msg action)
+  (switch 
+    (if-not-equal $help_msg XX ((input virtual vk_help_mode)) (push-msg $help_msg) fallthrough)
+    () $action break
+  )
+)
+
 ;; DEPRECATED: Shift-dependent action dispatcher.
 ;; Executes different actions based on whether lsft, rsft, or no shift is pressed.
 ;; This template is no longer used - replaced by explicit layer variants
