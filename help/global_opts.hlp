@@ -1,0 +1,13 @@
+# Opts (actions/actions_opts.kbd)
+**opts + 1**        -- Quiet Profile
+**opts + 2**        -- Balanced Profile
+**opts + 3**        -- Performance Profile
+**opts + rsft + k** -- Restart Kwanata
+**opts + lsft + q** -- Rebooting
+**opts + rsft + q** -- Shutting Down
+**opts + p**        -- Print Screen
+**opts + lsft + p** -- Print Window
+**opts + lsft + k** -- Sync And Reload Kanata
+**opts + k**        -- Reload Kanata
+**opts + d**        -- Debug Message
+**opts + q**        -- Sleeping

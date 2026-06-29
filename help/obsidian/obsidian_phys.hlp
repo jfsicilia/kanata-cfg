@@ -1,0 +1,16 @@
+# Physical mods - obsidian (actions/obsidian/obsidian_physical_mods.kbd)
+**phys + lctl + b**         -- Page Up
+**phys + lctl + f**         -- Page Down
+**phys + lctl + t**         -- Tabs New
+**phys + lctl + ,**         -- Setting
+**phys + lctl + ;**         -- Vimola
+**phys + lctl + [**         -- Omni [
+**phys + lctl + ]**         -- Omni ]
+**phys + lctl + lsft + t**  -- Tabs Undo Close
+**phys + !lctl + a**        -- Select All Text
+**phys + !lctl + b**        -- Bold Text
+**phys + !lctl + e**        -- Toggle Edit Mode
+**phys + !lctl + p**        -- Select Files
+**phys + !lctl + r**        -- Toggle Source Mode
+**phys + !lctl + ,**        -- Setting
+**phys + !lctl + lsft + p** -- Mod; Mod;

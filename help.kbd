@@ -162,8 +162,26 @@
                                      "r      -- \n"
                                      "u      -- \n"
                                      "y      -- \n"
-                                     "z      -- \n")
+                                     "z      -- \n"
+                                     )
 
+  TABS_HELP_MSG      (concat "NOTIFY: ______Tabs______\n"
+                                     "l|right -- Next tab\n"
+                                     "h|left  -- Prev tab\n"
+                                     "j|down  -- First tab\n"
+                                     "k|up    -- Last tab\n"
+                                     "t       -- New tab\n"
+                                     "w       -- Close tab\n"
+                                     "sft+t   -- Undo tab\n"
+                                     "v       -- Vertical tab\n"
+                                     )
+
+  TABS_MOVE_HELP_MSG (concat "NOTIFY: ____Move Tabs____\n"
+                                     "l|right -- Move tab right\n"
+                                     "h|left  -- Move tab left\n"
+                                     "j|down  -- Move tab down\n"
+                                     "k|up    -- Move tab up\n"
+                                     )
 
 
 )

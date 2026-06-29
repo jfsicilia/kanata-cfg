@@ -1,0 +1,363 @@
+;; Actions
+(deflayermap (domains+a_layer)
+  a $action_modA+modA
+  _ XX
+)
+
+;; Bookmarks
+(deflayermap (domains+b_layer)
+  b $action_modB+modB
+  _ XX
+)
+
+;; Calendar
+(deflayermap (domains+c_layer)
+  c $action_modC+modC
+  d $action_modC+modD
+  y $action_modC+modY
+  _ XX
+)
+
+;; Definitions
+(deflayermap (domains+d_layer)
+  d $action_modD+modD
+  s $action_modD+modS
+  _ XX
+)
+
+;; Explorer
+(deflayermap (domains+e_layer)
+  e $action_modE+modE
+  f $action_modE+modF  
+  r $action_modE+modR  
+  _ XX
+)
+
+;; Filter
+(deflayermap (domains+f_layer)
+  f $action_modF+modF
+  _ XX
+)
+
+;; Git
+(deflayermap (domains+g_layer)
+  g $action_modG+modG
+  l $action_modG+modL
+  _ XX
+)
+
+;; Hyperlinks
+(deflayermap (domains+h_layer)
+  h $action_modH+modH
+  o $action_modH+modO
+  _ XX
+)
+
+;; Info
+(deflayermap (domains+i_layer)
+  i $action_modI+modI
+  _ XX
+)
+
+;; Jumps
+(deflayermap (domains+j_layer)
+  j $action_modJ+modJ
+  _ XX
+)
+
+;; Keymaps
+(deflayermap (domains+k_layer)
+  k $action_modK+modK
+  _ XX
+)
+
+;; Locations
+(deflayermap (domains+l_layer)
+  l $action_modL+modL
+  _ XX
+)
+
+;; Mem
+(deflayermap (domains+m_layer)
+  m $action_modM+modM
+  _ XX
+)
+
+;; Notebooks
+(deflayermap (domains+n_layer)
+  n $action_modN+modN
+  _ XX
+)
+
+;; Output
+(deflayermap (domains+o_layer)
+  o $action_modO+modO
+  _ XX
+)
+
+;; Properties
+(deflayermap (domains+p_layer)
+  p $action_modP+modP
+  a $action_modP+modA
+  _ XX
+)
+
+;; Quickfix
+(deflayermap (domains+q_layer)
+  q $action_modQ+modQ
+  _ XX
+)
+
+;; References
+(deflayermap (domains+r_layer)
+  r $action_modR+modR
+  i $action_modR+modI
+  o $action_modR+modO
+  _ XX
+)
+
+;; Symbols
+(deflayermap (domains+s_layer)
+  s $action_modS+modS
+  w $action_modS+modW
+  _ XX
+)
+
+;; Terminal
+(deflayermap (domains+t_layer)
+  t       $action_modT+modT
+  $toggle $action_modT+toggle
+  _ XX
+)
+
+;; UI
+(deflayermap (domains+u_layer)
+  u $action_modU+modU
+  g $action_modU+modG
+  _ XX
+)
+
+;; Virtualization
+(deflayermap (domains+v_layer)
+  v $action_modV+modV
+  _ XX
+)
+
+;; Warnings
+(deflayermap (domains+w_layer)
+  w $action_modW+modW
+  _ XX
+)
+
+;; Extensions
+(deflayermap (domains+x_layer)
+  x $action_modX+modX
+  _ XX
+)
+
+;; History
+(deflayermap (domains+y_layer)
+  y $action_modY+modY
+
+  $mod;      $action_modY+mod;
+  $search    $action_modY+search
+  _ XX
+)
+
+;; Tests
+(deflayermap (domains+z_layer)
+  z $action_modZ+modZ
+  _ XX
+)
+
+;; Commands
+(deflayermap (domains+;_layer)
+  ; $action_mod;+mod;
+  _ XX
+)
+
+;; Registries
+(deflayermap (domains+'_layer)
+  ' $action_mod'+mod'
+  _ XX
+)
+
+;; Settings
+(deflayermap (domains+,_layer)
+  , $action_mod,+mod,
+  _ XX
+)
+
+;; Tags
+(deflayermap (domains+._layer)
+  . $action_mod.+mod.
+  _ XX
+)
+
+;; Help
+(deflayermap (domains+/_layer)
+  / $action_mod/+mod/
+  _ XX
+)
+
+;; Compare
+(deflayermap (domains+\_layer)
+  \ (t! sft_switch $action_mod\+mod\ $action_mod\+lsft+mod\ $action_mod\+lsft+mod\)
+
+  j $action_mod\+j
+  k $action_mod\+k
+
+  o $action_mod\+o
+  p $action_mod\+p
+
+  _ XX
+) ;;""
+
+;; Backlinks
+(deflayermap (domains+[_layer)
+  [ $action_mod[+mod[
+  _ XX
+) ;;""
+
+;; Outlinks
+(deflayermap (domains+]_layer)
+  ] $action_mod]+mod]
+  a $action_mod]+modA
+  _ XX
+) ;;""
+
+;; 
+(deflayermap (domains+`_layer)
+  ` $action_mod`+mod`
+  _ XX
+)
+
+;; 
+(deflayermap (domains+-_layer)
+  - $action_mod-+mod-
+  _ XX
+)
+
+;; Format
+(deflayermap (domains+=_layer)
+  = $action_mod=+mod=
+  _ XX
+)
+
+;; 
+(deflayermap (domains+0_layer)
+  0 $action_mod0+mod0
+  _ XX
+)
+
+;; 
+(deflayermap (domains+1_layer)
+  1 $action_mod1+mod1
+  _ XX
+)
+
+;; 
+(deflayermap (domains+2_layer)
+  2 $action_mod2+mod2
+  _ XX
+)
+
+;; 
+(deflayermap (domains+3_layer)
+  3 $action_mod3+mod3
+  _ XX
+)
+
+;; 
+(deflayermap (domains+4_layer)
+  4 $action_mod4+mod4
+  _ XX
+)
+
+;; 
+(deflayermap (domains+5_layer)
+  5 $action_mod5+mod5
+  _ XX
+)
+
+;; 
+(deflayermap (domains+6_layer)
+  6 $action_mod6+mod6
+  _ XX
+)
+
+;; 
+(deflayermap (domains+7_layer)
+  7 $action_mod7+mod7
+  _ XX
+)
+
+;; 
+(deflayermap (domains+8_layer)
+  8 $action_mod8+mod8
+  _ XX
+)
+
+;; 
+(deflayermap (domains+9_layer)
+  9 $action_mod9+mod9
+  _ XX
+)
+
+;; 
+(deflayermap (domains+omni_layer)
+  $omni $action_omni+omni
+  _ XX
+)
+
+;; Activates corresponding layer.
+(deflayermap (domains_layer)
+  a     (multi (on-press press-vkey vk_domains+A) (on-press tap-vkey vk_help_open))
+  b     (multi (on-press press-vkey vk_domains+B) (on-press tap-vkey vk_help_open))
+  c     (multi (on-press press-vkey vk_domains+C) (on-press tap-vkey vk_help_open))
+  d     (multi (on-press press-vkey vk_domains+D) (on-press tap-vkey vk_help_open))
+  e     (multi (on-press press-vkey vk_domains+E) (on-press tap-vkey vk_help_open))
+  f     (multi (on-press press-vkey vk_domains+F) (on-press tap-vkey vk_help_open))
+  g     (multi (on-press press-vkey vk_domains+G) (on-press tap-vkey vk_help_open))
+  h     (multi (on-press press-vkey vk_domains+H) (on-press tap-vkey vk_help_open))
+  i     (multi (on-press press-vkey vk_domains+I) (on-press tap-vkey vk_help_open))
+  j     (multi (on-press press-vkey vk_domains+J) (on-press tap-vkey vk_help_open))
+  k     (multi (on-press press-vkey vk_domains+K) (on-press tap-vkey vk_help_open))
+  l     (multi (on-press press-vkey vk_domains+L) (on-press tap-vkey vk_help_open))
+  m     (multi (on-press press-vkey vk_domains+M) (on-press tap-vkey vk_help_open))
+  n     (multi (on-press press-vkey vk_domains+N) (on-press tap-vkey vk_help_open))
+  o     (multi (on-press press-vkey vk_domains+O) (on-press tap-vkey vk_help_open))
+  p     (multi (on-press press-vkey vk_domains+P) (on-press tap-vkey vk_help_open))
+  q     (multi (on-press press-vkey vk_domains+Q) (on-press tap-vkey vk_help_open))
+  r     (multi (on-press press-vkey vk_domains+R) (on-press tap-vkey vk_help_open))
+  s     (multi (on-press press-vkey vk_domains+S) (on-press tap-vkey vk_help_open))
+  t     (multi (on-press press-vkey vk_domains+T) (on-press tap-vkey vk_help_open))
+  u     (multi (on-press press-vkey vk_domains+U) (on-press tap-vkey vk_help_open))
+  v     (multi (on-press press-vkey vk_domains+V) (on-press tap-vkey vk_help_open))
+  w     (multi (on-press press-vkey vk_domains+W) (on-press tap-vkey vk_help_open))
+  x     (multi (on-press press-vkey vk_domains+X) (on-press tap-vkey vk_help_open))
+  y     (multi (on-press press-vkey vk_domains+Y) (on-press tap-vkey vk_help_open))
+  z     (multi (on-press press-vkey vk_domains+Z) (on-press tap-vkey vk_help_open))
+  ;     (multi (on-press press-vkey vk_domains+;) (on-press tap-vkey vk_help_open))
+  '     (multi (on-press press-vkey vk_domains+') (on-press tap-vkey vk_help_open))
+  ,     (multi (on-press press-vkey vk_domains+,) (on-press tap-vkey vk_help_open))
+  .     (multi (on-press press-vkey vk_domains+.) (on-press tap-vkey vk_help_open))
+  /     (multi (on-press press-vkey vk_domains+/) (on-press tap-vkey vk_help_open))
+  \     (multi (on-press press-vkey vk_domains+\) (on-press tap-vkey vk_help_open))
+  [     (multi (on-press press-vkey vk_domains+[) (on-press tap-vkey vk_help_open))
+  ]     (multi (on-press press-vkey vk_domains+]) (on-press tap-vkey vk_help_open))
+  `     (multi (on-press press-vkey vk_domains+`) (on-press tap-vkey vk_help_open))
+  -     (multi (on-press press-vkey vk_domains+-) (on-press tap-vkey vk_help_open))
+  =     (multi (on-press press-vkey vk_domains+=) (on-press tap-vkey vk_help_open))
+  0     (multi (on-press press-vkey vk_domains+0) (on-press tap-vkey vk_help_open))
+  1     (multi (on-press press-vkey vk_domains+1) (on-press tap-vkey vk_help_open))
+  2     (multi (on-press press-vkey vk_domains+2) (on-press tap-vkey vk_help_open))
+  3     (multi (on-press press-vkey vk_domains+3) (on-press tap-vkey vk_help_open))
+  4     (multi (on-press press-vkey vk_domains+4) (on-press tap-vkey vk_help_open))
+  5     (multi (on-press press-vkey vk_domains+5) (on-press tap-vkey vk_help_open))
+  6     (multi (on-press press-vkey vk_domains+6) (on-press tap-vkey vk_help_open))
+  7     (multi (on-press press-vkey vk_domains+7) (on-press tap-vkey vk_help_open))
+  8     (multi (on-press press-vkey vk_domains+8) (on-press tap-vkey vk_help_open))
+  9     (multi (on-press press-vkey vk_domains+9) (on-press tap-vkey vk_help_open)) ;;""
+  $omni (multi (on-press press-vkey vk_domains+omni) (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close)) 
+) ;;""

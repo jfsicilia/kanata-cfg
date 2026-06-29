@@ -24,7 +24,6 @@ obsidian_command_palette  C-spc
 
 ;; omni + spc
 ;; If not implemented, defaults to: spc
-;; == omni file manager ===============================================""
 ;; == omni file manager ===============================================
 obsidian_action_omni+spc                  $obsidian_command_palette
 
@@ -47,7 +46,6 @@ obsidian_action_omni+b                    $obsidian_action_page_up
 
 ;; omni + c
 ;; If not implemented, defaults to: C-c
-;; == omni edit ======================================================""
 ;; == omni edit ======================================================
 obsidian_action_omni+c                    $obsidian_copy
 ;; omni + lsft + c

@@ -1,5 +1,5 @@
 (defvar
-colab_esc              C-c
+colab_command_mode     C-c
 colab_delete           (macro C-m d)
 colab_keybindings      (macro C-m h)
 colab_next_cell        (macro C-m down)

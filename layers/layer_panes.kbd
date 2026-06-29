@@ -53,8 +53,8 @@
   [     $action_panes+[
 
   ;; == SFT ======================
-  $d|modD_&_lsft  (t! th $action_panes+d       $toggle_panes+lsft_layer)
-  $k|modK_&_rsft  (t! th $action_panes+k       $toggle_panes+rsft_layer)
+  $d|lsft         (t! th $action_panes+d       $toggle_panes+lsft_layer)
+  $k|rsft         (t! th $action_panes+k       $toggle_panes+rsft_layer)
   lsft            (t! th _                     $toggle_panes+lsft_layer)
   rsft            (t! th _                     $toggle_panes+rsft_layer)
 

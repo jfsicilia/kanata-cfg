@@ -4,7 +4,7 @@
 
 ;; omni
 ;; If not implemented, defaults to: esc
-colab_action_omni                   $colab_esc
+colab_action_omni                   $colab_command_mode
 
 ;; omni + spc
 ;; If not implemented, defaults to: spc

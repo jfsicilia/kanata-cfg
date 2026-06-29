@@ -50,35 +50,70 @@
 (deftemplate fast_th (tap hold)
   (switch
     ((input virtual vk_fast_typing)) (t! type $tap) break
-    () (tap-hold $retap_time $hold_time (t! type $tap) $hold) break
+    () (tap-hold $retap_time $hold_time (t! type $tap) (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
   )
 )
 
-(deftemplate fast_thh (tap hold help_msg)
-  (switch
-    ((input virtual vk_fast_typing)) (t! type $tap) break
-    () (tap-hold-press-timeout $retap_time $help_hold_time
-         (t! type $tap) 
-         $hold 
-         (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
-       ) break
-  )
-)
+;;(deftemplate fast_thh (tap hold help)
+;;  (switch
+;;    ((input virtual vk_fast_typing)) (t! type $tap) break
+;;    () (tap-hold $retap_time $hold_time (t! type $tap) (multi $hold (push-msg "OPEN_HELP:/home/juan/.config/kanata/help/global_spc.hlp") (on-release tap-vkey vk_help_close))) break
+;;  )
+;;)
 
-(deftemplate thh (tap hold help_msg)
-  (tap-hold-press-timeout $retap_time $help_hold_time
-    $tap
-    $hold 
-    (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
-  )
-)
+;;(deftemplate fast_thh (tap hold help_msg)
+;;  (switch
+;;    ((input virtual vk_fast_typing)) (t! type $tap) break
+;;    () (tap-hold-press-timeout $retap_time $help_hold_time
+;;         (t! type $tap) 
+;;         $hold 
+;;         (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
+;;       ) break
+;;  )
+;;)
 
-(deftemplate help&action (help_msg action)
-  (switch 
-    (if-not-equal $help_msg XX ((input virtual vk_help_mode)) (push-msg $help_msg) fallthrough)
-    () $action break
-  )
-)
+;;(deftemplate fast_thh (tap hold help_msg)
+;;  (switch
+;;    ((input virtual vk_fast_typing)) (t! type $tap) break
+;;    () (switch 
+;;         ((input virtual vk_help_mode)) (push-msg $help_msg) fallthrough
+;;         () (tap-hold-release-timeout $retap_time $help_hold_time
+;;              (t! type $tap) 
+;;              $hold 
+;;              (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
+;;             ) break
+;;       ) break 
+;;  )
+;;)
+
+;;(deftemplate thh (tap hold help_msg)
+;;  (tap-hold-press-timeout $retap_time $help_hold_time
+;;    $tap
+;;    $hold 
+;;    (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
+;;  )
+;;)
+;;(deftemplate thh (tap hold help_msg)
+;;  (switch 
+;;    ((input virtual vk_help_mode)) 
+;;      (multi (push-msg $help_msg) (tap-hold $retap_time $hold_time $tap $hold))
+;;    break
+;;    () 
+;;      (tap-hold-release-timeout $retap_time $help_hold_time
+;;        $tap
+;;        $hold 
+;;        (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
+;;      ) 
+;;    break
+;;  )
+;;)
+
+;;(deftemplate help&action (help_msg action)
+;;  (switch 
+;;    (if-not-equal $help_msg XX ((input virtual vk_help_mode)) (push-msg $help_msg) fallthrough)
+;;    () $action break
+;;  )
+;;)
 
 ;; DEPRECATED: Shift-dependent action dispatcher.
 ;; Executes different actions based on whether lsft, rsft, or no shift is pressed.
@@ -188,9 +223,12 @@
 ;;   tap  - Action to perform on tap (e.g., a key or macro)
 ;;   hold - Action to perform on hold (e.g., layer toggle or modifier)
 (deftemplate th (tap hold)
-  (tap-hold-press $retap_time $hold_time $tap $hold)
+;;  (tap-hold $retap_time $hold_time $tap $hold)
+;; NOTE: tab-hold-press no me funcionaba del todo bien introducia un lag a la 
+;; hora de escribir.
+  (tap-hold $retap_time $hold_time $tap (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close)))
+  ;;(tap-hold-press $retap_time $hold_time $tap (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close)))
 )
-
 
 ;; Double-tap detector.
 ;; Executes action only when key is pressed twice within 300ms.
@@ -436,22 +474,22 @@
 (deftemplate _default_map_layers (layer connections)
   ;; == LCTL =========================
   (if-in-list $!lctl $connections $!lctl           (t! th _ (concat "$toggle_" $layer "+lctl_layer")))
-  (if-in-list $<lctl $connections $f|modF_&_lctl   (t! th _ (concat "$toggle_" $layer "+lctl_layer")))
-  (if-in-list $>lctl $connections $j|modJ_&_lctl   (t! th _ (concat "$toggle_" $layer "+lctl_layer")))
+  (if-in-list $<lctl $connections $f|lctl   (t! th _ (concat "$toggle_" $layer "+lctl_layer")))
+  (if-in-list $>lctl $connections $j|lctl   (t! th _ (concat "$toggle_" $layer "+lctl_layer")))
   ;; == LALT =========================
   (if-in-list $!lalt $connections $!lalt           (t! th _ (concat "$toggle_" $layer "+lalt_layer")))
-  (if-in-list $<lalt $connections $s|modS_&_lalt   (t! th _ (concat "$toggle_" $layer "+lalt_layer")))
-  (if-in-list $>lalt $connections $l|modL_&_lalt   (t! th _ (concat "$toggle_" $layer "+lalt_layer")))
+  (if-in-list $<lalt $connections $s|lalt   (t! th _ (concat "$toggle_" $layer "+lalt_layer")))
+  (if-in-list $>lalt $connections $l|lalt   (t! th _ (concat "$toggle_" $layer "+lalt_layer")))
   ;; == LMET =========================
   (if-in-list $!lmet $connections $!lmet           (t! th _ (concat "$toggle_" $layer "+lmet_layer")))
-  (if-in-list $<lmet $connections $a|modA_&_lmet   (t! th _ (concat "$toggle_" $layer "+lmet_layer")))
-  (if-in-list $>lmet $connections $;|mod;_&_lmet   (t! th _ (concat "$toggle_" $layer "+lmet_layer")))
+  (if-in-list $<lmet $connections $a|lmet   (t! th _ (concat "$toggle_" $layer "+lmet_layer")))
+  (if-in-list $>lmet $connections $;|lmet   (t! th _ (concat "$toggle_" $layer "+lmet_layer")))
   ;; == LSFT ====================
   (if-in-list lsft   $connections lsft             (t! th _ (concat "$toggle_" $layer "+lsft_layer")))
-  (if-in-list $lsft  $connections $d|modD_&_lsft   (t! th _ (concat "$toggle_" $layer "+lsft_layer")))
+  (if-in-list $lsft  $connections $d|lsft   (t! th _ (concat "$toggle_" $layer "+lsft_layer")))
   ;; == RSFT ====================
   (if-in-list rsft   $connections rsft             (t! th _ (concat "$toggle_" $layer "+rsft_layer")))
-  (if-in-list $rsft  $connections $k|modK_&_rsft   (t! th _ (concat "$toggle_" $layer "+rsft_layer")))
+  (if-in-list $rsft  $connections $k|rsft   (t! th _ (concat "$toggle_" $layer "+rsft_layer")))
 )
 
 ;; Internal: Map modifier connections to layer toggles (with tap action).
@@ -466,22 +504,22 @@
 (deftemplate _map_layers (action layer connections)
   ;; == LCTL =========================
   (if-in-list $!lctl $connections $!lctl           (t! th _                      (concat "$toggle_" $layer "+lctl_layer")))
-  (if-in-list $<lctl $connections $f|modF_&_lctl   (t! th (concat $action "+" f) (concat "$toggle_" $layer "+lctl_layer")))
-  (if-in-list $>lctl $connections $j|modJ_&_lctl   (t! th (concat $action "+" j) (concat "$toggle_" $layer "+lctl_layer")))
+  (if-in-list $<lctl $connections $f|lctl   (t! th (concat $action "+" f) (concat "$toggle_" $layer "+lctl_layer")))
+  (if-in-list $>lctl $connections $j|lctl   (t! th (concat $action "+" j) (concat "$toggle_" $layer "+lctl_layer")))
   ;; == LALT =========================
   (if-in-list $!lalt $connections $!lalt           (t! th _                      (concat "$toggle_" $layer "+lalt_layer")))
-  (if-in-list $<lalt $connections $s|modS_&_lalt   (t! th (concat $action "+" s) (concat "$toggle_" $layer "+lalt_layer")))
-  (if-in-list $>lalt $connections $l|modL_&_lalt   (t! th (concat $action "+" l) (concat "$toggle_" $layer "+lalt_layer")))
+  (if-in-list $<lalt $connections $s|lalt   (t! th (concat $action "+" s) (concat "$toggle_" $layer "+lalt_layer")))
+  (if-in-list $>lalt $connections $l|lalt   (t! th (concat $action "+" l) (concat "$toggle_" $layer "+lalt_layer")))
   ;; == LMET =========================
   (if-in-list $!lmet $connections $!lmet           (t! th _                      (concat "$toggle_" $layer "+lmet_layer")))
-  (if-in-list $<lmet $connections $a|modA_&_lmet   (t! th (concat $action "+" a) (concat "$toggle_" $layer "+lmet_layer")))
-  (if-in-list $>lmet $connections $;|mod;_&_lmet   (t! th (concat $action "+" ;) (concat "$toggle_" $layer "+lmet_layer")))
+  (if-in-list $<lmet $connections $a|lmet   (t! th (concat $action "+" a) (concat "$toggle_" $layer "+lmet_layer")))
+  (if-in-list $>lmet $connections $;|lmet   (t! th (concat $action "+" ;) (concat "$toggle_" $layer "+lmet_layer")))
   ;; == LSFT ====================
   (if-in-list lsft   $connections lsft             (t! th _                      (concat "$toggle_" $layer "+lsft_layer")))
-  (if-in-list $lsft  $connections $d|modD_&_lsft   (t! th (concat $action "+" d) (concat "$toggle_" $layer "+lsft_layer")))
+  (if-in-list $lsft  $connections $d|lsft   (t! th (concat $action "+" d) (concat "$toggle_" $layer "+lsft_layer")))
   ;; == RSFT ====================
   (if-in-list rsft   $connections rsft             (t! th _                      (concat "$toggle_" $layer "+rsft_layer")))
-  (if-in-list $rsft  $connections $k|modK_&_rsft   (t! th (concat $action "+" k) (concat "$toggle_" $layer "+rsft_layer")))
+  (if-in-list $rsft  $connections $k|rsft   (t! th (concat $action "+" k) (concat "$toggle_" $layer "+rsft_layer")))
 )
 
 ;; Map modifier connections to layer toggles.

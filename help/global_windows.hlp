@@ -1,0 +1,10 @@
+# Windows (actions/actions_windows.kbd)
+**windows + spc**        -- Show All
+**windows + ent**        -- Maximize
+**windows + lsft + ent** -- Fullscreen
+**windows + k**          -- Half Up
+**windows + j**          -- Half Down
+**windows + h**          -- Half Left
+**windows + l**          -- Half Right
+**windows + close**      -- Close
+**windows + toggle**     -- Apps Toggle

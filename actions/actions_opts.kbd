@@ -1,7 +1,16 @@
 (defvar
   ;; == opts ==============================================================
-  ;; opts + lsft/rsft + r
-  action_opts_restart_kwanata (t! unmod_all
+  action_opts_set_quiet_profile       (multi (push-msg "NOTIFY: Quiet profile")       (cmd asusctl profile set Quiet))
+  action_opts_set_balanced_profile    (multi (push-msg "NOTIFY: Balanced profile")    (cmd asusctl profile set Balanced))
+  action_opts_set_performance_profile (multi (push-msg "NOTIFY: Performance profile") (cmd asusctl profile set Performance))
+  action_opts_restart_kwanata         (t! unmod_all
     (macro RA-spc 300 s y s t e m c t l spc - - u s e r spc r e s t a r t spc k w a n a t a 300 ent))
-
+  action_opts_restart_system          (multi (push-msg "NOTIFY: Rebooting...")        (cmd systemctl reboot))
+  action_opts_shutdown_system         (multi (push-msg "NOTIFY: Shutting down...")    (cmd systemctl shutdown))
+  action_opts_print_screen            prnt
+  action_opts_print_window            S-prnt
+  action_opts_sync_and_reload_kanata  (multi (cmd kanata_sync.sh) (push-msg "RELOAD:") lrld)
+  action_opts_reload_kanata           lrld
+  action_opts_debug_message           (push-msg "DEBUG: This is a DEBUG message to check communication")
+  action_sleep_system                 (multi (push-msg "NOTIFY: Sleeping...")         (cmd systemctl suspend))
 )

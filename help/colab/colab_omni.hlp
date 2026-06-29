@@ -1,0 +1,6 @@
+# Omni - colab (actions/colab/colab_omni.kbd)
+**omni + omni**     -- Command Mode
+**omni + bcsp**     -- Delete
+**omni + n**        -- New Cell Below
+**omni + lsft + n** -- New Cell Above
+**omni + rsft + n** -- New Cell Above

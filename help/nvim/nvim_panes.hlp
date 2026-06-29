@@ -1,0 +1,14 @@
+# Panes - nvim (actions/nvim/nvim_panes.kbd)
+**panes + ent**        -- Pane Maximize
+**panes + h**          -- Pane Left
+**panes + l**          -- Pane Right
+**panes + up**         -- Pane Above
+**panes + j**          -- Pane Below
+**panes + -**          -- Pane Horizontal Split
+**panes + \**          -- Pane Vertical Split
+**panes + w**          -- Close Pane
+**panes + toggle**     -- Pane Toggle
+**panes + resize + h** -- Pane Resize Left
+**panes + resize + l** -- Pane Resize Right
+**panes + resize + k** -- Pane Resize Above
+**panes + resize + j** -- Pane Resize Below

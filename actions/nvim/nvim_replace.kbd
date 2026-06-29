@@ -3,10 +3,10 @@
 ;; == replace ==========================================================
 ;; replace + spc
 ;; nvim_action_replace   `{esc}:lua require('grug-far').open({{} windowCreationCommand = 'topleft vertical split', prefills = {{} paths = vim.fn.expand("%") {}} {}}){ret}`
-nvim_action_replace   (macro esc S-; l u a spc r e q u i r e S-9 ' g r u g - f a r ' S-0 . o p e n S-9 S-[ spc w i n d o w S-c r e a t i o n S-c o m m a n d spc = spc ' t o p l e f t spc v e r t i c a l spc s p l i t ' , spc p r e f i l l s spc = spc S-[ spc p a t h s spc = spc v i m . f n . e x p a n d S-9 S-' S-5 S-' S-0 spc  S-] spc  S-] S-0 ret)
+nvim_action_replace      $nvim_replace_in_buffer 
 ;; replace + lsft + spc
 ;; nvim_action_replace+lsft `{esc}:topleft vertical GrugFar{ret}`
-nvim_action_replace+lsft (macro esc S-; t o p l e f t spc v e r t i c a l spc S-g r u g S-f a r ret)
+nvim_action_replace+lsft $nvim_replace_in_workspace 
 ;; replace + rsft + spc
 ;; ___TO_SET___ nvim_action_replace+rsft           
 )

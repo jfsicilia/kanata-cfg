@@ -1,0 +1,8 @@
+# Omni - tmux (actions/tmux/tmux_omni.kbd)
+**omni + b** -- Pgup
+**omni + c** -- Copy
+**omni + f** -- Pgdn
+**omni + n** -- New Window
+**omni + r** -- Rename
+**omni + t** -- New Window
+**omni + v** -- Paste

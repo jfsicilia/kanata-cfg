@@ -11,7 +11,9 @@
       "Bash(rm:*)",
       "Bash(./scripts/kanata_sync.sh:*)",
       "Bash(systemctl:*)",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Bash(grep -v \"^$\")",
+      "Bash(echo \"exit: $?\")"
     ]
   }
 }

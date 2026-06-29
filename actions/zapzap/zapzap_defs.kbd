@@ -12,7 +12,7 @@ zapzap_new_chat       C-A-n
 zapzap_new_group      C-A-S-n
 zapzap_search_in_chat C-S-f
 zapzap_search_chat    C-A-/
-zapzap_omni_search    A-k
+zapzap_omni_search    (macro A-k 100 bspc)
 zapzap_settings       C-A-,
 zapzap_quit           C-q
 )

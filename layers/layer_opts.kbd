@@ -2,21 +2,22 @@
 (deflayermap (opts_layer)
   (t! map_layers _ "opts" (lsft rsft))
 
-  1 (multi (push-msg "NOTIFY: Quiet profile")       (cmd asusctl profile set Quiet))
-  2 (multi (push-msg "NOTIFY: Balanced profile")    (cmd asusctl profile set Balanced))
-  3 (multi (push-msg "NOTIFY: Performance profile") (cmd asusctl profile set Performance)) 
-  k lrld
-  d (push-msg "DEBUG: This is a DEBUG message to check communication")
-  p prnt
-  q (multi (push-msg "NOTIFY: Sleeping...")         (cmd systemctl suspend))
+  1 $action_opts_set_quiet_profile
+  2 $action_opts_set_balanced_profile
+  3 $action_opts_set_performance_profile
+  k $action_opts_reload_kanata
+  d $action_opts_debug_message
+  p $action_opts_print_screen
+  q $action_sleep_system
 )
 
 (deflayermap (opts+lsft_layer)
-  k (multi (cmd kanata_sync.sh) (push-msg "RELOAD:") lrld)
-  q (multi (push-msg "NOTIFY: Rebooting...")        (cmd systemctl reboot))
+  k $action_opts_sync_and_reload_kanata
+  p $action_opts_print_window
+  q $action_opts_restart_system 
 )
 
 (deflayermap (opts+rsft_layer)
   k $action_opts_restart_kwanata
-  q (multi (push-msg "NOTIFY: Shutting down...")    (cmd systemctl shutdown))
+  q $action_opts_shutdown_system 
 )

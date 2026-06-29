@@ -37,9 +37,9 @@ dolphin_action_omni+lsft+c     $dolphin_copy_path
 ;; If not implemented, defaults to: C-S-c
 dolphin_action_omni+rsft+c     $dolphin_copy_path
 ;; omni + c + left
-dolphin_action_omni+c+left     $dolphin_copy_to_pane
+dolphin_action_omni+c+left     $dolphin_copy_to_other_pane
 ;; omni + c + right
-dolphin_action_omni+c+right    $dolphin_copy_to_pane
+dolphin_action_omni+c+right    $dolphin_copy_to_other_pane
 
 ;; omni + d
 dolphin_action_omni+d          $dolphin_duplicate
@@ -104,7 +104,7 @@ dolphin_action_omni+r          $dolphin_rename
 ;; omni + s
 dolphin_action_omni+s          $dolphin_toggle_sort_by
 ;; omni + lsft + s | omni + rsft + s
-dolphin_action_omni+lsft+s     $dolphin_toggle_sort_toggle
+dolphin_action_omni+lsft+s     $dolphin_sort_order_toggle
 
 ;; omni + t
 ;; If not implemented, defaults to: action_tabs_new
@@ -116,7 +116,7 @@ dolphin_action_omni+t          $dolphin_new_tab
 dolphin_action_omni+lsft+t     $dolphin_undo_tab
 
 ;; omni + u
-dolphin_action_omni+u          $dolphin_toggle_view
+dolphin_action_omni+u          $dolphin_cycle_view
 
 ;; omni + v
 ;; If not implemented, defaults to: C-v
@@ -131,9 +131,9 @@ dolphin_action_omni+w          $dolphin_close_tab
 ;; If not implemented, defaults to: C-x
 dolphin_action_omni+x          $dolphin_cut
 ;; omni + x + left
-dolphin_action_omni+x+left     $dolphin_move_to_pane
+dolphin_action_omni+x+left     $dolphin_move_to_other_pane
 ;; omni + x + right
-dolphin_action_omni+x+right    $dolphin_move_to_pane       
+dolphin_action_omni+x+right    $dolphin_move_to_other_pane       
 
 ;; omni + y
 dolphin_action_omni+y          (push-msg "NOTIFY:No history behaviour implemented!")       
@@ -149,7 +149,7 @@ dolphin_action_omni+lsft+z     $dolphin_redo
 ;; omni + 0
 ;; If not implemented, defaults to: C-0
 ;; omni + <digit>
-dolphin_action_omni+0          $dolphin_reset_view
+dolphin_action_omni+0          $dolphin_zoom_reset
 ;; omni + 1
 ;; If not implemented, defaults to: C-1
 dolphin_action_omni+1          $dolphin_tab_1
@@ -194,9 +194,9 @@ dolphin_action_omni+[          $dolphin_back   ;;""
 ;; omni + \
 dolphin_action_omni+\          $dolphin_vimdiff 
 ;; omni + lsft + \
-dolphin_action_omni+lsft+\     $dolphin_vimdiff
+;; ___TO_SET___ dolphin_action_omni+lsft+\            
 ;; omni + rsft + \
-dolphin_action_omni+rsft+\     $dolphin_vimdiff 
+;; ___TO_SET___ dolphin_action_omni+rsft+\            
 
 ;; omni + ;
 dolphin_action_omni+;          (push-msg "NOTIFY:No comments behaviour implemented!") 

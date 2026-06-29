@@ -1,0 +1,14 @@
+# Panes - obsidian (actions/obsidian/obsidian_panes.kbd)
+**panes + ent**      -- Pane Maximize
+**panes + h**        -- Pane Left
+**panes + l**        -- Pane Right
+**panes + up**       -- Pane Above
+**panes + j**        -- Pane Below
+**panes + -**        -- Pane H Split
+**panes + \**        -- Pane V Split
+**panes + w**        -- Pane Close
+**panes + toggle**   -- Pane Toggle
+**panes + s**        -- Sidebar
+**panes + lsft + s** -- Sidebar Right
+**panes + g**        -- Select Files
+**panes + m**        -- Main

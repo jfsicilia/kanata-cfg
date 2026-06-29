@@ -9,8 +9,8 @@
   up    $~action_!tabs_last
 
   ;; == SFT ======================
-  $d|modD_&_lsft  (t! th _                    $toggle_groups+lsft_layer)
-  $k|modK_&_rsft  (t! th $~action_!tabs_last   $toggle_groups+rsft_layer)
+  $d|lsft         (t! th _                    $toggle_groups+lsft_layer)
+  $k|rsft         (t! th $~action_!tabs_last   $toggle_groups+rsft_layer)
   lsft            (t! th _                    $toggle_groups+lsft_layer)
   rsft            (t! th _                    $toggle_groups+rsft_layer)
 )
@@ -20,3 +20,4 @@
 
 (deflayermap (groups+rsft_layer)
 )
+

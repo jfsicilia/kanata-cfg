@@ -1,24 +1,35 @@
 (defvar
+  windows_show_all    (t! unmod_all C-f10)
+  windows_maximize    (t! unmod_all M-pgup)
+  windows_fullscreen  (t! unmod_all M-S-m)
+  windows_half_up     (t! unmod_all  M-up)
+  windows_half_down   (t! unmod_all M-down)
+  windows_half_left   (t! unmod_all M-left)
+  windows_half_right  (t! unmod_all M-right)
+  windows_close       (t! unmod_all A-f4)
+)
+
+(defvar
   ;; == windows ===========================================================
   ;; windows + spc
-  action_windows+spc    (t! unmod_all C-f10)
+  action_windows_show_all    $windows_show_all
   ;; windows + ent
-  action_windows_max    (t! unmod_all M-pgup)
+  action_windows_max         $windows_maximize
   ;; windows + lsft + ent | windows + rsft + ent
-  action_windows_full   (t! unmod_all M-S-m)
+  action_windows_full        $windows_fullscreen
 
   ;; windows + k
-  action_windows_up     (t! unmod_all  M-up)
+  action_windows_up          $windows_half_up
   ;; windows + j
-  action_windows_down   (t! unmod_all M-down)
+  action_windows_down        $windows_half_down
   ;; windows + h
-  action_windows_left   (t! unmod_all M-left)
+  action_windows_left        $windows_half_left
   ;; windows + l
-  action_windows_right  (t! unmod_all M-right)
+  action_windows_right       $windows_half_right
 
   ;; windows 
-  action_windows_close  (t! unmod_all A-f4)
+  action_windows_close       $windows_close
 
   ;; 2x apps
-  action_windows_toggle $action_apps_toggle
+  action_windows_toggle $action_apps+toggle
 )

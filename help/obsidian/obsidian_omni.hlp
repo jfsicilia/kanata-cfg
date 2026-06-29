@@ -1,0 +1,20 @@
+# Omni - obsidian (actions/obsidian/obsidian_omni.kbd)
+**omni + spc**      -- Command Palette
+**omni + a**        -- Select All
+**omni + lsft + a** -- Invert Selection
+**omni + rsft + a** -- Clear Selection
+**omni + b**        -- Page Up
+**omni + c**        -- Copy
+**omni + d**        -- Duplicate
+**omni + f**        -- Page Down
+**omni + g**        -- Seek And Select
+**omni + n**        -- New
+**omni + lsft + n** -- New Folder
+**omni + rsft + n** -- Save
+**omni + o**        -- Open
+**omni + p**        -- Parent
+**omni + r**        -- Rename
+**omni + v**        -- Paste
+**omni + x**        -- Cut
+**omni + ]**        -- Forward
+**omni + [**        -- Back

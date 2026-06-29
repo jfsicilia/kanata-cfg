@@ -1,0 +1,68 @@
+# Panes (actions/actions_panes.iface.kbd)
+**panes + spc**          -- Show Panes Not Implemented!
+**panes + ent**          -- Maximize Pane Not Implemented!
+**panes + h**            -- Select Left Pane Not Implemented!
+**panes + l**            -- Select Right Pane Not Implemented!
+**panes + up**           -- Select Above Pane Not Implemented!
+**panes + j**            -- Select Below Pane Not Implemented!
+**panes + -**            -- Horizontal Split Pane Not Implemented!
+**panes + \**            -- Vertical Split Pane Not Implemented!
+**panes + w**            -- Close Pane Not Implemented!
+**panes + toggle**       -- Toggle Pane Not Implemented!
+**panes + float_&_snap** -- Float Pane Not Implemented!
+**panes + move + h**     -- Move Pane Left Not Implemented!
+**panes + move + l**     -- Move Pane Right Not Implemented!
+**panes + move + k**     -- Move Pane Up Not Implemented!
+**panes + move + j**     -- Move Pane Down Not Implemented!
+**panes + resize + h**   -- Resize Pane Left Not Implemented!
+**panes + resize + l**   -- Resize Pane Right Not Implemented!
+**panes + resize + k**   -- Resize Pane Up Not Implemented!
+**panes + resize + j**   -- Resize Pane Down Not Implemented!
+**panes + swap + h**     -- Swap Pane Left Not Implemented!
+**panes + swap + l**     -- Swap Pane Right Not Implemented!
+**panes + swap + k**     -- Swap Pane Up Not Implemented!
+**panes + swap + j**     -- Swap Pane Down Not Implemented!
+**panes + 1**            -- Select Pane 1 Not Implemented!
+**panes + 2**            -- Select Pane 2 Not Implemented!
+**panes + 3**            -- Select Pane 3 Not Implemented!
+**panes + 4**            -- Select Pane 4 Not Implemented!
+**panes + 5**            -- Select Pane 5 Not Implemented!
+**panes + 6**            -- Select Pane 6 Not Implemented!
+**panes + 7**            -- Select Pane 7 Not Implemented!
+**panes + 8**            -- Select Pane 8 Not Implemented!
+**panes + 9**            -- Select Pane 9 Not Implemented!
+**panes + q**            -- Quit Pane Not Implemented!
+**panes + e**            -- Focus Explorer Pane Not Implemented!
+**panes + lsft + e**     -- ... Pane Not Implemented!
+**panes + r**            -- Rename Pane Not Implemented!
+**panes + t**            -- Focus Title Pane Not Implemented!
+**panes + u**            -- ... Pane Not Implemented!
+**panes + y**            -- ... Pane Not Implemented!
+**panes + i**            -- ... Pane Not Implemented!
+**panes + o**            -- ... Pane Not Implemented!
+**panes + lsft + o**     -- ... Pane Not Implemented!
+**panes + p**            -- ... Pane Not Implemented!
+**panes + lsft + p**     -- ... Pane Not Implemented!
+**panes + [**            -- ... Pane Not Implemented!
+**panes + ]**            -- ... Pane Not Implemented!
+**panes + lsft + .**     -- ... Pane Not Implemented!
+**panes + a**            -- ... Pane Not Implemented!
+**panes + s**            -- Toggle Left Sidebar Pane Not Implemented!
+**panes + lsft + s**     -- Toggle Right Sidebar Pane Not Implemented!
+**panes + d**            -- Duplicate Pane Not Implemented!
+**panes + f**            -- Focus Find Pane Not Implemented!
+**panes + g**            -- Focus Go Pane Not Implemented!
+**panes + ;**            -- ... Pane Not Implemented!
+**panes + '**            -- ... Pane Not Implemented!
+**panes + z**            -- ... Pane Not Implemented!
+**panes + x**            -- ... Pane Not Implemented!
+**panes + c**            -- ... Pane Not Implemented!
+**panes + lsft + c**     -- ... Pane Not Implemented!
+**panes + !day**         -- ... Pane Not Implemented!
+**panes + v**            -- ... Pane Not Implemented!
+**panes + b**            -- ... Pane Not Implemented!
+**panes + n**            -- New Pane Not Implemented!
+**panes + m**            -- Focus Main Pane Not Implemented!
+**panes + ,**            -- ... Pane Not Implemented!
+**panes + .**            -- ... Pane Not Implemented!
+**panes + /**            -- ... Pane Not Implemented!

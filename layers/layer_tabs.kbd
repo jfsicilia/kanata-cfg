@@ -24,8 +24,8 @@
   9     $action_tabs_goto_last
 
   ;; == SFT ======================
-  $d|modD_&_lsft     (t! th _                    $toggle_tabs+lsft_layer)
-  $k|modK_&_rsft  (t! th $action_tabs_last    $toggle_tabs+rsft_layer)
+  $d|lsft         (t! th _                    $toggle_tabs+lsft_layer)
+  $k|rsft         (t! th $action_tabs_last    $toggle_tabs+rsft_layer)
   lsft            (t! th _                    $toggle_tabs+lsft_layer)
   rsft            (t! th _                    $toggle_tabs+rsft_layer)
 

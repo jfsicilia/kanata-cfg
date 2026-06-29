@@ -25,14 +25,14 @@
     )
   )
   ;; Toggles sort ordering A-Z / Z-A
-  dolphin_toggle_sort_toggle (multi (on-press toggle-virtualkey vk_dolphin_sort_toggle) 
+  dolphin_sort_order_toggle (multi (on-press toggle-virtualkey vk_dolphin_sort_toggle)
     (switch 
       ((input virtual vk_dolphin_sort_toggle)) C-A-up   break ;; CUSTOM oldest first
       ()                                       C-A-down break ;; CUSTOM newest first
     )
   )
   ;; Toggles between view modes 1, 2 and 3.
-  dolphin_toggle_view (multi 
+  dolphin_cycle_view (multi
     (switch 
       ((input virtual vk_dolphin_view1)) (multi (on-press press-virtualkey vk_dolphin_view2) (on-press release-virtualkey vk_dolphin_view1)) break
       ((input virtual vk_dolphin_view2)) (multi (on-press release-virtualkey vk_dolphin_view2)) break
@@ -81,7 +81,7 @@
   dolphin_tags                           (macro S-f10 10 down down down down down down down down down down 30 ent 30 ent)
   dolphin_zoomIn                         C-=
   dolphin_zoomOut                        C--
-  dolphin_reset_view                     C-0
+  dolphin_zoom_reset                     C-0
   dolphin_tab_1                          A-1
   dolphin_tab_2                          A-2
   dolphin_tab_3                          A-3
@@ -93,8 +93,8 @@
   dolphin_tab_9                          A-9
   dolphin_forward                        A-right
   dolphin_back                           A-left
-  dolphin_move_to_pane                   S-f6
-  dolphin_copy_to_pane                   S-f5
+  dolphin_move_to_other_pane             S-f6
+  dolphin_copy_to_other_pane             S-f5
   dolphin_vimdiff                        (macro C-c (cmd foot --maximized bash -c "vimdiff.sh $(wl-paste | tr -d '\r' | tr '\n' ' ' | sed 's|file://||g')"))
   dolphin_keymaps                        C-A-,  
   dolphin_settings                       C-S-,   

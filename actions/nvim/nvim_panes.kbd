@@ -17,12 +17,12 @@ nvim_action_panes+k                 $nvim_pane_above ;; Now has tmux integration
 nvim_action_panes+j                 $nvim_pane_below ;; Now has tmux integration  ;;""
 
 ;; panes + -
-nvim_action_panes+-                 $nvim_pane_h_split  ;;""
+nvim_action_panes+-                 $nvim_pane_horizontal_split  ;;""
 ;; panes + \
-nvim_action_panes+\                 $nvim_pane_v_split  ;;""
+nvim_action_panes+\                 $nvim_pane_vertical_split    ;;""
 
 ;; panes + w
-nvim_action_panes+w                 $nvim_close_tab
+nvim_action_panes+w                 $nvim_close_pane
 
 ;; == panes + toggle ====================================================
 ;; panes + toggle | 2x !lalt

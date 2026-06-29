@@ -15,15 +15,15 @@ nvim_copy                          y
 nvim_duplicate                     (macro esc S-; s a v e a s spc S-5 S-; r S-- c o p y . S-5 S-; e)
 nvim_new                           (macro esc S-; t a b n e w ent S-; e spc)
 nvim_new_folder                    (macro esc S-; S-1 m k d i r spc - p spc)
-nvim_open                          C-]
-nvim_parent                        C-t
+nvim_tag_follow                    C-]
+nvim_tag_back                      C-t
 nvim_quit                          (macro esc S-; q a ent)
 nvim_rename                        (macro esc S-; s a v e a s spc)
 nvim_sort                          (macro S-; s o r t ent)
 nvim_sort_reverse                  (macro S-; s o r t S-1 ent)
 nvim_new_tab                       (macro esc S-; t a b n e w ent)
 nvim_undo_tab                      (multi $nvim_new_tab C-o)
-nvim_unique                        (macro S-; S-5 S-1 a w k spc ' s e e n [ S-4 Digit0 ] S-= S-= spc = = spc Digit0 ' ent)
+nvim_remove_duplicates             (macro S-; S-5 S-1 a w k spc ' s e e n [ S-4 Digit0 ] S-= S-= spc = = spc Digit0 ' ent)
 nvim_paste                         C-S-v
 nvim_close_tab                     (macro esc S-; b d e l e t e ent)
 nvim_cut                           d
@@ -79,12 +79,19 @@ nvim_pane_left           A-h
 nvim_pane_right          A-l
 nvim_pane_above          A-k
 nvim_pane_below          A-j
-nvim_pane_h_split        (macro esc S-; s p ret)
-nvim_pane_v_split        (macro esc S-; v s ret)
+nvim_pane_horizontal_split (macro esc S-; s p ret)
+nvim_pane_vertical_split   (macro esc S-; v s ret)
+nvim_close_pane            (macro C-w c)
 nvim_pane_toggle         (macro C-w p)
 nvim_pane_resize_left    (macro C-w S-,)
 nvim_pane_resize_right   (macro C-w S-.)
 nvim_pane_resize_above   (macro C-w -)
 nvim_pane_resize_below   (macro C-w S-=)
+
+nvim_seek_and_select     (macro esc S-; S-t e l e s c o p e spc f i n d S-- f i l e s ret)  ;;""
+nvim_search_in_buffer    (macro esc S-; S-t e l e s c o p e spc c u r r e n t S-- b u f f e r S-- f u z z y S-- f i n d ret)
+nvim_search_in_workspace (macro esc S-; S-t e l e s c o p e spc l i v e S-- g r e p ret)  ;;"" 
+nvim_replace_in_buffer   (macro esc S-; l u a spc r e q u i r e S-9 ' g r u g - f a r ' S-0 . o p e n S-9 S-[ spc w i n d o w S-c r e a t i o n S-c o m m a n d spc = spc ' t o p l e f t spc v e r t i c a l spc s p l i t ' , spc p r e f i l l s spc = spc S-[ spc p a t h s spc = spc v i m . f n . e x p a n d S-9 S-' S-5 S-' S-0 spc  S-] spc  S-] S-0 ret)
+nvim_replace_in_workspace (macro esc S-; t o p l e f t spc v e r t i c a l spc S-g r u g S-f a r ret) 
 
 )

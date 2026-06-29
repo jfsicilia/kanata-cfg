@@ -2,6 +2,18 @@
   vk_desktops_toggle XX
 )
 (defvar
+  show_desktops             (t! unmod_all M-w)
+  next_screen              (t! unmod_all M-S-down)
+  prev_screen              (t! unmod_all M-S-up)
+  next_desktop             (t! unmod_all M-C-right)
+  prev_desktop             (t! unmod_all M-C-left)
+  move_window_to_next_screen  (t! unmod_all M-S-right)
+  move_window_to_prev_screen  (t! unmod_all M-S-left)
+  move_window_to_next_desktop (t! unmod_all M-C-S-right)
+  move_window_to_prev_desktop (t! unmod_all M-C-S-left)
+)
+
+(defvar
 ;; Toggles sort ordering A-Z / Z-A
 desktops_toggle (multi (on-press toggle-virtualkey vk_desktops_toggle) 
   (switch 
@@ -11,27 +23,27 @@ desktops_toggle (multi (on-press toggle-virtualkey vk_desktops_toggle)
 )
   ;; == workspaces =====================================================
   ;; workspaces + spc
-  action_desktops+spc  (t! unmod_all M-w)
-
-  ;; workspaces + j 
-  action_screens_next  (t! unmod_all M-S-down)
-  ;; workspaces + k
-  action_screens_prev  (t! unmod_all M-S-up)
-  ;; workspaces + l
-  action_desktops_next (t! unmod_all M-C-right)
-  ;; workspaces + j
-  action_desktops_prev (t! unmod_all M-C-left)
+  action_desktops+spc  $show_desktops
 
   ;; workspaces + toggle
   action_desktops+toggle $desktops_toggle
 
+  ;; workspaces + j 
+  action_screens_next  $next_screen    
+  ;; workspaces + k
+  action_screens_prev  $prev_screen
+  ;; workspaces + l
+  action_desktops_next $next_desktop
+  ;; workspaces + j
+  action_desktops_prev $prev_desktop
+
   ;; == workspaces + move ===============================================
   ;; workspaces + move + j 
-  action_screens_next_move_window  (t! unmod_all M-S-right)
+  action_screens_next_move_window  $move_window_to_next_screen
   ;; workspaces + move + k 
-  action_screens_prev_move_window  (t! unmod_all M-S-left)
+  action_screens_prev_move_window  $move_window_to_prev_screen
   ;; workspaces + move + l 
-  action_desktops_next_move_window (t! unmod_all M-C-S-right)
+  action_desktops_next_move_window $move_window_to_next_desktop
   ;; workspaces + move + h 
-  action_desktops_prev_move_window (t! unmod_all M-C-S-left)
+  action_desktops_prev_move_window $move_window_to_prev_desktop
 )

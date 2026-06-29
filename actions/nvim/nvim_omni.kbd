@@ -91,11 +91,11 @@ nvim_action_omni+rsft+n            (push-msg "NOTIFY:Omni combo not implemented!
 
 ;; omni + o
 ;; If not implemented, defaults to: right
-nvim_action_omni+o                 $nvim_open ;; Follow tag in help ""
+nvim_action_omni+o                 $nvim_tag_follow ;; Follow tag in help ""
 
 ;; omni + p
 ;; If not implemented, defaults to: left
-nvim_action_omni+p                 $nvim_parent ;; Go back to preceding tag
+nvim_action_omni+p                 $nvim_tag_back ;; Go back to preceding tag
 
 ;; omni + q
 ;; If not implemented, defaults to: action_windows_close
@@ -126,7 +126,7 @@ nvim_action_omni+lsft+t            $nvim_undo_tab
 
 ;; omni + u
 ;; nvim_action_omni+u                 `:%!awk 'seen[$0]++ == 0'{ent}`
-nvim_action_omni+u                 $nvim_unique
+nvim_action_omni+u                 $nvim_remove_duplicates
 
 ;; omni + v
 ;; If not implemented, defaults to: C-v

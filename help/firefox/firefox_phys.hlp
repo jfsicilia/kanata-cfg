@@ -1,0 +1,21 @@
+# Physical mods - firefox (actions/firefox/firefox_physical_mods.kbd)
+**phys + lctl + 1**  -- Tabs Goto 1
+**phys + lctl + 2**  -- Tabs Goto 2
+**phys + lctl + 3**  -- Tabs Goto 3
+**phys + lctl + 4**  -- Tabs Goto 4
+**phys + lctl + 5**  -- Tabs Goto 5
+**phys + lctl + 6**  -- Tabs Goto 6
+**phys + lctl + 7**  -- Tabs Goto 7
+**phys + lctl + 8**  -- Tabs Goto 8
+**phys + lctl + 9**  -- Tabs Goto 9
+**phys + lctl + 0**  -- Tabs Goto 0
+**phys + !lctl + 1** -- Tabs Goto 1
+**phys + !lctl + 2** -- Tabs Goto 2
+**phys + !lctl + 3** -- Tabs Goto 3
+**phys + !lctl + 4** -- Tabs Goto 4
+**phys + !lctl + 5** -- Tabs Goto 5
+**phys + !lctl + 6** -- Tabs Goto 6
+**phys + !lctl + 7** -- Tabs Goto 7
+**phys + !lctl + 8** -- Tabs Goto 8
+**phys + !lctl + 9** -- Tabs Goto 9
+**phys + !lctl + 0** -- Tabs Goto 0

@@ -1,0 +1,4 @@
+# Tabs - zellij (actions/zellij/zellij_tabs.kbd)
+**tabs + l**      -- Next
+**tabs + h**      -- Prev
+**tabs + toggle** -- Toggle

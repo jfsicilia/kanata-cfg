@@ -22,7 +22,7 @@ dolphin_action_panes+-                 $dolphin_pane_split
 dolphin_action_panes+\                 $dolphin_pane_split    ;;""
 
 ;; panes + w
-dolphin_action_panes+w                 $dolphin_pane_split
+dolphin_action_panes+w                 $dolphin_close_tab
 
 ;; == panes + toggle ====================================================
 ;; panes + toggle | 2x !lalt

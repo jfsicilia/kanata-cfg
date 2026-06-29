@@ -1,0 +1,9 @@
+# Panes - colab (actions/colab/colab_panes.kbd)
+**panes + h**        -- Prev Cell
+**panes + l**        -- Next Cell
+**panes + up**       -- Prev Cell
+**panes + j**        -- Next Cell
+**panes + move + h** -- Move Cell Up
+**panes + move + l** -- Move Cell Down
+**panes + move + k** -- Move Cell Up
+**panes + move + j** -- Move Cell Down

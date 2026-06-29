@@ -1,6 +1,6 @@
 ;; "" WINDOWS_LAYER """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 (deflayermap (windows_layer)
-  spc          $action_windows+spc
+  spc          $action_windows_show_all
   ent          $action_windows_max
 
   h            $action_windows_left
@@ -8,8 +8,8 @@
   j            $action_windows_down
 
   ;; == SFT ======================
-  $d|modD_&_lsft  (t! th _                   $toggle_windows+lsft_layer)
-  $k|modK_&_rsft  (t! th $action_windows_up  $toggle_windows+rsft_layer)
+  $d|lsft         (t! th _                   $toggle_windows+lsft_layer)
+  $k|rsft         (t! th $action_windows_up  $toggle_windows+rsft_layer)
   lsft            (t! th _                   $toggle_windows+lsft_layer)
   rsft            (t! th _                   $toggle_windows+rsft_layer)
 )

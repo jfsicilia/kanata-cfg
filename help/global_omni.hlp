@@ -1,0 +1,43 @@
+# Omni (actions/actions_omni.iface.kbd)
+**omni + omni**     -- Omni
+**omni + spc**      -- Spc
+**omni + bcsp**     -- Bcsp
+**omni + b**        -- B
+**omni + c**        -- C
+**omni + lsft + c** -- Lsft C
+**omni + rsft + c** -- Rsft C
+**omni + f**        -- F
+**omni + h**        -- H
+**omni + j**        -- J
+**omni + k**        -- K
+**omni + l**        -- L
+**omni + m**        -- Modm Modm
+**omni + o**        -- O
+**omni + p**        -- P
+**omni + q**        -- Windows Close
+**omni + t**        -- Tabs New
+**omni + lsft + t** -- Tabs Undo Close
+**omni + v**        -- V
+**omni + w**        -- Tabs Close
+**omni + x**        -- X
+**omni + z**        -- Z
+**omni + lsft + z** -- Lsft Z
+**omni + 0**        -- 0
+**omni + 1**        -- 1
+**omni + 2**        -- 2
+**omni + 3**        -- 3
+**omni + 4**        -- 4
+**omni + 5**        -- 5
+**omni + 6**        -- 6
+**omni + 7**        -- 7
+**omni + 8**        -- 8
+**omni + 9**        -- 9
+**omni + ,**        -- Mod, Mod,
+**omni + .**        -- Mod. Mod.
+**omni + /**        -- Mod/ Mod/
+**omni + !lmet**    -- Desktops Toggle
+**omni + !lalt**    -- Panes Toggle
+**omni + !lctl**    -- Tabs Toggle
+**omni + ralt**     -- Apps Toggle
+**omni + prnt**     -- !Tabs Toggle
+**omni + rctl**     -- Sessions Toggle

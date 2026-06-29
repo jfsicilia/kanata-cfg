@@ -1,0 +1,52 @@
+# Omni - dolphin (actions/dolphin/dolphin_omni.kbd)
+**omni + spc**      -- Select
+**omni + ent**      -- Preview
+**omni + bcsp**     -- Bcsp
+**omni + a**        -- Select All
+**omni + lsft + a** -- Invert Selection
+**omni + rsft + a** -- Invert Selection
+**omni + c**        -- Copy
+**omni + lsft + c** -- Copy Path
+**omni + rsft + c** -- Copy Path
+**omni + c + h**    -- Copy To Other Pane
+**omni + c + l**    -- Copy To Other Pane
+**omni + d**        -- Duplicate
+**omni + e**        -- Extract
+**omni + lsft + e** -- Compress
+**omni + g**        -- Go
+**omni + i**        -- Info
+**omni + n**        -- New
+**omni + lsft + n** -- New Folder
+**omni + rsft + n** -- New Window
+**omni + o**        -- Open
+**omni + p**        -- Parent
+**omni + r**        -- Rename
+**omni + s**        -- Toggle Sort By
+**omni + lsft + s** -- Sort Order Toggle
+**omni + t**        -- New Tab
+**omni + lsft + t** -- Undo Tab
+**omni + u**        -- Cycle View
+**omni + v**        -- Paste
+**omni + w**        -- Close Tab
+**omni + x**        -- Cut
+**omni + x + h**    -- Move To Other Pane
+**omni + x + l**    -- Move To Other Pane
+**omni + z**        -- Undo
+**omni + lsft + z** -- Redo
+**omni + 0**        -- Zoom Reset
+**omni + 1**        -- Tab 1
+**omni + 2**        -- Tab 2
+**omni + 3**        -- Tab 3
+**omni + 4**        -- Tab 4
+**omni + 5**        -- Tab 5
+**omni + 6**        -- Tab 6
+**omni + 7**        -- Tab 7
+**omni + 8**        -- Tab 8
+**omni + 9**        -- Tab 9
+**omni + -**        -- Zoomout
+**omni + =**        -- Zoomin
+**omni + ]**        -- Forward
+**omni + [**        -- Back
+**omni + \**        -- Vimdiff
+**omni + '**        -- Filter
+**omni + .**        -- Tags
