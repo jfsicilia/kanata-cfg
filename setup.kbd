@@ -241,7 +241,7 @@
   ;; Time config
   retap_time  200
   hold_time 150
-  fast_type_time 55 
+  fast_type_time 65 
 
   ;; Number row keys.
       `|mod`                `           ;; Tap: `,   
@@ -415,7 +415,7 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
       $3|mod3              (t! fast_th 3                                         (layer-toggle void_layer))
       $4|mod4              (t! fast_th 4                                         (layer-toggle void_layer))
       $5|mod5              (t! fast_th 5                                         (layer-toggle void_layer))
-      $6|mod6              (t! fast_th 6                                         (layer-toggle void_layer))
+      $6|mod6              (t! fast_th 6                                         (layer-toggle void_layer)) 
       $7|mod7              (t! fast_th 7                                         (layer-toggle void_layer))
       $8|mod8              (t! fast_th 8                                         (layer-toggle void_layer))
       $9|mod9              (t! fast_th 9                                         (layer-toggle void_layer))

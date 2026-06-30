@@ -56,7 +56,6 @@
   )
 )
 
-
 ;; DEPRECATED: Shift-dependent action dispatcher.
 ;; Executes different actions based on whether lsft, rsft, or no shift is pressed.
 ;; This template is no longer used - replaced by explicit layer variants

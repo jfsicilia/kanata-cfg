@@ -8,7 +8,7 @@
   a    (multi (on-press tap-vkey vk_help_close) $action_omni+a)
   b    (multi (on-press tap-vkey vk_help_close) $action_omni+b)
   ;;   Tapping c copies. Holding c allows you to copy to another view/pane/tab.
-  c    (multi (on-press tap-vkey vk_help_close) (t! th $action_omni+c (t! toggle_layer omni+c_layer)))
+  c    (t! th $action_omni+c (t! toggle_layer omni+c_layer))
   d    (multi (on-press tap-vkey vk_help_close) $action_omni+d)
   e    (multi (on-press tap-vkey vk_help_close) $action_omni+e)
   f    (multi (on-press tap-vkey vk_help_close) $action_omni+f)
@@ -30,7 +30,7 @@
   v    (multi (on-press tap-vkey vk_help_close) $action_omni+v)
   w    (multi (on-press tap-vkey vk_help_close) $action_omni+w)
   ;;   Tapping x cuts. Holding x allows you to cut to another view/pane/tab.
-  x    (multi (on-press tap-vkey vk_help_close) (t! th $action_omni+x (t! toggle_layer omni+x_layer)))
+  x    (t! th $action_omni+x (t! toggle_layer omni+x_layer))
   y    (multi (on-press tap-vkey vk_help_close) $action_omni+y)
   z    (multi (on-press tap-vkey vk_help_close) $action_omni+z)
   `    (multi (on-press tap-vkey vk_help_close) $action_omni+`)
@@ -56,7 +56,6 @@
   8    (multi (on-press tap-vkey vk_help_close) $action_omni+8)
   9    (multi (on-press tap-vkey vk_help_close) $action_omni+9)
   0    (multi (on-press tap-vkey vk_help_close) $action_omni+0)
-
   $!lmet|desktops (multi (on-press tap-vkey vk_help_close) $action_omni+!lmet)
   $!lalt|panes    (multi (on-press tap-vkey vk_help_close) $action_omni+!lalt)
   $!lctl|tabs     (multi (on-press tap-vkey vk_help_close) $action_omni+!lctl)
