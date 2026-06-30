@@ -165,7 +165,7 @@
 ;;   tap  - Action to perform on tap (e.g., a key or macro)
 ;;   hold - Action to perform on hold (e.g., layer toggle or modifier)
 (deftemplate th (tap hold)
-  (tap-hold-press-timeout $retap_time 800 $tap $hold (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
+  (tap-hold-press-timeout $retap_time $hold_time $tap $hold (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
 ;;  (tap-hold-press $retap_time $hold_time $tap $hold)
 ;;  (tap-hold $retap_time $hold_time $tap (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
 ;;  (tap-hold-press $retap_time $hold_time $tap (multi $hold (on-press press-vkey vk_help_open) (on-release tap-vkey vk_help_close)))
