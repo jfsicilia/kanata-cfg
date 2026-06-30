@@ -51,69 +51,11 @@
   (switch
     ((input virtual vk_fast_typing)) (t! type $tap) break
     () (tap-hold $retap_time $hold_time (t! type $tap) (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
+    ;;() (tap-hold-press-timeout $retap_time 800 (t! type $tap) $hold (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
+    ;;() (tap-hold-release-timeout $retap_time 800 (t! type $tap) $hold (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
   )
 )
 
-;;(deftemplate fast_thh (tap hold help)
-;;  (switch
-;;    ((input virtual vk_fast_typing)) (t! type $tap) break
-;;    () (tap-hold $retap_time $hold_time (t! type $tap) (multi $hold (push-msg "OPEN_HELP:/home/juan/.config/kanata/help/global_spc.hlp") (on-release tap-vkey vk_help_close))) break
-;;  )
-;;)
-
-;;(deftemplate fast_thh (tap hold help_msg)
-;;  (switch
-;;    ((input virtual vk_fast_typing)) (t! type $tap) break
-;;    () (tap-hold-press-timeout $retap_time $help_hold_time
-;;         (t! type $tap) 
-;;         $hold 
-;;         (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
-;;       ) break
-;;  )
-;;)
-
-;;(deftemplate fast_thh (tap hold help_msg)
-;;  (switch
-;;    ((input virtual vk_fast_typing)) (t! type $tap) break
-;;    () (switch 
-;;         ((input virtual vk_help_mode)) (push-msg $help_msg) fallthrough
-;;         () (tap-hold-release-timeout $retap_time $help_hold_time
-;;              (t! type $tap) 
-;;              $hold 
-;;              (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
-;;             ) break
-;;       ) break 
-;;  )
-;;)
-
-;;(deftemplate thh (tap hold help_msg)
-;;  (tap-hold-press-timeout $retap_time $help_hold_time
-;;    $tap
-;;    $hold 
-;;    (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
-;;  )
-;;)
-;;(deftemplate thh (tap hold help_msg)
-;;  (switch 
-;;    ((input virtual vk_help_mode)) 
-;;      (multi (push-msg $help_msg) (tap-hold $retap_time $hold_time $tap $hold))
-;;    break
-;;    () 
-;;      (tap-hold-release-timeout $retap_time $help_hold_time
-;;        $tap
-;;        $hold 
-;;        (multi (on-press press-vkey vk_help_mode) (push-msg $help_msg) $hold (on-release release-vkey vk_help_mode))
-;;      ) 
-;;    break
-;;  )
-;;)
-
-;;(deftemplate help&action (help_msg action)
-;;  (switch 
-;;    (if-not-equal $help_msg XX ((input virtual vk_help_mode)) (push-msg $help_msg) fallthrough)
-;;    () $action break
-;;  )
-;;)
 
 ;; DEPRECATED: Shift-dependent action dispatcher.
 ;; Executes different actions based on whether lsft, rsft, or no shift is pressed.
@@ -223,14 +165,13 @@
 ;;   tap  - Action to perform on tap (e.g., a key or macro)
 ;;   hold - Action to perform on hold (e.g., layer toggle or modifier)
 (deftemplate th (tap hold)
-;;  (tap-hold $retap_time $hold_time $tap $hold)
-;; NOTE: tab-hold-press no me funcionaba del todo bien introducia un lag a la 
-;; hora de escribir.
-  (tap-hold $retap_time $hold_time $tap (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close)))
-  ;;(tap-hold-press $retap_time $hold_time $tap (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close)))
+  (tap-hold-press-timeout $retap_time 800 $tap $hold (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
+;;  (tap-hold-press $retap_time $hold_time $tap $hold)
+;;  (tap-hold $retap_time $hold_time $tap (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
+;;  (tap-hold-press $retap_time $hold_time $tap (multi $hold (on-press press-vkey vk_help_open) (on-release tap-vkey vk_help_close)))
 )
 
-;; Double-tap detector.
+;; Double-tap detector. 
 ;; Executes action only when key is pressed twice within 300ms.
 ;; Single tap does nothing (XX = no-op).
 ;;
