@@ -1,23 +1,21 @@
-# Omni - tmux (actions/tmux/tmux_omni.kbd)
+# Omni - zellij (actions/zellij/zellij_omni.kbd)
 **omni + omni**     -- Cancel
 **omni + spc**      -- Space
 **omni + bcsp**     -- Delete
-**omni + b**        -- Pgup
+**omni + b**        -- Page Up
 **omni + c**        -- Copy
 **omni + lsft + c** -- Copy Path
 **omni + rsft + c** -- Copy Path
-**omni + f**        -- Pgdn
+**omni + f**        -- Page Down
 **omni + h**        -- Nav Left
 **omni + j**        -- Nav Down
 **omni + k**        -- Nav Up
 **omni + l**        -- Nav Right
 **omni + m**        -- Clipboard History
-**omni + n**        -- New Window
 **omni + o**        -- Nav Next
 **omni + p**        -- Nav Prev
 **omni + q**        -- Window Close
-**omni + r**        -- Rename
-**omni + t**        -- New Window
+**omni + t**        -- Tabs New
 **omni + lsft + t** -- Tabs Undo Close
 **omni + v**        -- Paste
 **omni + w**        -- Tabs Close

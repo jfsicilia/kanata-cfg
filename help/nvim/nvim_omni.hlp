@@ -1,14 +1,19 @@
 # Omni - nvim (actions/nvim/nvim_omni.kbd)
+**omni + omni**     -- Cancel
 **omni + spc**      -- Seek And Select
+**omni + bcsp**     -- Delete
 **omni + a**        -- Select All
 **omni + b**        -- Pgup
 **omni + c**        -- Copy
+**omni + lsft + c** -- Copy Path
+**omni + rsft + c** -- Copy Path
 **omni + d**        -- Duplicate
 **omni + f**        -- Pgdn
 **omni + h**        -- H
 **omni + j**        -- J
 **omni + k**        -- K
 **omni + l**        -- L
+**omni + m**        -- Clipboard History
 **omni + n**        -- New
 **omni + lsft + n** -- New Folder
 **omni + o**        -- Tag Follow
@@ -23,9 +28,10 @@
 **omni + v**        -- Paste
 **omni + w**        -- Close Tab
 **omni + x**        -- Cut
-**omni + y**        -- Mody Mod;
+**omni + y**        -- History Commands
 **omni + z**        -- Undo
 **omni + lsft + z** -- Redo
+**omni + 0**        -- Tab Goto 0
 **omni + 1**        -- Tab 1
 **omni + 2**        -- Tab 2
 **omni + 3**        -- Tab 3
@@ -39,6 +45,12 @@
 **omni + [**        -- Back
 **omni + \**        -- Compare Toggle
 **omni + ;**        -- Comment
-**omni + ,**        -- Mod, Mod,
-**omni + .**        -- Mod. Mod.
-**omni + /**        -- Mod/ Mod/
+**omni + ,**        -- Settings
+**omni + .**        -- Tags
+**omni + /**        -- Help
+**omni + !lmet**    -- Desktops Toggle
+**omni + !lalt**    -- Panes Toggle
+**omni + !lctl**    -- Tabs Toggle
+**omni + ralt**     -- Apps Toggle
+**omni + prnt**     -- Groups Toggle
+**omni + rctl**     -- Sessions Toggle

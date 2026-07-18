@@ -214,7 +214,7 @@ obsidian_action_!lctl+,                        $obsidian_action_setting
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+m           
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+n           
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+o           
-obsidian_action_!lctl+lsft+p                   $obsidian_action_mod;+mod;
+obsidian_action_!lctl+lsft+p                   $obsidian_commands
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+q           
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+r           
 ;; ___TO_SET___ obsidian_action_!lctl+lsft+s           

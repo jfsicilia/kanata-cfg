@@ -147,7 +147,7 @@ nvim_action_omni+x+left            (push-msg "NOTIFY:Omni combo not implemented!
 nvim_action_omni+x+right           (push-msg "NOTIFY:Omni combo not implemented!")
 
 ;; omni + y
-nvim_action_omni+y                 $nvim_action_modY+mod;
+nvim_action_omni+y                 $nvim_history_commands
 
 ;; omni + z
 ;; If not implemented, defaults to: C-z
@@ -217,15 +217,15 @@ nvim_action_omni+'                 (push-msg "NOTIFY:Omni combo not implemented!
 ;; omni + ,
 ;; If not implemented, defaults to: action_mod,+mod,
 ;; see mod,
-nvim_action_omni+,                 $nvim_action_mod,+mod,
+nvim_action_omni+,                 $nvim_settings
 ;; omni + .
 ;; If not implemented, defaults to: action_mod.+mod.
 ;; see mod.
-nvim_action_omni+.                 $nvim_action_mod.+mod.
+nvim_action_omni+.                 $nvim_tags
 ;; omni + /
 ;; If not implemented, defaults to: action_mod/+mod/
 ;; see mod/
-nvim_action_omni+/                 $nvim_action_mod/+mod/
+nvim_action_omni+/                 $nvim_help
 
 ;; omni + !lmet|desktops
 ;; If not implemented, defaults to: action_desktops+toggle

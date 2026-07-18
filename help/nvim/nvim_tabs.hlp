@@ -1,15 +1,17 @@
 # Tabs - nvim (actions/nvim/nvim_tabs.kbd)
-**tabs + spc**    -- Spc
-**tabs + l**      -- Next
-**tabs + h**      -- Prev
-**tabs + w**      -- Close
-**tabs + 1**      -- Goto 1
-**tabs + 2**      -- Goto 2
-**tabs + 3**      -- Goto 3
-**tabs + 4**      -- Goto 4
-**tabs + 5**      -- Goto 5
-**tabs + 6**      -- Goto 6
-**tabs + 7**      -- Goto 7
-**tabs + 8**      -- Goto 8
-**tabs + 9**      -- Goto Last
-**tabs + toggle** -- Toggle
+**tabs + spc**      -- Spc
+**tabs + l**        -- Next
+**tabs + h**        -- Prev
+**tabs + t**        -- Tab New
+**tabs + w**        -- Close
+**tabs + lsft + t** -- Tab Undo Close
+**tabs + 1**        -- Goto 1
+**tabs + 2**        -- Goto 2
+**tabs + 3**        -- Goto 3
+**tabs + 4**        -- Goto 4
+**tabs + 5**        -- Goto 5
+**tabs + 6**        -- Goto 6
+**tabs + 7**        -- Goto 7
+**tabs + 8**        -- Goto 8
+**tabs + 9**        -- Goto Last
+**tabs + toggle**   -- Toggle

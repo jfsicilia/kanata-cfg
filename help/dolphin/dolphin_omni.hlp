@@ -1,10 +1,12 @@
 # Omni - dolphin (actions/dolphin/dolphin_omni.kbd)
+**omni + omni**     -- Cancel
 **omni + spc**      -- Select
 **omni + ent**      -- Preview
 **omni + bcsp**     -- Bcsp
 **omni + a**        -- Select All
 **omni + lsft + a** -- Invert Selection
 **omni + rsft + a** -- Invert Selection
+**omni + b**        -- Page Up
 **omni + c**        -- Copy
 **omni + lsft + c** -- Copy Path
 **omni + rsft + c** -- Copy Path
@@ -13,13 +15,20 @@
 **omni + d**        -- Duplicate
 **omni + e**        -- Extract
 **omni + lsft + e** -- Compress
+**omni + f**        -- Page Down
 **omni + g**        -- Go
+**omni + h**        -- Nav Left
 **omni + i**        -- Info
+**omni + j**        -- Nav Down
+**omni + k**        -- Nav Up
+**omni + l**        -- Nav Right
+**omni + m**        -- Clipboard History
 **omni + n**        -- New
 **omni + lsft + n** -- New Folder
 **omni + rsft + n** -- New Window
 **omni + o**        -- Open
 **omni + p**        -- Parent
+**omni + q**        -- Window Close
 **omni + r**        -- Rename
 **omni + s**        -- Toggle Sort By
 **omni + lsft + s** -- Sort Order Toggle
@@ -49,4 +58,12 @@
 **omni + [**        -- Back
 **omni + \**        -- Vimdiff
 **omni + '**        -- Filter
+**omni + ,**        -- Settings
 **omni + .**        -- Tags
+**omni + /**        -- Help
+**omni + !lmet**    -- Desktops Toggle
+**omni + !lalt**    -- Panes Toggle
+**omni + !lctl**    -- Tabs Toggle
+**omni + ralt**     -- Apps Toggle
+**omni + prnt**     -- Groups Toggle
+**omni + rctl**     -- Sessions Toggle

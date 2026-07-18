@@ -1,6 +1,47 @@
 # Omni - firefox (actions/firefox/firefox_omni.kbd)
-**omni + g** -- Go
-**omni + n** -- New
-**omni + ]** -- Forward
-**omni + [** -- Back
-**omni + ,** -- Settings
+**omni + omni**     -- Cancel
+**omni + spc**      -- Space
+**omni + bcsp**     -- Delete
+**omni + b**        -- Page Up
+**omni + c**        -- Copy
+**omni + lsft + c** -- Copy Path
+**omni + rsft + c** -- Copy Path
+**omni + f**        -- Page Down
+**omni + g**        -- Go
+**omni + h**        -- Nav Left
+**omni + j**        -- Nav Down
+**omni + k**        -- Nav Up
+**omni + l**        -- Nav Right
+**omni + m**        -- Clipboard History
+**omni + n**        -- New
+**omni + o**        -- Nav Next
+**omni + p**        -- Nav Prev
+**omni + q**        -- Window Close
+**omni + t**        -- Tabs New
+**omni + lsft + t** -- Tabs Undo Close
+**omni + v**        -- Paste
+**omni + w**        -- Tabs Close
+**omni + x**        -- Cut
+**omni + z**        -- Undo
+**omni + lsft + z** -- Redo
+**omni + 0**        -- Tab Goto 0
+**omni + 1**        -- Tab Goto 1
+**omni + 2**        -- Tab Goto 2
+**omni + 3**        -- Tab Goto 3
+**omni + 4**        -- Tab Goto 4
+**omni + 5**        -- Tab Goto 5
+**omni + 6**        -- Tab Goto 6
+**omni + 7**        -- Tab Goto 7
+**omni + 8**        -- Tab Goto 8
+**omni + 9**        -- Tab Goto 9
+**omni + ]**        -- Forward
+**omni + [**        -- Back
+**omni + ,**        -- Settings
+**omni + .**        -- Tags
+**omni + /**        -- Help
+**omni + !lmet**    -- Desktops Toggle
+**omni + !lalt**    -- Panes Toggle
+**omni + !lctl**    -- Tabs Toggle
+**omni + ralt**     -- Apps Toggle
+**omni + prnt**     -- Groups Toggle
+**omni + rctl**     -- Sessions Toggle

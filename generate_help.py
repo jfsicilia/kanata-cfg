@@ -64,6 +64,15 @@ def domain_short(domain: str) -> str:
     return DOMAIN_SHORT.get(domain, domain)
 
 
+def find_app_file(app_dir: Path, app: str, domain: str) -> Path | None:
+    """Return per-app file for (app, domain), accepting optional numeric priority suffix."""
+    exact = app_dir / f"{app}_{domain}.kbd"
+    if exact.exists():
+        return exact
+    candidates = sorted(app_dir.glob(f"{app}_{domain}.[0-9]*.kbd"))
+    return candidates[0] if candidates else None
+
+
 def combo_str(action_name: str, domain: str,
               key_map: dict[str, str] | None = None) -> str:
     """Convert an action name to a 'spc + e + e' style combo string.
@@ -538,22 +547,30 @@ def main(dry_run: bool = False) -> None:
         # uses templates (e.g. physical_mods) still expose all overridden actions.
         for app_dir in app_dirs:
             app      = app_dir.name
-            app_file = app_dir / f"{app}_{domain}.kbd"
-            if not app_file.exists():
+            app_file = find_app_file(app_dir, app, domain)
+            if app_file is None:
                 continue
 
             impl    = parse_app_file(app_file, app)
             entries: list[tuple[str, str]] = []
             for a in iface_order:
-                if a not in impl:
-                    continue
-                value = impl[a]
-                if value.startswith("$"):
-                    label = label_from_var(value, app)
-                elif value.startswith("("):
-                    label = label_from_action(a, domain)
+                if a in impl:
+                    value = impl[a]
+                    if value.startswith("$"):
+                        label = label_from_var(value, app)
+                    elif value.startswith("("):
+                        label = label_from_action(a, domain)
+                    else:
+                        label = label_from_global_default(value, a, domain)
                 else:
-                    label = label_from_global_default(value, a, domain)
+                    # Fall back to global default for combos the app doesn't override
+                    d = details.get(a, {})
+                    g = d.get("global")
+                    direct = d.get("direct")
+                    effective = g if is_real_default(g) else (direct if is_real_default(direct) else None)
+                    if effective is None:
+                        continue
+                    label = label_from_global_default(effective, a, domain)
                 entries.append((combo_str(a, domain, key_map), label))
 
             if not entries:
@@ -574,7 +591,7 @@ def main(dry_run: bool = False) -> None:
             avs = details.get(a, {}).get("app_values", {})
             for av_app, av_val in avs.items():
                 # Skip if a separate app file already handles this domain
-                if (ACTIONS_DIR / av_app / f"{av_app}_{domain}.kbd").exists():
+                if find_app_file(ACTIONS_DIR / av_app, av_app, domain) is not None:
                     continue
                 if av_val.startswith("$"):
                     label = label_from_var(av_val, av_app)

@@ -4,6 +4,7 @@
 **tabs + h**        -- Prev
 **tabs + t**        -- New
 **tabs + w**        -- Close
+**tabs + lsft + t** -- Tab Undo Close
 **tabs + 1**        -- Goto 1
 **tabs + 2**        -- Goto 2
 **tabs + 3**        -- Goto 3

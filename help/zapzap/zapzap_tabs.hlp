@@ -1,11 +1,15 @@
 # Tabs - zapzap (actions/zapzap/zapzap_tabs.kbd)
-**tabs + l** -- Next
-**tabs + h** -- Prev
-**tabs + 1** -- Tabs Goto 1
-**tabs + 2** -- Tabs Goto 2
-**tabs + 3** -- Tabs Goto 3
-**tabs + 4** -- Tabs Goto 4
-**tabs + 5** -- Tabs Goto 5
-**tabs + 6** -- Tabs Goto 6
-**tabs + 7** -- Tabs Goto 7
-**tabs + 8** -- Tabs Goto 8
+**tabs + l**        -- Next
+**tabs + h**        -- Prev
+**tabs + t**        -- Tab New
+**tabs + w**        -- Tab Close
+**tabs + lsft + t** -- Tab Undo Close
+**tabs + 1**        -- Tabs Goto 1
+**tabs + 2**        -- Tabs Goto 2
+**tabs + 3**        -- Tabs Goto 3
+**tabs + 4**        -- Tabs Goto 4
+**tabs + 5**        -- Tabs Goto 5
+**tabs + 6**        -- Tabs Goto 6
+**tabs + 7**        -- Tabs Goto 7
+**tabs + 8**        -- Tabs Goto 8
+**tabs + 9**        -- Tab Goto Last

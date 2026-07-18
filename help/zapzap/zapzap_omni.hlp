@@ -1,9 +1,32 @@
 # Omni - zapzap (actions/zapzap/zapzap_omni.kbd)
+**omni + omni**     -- Cancel
+**omni + spc**      -- Space
+**omni + bcsp**     -- Delete
+**omni + b**        -- Page Up
+**omni + c**        -- Copy
+**omni + lsft + c** -- Copy Path
+**omni + rsft + c** -- Copy Path
+**omni + f**        -- Page Down
 **omni + g**        -- Omni Search
+**omni + h**        -- Nav Left
+**omni + j**        -- Nav Down
+**omni + k**        -- Nav Up
+**omni + l**        -- Nav Right
+**omni + m**        -- Clipboard History
 **omni + n**        -- New Chat
 **omni + lsft + n** -- New Group
 **omni + rsft + n** -- New Group
+**omni + o**        -- Nav Next
+**omni + p**        -- Nav Prev
 **omni + q**        -- Quit
+**omni + t**        -- Tabs New
+**omni + lsft + t** -- Tabs Undo Close
+**omni + v**        -- Paste
+**omni + w**        -- Tabs Close
+**omni + x**        -- Cut
+**omni + z**        -- Undo
+**omni + lsft + z** -- Redo
+**omni + 0**        -- Tab Goto 0
 **omni + 1**        -- Tabs Goto 1
 **omni + 2**        -- Tabs Goto 2
 **omni + 3**        -- Tabs Goto 3
@@ -14,3 +37,11 @@
 **omni + 8**        -- Tabs Goto 8
 **omni + 9**        -- Tabs Goto 9
 **omni + ,**        -- Settings
+**omni + .**        -- Tags
+**omni + /**        -- Help
+**omni + !lmet**    -- Desktops Toggle
+**omni + !lalt**    -- Panes Toggle
+**omni + !lctl**    -- Tabs Toggle
+**omni + ralt**     -- Apps Toggle
+**omni + prnt**     -- Groups Toggle
+**omni + rctl**     -- Sessions Toggle
