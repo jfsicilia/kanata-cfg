@@ -1,3 +1,3 @@
 # Seek & Select - obsidian (actions/obsidian/obsidian_seek_n_select.kbd)
-**seek + spc**        -- Seek And Select
-**seek + lsft + spc** -- Seek And Select Lsft
+**seek + spc**        -- Seek And Select File
+**seek + lsft + spc** -- Seek And Select Folder

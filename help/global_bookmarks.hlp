@@ -1,63 +1,63 @@
 # Bookmarks (actions/actions_bookmarks.kbd)
-**bookmarks + l**        -- 'L' Bookmark Not Yet Implemented
-**bookmarks + n**        -- 'N' Bookmark Not Yet Implemented
-**bookmarks + q**        -- 'Q' Bookmark Not Yet Implemented
-**bookmarks + u**        -- 'U' Bookmark Not Yet Implemented
-**bookmarks + x**        -- 'X' Bookmark Not Yet Implemented
-**bookmarks + y**        -- 'Y' Bookmark Not Yet Implemented
-**bookmarks + z**        -- 'Z' Bookmark Not Yet Implemented
-**bookmarks + -**        -- '-' Bookmark Not Yet Implemented
-**bookmarks + lsft + a** -- 'A' Bookmark Not Yet Implemented
-**bookmarks + lsft + b** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + c** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + d** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + e** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + f** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + g** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + h** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + i** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + j** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + k** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + l** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + m** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + n** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + o** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + p** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + q** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + r** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + s** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + t** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + u** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + v** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + w** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + x** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + y** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + z** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + lsft + -** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + a** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + b** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + c** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + d** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + e** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + f** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + g** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + h** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + i** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + j** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + k** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + l** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + m** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + n** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + o** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + p** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + q** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + r** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + s** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + t** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + u** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + v** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + w** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + x** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + y** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + z** -- 'B' Bookmark Not Yet Implemented
-**bookmarks + rsft + -** -- 'B' Bookmark Not Yet Implemented
+**bookmarks + l**        -- L
+**bookmarks + n**        -- N
+**bookmarks + q**        -- Q
+**bookmarks + u**        -- U
+**bookmarks + x**        -- X
+**bookmarks + y**        -- Y
+**bookmarks + z**        -- Z
+**bookmarks + -**        -- -
+**bookmarks + lsft + a** -- A Lsft
+**bookmarks + lsft + b** -- B Lsft
+**bookmarks + lsft + c** -- C Lsft
+**bookmarks + lsft + d** -- D Lsft
+**bookmarks + lsft + e** -- E Lsft
+**bookmarks + lsft + f** -- F Lsft
+**bookmarks + lsft + g** -- G Lsft
+**bookmarks + lsft + h** -- H Lsft
+**bookmarks + lsft + i** -- I Lsft
+**bookmarks + lsft + j** -- J Lsft
+**bookmarks + lsft + k** -- K Lsft
+**bookmarks + lsft + l** -- L Lsft
+**bookmarks + lsft + m** -- M Lsft
+**bookmarks + lsft + n** -- N Lsft
+**bookmarks + lsft + o** -- O Lsft
+**bookmarks + lsft + p** -- P Lsft
+**bookmarks + lsft + q** -- Q Lsft
+**bookmarks + lsft + r** -- R Lsft
+**bookmarks + lsft + s** -- S Lsft
+**bookmarks + lsft + t** -- T Lsft
+**bookmarks + lsft + u** -- U Lsft
+**bookmarks + lsft + v** -- V Lsft
+**bookmarks + lsft + w** -- W Lsft
+**bookmarks + lsft + x** -- X Lsft
+**bookmarks + lsft + y** -- Y Lsft
+**bookmarks + lsft + z** -- Z Lsft
+**bookmarks + lsft + -** -- - Lsft
+**bookmarks + rsft + a** -- A Rsft
+**bookmarks + rsft + b** -- B Rsft
+**bookmarks + rsft + c** -- C Rsft
+**bookmarks + rsft + d** -- D Rsft
+**bookmarks + rsft + e** -- E Rsft
+**bookmarks + rsft + f** -- F Rsft
+**bookmarks + rsft + g** -- G Rsft
+**bookmarks + rsft + h** -- H Rsft
+**bookmarks + rsft + i** -- I Rsft
+**bookmarks + rsft + j** -- J Rsft
+**bookmarks + rsft + k** -- K Rsft
+**bookmarks + rsft + l** -- L Rsft
+**bookmarks + rsft + m** -- M Rsft
+**bookmarks + rsft + n** -- N Rsft
+**bookmarks + rsft + o** -- O Rsft
+**bookmarks + rsft + p** -- P Rsft
+**bookmarks + rsft + q** -- Q Rsft
+**bookmarks + rsft + r** -- R Rsft
+**bookmarks + rsft + s** -- S Rsft
+**bookmarks + rsft + t** -- T Rsft
+**bookmarks + rsft + u** -- U Rsft
+**bookmarks + rsft + v** -- V Rsft
+**bookmarks + rsft + w** -- W Rsft
+**bookmarks + rsft + x** -- X Rsft
+**bookmarks + rsft + y** -- Y Rsft
+**bookmarks + rsft + z** -- Z Rsft
+**bookmarks + rsft + -** -- - Rsft

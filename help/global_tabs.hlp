@@ -1,24 +1,15 @@
 # Tabs (actions/actions_tabs.iface.kbd)
-**tabs + spc**      -- Select Tabs Not Implemented
-**tabs + l**        -- Next
-**tabs + h**        -- Prev
-**tabs + j**        -- Select First Tab Not Implemented
-**tabs + up**       -- Select Last Tab Not Implemented
-**tabs + t**        -- New
-**tabs + vertical** -- Tabs Vertical Not Implemented
-**tabs + w**        -- Close
-**tabs + lsft + t** -- Undo Close
-**tabs + 1**        -- Goto 1
-**tabs + 2**        -- Goto 2
-**tabs + 3**        -- Goto 3
-**tabs + 4**        -- Goto 4
-**tabs + 5**        -- Goto 5
-**tabs + 6**        -- Goto 6
-**tabs + 7**        -- Goto 7
-**tabs + 8**        -- Goto 8
-**tabs + 9**        -- Goto Last
-**tabs + toggle**   -- Toggle Recent Tab Not Implemented
-**tabs + move + h** -- Move Tab Left Not Implemented
-**tabs + move + l** -- Move Tab Right Not Implemented
-**tabs + move + j** -- Move Tab First Not Implemented
-**tabs + move + k** -- Move Tab Last Not Implemented
+**tabs + l**        -- Tab Next
+**tabs + h**        -- Tab Prev
+**tabs + t**        -- Tab New
+**tabs + w**        -- Tab Close
+**tabs + lsft + t** -- Tab Undo Close
+**tabs + 1**        -- Tab Goto 1
+**tabs + 2**        -- Tab Goto 2
+**tabs + 3**        -- Tab Goto 3
+**tabs + 4**        -- Tab Goto 4
+**tabs + 5**        -- Tab Goto 5
+**tabs + 6**        -- Tab Goto 6
+**tabs + 7**        -- Tab Goto 7
+**tabs + 8**        -- Tab Goto 8
+**tabs + 9**        -- Tab Goto Last

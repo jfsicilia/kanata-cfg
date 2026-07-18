@@ -128,12 +128,10 @@ def label_from_action(action_name: str, domain: str) -> str:
 def label_from_global_default(default: str, action_name: str, domain: str) -> str:
     """Human-readable label from a global default value.
 
-    '(push-msg "APP:claude_code")' → 'Claude Code'
-    '(macro ...)'                  → derives from action name
-    '$action_tabs_close'           → 'Tabs Close'  (via label_from_action)
-    '$nvim_some_var'               → 'Some Var'    (strip $ + app prefix)
-    'left'                         → 'Left'
-    'C-c'                          → 'C-C'
+    '(push-msg "APP:claude_code")' → 'Claude Code'   (apps domain only)
+    '$copy'                        → 'Copy'           (leaf var name, title-cased)
+    '$action_tabs_close'           → 'Tabs Close'     (legacy action_ var)
+    '(macro ...)', 'prnt', 'C-w'   → derives from action name
     """
     # push-msg "APP:name" → app name as label (split camelCase + underscores)
     app_m = re.search(r'"APP:([^"]+)"', default)
@@ -141,31 +139,21 @@ def label_from_global_default(default: str, action_name: str, domain: str) -> st
         name = app_m.group(1)
         name = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', name)  # camelCase → words
         return name.replace("_", " ").title()
-    # push-msg "NOTIFY:label" → strip trailing punctuation then title-case
-    notify_m = re.search(r'"NOTIFY:\s*([^"]+)"', default)
-    if notify_m:
-        label = re.sub(r'\.+$', '', notify_m.group(1).strip())
-        return label.title()
-    # Complex kanata expression → derive label from action name
-    if default.startswith("("):
-        return label_from_action(action_name, domain)
-    clean = default.lstrip("$").lstrip("~")
-    if clean.startswith("action_"):
-        return label_from_action(clean, domain)
+    # $leaf_var or $action_... → label from variable name
     if default.startswith("$"):
-        # Strip domain prefix (e.g. "$apps_app_finder" + domain "apps" → "App Finder")
+        clean = default.lstrip("$").lstrip("~")
+        if clean.startswith("action_"):
+            return label_from_action(clean, domain)
         domain_pfx = f"{domain}_"
         if clean.startswith(domain_pfx):
             clean = clean[len(domain_pfx):]
         return clean.replace("_", " ").replace("+", " ").title()
-    # Simple kanata key token (lrld, prnt, S-prnt, RS-spc, …) → derive from action name
-    if re.match(r'^[A-Za-z][-A-Za-z0-9]*$', default):
-        return label_from_action(action_name, domain)
-    return default.replace("_", " ").replace("+", " ").title()
+    # Everything else (complex expressions, raw key tokens) → action name
+    return label_from_action(action_name, domain)
 
 
 def is_real_default(value: str | None) -> bool:
-    """True when value is a usable global default — not None, XX, or unset push-msg."""
+    """True when value is a usable global default — not None, XX, or unset/not-implemented push-msg."""
     if not value:
         return False
     if value.upper() == "XX":
@@ -173,8 +161,12 @@ def is_real_default(value: str | None) -> bool:
     if value.startswith("(push-msg"):
         app_m    = re.search(r'"APP:([^"]+)"',       value)
         notify_m = re.search(r'"NOTIFY:\s*([^"]+)"', value)
-        return bool((app_m and app_m.group(1).strip()) or
-                    (notify_m and notify_m.group(1).strip()))
+        if app_m and app_m.group(1).strip():
+            return True
+        if notify_m:
+            content = notify_m.group(1).strip()
+            return bool(content) and "not implemented" not in content.lower()
+        return False
     return True
 
 
@@ -247,12 +239,8 @@ def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
                     if dt3:
                         direct_val = dt3.group(1)
             if direct_val is None:
-                # Complex expression: prefer NOTIFY: push-msg label when present
-                notify_m = re.search(r'\(push-msg\s+"(NOTIFY:[^"]+)"\)', block_nc)
-                if notify_m:
-                    direct_val = f'(push-msg "{notify_m.group(1)}")'
-                elif re.search(r'action_\S+\s+\(', block_nc):
-                    # Any remaining complex binding → signal label_from_action
+                if re.search(r'action_\S+\s+\(', block_nc):
+                    # Complex expression → signal label_from_action
                     direct_val = "(action)"
 
         # Inline per-app values for bookmarks-style files (no separate app file)

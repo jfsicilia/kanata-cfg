@@ -26,16 +26,16 @@
 **phys + lctl + x**         -- Lctl X
 **phys + lctl + y**         -- Lctl Y
 **phys + lctl + z**         -- Lctl Z
-**phys + lctl + ,**         -- C-,
-**phys + lctl + .**         -- C-.
-**phys + lctl + /**         -- C-/
-**phys + lctl + ;**         -- C-;
-**phys + lctl + '**         -- C-'
-**phys + lctl + [**         -- C-[
-**phys + lctl + ]**         -- C-]
-**phys + lctl + \**         -- C-\
+**phys + lctl + ,**         -- Lctl ,
+**phys + lctl + .**         -- Lctl .
+**phys + lctl + /**         -- Lctl /
+**phys + lctl + ;**         -- Lctl ;
+**phys + lctl + '**         -- Lctl '
+**phys + lctl + [**         -- Lctl [
+**phys + lctl + ]**         -- Lctl ]
+**phys + lctl + \**         -- Lctl \
 **phys + lctl + -**         -- Lctl -
-**phys + lctl + =**         -- C-=
+**phys + lctl + =**         -- Lctl =
 **phys + lctl + 1**         -- Lctl 1
 **phys + lctl + 2**         -- Lctl 2
 **phys + lctl + 3**         -- Lctl 3
@@ -72,16 +72,16 @@
 **phys + lctl + lsft + x**  -- Lctl Lsft X
 **phys + lctl + lsft + y**  -- Lctl Lsft Y
 **phys + lctl + lsft + z**  -- Lctl Lsft Z
-**phys + lctl + lsft + ,**  -- C-S-,
-**phys + lctl + lsft + .**  -- C-S-.
-**phys + lctl + lsft + /**  -- C-S-/
-**phys + lctl + lsft + ;**  -- C-S-;
-**phys + lctl + lsft + '**  -- C-S-'
-**phys + lctl + lsft + [**  -- C-S-[
-**phys + lctl + lsft + ]**  -- C-S-]
-**phys + lctl + lsft + \**  -- C-S-\
+**phys + lctl + lsft + ,**  -- Lctl Lsft ,
+**phys + lctl + lsft + .**  -- Lctl Lsft .
+**phys + lctl + lsft + /**  -- Lctl Lsft /
+**phys + lctl + lsft + ;**  -- Lctl Lsft ;
+**phys + lctl + lsft + '**  -- Lctl Lsft '
+**phys + lctl + lsft + [**  -- Lctl Lsft [
+**phys + lctl + lsft + ]**  -- Lctl Lsft ]
+**phys + lctl + lsft + \**  -- Lctl Lsft \
 **phys + lctl + lsft + -**  -- Lctl Lsft -
-**phys + lctl + lsft + =**  -- C-S-=
+**phys + lctl + lsft + =**  -- Lctl Lsft =
 **phys + lctl + lsft + 1**  -- Lctl Lsft 1
 **phys + lctl + lsft + 2**  -- Lctl Lsft 2
 **phys + lctl + lsft + 3**  -- Lctl Lsft 3
@@ -118,16 +118,16 @@
 **phys + lctl + rsft + x**  -- Lctl Rsft X
 **phys + lctl + rsft + y**  -- Lctl Rsft Y
 **phys + lctl + rsft + z**  -- Lctl Rsft Z
-**phys + lctl + rsft + ,**  -- C-S-,
-**phys + lctl + rsft + .**  -- C-S-.
-**phys + lctl + rsft + /**  -- C-S-/
-**phys + lctl + rsft + ;**  -- C-S-;
-**phys + lctl + rsft + '**  -- C-S-'
-**phys + lctl + rsft + [**  -- C-S-[
-**phys + lctl + rsft + ]**  -- C-S-]
-**phys + lctl + rsft + \**  -- C-S-\
+**phys + lctl + rsft + ,**  -- Lctl Rsft ,
+**phys + lctl + rsft + .**  -- Lctl Rsft .
+**phys + lctl + rsft + /**  -- Lctl Rsft /
+**phys + lctl + rsft + ;**  -- Lctl Rsft ;
+**phys + lctl + rsft + '**  -- Lctl Rsft '
+**phys + lctl + rsft + [**  -- Lctl Rsft [
+**phys + lctl + rsft + ]**  -- Lctl Rsft ]
+**phys + lctl + rsft + \**  -- Lctl Rsft \
 **phys + lctl + rsft + -**  -- Lctl Rsft -
-**phys + lctl + rsft + =**  -- C-S-=
+**phys + lctl + rsft + =**  -- Lctl Rsft =
 **phys + lctl + rsft + 1**  -- Lctl Rsft 1
 **phys + lctl + rsft + 2**  -- Lctl Rsft 2
 **phys + lctl + rsft + 3**  -- Lctl Rsft 3
@@ -164,16 +164,16 @@
 **phys + !lctl + x**        -- !Lctl X
 **phys + !lctl + y**        -- !Lctl Y
 **phys + !lctl + z**        -- !Lctl Z
-**phys + !lctl + ,**        -- C-,
-**phys + !lctl + .**        -- C-.
-**phys + !lctl + /**        -- C-/
-**phys + !lctl + ;**        -- C-;
-**phys + !lctl + '**        -- C-'
-**phys + !lctl + [**        -- C-[
-**phys + !lctl + ]**        -- C-]
-**phys + !lctl + \**        -- C-\
+**phys + !lctl + ,**        -- !Lctl ,
+**phys + !lctl + .**        -- !Lctl .
+**phys + !lctl + /**        -- !Lctl /
+**phys + !lctl + ;**        -- !Lctl ;
+**phys + !lctl + '**        -- !Lctl '
+**phys + !lctl + [**        -- !Lctl [
+**phys + !lctl + ]**        -- !Lctl ]
+**phys + !lctl + \**        -- !Lctl \
 **phys + !lctl + -**        -- !Lctl -
-**phys + !lctl + =**        -- C-=
+**phys + !lctl + =**        -- !Lctl =
 **phys + !lctl + 1**        -- !Lctl 1
 **phys + !lctl + 2**        -- !Lctl 2
 **phys + !lctl + 3**        -- !Lctl 3
@@ -210,16 +210,16 @@
 **phys + !lctl + lsft + x** -- !Lctl Lsft X
 **phys + !lctl + lsft + y** -- !Lctl Lsft Y
 **phys + !lctl + lsft + z** -- !Lctl Lsft Z
-**phys + !lctl + lsft + ,** -- C-S-,
-**phys + !lctl + lsft + .** -- C-S-.
-**phys + !lctl + lsft + /** -- C-S-/
-**phys + !lctl + lsft + ;** -- C-S-;
-**phys + !lctl + lsft + '** -- C-S-'
-**phys + !lctl + lsft + [** -- C-S-[
-**phys + !lctl + lsft + ]** -- C-S-]
-**phys + !lctl + lsft + \** -- C-S-\
+**phys + !lctl + lsft + ,** -- !Lctl Lsft ,
+**phys + !lctl + lsft + .** -- !Lctl Lsft .
+**phys + !lctl + lsft + /** -- !Lctl Lsft /
+**phys + !lctl + lsft + ;** -- !Lctl Lsft ;
+**phys + !lctl + lsft + '** -- !Lctl Lsft '
+**phys + !lctl + lsft + [** -- !Lctl Lsft [
+**phys + !lctl + lsft + ]** -- !Lctl Lsft ]
+**phys + !lctl + lsft + \** -- !Lctl Lsft \
 **phys + !lctl + lsft + -** -- !Lctl Lsft -
-**phys + !lctl + lsft + =** -- C-S-=
+**phys + !lctl + lsft + =** -- !Lctl Lsft =
 **phys + !lctl + lsft + 1** -- !Lctl Lsft 1
 **phys + !lctl + lsft + 2** -- !Lctl Lsft 2
 **phys + !lctl + lsft + 3** -- !Lctl Lsft 3
@@ -256,16 +256,16 @@
 **phys + !lctl + rsft + x** -- !Lctl Rsft X
 **phys + !lctl + rsft + y** -- !Lctl Rsft Y
 **phys + !lctl + rsft + z** -- !Lctl Rsft Z
-**phys + !lctl + rsft + ,** -- C-S-,
-**phys + !lctl + rsft + .** -- C-S-.
-**phys + !lctl + rsft + /** -- C-S-/
-**phys + !lctl + rsft + ;** -- C-S-;
-**phys + !lctl + rsft + '** -- C-S-'
-**phys + !lctl + rsft + [** -- C-S-[
-**phys + !lctl + rsft + ]** -- C-S-]
-**phys + !lctl + rsft + \** -- C-S-\
+**phys + !lctl + rsft + ,** -- !Lctl Rsft ,
+**phys + !lctl + rsft + .** -- !Lctl Rsft .
+**phys + !lctl + rsft + /** -- !Lctl Rsft /
+**phys + !lctl + rsft + ;** -- !Lctl Rsft ;
+**phys + !lctl + rsft + '** -- !Lctl Rsft '
+**phys + !lctl + rsft + [** -- !Lctl Rsft [
+**phys + !lctl + rsft + ]** -- !Lctl Rsft ]
+**phys + !lctl + rsft + \** -- !Lctl Rsft \
 **phys + !lctl + rsft + -** -- !Lctl Rsft -
-**phys + !lctl + rsft + =** -- C-S-=
+**phys + !lctl + rsft + =** -- !Lctl Rsft =
 **phys + !lctl + rsft + 1** -- !Lctl Rsft 1
 **phys + !lctl + rsft + 2** -- !Lctl Rsft 2
 **phys + !lctl + rsft + 3** -- !Lctl Rsft 3
@@ -302,16 +302,16 @@
 **phys + lalt + x**         -- Lalt X
 **phys + lalt + y**         -- Lalt Y
 **phys + lalt + z**         -- Lalt Z
-**phys + lalt + ,**         -- A-,
-**phys + lalt + .**         -- A-.
-**phys + lalt + /**         -- A-/
-**phys + lalt + ;**         -- A-;
-**phys + lalt + '**         -- A-'
-**phys + lalt + [**         -- A-[
-**phys + lalt + ]**         -- A-]
-**phys + lalt + \**         -- A-\
+**phys + lalt + ,**         -- Lalt ,
+**phys + lalt + .**         -- Lalt .
+**phys + lalt + /**         -- Lalt /
+**phys + lalt + ;**         -- Lalt ;
+**phys + lalt + '**         -- Lalt '
+**phys + lalt + [**         -- Lalt [
+**phys + lalt + ]**         -- Lalt ]
+**phys + lalt + \**         -- Lalt \
 **phys + lalt + -**         -- Lalt -
-**phys + lalt + =**         -- A-=
+**phys + lalt + =**         -- Lalt =
 **phys + lalt + 1**         -- Lalt 1
 **phys + lalt + 2**         -- Lalt 2
 **phys + lalt + 3**         -- Lalt 3
@@ -348,16 +348,16 @@
 **phys + lalt + lsft + x**  -- Lalt Lsft X
 **phys + lalt + lsft + y**  -- Lalt Lsft Y
 **phys + lalt + lsft + z**  -- Lalt Lsft Z
-**phys + lalt + lsft + ,**  -- A-S-,
-**phys + lalt + lsft + .**  -- A-S-.
-**phys + lalt + lsft + /**  -- A-S-/
-**phys + lalt + lsft + ;**  -- A-S-;
-**phys + lalt + lsft + '**  -- A-S-'
-**phys + lalt + lsft + [**  -- A-S-[
-**phys + lalt + lsft + ]**  -- A-S-]
-**phys + lalt + lsft + \**  -- A-S-\
+**phys + lalt + lsft + ,**  -- Lalt Lsft ,
+**phys + lalt + lsft + .**  -- Lalt Lsft .
+**phys + lalt + lsft + /**  -- Lalt Lsft /
+**phys + lalt + lsft + ;**  -- Lalt Lsft ;
+**phys + lalt + lsft + '**  -- Lalt Lsft '
+**phys + lalt + lsft + [**  -- Lalt Lsft [
+**phys + lalt + lsft + ]**  -- Lalt Lsft ]
+**phys + lalt + lsft + \**  -- Lalt Lsft \
 **phys + lalt + lsft + -**  -- Lalt Lsft -
-**phys + lalt + lsft + =**  -- A-S-=
+**phys + lalt + lsft + =**  -- Lalt Lsft =
 **phys + lalt + lsft + 1**  -- Lalt Lsft 1
 **phys + lalt + lsft + 2**  -- Lalt Lsft 2
 **phys + lalt + lsft + 3**  -- Lalt Lsft 3
@@ -394,16 +394,16 @@
 **phys + lalt + rsft + x**  -- Lalt Rsft X
 **phys + lalt + rsft + y**  -- Lalt Rsft Y
 **phys + lalt + rsft + z**  -- Lalt Rsft Z
-**phys + lalt + rsft + ,**  -- A-S-,
-**phys + lalt + rsft + .**  -- A-S-.
-**phys + lalt + rsft + /**  -- A-S-/
-**phys + lalt + rsft + ;**  -- A-S-;
-**phys + lalt + rsft + '**  -- A-S-'
-**phys + lalt + rsft + [**  -- A-S-[
-**phys + lalt + rsft + ]**  -- A-S-]
-**phys + lalt + rsft + \**  -- A-S-\
+**phys + lalt + rsft + ,**  -- Lalt Rsft ,
+**phys + lalt + rsft + .**  -- Lalt Rsft .
+**phys + lalt + rsft + /**  -- Lalt Rsft /
+**phys + lalt + rsft + ;**  -- Lalt Rsft ;
+**phys + lalt + rsft + '**  -- Lalt Rsft '
+**phys + lalt + rsft + [**  -- Lalt Rsft [
+**phys + lalt + rsft + ]**  -- Lalt Rsft ]
+**phys + lalt + rsft + \**  -- Lalt Rsft \
 **phys + lalt + rsft + -**  -- Lalt Rsft -
-**phys + lalt + rsft + =**  -- A-S-=
+**phys + lalt + rsft + =**  -- Lalt Rsft =
 **phys + lalt + rsft + 1**  -- Lalt Rsft 1
 **phys + lalt + rsft + 2**  -- Lalt Rsft 2
 **phys + lalt + rsft + 3**  -- Lalt Rsft 3
@@ -440,16 +440,16 @@
 **phys + !lalt + x**        -- !Lalt X
 **phys + !lalt + y**        -- !Lalt Y
 **phys + !lalt + z**        -- !Lalt Z
-**phys + !lalt + ,**        -- A-,
-**phys + !lalt + .**        -- A-.
-**phys + !lalt + /**        -- A-/
-**phys + !lalt + ;**        -- A-;
-**phys + !lalt + '**        -- A-'
-**phys + !lalt + [**        -- A-[
-**phys + !lalt + ]**        -- A-]
-**phys + !lalt + \**        -- A-\
+**phys + !lalt + ,**        -- !Lalt ,
+**phys + !lalt + .**        -- !Lalt .
+**phys + !lalt + /**        -- !Lalt /
+**phys + !lalt + ;**        -- !Lalt ;
+**phys + !lalt + '**        -- !Lalt '
+**phys + !lalt + [**        -- !Lalt [
+**phys + !lalt + ]**        -- !Lalt ]
+**phys + !lalt + \**        -- !Lalt \
 **phys + !lalt + -**        -- !Lalt -
-**phys + !lalt + =**        -- A-=
+**phys + !lalt + =**        -- !Lalt =
 **phys + !lalt + 1**        -- !Lalt 1
 **phys + !lalt + 2**        -- !Lalt 2
 **phys + !lalt + 3**        -- !Lalt 3
@@ -486,16 +486,16 @@
 **phys + !lalt + lsft + x** -- !Lalt Lsft X
 **phys + !lalt + lsft + y** -- !Lalt Lsft Y
 **phys + !lalt + lsft + z** -- !Lalt Lsft Z
-**phys + !lalt + lsft + ,** -- A-S-,
-**phys + !lalt + lsft + .** -- A-S-.
-**phys + !lalt + lsft + /** -- A-S-/
-**phys + !lalt + lsft + ;** -- A-S-;
-**phys + !lalt + lsft + '** -- A-S-'
-**phys + !lalt + lsft + [** -- A-S-[
-**phys + !lalt + lsft + ]** -- A-S-]
-**phys + !lalt + lsft + \** -- A-S-\
+**phys + !lalt + lsft + ,** -- !Lalt Lsft ,
+**phys + !lalt + lsft + .** -- !Lalt Lsft .
+**phys + !lalt + lsft + /** -- !Lalt Lsft /
+**phys + !lalt + lsft + ;** -- !Lalt Lsft ;
+**phys + !lalt + lsft + '** -- !Lalt Lsft '
+**phys + !lalt + lsft + [** -- !Lalt Lsft [
+**phys + !lalt + lsft + ]** -- !Lalt Lsft ]
+**phys + !lalt + lsft + \** -- !Lalt Lsft \
 **phys + !lalt + lsft + -** -- !Lalt Lsft -
-**phys + !lalt + lsft + =** -- A-S-=
+**phys + !lalt + lsft + =** -- !Lalt Lsft =
 **phys + !lalt + lsft + 1** -- !Lalt Lsft 1
 **phys + !lalt + lsft + 2** -- !Lalt Lsft 2
 **phys + !lalt + lsft + 3** -- !Lalt Lsft 3
@@ -532,16 +532,16 @@
 **phys + !lalt + rsft + x** -- !Lalt Rsft X
 **phys + !lalt + rsft + y** -- !Lalt Rsft Y
 **phys + !lalt + rsft + z** -- !Lalt Rsft Z
-**phys + !lalt + rsft + ,** -- A-S-,
-**phys + !lalt + rsft + .** -- A-S-.
-**phys + !lalt + rsft + /** -- A-S-/
-**phys + !lalt + rsft + ;** -- A-S-;
-**phys + !lalt + rsft + '** -- A-S-'
-**phys + !lalt + rsft + [** -- A-S-[
-**phys + !lalt + rsft + ]** -- A-S-]
-**phys + !lalt + rsft + \** -- A-S-\
+**phys + !lalt + rsft + ,** -- !Lalt Rsft ,
+**phys + !lalt + rsft + .** -- !Lalt Rsft .
+**phys + !lalt + rsft + /** -- !Lalt Rsft /
+**phys + !lalt + rsft + ;** -- !Lalt Rsft ;
+**phys + !lalt + rsft + '** -- !Lalt Rsft '
+**phys + !lalt + rsft + [** -- !Lalt Rsft [
+**phys + !lalt + rsft + ]** -- !Lalt Rsft ]
+**phys + !lalt + rsft + \** -- !Lalt Rsft \
 **phys + !lalt + rsft + -** -- !Lalt Rsft -
-**phys + !lalt + rsft + =** -- A-S-=
+**phys + !lalt + rsft + =** -- !Lalt Rsft =
 **phys + !lalt + rsft + 1** -- !Lalt Rsft 1
 **phys + !lalt + rsft + 2** -- !Lalt Rsft 2
 **phys + !lalt + rsft + 3** -- !Lalt Rsft 3
@@ -578,16 +578,16 @@
 **phys + lmet + x**         -- Lmet X
 **phys + lmet + y**         -- Lmet Y
 **phys + lmet + z**         -- Lmet Z
-**phys + lmet + ,**         -- M-,
-**phys + lmet + .**         -- M-.
-**phys + lmet + /**         -- M-/
-**phys + lmet + ;**         -- M-;
-**phys + lmet + '**         -- M-'
-**phys + lmet + [**         -- M-[
-**phys + lmet + ]**         -- M-]
-**phys + lmet + \**         -- M-\
+**phys + lmet + ,**         -- Lmet ,
+**phys + lmet + .**         -- Lmet .
+**phys + lmet + /**         -- Lmet /
+**phys + lmet + ;**         -- Lmet ;
+**phys + lmet + '**         -- Lmet '
+**phys + lmet + [**         -- Lmet [
+**phys + lmet + ]**         -- Lmet ]
+**phys + lmet + \**         -- Lmet \
 **phys + lmet + -**         -- Lmet -
-**phys + lmet + =**         -- M-=
+**phys + lmet + =**         -- Lmet =
 **phys + lmet + 1**         -- Lmet 1
 **phys + lmet + 2**         -- Lmet 2
 **phys + lmet + 3**         -- Lmet 3
@@ -624,16 +624,16 @@
 **phys + lmet + lsft + x**  -- Lmet Lsft X
 **phys + lmet + lsft + y**  -- Lmet Lsft Y
 **phys + lmet + lsft + z**  -- Lmet Lsft Z
-**phys + lmet + lsft + ,**  -- M-S-,
-**phys + lmet + lsft + .**  -- M-S-.
-**phys + lmet + lsft + /**  -- M-S-/
-**phys + lmet + lsft + ;**  -- M-S-;
-**phys + lmet + lsft + '**  -- M-S-'
-**phys + lmet + lsft + [**  -- M-S-[
-**phys + lmet + lsft + ]**  -- M-S-]
-**phys + lmet + lsft + \**  -- M-S-\
+**phys + lmet + lsft + ,**  -- Lmet Lsft ,
+**phys + lmet + lsft + .**  -- Lmet Lsft .
+**phys + lmet + lsft + /**  -- Lmet Lsft /
+**phys + lmet + lsft + ;**  -- Lmet Lsft ;
+**phys + lmet + lsft + '**  -- Lmet Lsft '
+**phys + lmet + lsft + [**  -- Lmet Lsft [
+**phys + lmet + lsft + ]**  -- Lmet Lsft ]
+**phys + lmet + lsft + \**  -- Lmet Lsft \
 **phys + lmet + lsft + -**  -- Lmet Lsft -
-**phys + lmet + lsft + =**  -- M-S-=
+**phys + lmet + lsft + =**  -- Lmet Lsft =
 **phys + lmet + lsft + 1**  -- Lmet Lsft 1
 **phys + lmet + lsft + 2**  -- Lmet Lsft 2
 **phys + lmet + lsft + 3**  -- Lmet Lsft 3
@@ -670,16 +670,16 @@
 **phys + lmet + rsft + x**  -- Lmet Rsft X
 **phys + lmet + rsft + y**  -- Lmet Rsft Y
 **phys + lmet + rsft + z**  -- Lmet Rsft Z
-**phys + lmet + rsft + ,**  -- M-S-,
-**phys + lmet + rsft + .**  -- M-S-.
-**phys + lmet + rsft + /**  -- M-S-/
-**phys + lmet + rsft + ;**  -- M-S-;
-**phys + lmet + rsft + '**  -- M-S-'
-**phys + lmet + rsft + [**  -- M-S-[
-**phys + lmet + rsft + ]**  -- M-S-]
-**phys + lmet + rsft + \**  -- M-S-\
+**phys + lmet + rsft + ,**  -- Lmet Rsft ,
+**phys + lmet + rsft + .**  -- Lmet Rsft .
+**phys + lmet + rsft + /**  -- Lmet Rsft /
+**phys + lmet + rsft + ;**  -- Lmet Rsft ;
+**phys + lmet + rsft + '**  -- Lmet Rsft '
+**phys + lmet + rsft + [**  -- Lmet Rsft [
+**phys + lmet + rsft + ]**  -- Lmet Rsft ]
+**phys + lmet + rsft + \**  -- Lmet Rsft \
 **phys + lmet + rsft + -**  -- Lmet Rsft -
-**phys + lmet + rsft + =**  -- M-S-=
+**phys + lmet + rsft + =**  -- Lmet Rsft =
 **phys + lmet + rsft + 1**  -- Lmet Rsft 1
 **phys + lmet + rsft + 2**  -- Lmet Rsft 2
 **phys + lmet + rsft + 3**  -- Lmet Rsft 3
@@ -716,16 +716,16 @@
 **phys + !lmet + x**        -- !Lmet X
 **phys + !lmet + y**        -- !Lmet Y
 **phys + !lmet + z**        -- !Lmet Z
-**phys + !lmet + ,**        -- M-,
-**phys + !lmet + .**        -- M-.
-**phys + !lmet + /**        -- M-/
-**phys + !lmet + ;**        -- M-;
-**phys + !lmet + '**        -- M-'
-**phys + !lmet + [**        -- M-[
-**phys + !lmet + ]**        -- M-]
-**phys + !lmet + \**        -- M-\
+**phys + !lmet + ,**        -- !Lmet ,
+**phys + !lmet + .**        -- !Lmet .
+**phys + !lmet + /**        -- !Lmet /
+**phys + !lmet + ;**        -- !Lmet ;
+**phys + !lmet + '**        -- !Lmet '
+**phys + !lmet + [**        -- !Lmet [
+**phys + !lmet + ]**        -- !Lmet ]
+**phys + !lmet + \**        -- !Lmet \
 **phys + !lmet + -**        -- !Lmet -
-**phys + !lmet + =**        -- M-=
+**phys + !lmet + =**        -- !Lmet =
 **phys + !lmet + 1**        -- !Lmet 1
 **phys + !lmet + 2**        -- !Lmet 2
 **phys + !lmet + 3**        -- !Lmet 3
@@ -762,16 +762,16 @@
 **phys + !lmet + lsft + x** -- !Lmet Lsft X
 **phys + !lmet + lsft + y** -- !Lmet Lsft Y
 **phys + !lmet + lsft + z** -- !Lmet Lsft Z
-**phys + !lmet + lsft + ,** -- M-S-,
-**phys + !lmet + lsft + .** -- M-S-.
-**phys + !lmet + lsft + /** -- M-S-/
-**phys + !lmet + lsft + ;** -- M-S-;
-**phys + !lmet + lsft + '** -- M-S-'
-**phys + !lmet + lsft + [** -- M-S-[
-**phys + !lmet + lsft + ]** -- M-S-]
-**phys + !lmet + lsft + \** -- M-S-\
+**phys + !lmet + lsft + ,** -- !Lmet Lsft ,
+**phys + !lmet + lsft + .** -- !Lmet Lsft .
+**phys + !lmet + lsft + /** -- !Lmet Lsft /
+**phys + !lmet + lsft + ;** -- !Lmet Lsft ;
+**phys + !lmet + lsft + '** -- !Lmet Lsft '
+**phys + !lmet + lsft + [** -- !Lmet Lsft [
+**phys + !lmet + lsft + ]** -- !Lmet Lsft ]
+**phys + !lmet + lsft + \** -- !Lmet Lsft \
 **phys + !lmet + lsft + -** -- !Lmet Lsft -
-**phys + !lmet + lsft + =** -- M-S-=
+**phys + !lmet + lsft + =** -- !Lmet Lsft =
 **phys + !lmet + lsft + 1** -- !Lmet Lsft 1
 **phys + !lmet + lsft + 2** -- !Lmet Lsft 2
 **phys + !lmet + lsft + 3** -- !Lmet Lsft 3
@@ -808,16 +808,16 @@
 **phys + !lmet + rsft + x** -- !Lmet Rsft X
 **phys + !lmet + rsft + y** -- !Lmet Rsft Y
 **phys + !lmet + rsft + z** -- !Lmet Rsft Z
-**phys + !lmet + rsft + ,** -- M-S-,
-**phys + !lmet + rsft + .** -- M-S-.
-**phys + !lmet + rsft + /** -- M-S-/
-**phys + !lmet + rsft + ;** -- M-S-;
-**phys + !lmet + rsft + '** -- M-S-'
-**phys + !lmet + rsft + [** -- M-S-[
-**phys + !lmet + rsft + ]** -- M-S-]
-**phys + !lmet + rsft + \** -- M-S-\
+**phys + !lmet + rsft + ,** -- !Lmet Rsft ,
+**phys + !lmet + rsft + .** -- !Lmet Rsft .
+**phys + !lmet + rsft + /** -- !Lmet Rsft /
+**phys + !lmet + rsft + ;** -- !Lmet Rsft ;
+**phys + !lmet + rsft + '** -- !Lmet Rsft '
+**phys + !lmet + rsft + [** -- !Lmet Rsft [
+**phys + !lmet + rsft + ]** -- !Lmet Rsft ]
+**phys + !lmet + rsft + \** -- !Lmet Rsft \
 **phys + !lmet + rsft + -** -- !Lmet Rsft -
-**phys + !lmet + rsft + =** -- M-S-=
+**phys + !lmet + rsft + =** -- !Lmet Rsft =
 **phys + !lmet + rsft + 1** -- !Lmet Rsft 1
 **phys + !lmet + rsft + 2** -- !Lmet Rsft 2
 **phys + !lmet + rsft + 3** -- !Lmet Rsft 3

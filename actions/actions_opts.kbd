@@ -1,16 +1,30 @@
 (defvar
-  ;; == opts ==============================================================
-  action_opts_set_quiet_profile       (multi (push-msg "NOTIFY: Quiet profile")       (cmd asusctl profile set Quiet))
-  action_opts_set_balanced_profile    (multi (push-msg "NOTIFY: Balanced profile")    (cmd asusctl profile set Balanced))
-  action_opts_set_performance_profile (multi (push-msg "NOTIFY: Performance profile") (cmd asusctl profile set Performance))
-  action_opts_restart_kwanata         (t! unmod_all
+  ;; Leaf vars — label source for generate_help
+  set_quiet_profile       (multi (push-msg "NOTIFY: Quiet profile")       (cmd asusctl profile set Quiet))
+  set_balanced_profile    (multi (push-msg "NOTIFY: Balanced profile")    (cmd asusctl profile set Balanced))
+  set_performance_profile (multi (push-msg "NOTIFY: Performance profile") (cmd asusctl profile set Performance))
+  restart_kwanata         (t! unmod_all
     (macro RA-spc 300 s y s t e m c t l spc - - u s e r spc r e s t a r t spc k w a n a t a 300 ent))
-  action_opts_restart_system          (multi (push-msg "NOTIFY: Rebooting...")        (cmd systemctl reboot))
-  action_opts_shutdown_system         (multi (push-msg "NOTIFY: Shutting down...")    (cmd systemctl shutdown))
-  action_opts_print_screen            prnt
-  action_opts_print_window            S-prnt
-  action_opts_sync_and_reload_kanata  (multi (cmd kanata_sync.sh) (push-msg "RELOAD:") lrld)
-  action_opts_reload_kanata           lrld
-  action_opts_debug_message           (push-msg "DEBUG: This is a DEBUG message to check communication")
-  action_sleep_system                 (multi (push-msg "NOTIFY: Sleeping...")         (cmd systemctl suspend))
+  restart_system          (multi (push-msg "NOTIFY: Rebooting...")        (cmd systemctl reboot))
+  shutdown_system         (multi (push-msg "NOTIFY: Shutting down...")    (cmd systemctl shutdown))
+  print_screen            prnt
+  print_window            S-prnt
+  sync_and_reload_kanata  (multi (cmd kanata_sync.sh) (push-msg "RELOAD:") lrld)
+  reload_kanata           lrld
+  debug_message           (push-msg "DEBUG: This is a DEBUG message to check communication")
+  sleep_system            (multi (push-msg "NOTIFY: Sleeping...")         (cmd systemctl suspend))
+
+  ;; == opts ==============================================================
+  action_opts_set_quiet_profile       $set_quiet_profile
+  action_opts_set_balanced_profile    $set_balanced_profile
+  action_opts_set_performance_profile $set_performance_profile
+  action_opts_restart_kwanata         $restart_kwanata
+  action_opts_restart_system          $restart_system
+  action_opts_shutdown_system         $shutdown_system
+  action_opts_print_screen            $print_screen
+  action_opts_print_window            $print_window
+  action_opts_sync_and_reload_kanata  $sync_and_reload_kanata
+  action_opts_reload_kanata           $reload_kanata
+  action_opts_debug_message           $debug_message
+  action_sleep_system                 $sleep_system
 )

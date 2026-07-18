@@ -1,4 +1,13 @@
 (defvar
+  tab_next      C-tab
+  tab_prev      C-S-tab
+  tab_new       C-t
+  tab_close     C-w
+  tab_undo_close C-S-t
+  tab_goto_last C-9
+)
+
+(defvar
   ;; @start@ ====== DON'T REMOVE THIS LINE =================================
 
   ;; == tabs ===============================================================
@@ -24,7 +33,7 @@
     ((input virtual vk_nvim)) $nvim_action_tabs_next break
     ((input virtual vk_tmux)) $tmux_action_tabs_next break
     ((input virtual vk_zellij)) $zellij_action_tabs_next break
-    () C-tab break
+    () $tab_next break
   ))
   ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
   ;; If not implemented, defaults to: C-S-tab
@@ -36,7 +45,7 @@
     ((input virtual vk_nvim)) $nvim_action_tabs_prev break
     ((input virtual vk_tmux)) $tmux_action_tabs_prev break
     ((input virtual vk_zellij)) $zellij_action_tabs_prev break
-    () C-S-tab break
+    () $tab_prev break
   ))
   ;; tabs + j | tabs + down
   action_tabs_first  (t! unmod_all (switch ;;@iface@
@@ -56,7 +65,7 @@
     ((input virtual vk_obsidian)) $obsidian_action_tabs_new break
     ((input virtual vk_firefox)) $firefox_action_tabs_new break
     ((input virtual vk_tmux)) $tmux_action_tabs_new break
-    () C-t break
+    () $tab_new break
   ))
   ;; tabs + v 
   action_tabs_vertical (t! unmod_all (switch ;;@iface@
@@ -71,7 +80,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_close break
     ((input virtual vk_nvim)) $nvim_action_tabs_close break
     ((input virtual vk_tmux)) $tmux_action_tabs_close break
-    () C-w break
+    () $tab_close break
   ))
   ;; tabs + lsft + t 
   ;; If not implemented, defaults to: C-S-t
@@ -79,7 +88,7 @@
     ((input virtual vk_chrome)) $chrome_action_tabs_undo_close break
     ((input virtual vk_obsidian)) $obsidian_action_tabs_undo_close break
     ((input virtual vk_firefox)) $firefox_action_tabs_undo_close break
-    () C-S-t break
+    () $tab_undo_close break
   ))
 
   ;; == tabs go by number ==================================================
@@ -93,7 +102,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_goto_1 break
     ((input virtual vk_nvim)) $nvim_action_tabs_goto_1 break
     ((input virtual vk_tmux)) $tmux_action_tabs_goto_1 break
-    () C-1 break
+    () $tab_goto_1 break
   ))
   ;; tabs + 2 
   ;; If not implemented, defaults to: C-2
@@ -105,7 +114,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_goto_2 break
     ((input virtual vk_nvim)) $nvim_action_tabs_goto_2 break
     ((input virtual vk_tmux)) $tmux_action_tabs_goto_2 break
-    () C-2 break
+    () $tab_goto_2 break
   ))
   ;; tabs + 3 
   ;; If not implemented, defaults to: C-3
@@ -117,7 +126,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_goto_3 break
     ((input virtual vk_nvim)) $nvim_action_tabs_goto_3 break
     ((input virtual vk_tmux)) $tmux_action_tabs_goto_3 break
-    () C-3 break
+    () $tab_goto_3 break
   ))
   ;; tabs + 4 
   ;; If not implemented, defaults to: C-4
@@ -129,7 +138,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_goto_4 break
     ((input virtual vk_nvim)) $nvim_action_tabs_goto_4 break
     ((input virtual vk_tmux)) $tmux_action_tabs_goto_4 break
-    () C-4 break
+    () $tab_goto_4 break
   ))
   ;; tabs + 5 
   ;; If not implemented, defaults to: C-5
@@ -141,7 +150,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_goto_5 break
     ((input virtual vk_nvim)) $nvim_action_tabs_goto_5 break
     ((input virtual vk_tmux)) $tmux_action_tabs_goto_5 break
-    () C-5 break
+    () $tab_goto_5 break
   ))
   ;; tabs + 6 
   ;; If not implemented, defaults to: C-6
@@ -153,7 +162,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_goto_6 break
     ((input virtual vk_nvim)) $nvim_action_tabs_goto_6 break
     ((input virtual vk_tmux)) $tmux_action_tabs_goto_6 break
-    () C-6 break
+    () $tab_goto_6 break
   ))
   ;; tabs + 7 
   ;; If not implemented, defaults to: C-7
@@ -165,7 +174,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_goto_7 break
     ((input virtual vk_nvim)) $nvim_action_tabs_goto_7 break
     ((input virtual vk_tmux)) $tmux_action_tabs_goto_7 break
-    () C-7 break
+    () $tab_goto_7 break
   ))
   ;; tabs + 8 
   ;; If not implemented, defaults to: C-8
@@ -177,7 +186,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_goto_8 break
     ((input virtual vk_nvim)) $nvim_action_tabs_goto_8 break
     ((input virtual vk_tmux)) $tmux_action_tabs_goto_8 break
-    () C-8 break
+    () $tab_goto_8 break
   ))
   ;; tabs + 9 
   ;; If not implemented, defaults to: C-9
@@ -188,7 +197,7 @@
     ((input virtual vk_firefox)) $firefox_action_tabs_goto_last break
     ((input virtual vk_nvim)) $nvim_action_tabs_goto_last break
     ((input virtual vk_tmux)) $tmux_action_tabs_goto_last break
-    () C-9 break
+    () $tab_goto_last break
   ))
 
   ;; == tabs + toggle =====================================================

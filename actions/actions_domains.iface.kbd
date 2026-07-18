@@ -1,5 +1,6 @@
 (defvar
   clipboard_history M-v
+  ai                (push-msg "NOTIFY: AI")
 )
 (defvar
   ;; @start@ ====== DON'T REMOVE THIS LINE =================================
@@ -395,7 +396,7 @@
 
   ;; omni + omni
   action_omni+omni (t! unmod_all (switch ;;@iface@
-    () (push-msg "NOTIFY: AI") break
+    () $ai break
   ))
  
 
