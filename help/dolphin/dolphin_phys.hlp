@@ -276,6 +276,7 @@
 **phys + !lctl + rsft + 8** -- !Lctl Rsft 8
 **phys + !lctl + rsft + 9** -- !Lctl Rsft 9
 **phys + !lctl + rsft + 0** -- !Lctl Rsft 0
+**phys + tab**              -- Windows Walk Through Same App
 **phys + lalt + a**         -- Lalt A
 **phys + lalt + b**         -- Lalt B
 **phys + lalt + c**         -- Lalt C

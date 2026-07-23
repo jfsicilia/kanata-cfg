@@ -7,6 +7,9 @@
   windows_half_left   (t! unmod_all M-left)
   windows_half_right  (t! unmod_all M-right)
   windows_close       (t! unmod_all A-f4)
+
+  windows_toggle M-tab
+  windows_walk_through_same_app A-`
 )
 
 (defvar

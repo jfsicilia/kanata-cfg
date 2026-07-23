@@ -295,6 +295,7 @@ obsidian_action_!lctl+lsft+p                   $obsidian_commands
 ;; ___TO_SET___ obsidian_action_!lctl+rsft+0           
 
 ;; == LALT actions ==========================================================
+;; ___TO_SET___ obsidian_action_lalt+tab               
 ;; ___TO_SET___ obsidian_action_lalt+a                 
 ;; ___TO_SET___ obsidian_action_lalt+b                 
 ;; ___TO_SET___ obsidian_action_lalt+c                 

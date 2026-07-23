@@ -453,11 +453,14 @@ def parse_domains_layer() -> tuple[
         elif current_ctx is not None:
             if s.startswith("_"):
                 continue
-            m = re.match(r'^(\S+)\s+(\$action_\S+)', s)
-            if not m:
+            key_m = re.match(r'^(\S+)', s)
+            # Search (not match) so the action is found even when wrapped in
+            # a template call, e.g. "\ (t! sft_switch $action_mod\+mod\ ...)"
+            action_m = re.search(r'\$(action_\S+)', s)
+            if not key_m or not action_m:
                 continue
-            raw_key = m.group(1)
-            action  = m.group(2).lstrip("$")
+            raw_key = key_m.group(1)
+            action  = action_m.group(1)
             if raw_key.startswith("$"):
                 base = raw_key[1:].split("|")[0]
                 phys = base[3:] if base.startswith("mod") and len(base) > 3 else base

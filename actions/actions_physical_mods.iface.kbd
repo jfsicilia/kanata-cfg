@@ -887,6 +887,9 @@
   )) ;; ""
 
   ;; == LALT actions ==========================================================
+  action_lalt+tab (t! unmod_all (switch ;;@iface@ 
+    () $windows_walk_through_same_app break 
+  ))
   action_lalt+a (t! unmod_all (switch ;;@iface@ 
     () A-a break
   ))

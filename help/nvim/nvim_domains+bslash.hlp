@@ -1,4 +1,5 @@
 # Compare - nvim (actions/nvim/nvim_domains.kbd)
+**\** -- Compare Toggle
 **j** -- Compare Next
 **k** -- Compare Prev
 **o** -- Compare Obtain

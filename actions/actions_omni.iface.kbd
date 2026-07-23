@@ -36,7 +36,7 @@
   help            $action_mod/+mod/
   panes_toggle    $action_panes+toggle
   tabs_toggle     $action_tabs+toggle
-  apps_toggle     $action_apps+toggle
+  apps_toggle     $windows_toggle 
   groups_toggle   $~action_!tabs+toggle
   sessions_toggle $action_sessions+toggle
 )

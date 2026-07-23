@@ -48,7 +48,7 @@
   (t! map_layers "$action_lalt" "lalt" ($<lctl $>lctl $<lmet $>lmet $lsft $rsft $!lctl $!lmet lsft rsft))
   (t! map_keys   "$action_lalt"        ($<lctl $>lctl $<lmet $>lmet $lsft $rsft))
 
-  tab $action_apps_walk_through_same_app 
+  tab $action_lalt+tab 
 ) 
 (deflayermap (lalt+lsft_layer)
   (t! map_layers "$action_lalt+lsft" "lalt+lsft" ($<lctl $>lctl $<lmet $>lmet $!lctl $!lmet))

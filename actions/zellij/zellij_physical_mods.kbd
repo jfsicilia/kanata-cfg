@@ -295,6 +295,7 @@
 ;; ___TO_SET___ zellij_action_!lctl+rsft+0           
 
 ;; == LALT actions ==========================================================
+;; ___TO_SET___ zellij_action_lalt+tab               
 ;; ___TO_SET___ zellij_action_lalt+a                 
 ;; ___TO_SET___ zellij_action_lalt+b                 
 ;; ___TO_SET___ zellij_action_lalt+c                 

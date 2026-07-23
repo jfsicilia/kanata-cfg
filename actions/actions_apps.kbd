@@ -1,12 +1,9 @@
 (defvar
   apps_app_finder RA-spc
   apps_recent_files (cmd recent_files.sh) 
-  apps_toggle_app M-tab
-  apps_walk_through_same_app A-`
 )
 
 (defvar
-  ;; apps + spc
   action_apps+spc (t! unmod_all (switch
     () $apps_app_finder break
   ))
@@ -14,14 +11,6 @@
   action_apps+!lctl (t! unmod_all (switch
     () $apps_recent_files break
   ))
-
-  action_apps+toggle (t! unmod_all (switch
-    () $apps_toggle_app break
-  ))
-
-  action_apps_walk_through_same_app (switch
-    () $apps_walk_through_same_app  break
-  )
 
   action_apps+0 (t! unmod_all (switch 
     () (push-msg "APP:chromeMisc") break

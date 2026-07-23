@@ -295,6 +295,7 @@ nvim_action_!lctl+a  (macro esc g g S-v S-g)
 ;; ___TO_SET___ nvim_action_!lctl+rsft+0           
 
 ;; == LALT actions ==========================================================
+;; ___TO_SET___ nvim_action_lalt+tab               
 ;; ___TO_SET___ nvim_action_lalt+a                 
 ;; ___TO_SET___ nvim_action_lalt+b                 
 ;; ___TO_SET___ nvim_action_lalt+c                 

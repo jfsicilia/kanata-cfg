@@ -472,7 +472,7 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
   $!lalt|search            (t!      th  (t! 2x $action_panes+toggle)             $toggle_search_&_!lalt_layer)
   $!lctl|seek_sel   (multi (t!      th  (t! 2x $action_tabs+toggle)              $toggle_seek_n_select_&_!lctl_layer) (on-release release-vkey vk_lalt))
     $spc|domains           (t! fast_th  spc                               (multi $toggle_domains_layer (t! release_domains)))
-   $ralt|apps              (t!      th  (t! 2x $action_apps+toggle)              $toggle_apps_layer)
+   $ralt|apps              (t!      th  (t! 2x $windows_toggle)                  $toggle_apps_layer)
    $prnt|bookm             (t!      th  (t! 2x $action_sessions+toggle)          $toggle_bookmarks_layer)
 $copilot|bookm             (t!      th  (t! 2x $action_sessions+toggle)          $toggle_bookmarks_layer)
    $rctl|opts              (t!      th  (t! 2x $~action_!tabs+toggle)            $toggle_opts_layer)   
