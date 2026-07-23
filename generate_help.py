@@ -162,20 +162,19 @@ def label_from_global_default(default: str, action_name: str, domain: str) -> st
 
 
 def is_real_default(value: str | None) -> bool:
-    """True when value is a usable global default — not None, XX, or unset/not-implemented push-msg."""
+    """True when value is a usable global default — not None, XX, or unset/not-implemented push-msg.
+
+    A push-msg is only ever a real default when it launches an app (APP:...);
+    every other push-msg (NOTIFY:...) is the convention for "not implemented",
+    regardless of the message text, same as XX.
+    """
     if not value:
         return False
     if value.upper() == "XX":
         return False
     if value.startswith("(push-msg"):
-        app_m    = re.search(r'"APP:([^"]+)"',       value)
-        notify_m = re.search(r'"NOTIFY:\s*([^"]+)"', value)
-        if app_m and app_m.group(1).strip():
-            return True
-        if notify_m:
-            content = notify_m.group(1).strip()
-            return bool(content) and "not implemented" not in content.lower()
-        return False
+        app_m = re.search(r'"APP:([^"]+)"', value)
+        return bool(app_m and app_m.group(1).strip())
     return True
 
 
