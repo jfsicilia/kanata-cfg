@@ -617,38 +617,29 @@ def main(dry_run: bool = False) -> None:
                 out.write_text(format_hlp(f"{title} - {av_app}", app_entries, actions_path))
 
     # ── Domains: two-level navigation ────────────────────────────────────────
-    # Level 1  domains.hlp          shown when holding spc
-    # Level 2  domains+{key}.hlp    shown when holding spc + key (global default)
-    #          {app}_domains+{key}  shown when holding spc + key in a specific app
+    # Level 1  global_domains.hlp       shown when holding spc
+    # Level 2  global_domains+{key}.hlp shown when holding spc + key (global default)
+    #          {app}_domains+{key}      shown when holding spc + key in a specific app
     domains_iface = ACTIONS_DIR / "actions_domains.iface.kbd"
     if domains_iface.exists():
         _, iface_details = parse_iface(domains_iface)
         spc_entries, sublayers = parse_domains_layer()
 
-        # Level 1 — domains.hlp: spc + key → domain title
-        overview = [
-            (f"spc + {key}", title)
-            for key, mod, title in spc_entries
-            if title
-        ]
-        if overview:
-            out = HELP_DIR / "domains.hlp"
-            written.add(out)
-            print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
-            if not dry_run:
-                out.write_text(format_hlp("Domains", overview, domains_iface))
-
-        # Level 2 — one file per sub-domain key
         # "/" can't appear in filenames; replace problematic chars
         def fsafe(k: str) -> str:
             return k.replace("/", "slash").replace("\\", "bslash")
 
+        # Level 2 — one file per sub-domain key (only those with a real
+        # global default). Computed first so the level-1 overview can be
+        # filtered to the same set — a domain with no real global default
+        # anywhere inside it (e.g. Git, per-app only) shouldn't be advertised
+        # as globally available at the top level either.
+        overview: list[tuple[str, str]] = []
         for key, mod, title in spc_entries:
             if not title or mod not in sublayers or not sublayers[mod]:
                 continue
             sub_actions = sublayers[mod]
 
-            # Global: domains+{key}.hlp
             global_entries: list[tuple[str, str]] = []
             for sub_key, action_name in sub_actions:
                 g = iface_details.get(action_name, {}).get("global")
@@ -657,13 +648,24 @@ def main(dry_run: bool = False) -> None:
                         sub_key,
                         label_from_global_default(g, action_name, "domains"),
                     ))
+            if not global_entries:
+                continue
+
+            overview.append((f"spc + {key}", title))
             fname = fsafe(key)
-            if global_entries:
-                out = HELP_DIR / f"domains+{fname}.hlp"
-                written.add(out)
-                print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
-                if not dry_run:
-                    out.write_text(format_hlp(title, global_entries, domains_iface))
+            out = HELP_DIR / f"global_domains+{fname}.hlp"
+            written.add(out)
+            print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
+            if not dry_run:
+                out.write_text(format_hlp(title, global_entries, domains_iface))
+
+        # Level 1 — global_domains.hlp: spc + key → domain title
+        if overview:
+            out = HELP_DIR / "global_domains.hlp"
+            written.add(out)
+            print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
+            if not dry_run:
+                out.write_text(format_hlp("Domains", overview, domains_iface))
 
         # Per-app: help/{app}/domains.hlp (overview) + help/{app}/domains+{key}.hlp
         for app_dir in app_dirs:
