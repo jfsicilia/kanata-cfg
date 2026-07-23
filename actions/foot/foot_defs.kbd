@@ -14,4 +14,5 @@
   foot_compare_dirs        (macro esc d d i n v i m spc - c spc S-' S-d i r S-d i f f spc S-, d i r Digit1 S-. spc S-, d i r Digit2 S-. S-' esc h v S-f S-, ;)
   foot_lazygit             (macro esc d d i l a z y g i t ent)
   foot_git_status          (macro esc d d i g i t spc s t a t u s ent)
+  foot_force_new_line      (macro \ ent)
 )

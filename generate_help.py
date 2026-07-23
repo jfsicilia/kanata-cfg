@@ -94,6 +94,12 @@ def combo_str(action_name: str, domain: str,
             return f"spc + {keys[0]} + {keys[0]}"
         return "spc + " + " + ".join(keys)
 
+    # physical_mods action names (e.g. "lctl+lsft+a") already spell out the
+    # exact physical combo — no "phys" holder key is involved, so unlike every
+    # other domain there's nothing to prefix.
+    if domain == "physical_mods":
+        return " + ".join(name.split("+"))
+
     # Physical key from layer file takes priority over action-name semantics
     if key_map and action_name in key_map:
         return dk + " + " + key_map[action_name]
@@ -176,6 +182,32 @@ def is_real_default(value: str | None) -> bool:
         app_m = re.search(r'"APP:([^"]+)"', value)
         return bool(app_m and app_m.group(1).strip())
     return True
+
+
+_PHYS_MOD_LETTER = {
+    "lctl": "C", "!lctl": "C",
+    "lalt": "A", "!lalt": "A",
+    "lmet": "M", "!lmet": "M",
+    "sft":  "S", "lsft":  "S", "rsft": "S",
+}
+
+
+def is_physical_mods_passthrough(action_name: str, domain: str, value: str) -> bool:
+    """True when a physical_mods default is just the bare chord its own name
+    describes (e.g. action "lctl+a" defaulting to "C-a") — i.e. holding that
+    physical combo does exactly what it would do unremapped. Not worth a help
+    entry since it tells the user nothing they don't already know.
+    """
+    if domain != "physical_mods":
+        return False
+    parts = action_name.removeprefix("action_").split("+")
+    if len(parts) < 2:
+        return False
+    *mods, key = parts
+    letters = [_PHYS_MOD_LETTER.get(m) for m in mods]
+    if any(letter is None for letter in letters):
+        return False
+    return value == "-".join(letters + [key])
 
 
 def is_implemented(value: str) -> bool:
@@ -532,6 +564,8 @@ def main(dry_run: bool = False) -> None:
             effective = g if is_real_default(g) else (direct if is_real_default(direct) else None)
             if effective is None:
                 continue
+            if is_physical_mods_passthrough(a, domain, effective):
+                continue
             global_entries.append((
                 combo_str(a, domain, key_map),
                 label_from_global_default(effective, a, domain),
@@ -571,6 +605,8 @@ def main(dry_run: bool = False) -> None:
                     direct = d.get("direct")
                     effective = g if is_real_default(g) else (direct if is_real_default(direct) else None)
                     if effective is None:
+                        continue
+                    if is_physical_mods_passthrough(a, domain, effective):
                         continue
                     label = label_from_global_default(effective, a, domain)
                 entries.append((combo_str(a, domain, key_map), label))

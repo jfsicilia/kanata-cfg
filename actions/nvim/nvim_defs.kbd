@@ -94,4 +94,9 @@ nvim_search_in_workspace (macro esc S-; S-t e l e s c o p e spc l i v e S-- g r 
 nvim_replace_in_buffer   (macro esc S-; l u a spc r e q u i r e S-9 ' g r u g - f a r ' S-0 . o p e n S-9 S-[ spc w i n d o w S-c r e a t i o n S-c o m m a n d spc = spc ' t o p l e f t spc v e r t i c a l spc s p l i t ' , spc p r e f i l l s spc = spc S-[ spc p a t h s spc = spc v i m . f n . e x p a n d S-9 S-' S-5 S-' S-0 spc  S-] spc  S-] S-0 ret)
 nvim_replace_in_workspace (macro esc S-; t o p l e f t spc v e r t i c a l spc S-g r u g S-f a r ret) 
 
+nvim_open_buffers        (macro esc S-; S-t e l e s c o p e spc b u f f e r s ret)  ;;""
+
+nvim_tabs_next           (macro esc S-; b n e x t ret)
+nvim_tabs_prev           (macro esc S-; b p r e v i o u s ret)  ;;""
+nvim_toggle_tab          (macro esc S-; b S-3 ret) ;;""
 )

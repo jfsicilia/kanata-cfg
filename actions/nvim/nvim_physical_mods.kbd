@@ -151,7 +151,7 @@
 ;; ___TO_SET___ nvim_action_lctl+rsft+0            
 
 ;; == !LCTL actions ==========================================================
-nvim_action_!lctl+a  (macro esc g g S-v S-g)
+nvim_action_!lctl+a  $nvim_select_all                   
 ;; ___TO_SET___ nvim_action_!lctl+b                
 ;; ___TO_SET___ nvim_action_!lctl+c                
 ;; ___TO_SET___ nvim_action_!lctl+d                
