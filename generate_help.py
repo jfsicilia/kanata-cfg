@@ -19,10 +19,11 @@ import re
 import sys
 from pathlib import Path
 
-ROOT        = Path(__file__).parent
-ACTIONS_DIR = ROOT / "actions"
-LAYERS_DIR  = ROOT / "layers"
-HELP_DIR    = ROOT / "help"
+ROOT         = Path(__file__).parent
+ACTIONS_DIR  = ROOT / "actions"
+LAYERS_DIR   = ROOT / "layers"
+TOGGLES_DIR  = ROOT / "layers_toggle"
+HELP_DIR     = ROOT / "help"
 
 DOMAIN_TITLES: dict[str, str] = {
     "domains":      "SPC mods",
@@ -47,7 +48,6 @@ DOMAIN_TITLES: dict[str, str] = {
 
 DOMAIN_SHORT: dict[str, str] = {
     "seek_n_select": "seek",
-    "physical_mods": "phys",
 }
 
 
@@ -93,12 +93,6 @@ def combo_str(action_name: str, domain: str,
         if len(keys) == 2 and keys[0] == keys[1]:
             return f"spc + {keys[0]} + {keys[0]}"
         return "spc + " + " + ".join(keys)
-
-    # physical_mods action names (e.g. "lctl+lsft+a") already spell out the
-    # exact physical combo — no "phys" holder key is involved, so unlike every
-    # other domain there's nothing to prefix.
-    if domain == "physical_mods":
-        return " + ".join(name.split("+"))
 
     # Physical key from layer file takes priority over action-name semantics
     if key_map and action_name in key_map:
@@ -210,6 +204,214 @@ def is_physical_mods_passthrough(action_name: str, domain: str, value: str) -> b
     return value == "-".join(letters + [key])
 
 
+def parse_physical_mods_action(action_name: str) -> tuple[tuple[str, ...], str] | None:
+    """Split a physical_mods action name into (mods, key).
+
+    mods is the modifier-chord path (e.g. ("lctl", "lalt", "lsft")) and key
+    is the final segment: the physical key pressed once that chord is
+    already held.
+
+    "sft+ent" is a one-off: per layer_physical_mods.kbd it only fires while
+    holding lsft (lsft_layer), not from any "sft_layer" — aliased to "lsft"
+    so it groups under a layer kwanata can actually report as active.
+    """
+    parts = action_name.removeprefix("action_").split("+")
+    if len(parts) < 2:
+        return None
+    *mods, key = parts
+    if mods == ["sft"]:
+        mods = ["lsft"]
+    return tuple(mods), key
+
+
+def physical_mods_nodes(
+    actions: list[tuple[tuple[str, ...], str, str]]
+) -> dict[str, str]:
+    """Every modifier-chord prefix that appears across all physical_mods
+    actions, mapped to its layer name (e.g. {("lctl",): "lctl", ("lctl",
+    "lalt"): "lctl+lalt"}).
+
+    Each prefix matches a real kanata deflayermap that kwanata can report as
+    the active layer, so each becomes its own help file — see
+    physical_mods_node_entries for what goes in it.
+    """
+    nodes: dict[tuple[str, ...], str] = {}
+    for mods, _key, _action in actions:
+        for depth in range(1, len(mods) + 1):
+            prefix = mods[:depth]
+            nodes.setdefault(prefix, "+".join(prefix))
+    return nodes
+
+
+def physical_mods_node_entries(
+    node: tuple[str, ...], actions: list[tuple[tuple[str, ...], str, str]]
+) -> list[tuple[str, str]]:
+    """(combo_display, action_name) pairs for the physical_mods help file of
+    `node` (e.g. ("lctl",) or ("lctl", "lalt")).
+
+    Rolls up every action whose chord extends `node` — so the base "lctl"
+    file browses the whole "lctl universe" (lctl+lalt+c, lctl+lsft+a, …)
+    while "lctl+lalt" only shows what's nested under that chord specifically.
+    The combo is always shown in full (e.g. "lctl + lsft + a") since a
+    roll-up file mixes several held-modifier states together.
+    """
+    depth = len(node)
+    return [
+        (" + ".join(mods + (key,)), action)
+        for mods, key, action in actions
+        if mods[:depth] == node
+    ]
+
+
+def physical_mods_exact_entries(
+    node: tuple[str, ...], actions: list[tuple[tuple[str, ...], str, str]]
+) -> list[tuple[str, str]]:
+    """Like physical_mods_node_entries but only actions whose chord is
+    exactly `node` — no descendants rolled in. Used when merging a shadowed
+    layer's contribution into a stacked-layer help file (see LayerStack):
+    only what's actually co-active there, not the unrelated shift branches
+    also reachable from that layer's own standalone file.
+    """
+    return [
+        (" + ".join(mods + (key,)), action)
+        for mods, key, action in actions
+        if mods == node
+    ]
+
+
+_PHYS_MOD_TOKENS = {"lctl", "!lctl", "lalt", "!lalt", "lmet", "!lmet", "lsft", "rsft"}
+
+
+class LayerStack:
+    """An ordered kanata layer stack (base → top) pushed in one go by
+    holding one or more physical modifier keys — see the toggle_mod_2layer /
+    toggle_2mod_2layer / toggle_mod_3layer / toggle_2mod_3layer / … templates
+    in templates.kbd, all called from layers_toggle/*.kbd. Kanata (and so
+    kwanata, which drives the help popup) only ever reports the topmost
+    layer as active, so every earlier ("shadowed") layer's own help content
+    is otherwise unreachable while the key is held — it needs folding into
+    the top layer's file instead.
+
+    Two kinds of shadowed layer occur in this config, distinguished purely
+    by name (no need to know which toggle file produced the stack):
+      - a physical_mods layer, whose name is entirely "+"-joined modifier
+        tokens (e.g. "lctl+lsft", "!lctl") — merged via
+        physical_mods_exact_entries. Occurs both in 2-layer stacks (two real
+        modifiers held together, e.g. lctl+lalt → !lctl+lalt) and as the mid
+        layer of 3-layer stacks.
+      - a foreign domain's own base layer (e.g. "seek_n_select",
+        "seek_n_select+lsft") — anything whose name isn't purely modifier
+        tokens — merged via combination_domain_entries. Only occurs as the
+        base of a 3-layer stack.
+    """
+
+    def __init__(self, layer_names: list[str]):
+        self.layers = layer_names  # base -> top, "_layer" suffix already stripped
+
+    @property
+    def top_node(self) -> tuple[str, ...]:
+        return tuple(self.layers[-1].split("+"))
+
+    @staticmethod
+    def _is_physical_mods_layer(name: str) -> bool:
+        return all(t in _PHYS_MOD_TOKENS for t in name.split("+"))
+
+    def shadowed_physical_mods_nodes(self) -> list[tuple[str, ...]]:
+        """physical_mods mods-tuples for every shadowed layer that belongs
+        to physical_mods itself (not some other domain)."""
+        return [
+            tuple(name.split("+"))
+            for name in self.layers[:-1]
+            if self._is_physical_mods_layer(name)
+        ]
+
+    def shadowed_domains(self) -> list[tuple[str, str | None]]:
+        """(domain_name, shift) for every shadowed layer that belongs to a
+        foreign domain rather than physical_mods — shift is None, "lsft" or
+        "rsft"."""
+        result = []
+        for name in self.layers[:-1]:
+            if self._is_physical_mods_layer(name):
+                continue
+            if name.endswith(("+lsft", "+rsft")):
+                domain_name, _, shift = name.rpartition("+")
+                result.append((domain_name, shift))
+            else:
+                result.append((name, None))
+        return result
+
+
+_LAYER_STACK_RE = re.compile(r"\(t!\s+toggle_(?:\d?mod)_(\d)layer\s+(.+?)\)")
+
+
+def parse_layer_stacks() -> list[LayerStack]:
+    """Parse every layers_toggle/*.kbd file for toggle_{mod,2mod,3mod,4mod}_
+    {2,3}layer calls into LayerStack objects (ordered base → top layer
+    names, "_layer" suffix stripped). The last N whitespace-separated
+    tokens of each such call are always the N stacked layer names (N taken
+    from the template name itself), regardless of how many leading
+    modifier-name args precede them or which file the call lives in — so
+    this needs no per-file or per-combination-shape special-casing.
+
+    Several toggle variables can describe the exact same stack — e.g.
+    holding lctl+lalt vs. lalt+lctl both toggle "lctl+lalt_layer" /
+    "!lctl+lalt_layer", just reached via a differently-ordered modifier
+    hold — so duplicates (same layer list) are collapsed to one.
+    """
+    seen:   dict[tuple[str, ...], None] = {}
+    for path in sorted(TOGGLES_DIR.glob("*.kbd")):
+        text = path.read_text()
+        for m in _LAYER_STACK_RE.finditer(text):
+            n_layers = int(m.group(1))
+            tokens = m.group(2).split()
+            if len(tokens) < n_layers:
+                continue
+            layer_names = tuple(t.removesuffix("_layer") for t in tokens[-n_layers:])
+            seen.setdefault(layer_names, None)
+    return [LayerStack(list(layer_names)) for layer_names in seen]
+
+
+def combination_domain_entries(
+    domain_name: str, shift: str | None, app: str | None
+) -> list[tuple[str, str]]:
+    """(combo_display, label) pairs for a shadowed foreign-domain layer of a
+    LayerStack (e.g. "seek_n_select") — its own actions belonging to
+    the given shift branch (None = unshifted), resolved for `app` if given
+    (falling back to the global default for combos it doesn't override),
+    else resolved globally. Shown with the domain's natural own combo (e.g.
+    "seek + spc"), same as its standalone help file.
+    """
+    iface_path = ACTIONS_DIR / f"actions_{domain_name}.iface.kbd"
+    if not iface_path.exists():
+        return []
+    iface_order, details = parse_iface(iface_path)
+    _, key_map = parse_layer_actions(domain_name, set(iface_order))
+
+    suffix = f"+{shift}" if shift else None
+    branch_actions = [
+        a for a in iface_order
+        if (a.endswith(suffix) if suffix else not a.endswith(("+lsft", "+rsft")))
+    ]
+
+    impl: dict[str, str] = {}
+    if app is not None:
+        app_file = find_app_file(ACTIONS_DIR / app, app, domain_name)
+        if app_file is not None:
+            impl = parse_app_file(app_file, app)
+
+    entries: list[tuple[str, str]] = []
+    for a in branch_actions:
+        if a in impl:
+            label = label_for_implemented_value(impl[a], a, domain_name, app)
+        else:
+            effective = effective_global_default(details, a, domain_name)
+            if effective is None:
+                continue
+            label = label_from_global_default(effective, a, domain_name)
+        entries.append((combo_str(a, domain_name, key_map), label))
+    return entries
+
+
 def is_implemented(value: str) -> bool:
     """True when a per-app binding is a real implementation, not a no-op or push-msg marker."""
     if value.upper() == "XX":
@@ -217,6 +419,35 @@ def is_implemented(value: str) -> bool:
     if value.startswith("(push-msg"):
         return False
     return True
+
+
+def effective_global_default(details: dict[str, dict], action: str, domain: str) -> str | None:
+    """The global-default value to show in help for `action`, or None if there
+    isn't one worth showing.
+
+    Prefers the switch catch-all, falls back to a direct (non-switch) binding,
+    and — for physical_mods — drops a bare passthrough chord (see
+    is_physical_mods_passthrough).
+    """
+    d = details.get(action, {})
+    g = d.get("global")
+    if is_real_default(g):
+        effective = g
+    else:
+        direct = d.get("direct")
+        effective = direct if is_real_default(direct) else None
+    if effective is None or is_physical_mods_passthrough(action, domain, effective):
+        return None
+    return effective
+
+
+def label_for_implemented_value(value: str, action_name: str, domain: str, app: str) -> str:
+    """Label for a value a per-app file binds directly to an action."""
+    if value.startswith("$"):
+        return label_from_var(value, app)
+    if value.startswith("("):
+        return label_from_action(action_name, domain)
+    return label_from_global_default(value, action_name, domain)
 
 
 # ── parsers ───────────────────────────────────────────────────────────────────
@@ -526,20 +757,36 @@ def format_hlp(title: str, entries: list[tuple[str, str]], source_file: Path | N
 
 def main(dry_run: bool = False) -> None:
     HELP_DIR.mkdir(exist_ok=True)
+    written: set[Path] = set()
+
+    def emit(out: Path, title: str, entries: list[tuple[str, str]], source: Path) -> None:
+        """Render, write and track a .hlp file (no-op write in dry-run mode)."""
+        written.add(out)
+        print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
+        if not dry_run:
+            out.parent.mkdir(exist_ok=True)
+            out.write_text(format_hlp(title, entries, source))
 
     iface_files = sorted(ACTIONS_DIR.glob("actions_*.iface.kbd"))
     plain_files = sorted(
         f for f in ACTIONS_DIR.glob("actions_*.kbd")
         if ".iface." not in f.name
     )
-    # domains is handled separately (two-level navigation structure)
+    # Every foreign domain shadowed by a LayerStack always gets pushed
+    # underneath a physical_mods "!mod" top layer — kanata (and so kwanata)
+    # only ever reports that top layer as active, so the shadowed domain's
+    # own layer name is never independently reachable, and its standalone
+    # help file would just be dead weight. Its content is instead folded
+    # into the physical_mods merge below.
+    layer_stacks        = parse_layer_stacks()
+    unreachable_domains = {"domains", "physical_mods"} | {
+        domain_name for s in layer_stacks for domain_name, _shift in s.shadowed_domains()
+    }
     all_files = [
         f for f in iface_files + plain_files
-        if domain_from_actions_path(f) != "domains"
+        if domain_from_actions_path(f) not in unreachable_domains
     ]
     app_dirs  = sorted(d for d in ACTIONS_DIR.iterdir() if d.is_dir())
-
-    written: set[Path] = set()
 
     for actions_path in all_files:
         domain = domain_from_actions_path(actions_path)
@@ -558,13 +805,8 @@ def main(dry_run: bool = False) -> None:
         # Only combos with a real global default (or a direct binding)
         global_entries: list[tuple[str, str]] = []
         for a in actions:
-            d       = details.get(a, {})
-            g       = d.get("global")
-            direct  = d.get("direct")
-            effective = g if is_real_default(g) else (direct if is_real_default(direct) else None)
+            effective = effective_global_default(details, a, domain)
             if effective is None:
-                continue
-            if is_physical_mods_passthrough(a, domain, effective):
                 continue
             global_entries.append((
                 combo_str(a, domain, key_map),
@@ -572,11 +814,7 @@ def main(dry_run: bool = False) -> None:
             ))
 
         if global_entries:
-            out = HELP_DIR / f"global_{short}.hlp"
-            written.add(out)
-            print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
-            if not dry_run:
-                out.write_text(format_hlp(title, global_entries, actions_path))
+            emit(HELP_DIR / f"global_{short}.hlp", title, global_entries, actions_path)
 
         # ── Per-app help from separate app files ──────────────────────────────
         # Use iface_order (not layer_actions) so that domains where the layer
@@ -591,35 +829,17 @@ def main(dry_run: bool = False) -> None:
             entries: list[tuple[str, str]] = []
             for a in iface_order:
                 if a in impl:
-                    value = impl[a]
-                    if value.startswith("$"):
-                        label = label_from_var(value, app)
-                    elif value.startswith("("):
-                        label = label_from_action(a, domain)
-                    else:
-                        label = label_from_global_default(value, a, domain)
+                    label = label_for_implemented_value(impl[a], a, domain, app)
                 else:
                     # Fall back to global default for combos the app doesn't override
-                    d = details.get(a, {})
-                    g = d.get("global")
-                    direct = d.get("direct")
-                    effective = g if is_real_default(g) else (direct if is_real_default(direct) else None)
+                    effective = effective_global_default(details, a, domain)
                     if effective is None:
-                        continue
-                    if is_physical_mods_passthrough(a, domain, effective):
                         continue
                     label = label_from_global_default(effective, a, domain)
                 entries.append((combo_str(a, domain, key_map), label))
 
-            if not entries:
-                continue
-
-            (HELP_DIR / app).mkdir(exist_ok=True)
-            out = HELP_DIR / app / f"{app}_{short}.hlp"
-            written.add(out)
-            print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
-            if not dry_run:
-                out.write_text(format_hlp(f"{title} - {app}", entries, app_file))
+            if entries:
+                emit(HELP_DIR / app / f"{app}_{short}.hlp", f"{title} - {app}", entries, app_file)
 
         # ── Per-app help from inline values ───────────────────────────────────
         # For non-iface files (bookmarks, …) where per-app implementations are
@@ -642,14 +862,9 @@ def main(dry_run: bool = False) -> None:
                 )
 
         for av_app, app_entries in inline_by_app.items():
-            if not app_entries:
-                continue
-            (HELP_DIR / av_app).mkdir(exist_ok=True)
-            out = HELP_DIR / av_app / f"{av_app}_{short}.hlp"
-            written.add(out)
-            print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
-            if not dry_run:
-                out.write_text(format_hlp(f"{title} - {av_app}", app_entries, actions_path))
+            if app_entries:
+                emit(HELP_DIR / av_app / f"{av_app}_{short}.hlp",
+                     f"{title} - {av_app}", app_entries, actions_path)
 
     # ── Domains: two-level navigation ────────────────────────────────────────
     # Level 1  global_domains.hlp       shown when holding spc
@@ -680,27 +895,18 @@ def main(dry_run: bool = False) -> None:
                 g = iface_details.get(action_name, {}).get("global")
                 if is_real_default(g):
                     global_entries.append((
-                        sub_key,
+                        f"spc + {key} + {sub_key}",
                         label_from_global_default(g, action_name, "domains"),
                     ))
             if not global_entries:
                 continue
 
             overview.append((f"spc + {key}", title))
-            fname = fsafe(key)
-            out = HELP_DIR / f"global_domains+{fname}.hlp"
-            written.add(out)
-            print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
-            if not dry_run:
-                out.write_text(format_hlp(title, global_entries, domains_iface))
+            emit(HELP_DIR / f"global_domains+{fsafe(key)}.hlp", title, global_entries, domains_iface)
 
         # Level 1 — global_domains.hlp: spc + key → domain title
         if overview:
-            out = HELP_DIR / "global_domains.hlp"
-            written.add(out)
-            print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
-            if not dry_run:
-                out.write_text(format_hlp("Domains", overview, domains_iface))
+            emit(HELP_DIR / "global_domains.hlp", "Domains", overview, domains_iface)
 
         # Per-app: help/{app}/domains.hlp (overview) + help/{app}/domains+{key}.hlp
         for app_dir in app_dirs:
@@ -716,37 +922,140 @@ def main(dry_run: bool = False) -> None:
                 if not title or mod not in sublayers or not sublayers[mod]:
                     continue
                 sub_actions = sublayers[mod]
-                fname = fsafe(key)
 
-                entries: list[tuple[str, str]] = []
-                for sub_key, action_name in sub_actions:
-                    if action_name not in impl:
-                        continue
-                    value = impl[action_name]
-                    if value.startswith("$"):
-                        label = label_from_var(value, app)
-                    elif value.startswith("("):
-                        label = label_from_action(action_name, "domains")
-                    else:
-                        label = label_from_global_default(value, action_name, "domains")
-                    entries.append((sub_key, label))
+                entries = [
+                    (f"spc + {key} + {sub_key}",
+                     label_for_implemented_value(impl[action_name], action_name, "domains", app))
+                    for sub_key, action_name in sub_actions
+                    if action_name in impl
+                ]
 
                 if entries:
                     app_overview.append((f"spc + {key}", title))
-                    app_hlp_dir.mkdir(exist_ok=True)
-                    out = app_hlp_dir / f"{app}_domains+{fname}.hlp"
-                    written.add(out)
-                    print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
-                    if not dry_run:
-                        out.write_text(format_hlp(f"{title} - {app}", entries, app_file))
+                    emit(app_hlp_dir / f"{app}_domains+{fsafe(key)}.hlp", f"{title} - {app}", entries, app_file)
 
             if app_overview:
-                app_hlp_dir.mkdir(exist_ok=True)
-                out = app_hlp_dir / f"{app}_domains.hlp"
-                written.add(out)
-                print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
-                if not dry_run:
-                    out.write_text(format_hlp(f"Domains - {app}", app_overview, app_file))
+                emit(app_hlp_dir / f"{app}_domains.hlp", f"Domains - {app}", app_overview, app_file)
+
+    # ── Physical mods: one file per active modifier layer ───────────────────
+    # kwanata resolves help by stripping "_layer" off the *current kanata
+    # layer* and looking up "{app}_{that}.hlp" / "global_{that}.hlp" — there
+    # is no single "phys" layer a user ever holds, so (unlike every other
+    # domain) this can't be one merged file; it needs one per actual layer
+    # (lctl, lctl+lsft, lctl+lalt, …), each rolling up its own descendants.
+    # See physical_mods_nodes / physical_mods_node_entries.
+    #
+    # Some physical keys push a multi-layer stack in one hold (see
+    # LayerStack) where kanata only ever reports the topmost layer as
+    # active — so that layer's file additionally folds in every shadowed
+    # layer's own content (another physical_mods layer, a foreign domain's
+    # base layer, or both), otherwise unreachable from here.
+    physical_mods_iface = ACTIONS_DIR / "actions_physical_mods.iface.kbd"
+    if physical_mods_iface.exists():
+        domain     = "physical_mods"
+        base_title = DOMAIN_TITLES.get(domain, "Physical mods")
+        iface_order, details = parse_iface(physical_mods_iface)
+
+        actions: list[tuple[tuple[str, ...], str, str]] = []
+        for a in iface_order:
+            parsed = parse_physical_mods_action(a)
+            if parsed is None:
+                continue
+            mods, key = parsed
+            actions.append((mods, key, a))
+
+        nodes  = physical_mods_nodes(actions)
+        stacks = [s for s in layer_stacks if s.top_node in nodes]
+
+        def stacks_for(node: tuple[str, ...]) -> list[LayerStack]:
+            """Stacks whose top layer is `node` or one of its descendants —
+            e.g. node ("!lctl",) picks up the plain, +lsft and +rsft stacks
+            alike, mirroring physical_mods_node_entries' own roll-up so the
+            base file stays a full one-stop overview.
+            """
+            depth = len(node)
+            return [s for s in stacks if s.top_node[:depth] == node]
+
+        def merged_global_entries(node: tuple[str, ...]) -> list[tuple[str, str]]:
+            entries: list[tuple[str, str]] = []
+            for combo, a in physical_mods_node_entries(node, actions):
+                effective = effective_global_default(details, a, domain)
+                if effective is None:
+                    continue
+                entries.append((combo, label_from_global_default(effective, a, domain)))
+            for stack in stacks_for(node):
+                for shadow_node in stack.shadowed_physical_mods_nodes():
+                    for combo, a in physical_mods_exact_entries(shadow_node, actions):
+                        effective = effective_global_default(details, a, domain)
+                        if effective is None:
+                            continue
+                        entries.append((combo, label_from_global_default(effective, a, domain)))
+                for domain_name, shift in stack.shadowed_domains():
+                    entries += combination_domain_entries(domain_name, shift, app=None)
+            return entries
+
+        def merged_app_entries(
+            node: tuple[str, ...], app: str, impl: dict[str, str]
+        ) -> list[tuple[str, str]]:
+            entries: list[tuple[str, str]] = []
+            for combo, a in physical_mods_node_entries(node, actions):
+                if a in impl:
+                    label = label_for_implemented_value(impl[a], a, domain, app)
+                else:
+                    effective = effective_global_default(details, a, domain)
+                    if effective is None:
+                        continue
+                    label = label_from_global_default(effective, a, domain)
+                entries.append((combo, label))
+            for stack in stacks_for(node):
+                for shadow_node in stack.shadowed_physical_mods_nodes():
+                    for combo, a in physical_mods_exact_entries(shadow_node, actions):
+                        if a in impl:
+                            label = label_for_implemented_value(impl[a], a, domain, app)
+                        else:
+                            effective = effective_global_default(details, a, domain)
+                            if effective is None:
+                                continue
+                            label = label_from_global_default(effective, a, domain)
+                        entries.append((combo, label))
+                for domain_name, shift in stack.shadowed_domains():
+                    entries += combination_domain_entries(domain_name, shift, app=app)
+            return entries
+
+        for node, layer_name in nodes.items():
+            global_entries = merged_global_entries(node)
+            if global_entries:
+                emit(HELP_DIR / f"global_{layer_name}.hlp",
+                     f"{base_title} ({layer_name})", global_entries, physical_mods_iface)
+
+        for app_dir in app_dirs:
+            app      = app_dir.name
+            app_file = find_app_file(app_dir, app, domain)
+            impl     = parse_app_file(app_file, app) if app_file else {}
+
+            # Which shadowed foreign domains this app actually overrides —
+            # used below to avoid emitting a per-app file that would just
+            # duplicate the global one verbatim (matching the precedent set
+            # by the generic per-domain loop above: no app file, no per-app
+            # help file, since the global one already covers it).
+            domain_overridden = {
+                domain_name: find_app_file(ACTIONS_DIR / app, app, domain_name) is not None
+                for stack in stacks
+                for domain_name, _shift in stack.shadowed_domains()
+            }
+
+            for node, layer_name in nodes.items():
+                has_reason = app_file is not None or any(
+                    domain_overridden[domain_name]
+                    for stack in stacks_for(node)
+                    for domain_name, _shift in stack.shadowed_domains()
+                )
+                if not has_reason:
+                    continue
+                entries = merged_app_entries(node, app, impl)
+                if entries:
+                    emit(HELP_DIR / app / f"{app}_{layer_name}.hlp",
+                         f"{base_title} ({layer_name}) - {app}", entries, app_file or physical_mods_iface)
 
     # Remove stale .hlp files (root and all app subdirectories)
     for stale in sorted(HELP_DIR.glob("**/*.hlp")):
