@@ -31,8 +31,8 @@ folder_inbox              (S-grv 10 / i n b o x)
 ;;folder_projects         `~/workarea/projects`
 folder_projects           (S-grv 10 / w o r k a r e a / p r o j e c t s)
 ;; k
-;;folder_kanata           `~/settings/linux/dotfiles/kanata`
-folder_kanata             (S-grv 10 / s e t t i n g s / l i n u x / d o t f i l e s / k a n a t a)
+;;folder_kanata           `~/settings/linux/dotfiles/kanata-cfg`
+folder_kanata             (S-grv 10 / s e t t i n g s / l i n u x / d o t f i l e s / k a n a t a - c f g)
 ;; l
 
 
