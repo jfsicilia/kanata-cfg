@@ -13,7 +13,9 @@
       "Bash(systemctl:*)",
       "Bash(python3 *)",
       "Bash(grep -v \"^$\")",
-      "Bash(echo \"exit: $?\")"
+      "Bash(echo \"exit: $?\")",
+      "Bash(xargs -0 sha256sum)",
+      "Read(//tmp/**)"
     ]
   }
 }

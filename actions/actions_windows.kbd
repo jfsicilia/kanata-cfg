@@ -1,14 +1,13 @@
 (defvar
-  windows_show_all    (t! unmod_all C-f10)
-  windows_maximize    (t! unmod_all M-pgup)
-  windows_fullscreen  (t! unmod_all M-S-m)
-  windows_half_up     (t! unmod_all  M-up)
-  windows_half_down   (t! unmod_all M-down)
-  windows_half_left   (t! unmod_all M-left)
-  windows_half_right  (t! unmod_all M-right)
-  windows_close       (t! unmod_all A-f4)
-
-  windows_toggle M-tab
+  windows_show_all              (t! unmod_all C-f10)
+  windows_maximize              (t! unmod_all M-pgup)
+  windows_fullscreen            (t! unmod_all M-S-m)
+  windows_half_up               (t! unmod_all  M-up)
+  windows_half_down             (t! unmod_all M-down)
+  windows_half_left             (t! unmod_all M-left)
+  windows_half_right            (t! unmod_all M-right)
+  windows_close                 (t! unmod_all A-f4)
+  windows_toggle                M-tab
   windows_walk_through_same_app A-`
 )
 

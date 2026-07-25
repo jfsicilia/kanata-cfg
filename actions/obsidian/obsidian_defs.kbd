@@ -1,4 +1,21 @@
 (defvar
+obsidian_select_all       C-A-a
+obsidian_invert_selection C-A-S-a
+obsidian_clear_selection  A-S-a
+obsidian_copy             C-A-c
+obsidian_duplicate        C-A-d
+obsidian_new              C-A-n
+obsidian_new_folder       C-A-S-n
+obsidian_save             C-A-s
+obsidian_open             right
+obsidian_parent           left
+obsidian_rename           C-A-r
+obsidian_paste            C-A-v
+obsidian_cut              C-A-x
+obsidian_forward          C-A-right
+obsidian_backward         C-A-left
+obsidian_command_palette  C-spc
+
 obsidian_action_bookmarks+spc                  C-o
 obsidian_symbols                               A-S-o
 obsidian_commands                              C-A-p
@@ -23,6 +40,7 @@ obsidian_pane_h_split    A--
 obsidian_pane_v_split    A-\  
 obsidian_pane_close      A-w
 obsidian_pane_toggle     A-q
+
 obsidian_file_explorer   A-e
 obsidian_file_explorer_reveal A-S-e
 obsidian_recent          A-r

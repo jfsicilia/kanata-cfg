@@ -1,20 +1,4 @@
 (defvar
-obsidian_select_all       C-A-a
-obsidian_invert_selection C-A-S-a
-obsidian_clear_selection  A-S-a
-obsidian_copy             C-A-c
-obsidian_duplicate        C-A-d
-obsidian_new              C-A-n
-obsidian_new_folder       C-A-S-n
-obsidian_save             C-A-s
-obsidian_open             right
-obsidian_parent           left
-obsidian_rename           C-A-r
-obsidian_paste            C-A-v
-obsidian_cut              C-A-x
-obsidian_forward          C-A-right
-obsidian_back             C-A-left
-obsidian_command_palette  C-spc
 
 ;; == omni ============================================================
 
@@ -204,7 +188,7 @@ obsidian_action_omni+x                    $obsidian_cut
 obsidian_action_omni+]                    $obsidian_forward
 
 ;; omni + [
-obsidian_action_omni+[                    $obsidian_back
+obsidian_action_omni+[                    $obsidian_backward
 
 ;; omni + \
 ;; ___TO_SET___ obsidian_action_omni+\                 

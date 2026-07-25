@@ -3,7 +3,7 @@
 ;; == tabs ===============================================================
 
 ;; tabs + spc
-nvim_action_tabs+spc          $nvim_open_buffers 
+nvim_action_tabs+spc                       $nvim_open_buffers 
 
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
 ;; If not implemented, defaults to: C-tab

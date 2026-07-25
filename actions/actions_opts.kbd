@@ -3,8 +3,7 @@
   set_quiet_profile       (multi (push-msg "NOTIFY: Quiet profile")       (cmd asusctl profile set Quiet))
   set_balanced_profile    (multi (push-msg "NOTIFY: Balanced profile")    (cmd asusctl profile set Balanced))
   set_performance_profile (multi (push-msg "NOTIFY: Performance profile") (cmd asusctl profile set Performance))
-  restart_kwanata         (t! unmod_all
-    (macro RA-spc 300 s y s t e m c t l spc - - u s e r spc r e s t a r t spc k w a n a t a 300 ent))
+  restart_kwanata         (t! unmod_all (macro RA-spc 300 s y s t e m c t l spc - - u s e r spc r e s t a r t spc k w a n a t a 300 ent))
   restart_system          (multi (push-msg "NOTIFY: Rebooting...")        (cmd systemctl reboot))
   shutdown_system         (multi (push-msg "NOTIFY: Shutting down...")    (cmd systemctl shutdown))
   print_screen            prnt

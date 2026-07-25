@@ -38,8 +38,8 @@ obsidian_action_lctl+,                         $obsidian_action_setting
 ;; ___TO_SET___ obsidian_action_lctl+/                 
 obsidian_action_lctl+;                         $obsidian_vimola
 ;; ___TO_SET___ obsidian_action_lctl+'                 
-obsidian_action_lctl+[                         $obsidian_action_omni+[
-obsidian_action_lctl+]                         $obsidian_action_omni+]  ;;""
+obsidian_action_lctl+[                         $obsidian_forward
+obsidian_action_lctl+]                         $obsidian_backward
 ;; ___TO_SET___ obsidian_action_lctl+\                 
 ;; ___TO_SET___ obsidian_action_lctl+-                 
 ;; ___TO_SET___ obsidian_action_lctl+=                 
