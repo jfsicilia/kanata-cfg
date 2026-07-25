@@ -224,23 +224,88 @@ def parse_physical_mods_action(action_name: str) -> tuple[tuple[str, ...], str] 
     return tuple(mods), key
 
 
-def physical_mods_nodes(
-    actions: list[tuple[tuple[str, ...], str, str]]
-) -> dict[str, str]:
-    """Every modifier-chord prefix that appears across all physical_mods
-    actions, mapped to its layer name (e.g. {("lctl",): "lctl", ("lctl",
-    "lalt"): "lctl+lalt"}).
+_DEFLAYERMAP_RE = re.compile(r"\(deflayermap\s+\((\S+)\)")
 
-    Each prefix matches a real kanata deflayermap that kwanata can report as
-    the active layer, so each becomes its own help file — see
-    physical_mods_node_entries for what goes in it.
+
+def parse_physical_mods_layer_names() -> list[str]:
+    """Every layer name declared in layers/layer_physical_mods.kbd
+    (deflayermap block names, "_layer" suffix stripped), in file order — the
+    authoritative list of every physical_mods layer that actually exists,
+    independent of whether any action is currently bound to it (unlike
+    deriving nodes from actions_physical_mods.iface.kbd, which would miss
+    layers with no bindings yet, e.g. multi-real-modifier combos).
     """
-    nodes: dict[tuple[str, ...], str] = {}
-    for mods, _key, _action in actions:
-        for depth in range(1, len(mods) + 1):
-            prefix = mods[:depth]
-            nodes.setdefault(prefix, "+".join(prefix))
-    return nodes
+    path = LAYERS_DIR / "layer_physical_mods.kbd"
+    if not path.exists():
+        return []
+    return [
+        m.group(1).removesuffix("_layer")
+        for m in _DEFLAYERMAP_RE.finditer(path.read_text())
+    ]
+
+
+_SINGLE_LAYER_TOGGLE_RE = re.compile(
+    r"^\s*(toggle_\S+)\s+\(t!\s+toggle_(?:mod|\dmod)_layer\s+(.+?)\)\s*$", re.MULTILINE
+)
+
+
+def physical_mods_directly_toggled_nodes() -> set[tuple[str, ...]]:
+    """physical_mods layers with their own single-layer toggle
+    (toggle_mod_layer / toggle_2mod_layer / toggle_3mod_layer /
+    toggle_4mod_layer — i.e. not stacked with anything else) that's
+    genuinely bound to a real key somewhere — referenced as
+    "$toggle_..._layer" outside its own declaration in
+    layers_toggle/toggles_physical_mods.kbd.
+
+    Every real-modifier combination gets such a toggle var *declared* there
+    (e.g. holding both lctl+lalt has one), but most are never actually wired
+    to a key — only genuinely-used ones count as independently reachable.
+    The home-row mods are the prototypical case: holding physical f/j
+    directly fires $toggle_lctl_layer (setup.kbd), completely independent of
+    the physical-Alt-as-!lctl stack that also happens to use "lctl_layer" as
+    its mid layer — so "lctl" needs its own help file for that reason alone,
+    regardless of whether it's also shadowed somewhere else.
+    """
+    decl_path = TOGGLES_DIR / "toggles_physical_mods.kbd"
+    if not decl_path.exists():
+        return set()
+    decl_text = decl_path.read_text()
+
+    declared: dict[str, str] = {}  # toggle var name -> target layer name
+    for m in _SINGLE_LAYER_TOGGLE_RE.finditer(decl_text):
+        args = m.group(2).split()
+        if args:
+            declared[m.group(1)] = args[-1].removesuffix("_layer")
+
+    used: set[str] = set()
+    for path in ROOT.rglob("*.kbd"):
+        if path == decl_path:
+            continue
+        text = path.read_text()
+        used.update(var for var in declared if f"${var}" in text)
+
+    return {tuple(declared[var].split("+")) for var in used}
+
+
+def physical_mods_available_nodes(layer_stacks: list["LayerStack"]) -> list[tuple[str, ...]]:
+    """Every declared physical_mods layer (see parse_physical_mods_layer_names)
+    that a user can actually hold and have kwanata report as the active
+    layer — every one except those always shadowed by some LayerStack's top
+    and never independently, genuinely toggled on their own (see
+    physical_mods_directly_toggled_nodes).
+
+    E.g. "lctl" and "lctl+lsft" are shadowed mid-layers of the physical-Alt
+    3-stack but ALSO directly reachable via home-row mods, so they stay
+    available; "lctl+lalt" is shadowed by the !lctl+lalt 2-layer stack with
+    no independent toggle wired to it anywhere, so it stays hidden (its
+    content only ever shows up folded into "!lctl+lalt"'s file).
+    """
+    declared        = [tuple(name.split("+")) for name in parse_physical_mods_layer_names()]
+    tops            = {s.top_node for s in layer_stacks}
+    shadowed        = {n for s in layer_stacks for n in s.shadowed_physical_mods_nodes()}
+    directly_toggled = physical_mods_directly_toggled_nodes()
+    shadowed_only   = shadowed - tops - directly_toggled
+    return [node for node in declared if node not in shadowed_only]
 
 
 def physical_mods_node_entries(
@@ -802,7 +867,10 @@ def main(dry_run: bool = False) -> None:
         actions = iface_order
 
         # ── Global help ───────────────────────────────────────────────────────
-        # Only combos with a real global default (or a direct binding)
+        # Only combos with a real global default (or a direct binding) get an
+        # entry, but the file itself is always emitted — even title-only —
+        # so every domain you can hold has a help reminder of what it's for,
+        # regardless of how much of it is actually implemented yet.
         global_entries: list[tuple[str, str]] = []
         for a in actions:
             effective = effective_global_default(details, a, domain)
@@ -813,8 +881,7 @@ def main(dry_run: bool = False) -> None:
                 label_from_global_default(effective, a, domain),
             ))
 
-        if global_entries:
-            emit(HELP_DIR / f"global_{short}.hlp", title, global_entries, actions_path)
+        emit(HELP_DIR / f"global_{short}.hlp", title, global_entries, actions_path)
 
         # ── Per-app help from separate app files ──────────────────────────────
         # Use iface_order (not layer_actions) so that domains where the layer
@@ -937,19 +1004,25 @@ def main(dry_run: bool = False) -> None:
             if app_overview:
                 emit(app_hlp_dir / f"{app}_domains.hlp", f"Domains - {app}", app_overview, app_file)
 
-    # ── Physical mods: one file per active modifier layer ───────────────────
+    # ── Physical mods: one file per available (reachable) modifier layer ────
     # kwanata resolves help by stripping "_layer" off the *current kanata
     # layer* and looking up "{app}_{that}.hlp" / "global_{that}.hlp" — there
     # is no single "phys" layer a user ever holds, so (unlike every other
-    # domain) this can't be one merged file; it needs one per actual layer
-    # (lctl, lctl+lsft, lctl+lalt, …), each rolling up its own descendants.
-    # See physical_mods_nodes / physical_mods_node_entries.
+    # domain) this can't be one merged file; it needs one per actual
+    # reachable layer, each rolling up its own descendants. See
+    # physical_mods_available_nodes / physical_mods_node_entries.
     #
     # Some physical keys push a multi-layer stack in one hold (see
     # LayerStack) where kanata only ever reports the topmost layer as
     # active — so that layer's file additionally folds in every shadowed
     # layer's own content (another physical_mods layer, a foreign domain's
-    # base layer, or both), otherwise unreachable from here.
+    # base layer, or both), otherwise unreachable from here. Every layer
+    # that's always shadowed and never itself a stack top (e.g. "lctl",
+    # "lctl+lalt" — always the mid/base of some "!"-topped stack) gets no
+    # standalone file at all, since it would just be dead weight; the
+    # remaining, genuinely reachable layers always get a global help file,
+    # a title-only placeholder if nothing is bound there yet — so every
+    # modifier you can hold has a reminder of what it's for.
     physical_mods_iface = ACTIONS_DIR / "actions_physical_mods.iface.kbd"
     if physical_mods_iface.exists():
         domain     = "physical_mods"
@@ -964,8 +1037,8 @@ def main(dry_run: bool = False) -> None:
             mods, key = parsed
             actions.append((mods, key, a))
 
-        nodes  = physical_mods_nodes(actions)
-        stacks = [s for s in layer_stacks if s.top_node in nodes]
+        available_nodes = physical_mods_available_nodes(layer_stacks)
+        stacks = [s for s in layer_stacks if s.top_node in available_nodes]
 
         def stacks_for(node: tuple[str, ...]) -> list[LayerStack]:
             """Stacks whose top layer is `node` or one of its descendants —
@@ -1022,11 +1095,13 @@ def main(dry_run: bool = False) -> None:
                     entries += combination_domain_entries(domain_name, shift, app=app)
             return entries
 
-        for node, layer_name in nodes.items():
+        for node in available_nodes:
+            layer_name     = "+".join(node)
             global_entries = merged_global_entries(node)
-            if global_entries:
-                emit(HELP_DIR / f"global_{layer_name}.hlp",
-                     f"{base_title} ({layer_name})", global_entries, physical_mods_iface)
+            # Always emit — a title-only placeholder when nothing is bound
+            # yet still serves as a reminder of what this modifier is for.
+            emit(HELP_DIR / f"global_{layer_name}.hlp",
+                 f"{base_title} ({layer_name})", global_entries, physical_mods_iface)
 
         for app_dir in app_dirs:
             app      = app_dir.name
@@ -1037,14 +1112,16 @@ def main(dry_run: bool = False) -> None:
             # used below to avoid emitting a per-app file that would just
             # duplicate the global one verbatim (matching the precedent set
             # by the generic per-domain loop above: no app file, no per-app
-            # help file, since the global one already covers it).
+            # help file, since the global one already covers it). Per-app
+            # files are never placeholders — only the global catalog is.
             domain_overridden = {
                 domain_name: find_app_file(ACTIONS_DIR / app, app, domain_name) is not None
                 for stack in stacks
                 for domain_name, _shift in stack.shadowed_domains()
             }
 
-            for node, layer_name in nodes.items():
+            for node in available_nodes:
+                layer_name = "+".join(node)
                 has_reason = app_file is not None or any(
                     domain_overridden[domain_name]
                     for stack in stacks_for(node)
