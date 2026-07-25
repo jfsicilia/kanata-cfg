@@ -1,6 +1,6 @@
 ;; Templates ===============================================================
 
-;; == Homerowmod & Fasttyping ==============================================
+;; == Fasttyping ==============================================
 
 ;; Fast-typing aware typing action.
 ;; Temporarily activates vk_fast_typing virtual key for 55ms when typing
@@ -20,25 +20,7 @@
   )
 )
 
-;; DEPRECATED: Homerow modifier with fast-typing detection.
-;; Creates a tap-hold key that outputs a letter when tapped or a modifier when
-;; held. Intelligently detects fast typing sequences and prefers letter output
-;; to avoid accidental modifier activation during normal typing.
-;;
-;; Parameters:
-;;   timeouttap  - Milliseconds before tap action is triggered (e.g., 200)
-;;   timeouthold - Milliseconds before hold action is triggered (e.g., 200)
-;;   keytap      - Key to output on tap (e.g., a, s, d, f)
-;;   keyhold     - Action to perform on hold (e.g., lmet, lalt, lsft, lctl)
-(deftemplate homerowmod (timeouttap timeouthold keytap keyhold)
-  (switch
-    ((input virtual vk_fast_typing)) (t! type $keytap) break
-    () (tap-hold $timeouttap $timeouthold
-         (t! type $keytap)
-         $keyhold
-       ) break
-  )
-)
+;; == Tap and hold ============================================
 
 ;; Fast-typing aware tap-hold with default timings.
 ;; Similar to homerowmod but uses global $retap_time and $hold_time variables.
@@ -50,27 +32,22 @@
 (deftemplate fast_th (tap hold)
   (switch
     ((input virtual vk_fast_typing)) (t! type $tap) break
-    () (tap-hold $retap_time $hold_time (t! type $tap) (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
-    ;;() (tap-hold-press-timeout $retap_time 800 (t! type $tap) $hold (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
-    ;;() (tap-hold-release-timeout $retap_time 800 (t! type $tap) $hold (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
+    () (tap-hold $retap_time $hold_time (t! type $tap) 
+      (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
   )
 )
 
-;; DEPRECATED: Shift-dependent action dispatcher.
-;; Executes different actions based on whether lsft, rsft, or no shift is pressed.
-;; This template is no longer used - replaced by explicit layer variants
-;; (base_layer, base+lsft_layer, base+rsft_layer).
+;; Tap-hold with default global timings.
+;; Convenient shorthand for tap-hold-press using $retap_time and $hold_time
+;; variables defined in setup. Uses press behavior (hold triggers on key press
+;; rather than release).
 ;;
 ;; Parameters:
-;;   action       - Action to perform when no shift is pressed
-;;   lsft_action  - Action to perform when left shift is pressed
-;;   rsft_action  - Action to perform when right shift is pressed
-(deftemplate sft_switch (action lsft_action rsft_action)
-  (switch
-    (lsft) $lsft_action break
-    (rsft) $rsft_action break
-    ()     $action      break
-  )
+;;   tap  - Action to perform on tap (e.g., a key or macro)
+;;   hold - Action to perform on hold (e.g., layer toggle or modifier)
+(deftemplate th (tap hold)
+  (tap-hold-press-timeout $retap_time $hold_time $tap $hold 
+    (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
 )
 
 ;; == Spanish letters templates ============================================
@@ -155,19 +132,20 @@
 
 ;; == Util ================================================================
 
-;; Tap-hold with default global timings.
-;; Convenient shorthand for tap-hold-press using $retap_time and $hold_time
-;; variables defined in setup. Uses press behavior (hold triggers on key press
-;; rather than release).
+;; Executes different actions based on whether lsft, rsft, or no shift is pressed.
+;; This template is no longer used - replaced by explicit layer variants
+;; (base_layer, base+lsft_layer, base+rsft_layer).
 ;;
 ;; Parameters:
-;;   tap  - Action to perform on tap (e.g., a key or macro)
-;;   hold - Action to perform on hold (e.g., layer toggle or modifier)
-(deftemplate th (tap hold)
-  (tap-hold-press-timeout $retap_time $hold_time $tap $hold (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
-;;  (tap-hold-press $retap_time $hold_time $tap $hold)
-;;  (tap-hold $retap_time $hold_time $tap (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
-;;  (tap-hold-press $retap_time $hold_time $tap (multi $hold (on-press press-vkey vk_help_open) (on-release tap-vkey vk_help_close)))
+;;   action       - Action to perform when no shift is pressed
+;;   lsft_action  - Action to perform when left shift is pressed
+;;   rsft_action  - Action to perform when right shift is pressed
+(deftemplate sft_switch (action lsft_action rsft_action)
+  (switch
+    (lsft) $lsft_action break
+    (rsft) $rsft_action break
+    ()     $action      break
+  )
 )
 
 ;; Double-tap detector. 
@@ -643,3 +621,74 @@
   )
 )
 
+
+;;(deftemplate thx (tap hold)
+;;  (if-in-list $tap (b c d f g h j k l m p q r s t v w x y z , . / ; ' \ [ ] - = ` 0 1 2 3 4 5 6 7 8 9 spc tab esc)
+;;    (switch
+;;      ((input virtual vk_fast_typing)) (t! type $tap) break
+;;      () (tap-hold $retap_time $hold_time (t! type $tap) (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
+;;    )
+;;  )
+;;  (if-in-list $tap (a e i o u n)
+;;    (switch
+;;      ((input virtual vk_fast_typing)) (t! type (t! char|alt_char $tap)) break
+;;      () (tap-hold $retap_time $hold_time (t! type (t! char|alt_char $tab)) (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
+;;    )
+;;  )
+;;  (if-not-in-list $tap (a b c d e f g h i j k l m n o p q r s t u v w x y z , . / ; ' \ [ ] - = ` 0 1 2 3 4 5 6 7 8 9 spc tab esc)
+;;    (tap-hold-press-timeout $retap_time $hold_time $tap $hold (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
+;;  )
+;;)
+;;
+
+
+;; DEPRECATED: Homerow modifier with fast-typing detection.
+;; Creates a tap-hold key that outputs a letter when tapped or a modifier when
+;; held. Intelligently detects fast typing sequences and prefers letter output
+;; to avoid accidental modifier activation during normal typing.
+;;
+;; Parameters:
+;;   timeouttap  - Milliseconds before tap action is triggered (e.g., 200)
+;;   timeouthold - Milliseconds before hold action is triggered (e.g., 200)
+;;   keytap      - Key to output on tap (e.g., a, s, d, f)
+;;   keyhold     - Action to perform on hold (e.g., lmet, lalt, lsft, lctl)
+;;(deftemplate homerowmod (timeouttap timeouthold keytap keyhold)
+;;  (switch
+;;    ((input virtual vk_fast_typing)) (t! type $keytap) break
+;;    () (tap-hold $timeouttap $timeouthold
+;;         (t! type $keytap)
+;;         $keyhold
+;;       ) break
+;;  )
+;;)
+
+;;;; Fast-typing aware tap-hold with default timings.
+;;;; Similar to homerowmod but uses global $retap_time and $hold_time variables.
+;;;; Prefers tap action during fast typing sequences.
+;;;;
+;;;; Parameters:
+;;;;   tap  - Action to perform on tap (e.g., a letter key)
+;;;;   hold - Action to perform on hold (e.g., a layer toggle or modifier)
+;;(deftemplate fast_th (tap hold)
+;;  (switch
+;;    ((input virtual vk_fast_typing)) (t! type $tap) break
+;;    () (tap-hold $retap_time $hold_time (t! type $tap) (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
+;;    ;;() (tap-hold-press-timeout $retap_time 800 (t! type $tap) $hold (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
+;;    ;;() (tap-hold-release-timeout $retap_time 800 (t! type $tap) $hold (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
+;;  )
+;;)
+;;
+;;;; Tap-hold with default global timings.
+;;;; Convenient shorthand for tap-hold-press using $retap_time and $hold_time
+;;;; variables defined in setup. Uses press behavior (hold triggers on key press
+;;;; rather than release).
+;;;;
+;;;; Parameters:
+;;;;   tap  - Action to perform on tap (e.g., a key or macro)
+;;;;   hold - Action to perform on hold (e.g., layer toggle or modifier)
+;;(deftemplate th (tap hold)
+;;  (tap-hold-press-timeout $retap_time $hold_time $tap $hold (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
+;;;;  (tap-hold-press $retap_time $hold_time $tap $hold)
+;;;;  (tap-hold $retap_time $hold_time $tap (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
+;;;;  (tap-hold-press $retap_time $hold_time $tap (multi $hold (on-press press-vkey vk_help_open) (on-release tap-vkey vk_help_close)))
+;;)
