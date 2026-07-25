@@ -1,0 +1,11 @@
+(defvar
+  ;; == system =============================================================
+  ;; system + spc
+  action_system+spc (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY: System not implemented") break
+  ))
+  ;; system + toggle
+  action_system+toggle (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY: System not implemented") break
+  ))
+)

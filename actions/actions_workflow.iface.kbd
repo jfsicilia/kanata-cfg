@@ -1,0 +1,11 @@
+(defvar
+  ;; == workflow ============================================================
+  ;; workflow + spc
+  action_workflow+spc (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY: Workflow not implemented") break
+  ))
+  ;; workflow + toggle
+  action_workflow+toggle (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY: Workflow not implemented") break
+  ))
+)

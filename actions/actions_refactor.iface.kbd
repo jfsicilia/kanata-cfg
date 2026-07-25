@@ -1,0 +1,11 @@
+(defvar
+  ;; == refactor ============================================================
+  ;; refactor + spc
+  action_refactor+spc (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY: Refactor not implemented") break
+  ))
+  ;; refactor + toggle
+  action_refactor+toggle (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY: Refactor not implemented") break
+  ))
+)
