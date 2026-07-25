@@ -1,0 +1,18 @@
+# Physical mods (!lctl) - obsidian (actions/obsidian/obsidian_physical_mods.kbd)
+**!lctl + a**         -- Select All Text
+**!lctl + b**         -- Bold Text
+**!lctl + e**         -- Toggle Edit Mode
+**!lctl + p**         -- Select Files
+**!lctl + r**         -- Toggle Source Mode
+**!lctl + ,**         -- Setting
+**!lctl + lsft + p**  -- Commands
+**lctl + b**          -- Page Up
+**lctl + f**          -- Page Down
+**lctl + t**          -- Tabs New
+**lctl + ,**          -- Setting
+**lctl + ;**          -- Vimola
+**lctl + [**          -- Forward
+**lctl + ]**          -- Backward
+**seek + spc**        -- Seek And Select File
+**lctl + lsft + t**   -- Tabs Undo Close
+**seek + lsft + spc** -- Seek And Select Folder

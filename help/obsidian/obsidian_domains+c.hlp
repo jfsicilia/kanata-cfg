@@ -1,4 +1,4 @@
 # Calendar - obsidian (actions/obsidian/obsidian_domains.kbd)
-**c** -- Calendar
-**d** -- Daily Shift
-**y** -- Daily
+**spc + c + c** -- Calendar
+**spc + c + d** -- Daily Shift
+**spc + c + y** -- Daily

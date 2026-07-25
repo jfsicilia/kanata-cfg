@@ -42,7 +42,7 @@
 **omni + 8**        -- Tab Goto 8
 **omni + 9**        -- Tab Goto 9
 **omni + ]**        -- Forward
-**omni + [**        -- Back
+**omni + [**        -- Backward
 **omni + ,**        -- Settings
 **omni + .**        -- Tags
 **omni + /**        -- Help

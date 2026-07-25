@@ -1,0 +1,9 @@
+# Physical mods (lctl) - obsidian (actions/obsidian/obsidian_physical_mods.kbd)
+**lctl + b**        -- Page Up
+**lctl + f**        -- Page Down
+**lctl + t**        -- Tabs New
+**lctl + ,**        -- Setting
+**lctl + ;**        -- Vimola
+**lctl + [**        -- Forward
+**lctl + ]**        -- Backward
+**lctl + lsft + t** -- Tabs Undo Close

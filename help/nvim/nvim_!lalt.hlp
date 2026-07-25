@@ -1,0 +1,4 @@
+# Physical mods (!lalt) - nvim (actions/nvim/nvim_physical_mods.kbd)
+**lalt + tab**          -- Windows Walk Through Same App
+**search + spc**        -- Search In Buffer
+**search + lsft + spc** -- Search In Workspace

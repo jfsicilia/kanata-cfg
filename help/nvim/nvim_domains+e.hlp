@@ -1,2 +1,2 @@
 # Explorer - nvim (actions/nvim/nvim_domains.kbd)
-**e** -- File Explorer
+**spc + e + e** -- File Explorer
