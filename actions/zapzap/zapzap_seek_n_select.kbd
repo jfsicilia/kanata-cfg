@@ -1,10 +1,5 @@
 (defvar
-
 ;; == seek_sel ========================================================
 ;; seek_sel + spc
 zapzap_action_seek_and_select        $zapzap_omni_search
-;; seek_sel + lsft + spc
-;; ___TO_SET___ zapzap_action_seek_and_select+lsft   
-;; seek_sel + rsft + spc
-;; ___TO_SET___ zapzap_action_seek_and_select+rsft   
 )

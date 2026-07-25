@@ -1,21 +1,12 @@
 (defvar
-
-;; == tabs ===============================================================
-
 ;; tabs + spc
 obsidian_action_tabs+spc            C-S-A-o
-
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
 ;; If not implemented, defaults to: C-tab
 obsidian_action_tabs_next                       C-pgdn
 ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
 ;; If not implemented, defaults to: C-S-tab
 obsidian_action_tabs_prev                       C-pgup
-;; tabs + j | tabs + down
-;; ___TO_SET___ obsidian_action_tabs_first             
-;; tabs + k | tabs + up
-;; ___TO_SET___ obsidian_action_tabs_last              
-
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 obsidian_action_tabs_new                        A-C-t
@@ -28,7 +19,6 @@ obsidian_action_tabs_close                      A-C-w
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t
 obsidian_action_tabs_undo_close                 A-C-S-t
-
 ;; == tabs go by number ==================================================
 ;; tabs + 1
 ;; If not implemented, defaults to: C-1
@@ -57,18 +47,7 @@ obsidian_action_tabs_goto_8                     C-8
 ;; tabs + 9
 ;; If not implemented, defaults to: C-9
 obsidian_action_tabs_goto_last                  C-9
-
 ;; == tabs + toggle =====================================================
 ;; tabs + toggle | 2x !lctl
 obsidian_action_tabs+toggle                     A-q
-
-;; == tabs + move =====================================================
-;; tabs + move + h | tabs + move + left
-;; ___TO_SET___ obsidian_action_tabs_move_left         
-;; tabs + move + l | tabs + move + right
-;; ___TO_SET___ obsidian_action_tabs_move_right        
-;; tabs + move + k | tabs + move + up
-;; ___TO_SET___ obsidian_action_tabs_move_first        
-;; tabs + move + j | tabs + move + down
-;; ___TO_SET___ obsidian_action_tabs_move_last         
 )

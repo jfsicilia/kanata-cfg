@@ -1,26 +1,16 @@
 (defvar
-
-;; == !tabs/groups =====================================================
-
 ;; !tabs + spc
 obsidian_action_!tabs+spc              $obsidian_action_tabs+spc
-
 ;; !tabs + l | !tabs + right
 obsidian_action_!tabs_next             $obsidian_action_tabs_next             
 ;; !tabs + h | !tabs + left
 obsidian_action_!tabs_prev             $obsidian_action_tabs_prev             
-;; !tabs + j | !tabs + down
-;; ___TO_SET___ obsidian_action_!tabs_first            
-;; !tabs + k | !tabs + up
-;; ___TO_SET___ obsidian_action_!tabs_last             
-
 ;; !tabs + t
 obsidian_action_!tabs_new              $obsidian_action_tabs_new              
 ;; !tabs + w
 obsidian_action_!tabs_close            $obsidian_action_tabs_close            
 ;; !tabs + lsft + t
 obsidian_action_!tabs_undo_close       $obsidian_action_tabs_undo_close       
-
 ;; == !tabs go by number ==================================================
 ;; !tabs + 1
 obsidian_action_!tabs_goto_1           $obsidian_action_tabs_goto_1           
@@ -40,18 +30,7 @@ obsidian_action_!tabs_goto_7           $obsidian_action_tabs_goto_7
 obsidian_action_!tabs_goto_8           $obsidian_action_tabs_goto_8           
 ;; !tabs + 9
 obsidian_action_!tabs_goto_last        $obsidian_action_tabs_goto_last        
-
 ;; == !tabs + toggle =====================================================
 ;; !tabs + toggle
 obsidian_action_!tabs+toggle           $obsidian_action_tabs+toggle           
-
-;; == !tabs + move =====================================================
-;; !tabs + move + h | !tabs + move + left
-;; ___TO_SET___ obsidian_action_!tabs_move_left        
-;; !tabs + move + l | !tabs + move + right
-;; ___TO_SET___ obsidian_action_!tabs_move_right       
-;; !tabs + move + k | !tabs + move + up
-;; ___TO_SET___ obsidian_action_!tabs_move_first       
-;; !tabs + move + j | !tabs + move + down
-;; ___TO_SET___ obsidian_action_!tabs_move_last        
 )

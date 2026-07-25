@@ -1,10 +1,7 @@
 (defvar
-
 ;; == seek_sel ========================================================
 ;; seek_sel + spc
 firefox_action_seek_and_select                      $firefox_seek_and_select
 ;; seek_sel + lsft + spc
 firefox_action_seek_and_select+lsft                 XX
-;; seek_sel + rsft + spc
-;; ___TO_SET___ firefox_action_seek_and_select+rsft   
 )

@@ -1,12 +1,9 @@
 (defvar
   seek_and_select_file      C-A-o
   seek_and_select_folder    C-S-o
-
 ;; == seek_sel ========================================================
 ;; seek_sel + spc
 obsidian_action_seek_and_select                   $seek_and_select_file
 ;; seek_sel + lsft + spc
 obsidian_action_seek_and_select+lsft              $seek_and_select_folder
-;; seek_sel + rsft + spc
-;; ___TO_SET___ obsidian_action_seek_and_select+rsft   
 )

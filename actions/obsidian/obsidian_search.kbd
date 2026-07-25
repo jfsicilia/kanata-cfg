@@ -1,12 +1,9 @@
 (defvar
   search_in_file    C-A-m
   search_in_files   C-A-S-m
-
 ;; == search ============================================================
 ;; search + spc
 obsidian_action_search               $search_in_file
 ;; search + lsft + spc
 obsidian_action_search+lsft         $search_in_files
-;; search + rsft + spc
-;; ___TO_SET___ obsidian_action_search+rsft            
 )

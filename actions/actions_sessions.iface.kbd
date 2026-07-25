@@ -1,6 +1,4 @@
 (defvar
-  ;; @start@ ====== DON'T REMOVE THIS LINE =================================
-
   ;; == sessions =====================================================
   ;; sessions + spc
   action_sessions+spc (t! unmod_all (switch ;;@iface@

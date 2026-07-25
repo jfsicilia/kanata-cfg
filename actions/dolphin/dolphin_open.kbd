@@ -1,5 +1,4 @@
 (defvar
-
 ;; == open =============================================================
 ;; open + spc
 dolphin_action_open_with              $dolphin_open_with

@@ -1,5 +1,4 @@
 (defvar
-
 ;; == search ============================================================
 ;; search + spc
 zapzap_action_search                 $zapzap_search_in_chat

@@ -1,5 +1,4 @@
 (defvar
-
 ;; == search ============================================================
 ;; search + spc
 dolphin_action_search      $dolphin_search

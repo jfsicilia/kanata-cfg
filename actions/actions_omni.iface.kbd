@@ -124,7 +124,6 @@
   ;; at the same time. The alternate combo will be bound to ~action_...,
   ;; giving precedence to the other app when both apps are active.
 
-  ;; @start@ ====== DON'T REMOVE THIS LINE =================================
 
   ;; == omni ============================================================
 

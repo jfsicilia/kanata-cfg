@@ -1,26 +1,12 @@
 (defvar
-
-;; == !tabs/groups =====================================================
-
 ;; !tabs + spc
 nvim_action_!tabs+spc                  $nvim_action_tabs                  
-
 ;; !tabs + l | !tabs + right
 nvim_action_!tabs_next             $nvim_action_tabs_next             
 ;; !tabs + h | !tabs + left
 nvim_action_!tabs_prev             $nvim_action_tabs_prev             
-;; !tabs + j | !tabs + down
-;; ___TO_SET___ nvim_action_!tabs_first            
-;; !tabs + k | !tabs + up
-;; ___TO_SET___ nvim_action_!tabs_last             
-
-;; !tabs + t
-;; ___TO_SET___ nvim_action_!tabs_new              
 ;; !tabs + w
 nvim_action_!tabs_close            $nvim_action_tabs_close            
-;; !tabs + lsft + t
-;; ___TO_SET___ nvim_action_!tabs_undo_close       
-
 ;; == !tabs go by number ==================================================
 ;; !tabs + 1
 nvim_action_!tabs_goto_1           $nvim_action_tabs_goto_1           
@@ -40,18 +26,7 @@ nvim_action_!tabs_goto_7           $nvim_action_tabs_goto_7
 nvim_action_!tabs_goto_8           $nvim_action_tabs_goto_8           
 ;; !tabs + 9
 nvim_action_!tabs_goto_last        $nvim_action_tabs_goto_last        
-
 ;; == !tabs + toggle =====================================================
 ;; !tabs + toggle
 nvim_action_!tabs+toggle           $nvim_action_tabs+toggle           
-
-;; == !tabs + move =====================================================
-;; !tabs + move + h | !tabs + move + left
-;; ___TO_SET___ nvim_action_!tabs_move_left        
-;; !tabs + move + l | !tabs + move + right
-;; ___TO_SET___ nvim_action_!tabs_move_right       
-;; !tabs + move + k | !tabs + move + up
-;; ___TO_SET___ nvim_action_!tabs_move_first       
-;; !tabs + move + j | !tabs + move + down
-;; ___TO_SET___ nvim_action_!tabs_move_last        
 )

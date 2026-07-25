@@ -1,33 +1,10 @@
 (defvar
-
-;; == tabs ===============================================================
-
 ;; tabs + spc
 dolphin_action_tabs+spc               (push-msg "NOTIFY:Select tab not implemented!")
-
-;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
-;; If not implemented, defaults to: C-tab
-;; ___TO_SET___ dolphin_action_tabs_next              
-;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
-;; If not implemented, defaults to: C-S-tab
-;; ___TO_SET___ dolphin_action_tabs_prev              
 ;; tabs + j | tabs + down
 dolphin_action_tabs_first             (push-msg "NOTIFY:Select first tab not implemented!")
 ;; tabs + k | tabs + up
 dolphin_action_tabs_last              (push-msg "NOTIFY:Select last tab not implemented!")
-
-;; tabs + t
-;; If not implemented, defaults to: C-t
-;; ___TO_SET___ dolphin_action_tabs_new               
-;; tabs + v
-;; ___TO_SET___ dolphin_action_tabs_vertical          
-;; tabs + w
-;; If not implemented, defaults to: C-w
-;; ___TO_SET___ dolphin_action_tabs_close             
-;; tabs + lsft + t
-;; If not implemented, defaults to: C-S-t
-;; ___TO_SET___ dolphin_action_tabs_undo_close        
-
 ;; == tabs go by number ==================================================
 ;; tabs + 1
 ;; If not implemented, defaults to: C-1
@@ -56,11 +33,9 @@ dolphin_action_tabs_goto_8             $dolphin_tab_8
 ;; tabs + 9
 ;; If not implemented, defaults to: C-9
 dolphin_action_tabs_goto_last          $dolphin_tab_9 
-
 ;; == tabs + toggle =====================================================
 ;; tabs + toggle | 2x !lctl
 dolphin_action_tabs+toggle             $dolphin_toggle_tab
-
 ;; == tabs + move =====================================================
 ;; tabs + move + h | tabs + move + left
 dolphin_action_tabs_move_left         (push-msg "NOTIFY:Move tab left not implemented!")

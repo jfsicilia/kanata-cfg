@@ -1,10 +1,2 @@
 (defvar
-
-;; == search ============================================================
-;; search + spc
-;; ___TO_SET___ foot_action_search                 
-;; search + lsft + spc
-;; ___TO_SET___ foot_action_search+lsft            
-;; search + rsft + spc
-;; ___TO_SET___ foot_action_search+rsft            
 )

@@ -1,5 +1,4 @@
 (defvar
-
 ;; == search ============================================================
 ;; search + spc
 ;; nvim_action_search    `{esc}:Telescope current_buffer_fuzzy_find{ret}`
@@ -7,6 +6,4 @@ nvim_action_search        $nvim_search_in_buffer
 ;; search + lsft + spc
 ;; nvim_action_search+lsft     `{esc}:Telescope live_grep{ret}`
 nvim_action_search+lsft   $nvim_search_in_workspace 
-;; search + rsft + spc
-;; ___TO_SET___ nvim_action_search+rsft            
 )

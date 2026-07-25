@@ -1,9 +1,8 @@
 (defvar
-  ;; @start@ ====== DON'T REMOVE THIS LINE =================================
+  lock_user_session M-l  
+)
 
-  ;; === 4. Physical modifiers actions ===================================
-  ;; =====================================================================
-
+(defvar
   ;; == SFT actions ==========================================================
   action_sft+ent (t! unmod_all (switch ;;@iface@
     ((input virtual vk_foot)) $foot_action_sft+ent break
@@ -1764,7 +1763,7 @@
     () M-k  break
   ))
   action_lmet+l  (t! unmod_all (switch ;;@iface@ 
-    () M-l  break
+    () M-l break
   ))
   action_lmet+m  (t! unmod_all (switch ;;@iface@ 
     () M-m  break
@@ -2184,7 +2183,7 @@
     () M-k  break
   ))
   action_!lmet+l  (t! unmod_all (switch ;;@iface@ 
-    () M-l  break
+    () $lock_user_session  break
   ))
   action_!lmet+m  (t! unmod_all (switch ;;@iface@ 
     () M-m  break

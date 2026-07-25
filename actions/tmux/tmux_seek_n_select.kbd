@@ -1,10 +1,5 @@
 (defvar
-
 ;; == seek_sel ========================================================
 ;; seek_sel + spc
 tmux_action_seek_and_select                   (macro $tmux_prefix w) ;; prefix + w (choose window)
-;; seek_sel + lsft + spc
-;; ___TO_SET___ tmux_action_seek_and_select+lsft   
-;; seek_sel + rsft + spc
-;; ___TO_SET___ tmux_action_seek_and_select+rsft   
 )

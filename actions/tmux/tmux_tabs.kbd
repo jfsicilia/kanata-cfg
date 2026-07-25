@@ -1,34 +1,19 @@
 (defvar
-
-;; == tabs ===============================================================
-
 ;; tabs + spc
 tmux_action_tabs+spc            (macro $tmux_prefix w) ;; prefix + w (choose window)
-
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
 ;; If not implemented, defaults to: C-tab
 tmux_action_tabs_next                       (macro $tmux_prefix n)
 ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
 ;; If not implemented, defaults to: C-S-tab
 tmux_action_tabs_prev                       (macro $tmux_prefix p)
-;; tabs + j | tabs + down
-;; ___TO_SET___ tmux_action_tabs_first             
-;; tabs + k | tabs + up
-;; ___TO_SET___ tmux_action_tabs_last              
-
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 tmux_action_tabs_new                        (macro $tmux_prefix c)
-;; tabs + v
-;; ___TO_SET___ tmux_action_tabs_vertical          
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
 ;; tabs + v
 tmux_action_tabs_close                      (macro $tmux_prefix S-7) ;; prefix + & (kill window)
-;; tabs + lsft + t
-;; If not implemented, defaults to: C-S-t
-;; ___TO_SET___ tmux_action_tabs_undo_close        
-
 ;; == tabs go by number ==================================================
 ;; tabs + 1
 ;; If not implemented, defaults to: C-1
@@ -57,18 +42,12 @@ tmux_action_tabs_goto_8                     (macro $tmux_prefix Digit8)
 ;; tabs + 9
 ;; If not implemented, defaults to: C-9
 tmux_action_tabs_goto_last                  (macro $tmux_prefix Digit9)
-
 ;; == tabs + toggle =====================================================
 ;; tabs + toggle | 2x !lctl
 tmux_action_tabs+toggle                     (macro $tmux_prefix l)
-
 ;; == tabs + move =====================================================
 ;; tabs + move + h | tabs + move + left
 tmux_action_tabs_move_left  (macro $tmux_prefix S-; s w a p - w i n d o w spc - t spc - Digit1 ; s e l e c t - w i n d o w spc - t spc - Digit1 ent)
 ;; tabs + move + l | tabs + move + right
 tmux_action_tabs_move_right  (macro $tmux_prefix S-; s w a p - w i n d o w spc - t spc S-= Digit1 ; s e l e c t - w i n d o w spc - t spc S-= Digit1 ent)
-;; tabs + move + k | tabs + move + up
-;; ___TO_SET___ tmux_action_tabs_move_first        
-;; tabs + move + j | tabs + move + down
-;; ___TO_SET___ tmux_action_tabs_move_last         
 )

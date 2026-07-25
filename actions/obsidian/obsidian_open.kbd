@@ -1,8 +1,4 @@
 (defvar
-
-;; == open =============================================================
-;; open + spc
-;; ___TO_SET___ obsidian_action_open_with              
 ;; open + m
 obsidian_action_open_with_chrome               (macro C-A-p spc S-o p e n spc w i t h spc S-c h r o m e)
 ;; open + t

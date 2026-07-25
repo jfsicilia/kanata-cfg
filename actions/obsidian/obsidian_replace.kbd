@@ -1,12 +1,9 @@
 (defvar
   replace_in_file   C-A-h
   replace_in_files  C-A-S-h
-
 ;; == replace ==========================================================
 ;; replace + spc
 obsidian_action_replace            $replace_in_file
 ;; replace + lsft + spc
 obsidian_action_replace+lsft      $replace_in_files
-;; replace + rsft + spc
-;; ___TO_SET___ obsidian_action_replace+rsft           
 )

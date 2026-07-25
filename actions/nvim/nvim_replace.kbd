@@ -1,5 +1,4 @@
 (defvar
-
 ;; == replace ==========================================================
 ;; replace + spc
 ;; nvim_action_replace   `{esc}:lua require('grug-far').open({{} windowCreationCommand = 'topleft vertical split', prefills = {{} paths = vim.fn.expand("%") {}} {}}){ret}`
@@ -7,6 +6,4 @@ nvim_action_replace      $nvim_replace_in_buffer
 ;; replace + lsft + spc
 ;; nvim_action_replace+lsft `{esc}:topleft vertical GrugFar{ret}`
 nvim_action_replace+lsft $nvim_replace_in_workspace 
-;; replace + rsft + spc
-;; ___TO_SET___ nvim_action_replace+rsft           
 )

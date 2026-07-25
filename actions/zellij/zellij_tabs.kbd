@@ -1,73 +1,11 @@
 (defvar
-
-;; == tabs ===============================================================
-
-;; tabs + spc
-;; ___TO_SET___ zellij_action_tabs+spc               
-
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
 ;; If not implemented, defaults to: C-tab
 zellij_action_tabs_next                       (macro C-g t l ret)
 ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
 ;; If not implemented, defaults to: C-S-tab
 zellij_action_tabs_prev                       (macro C-g t h ret)
-;; tabs + j | tabs + down
-;; ___TO_SET___ zellij_action_tabs_first             
-;; tabs + k | tabs + up
-;; ___TO_SET___ zellij_action_tabs_last              
-
-;; tabs + t
-;; If not implemented, defaults to: C-t
-;; ___TO_SET___ zellij_action_tabs_new               
-;; tabs + v
-;; ___TO_SET___ zellij_action_tabs_vertical          
-;; tabs + w
-;; If not implemented, defaults to: C-w
-;; ___TO_SET___ zellij_action_tabs_close             
-;; tabs + lsft + t
-;; If not implemented, defaults to: C-S-t
-;; ___TO_SET___ zellij_action_tabs_undo_close        
-
-;; == tabs go by number ==================================================
-;; tabs + 1
-;; If not implemented, defaults to: C-1
-;; ___TO_SET___ zellij_action_tabs_goto_1            
-;; tabs + 2
-;; If not implemented, defaults to: C-2
-;; ___TO_SET___ zellij_action_tabs_goto_2            
-;; tabs + 3
-;; If not implemented, defaults to: C-3
-;; ___TO_SET___ zellij_action_tabs_goto_3            
-;; tabs + 4
-;; If not implemented, defaults to: C-4
-;; ___TO_SET___ zellij_action_tabs_goto_4            
-;; tabs + 5
-;; If not implemented, defaults to: C-5
-;; ___TO_SET___ zellij_action_tabs_goto_5            
-;; tabs + 6
-;; If not implemented, defaults to: C-6
-;; ___TO_SET___ zellij_action_tabs_goto_6            
-;; tabs + 7
-;; If not implemented, defaults to: C-7
-;; ___TO_SET___ zellij_action_tabs_goto_7            
-;; tabs + 8
-;; If not implemented, defaults to: C-8
-;; ___TO_SET___ zellij_action_tabs_goto_8            
-;; tabs + 9
-;; If not implemented, defaults to: C-9
-;; ___TO_SET___ zellij_action_tabs_goto_last         
-
 ;; == tabs + toggle =====================================================
 ;; tabs + toggle | 2x !lctl
 zellij_action_tabs+toggle                     (macro C-g t tab ret)
-
-;; == tabs + move =====================================================
-;; tabs + move + h | tabs + move + left
-;; ___TO_SET___ zellij_action_tabs_move_left         
-;; tabs + move + l | tabs + move + right
-;; ___TO_SET___ zellij_action_tabs_move_right        
-;; tabs + move + k | tabs + move + up
-;; ___TO_SET___ zellij_action_tabs_move_first        
-;; tabs + move + j | tabs + move + down
-;; ___TO_SET___ zellij_action_tabs_move_last         
 )

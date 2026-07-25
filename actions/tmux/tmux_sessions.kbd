@@ -1,8 +1,2 @@
 (defvar
-
-;; == sessions =====================================================
-;; sessions + spc
-;; ___TO_SET___ tmux_action_sessions+spc           
-;; sessions + toggle
-;; ___TO_SET___ tmux_action_sessions+toggle        
 )

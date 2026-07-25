@@ -1,26 +1,15 @@
 (defvar
-
-;; == tabs ===============================================================
-
 ;; tabs + spc
 firefox_action_tabs+spc            XX
-
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
 ;; If not implemented, defaults to: C-tab
 firefox_action_tabs_next                       $firefox_tabs_next
 ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
 ;; If not implemented, defaults to: C-S-tab
 firefox_action_tabs_prev                       $firefox_tabs_prev
-;; tabs + j | tabs + down
-;; ___TO_SET___ firefox_action_tabs_first             
-;; tabs + k | tabs + up
-;; ___TO_SET___ firefox_action_tabs_last              
-
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 firefox_action_tabs_new                        $firefox_tabs_new
-;; tabs + v
-;; ___TO_SET___ firefox_action_tabs_vertical          
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
 ;; tabs + v
@@ -28,7 +17,6 @@ firefox_action_tabs_close                      $firefox_tabs_close
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t
 firefox_action_tabs_undo_close                 $firefox_tabs_undo_close
-
 ;; == tabs go by number ==================================================
 ;; tabs + 1
 ;; If not implemented, defaults to: C-1
@@ -57,11 +45,9 @@ firefox_action_tabs_goto_8                     $firefox_tabs_goto_8
 ;; tabs + 9
 ;; If not implemented, defaults to: C-9
 firefox_action_tabs_goto_last                  $firefox_tabs_goto_9
-
 ;; == tabs + toggle =====================================================
 ;; tabs + toggle | 2x !lctl
 firefox_action_tabs+toggle                     $firefox_tabs+toggle
-
 ;; == tabs + move =====================================================
 ;; tabs + move + h | tabs + move + left
 firefox_action_tabs_move_left                  $firefox_tabs_move_left      

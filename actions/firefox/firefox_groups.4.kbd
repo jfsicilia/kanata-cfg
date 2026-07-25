@@ -1,26 +1,16 @@
 (defvar
-
-;; == !tabs/groups =====================================================
-
 ;; !tabs + spc
 firefox_action_!tabs+spc              $firefox_action_tabs+spc                  
-
 ;; !tabs + l | !tabs + right
 firefox_action_!tabs_next             $firefox_action_tabs_next             
 ;; !tabs + h | !tabs + left
 firefox_action_!tabs_prev             $firefox_action_tabs_prev             
-;; !tabs + j | !tabs + down
-;; ___TO_SET___ firefox_action_!tabs_first            
-;; !tabs + k | !tabs + up
-;; ___TO_SET___ firefox_action_!tabs_last             
-
 ;; !tabs + t
 firefox_action_!tabs_new              $firefox_action_tabs_new              
 ;; !tabs + w
 firefox_action_!tabs_close            $firefox_action_tabs_close            
 ;; !tabs + lsft + t
 firefox_action_!tabs_undo_close       $firefox_action_tabs_undo_close       
-
 ;; == !tabs go by number ==================================================
 ;; !tabs + 1
 firefox_action_!tabs_goto_1           $firefox_action_tabs_goto_1           
@@ -40,18 +30,7 @@ firefox_action_!tabs_goto_7           $firefox_action_tabs_goto_7
 firefox_action_!tabs_goto_8           $firefox_action_tabs_goto_8           
 ;; !tabs + 9
 firefox_action_!tabs_goto_last        $firefox_action_tabs_goto_last        
-
 ;; == !tabs + toggle =====================================================
 ;; !tabs + toggle
 firefox_action_!tabs+toggle           $firefox_action_tabs+toggle           
-
-;; == !tabs + move =====================================================
-;; !tabs + move + h | !tabs + move + left
-;; ___TO_SET___ firefox_action_!tabs_move_left        
-;; !tabs + move + l | !tabs + move + right
-;; ___TO_SET___ firefox_action_!tabs_move_right       
-;; !tabs + move + k | !tabs + move + up
-;; ___TO_SET___ firefox_action_!tabs_move_first       
-;; !tabs + move + j | !tabs + move + down
-;; ___TO_SET___ firefox_action_!tabs_move_last        
 )

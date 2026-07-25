@@ -1,5 +1,4 @@
 (defvar
-
 ;; == seek_sel ========================================================
 ;; seek_sel + spc
 dolphin_action_seek_and_select                 $dolphin_go 

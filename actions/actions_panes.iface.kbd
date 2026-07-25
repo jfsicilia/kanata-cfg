@@ -1,6 +1,4 @@
 (defvar
-  ;; @start@ ====== DON'T REMOVE THIS LINE =================================
-
   ;; == panes =============================================================
   ;; panes + spc
   action_panes+spc         (t! unmod_all (switch ;;@iface@ 

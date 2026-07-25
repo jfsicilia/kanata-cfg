@@ -1,34 +1,16 @@
 (defvar
-
-;; == tabs ===============================================================
-
 ;; tabs + spc
 nvim_action_tabs+spc                       $nvim_open_buffers 
-
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
 ;; If not implemented, defaults to: C-tab
 nvim_action_tabs_next                      $nvim_tabs_next 
 ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
 ;; If not implemented, defaults to: C-S-tab
 nvim_action_tabs_prev                      $nvim_tabs_prev 
-;; tabs + j | tabs + down
-;; ___TO_SET___ nvim_action_tabs_first             
-;; tabs + k | tabs + up
-;; ___TO_SET___ nvim_action_tabs_last              
-
-;; tabs + t
-;; If not implemented, defaults to: C-t
-;; ___TO_SET___ nvim_action_tabs_new               
-;; tabs + v
-;; ___TO_SET___ nvim_action_tabs_vertical          
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
 ;; tabs + v
 nvim_action_tabs_close                      $nvim_close_tab
-;; tabs + lsft + t
-;; If not implemented, defaults to: C-S-t
-;; ___TO_SET___ nvim_action_tabs_undo_close        
-
 ;; == tabs go by number ==================================================
 ;; tabs + 1
 ;; If not implemented, defaults to: C-1
@@ -58,19 +40,8 @@ nvim_action_tabs_goto_8                     $nvim_tab_8
 ;; If not implemented, defaults to: C-9
 ;; nvim_action_tabs_goto_last                  `{esc}:blast{ent}`
 nvim_action_tabs_goto_last                  $nvim_tab_9 
-
 ;; == tabs + toggle =====================================================
 ;; tabs + toggle | 2x !lctl
 ;; == tab + toggle =====================================================
 nvim_action_tabs+toggle                     $nvim_toggle_tab
-
-;; == tabs + move =====================================================
-;; tabs + move + h | tabs + move + left
-;; ___TO_SET___ nvim_action_tabs_move_left         
-;; tabs + move + l | tabs + move + right
-;; ___TO_SET___ nvim_action_tabs_move_right        
-;; tabs + move + k | tabs + move + up
-;; ___TO_SET___ nvim_action_tabs_move_first        
-;; tabs + move + j | tabs + move + down
-;; ___TO_SET___ nvim_action_tabs_move_last         
 )

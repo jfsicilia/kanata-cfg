@@ -1,26 +1,14 @@
 (defvar
-
-;; == !tabs/groups =====================================================
-
 ;; !tabs + spc
 tmux_action_!tabs+spc                  $tmux_action_tabs+spc
-
 ;; !tabs + l | !tabs + right
 tmux_action_!tabs_next             $tmux_action_tabs_next             
 ;; !tabs + h | !tabs + left
 tmux_action_!tabs_prev             $tmux_action_tabs_prev             
-;; !tabs + j | !tabs + down
-;; ___TO_SET___ tmux_action_!tabs_first            
-;; !tabs + k | !tabs + up
-;; ___TO_SET___ tmux_action_!tabs_last             
-
 ;; !tabs + t
 tmux_action_!tabs_new              $tmux_action_tabs_new              
 ;; !tabs + w
 tmux_action_!tabs_close            $tmux_action_tabs_close            
-;; !tabs + lsft + t
-;; ___TO_SET___ tmux_action_!tabs_undo_close       
-
 ;; == !tabs go by number ==================================================
 ;; !tabs + 1
 tmux_action_!tabs_goto_1           $tmux_action_tabs_goto_1           
@@ -40,18 +28,12 @@ tmux_action_!tabs_goto_7           $tmux_action_tabs_goto_7
 tmux_action_!tabs_goto_8           $tmux_action_tabs_goto_8           
 ;; !tabs + 9
 tmux_action_!tabs_goto_last        $tmux_action_tabs_goto_last        
-
 ;; == !tabs + toggle =====================================================
 ;; !tabs + toggle
 tmux_action_!tabs+toggle           $tmux_action_tabs+toggle           
-
 ;; == !tabs + move =====================================================
 ;; !tabs + move + h | !tabs + move + left
 tmux_action_!tabs_move_left        $tmux_action_tabs_move_left        
 ;; !tabs + move + l | !tabs + move + right
 tmux_action_!tabs_move_right       $tmux_action_tabs_move_right       
-;; !tabs + move + k | !tabs + move + up
-;; ___TO_SET___ tmux_action_!tabs_move_first       
-;; !tabs + move + j | !tabs + move + down
-;; ___TO_SET___ tmux_action_!tabs_move_last        
 )

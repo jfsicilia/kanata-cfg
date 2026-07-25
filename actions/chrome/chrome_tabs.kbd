@@ -1,26 +1,15 @@
 (defvar
-
-;; == tabs ===============================================================
-
 ;; tabs + spc
 chrome_action_tabs+spc            XX
-
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
 ;; If not implemented, defaults to: C-tab
 chrome_action_tabs_next                       $chrome_tabs_next
 ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
 ;; If not implemented, defaults to: C-S-tab
 chrome_action_tabs_prev                       $chrome_tabs_prev
-;; tabs + j | tabs + down
-;; ___TO_SET___ chrome_action_tabs_first             
-;; tabs + k | tabs + up
-;; ___TO_SET___ chrome_action_tabs_last              
-
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
 chrome_action_tabs_new                        $chrome_tabs_new
-;; tabs + v
-;; ___TO_SET___ chrome_action_tabs_vertical          
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
 ;; tabs + v
@@ -28,7 +17,6 @@ chrome_action_tabs_close                      $chrome_tabs_close
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t
 chrome_action_tabs_undo_close                 $chrome_tabs_undo_close
-
 ;; == tabs go by number ==================================================
 ;; tabs + 1
 ;; If not implemented, defaults to: C-1
@@ -57,11 +45,9 @@ chrome_action_tabs_goto_8                     $chrome_tabs_goto_8
 ;; tabs + 9
 ;; If not implemented, defaults to: C-9
 chrome_action_tabs_goto_last                  $chrome_tabs_goto_9
-
 ;; == tabs + toggle =====================================================
 ;; tabs + toggle | 2x !lctl
 chrome_action_tabs+toggle                     $chrome_tabs+toggle
-
 ;; == tabs + move =====================================================
 ;; tabs + move + h | tabs + move + left
 chrome_action_tabs_move_left                  $chrome_tabs_move_left      

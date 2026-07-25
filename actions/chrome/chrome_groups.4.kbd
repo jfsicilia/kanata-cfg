@@ -1,26 +1,16 @@
 (defvar
-
-;; == !tabs/groups =====================================================
-
 ;; !tabs + spc
 chrome_action_!tabs+spc              $chrome_action_tabs+spc                  
-
 ;; !tabs + l | !tabs + right
 chrome_action_!tabs_next             $chrome_action_tabs_next             
 ;; !tabs + h | !tabs + left
 chrome_action_!tabs_prev             $chrome_action_tabs_prev             
-;; !tabs + j | !tabs + down
-;; ___TO_SET___ chrome_action_!tabs_first            
-;; !tabs + k | !tabs + up
-;; ___TO_SET___ chrome_action_!tabs_last             
-
 ;; !tabs + t
 chrome_action_!tabs_new              $chrome_action_tabs_new              
 ;; !tabs + w
 chrome_action_!tabs_close            $chrome_action_tabs_close            
 ;; !tabs + lsft + t
 chrome_action_!tabs_undo_close       $chrome_action_tabs_undo_close       
-
 ;; == !tabs go by number ==================================================
 ;; !tabs + 1
 chrome_action_!tabs_goto_1           $chrome_action_tabs_goto_1           
@@ -40,18 +30,7 @@ chrome_action_!tabs_goto_7           $chrome_action_tabs_goto_7
 chrome_action_!tabs_goto_8           $chrome_action_tabs_goto_8           
 ;; !tabs + 9
 chrome_action_!tabs_goto_last        $chrome_action_tabs_goto_last        
-
 ;; == !tabs + toggle =====================================================
 ;; !tabs + toggle
 chrome_action_!tabs+toggle           $chrome_action_tabs+toggle           
-
-;; == !tabs + move =====================================================
-;; !tabs + move + h | !tabs + move + left
-;; ___TO_SET___ chrome_action_!tabs_move_left        
-;; !tabs + move + l | !tabs + move + right
-;; ___TO_SET___ chrome_action_!tabs_move_right       
-;; !tabs + move + k | !tabs + move + up
-;; ___TO_SET___ chrome_action_!tabs_move_first       
-;; !tabs + move + j | !tabs + move + down
-;; ___TO_SET___ chrome_action_!tabs_move_last        
 )

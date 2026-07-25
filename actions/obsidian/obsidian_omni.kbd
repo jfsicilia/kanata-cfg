@@ -1,233 +1,51 @@
 (defvar
-
-;; == omni ============================================================
-
-;; omni
-;; If not implemented, defaults to: esc
-;; ___TO_SET___ obsidian_action_omni                   
-
 ;; omni + spc
 ;; If not implemented, defaults to: spc
 ;; == omni file manager ===============================================
 obsidian_action_omni+spc                  $obsidian_command_palette
-
-;; omni + ent
-;; ___TO_SET___ obsidian_action_omni+ent               
-
-;; omni + bcsp
-;; ___TO_SET___ obsidian_action_omni+bcsp              
-
 ;; omni + a
 obsidian_action_omni+a                    $obsidian_select_all
 ;; omni + lsft + a
 obsidian_action_omni+lsft+a               $obsidian_invert_selection
 ;; omni + rsft + a
 obsidian_action_omni+rsft+a               $obsidian_clear_selection
-
 ;; omni + b
 ;; If not implemented, defaults to: pgup
 obsidian_action_omni+b                    $obsidian_action_page_up
-
 ;; omni + c
 ;; If not implemented, defaults to: C-c
 ;; == omni edit ======================================================
 obsidian_action_omni+c                    $obsidian_copy
-;; omni + lsft + c
-;; If not implemented, defaults to: C-S-c
-;; ___TO_SET___ obsidian_action_omni+lsft+c            
-;; omni + rsft + c
-;; If not implemented, defaults to: C-S-c
-;; ___TO_SET___ obsidian_action_omni+rsft+c            
-;; omni + c + left
-;; ___TO_SET___ obsidian_action_omni+c+left            
-;; omni + c + right
-;; ___TO_SET___ obsidian_action_omni+c+right           
-
 ;; omni + d
 obsidian_action_omni+d                    $obsidian_duplicate
-
-;; omni + e
-;; ___TO_SET___ obsidian_action_omni+e                 
-;; omni + lsft + e
-;; ___TO_SET___ obsidian_action_omni+lsft+e            
-
 ;; omni + f
 ;; If not implemented, defaults to: pgdn
 obsidian_action_omni+f                    $obsidian_action_page_down
-
 ;; omni + g
 ;; == omni nav ======================================================
 obsidian_action_omni+g                    $obsidian_action_seek_and_select                  
-
-;; omni + h
-;; If not implemented, defaults to: left
-;; ___TO_SET___ obsidian_action_omni+h                 
-
-;; omni + i
-;; ___TO_SET___ obsidian_action_omni+i                 
-
-;; omni + j
-;; If not implemented, defaults to: down
-;; ___TO_SET___ obsidian_action_omni+j                 
-
-;; omni + k
-;; If not implemented, defaults to: up
-;; ___TO_SET___ obsidian_action_omni+k                 
-
-;; omni + l
-;; If not implemented, defaults to: right
-;; ___TO_SET___ obsidian_action_omni+l                 
-
-;; omni + m
-;; If not implemented, defaults to: action_modM+modM
-;; ___TO_SET___ obsidian_action_omni+m                 
-
 ;; omni + n
 obsidian_action_omni+n                    $obsidian_new
 ;; omni + lsft + n
 obsidian_action_omni+lsft+n               $obsidian_new_folder
 ;; omni + rsft + n
 obsidian_action_omni+rsft+n               $obsidian_save
-
 ;; omni + o
 ;; If not implemented, defaults to: right
 obsidian_action_omni+o                    $obsidian_open
-
 ;; omni + p
 ;; If not implemented, defaults to: left
 obsidian_action_omni+p                    $obsidian_parent
-
-;; omni + q
-;; If not implemented, defaults to: action_windows_close
-;; ___TO_SET___ obsidian_action_omni+q                 
-
 ;; omni + r
 obsidian_action_omni+r                    $obsidian_rename
-
-;; omni + s
-;; ___TO_SET___ obsidian_action_omni+s                 
-;; omni + lsft + s | omni + rsft + s
-;; ___TO_SET___ obsidian_action_omni+lsft+s            
-
-;; omni + t
-;; If not implemented, defaults to: action_tabs_new
-;; ___TO_SET___ obsidian_action_omni+t                 
-;; omni + lsft + t
-;; If not implemented, defaults to: action_tabs_undo_close
-;; ___TO_SET___ obsidian_action_omni+lsft+t            
-
-;; omni + u
-;; ___TO_SET___ obsidian_action_omni+u                 
-
 ;; omni + v
 ;; If not implemented, defaults to: C-v
 obsidian_action_omni+v                    $obsidian_paste
-
-;; omni + w
-;; If not implemented, defaults to: action_tabs_close
-;; ___TO_SET___ obsidian_action_omni+w                 
-
 ;; omni + x
 ;; If not implemented, defaults to: C-x
 obsidian_action_omni+x                    $obsidian_cut
-;; omni + x + left
-;; ___TO_SET___ obsidian_action_omni+x+left            
-;; omni + x + right
-;; ___TO_SET___ obsidian_action_omni+x+right           
-
-;; omni + y
-;; ___TO_SET___ obsidian_action_omni+y                 
-
-;; omni + z
-;; If not implemented, defaults to: C-z
-;; ___TO_SET___ obsidian_action_omni+z                 
-;; omni + lsft + z
-;; If not implemented, defaults to: C-S-z
-;; ___TO_SET___ obsidian_action_omni+lsft+z            
-
-
-;; omni + 0
-;; If not implemented, defaults to: C-0
-;; ___TO_SET___ obsidian_action_omni+0                 
-;; omni + 1
-;; If not implemented, defaults to: C-1
-;; ___TO_SET___ obsidian_action_omni+1                 
-;; omni + 2
-;; If not implemented, defaults to: C-2
-;; ___TO_SET___ obsidian_action_omni+2                 
-;; omni + 3
-;; If not implemented, defaults to: C-3
-;; ___TO_SET___ obsidian_action_omni+3                 
-;; omni + 4
-;; If not implemented, defaults to: C-4
-;; ___TO_SET___ obsidian_action_omni+4                 
-;; omni + 5
-;; If not implemented, defaults to: C-5
-;; ___TO_SET___ obsidian_action_omni+5                 
-;; omni + 6
-;; If not implemented, defaults to: C-6
-;; ___TO_SET___ obsidian_action_omni+6                 
-;; omni + 7
-;; If not implemented, defaults to: C-7
-;; ___TO_SET___ obsidian_action_omni+7                 
-;; omni + 8
-;; If not implemented, defaults to: C-8
-;; ___TO_SET___ obsidian_action_omni+8                 
-;; omni + 9
-;; If not implemented, defaults to: C-9
-;; ___TO_SET___ obsidian_action_omni+9                 
-
-;; omni + `
-;; ___TO_SET___ obsidian_action_omni+`                 
-;; omni + -
-;; ___TO_SET___ obsidian_action_omni+-                 
-;; omni + =
-;; ___TO_SET___ obsidian_action_omni+=                 
-
 ;; omni + ]
 obsidian_action_omni+]                    $obsidian_forward
-
 ;; omni + [
 obsidian_action_omni+[                    $obsidian_backward
-
-;; omni + \
-;; ___TO_SET___ obsidian_action_omni+\                 
-;; omni + lsft + \
-;; ___TO_SET___ obsidian_action_omni+lsft+\            
-;; omni + rsft + \
-;; ___TO_SET___ obsidian_action_omni+rsft+\            
-
-;; omni + ;
-;; ___TO_SET___ obsidian_action_omni+;                 
-;; omni + '
-;; ___TO_SET___ obsidian_action_omni+'                 
-
-;; omni + ,
-;; If not implemented, defaults to: action_mod,+mod,
-;; ___TO_SET___ obsidian_action_omni+,                 
-;; omni + .
-;; If not implemented, defaults to: action_mod.+mod.
-;; ___TO_SET___ obsidian_action_omni+.                 
-;; omni + /
-;; If not implemented, defaults to: action_mod/+mod/
-;; ___TO_SET___ obsidian_action_omni+/                 
-
-;; omni + !lmet|desktops
-;; If not implemented, defaults to: action_desktops+toggle
-;; ___TO_SET___ obsidian_action_omni+!lmet             
-;; omni + !lalt|panes
-;; If not implemented, defaults to: action_panes+toggle
-;; ___TO_SET___ obsidian_action_omni+!lalt             
-;; omni + !lctl|tabs
-;; If not implemented, defaults to: action_tabs+toggle
-;; ___TO_SET___ obsidian_action_omni+!lctl             
-;; omni + ralt|apps
-;; If not implemented, defaults to: action_apps+toggle
-;; ___TO_SET___ obsidian_action_omni+ralt              
-;; omni + prnt|groups
-;; If not implemented, defaults to: action_!tabs+toggle
-;; ___TO_SET___ obsidian_action_omni+prnt              
-;; omni + rctl|sessions
-;; If not implemented, defaults to: action_sessions+toggle
-;; ___TO_SET___ obsidian_action_omni+rctl              
 )

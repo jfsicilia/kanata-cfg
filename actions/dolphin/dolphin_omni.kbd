@@ -1,32 +1,17 @@
 (defvar
-
-;; == omni ============================================================
-
-;; omni
-;; If not implemented, defaults to: esc
-;; ___TO_SET___ dolphin_action_omni                   
-
 ;; omni + spc
 ;; If not implemented, defaults to: spc
 dolphin_action_omni+spc        $dolphin_select
-
 ;; omni + ent
 dolphin_action_omni+ent        $dolphin_preview
-
 ;; omni + bcsp
 dolphin_action_omni+bcsp       (macro del 50 spc 50 ent 50 esc)
-
 ;; omni + a
 dolphin_action_omni+a          $dolphin_select_all
 ;; omni + lsft + a
 dolphin_action_omni+lsft+a     $dolphin_invert_selection
 ;; omni + rsft + a
 dolphin_action_omni+rsft+a     $dolphin_invert_selection
-
-;; omni + b
-;; If not implemented, defaults to: pgup
-;; ___TO_SET___ dolphin_action_omni+b                 
-
 ;; omni + c
 ;; If not implemented, defaults to: C-c
 dolphin_action_omni+c          $dolphin_copy
@@ -40,72 +25,34 @@ dolphin_action_omni+rsft+c     $dolphin_copy_path
 dolphin_action_omni+c+left     $dolphin_copy_to_other_pane
 ;; omni + c + right
 dolphin_action_omni+c+right    $dolphin_copy_to_other_pane
-
 ;; omni + d
 dolphin_action_omni+d          $dolphin_duplicate
-
 ;; omni + e
 dolphin_action_omni+e          $dolphin_extract
 ;; omni + lsft + e
 dolphin_action_omni+lsft+e     $dolphin_compress
-
-;; omni + f
-;; If not implemented, defaults to: pgdn
-;; ___TO_SET___ dolphin_action_omni+f                 
-
 ;; omni + g
 dolphin_action_omni+g          $dolphin_go
-
-;; omni + h
-;; If not implemented, defaults to: left
-;; ___TO_SET___ dolphin_action_omni+h                 
-
 ;; omni + i
 dolphin_action_omni+i          $dolphin_info
-
-;; omni + j
-;; If not implemented, defaults to: down
-;; ___TO_SET___ dolphin_action_omni+j                 
-
-;; omni + k
-;; If not implemented, defaults to: up
-;; ___TO_SET___ dolphin_action_omni+k                 
-
-;; omni + l
-;; If not implemented, defaults to: right
-;; ___TO_SET___ dolphin_action_omni+l                 
-
-;; omni + m
-;; If not implemented, defaults to: action_modM+modM
-;; ___TO_SET___ dolphin_action_omni+m                 
-
 ;; omni + n
 dolphin_action_omni+n          $dolphin_new   
 ;; omni + lsft + n
 dolphin_action_omni+lsft+n     $dolphin_new_folder
 ;; omni + rsft + n
 dolphin_action_omni+rsft+n     $dolphin_new_window
-
 ;; omni + o
 ;; If not implemented, defaults to: right
 dolphin_action_omni+o          $dolphin_open
-
 ;; omni + p
 ;; If not implemented, defaults to: left
 dolphin_action_omni+p          $dolphin_parent
-
-;; omni + q
-;; If not implemented, defaults to: action_windows_close
-;; ___TO_SET___ dolphin_action_omni+q                 
-
 ;; omni + r
 dolphin_action_omni+r          $dolphin_rename
-
 ;; omni + s
 dolphin_action_omni+s          $dolphin_toggle_sort_by
 ;; omni + lsft + s | omni + rsft + s
 dolphin_action_omni+lsft+s     $dolphin_sort_order_toggle
-
 ;; omni + t
 ;; If not implemented, defaults to: action_tabs_new
 ;; see tab
@@ -114,19 +61,15 @@ dolphin_action_omni+t          $dolphin_new_tab
 ;; If not implemented, defaults to: action_tabs_undo_close
 ;; see tab
 dolphin_action_omni+lsft+t     $dolphin_undo_tab
-
 ;; omni + u
 dolphin_action_omni+u          $dolphin_cycle_view
-
 ;; omni + v
 ;; If not implemented, defaults to: C-v
 dolphin_action_omni+v          $dolphin_paste
-
 ;; omni + w
 ;; If not implemented, defaults to: action_tabs_close
 ;; see tab
 dolphin_action_omni+w          $dolphin_close_tab
-
 ;; omni + x
 ;; If not implemented, defaults to: C-x
 dolphin_action_omni+x          $dolphin_cut
@@ -134,18 +77,14 @@ dolphin_action_omni+x          $dolphin_cut
 dolphin_action_omni+x+left     $dolphin_move_to_other_pane
 ;; omni + x + right
 dolphin_action_omni+x+right    $dolphin_move_to_other_pane       
-
 ;; omni + y
 dolphin_action_omni+y          (push-msg "NOTIFY:No history behaviour implemented!")       
-
 ;; omni + z
 ;; If not implemented, defaults to: C-z
 dolphin_action_omni+z          $dolphin_undo
 ;; omni + lsft + z
 ;; If not implemented, defaults to: C-S-z
 dolphin_action_omni+lsft+z     $dolphin_redo
-
-
 ;; omni + 0
 ;; If not implemented, defaults to: C-0
 ;; omni + <digit>
@@ -177,55 +116,26 @@ dolphin_action_omni+8          $dolphin_tab_8
 ;; omni + 9
 ;; If not implemented, defaults to: C-9
 dolphin_action_omni+9          $dolphin_tab_9
-
 ;; omni + `
 dolphin_action_omni+`          (push-msg "NOTIFY:No format behaviour implemented!") ;;""
 ;; omni + -
 dolphin_action_omni+-          $dolphin_zoomOut
 ;; omni + =
 dolphin_action_omni+=          $dolphin_zoomIn       
-
 ;; omni + ]
 dolphin_action_omni+]          $dolphin_forward
-
 ;; omni + [
 dolphin_action_omni+[          $dolphin_back   ;;""
-
 ;; omni + \
 dolphin_action_omni+\          $dolphin_vimdiff 
-;; omni + lsft + \
-;; ___TO_SET___ dolphin_action_omni+lsft+\            
-;; omni + rsft + \
-;; ___TO_SET___ dolphin_action_omni+rsft+\            
-
 ;; omni + ;
 dolphin_action_omni+;          (push-msg "NOTIFY:No comments behaviour implemented!") 
 ;; omni + '
 dolphin_action_omni+'          $dolphin_filter
-
-;; omni + ,
-;; If not implemented, defaults to: action_mod,+mod,
-;; ___TO_SET___ dolphin_action_omni+,                 
 ;; omni + .
 ;; If not implemented, defaults to: action_mod.+mod.
 ;; see mod.
 dolphin_action_omni+.          $dolphin_tags
-;; omni + /
-;; If not implemented, defaults to: action_mod/+mod/
-;; ___TO_SET___ dolphin_action_omni+/                 
-
-;; omni + !lmet|desktops
-;; If not implemented, defaults to: action_desktops+toggle
-;; ___TO_SET___ dolphin_action_omni+!lmet             
-;; omni + !lalt|panes
-;; If not implemented, defaults to: action_panes+toggle
-;; ___TO_SET___ dolphin_action_omni+!lalt             
-;; omni + !lctl|tabs
-;; If not implemented, defaults to: action_tabs+toggle
-;; ___TO_SET___ dolphin_action_omni+!lctl             
-;; omni + ralt|apps
-;; If not implemented, defaults to: action_apps+toggle
-;; ___TO_SET___ dolphin_action_omni+ralt              
 ;; omni + prnt|groups
 ;; If not implemented, defaults to: action_!tabs+toggle
 dolphin_action_omni+prnt        (push-msg "NOTIFY:No groups toggle behaviour implemented!")       

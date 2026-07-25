@@ -3,7 +3,6 @@
   ai                (push-msg "NOTIFY: AI")
 )
 (defvar
-  ;; @start@ ====== DON'T REMOVE THIS LINE =================================
 
   ;; modA + modA
   action_modA+modA (t! unmod_all (switch ;;@iface@
