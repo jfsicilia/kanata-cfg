@@ -1,6 +1,6 @@
 # Tabs - zapzap (actions/zapzap/zapzap_tabs.kbd)
-**tabs + l**        -- Next
-**tabs + h**        -- Prev
+**tabs + l**        -- Tabs Next
+**tabs + h**        -- Tabs Prev
 **tabs + t**        -- Tab New
 **tabs + w**        -- Tab Close
 **tabs + lsft + t** -- Tab Undo Close

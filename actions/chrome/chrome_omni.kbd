@@ -1,17 +1,13 @@
 (defvar
-chrome_go                C-l
-chrome_new               C-n
-chrome_forward           A-right
-chrome_back              A-left
 ;; omni + g
-chrome_action_omni+g                             $chrome_go
+chrome_action_omni+g               $chrome_go
 ;; omni + n
 chrome_action_omni+n               $chrome_new
 ;; omni + ]
-chrome_action_omni+]                      $chrome_forward
+chrome_action_omni+]               $chrome_forward
 ;; omni + [
-chrome_action_omni+[                      $chrome_back
+chrome_action_omni+[               $chrome_back
 ;; omni + ,
-;; If not implemented, defaults to: action_mod,+mod,
-chrome_action_omni+,                 $chrome_settings
+;; If not implemented, defaults to: action_domain,+,
+chrome_action_omni+,               $chrome_settings
 )

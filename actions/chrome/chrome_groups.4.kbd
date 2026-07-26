@@ -2,34 +2,34 @@
 ;; !tabs + spc
 chrome_action_!tabs+spc              $chrome_action_tabs+spc                  
 ;; !tabs + l | !tabs + right
-chrome_action_!tabs_next             $chrome_action_tabs_next             
+chrome_action_!tabs+l             $chrome_action_tabs+l             
 ;; !tabs + h | !tabs + left
-chrome_action_!tabs_prev             $chrome_action_tabs_prev             
+chrome_action_!tabs+h             $chrome_action_tabs+h             
 ;; !tabs + t
-chrome_action_!tabs_new              $chrome_action_tabs_new              
+chrome_action_!tabs+t              $chrome_action_tabs+t              
 ;; !tabs + w
-chrome_action_!tabs_close            $chrome_action_tabs_close            
+chrome_action_!tabs+w            $chrome_action_tabs+w            
 ;; !tabs + lsft + t
-chrome_action_!tabs_undo_close       $chrome_action_tabs_undo_close       
+chrome_action_!tabs+lsft+t       $chrome_action_tabs+lsft+t       
 ;; == !tabs go by number ==================================================
 ;; !tabs + 1
-chrome_action_!tabs_goto_1           $chrome_action_tabs_goto_1           
+chrome_action_!tabs+1           $chrome_action_tabs+1           
 ;; !tabs + 2
-chrome_action_!tabs_goto_2           $chrome_action_tabs_goto_2           
+chrome_action_!tabs+2           $chrome_action_tabs+2           
 ;; !tabs + 3
-chrome_action_!tabs_goto_3           $chrome_action_tabs_goto_3           
+chrome_action_!tabs+3           $chrome_action_tabs+3           
 ;; !tabs + 4
-chrome_action_!tabs_goto_4           $chrome_action_tabs_goto_4           
+chrome_action_!tabs+4           $chrome_action_tabs+4           
 ;; !tabs + 5
-chrome_action_!tabs_goto_5           $chrome_action_tabs_goto_5           
+chrome_action_!tabs+5           $chrome_action_tabs+5           
 ;; !tabs + 6
-chrome_action_!tabs_goto_6           $chrome_action_tabs_goto_6           
+chrome_action_!tabs+6           $chrome_action_tabs+6           
 ;; !tabs + 7
-chrome_action_!tabs_goto_7           $chrome_action_tabs_goto_7           
+chrome_action_!tabs+7           $chrome_action_tabs+7           
 ;; !tabs + 8
-chrome_action_!tabs_goto_8           $chrome_action_tabs_goto_8           
+chrome_action_!tabs+8           $chrome_action_tabs+8           
 ;; !tabs + 9
-chrome_action_!tabs_goto_last        $chrome_action_tabs_goto_last        
+chrome_action_!tabs+9        $chrome_action_tabs+9        
 ;; == !tabs + toggle =====================================================
 ;; !tabs + toggle
 chrome_action_!tabs+toggle           $chrome_action_tabs+toggle           

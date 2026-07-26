@@ -23,27 +23,27 @@ desktops_toggle (multi (on-press toggle-virtualkey vk_desktops_toggle)
 )
   ;; == workspaces =====================================================
   ;; workspaces + spc
-  action_desktops+spc  $show_desktops
+  action_workspaces+spc  $show_desktops
 
   ;; workspaces + toggle
-  action_desktops+toggle $desktops_toggle
+  action_workspaces+toggle $desktops_toggle
 
   ;; workspaces + j 
-  action_screens_next  $next_screen    
+  action_workspaces+j  $next_screen    
   ;; workspaces + k
-  action_screens_prev  $prev_screen
+  action_workspaces+k  $prev_screen
   ;; workspaces + l
-  action_desktops_next $next_desktop
+  action_workspaces+l $next_desktop
   ;; workspaces + j
-  action_desktops_prev $prev_desktop
+  action_workspaces+h $prev_desktop
 
   ;; == workspaces + move ===============================================
   ;; workspaces + move + j 
-  action_screens_next_move_window  $move_window_to_next_screen
+  action_workspaces+move+j  $move_window_to_next_screen
   ;; workspaces + move + k 
-  action_screens_prev_move_window  $move_window_to_prev_screen
+  action_workspaces+move+k  $move_window_to_prev_screen
   ;; workspaces + move + l 
-  action_desktops_next_move_window $move_window_to_next_desktop
+  action_workspaces+move+l $move_window_to_next_desktop
   ;; workspaces + move + h 
-  action_desktops_prev_move_window $move_window_to_prev_desktop
+  action_workspaces+move+h $move_window_to_prev_desktop
 )

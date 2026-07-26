@@ -1,6 +1,6 @@
 (defvar
-;; modK + modK
-colab_action_modK+modK                   $colab_keybindings
-;; mod; + mod;
-colab_action_mod;+mod;                   $colab_command_palette
+;; domainK + K
+colab_action_domainK+K                   $colab_keybindings
+;; domain; + ;
+colab_action_domain;+;                   $colab_command_palette
 )

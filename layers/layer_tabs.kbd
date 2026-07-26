@@ -2,30 +2,30 @@
 (deflayermap (tabs_layer)
   spc   $action_tabs+spc
 
-  h     $action_tabs_prev
-  left  $action_tabs_prev
-  l     $action_tabs_next
-  right $action_tabs_next
-  j     $action_tabs_first
-  down  $action_tabs_first
-  up    $action_tabs_last
+  h     $action_tabs+h
+  left  $action_tabs+h
+  l     $action_tabs+l
+  right $action_tabs+l
+  j     $action_tabs+j
+  down  $action_tabs+j
+  up    $action_tabs+k
 
-  t     $action_tabs_new
-  w     $action_tabs_close
+  t     $action_tabs+t
+  w     $action_tabs+w
 
-  1     $action_tabs_goto_1
-  2     $action_tabs_goto_2
-  3     $action_tabs_goto_3
-  4     $action_tabs_goto_4
-  5     $action_tabs_goto_5
-  6     $action_tabs_goto_6
-  7     $action_tabs_goto_7
-  8     $action_tabs_goto_8
-  9     $action_tabs_goto_last
+  1     $action_tabs+1
+  2     $action_tabs+2
+  3     $action_tabs+3
+  4     $action_tabs+4
+  5     $action_tabs+5
+  6     $action_tabs+6
+  7     $action_tabs+7
+  8     $action_tabs+8
+  9     $action_tabs+9
 
   ;; == SFT ======================
   $d|lsft         (t! th _                    $toggle_tabs+lsft_layer)
-  $k|rsft         (t! th $action_tabs_last    $toggle_tabs+rsft_layer)
+  $k|rsft         (t! th $action_tabs+k    $toggle_tabs+rsft_layer)
   lsft            (t! th _                    $toggle_tabs+lsft_layer)
   rsft            (t! th _                    $toggle_tabs+rsft_layer)
 
@@ -34,18 +34,18 @@
   $toggle $action_tabs+toggle
 )
 (deflayermap (tabs+move_layer)
-  h     $action_tabs_move_left
-  left  $action_tabs_move_left
-  l     $action_tabs_move_right
-  right $action_tabs_move_right
-  j     $action_tabs_move_first
-  down  $action_tabs_move_first
-  k     $action_tabs_move_last
-  up    $action_tabs_move_last
+  h     $action_tabs+move+h
+  left  $action_tabs+move+h
+  l     $action_tabs+move+l
+  right $action_tabs+move+l
+  j     $action_tabs+move+j
+  down  $action_tabs+move+j
+  k     $action_tabs+move+k
+  up    $action_tabs+move+k
 )
 (deflayermap (tabs+lsft_layer)
-  t $action_tabs_undo_close
+  t $action_tabs+lsft+t
 )
 (deflayermap (tabs+rsft_layer)
-  t $action_tabs_undo_close
+  t $action_tabs+lsft+t
 )

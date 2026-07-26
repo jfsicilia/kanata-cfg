@@ -2,9 +2,9 @@
 ;; !tabs + spc
 zellij_action_!tabs+spc                  $zellij_action_tabs+spc
 ;; !tabs + l | !tabs + right
-zellij_action_!tabs_next             $zellij_action_tabs_next             
+zellij_action_!tabs+l             $zellij_action_tabs+l             
 ;; !tabs + h | !tabs + left
-zellij_action_!tabs_prev             $zellij_action_tabs_prev             
+zellij_action_!tabs+h             $zellij_action_tabs+h             
 ;; == !tabs + toggle =====================================================
 ;; !tabs + toggle
 zellij_action_!tabs+toggle           $zellij_action_tabs+toggle           

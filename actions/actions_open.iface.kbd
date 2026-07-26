@@ -2,26 +2,26 @@
 
   ;; == open =============================================================
   ;; open + spc
-  action_open_with (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_open_with break
+  action_open+spc (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_dolphin)) $dolphin_action_open+spc break
     () XX break
   ))
   ;; open + m
-  action_open_with_chrome (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_open_with_chrome break
-    ((input virtual vk_dolphin)) $dolphin_action_open_with_chrome break
+  action_open+m (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_open+m break
+    ((input virtual vk_dolphin)) $dolphin_action_open+m break
     () XX break
   ))
   ;; open + t
-  action_open_with_terminal (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_open_with_terminal break
-    ((input virtual vk_dolphin)) $dolphin_action_open_with_terminal break
+  action_open+t (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_open+t break
+    ((input virtual vk_dolphin)) $dolphin_action_open+t break
     () XX break
   ))
   ;; open + v
-  action_open_with_nvim (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_open_with_nvim break
-    ((input virtual vk_dolphin)) $dolphin_action_open_with_nvim break
+  action_open+v (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_obsidian)) $obsidian_action_open+v break
+    ((input virtual vk_dolphin)) $dolphin_action_open+v break
     () XX break
   ))
 )

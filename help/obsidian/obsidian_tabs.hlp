@@ -1,18 +1,18 @@
 # Tabs - obsidian (actions/obsidian/obsidian_tabs.kbd)
-**tabs + spc**      -- Spc
-**tabs + l**        -- Next
-**tabs + h**        -- Prev
-**tabs + t**        -- New
-**tabs + vertical** -- Vertical Tabs
-**tabs + w**        -- Close
-**tabs + lsft + t** -- Undo Close
-**tabs + 1**        -- Goto 1
-**tabs + 2**        -- Goto 2
-**tabs + 3**        -- Goto 3
-**tabs + 4**        -- Goto 4
-**tabs + 5**        -- Goto 5
-**tabs + 6**        -- Goto 6
-**tabs + 7**        -- Goto 7
-**tabs + 8**        -- Goto 8
-**tabs + 9**        -- Goto Last
-**tabs + toggle**   -- Toggle
+**tabs + spc**      -- Select Tab
+**tabs + l**        -- Right Tab
+**tabs + h**        -- Left Tab
+**tabs + t**        -- New Tab
+**tabs + v**        -- Vertical Tabs
+**tabs + w**        -- Close Tab
+**tabs + lsft + t** -- Undo Close Tab
+**tabs + 1**        -- Go Tab 1
+**tabs + 2**        -- Go Tab 2
+**tabs + 3**        -- Go Tab 3
+**tabs + 4**        -- Go Tab 4
+**tabs + 5**        -- Go Tab 5
+**tabs + 6**        -- Go Tab 6
+**tabs + 7**        -- Go Tab 7
+**tabs + 8**        -- Go Tab 8
+**tabs + 9**        -- Go Tab 9
+**tabs + toggle**   -- Toggle Tab

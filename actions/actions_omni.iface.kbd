@@ -18,22 +18,11 @@
   copy_path       C-S-c
   paste           C-v
   cut             C-x
-  ;; Tabs by number
-  tab_goto_0      C-0
-  tab_goto_1      C-1
-  tab_goto_2      C-2
-  tab_goto_3      C-3
-  tab_goto_4      C-4
-  tab_goto_5      C-5
-  tab_goto_6      C-6
-  tab_goto_7      C-7
-  tab_goto_8      C-8
-  tab_goto_9      C-9
   ;; Other operations
   window_close    $windows_close
-  settings        $action_mod,+mod,
-  tags            $action_mod.+mod.
-  help            $action_mod/+mod/
+  settings        $action_domain,+,
+  tags            $action_domain.+.
+  help            $action_domain/+/
   panes_toggle    $action_panes+toggle
   tabs_toggle     $action_tabs+toggle
   apps_toggle     $windows_toggle 
@@ -320,7 +309,7 @@
   )
 
   ;; omni + m
-  ;; If not implemented, defaults to: action_modM+modM
+  ;; If not implemented, defaults to: action_domainM+M
   action_omni+m (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_omni+m break
     () $clipboard_history break
@@ -412,20 +401,20 @@
   ))
 
   ;; omni + t
-  ;; If not implemented, defaults to: action_tabs_new
+  ;; If not implemented, defaults to: action_tabs+t
   action_omni+t (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_omni+t break
     ((input virtual vk_nvim)) $nvim_action_omni+t break
     ((input virtual vk_tmux)) $tmux_action_omni+t break
-    () $action_tabs_new break
+    () $action_tabs+t break
   ))
   ;; omni + lsft + t
-  ;; If not implemented, defaults to: action_tabs_undo_close
+  ;; If not implemented, defaults to: action_tabs+lsft+t
   action_omni+lsft+t (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_omni+lsft+t break
     ((input virtual vk_nvim)) $nvim_action_omni+lsft+t break
     ((input virtual vk_tmux)) $tmux_action_omni+lsft+t break
-    () $action_tabs_undo_close break
+    () $action_tabs+lsft+t break
   ))
 
   ;; omni + u
@@ -448,12 +437,12 @@
   ))
 
   ;; omni + w
-  ;; If not implemented, defaults to: action_tabs_close
+  ;; If not implemented, defaults to: action_tabs+w
   action_omni+w (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_omni+w break
     ((input virtual vk_nvim)) $nvim_action_omni+w break
     ((input virtual vk_tmux)) $tmux_action_omni+w break
-    () $action_tabs_close break
+    () $action_tabs+w break
   ))
 
   ;; omni + x
@@ -681,7 +670,7 @@
   )) ;;""
 
   ;; omni + ,
-  ;; If not implemented, defaults to: action_mod,+mod,
+  ;; If not implemented, defaults to: action_domain,+,
   action_omni+, (t! unmod_all (switch ;;@iface@
     ((input virtual vk_chrome)) $chrome_action_omni+, break
     ((input virtual vk_zapzap)) $zapzap_action_omni+, break
@@ -691,7 +680,7 @@
     () $settings break
   ))
   ;; omni + .
-  ;; If not implemented, defaults to: action_mod.+mod.
+  ;; If not implemented, defaults to: action_domain.+.
   action_omni+. (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_omni+. break
     ((input virtual vk_nvim)) $nvim_action_omni+. break
@@ -699,7 +688,7 @@
     () $tags break
   ))
   ;; omni + /
-  ;; If not implemented, defaults to: action_mod/+mod/
+  ;; If not implemented, defaults to: action_domain/+/
   action_omni+/ (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_omni+/ break
     ((input virtual vk_tmux)) $tmux_action_omni+/ break
@@ -707,7 +696,7 @@
   )) ;;""
 
   ;; omni + !lmet|desktops
-  ;; If not implemented, defaults to: action_desktops+toggle
+  ;; If not implemented, defaults to: action_workspaces+toggle
   action_omni+!lmet (t! unmod_all (switch ;;@iface@
     ((input virtual vk_nvim)) $nvim_action_omni+!lmet break
     ((input virtual vk_tmux)) $tmux_action_omni+!lmet break

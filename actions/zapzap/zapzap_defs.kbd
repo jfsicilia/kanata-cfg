@@ -1,4 +1,7 @@
 (defvar
+zapzap_tabs_next      C-A-tab
+zapzap_tabs_prev      C-A-S-tab
+
 zapzap_tabs_goto_1    (macro C-A-/ down ent)
 zapzap_tabs_goto_2    (macro C-A-/ down down ent)
 zapzap_tabs_goto_3    (macro C-A-/ down down down ent)

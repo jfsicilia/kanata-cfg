@@ -2,25 +2,25 @@
 
   ;; == search ============================================================
   ;; search + spc 
-  action_search (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_zapzap)) $zapzap_action_search break
-    ((input virtual vk_obsidian)) $obsidian_action_search break
-    ((input virtual vk_dolphin)) $dolphin_action_search break
-    ((input virtual vk_nvim)) $nvim_action_search break
+  action_search+spc (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_zapzap)) $zapzap_action_search+spc break
+    ((input virtual vk_obsidian)) $obsidian_action_search+spc break
+    ((input virtual vk_dolphin)) $dolphin_action_search+spc break
+    ((input virtual vk_nvim)) $nvim_action_search+spc break
     () XX break
   ))
   ;; search + lsft + spc 
-  action_search+lsft (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_zapzap)) $zapzap_action_search+lsft break
-    ((input virtual vk_obsidian)) $obsidian_action_search+lsft break
-    ((input virtual vk_dolphin)) $dolphin_action_search+lsft break
-    ((input virtual vk_nvim)) $nvim_action_search+lsft break
+  action_search+lsft+spc (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_zapzap)) $zapzap_action_search+lsft+spc break
+    ((input virtual vk_obsidian)) $obsidian_action_search+lsft+spc break
+    ((input virtual vk_dolphin)) $dolphin_action_search+lsft+spc break
+    ((input virtual vk_nvim)) $nvim_action_search+lsft+spc break
     () XX break
   ))
   ;; search + rsft + spc 
-  action_search+rsft (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_zapzap)) $zapzap_action_search+rsft break
-    ((input virtual vk_dolphin)) $dolphin_action_search+rsft break
+  action_search+rsft+spc (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_zapzap)) $zapzap_action_search+rsft+spc break
+    ((input virtual vk_dolphin)) $dolphin_action_search+rsft+spc break
     () XX break
   ))
 )

@@ -3,58 +3,58 @@
 chrome_action_tabs+spc            XX
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
 ;; If not implemented, defaults to: C-tab
-chrome_action_tabs_next                       $chrome_tabs_next
+chrome_action_tabs+l                       $chrome_tabs_next
 ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
 ;; If not implemented, defaults to: C-S-tab
-chrome_action_tabs_prev                       $chrome_tabs_prev
+chrome_action_tabs+h                       $chrome_tabs_prev
 ;; tabs + t
 ;; If not implemented, defaults to: C-t
-chrome_action_tabs_new                        $chrome_tabs_new
+chrome_action_tabs+t                        $chrome_tabs_new
 ;; tabs + w
 ;; If not implemented, defaults to: C-w
 ;; tabs + v
-chrome_action_tabs_close                      $chrome_tabs_close
+chrome_action_tabs+w                      $chrome_tabs_close
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t
-chrome_action_tabs_undo_close                 $chrome_tabs_undo_close
+chrome_action_tabs+lsft+t                 $chrome_tabs_undo_close
 ;; == tabs go by number ==================================================
 ;; tabs + 1
 ;; If not implemented, defaults to: C-1
-chrome_action_tabs_goto_1                     $chrome_tabs_goto_1
+chrome_action_tabs+1                     $chrome_tabs_goto_1
 ;; tabs + 2
 ;; If not implemented, defaults to: C-2
-chrome_action_tabs_goto_2                     $chrome_tabs_goto_2
+chrome_action_tabs+2                     $chrome_tabs_goto_2
 ;; tabs + 3
 ;; If not implemented, defaults to: C-3
-chrome_action_tabs_goto_3                     $chrome_tabs_goto_3
+chrome_action_tabs+3                     $chrome_tabs_goto_3
 ;; tabs + 4
 ;; If not implemented, defaults to: C-4
-chrome_action_tabs_goto_4                     $chrome_tabs_goto_4
+chrome_action_tabs+4                     $chrome_tabs_goto_4
 ;; tabs + 5
 ;; If not implemented, defaults to: C-5
-chrome_action_tabs_goto_5                     $chrome_tabs_goto_5
+chrome_action_tabs+5                     $chrome_tabs_goto_5
 ;; tabs + 6
 ;; If not implemented, defaults to: C-6
-chrome_action_tabs_goto_6                     $chrome_tabs_goto_6
+chrome_action_tabs+6                     $chrome_tabs_goto_6
 ;; tabs + 7
 ;; If not implemented, defaults to: C-7
-chrome_action_tabs_goto_7                     $chrome_tabs_goto_7
+chrome_action_tabs+7                     $chrome_tabs_goto_7
 ;; tabs + 8
 ;; If not implemented, defaults to: C-8
-chrome_action_tabs_goto_8                     $chrome_tabs_goto_8
+chrome_action_tabs+8                     $chrome_tabs_goto_8
 ;; tabs + 9
 ;; If not implemented, defaults to: C-9
-chrome_action_tabs_goto_last                  $chrome_tabs_goto_9
+chrome_action_tabs+9                  $chrome_tabs_goto_9
 ;; == tabs + toggle =====================================================
 ;; tabs + toggle | 2x !lctl
 chrome_action_tabs+toggle                     $chrome_tabs+toggle
 ;; == tabs + move =====================================================
 ;; tabs + move + h | tabs + move + left
-chrome_action_tabs_move_left                  $chrome_tabs_move_left      
+chrome_action_tabs+move+h                  $chrome_tabs_move_left      
 ;; tabs + move + l | tabs + move + right
-chrome_action_tabs_move_right                 $chrome_tabs_move_right       
+chrome_action_tabs+move+l                 $chrome_tabs_move_right       
 ;; tabs + move + k | tabs + move + up
-chrome_action_tabs_move_first                 $chrome_tabs_move_first
+chrome_action_tabs+move+j                 $chrome_tabs_move_first
 ;; tabs + move + j | tabs + move + down
-chrome_action_tabs_move_last                  $chrome_tabs_move_last      
+chrome_action_tabs+move+k                  $chrome_tabs_move_last      
 )

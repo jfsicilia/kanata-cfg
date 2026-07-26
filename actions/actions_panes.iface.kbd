@@ -102,63 +102,63 @@
 
   ;; == panes + move ======================================================
   ;; panes + move + h | panes + move + left
-  action_panes_move_left (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_colab)) $colab_action_panes_move_left break
+  action_panes+move+h (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_colab)) $colab_action_panes+move+h break
     () (push-msg "NOTIFY: Move pane left not implemented!") break
   ))
   ;; panes + move + l | panes + move + right
-  action_panes_move_right (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_colab)) $colab_action_panes_move_right break
+  action_panes+move+l (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_colab)) $colab_action_panes+move+l break
     () (push-msg "NOTIFY: Move pane right not implemented!") break
   ))
   ;; panes + move + k | panes + move + up
-  action_panes_move_above (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_colab)) $colab_action_panes_move_above break
+  action_panes+move+k (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_colab)) $colab_action_panes+move+k break
     () (push-msg "NOTIFY: Move pane up not implemented!") break
   ))
   ;; panes + move + j | panes + move + down
-  action_panes_move_below (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_colab)) $colab_action_panes_move_below break
+  action_panes+move+j (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_colab)) $colab_action_panes+move+j break
     () (push-msg "NOTIFY: Move pane down not implemented!") break
   ))
 
   ;; == panes + resize ====================================================
   ;; panes + resize + h | panes + resize + left
-  action_panes_resize_left (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_panes_resize_left break
+  action_panes+resize+h (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_panes+resize+h break
     () (push-msg "NOTIFY: Resize pane left not implemented!") break
   ))
   ;; panes + resize + l | panes + resize + right
-  action_panes_resize_right (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_panes_resize_right break
+  action_panes+resize+l (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_panes+resize+l break
     () (push-msg "NOTIFY: Resize pane right not implemented!") break
   ))
   ;; panes + resize + k | panes + resize + up
-  action_panes_resize_above (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_panes_resize_above break
+  action_panes+resize+k (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_panes+resize+k break
     () (push-msg "NOTIFY: Resize pane up not implemented!") break
   ))
   ;; panes + resize + j | panes + resize + down
-  action_panes_resize_below (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_panes_resize_below break
+  action_panes+resize+j (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_nvim)) $nvim_action_panes+resize+j break
     () (push-msg "NOTIFY: Resize pane down not implemented!") break
   ))
 
   ;; == panes + swap ======================================================
   ;; panes + swap + h | panes + swap + left
-  action_panes_swap_left (t! unmod_all (switch ;;@iface@
+  action_panes+swap+h (t! unmod_all (switch ;;@iface@
     () (push-msg "NOTIFY: Swap pane left not implemented!") break
   ))
   ;; panes + swap + l | panes + swap + right
-  action_panes_swap_right (t! unmod_all (switch ;;@iface@
+  action_panes+swap+l (t! unmod_all (switch ;;@iface@
     () (push-msg "NOTIFY: Swap pane right not implemented!") break
   ))
   ;; panes + swap + k | panes + swap + up
-  action_panes_swap_above (t! unmod_all (switch ;;@iface@
+  action_panes+swap+k (t! unmod_all (switch ;;@iface@
     () (push-msg "NOTIFY: Swap pane up not implemented!") break
   ))
   ;; panes + swap + j | panes + swap + down
-  action_panes_swap_below (t! unmod_all (switch ;;@iface@
+  action_panes+swap+j (t! unmod_all (switch ;;@iface@
     () (push-msg "NOTIFY: Swap pane down not implemented!") break
   ))
 

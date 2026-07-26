@@ -2,6 +2,7 @@
 **windows + spc**        -- Show All
 **windows + ent**        -- Maximize
 **windows + lsft + ent** -- Fullscreen
+**windows + rsft + ent** -- Fullscreen
 **windows + k**          -- Half Up
 **windows + j**          -- Half Down
 **windows + h**          -- Half Left

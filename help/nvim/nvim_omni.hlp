@@ -1,6 +1,6 @@
 # Omni - nvim (actions/nvim/nvim_omni.kbd)
 **omni + omni**     -- Cancel
-**omni + spc**      -- Seek And Select
+**omni + spc**      -- Seek Spc
 **omni + bcsp**     -- Delete
 **omni + a**        -- Select All
 **omni + b**        -- Pgup
@@ -9,10 +9,10 @@
 **omni + rsft + c** -- Copy Path
 **omni + d**        -- Duplicate
 **omni + f**        -- Pgdn
-**omni + h**        -- H
-**omni + j**        -- J
-**omni + k**        -- K
-**omni + l**        -- L
+**omni + h**        -- Cursor Left
+**omni + j**        -- Cursor Down
+**omni + k**        -- Cursor Up
+**omni + l**        -- Cursor Right
 **omni + m**        -- Clipboard History
 **omni + n**        -- New
 **omni + lsft + n** -- New Folder

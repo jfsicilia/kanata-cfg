@@ -1,16 +1,16 @@
 ;; "" GROUPS LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 (deflayermap (groups_layer)
-  h     $~action_!tabs_prev
-  left  $~action_!tabs_prev
-  l     $~action_!tabs_next
-  right $~action_!tabs_next
-  j     $~action_!tabs_first
-  down  $~action_!tabs_first
-  up    $~action_!tabs_last
+  h     $~action_!tabs+h
+  left  $~action_!tabs+h
+  l     $~action_!tabs+l
+  right $~action_!tabs+l
+  j     $~action_!tabs+j
+  down  $~action_!tabs+j
+  up    $~action_!tabs+k
 
   ;; == SFT ======================
   $d|lsft         (t! th _                    $toggle_groups+lsft_layer)
-  $k|rsft         (t! th $~action_!tabs_last   $toggle_groups+rsft_layer)
+  $k|rsft         (t! th $~action_!tabs+k     $toggle_groups+rsft_layer)
   lsft            (t! th _                    $toggle_groups+lsft_layer)
   rsft            (t! th _                    $toggle_groups+rsft_layer)
 )

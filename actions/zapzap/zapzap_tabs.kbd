@@ -1,36 +1,36 @@
 (defvar
-;; tabs + 9
-;; If not implemented, defaults to: C-9
-zapzap_action_tabs_goto_9            $zapzap_tabs_goto_9
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
 ;; If not implemented, defaults to: C-tab
-zapzap_action_tabs_next              C-A-tab
+zapzap_action_tabs+l            $zapzap_tabs_next              
 ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
 ;; If not implemented, defaults to: C-S-tab
-zapzap_action_tabs_prev              C-A-S-tab
+zapzap_action_tabs+h            $zapzap_tabs_prev             
 ;; == tabs go by number ==================================================
 ;; tabs + 1
 ;; If not implemented, defaults to: C-1
-zapzap_action_tabs_goto_1            $zapzap_tabs_goto_1
+zapzap_action_tabs+1            $zapzap_tabs_goto_1
 ;; tabs + 2
 ;; If not implemented, defaults to: C-2
-zapzap_action_tabs_goto_2            $zapzap_tabs_goto_2
+zapzap_action_tabs+2            $zapzap_tabs_goto_2
 ;; tabs + 3
 ;; If not implemented, defaults to: C-3
-zapzap_action_tabs_goto_3            $zapzap_tabs_goto_3
+zapzap_action_tabs+3            $zapzap_tabs_goto_3
 ;; tabs + 4
 ;; If not implemented, defaults to: C-4
-zapzap_action_tabs_goto_4            $zapzap_tabs_goto_4
+zapzap_action_tabs+4            $zapzap_tabs_goto_4
 ;; tabs + 5
 ;; If not implemented, defaults to: C-5
-zapzap_action_tabs_goto_5            $zapzap_tabs_goto_5
+zapzap_action_tabs+5            $zapzap_tabs_goto_5
 ;; tabs + 6
 ;; If not implemented, defaults to: C-6
-zapzap_action_tabs_goto_6            $zapzap_tabs_goto_6
+zapzap_action_tabs+6            $zapzap_tabs_goto_6
 ;; tabs + 7
 ;; If not implemented, defaults to: C-7
-zapzap_action_tabs_goto_7            $zapzap_tabs_goto_7
+zapzap_action_tabs+7            $zapzap_tabs_goto_7
 ;; tabs + 8
 ;; If not implemented, defaults to: C-8
-zapzap_action_tabs_goto_8            $zapzap_tabs_goto_8
+zapzap_action_tabs+8            $zapzap_tabs_goto_8
+;; tabs + 9
+;; If not implemented, defaults to: C-9
+zapzap_action_tabs_goto_9            $zapzap_tabs_goto_9
 )

@@ -1,10 +1,4 @@
 (defvar
-tmux_pgup                (macro $tmux_prefix pgup)
-tmux_copy                (macro $tmux_prefix [)
-tmux_pgdn                C-f
-tmux_new_window          (macro $tmux_prefix c)
-tmux_rename              (macro $tmux_prefix ,)
-tmux_paste               (macro $tmux_prefix ])
 ;; omni + spc
 ;; If not implemented, defaults to: spc
 tmux_action_omni+spc               (push-msg "NOTIFY:Tmux_Omni not implemented!")
@@ -64,10 +58,10 @@ tmux_action_omni+s                 (push-msg "NOTIFY:Tmux_Omni not implemented!"
 ;; omni + lsft + s | omni + rsft + s
 tmux_action_omni+lsft+s            (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + t
-;; If not implemented, defaults to: action_tabs_new
+;; If not implemented, defaults to: action_tabs+t
 tmux_action_omni+t                 $tmux_new_window ;; prefix + c (new window)
 ;; omni + lsft + t
-;; If not implemented, defaults to: action_tabs_undo_close
+;; If not implemented, defaults to: action_tabs+lsft+t
 tmux_action_omni+lsft+t            (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + u
 tmux_action_omni+u                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
@@ -75,7 +69,7 @@ tmux_action_omni+u                 (push-msg "NOTIFY:Tmux_Omni not implemented!"
 ;; If not implemented, defaults to: C-v
 tmux_action_omni+v                 $tmux_paste ;; prefix + ] (paste buffer)  ;;""
 ;; omni + w
-;; If not implemented, defaults to: action_tabs_close
+;; If not implemented, defaults to: action_tabs+w
 tmux_action_omni+w                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + x
 ;; If not implemented, defaults to: C-x
@@ -143,16 +137,16 @@ tmux_action_omni+;                 (push-msg "NOTIFY:Tmux_Omni not implemented!"
 ;; omni + '
 tmux_action_omni+'                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + ,
-;; If not implemented, defaults to: action_mod,+mod,
+;; If not implemented, defaults to: action_domain,+,
 tmux_action_omni+,                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + .
-;; If not implemented, defaults to: action_mod.+mod.
+;; If not implemented, defaults to: action_domain.+.
 tmux_action_omni+.                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + /
-;; If not implemented, defaults to: action_mod/+mod/
+;; If not implemented, defaults to: action_domain/+/
 tmux_action_omni+/                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + !lmet|desktops
-;; If not implemented, defaults to: action_desktops+toggle
+;; If not implemented, defaults to: action_workspaces+toggle
 tmux_action_omni+!lmet             (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + !lalt|panes
 ;; If not implemented, defaults to: action_panes+toggle

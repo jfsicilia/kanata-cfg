@@ -1,4 +1,4 @@
 (defvar
-;; mod; + mod;
-tmux_action_mod;+mod;                 $tmux_commands ;; prefix + : (command prompt)
+;; domain; + ;
+tmux_action_domain;+;                 $tmux_commands ;; prefix + : (command prompt)
 )

@@ -81,18 +81,13 @@ def combo_str(action_name: str, domain: str,
     the semantic name embedded in the action name, so the combo reflects what
     the user actually presses (e.g. 'tabs + h' instead of 'tabs + prev').
 
-    domains is handled separately (action prefix ≠ domain name).
+    domains is handled by its own dedicated section in main() (two-level
+    nav), which builds its combo strings directly from the physical keys in
+    layer_domains.kbd rather than calling this function.
     Falls back to name-parsing when key_map has no entry.
     """
     dk   = domain_short(domain)
     name = action_name.removeprefix("action_")
-
-    if domain == "domains":
-        parts = name.split("+")
-        keys  = [p.removeprefix("mod").lower() for p in parts]
-        if len(keys) == 2 and keys[0] == keys[1]:
-            return f"spc + {keys[0]} + {keys[0]}"
-        return "spc + " + " + ".join(keys)
 
     # Physical key from layer file takes priority over action-name semantics
     if key_map and action_name in key_map:
@@ -134,12 +129,78 @@ def label_from_action(action_name: str, domain: str) -> str:
     return sub.replace("_", " ").replace("+", " ").title()
 
 
-def label_from_global_default(default: str, action_name: str, domain: str) -> str:
+def action_domain(action_name: str) -> str:
+    """The domain a fully-qualified action name belongs to — the part
+    between "action_" and its first "+" (e.g. "action_tabs+move+h" -> "tabs").
+    """
+    return action_name.removeprefix("action_").split("+", 1)[0]
+
+
+_domain_iface_details_cache: dict[str, dict[str, dict]] = {}
+
+
+def _domain_iface_details(domain: str) -> dict[str, dict]:
+    """Cached parse_iface(...) details for `domain`'s own actions file, so
+    cross-domain action references can be resolved without re-reading the
+    same file for every entry that points at it.
+    """
+    if domain not in _domain_iface_details_cache:
+        details: dict[str, dict] = {}
+        for path in (ACTIONS_DIR / f"actions_{domain}.iface.kbd", ACTIONS_DIR / f"actions_{domain}.kbd"):
+            if path.exists():
+                _, details = parse_iface(path)
+                break
+        _domain_iface_details_cache[domain] = details
+    return _domain_iface_details_cache[domain]
+
+
+def resolve_cross_domain_label(
+    action_name: str, domain: str, app: str | None, _seen: frozenset[str] = frozenset()
+) -> str:
+    """Label for a fully-qualified action name (e.g. "action_tabs+w") found
+    as the value of another action — possibly in a different domain than the
+    one currently being rendered. Since actions are now named after the bare
+    combo that triggers them (e.g. "tabs+w", not "tabs_close"), there's no
+    semantic word left to title-case once you cross into another domain —
+    this instead resolves the referenced action's own real label:
+
+      1. if `app` overrides it in the referenced domain, recurse into that
+         per-app value (e.g. obsidian's own $obsidian_new_tab);
+      2. else fall back to the referenced domain's real global default;
+      3. else degrade to the naive name-derived guess, same as before.
+
+    `_seen` guards against reference cycles.
+    """
+    if action_name in _seen:
+        return label_from_action(action_name, domain)
+    seen = _seen | {action_name}
+    ref_domain = action_domain(action_name)
+
+    if app is not None:
+        app_file = find_app_file(ACTIONS_DIR / app, app, ref_domain)
+        if app_file is not None:
+            impl = parse_app_file(app_file, app)
+            if action_name in impl:
+                return label_for_implemented_value(impl[action_name], action_name, ref_domain, app, seen)
+
+    ref_default = effective_global_default(_domain_iface_details(ref_domain), action_name, ref_domain)
+    if ref_default is not None:
+        return label_from_global_default(ref_default, action_name, ref_domain, seen)
+
+    return label_from_action(action_name, domain)
+
+
+def label_from_global_default(
+    default: str, action_name: str, domain: str, _seen: frozenset[str] = frozenset()
+) -> str:
     """Human-readable label from a global default value.
 
     '(push-msg "APP:claude_code")' → 'Claude Code'   (apps domain only)
     '$copy'                        → 'Copy'           (leaf var name, title-cased)
-    '$action_tabs_close'           → 'Tabs Close'     (legacy action_ var)
+    '$action_tabs+w'               → resolved recursively (see
+                                      resolve_cross_domain_label) since the
+                                      action name itself is just "tabs+w" —
+                                      no semantic word left to title-case.
     '(macro ...)', 'prnt', 'C-w'   → derives from action name
     """
     # push-msg "APP:name" → app name as label (split camelCase + underscores)
@@ -152,7 +213,7 @@ def label_from_global_default(default: str, action_name: str, domain: str) -> st
     if default.startswith("$"):
         clean = default.lstrip("$").lstrip("~")
         if clean.startswith("action_"):
-            return label_from_action(clean, domain)
+            return resolve_cross_domain_label(clean, domain, None, _seen)
         domain_pfx = f"{domain}_"
         if clean.startswith(domain_pfx):
             clean = clean[len(domain_pfx):]
@@ -436,6 +497,20 @@ def parse_layer_stacks() -> list[LayerStack]:
     return [LayerStack(list(layer_names)) for layer_names in seen]
 
 
+def action_shift_branch(action_name: str) -> str | None:
+    """"lsft"/"rsft" if that's a middle segment of a fully-qualified action
+    name (between the domain and the final key), else None — e.g.
+    "action_search+lsft+spc" -> "lsft", "action_search+spc" -> None.
+    """
+    parts = action_name.removeprefix("action_").split("+")
+    middle = parts[1:-1]
+    if "lsft" in middle:
+        return "lsft"
+    if "rsft" in middle:
+        return "rsft"
+    return None
+
+
 def combination_domain_entries(
     domain_name: str, shift: str | None, app: str | None
 ) -> list[tuple[str, str]]:
@@ -452,11 +527,7 @@ def combination_domain_entries(
     iface_order, details = parse_iface(iface_path)
     _, key_map = parse_layer_actions(domain_name, set(iface_order))
 
-    suffix = f"+{shift}" if shift else None
-    branch_actions = [
-        a for a in iface_order
-        if (a.endswith(suffix) if suffix else not a.endswith(("+lsft", "+rsft")))
-    ]
+    branch_actions = [a for a in iface_order if action_shift_branch(a) == shift]
 
     impl: dict[str, str] = {}
     if app is not None:
@@ -506,13 +577,27 @@ def effective_global_default(details: dict[str, dict], action: str, domain: str)
     return effective
 
 
-def label_for_implemented_value(value: str, action_name: str, domain: str, app: str) -> str:
-    """Label for a value a per-app file binds directly to an action."""
+def label_for_implemented_value(
+    value: str, action_name: str, domain: str, app: str, _seen: frozenset[str] = frozenset()
+) -> str:
+    """Label for a value a per-app file binds directly to an action.
+
+    A value like "$obsidian_action_tabs+t" is a per-app cross-domain
+    reference (obsidian's own override of the "tabs" domain's action, reused
+    here) — resolved recursively the same way as a global one (see
+    resolve_cross_domain_label), rather than title-cased into "Tabs T".
+    """
     if value.startswith("$"):
+        clean      = value.lstrip("$").lstrip("~")
+        app_prefix = f"{app}_"
+        if clean.startswith(app_prefix) and clean[len(app_prefix):].startswith("action_"):
+            ref_action = clean[len(app_prefix):]
+            if ref_action not in _seen:
+                return resolve_cross_domain_label(ref_action, domain, app, _seen)
         return label_from_var(value, app)
     if value.startswith("("):
         return label_from_action(action_name, domain)
-    return label_from_global_default(value, action_name, domain)
+    return label_from_global_default(value, action_name, domain, _seen)
 
 
 # ── parsers ───────────────────────────────────────────────────────────────────

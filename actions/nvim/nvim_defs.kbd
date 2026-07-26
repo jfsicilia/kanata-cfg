@@ -99,4 +99,9 @@ nvim_open_buffers        (macro esc S-; S-t e l e s c o p e spc b u f f e r s re
 nvim_tabs_next           (macro esc S-; b n e x t ret)
 nvim_tabs_prev           (macro esc S-; b p r e v i o u s ret)  ;;""
 nvim_toggle_tab          (macro esc S-; b S-3 ret) ;;""
+
+nvim_cursor_left         left
+nvim_cursor_right        right
+nvim_cursor_up           up
+nvim_cursor_down         down
 )

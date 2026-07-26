@@ -1,11 +1,11 @@
 (defvar
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
 ;; If not implemented, defaults to: C-tab
-zellij_action_tabs_next                       (macro C-g t l ret)
+zellij_action_tabs+l             $zellij_tabs_next
 ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
 ;; If not implemented, defaults to: C-S-tab
-zellij_action_tabs_prev                       (macro C-g t h ret)
+zellij_action_tabs+h             $zellij_tabs_prev          
 ;; == tabs + toggle =====================================================
 ;; tabs + toggle | 2x !lctl
-zellij_action_tabs+toggle                     (macro C-g t tab ret)
+zellij_action_tabs+toggle        $zellij_tabs_toggle             
 )

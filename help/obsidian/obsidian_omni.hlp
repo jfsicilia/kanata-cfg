@@ -11,7 +11,7 @@
 **omni + rsft + c** -- Copy Path
 **omni + d**        -- Duplicate
 **omni + f**        -- Page Down
-**omni + g**        -- Seek And Select
+**omni + g**        -- Seek Spc
 **omni + h**        -- Nav Left
 **omni + j**        -- Nav Down
 **omni + k**        -- Nav Up
@@ -24,10 +24,10 @@
 **omni + p**        -- Parent
 **omni + q**        -- Window Close
 **omni + r**        -- Rename
-**omni + t**        -- Tabs New
-**omni + lsft + t** -- Tabs Undo Close
+**omni + t**        -- Tab New
+**omni + lsft + t** -- Tab Undo Close
 **omni + v**        -- Paste
-**omni + w**        -- Tabs Close
+**omni + w**        -- Tab Close
 **omni + x**        -- Cut
 **omni + z**        -- Undo
 **omni + lsft + z** -- Redo

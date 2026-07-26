@@ -1,6 +1,6 @@
 # Tabs - zellij (actions/zellij/zellij_tabs.kbd)
-**tabs + l**        -- Next
-**tabs + h**        -- Prev
+**tabs + l**        -- Tabs Next
+**tabs + h**        -- Tabs Prev
 **tabs + t**        -- Tab New
 **tabs + w**        -- Tab Close
 **tabs + lsft + t** -- Tab Undo Close
@@ -13,4 +13,4 @@
 **tabs + 7**        -- Tab Goto 7
 **tabs + 8**        -- Tab Goto 8
 **tabs + 9**        -- Tab Goto Last
-**tabs + toggle**   -- Toggle
+**tabs + toggle**   -- Tabs Toggle

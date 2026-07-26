@@ -1,9 +1,4 @@
 (defvar
-zellij_pane_maximize     (macro C-g p f ret)
-zellij_pane_left         (macro C-g p h ret)
-zellij_pane_right        (macro C-g p l ret)
-zellij_pane_above        (macro C-g p k ret)
-zellij_pane_below        (macro C-g p j ret)
 ;; panes + ent
 zellij_action_panes+ent                   $zellij_pane_maximize
 ;; panes + h | panes + left

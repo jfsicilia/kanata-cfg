@@ -2,47 +2,47 @@
 ;; tabs + spc
 dolphin_action_tabs+spc               (push-msg "NOTIFY:Select tab not implemented!")
 ;; tabs + j | tabs + down
-dolphin_action_tabs_first             (push-msg "NOTIFY:Select first tab not implemented!")
+dolphin_action_tabs+j             (push-msg "NOTIFY:Select first tab not implemented!")
 ;; tabs + k | tabs + up
-dolphin_action_tabs_last              (push-msg "NOTIFY:Select last tab not implemented!")
+dolphin_action_tabs+k              (push-msg "NOTIFY:Select last tab not implemented!")
 ;; == tabs go by number ==================================================
 ;; tabs + 1
 ;; If not implemented, defaults to: C-1
-dolphin_action_tabs_goto_1             $dolphin_tab_1 
+dolphin_action_tabs+1             $dolphin_tab_1 
 ;; tabs + 2
 ;; If not implemented, defaults to: C-2
-dolphin_action_tabs_goto_2             $dolphin_tab_2 
+dolphin_action_tabs+2             $dolphin_tab_2 
 ;; tabs + 3
 ;; If not implemented, defaults to: C-3
-dolphin_action_tabs_goto_3             $dolphin_tab_3 
+dolphin_action_tabs+3             $dolphin_tab_3 
 ;; tabs + 4
 ;; If not implemented, defaults to: C-4
-dolphin_action_tabs_goto_4             $dolphin_tab_4 
+dolphin_action_tabs+4             $dolphin_tab_4 
 ;; tabs + 5
 ;; If not implemented, defaults to: C-5
-dolphin_action_tabs_goto_5             $dolphin_tab_5 
+dolphin_action_tabs+5             $dolphin_tab_5 
 ;; tabs + 6
 ;; If not implemented, defaults to: C-6
-dolphin_action_tabs_goto_6             $dolphin_tab_6 
+dolphin_action_tabs+6             $dolphin_tab_6 
 ;; tabs + 7
 ;; If not implemented, defaults to: C-7
-dolphin_action_tabs_goto_7             $dolphin_tab_7 
+dolphin_action_tabs+7             $dolphin_tab_7 
 ;; tabs + 8
 ;; If not implemented, defaults to: C-8
-dolphin_action_tabs_goto_8             $dolphin_tab_8 
+dolphin_action_tabs+8             $dolphin_tab_8 
 ;; tabs + 9
 ;; If not implemented, defaults to: C-9
-dolphin_action_tabs_goto_last          $dolphin_tab_9 
+dolphin_action_tabs+9          $dolphin_tab_9 
 ;; == tabs + toggle =====================================================
 ;; tabs + toggle | 2x !lctl
 dolphin_action_tabs+toggle             $dolphin_toggle_tab
 ;; == tabs + move =====================================================
 ;; tabs + move + h | tabs + move + left
-dolphin_action_tabs_move_left         (push-msg "NOTIFY:Move tab left not implemented!")
+dolphin_action_tabs+move+h         (push-msg "NOTIFY:Move tab left not implemented!")
 ;; tabs + move + l | tabs + move + right
-dolphin_action_tabs_move_right        (push-msg "NOTIFY:Move tab right not implemented!")
+dolphin_action_tabs+move+l        (push-msg "NOTIFY:Move tab right not implemented!")
 ;; tabs + move + k | tabs + move + up
-dolphin_action_tabs_move_first        (push-msg "NOTIFY:Move tab first not implemented!")
+dolphin_action_tabs+move+j        (push-msg "NOTIFY:Move tab first not implemented!")
 ;; tabs + move + j | tabs + move + down
-dolphin_action_tabs_move_last         (push-msg "NOTIFY:Move tab last not implemented!")
+dolphin_action_tabs+move+k         (push-msg "NOTIFY:Move tab last not implemented!")
 )

@@ -1,37 +1,37 @@
 (defvar
-;; modB + modB
-obsidian_action_modB+modB              $obsidian_bookmarks
-;; modC + modC
-obsidian_action_modC+modC              $obsidian_calendar
-;; modC + modD
-;; modC + modY
-obsidian_action_modC+modD              $obsidian_daily_shift
-;; modC + modY
-obsidian_action_modC+modY              $obsidian_daily
-;; modE + modE
-obsidian_action_modE+modE              $obsidian_file_explorer
-;; modE + modR
-obsidian_action_modE+modR              $obsidian_recent
-;; modE + modF
-obsidian_action_modE+modF              $obsidian_file_explorer_reveal
-;; modH + modO
-obsidian_action_modH+modO             $obsidian_outline 
-;; modP + modP
-obsidian_action_modP+modP             $obsidian_properties
-;; modP + modA
-obsidian_action_modP+modA             $obsidian_properties_all
-;; modS + modS
-obsidian_action_modS+modS             $obsidian_symbols
-;; modU + modG
-nvim_action_modU+modG                 $obsidian_graph
-;; mod[ + mod[
-obsidian_action_mod[+mod[             $obsidian_backlinks
-;; mod] + mod]
-obsidian_action_mod]+mod]             $obsidian_outlinks ;;""
-;; mod] + modA
-obsidian_action_mod]+modA             $obsidian_outlinks_all ;;""
-;; mod; + mod;
-obsidian_action_mod;+mod;             $obsidian_commands
-;; mod, + mod,
-obsidian_action_mod,+mod,             $obsidian_settings
+;; domainB + B
+obsidian_action_domainB+B              $obsidian_bookmarks
+;; domainC + C
+obsidian_action_domainC+C              $obsidian_calendar
+;; domainC + D
+;; domainC + Y
+obsidian_action_domainC+D              $obsidian_daily_shift
+;; domainC + Y
+obsidian_action_domainC+Y              $obsidian_daily
+;; domainE + E
+obsidian_action_domainE+E              $obsidian_file_explorer
+;; domainE + R
+obsidian_action_domainE+R              $obsidian_recent
+;; domainE + F
+obsidian_action_domainE+F              $obsidian_file_explorer_reveal
+;; domainH + O
+obsidian_action_domainH+O             $obsidian_outline 
+;; domainP + P
+obsidian_action_domainP+P             $obsidian_properties
+;; domainP + A
+obsidian_action_domainP+A             $obsidian_properties_all
+;; domainS + S
+obsidian_action_domainS+S             $obsidian_symbols
+;; domainU + G
+obsidian_action_domainU+G             $obsidian_graph
+;; domain[ + [
+obsidian_action_domain[+[             $obsidian_backlinks
+;; domain] + ]
+obsidian_action_domain]+]             $obsidian_outlinks ;;""
+;; domain] + A
+obsidian_action_domain]+A             $obsidian_outlinks_all ;;""
+;; domain; + ;
+obsidian_action_domain;+;             $obsidian_commands
+;; domain, + ,
+obsidian_action_domain,+,             $obsidian_settings
 )

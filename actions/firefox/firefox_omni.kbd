@@ -1,8 +1,4 @@
 (defvar
-firefox_go                C-l
-firefox_new               C-n
-firefox_forward           A-right
-firefox_back              A-left
 ;; omni + g
 firefox_action_omni+g                             $firefox_go
 ;; omni + n
@@ -12,6 +8,6 @@ firefox_action_omni+]                      $firefox_forward
 ;; omni + [
 firefox_action_omni+[                      $firefox_back
 ;; omni + ,
-;; If not implemented, defaults to: action_mod,+mod,
+;; If not implemented, defaults to: action_domain,+,
 firefox_action_omni+,                 $firefox_settings
 )

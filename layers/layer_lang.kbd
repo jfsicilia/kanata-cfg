@@ -11,7 +11,7 @@
   k  up
   l  right
 
-  spc $action_emojis
+  spc $action_lang+spc
 )
 
 (deflayermap (lang_alt_layer)

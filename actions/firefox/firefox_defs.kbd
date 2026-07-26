@@ -25,5 +25,11 @@ firefox_tabs_goto_0         C-0
 firefox_panes_vsplit        A-S-n
 firefox_seek_and_select     C-S-spc
 firefox_bookmarks           A-S-spc
+
+;; omni
+firefox_go                  C-l
+firefox_new                 C-n
+firefox_forward             A-right
+firefox_back                A-left
 )
 

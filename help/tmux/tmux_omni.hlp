@@ -18,9 +18,9 @@
 **omni + q**        -- Window Close
 **omni + r**        -- Rename
 **omni + t**        -- New Window
-**omni + lsft + t** -- Tabs Undo Close
+**omni + lsft + t** -- Tab Undo Close
 **omni + v**        -- Paste
-**omni + w**        -- Tabs Close
+**omni + w**        -- Tab Close
 **omni + x**        -- Cut
 **omni + z**        -- Undo
 **omni + lsft + z** -- Redo

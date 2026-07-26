@@ -1,66 +1,66 @@
 (defvar
-;; modD + modS
-nvim_action_modD+modS                $nvim_source
-;; modR + modS
-nvim_action_modR+modS                 $nvim_source
-;; modA + modA
-nvim_action_modA+modA                $nvim_autocommands
-;; modB + modB
-nvim_action_modB+modB                $nvim_bookmarks
-;; modD + modD
-nvim_action_modD+modD                $nvim_definitions
-;; modE + modE
-nvim_action_modE+modE                $nvim_file_explorer  
-;; modG + modG
-nvim_action_modG+modG                $nvim_git  ;;""
-;; modG + modL
-nvim_action_modG+modL                $nvim_lazygit
-;; modJ + modJ
-nvim_action_modJ+modJ                $nvim_jumps
-;; modK + modK
-nvim_action_modK+modK                $nvim_keymaps
-;; modL + modL
-nvim_action_modL+modL                $nvim_locations
-;; modQ + modQ
-nvim_action_modQ+modQ                 $nvim_quickfix
-;; modR + modR
-nvim_action_modR+modR                 $nvim_references
-;; modR + modI
-nvim_action_modR+modI                 $nvim_references_incoming
-;; modR + modO
-nvim_action_modR+modO                 $nvim_references_outgoing
-;; modS + modS
-nvim_action_modS+modS                 $nvim_symbols
-;; modS + modW
-nvim_action_modS+modW                 $nvim_symbols_workspace
-;; modT + modT
-nvim_action_modT+modT                 $nvim_terminal 
-;; modT + toggle
-nvim_action_modT+toggle               $nvim_terminal
-;; modY + modY
-nvim_action_modY+modY                $nvim_history  ;;""
-;; modY + mod;
-nvim_action_modY+mod;          $nvim_history_commands  ;;""
-;; modY + search
-nvim_action_modY+search         $nvim_history_search  ;;""
-;; mod\ + mod\
-nvim_action_mod\+mod\                   $nvim_compare_toggle 
-;; mod\ + j
-nvim_action_mod\+j                 $nvim_compare_next
-;; mod\ + k
-nvim_action_mod\+k                 $nvim_compare_prev  ;;""
-;; mod\ + o
-nvim_action_mod\+o                 $nvim_compare_obtain  ;; Obtain changes from the other file.
-;; mod\ + p
-nvim_action_mod\+p                 $nvim_compare_push  ;; Push changes to the other file.""
-;; mod; + mod;
-nvim_action_mod;+mod;              $nvim_commands   ;;""
-;; mod' + mod'
-nvim_action_mod'+mod'              $nvim_registers
-;; mod, + mod,
-nvim_action_mod,+mod,              $nvim_settings
-;; mod. + mod.
-nvim_action_mod.+mod.              $nvim_tags  ;;""
-;; mod/ + mod/
-nvim_action_mod/+mod/              $nvim_help
+;; domainD + S
+nvim_action_domainD+S                $nvim_source
+;; domainR + S
+nvim_action_domainR+S                 $nvim_source
+;; domainA + A
+nvim_action_domainA+A                $nvim_autocommands
+;; domainB + B
+nvim_action_domainB+B                $nvim_bookmarks
+;; domainD + D
+nvim_action_domainD+D                $nvim_definitions
+;; domainE + E
+nvim_action_domainE+E                $nvim_file_explorer  
+;; domainG + G
+nvim_action_domainG+G                $nvim_git  ;;""
+;; domainG + L
+nvim_action_domainG+L                $nvim_lazygit
+;; domainJ + J
+nvim_action_domainJ+J                $nvim_jumps
+;; domainK + K
+nvim_action_domainK+K                $nvim_keymaps
+;; domainL + L
+nvim_action_domainL+L                $nvim_locations
+;; domainQ + Q
+nvim_action_domainQ+Q                 $nvim_quickfix
+;; domainR + R
+nvim_action_domainR+R                 $nvim_references
+;; domainR + I
+nvim_action_domainR+I                 $nvim_references_incoming
+;; domainR + O
+nvim_action_domainR+O                 $nvim_references_outgoing
+;; domainS + S
+nvim_action_domainS+S                 $nvim_symbols
+;; domainS + W
+nvim_action_domainS+W                 $nvim_symbols_workspace
+;; domainT + T
+nvim_action_domainT+T                 $nvim_terminal 
+;; domainT + toggle
+nvim_action_domainT+toggle               $nvim_terminal
+;; domainY + Y
+nvim_action_domainY+Y                $nvim_history  ;;""
+;; domainY + ;
+nvim_action_domainY+;          $nvim_history_commands  ;;""
+;; domainY + search
+nvim_action_domainY+search         $nvim_history_search  ;;""
+;; domain\ + \
+nvim_action_domain\+\                   $nvim_compare_toggle 
+;; domain\ + j
+nvim_action_domain\+j                 $nvim_compare_next
+;; domain\ + k
+nvim_action_domain\+k                 $nvim_compare_prev  ;;""
+;; domain\ + o
+nvim_action_domain\+o                 $nvim_compare_obtain  ;; Obtain changes from the other file.
+;; domain\ + p
+nvim_action_domain\+p                 $nvim_compare_push  ;; Push changes to the other file.""
+;; domain; + ;
+nvim_action_domain;+;              $nvim_commands   ;;""
+;; domain' + '
+nvim_action_domain'+'              $nvim_registers
+;; domain, + ,
+nvim_action_domain,+,              $nvim_settings
+;; domain. + .
+nvim_action_domain.+.              $nvim_tags  ;;""
+;; domain/ + /
+nvim_action_domain/+/              $nvim_help
 )

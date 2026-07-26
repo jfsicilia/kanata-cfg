@@ -1,6 +1,6 @@
 (defvar
-;; modK + modK
-chrome_action_modK+modK                   $chrome_keybindings
-;; mod, + mod,
-chrome_action_mod,+mod,                   $chrome_settings
+;; domainK + K
+chrome_action_domainK+K                   $chrome_keybindings
+;; domain, + ,
+chrome_action_domain,+,                   $chrome_settings
 )

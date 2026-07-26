@@ -12,18 +12,20 @@
   reload_kanata           lrld
   debug_message           (push-msg "DEBUG: This is a DEBUG message to check communication")
   sleep_system            (multi (push-msg "NOTIFY: Sleeping...")         (cmd systemctl suspend))
+)
 
+(defvar
   ;; == opts ==============================================================
-  action_opts_set_quiet_profile       $set_quiet_profile
-  action_opts_set_balanced_profile    $set_balanced_profile
-  action_opts_set_performance_profile $set_performance_profile
-  action_opts_restart_kwanata         $restart_kwanata
-  action_opts_restart_system          $restart_system
-  action_opts_shutdown_system         $shutdown_system
-  action_opts_print_screen            $print_screen
-  action_opts_print_window            $print_window
-  action_opts_sync_and_reload_kanata  $sync_and_reload_kanata
-  action_opts_reload_kanata           $reload_kanata
-  action_opts_debug_message           $debug_message
-  action_sleep_system                 $sleep_system
+  action_opts+1         $set_quiet_profile
+  action_opts+2         $set_balanced_profile
+  action_opts+3         $set_performance_profile
+  action_opts+rsft+k    $restart_kwanata
+  action_opts+lsft+q    $restart_system
+  action_opts+rsft+q    $shutdown_system
+  action_opts+p         $print_screen
+  action_opts+lsft+p    $print_window
+  action_opts+lsft+k    $sync_and_reload_kanata
+  action_opts+k         $reload_kanata
+  action_opts+d         $debug_message
+  action_opts+q         $sleep_system
 )

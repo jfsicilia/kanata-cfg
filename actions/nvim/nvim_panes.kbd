@@ -20,11 +20,11 @@ nvim_action_panes+w                 $nvim_close_pane
 nvim_action_panes+toggle           $nvim_pane_toggle
 ;; == panes + resize ====================================================
 ;; panes + resize + h | panes + resize + left
-nvim_action_panes_resize_left       $nvim_pane_resize_left
+nvim_action_panes+resize+h       $nvim_pane_resize_left
 ;; panes + resize + l | panes + resize + right
-nvim_action_panes_resize_right      $nvim_pane_resize_right
+nvim_action_panes+resize+l      $nvim_pane_resize_right
 ;; panes + resize + k | panes + resize + up
-nvim_action_panes_resize_above      $nvim_pane_resize_above
+nvim_action_panes+resize+k      $nvim_pane_resize_above
 ;; panes + resize + j | panes + resize + down
-nvim_action_panes_resize_below      $nvim_pane_resize_below
+nvim_action_panes+resize+j      $nvim_pane_resize_below
 )

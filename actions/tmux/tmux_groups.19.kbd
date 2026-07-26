@@ -2,38 +2,38 @@
 ;; !tabs + spc
 tmux_action_!tabs+spc                  $tmux_action_tabs+spc
 ;; !tabs + l | !tabs + right
-tmux_action_!tabs_next             $tmux_action_tabs_next             
+tmux_action_!tabs+l             $tmux_action_tabs+l             
 ;; !tabs + h | !tabs + left
-tmux_action_!tabs_prev             $tmux_action_tabs_prev             
+tmux_action_!tabs+h             $tmux_action_tabs+h             
 ;; !tabs + t
-tmux_action_!tabs_new              $tmux_action_tabs_new              
+tmux_action_!tabs+t              $tmux_action_tabs+t              
 ;; !tabs + w
-tmux_action_!tabs_close            $tmux_action_tabs_close            
+tmux_action_!tabs+w            $tmux_action_tabs+w            
 ;; == !tabs go by number ==================================================
 ;; !tabs + 1
-tmux_action_!tabs_goto_1           $tmux_action_tabs_goto_1           
+tmux_action_!tabs+1           $tmux_action_tabs+1           
 ;; !tabs + 2
-tmux_action_!tabs_goto_2           $tmux_action_tabs_goto_2           
+tmux_action_!tabs+2           $tmux_action_tabs+2           
 ;; !tabs + 3
-tmux_action_!tabs_goto_3           $tmux_action_tabs_goto_3           
+tmux_action_!tabs+3           $tmux_action_tabs+3           
 ;; !tabs + 4
-tmux_action_!tabs_goto_4           $tmux_action_tabs_goto_4           
+tmux_action_!tabs+4           $tmux_action_tabs+4           
 ;; !tabs + 5
-tmux_action_!tabs_goto_5           $tmux_action_tabs_goto_5           
+tmux_action_!tabs+5           $tmux_action_tabs+5           
 ;; !tabs + 6
-tmux_action_!tabs_goto_6           $tmux_action_tabs_goto_6           
+tmux_action_!tabs+6           $tmux_action_tabs+6           
 ;; !tabs + 7
-tmux_action_!tabs_goto_7           $tmux_action_tabs_goto_7           
+tmux_action_!tabs+7           $tmux_action_tabs+7           
 ;; !tabs + 8
-tmux_action_!tabs_goto_8           $tmux_action_tabs_goto_8           
+tmux_action_!tabs+8           $tmux_action_tabs+8           
 ;; !tabs + 9
-tmux_action_!tabs_goto_last        $tmux_action_tabs_goto_last        
+tmux_action_!tabs+9        $tmux_action_tabs+9        
 ;; == !tabs + toggle =====================================================
 ;; !tabs + toggle
 tmux_action_!tabs+toggle           $tmux_action_tabs+toggle           
 ;; == !tabs + move =====================================================
 ;; !tabs + move + h | !tabs + move + left
-tmux_action_!tabs_move_left        $tmux_action_tabs_move_left        
+tmux_action_!tabs+move+h        $tmux_action_tabs+move+h        
 ;; !tabs + move + l | !tabs + move + right
-tmux_action_!tabs_move_right       $tmux_action_tabs_move_right       
+tmux_action_!tabs+move+l       $tmux_action_tabs+move+l       
 )

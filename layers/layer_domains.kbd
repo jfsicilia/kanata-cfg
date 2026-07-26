@@ -1,306 +1,306 @@
 ;; Actions
 (deflayermap (domains+a_layer)
-  a $action_modA+modA
+  a $action_domainA+A
   _ XX
 )
 
 ;; Bookmarks
 (deflayermap (domains+b_layer)
-  b $action_modB+modB
+  b $action_domainB+B
   _ XX
 )
 
 ;; Calendar
 (deflayermap (domains+c_layer)
-  c $action_modC+modC
-  d $action_modC+modD
-  y $action_modC+modY
+  c $action_domainC+C
+  d $action_domainC+D
+  y $action_domainC+Y
   _ XX
 )
 
 ;; Definitions
 (deflayermap (domains+d_layer)
-  d $action_modD+modD
-  s $action_modD+modS
+  d $action_domainD+D
+  s $action_domainD+S
   _ XX
 )
 
 ;; Explorer
 (deflayermap (domains+e_layer)
-  e $action_modE+modE
-  f $action_modE+modF  
-  r $action_modE+modR  
+  e $action_domainE+E
+  f $action_domainE+F  
+  r $action_domainE+R  
   _ XX
 )
 
 ;; Filter
 (deflayermap (domains+f_layer)
-  f $action_modF+modF
+  f $action_domainF+F
   _ XX
 )
 
 ;; Git
 (deflayermap (domains+g_layer)
-  g $action_modG+modG
-  l $action_modG+modL
+  g $action_domainG+G
+  l $action_domainG+L
   _ XX
 )
 
 ;; Hyperlinks
 (deflayermap (domains+h_layer)
-  h $action_modH+modH
-  o $action_modH+modO
+  h $action_domainH+H
+  o $action_domainH+O
   _ XX
 )
 
 ;; Info
 (deflayermap (domains+i_layer)
-  i $action_modI+modI
+  i $action_domainI+I
   _ XX
 )
 
 ;; Jumps
 (deflayermap (domains+j_layer)
-  j $action_modJ+modJ
+  j $action_domainJ+J
   _ XX
 )
 
 ;; Keymaps
 (deflayermap (domains+k_layer)
-  k $action_modK+modK
+  k $action_domainK+K
   _ XX
 )
 
 ;; Locations
 (deflayermap (domains+l_layer)
-  l $action_modL+modL
+  l $action_domainL+L
   _ XX
 )
 
 ;; Mem
 (deflayermap (domains+m_layer)
-  m $action_modM+modM
+  m $action_domainM+M
   _ XX
 )
 
 ;; Notebooks
 (deflayermap (domains+n_layer)
-  n $action_modN+modN
+  n $action_domainN+N
   _ XX
 )
 
 ;; Output
 (deflayermap (domains+o_layer)
-  o $action_modO+modO
+  o $action_domainO+O
   _ XX
 )
 
 ;; Properties
 (deflayermap (domains+p_layer)
-  p $action_modP+modP
-  a $action_modP+modA
+  p $action_domainP+P
+  a $action_domainP+A
   _ XX
 )
 
 ;; Quickfix
 (deflayermap (domains+q_layer)
-  q $action_modQ+modQ
+  q $action_domainQ+Q
   _ XX
 )
 
 ;; References
 (deflayermap (domains+r_layer)
-  r $action_modR+modR
-  i $action_modR+modI
-  o $action_modR+modO
+  r $action_domainR+R
+  i $action_domainR+I
+  o $action_domainR+O
   _ XX
 )
 
 ;; Symbols
 (deflayermap (domains+s_layer)
-  s $action_modS+modS
-  w $action_modS+modW
+  s $action_domainS+S
+  w $action_domainS+W
   _ XX
 )
 
 ;; Terminal
 (deflayermap (domains+t_layer)
-  t       $action_modT+modT
-  $toggle $action_modT+toggle
+  t       $action_domainT+T
+  $toggle $action_domainT+toggle
   _ XX
 )
 
 ;; UI
 (deflayermap (domains+u_layer)
-  u $action_modU+modU
-  g $action_modU+modG
+  u $action_domainU+U
+  g $action_domainU+G
   _ XX
 )
 
 ;; Virtualization
 (deflayermap (domains+v_layer)
-  v $action_modV+modV
+  v $action_domainV+V
   _ XX
 )
 
 ;; Warnings
 (deflayermap (domains+w_layer)
-  w $action_modW+modW
+  w $action_domainW+W
   _ XX
 )
 
 ;; Extensions
 (deflayermap (domains+x_layer)
-  x $action_modX+modX
+  x $action_domainX+X
   _ XX
 )
 
 ;; History
 (deflayermap (domains+y_layer)
-  y $action_modY+modY
+  y $action_domainY+Y
 
-  $mod;      $action_modY+mod;
-  $search    $action_modY+search
+  $mod;      $action_domainY+;
+  $search    $action_domainY+search
   _ XX
 )
 
 ;; Tests
 (deflayermap (domains+z_layer)
-  z $action_modZ+modZ
+  z $action_domainZ+Z
   _ XX
 )
 
 ;; Commands
 (deflayermap (domains+;_layer)
-  ; $action_mod;+mod;
+  ; $action_domain;+;
   _ XX
 )
 
 ;; Registries
 (deflayermap (domains+'_layer)
-  ' $action_mod'+mod'
+  ' $action_domain'+'
   _ XX
 )
 
 ;; Settings
 (deflayermap (domains+,_layer)
-  , $action_mod,+mod,
+  , $action_domain,+,
   _ XX
 )
 
 ;; Tags
 (deflayermap (domains+._layer)
-  . $action_mod.+mod.
+  . $action_domain.+.
   _ XX
 )
 
 ;; Help
 (deflayermap (domains+/_layer)
-  / $action_mod/+mod/
+  / $action_domain/+/
   _ XX
 )
 
 ;; Compare
 (deflayermap (domains+\_layer)
-  \ (t! sft_switch $action_mod\+mod\ $action_mod\+lsft+mod\ $action_mod\+lsft+mod\)
+  \ (t! sft_switch $action_domain\+\ $action_domain\+lsft+\ $action_domain\+lsft+\)
 
-  j $action_mod\+j
-  k $action_mod\+k
+  j $action_domain\+j
+  k $action_domain\+k
 
-  o $action_mod\+o
-  p $action_mod\+p
+  o $action_domain\+o
+  p $action_domain\+p
 
   _ XX
 ) ;;""
 
 ;; Backlinks
 (deflayermap (domains+[_layer)
-  [ $action_mod[+mod[
+  [ $action_domain[+[
   _ XX
 ) ;;""
 
 ;; Outlinks
 (deflayermap (domains+]_layer)
-  ] $action_mod]+mod]
-  a $action_mod]+modA
+  ] $action_domain]+]
+  a $action_domain]+A
   _ XX
 ) ;;""
 
 ;; 
 (deflayermap (domains+`_layer)
-  ` $action_mod`+mod`
+  ` $action_domain`+`
   _ XX
 )
 
 ;; 
 (deflayermap (domains+-_layer)
-  - $action_mod-+mod-
+  - $action_domain-+-
   _ XX
 )
 
 ;; Format
 (deflayermap (domains+=_layer)
-  = $action_mod=+mod=
+  = $action_domain=+=
   _ XX
 )
 
 ;; 
 (deflayermap (domains+0_layer)
-  0 $action_mod0+mod0
+  0 $action_domain0+0
   _ XX
 )
 
 ;; 
 (deflayermap (domains+1_layer)
-  1 $action_mod1+mod1
+  1 $action_domain1+1
   _ XX
 )
 
 ;; 
 (deflayermap (domains+2_layer)
-  2 $action_mod2+mod2
+  2 $action_domain2+2
   _ XX
 )
 
 ;; 
 (deflayermap (domains+3_layer)
-  3 $action_mod3+mod3
+  3 $action_domain3+3
   _ XX
 )
 
 ;; 
 (deflayermap (domains+4_layer)
-  4 $action_mod4+mod4
+  4 $action_domain4+4
   _ XX
 )
 
 ;; 
 (deflayermap (domains+5_layer)
-  5 $action_mod5+mod5
+  5 $action_domain5+5
   _ XX
 )
 
 ;; 
 (deflayermap (domains+6_layer)
-  6 $action_mod6+mod6
+  6 $action_domain6+6
   _ XX
 )
 
 ;; 
 (deflayermap (domains+7_layer)
-  7 $action_mod7+mod7
+  7 $action_domain7+7
   _ XX
 )
 
 ;; 
 (deflayermap (domains+8_layer)
-  8 $action_mod8+mod8
+  8 $action_domain8+8
   _ XX
 )
 
 ;; 
 (deflayermap (domains+9_layer)
-  9 $action_mod9+mod9
+  9 $action_domain9+9
   _ XX
 )
 

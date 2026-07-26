@@ -2,30 +2,30 @@
 ;; !tabs + spc
 nvim_action_!tabs+spc                  $nvim_action_tabs                  
 ;; !tabs + l | !tabs + right
-nvim_action_!tabs_next             $nvim_action_tabs_next             
+nvim_action_!tabs+l             $nvim_action_tabs+l             
 ;; !tabs + h | !tabs + left
-nvim_action_!tabs_prev             $nvim_action_tabs_prev             
+nvim_action_!tabs+h             $nvim_action_tabs+h             
 ;; !tabs + w
-nvim_action_!tabs_close            $nvim_action_tabs_close            
+nvim_action_!tabs+w            $nvim_action_tabs+w            
 ;; == !tabs go by number ==================================================
 ;; !tabs + 1
-nvim_action_!tabs_goto_1           $nvim_action_tabs_goto_1           
+nvim_action_!tabs+1           $nvim_action_tabs+1           
 ;; !tabs + 2
-nvim_action_!tabs_goto_2           $nvim_action_tabs_goto_2           
+nvim_action_!tabs+2           $nvim_action_tabs+2           
 ;; !tabs + 3
-nvim_action_!tabs_goto_3           $nvim_action_tabs_goto_3           
+nvim_action_!tabs+3           $nvim_action_tabs+3           
 ;; !tabs + 4
-nvim_action_!tabs_goto_4           $nvim_action_tabs_goto_4           
+nvim_action_!tabs+4           $nvim_action_tabs+4           
 ;; !tabs + 5
-nvim_action_!tabs_goto_5           $nvim_action_tabs_goto_5           
+nvim_action_!tabs+5           $nvim_action_tabs+5           
 ;; !tabs + 6
-nvim_action_!tabs_goto_6           $nvim_action_tabs_goto_6           
+nvim_action_!tabs+6           $nvim_action_tabs+6           
 ;; !tabs + 7
-nvim_action_!tabs_goto_7           $nvim_action_tabs_goto_7           
+nvim_action_!tabs+7           $nvim_action_tabs+7           
 ;; !tabs + 8
-nvim_action_!tabs_goto_8           $nvim_action_tabs_goto_8           
+nvim_action_!tabs+8           $nvim_action_tabs+8           
 ;; !tabs + 9
-nvim_action_!tabs_goto_last        $nvim_action_tabs_goto_last        
+nvim_action_!tabs+9        $nvim_action_tabs+9        
 ;; == !tabs + toggle =====================================================
 ;; !tabs + toggle
 nvim_action_!tabs+toggle           $nvim_action_tabs+toggle           

@@ -31,6 +31,23 @@ obsidian_action_page_down                      C-f
 obsidian_action_panes_tag                      A-t
 obsidian_action_setting                        C-,
 
+obsidian_select_tab               C-S-A-o
+obsidian_right_tab                C-pgdn
+obsidian_left_tab                 C-pgup
+obsidian_new_tab                  A-C-t
+obsidian_close_tab                A-C-w 
+obsidian_undo_close_tab           A-C-S-t
+obsidian_go_tab_1                 C-1
+obsidian_go_tab_2                 C-2
+obsidian_go_tab_3                 C-3
+obsidian_go_tab_4                 C-4
+obsidian_go_tab_5                 C-5
+obsidian_go_tab_6                 C-6
+obsidian_go_tab_7                 C-7
+obsidian_go_tab_8                 C-8
+obsidian_go_tab_9                 C-9
+obsidian_toggle_tab               A-q
+
 obsidian_pane_maximize   (macro A-s A-S-s)
 obsidian_pane_left       A-left
 obsidian_pane_right      A-right
@@ -60,4 +77,20 @@ obsidian_vertical_tabs   (macro A-v m)
 obsidian_bookmarks       A-b
 obsidian_main            A-m   ;;""
 
+;; open
+obsidian_open_with_chrome    (macro C-A-p spc S-o p e n spc w i t h spc S-c h r o m e)
+obsidian_open_with_terminal  (macro C-A-p spc S-o p e n spc w i t h spc t e r m i n a l)
+obsidian_open_with_vim       (macro C-A-p spc S-o p e n spc w i t h spc n v i m)
+
+;; replace
+obsidian_replace_in_file          C-A-h
+obsidian_replace_in_files         C-A-S-h
+
+;; search
+obsidian_search_in_file           C-A-m
+obsidian_search_in_files          C-A-S-m
+
+;; seek_n_select
+obsidian_seek_and_select_file     C-A-o
+obsidian_seek_and_select_folder   C-S-o
 )

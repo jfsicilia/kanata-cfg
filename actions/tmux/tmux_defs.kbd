@@ -1,3 +1,44 @@
 (defvar
-  tmux_commands              (macro $tmux_prefix S-;)
+
+tmux_prefix                  A-b
+
+;; omni
+tmux_pgup                    (macro $tmux_prefix pgup)
+tmux_copy                    (macro $tmux_prefix [)
+tmux_pgdn                    C-f
+tmux_new_window              (macro $tmux_prefix c)
+tmux_rename                  (macro $tmux_prefix ,)
+tmux_paste                   (macro $tmux_prefix ])
+
+;; panes
+tmux_pane_maximize           (macro $tmux_prefix z)
+tmux_pane_left               (macro $tmux_prefix left)
+tmux_pane_right              (macro $tmux_prefix right)
+tmux_pane_above              (macro $tmux_prefix up)
+tmux_pane_below              (macro $tmux_prefix down)
+tmux_pane_h_split            (macro $tmux_prefix S-')
+tmux_pane_v_split            (macro $tmux_prefix S-5)
+tmux_pane_close               (macro $tmux_prefix x)
+tmux_pane_toggle              (macro $tmux_prefix ;)
+
+;; tabs
+tmux_commands                (macro $tmux_prefix S-;)
+tmux_select_tab              (macro $tmux_prefix w) ;; prefix + w (choose window) 
+tmux_right_tab               (macro $tmux_prefix n) 
+tmux_left_tab                (macro $tmux_prefix p) 
+tmux_new_tab                 (macro $tmux_prefix c) 
+tmux_close_tab               (macro $tmux_prefix S-7) ;; prefix + & (kill window) 
+tmux_go_tab_1                (macro $tmux_prefix Digit1) 
+tmux_go_tab_2                (macro $tmux_prefix Digit2)  
+tmux_go_tab_3                (macro $tmux_prefix Digit3)  
+tmux_go_tab_4                (macro $tmux_prefix Digit4)  
+tmux_go_tab_5                (macro $tmux_prefix Digit5)  
+tmux_go_tab_6                (macro $tmux_prefix Digit6)  
+tmux_go_tab_7                (macro $tmux_prefix Digit7)  
+tmux_go_tab_8                (macro $tmux_prefix Digit8)  
+tmux_go_tab_9                (macro $tmux_prefix Digit9)  
+tmux_toggle_tab              (macro $tmux_prefix l)        
+tmux_move_tab_right          (macro $tmux_prefix S-; s w a p - w i n d o w spc - t spc - Digit1 ; s e l e c t - w i n d o w spc - t spc - Digit1 ent) 
+tmux_move_tab_left           (macro $tmux_prefix S-; s w a p - w i n d o w spc - t spc S-= Digit1 ; s e l e c t - w i n d o w spc - t spc S-= Digit1 ent) 
+
 )

@@ -1,4 +1,4 @@
 (defvar
-;; mod, + mod,
-zapzap_action_mod,+mod,                   $zapzap_settings
+;; domain, + ,
+zapzap_action_domain,+,                   $zapzap_settings
 )

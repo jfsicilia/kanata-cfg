@@ -81,13 +81,13 @@
 
   ;; lmet+tab mimics original lctl+tab functionality (typically next tab in 
   ;; browsers and editors).
-  tab $action_tabs_next
+  tab $action_tabs+l
 ) 
 (deflayermap (lmet+lsft_layer)
   (t! map_layers "$action_lmet+lsft" "lmet+lsft" ($<lctl $>lctl $<lalt $>lalt $!lctl $!lalt))
   (t! map_keys   "$action_lmet+lsft"             ($<lctl $>lctl $<lalt $>lalt tab))
 
-  tab $action_tabs_prev
+  tab $action_tabs+h
 )
 
 ;; "" LMET+RSFT_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -95,7 +95,7 @@
   (t! map_layers "$action_lmet+rsft" "lmet+rsft" ($<lctl $>lctl $<lalt $>lalt $!lctl $!lalt))
   (t! map_keys   "$action_lmet+rsft"             ($<lctl $>lctl $<lalt $>lalt tab))
 
-  tab $action_tabs_prev
+  tab $action_tabs+h
 )
 
 ;; "" !LMET_LAYER """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -224,7 +224,7 @@
 ;; "" LSFT_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 (deflayermap (lsft_layer)
   ;; Pressing lsft+rsft (in that order) issues tab_next action.
-  rsft (multi (release-key lsft) $action_tabs_next)
+  rsft (multi (release-key lsft) $action_tabs+l)
 
   ent $action_sft+ent
 
@@ -249,7 +249,7 @@
 ;; "" RSFT_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 (deflayermap (rsft_layer)
   ;; Pressing rsft+lsft (in that order) issues tab_prev combo.
-  lsft (multi (release-key rsft) $action_tabs_prev)
+  lsft (multi (release-key rsft) $action_tabs+h)
 
   $apps             (t! th _ $toggle_apps+rsft_layer)
   $open             (t! th _ $toggle_open+rsft_layer)

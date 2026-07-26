@@ -1,6 +1,7 @@
 (defvar
-  ;; == emojis ============================================================
-  ;; emojis + spc
-  action_emojis  M-.
+  show_emojis  M-.
+)
 
+(defvar
+  action_lang+spc  $show_emojis
 )

@@ -1,28 +1,27 @@
 ;; "" WORKSPACES LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""
 (deflayermap (workspaces_layer)
-  spc $action_desktops+spc
+  spc $action_workspaces+spc
 
-  j $action_screens_next
-  l $action_desktops_next
-  h $action_desktops_prev
+  j $action_workspaces+j
+  l $action_workspaces+l
+  h $action_workspaces+h
 
   ;; == GUI ======================
   $move   (t! th _ $toggle_workspaces+move_layer)
-  $toggle $action_desktops+toggle
+  $toggle $action_workspaces+toggle
 
   ;; == SFT ======================
   $d|lsft         (t! th _                    $toggle_workspaces+lsft_layer)
-  $k|rsft         (t! th $action_screens_prev $toggle_workspaces+rsft_layer)
+  $k|rsft         (t! th $action_workspaces+k $toggle_workspaces+rsft_layer)
   lsft            (t! th _                    $toggle_workspaces+lsft_layer)
   rsft            (t! th _                    $toggle_workspaces+rsft_layer)
-
-
 )
+
 (deflayermap (workspaces+move_layer)
-  j $action_screens_next_move_window
-  k $action_screens_prev_move_window
-  l $action_desktops_next_move_window
-  h $action_desktops_prev_move_window
+  j $action_workspaces+move+j
+  k $action_workspaces+move+k
+  l $action_workspaces+move+l
+  h $action_workspaces+move+h
 )
 (deflayermap (workspaces+lsft_layer)
 )

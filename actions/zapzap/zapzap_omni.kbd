@@ -38,6 +38,6 @@ zapzap_action_omni+8                 $zapzap_tabs_goto_8
 ;; If not implemented, defaults to: C-9
 zapzap_action_omni+9                 $zapzap_tabs_goto_9
 ;; omni + ,
-;; If not implemented, defaults to: action_mod,+mod,
+;; If not implemented, defaults to: action_domain,+,
 zapzap_action_omni+,                 $zapzap_settings
 )

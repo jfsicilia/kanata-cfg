@@ -2,11 +2,11 @@
 (deflayermap (open_layer)
   (t! map_layers _ "opts" (lsft rsft))
 
-  spc $action_open_with
+  spc $action_open+spc
 
-  m $action_open_with_chrome
-  t $action_open_with_terminal
-  v $action_open_with_nvim
+  m $action_open+m
+  t $action_open+t
+  v $action_open+v
 )
 
 (deflayermap (open+lsft_layer)

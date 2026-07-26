@@ -1,9 +1,9 @@
 (defvar
 ;; == replace ==========================================================
 ;; replace + spc
-dolphin_action_replace               (push-msg "NOTIFY:Replace text in file not implemented!")
+dolphin_action_replace+spc               (push-msg "NOTIFY:Replace text in file not implemented!")
 ;; replace + lsft + spc
-dolphin_action_replace+lsft          (push-msg "NOTIFY:Replace text in files not implemented!") 
+dolphin_action_replace+lsft+spc          (push-msg "NOTIFY:Replace text in files not implemented!") 
 ;; replace + rsft + spc
-dolphin_action_replace+rsft          (push-msg "NOTIFY:Replace text in files not implemented!") 
+dolphin_action_replace+rsft+spc          (push-msg "NOTIFY:Replace text in files not implemented!") 
 )

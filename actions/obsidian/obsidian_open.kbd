@@ -1,8 +1,8 @@
 (defvar
 ;; open + m
-obsidian_action_open_with_chrome               (macro C-A-p spc S-o p e n spc w i t h spc S-c h r o m e)
+obsidian_action_open+m               $obsidian_open_with_chrome
 ;; open + t
-obsidian_action_open_with_terminal             (macro C-A-p spc S-o p e n spc w i t h spc t e r m i n a l)
+obsidian_action_open+t               $obsidian_open_with_terminal
 ;; open + v
-obsidian_action_open_with_nvim                 (macro C-A-p spc S-o p e n spc w i t h spc n v i m)
+obsidian_action_open+v               $obsidian_open_with_vim
 )

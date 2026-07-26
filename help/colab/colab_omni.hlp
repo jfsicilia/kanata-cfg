@@ -18,10 +18,10 @@
 **omni + o**        -- Nav Next
 **omni + p**        -- Nav Prev
 **omni + q**        -- Window Close
-**omni + t**        -- Tabs New
-**omni + lsft + t** -- Tabs Undo Close
+**omni + t**        -- Tab New
+**omni + lsft + t** -- Tab Undo Close
 **omni + v**        -- Paste
-**omni + w**        -- Tabs Close
+**omni + w**        -- Tab Close
 **omni + x**        -- Cut
 **omni + z**        -- Undo
 **omni + lsft + z** -- Redo

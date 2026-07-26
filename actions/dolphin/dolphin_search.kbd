@@ -1,9 +1,9 @@
 (defvar
 ;; == search ============================================================
 ;; search + spc
-dolphin_action_search      $dolphin_search
+dolphin_action_search+spc      $dolphin_search
 ;; search + lsft + spc
-dolphin_action_search+lsft $dolphin_omni_search
+dolphin_action_search+lsft+spc $dolphin_omni_search
 ;; search + rsft + spc
-dolphin_action_search+rsft $dolphin_omni_search
+dolphin_action_search+rsft+spc $dolphin_omni_search
 )

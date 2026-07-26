@@ -9,11 +9,11 @@ colab_action_panes+k                $colab_prev_cell
 colab_action_panes+j                $colab_next_cell
 ;; == panes + move ======================================================
 ;; panes + move + h | panes + move + left
-colab_action_panes_move_left        $colab_move_cell_up
+colab_action_panes+move+h        $colab_move_cell_up
 ;; panes + move + l | panes + move + right
-colab_action_panes_move_right       $colab_move_cell_down
+colab_action_panes+move+l       $colab_move_cell_down
 ;; panes + move + k | panes + move + up
-colab_action_panes_move_above       $colab_move_cell_up
+colab_action_panes+move+k       $colab_move_cell_up
 ;; panes + move + j | panes + move + down
-colab_action_panes_move_below       $colab_move_cell_down
+colab_action_panes+move+j       $colab_move_cell_down
 )

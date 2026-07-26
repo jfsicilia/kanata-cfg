@@ -1,11 +1,11 @@
 (defvar
 ;; == open =============================================================
 ;; open + spc
-dolphin_action_open_with              $dolphin_open_with
+dolphin_action_open+spc              $dolphin_open_with
 ;; open + m
-dolphin_action_open_with_chrome       $dolphin_open_with_chrome
+dolphin_action_open+m       $dolphin_open_with_chrome
 ;; open + t
-dolphin_action_open_with_terminal     $dolphin_open_with_terminal
+dolphin_action_open+t     $dolphin_open_with_terminal
 ;; open + v
-dolphin_action_open_with_nvim         $dolphin_open_with_nvim
+dolphin_action_open+v         $dolphin_open_with_nvim
 )

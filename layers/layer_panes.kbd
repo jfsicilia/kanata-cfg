@@ -81,42 +81,42 @@
   . $action_panes+lsft+.
 )
 (deflayermap (panes+move_layer)
-  h     $action_panes_move_left
-  left  $action_panes_move_left
-  j     $action_panes_move_below
-  down  $action_panes_move_below
-  k     $action_panes_move_above
-  up    $action_panes_move_above
-  l     $action_panes_move_right
-  right $action_panes_move_right
+  h     $action_panes+move+h
+  left  $action_panes+move+h
+  j     $action_panes+move+j
+  down  $action_panes+move+j
+  k     $action_panes+move+k
+  up    $action_panes+move+k
+  l     $action_panes+move+l
+  right $action_panes+move+l
 )
 (deflayermap (panes+snap_layer)
-;;  h     $action_panes_snap_left
-;;  left  $action_panes_snap_left
-;;  j     $action_panes_snap_below
-;;  down  $action_panes_snap_below
-;;  k     $action_panes_snap_above
-;;  up    $action_panes_snap_above
-;;  l     $action_panes_snap_right
-;;  right $action_panes_snap_right
+;;  h     $action_panes+snap+h
+;;  left  $action_panes+snap+h
+;;  j     $action_panes+snap+j
+;;  down  $action_panes+snap+j
+;;  k     $action_panes+snap+k
+;;  up    $action_panes+snap+k
+;;  l     $action_panes+snap+l
+;;  right $action_panes+snap+l
 )
 (deflayermap (panes+resize_layer)
-  h     $action_panes_resize_left
-  l     $action_panes_resize_right
-  k     $action_panes_resize_above
-  j     $action_panes_resize_below
-  left  $action_panes_resize_left
-  right $action_panes_resize_right
-  up    $action_panes_resize_above
-  down  $action_panes_resize_below
+  h     $action_panes+resize+h
+  l     $action_panes+resize+l
+  k     $action_panes+resize+k
+  j     $action_panes+resize+j
+  left  $action_panes+resize+h
+  right $action_panes+resize+l
+  up    $action_panes+resize+k
+  down  $action_panes+resize+j
 )
 (deflayermap (panes+swap_layer)
-  h     $action_panes_swap_left
-  l     $action_panes_swap_right
-  k     $action_panes_swap_above
-  j     $action_panes_swap_below
-  left  $action_panes_swap_left
-  right $action_panes_swap_right
-  up    $action_panes_swap_above
-  down  $action_panes_swap_below
+  h     $action_panes+swap+h
+  l     $action_panes+swap+l
+  k     $action_panes+swap+k
+  j     $action_panes+swap+j
+  left  $action_panes+swap+h
+  right $action_panes+swap+l
+  up    $action_panes+swap+k
+  down  $action_panes+swap+j
 )

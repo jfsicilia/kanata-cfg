@@ -2,22 +2,22 @@
 (deflayermap (opts_layer)
   (t! map_layers _ "opts" (lsft rsft))
 
-  1 $action_opts_set_quiet_profile
-  2 $action_opts_set_balanced_profile
-  3 $action_opts_set_performance_profile
-  k $action_opts_reload_kanata
-  d $action_opts_debug_message
-  p $action_opts_print_screen
-  q $action_sleep_system
+  1 $action_opts+1
+  2 $action_opts+2
+  3 $action_opts+3
+  k $action_opts+k
+  d $action_opts+d
+  p $action_opts+p
+  q $action_opts+q
 )
 
 (deflayermap (opts+lsft_layer)
-  k $action_opts_sync_and_reload_kanata
-  p $action_opts_print_window
-  q $action_opts_restart_system 
+  k $action_opts+lsft+k
+  p $action_opts+lsft+p
+  q $action_opts+lsft+q 
 )
 
 (deflayermap (opts+rsft_layer)
-  k $action_opts_restart_kwanata
-  q $action_opts_shutdown_system 
+  k $action_opts+rsft+k
+  q $action_opts+rsft+q 
 )

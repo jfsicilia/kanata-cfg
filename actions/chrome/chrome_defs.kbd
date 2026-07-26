@@ -23,4 +23,10 @@ chrome_tabs_goto_9         C-9
 chrome_panes_vsplit        A-S-n
 chrome_seek_and_select     C-S-a
 chrome_bookmarks           A-S-h
+
+;; omni
+chrome_go                  C-l
+chrome_new                 C-n
+chrome_forward             A-right
+chrome_back                A-left
 )

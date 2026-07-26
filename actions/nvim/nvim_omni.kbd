@@ -1,7 +1,7 @@
 (defvar
 ;; omni + spc
 ;; If not implemented, defaults to: spc
-nvim_action_omni+spc               $nvim_action_seek_and_select
+nvim_action_omni+spc               $nvim_action_seek+spc
 ;; omni + ent
 nvim_action_omni+ent               (push-msg "NOTIFY:Omni combo not implemented!")
 ;; omni + a
@@ -40,20 +40,20 @@ nvim_action_omni+f                 $nvim_pgdn
 nvim_action_omni+g                 (push-msg "NOTIFY:Omni combo not implemented!")
 ;; omni + h
 ;; If not implemented, defaults to: left
-nvim_action_omni+h                 left
+nvim_action_omni+h                 $nvim_cursor_left
 ;; omni + i
 nvim_action_omni+i                 (push-msg "NOTIFY:Omni combo not implemented!")
 ;; omni + j
 ;; If not implemented, defaults to: down
-nvim_action_omni+j                 down
+nvim_action_omni+j                 $nvim_cursor_down
 ;; omni + k
 ;; If not implemented, defaults to: up
-nvim_action_omni+k                 up
+nvim_action_omni+k                 $nvim_cursor_up
 ;; omni + l
 ;; If not implemented, defaults to: right
-nvim_action_omni+l                 right
+nvim_action_omni+l                 $nvim_cursor_right
 ;; omni + m
-;; If not implemented, defaults to: action_modM+modM
+;; If not implemented, defaults to: action_domainM+M
 nvim_action_omni+m                 (push-msg "NOTIFY:Omni combo not implemented!")
 ;; omni + n
 ;; nvim_action_omni+n           `{esc}:tabnew{ent}:e `
@@ -84,12 +84,12 @@ nvim_action_omni+s                 $nvim_sort
 ;; nvim_action_omni+lsft+s            `:sort!{ent}`
 nvim_action_omni+lsft+s            $nvim_sort_reverse
 ;; omni + t
-;; If not implemented, defaults to: action_tabs_new
+;; If not implemented, defaults to: action_tabs+t
 ;; see tab
 ;; nvim_action_omni+t           `{esc}:tabnew{ent}`
 nvim_action_omni+t                 $nvim_new_tab
 ;; omni + lsft + t
-;; If not implemented, defaults to: action_tabs_undo_close
+;; If not implemented, defaults to: action_tabs+lsft+t
 ;; see tab
 nvim_action_omni+lsft+t            $nvim_undo_tab
 ;; omni + u
@@ -99,7 +99,7 @@ nvim_action_omni+u                 $nvim_remove_duplicates
 ;; If not implemented, defaults to: C-v
 nvim_action_omni+v                 $nvim_paste
 ;; omni + w
-;; If not implemented, defaults to: action_tabs_close
+;; If not implemented, defaults to: action_tabs+w
 ;; see tab
 ;; nvim_action_omni+w         `{esc}:bdelete{ent}`
 nvim_action_omni+w                 $nvim_close_tab
@@ -170,19 +170,19 @@ nvim_action_omni+;                 $nvim_comment  ;; Comment block
 ;; omni + '
 nvim_action_omni+'                 (push-msg "NOTIFY:Omni combo not implemented!")
 ;; omni + ,
-;; If not implemented, defaults to: action_mod,+mod,
+;; If not implemented, defaults to: action_domain,+,
 ;; see mod,
 nvim_action_omni+,                 $nvim_settings
 ;; omni + .
-;; If not implemented, defaults to: action_mod.+mod.
+;; If not implemented, defaults to: action_domain.+.
 ;; see mod.
 nvim_action_omni+.                 $nvim_tags
 ;; omni + /
-;; If not implemented, defaults to: action_mod/+mod/
+;; If not implemented, defaults to: action_domain/+/
 ;; see mod/
 nvim_action_omni+/                 $nvim_help
 ;; omni + !lmet|desktops
-;; If not implemented, defaults to: action_desktops+toggle
+;; If not implemented, defaults to: action_workspaces+toggle
 nvim_action_omni+!lmet             (push-msg "NOTIFY:Omni combo not implemented!")
 ;; omni + !lalt|panes
 ;; If not implemented, defaults to: action_panes+toggle

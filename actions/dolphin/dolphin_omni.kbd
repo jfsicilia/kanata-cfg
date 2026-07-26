@@ -54,11 +54,11 @@ dolphin_action_omni+s          $dolphin_toggle_sort_by
 ;; omni + lsft + s | omni + rsft + s
 dolphin_action_omni+lsft+s     $dolphin_sort_order_toggle
 ;; omni + t
-;; If not implemented, defaults to: action_tabs_new
+;; If not implemented, defaults to: action_tabs+t
 ;; see tab
 dolphin_action_omni+t          $dolphin_new_tab
 ;; omni + lsft + t
-;; If not implemented, defaults to: action_tabs_undo_close
+;; If not implemented, defaults to: action_tabs+lsft+t
 ;; see tab
 dolphin_action_omni+lsft+t     $dolphin_undo_tab
 ;; omni + u
@@ -67,7 +67,7 @@ dolphin_action_omni+u          $dolphin_cycle_view
 ;; If not implemented, defaults to: C-v
 dolphin_action_omni+v          $dolphin_paste
 ;; omni + w
-;; If not implemented, defaults to: action_tabs_close
+;; If not implemented, defaults to: action_tabs+w
 ;; see tab
 dolphin_action_omni+w          $dolphin_close_tab
 ;; omni + x
@@ -133,7 +133,7 @@ dolphin_action_omni+;          (push-msg "NOTIFY:No comments behaviour implement
 ;; omni + '
 dolphin_action_omni+'          $dolphin_filter
 ;; omni + .
-;; If not implemented, defaults to: action_mod.+mod.
+;; If not implemented, defaults to: action_domain.+.
 ;; see mod.
 dolphin_action_omni+.          $dolphin_tags
 ;; omni + prnt|groups

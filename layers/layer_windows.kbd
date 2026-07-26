@@ -1,21 +1,21 @@
 ;; "" WINDOWS_LAYER """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 (deflayermap (windows_layer)
-  spc          $action_windows_show_all
-  ent          $action_windows_max
+  spc          $action_windows+spc
+  ent          $action_windows+ent
 
-  h            $action_windows_left
-  l            $action_windows_right
-  j            $action_windows_down
+  h            $action_windows+h
+  l            $action_windows+l
+  j            $action_windows+j
 
   ;; == SFT ======================
   $d|lsft         (t! th _                   $toggle_windows+lsft_layer)
-  $k|rsft         (t! th $action_windows_up  $toggle_windows+rsft_layer)
+  $k|rsft         (t! th $action_windows+k   $toggle_windows+rsft_layer)
   lsft            (t! th _                   $toggle_windows+lsft_layer)
   rsft            (t! th _                   $toggle_windows+rsft_layer)
 )
 (deflayermap (windows+lsft_layer)
-  ent          $action_windows_full
+  ent          $action_windows+lsft+ent
 )
 (deflayermap (windows+rsft_layer)
-  ent          $action_windows_full
+  ent          $action_windows+rsft+ent
 )

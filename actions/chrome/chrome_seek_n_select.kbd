@@ -1,7 +1,7 @@
 (defvar
 ;; == seek_sel ========================================================
 ;; seek_sel + spc
-chrome_action_seek_and_select                      $chrome_seek_and_select    
+chrome_action_seek+spc                      $chrome_seek_and_select    
 ;; seek_sel + lsft + spc
-chrome_action_seek_and_select+lsft                 XX
+chrome_action_seek+lsft+spc                 XX
 )
