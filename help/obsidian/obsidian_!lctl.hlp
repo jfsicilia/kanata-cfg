@@ -6,6 +6,8 @@
 **!lctl + r**         -- Toggle Source Mode
 **!lctl + ,**         -- Setting
 **!lctl + lsft + p**  -- Commands
+**lctl + tab**        -- Walk Through Apps
+**lctl + `**          -- Walk Through Same App
 **lctl + b**          -- Page Up
 **lctl + f**          -- Page Down
 **lctl + t**          -- New Tab

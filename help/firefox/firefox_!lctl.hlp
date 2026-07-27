@@ -9,6 +9,8 @@
 **!lctl + 8**  -- Tabs Goto 8
 **!lctl + 9**  -- Tabs Goto 9
 **!lctl + 0**  -- Tabs Goto 0
+**lctl + tab** -- Walk Through Apps
+**lctl + `**   -- Walk Through Same App
 **lctl + 1**   -- Tabs Goto 1
 **lctl + 2**   -- Tabs Goto 2
 **lctl + 3**   -- Tabs Goto 3

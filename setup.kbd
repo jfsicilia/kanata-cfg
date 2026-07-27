@@ -452,7 +452,7 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
       $'|mod'              (t! fast_th '                                         (layer-toggle void_layer)) 
                      
   ;; Lower row keys (z, x, c, v, b, n, m, work as window, workspace, pane, tab, groups and session.
-  lsft                     (t!      th (t! 2x $action_tabs+h)                 $toggle_lsft_layer)
+  lsft                     (t!      th (t! 2x $action_tabs+h)                    $toggle_lsft_layer)
   $lang                    (t!      th $toggle_alt_chars                         $toggle_lang_layer)
       $z|workspaces        (t! fast_th z                                         $toggle_workspaces_layer)
       $x|groups            (t! fast_th x                                         $toggle_groups_layer)
@@ -464,10 +464,10 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
       $,|panes             (t! fast_th ,                                         $toggle_panes_layer)
       $.|groups            (t! fast_th .                                         $toggle_groups_layer)
       $/|workspaces        (t! fast_th /                                         $toggle_workspaces_layer)
-  rsft                     (t!      th (t! 2x $action_tabs+l)                 $toggle_rsft_layer)
+  rsft                     (t!      th (t! 2x $action_tabs+l)                    $toggle_rsft_layer)
 
   ;; Modifiers row.
-  $!lmet|replace           (t!      th  (t! 2x $action_workspaces+toggle)          $toggle_replace_&_!lmet_layer)
+  $!lmet|replace           (t!      th  (t! 2x $action_workspaces+toggle)        $toggle_replace_&_!lmet_layer)
   $!lalt|search            (t!      th  (t! 2x $action_panes+toggle)             $toggle_search_&_!lalt_layer)
   $!lctl|seek_sel          (t!      th  (t! 2x $action_tabs+toggle)       (multi $toggle_seek_n_select_&_!lctl_layer (on-release release-vkey vk_lalt)))
     $spc|domains           (t! fast_th  spc                               (multi $toggle_domains_layer (t! release_domains)))

@@ -1,3 +1,6 @@
+(defvar
+
+)
 ;; "" LCTL_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 (deflayermap (lctl_layer)
   (t! map_layers "$action_lctl" "lctl" ($<lalt $>lalt $<lmet $>lmet $lsft $rsft $!lalt $!lmet lsft rsft))
@@ -7,18 +10,8 @@
   ;; Special treatment is used to allow lctl+tab to mimic alt+tab to switch 
   ;; apps and lctl+` to mimic alt+` to switch apps of the same class.
 
-  ;; Virtual key vk_lalt is "pressed" on first tab pressed and will be
-  ;; "released" when lclt is released.
-  tab (switch 
-        ((input virtual vk_lalt)) (unmod (lctl) tab) break
-        () (multi (on-press press-vkey vk_lalt) lalt (unmod (lctl) tab)) break
-  )
-  ;; Virtual key vk_lalt is "pressed" on first ` pressed and will be
-  ;; "released" when lclt is released.
-  grv (switch 
-        ((input virtual vk_lalt)) (unmod (lctl) grv) break
-        () (multi (on-press press-vkey vk_lalt) lalt (unmod (lctl) grv)) break
-  )
+  tab  $action_lctl+tab
+  grv  $action_lctl+`
 ) 
 (deflayermap (lctl+lsft_layer)
   (t! map_layers "$action_lctl+lsft" "lctl+lsft" ($<lalt $>lalt $<lmet $>lmet $!lalt $!lmet))

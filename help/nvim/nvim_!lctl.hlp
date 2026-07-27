@@ -1,3 +1,5 @@
 # Physical mods (!lctl) - nvim (actions/nvim/nvim_physical_mods.kbd)
 **!lctl + a**  -- Select All
+**lctl + tab** -- Walk Through Apps
+**lctl + `**   -- Walk Through Same App
 **seek + spc** -- Seek And Select
