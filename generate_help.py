@@ -49,9 +49,35 @@ DOMAIN_TITLES: dict[str, str] = {
 DOMAIN_SHORT: dict[str, str] = {
     "seek_n_select": "seek",
 }
+# Reverse of DOMAIN_SHORT: action names embed the short form (e.g.
+# "action_seek+spc"), but domain files/details are keyed by the long form
+# (e.g. "actions_seek_n_select.iface.kbd") — action_domain() needs to
+# translate back to find them.
+_DOMAIN_FROM_SHORT: dict[str, str] = {short: long for long, short in DOMAIN_SHORT.items()}
 
 
 # ── helpers ──────────────────────────────────────────────────────────────────
+
+def _deref(token: str) -> str:
+    """"$foo"/"$~foo" → "foo" — the bare name a value references."""
+    return token.lstrip("$").lstrip("~")
+
+
+def _titleize(name: str) -> str:
+    """"tab_new"/"tabs+w" → "Tab New"/"Tabs W" — the house style for turning
+    an identifier into a help label."""
+    return name.replace("_", " ").replace("+", " ").title()
+
+
+def _strip_domain_prefix(name: str, domain: str) -> str:
+    """Drop a leading "{domain}+" or "{domain}_" from an action name's body,
+    leaving just the part that identifies the combo//action within its domain
+    ("action_" must already be removed)."""
+    for prefix in (f"{domain}+", f"{domain}_"):
+        if name.startswith(prefix):
+            return name[len(prefix):]
+    return name
+
 
 def domain_from_actions_path(path: Path) -> str:
     name = path.name.removeprefix("actions_")
@@ -93,47 +119,356 @@ def combo_str(action_name: str, domain: str,
     if key_map and action_name in key_map:
         return dk + " + " + key_map[action_name]
 
-    # Fallback: derive key from action name, splitting on "+" for readable display
-    prefix_plus  = f"{domain}+"
-    prefix_under = f"{domain}_"
-    if name.startswith(prefix_plus):
-        sub = name[len(prefix_plus):]
-        return dk + " + " + " + ".join(sub.split("+"))
-    if name.startswith(prefix_under):
-        sub = name[len(prefix_under):]
-        return dk + " + " + " + ".join(sub.split("_"))
-    return dk + " + " + " + ".join(name.split("+"))
+    # Fallback: derive key from action name, splitting on the same separator
+    # the domain prefix used ("_" only for the "{domain}_name" spelling).
+    sub = _strip_domain_prefix(name, domain)
+    sep = "_" if name.startswith(f"{domain}_") else "+"
+    return dk + " + " + " + ".join(sub.split(sep))
+
+
+# One defvar binding on one line: "name value", where value is either a
+# fully parenthesized expression — "sleep_system (multi (push-msg "...")
+# (cmd systemctl suspend))", whatever it wraps; _render_value() walks it
+# later to decide what's worth showing — or a single token that does NOT
+# start with "(". That exclusion is what keeps the opening line of a
+# multi-line expression ("foo (switch", body on later lines) from being
+# mistaken for a complete value: the balanced alternative can't match it
+# (no closing ")" before the MULTILINE "$"), and the bare-token
+# alternative refuses anything starting with "(". Multi-line values are
+# simply skipped, which is the intent.
+_VAR_VALUE_RE = re.compile(
+    r"^\s*([A-Za-z_][A-Za-z0-9_!+\\/.,;'\[\]=-]*)\s+(\(.*\)|[^\s(]\S*)\s*$",
+    re.MULTILINE,
+)
+_var_value_cache: dict[str, str] | None = None
+
+
+# Single visible characters a bare kanata key name types literally, mapped
+# to themselves (so "c" -> "c") plus named keys that are a single character
+# under another name ("grave" -> "`", "spc" -> " " — a plain space reads
+# fine inline and doesn't need a "[spc]" callout like the other named keys).
+_BASE_KEY_CHAR = {c: c for c in "abcdefghijklmnopqrstuvwxyz0123456789,-./;'=[]\\`"}
+_BASE_KEY_CHAR["grave"] = "`"
+_BASE_KEY_CHAR["spc"] = " "
+
+# US-QWERTY shift mapping for the symbol row — letters are handled via
+# .upper() instead, since that's uniform for every letter.
+_SHIFT_SYMBOL = {
+    "1": "!", "2": "@", "3": "#", "4": "$", "5": "%",
+    "6": "^", "7": "&", "8": "*", "9": "(", "0": ")",
+    "-": "_", "=": "+", "[": "{", "]": "}", "\\": "|",
+    ";": ":", "'": '"', ",": "<", ".": ">", "/": "?", "`": "~",
+}
+
+_MOD_CHORD_RE = re.compile(r"^(?:[LR]?[CAMS]-)+\S+$")
+
+
+def _shifted_char(base_char: str) -> str | None:
+    if base_char.isalpha():
+        return base_char.upper()
+    return _SHIFT_SYMBOL.get(base_char)
+
+
+def _render_macro_token(tok: str) -> tuple[str, str] | None:
+    """Classify one whitespace-separated macro token for display.
+
+    Returns (kind, text): kind "text" glues `text` onto the current run of
+    typed characters with no separator (a literal key, or the shifted
+    character a "S-x" step produces); kind "word" is its own space-separated
+    piece — a "[Nms]" delay, a bracketed special key like "[ent]", or a real
+    modifier chord (e.g. "C-t") shown as-is.
+
+    None means `tok` isn't a plain kanata key/chord at all — e.g. it's part
+    of a nested (cmd ...) shell call, a $variable, or a quoted string — and
+    signals the caller to give up on rendering this macro entirely, since
+    there's no safe way to represent the rest of it.
+    """
+    if tok.isdigit():
+        return ("word", f"[{tok}ms]")
+    m = re.fullmatch(r"Digit([0-9])", tok)
+    if m:
+        return ("text", m.group(1))
+    if tok in _BASE_KEY_CHAR:
+        return ("text", _BASE_KEY_CHAR[tok])
+    if tok.startswith("S-") and tok[2:] in _BASE_KEY_CHAR:
+        shifted = _shifted_char(_BASE_KEY_CHAR[tok[2:]])
+        if shifted:
+            return ("text", shifted)
+        # falls through to the chord check below (e.g. base has no shifted form)
+    if _MOD_CHORD_RE.match(tok):
+        return ("word", tok)
+    if re.fullmatch(r"[A-Za-z][A-Za-z0-9]*", tok):
+        return ("word", f"[{tok}]")
+    return None
+
+
+def _expand_macro_var_tokens(body: str, seen: frozenset[str]) -> str | None:
+    """Expand any $var/~$var tokens in a macro body to their raw values
+    before tokenizing for display — e.g. "$tmux_prefix [" (tmux_prefix =
+    "A-b") -> "A-b [", so a macro built on a prefix-key variable still
+    renders instead of being abandoned at the first "$" token. Returns
+    None if a $ref can't be resolved (missing, a cycle, or itself a
+    parenthesized expression too complex to inline here)."""
+    out = []
+    for tok in body.split():
+        if not tok.startswith("$"):
+            out.append(tok)
+            continue
+        ref = _deref(tok)
+        if ref in seen:
+            return None
+        raw = _raw_leaf_table().get(ref)
+        if raw is None or raw.startswith("("):
+            return None
+        expanded = _expand_macro_var_tokens(raw, seen | {ref})
+        if expanded is None:
+            return None
+        out.append(expanded)
+    return " ".join(out)
+
+
+def render_macro(body: str) -> str | None:
+    """Human-readable rendering of a (macro ...) body, e.g.
+
+        "C-t 10 c h r o m e S-; / / e x t e n s i o n s / s h o r t c u t s ent"
+        -> "C-t [10ms] chrome://extensions/shortcuts [ent]"
+
+    $var/~$var tokens (e.g. a "$tmux_prefix" leading a tmux macro) are
+    expanded to their raw value first (see _expand_macro_var_tokens).
+
+    Returns None if any token isn't a plain key/chord — a nested (cmd ...)
+    shell call, an unresolvable $variable, a quoted string — in which case
+    nothing here is safe to render (rather than guess and show something
+    misleading).
+    """
+    expanded = _expand_macro_var_tokens(body, frozenset())
+    if expanded is None:
+        return None
+    chunks: list[str] = []
+    text_run = ""
+    for tok in expanded.split():
+        classified = _render_macro_token(tok)
+        if classified is None:
+            return None
+        kind, rendered = classified
+        if kind == "text":
+            text_run += rendered
+            continue
+        if text_run:
+            chunks.append(text_run)
+            text_run = ""
+        chunks.append(rendered)
+    if text_run:
+        chunks.append(text_run)
+    return " ".join(chunks)
+
+
+def _split_top_level(expr: str) -> list[str]:
+    """Split `expr` on whitespace, but only at paren-depth 0 and outside
+    quoted strings — so "(cmd foo)" or '"a b"' survive as single pieces
+    instead of being torn apart. Used to walk one level of an s-expression
+    without a full parser."""
+    parts: list[str] = []
+    depth   = 0
+    quoted  = False
+    start   = 0
+    for i, c in enumerate(expr):
+        if c == '"':
+            quoted = not quoted
+        elif not quoted:
+            if c == "(":
+                depth += 1
+            elif c == ")":
+                depth -= 1
+            elif c.isspace() and depth == 0:
+                if i > start:
+                    parts.append(expr[start:i])
+                start = i + 1
+    if start < len(expr):
+        parts.append(expr[start:])
+    return parts
+
+
+def _render_value(value: str) -> str | None:
+    """Recursively render a kanata value expression for display, e.g.
+
+        "(t! unmod_all (macro RA-spc 300 s y s ... ent))"
+        -> "RA-spc [300ms] sys..."
+        "(multi (cmd kanata_sync.sh) (push-msg "RELOAD:") lrld)"
+        -> "kanata_sync.sh; lrld"
+
+    Understands a small fixed set of wrapper shapes:
+      - "(t! TEMPLATE ... LAST)"   -> recurse into the last argument
+      - "(macro ...)"              -> render_macro() on the remaining tokens
+      - "(cmd ...)"                -> the shell command, verbatim
+      - "(push-msg ...)"           -> never shown (notification only)
+      - "(multi A B ...)"          -> each of A, B, … rendered and joined
+                                       with "; " (push-msg pieces dropped)
+      - a bare atom (no parens)    -> shown as-is, unless it's "$var" (a
+                                       nested reference — out of scope here,
+                                       the top-level $var chain is handled
+                                       separately by _resolve_var_chain) or
+                                       "XX" (not-yet-implemented marker)
+
+    Anything else (switch, an unrecognized template, …) means there's no
+    safe way to represent it, so this returns None rather than guess.
+    """
+    value = value.strip()
+    if not value:
+        return None
+    if not value.startswith("("):
+        if value.startswith("$") or value.upper() == "XX":
+            return None
+        return value
+    if not value.endswith(")") or value.count("(") != value.count(")"):
+        return None
+    parts = _split_top_level(value[1:-1].strip())
+    if not parts:
+        return None
+    head = parts[0]
+    if head == "macro":
+        return render_macro(" ".join(parts[1:]))
+    if head == "t!":
+        return _render_value(parts[-1]) if len(parts) >= 2 else None
+    if head == "cmd":
+        cmd = " ".join(parts[1:])
+        if '"' in cmd or "$(" in cmd:
+            return None
+        return cmd
+    if head == "push-msg":
+        return None
+    if head == "multi":
+        pieces = []
+        for p in parts[1:]:
+            if p.startswith("(push-msg"):
+                continue
+            rendered = _render_value(p)
+            if rendered is None:
+                return None
+            pieces.append(rendered)
+        return "; ".join(pieces) if pieces else None
+    return None
+
+
+_raw_leaf_cache: dict[str, str] | None = None
+
+
+def _raw_leaf_table() -> dict[str, str]:
+    """Cached {name: raw_value_text} for every actions/ leaf-var defvar
+    binding capturable on a single line — either a bare token/$ref
+    (_VAR_VALUE_RE) or a fully parenthesized expression kept as its
+    ORIGINAL, unrendered text (_VAR_VALUE_EXPR_RE; rendering for display
+    happens later, once any $ chain has been followed to its terminal
+    value — see _resolve_var_chain). Absence here just means "too complex
+    to see on one line" (multi-line, a switch, …) — NOT the same as "not
+    implemented"; callers checking for reality (e.g. _cross_ref_is_real)
+    must not conflate the two. First definition found wins if a name is
+    (re)defined more than once.
+    """
+    global _raw_leaf_cache
+    if _raw_leaf_cache is None:
+        raw: dict[str, str] = {}
+        for path in sorted(ACTIONS_DIR.rglob("*.kbd")):
+            # Strip both whole-line comments and trailing inline comments —
+            # e.g. the ";;""" alignment-tooling marker (see CLAUDE.md) after
+            # a real value on the same line, which would otherwise defeat
+            # the "\s*$" end-of-value anchor in the regexes below.
+            text = re.sub(r";;.*$", "", path.read_text(), flags=re.MULTILINE)
+            for m in _VAR_VALUE_RE.finditer(text):
+                raw.setdefault(m.group(1), m.group(2))
+        _raw_leaf_cache = raw
+    return _raw_leaf_cache
+
+
+def _resolve_var_chain(
+    name: str, raw: dict[str, str], seen: frozenset[str]
+) -> str | None:
+    """Follow a chain of raw table values through $var/~$var references
+    until landing on a terminal value, rendering it for display if it's a
+    parenthesized expression. Returns None on a cycle, a reference to
+    something absent from the table (e.g. an action whose only default is
+    a per-app switch, which has no single combo to show), or an expression
+    _render_value can't confidently render."""
+    if name in seen:
+        return None
+    value = raw.get(name)
+    if value is None:
+        return None
+    if value.startswith("$"):
+        ref = _deref(value)
+        return _resolve_var_chain(ref, raw, seen | {name})
+    if value.startswith("("):
+        return _render_value(value)
+    return value
+
+
+def _var_value_table() -> dict[str, str]:
+    """Best-effort {name: display_combo} table for defvar bindings under
+    actions/ that resolve to something worth showing next to a help label
+    (e.g. "tab_new" -> "C-t", "chrome_keybindings" -> a rendered macro) —
+    e.g. "Tab New (C-t)". Built from _raw_leaf_table() by following each
+    name's $var chain to a terminal value (see _resolve_var_chain), so a
+    leaf var that just points at another leaf var still resolves to a
+    real combo instead of leaking the raw "$other_var" text.
+    """
+    global _var_value_cache
+    if _var_value_cache is None:
+        raw = _raw_leaf_table()
+        table = {}
+        for name in raw:
+            resolved = _resolve_var_chain(name, raw, frozenset())
+            if resolved is not None:
+                table[name] = resolved
+        _var_value_cache = table
+    return _var_value_cache
+
+
+def is_simple_combo(value: str | None) -> bool:
+    """True when `value` is a single bare kanata token (e.g. "C-1", "A-S-w",
+    "left") worth showing to the user as-is — not a $variable, macro,
+    switch, or other multi-token/parenthesized expression."""
+    if not value or value.upper() == "XX":
+        return False
+    if value.startswith(("(", "$", "~")):
+        return False
+    return len(value.split()) == 1
+
+
+def with_combo(label: str, combo: str | None) -> str:
+    """Append " (combo)" to `label`, or leave it alone when there's nothing
+    worth showing. Callers pass either a value already validated by
+    is_simple_combo, or a _var_value_table() lookup (whose entries are
+    resolved and rendered, so they need no further validation)."""
+    return f"{label} ({combo})" if combo else label
 
 
 def label_from_var(var_name: str, app: str) -> str:
     """'$nvim_action_page_up' → 'Page Up', '$folder_trash' → 'Trash'."""
-    var = var_name.lstrip("$").lstrip("~")
+    var = _deref(var_name)
+    stripped = var
     for prefix in [f"{app}_action_", f"{app}_", "folder_", "action_"]:
-        if var.startswith(prefix):
-            var = var[len(prefix):]
+        if stripped.startswith(prefix):
+            stripped = stripped[len(prefix):]
             break
-    return var.replace("_", " ").replace("+", " ").title()
+    label = _titleize(stripped)
+    return with_combo(label, _var_value_table().get(var))
 
 
 def label_from_action(action_name: str, domain: str) -> str:
     """Fallback label derived from action name when no $variable is available."""
-    name         = action_name.removeprefix("action_")
-    prefix_plus  = f"{domain}+"
-    prefix_under = f"{domain}_"
-    if name.startswith(prefix_plus):
-        sub = name[len(prefix_plus):]
-    elif name.startswith(prefix_under):
-        sub = name[len(prefix_under):]
-    else:
-        sub = name
-    return sub.replace("_", " ").replace("+", " ").title()
+    return _titleize(_strip_domain_prefix(action_name.removeprefix("action_"), domain))
 
 
 def action_domain(action_name: str) -> str:
     """The domain a fully-qualified action name belongs to — the part
     between "action_" and its first "+" (e.g. "action_tabs+move+h" -> "tabs").
+
+    Action names embed the domain's short form (e.g. "seek" in
+    "action_seek+spc"), which is translated back to the long form used by
+    domain files/details (e.g. "seek_n_select") via _DOMAIN_FROM_SHORT.
     """
-    return action_name.removeprefix("action_").split("+", 1)[0]
+    short = action_name.removeprefix("action_").split("+", 1)[0]
+    return _DOMAIN_FROM_SHORT.get(short, short)
 
 
 _domain_iface_details_cache: dict[str, dict[str, dict]] = {}
@@ -143,10 +478,17 @@ def _domain_iface_details(domain: str) -> dict[str, dict]:
     """Cached parse_iface(...) details for `domain`'s own actions file, so
     cross-domain action references can be resolved without re-reading the
     same file for every entry that points at it.
+
+    "domain<X>" (e.g. "domain,", "domainT") is a pseudo-domain: each punctuation
+    key / nvim-style sub-domain under the "domains" (SPC mods) system gets
+    its own name so action names don't collide, but they're all defined in
+    the single shared actions_domains.iface.kbd file rather than one file
+    per pseudo-domain — so the lookup is redirected there.
     """
     if domain not in _domain_iface_details_cache:
+        lookup = "domains" if domain.startswith("domain") and domain != "domains" else domain
         details: dict[str, dict] = {}
-        for path in (ACTIONS_DIR / f"actions_{domain}.iface.kbd", ACTIONS_DIR / f"actions_{domain}.kbd"):
+        for path in (ACTIONS_DIR / f"actions_{lookup}.iface.kbd", ACTIONS_DIR / f"actions_{lookup}.kbd"):
             if path.exists():
                 _, details = parse_iface(path)
                 break
@@ -211,15 +553,18 @@ def label_from_global_default(
         return name.replace("_", " ").title()
     # $leaf_var or $action_... → label from variable name
     if default.startswith("$"):
-        clean = default.lstrip("$").lstrip("~")
+        var_name = _deref(default)
+        clean = var_name
         if clean.startswith("action_"):
             return resolve_cross_domain_label(clean, domain, None, _seen)
         domain_pfx = f"{domain}_"
         if clean.startswith(domain_pfx):
             clean = clean[len(domain_pfx):]
-        return clean.replace("_", " ").replace("+", " ").title()
+        label = _titleize(clean)
+        return with_combo(label, _var_value_table().get(var_name))
     # Everything else (complex expressions, raw key tokens) → action name
-    return label_from_action(action_name, domain)
+    return with_combo(label_from_action(action_name, domain),
+                      default if is_simple_combo(default) else None)
 
 
 def is_real_default(value: str | None) -> bool:
@@ -370,38 +715,29 @@ def physical_mods_available_nodes(layer_stacks: list["LayerStack"]) -> list[tupl
 
 
 def physical_mods_node_entries(
-    node: tuple[str, ...], actions: list[tuple[tuple[str, ...], str, str]]
+    node: tuple[str, ...], actions: list[tuple[tuple[str, ...], str, str]],
+    rollup: bool = True,
 ) -> list[tuple[str, str]]:
     """(combo_display, action_name) pairs for the physical_mods help file of
     `node` (e.g. ("lctl",) or ("lctl", "lalt")).
 
-    Rolls up every action whose chord extends `node` — so the base "lctl"
-    file browses the whole "lctl universe" (lctl+lalt+c, lctl+lsft+a, …)
-    while "lctl+lalt" only shows what's nested under that chord specifically.
-    The combo is always shown in full (e.g. "lctl + lsft + a") since a
-    roll-up file mixes several held-modifier states together.
+    With rollup (the default) this takes every action whose chord *extends*
+    `node` — so the base "lctl" file browses the whole "lctl universe"
+    (lctl+lalt+c, lctl+lsft+a, …) while "lctl+lalt" only shows what's nested
+    under that chord specifically. The combo is always shown in full (e.g.
+    "lctl + lsft + a") since a roll-up file mixes several held-modifier
+    states together.
+
+    With rollup=False only chords exactly equal to `node` are taken — used
+    when merging a shadowed layer's contribution into a stacked-layer help
+    file (see LayerStack): only what's actually co-active there, not the
+    unrelated shift branches also reachable from that layer's own file.
     """
     depth = len(node)
     return [
         (" + ".join(mods + (key,)), action)
         for mods, key, action in actions
-        if mods[:depth] == node
-    ]
-
-
-def physical_mods_exact_entries(
-    node: tuple[str, ...], actions: list[tuple[tuple[str, ...], str, str]]
-) -> list[tuple[str, str]]:
-    """Like physical_mods_node_entries but only actions whose chord is
-    exactly `node` — no descendants rolled in. Used when merging a shadowed
-    layer's contribution into a stacked-layer help file (see LayerStack):
-    only what's actually co-active there, not the unrelated shift branches
-    also reachable from that layer's own standalone file.
-    """
-    return [
-        (" + ".join(mods + (key,)), action)
-        for mods, key, action in actions
-        if mods == node
+        if (mods[:depth] == node if rollup else mods == node)
     ]
 
 
@@ -525,7 +861,7 @@ def combination_domain_entries(
     if not iface_path.exists():
         return []
     iface_order, details = parse_iface(iface_path)
-    _, key_map = parse_layer_actions(domain_name, set(iface_order))
+    key_map = parse_layer_key_map(domain_name, set(iface_order))
 
     branch_actions = [a for a in iface_order if action_shift_branch(a) == shift]
 
@@ -537,14 +873,9 @@ def combination_domain_entries(
 
     entries: list[tuple[str, str]] = []
     for a in branch_actions:
-        if a in impl:
-            label = label_for_implemented_value(impl[a], a, domain_name, app)
-        else:
-            effective = effective_global_default(details, a, domain_name)
-            if effective is None:
-                continue
-            label = label_from_global_default(effective, a, domain_name)
-        entries.append((combo_str(a, domain_name, key_map), label))
+        label = entry_label(a, domain_name, details, impl, app)
+        if label is not None:
+            entries.append((combo_str(a, domain_name, key_map), label))
     return entries
 
 
@@ -557,13 +888,52 @@ def is_implemented(value: str) -> bool:
     return True
 
 
-def effective_global_default(details: dict[str, dict], action: str, domain: str) -> str | None:
+def _cross_ref_is_real(ref: str, seen: frozenset[str]) -> bool:
+    """Whether a $ref (already stripped of leading "$"/"~") used as a
+    global-default value ultimately resolves to a genuine implementation,
+    rather than just being a reference to a placeholder.
+
+    A reference into ANOTHER domain's action (ref starts with "action_")
+    only counts as real when that action's own effective_global_default is
+    real — every domain's per-app switch catch-all defaults to a "NOTIFY:
+    ... not implemented" push-msg (or XX) until someone actually wires up
+    a real global default, and a bare $reference to it is not that. A
+    plain leaf var counts as real unless its own raw value is positively a
+    placeholder or itself an unreal cross-domain reference; a leaf var
+    whose value is too complex to see on one line (absent from
+    _raw_leaf_table) is assumed real — see that function's docstring.
+    """
+    if ref in seen:
+        return False
+    if ref.startswith("action_"):
+        # Don't add `ref` to `seen` here — effective_global_default's own
+        # "action in _seen" guard checks this exact name (ref *is* the
+        # action being evaluated), so pre-adding it would make every
+        # first-time cross-domain reference look like an immediate cycle.
+        ref_domain = action_domain(ref)
+        return effective_global_default(_domain_iface_details(ref_domain), ref, ref_domain, seen) is not None
+    seen = seen | {ref}
+    raw = _raw_leaf_table().get(ref)
+    if raw is None:
+        return True
+    if raw.startswith("$"):
+        return _cross_ref_is_real(_deref(raw), seen)
+    return is_real_default(raw)
+
+
+def effective_global_default(
+    details: dict[str, dict], action: str, domain: str, _seen: frozenset[str] = frozenset()
+) -> str | None:
     """The global-default value to show in help for `action`, or None if there
     isn't one worth showing.
 
     Prefers the switch catch-all, falls back to a direct (non-switch) binding,
     and — for physical_mods — drops a bare passthrough chord (see
-    is_physical_mods_passthrough).
+    is_physical_mods_passthrough). A value that's just a $reference to
+    ANOTHER domain's action (directly or through a chain of leaf vars) is
+    only kept when that reference is itself real (see _cross_ref_is_real)
+    — otherwise a cross-domain link to something unimplemented would
+    misleadingly look implemented here.
     """
     d = details.get(action, {})
     g = d.get("global")
@@ -574,6 +944,12 @@ def effective_global_default(details: dict[str, dict], action: str, domain: str)
         effective = direct if is_real_default(direct) else None
     if effective is None or is_physical_mods_passthrough(action, domain, effective):
         return None
+    if effective.startswith("$"):
+        if action in _seen:
+            return None
+        ref = _deref(effective)
+        if not _cross_ref_is_real(ref, _seen | {action}):
+            return None
     return effective
 
 
@@ -588,7 +964,7 @@ def label_for_implemented_value(
     resolve_cross_domain_label), rather than title-cased into "Tabs T".
     """
     if value.startswith("$"):
-        clean      = value.lstrip("$").lstrip("~")
+        clean      = _deref(value)
         app_prefix = f"{app}_"
         if clean.startswith(app_prefix) and clean[len(app_prefix):].startswith("action_"):
             ref_action = clean[len(app_prefix):]
@@ -600,6 +976,26 @@ def label_for_implemented_value(
     return label_from_global_default(value, action_name, domain, _seen)
 
 
+def entry_label(
+    action: str, domain: str, details: dict[str, dict],
+    impl: dict[str, str] | None = None, app: str | None = None,
+) -> str | None:
+    """The help label for one action: the app's own implementation when it
+    overrides it, else the domain's real global default — or None when
+    neither exists, meaning the action gets no help entry at all.
+
+    This is the single resolution rule every help file follows (global
+    catalog, per-app files, shadowed-domain merges, physical_mods roll-ups);
+    passing impl={} / app=None gives the globals-only form.
+    """
+    if impl and action in impl:
+        return label_for_implemented_value(impl[action], action, domain, app)
+    effective = effective_global_default(details, action, domain)
+    if effective is None:
+        return None
+    return label_from_global_default(effective, action, domain)
+
+
 # ── parsers ───────────────────────────────────────────────────────────────────
 
 def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
@@ -608,7 +1004,6 @@ def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
     Returns:
       - ordered list of action names as they appear in the file
       - details dict: {action_name: {
-            'apps':       [str],        # vk_* app names from switch conditions
             'global':     str | None,   # () catch-all value
             'direct':     str | None,   # direct binding value (no switch)
             'app_values': {app: var},   # inline per-app values (bookmarks-style)
@@ -633,8 +1028,6 @@ def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
         # the real binding on the next line.
         block_nc = re.sub(r'^\s*;;.*$', '', block, flags=re.MULTILINE)
 
-        apps = re.findall(r"\(\(input virtual vk_(\w+)\)\)", block_nc)
-
         # Catch-all value: capture full push-msg expression or simple token
         global_m = re.search(
             r'\(\)\s+(\(push-msg\s+"[^"]*"\)|\S+)\s+break',
@@ -642,27 +1035,22 @@ def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
         )
         global_val = global_m.group(1) if global_m else None
 
-        # Direct binding fallback for non-switch actions
+        # Direct binding fallback for non-switch actions — first shape that
+        # matches anywhere in the block wins, most specific first.
         direct_val = None
         if global_val is None and "switch" not in block_nc:
-            # (t! unmod_all KEY)
-            dt = re.search(r'action_\S+\s+\(t!\s+unmod_all\s+([^\s)]+)', block_nc)
-            if dt:
-                direct_val = dt.group(1)
-            else:
-                # action_name $var
-                dt2 = re.search(r'action_\S+\s+(\$\S+)', block_nc)
-                if dt2:
-                    direct_val = dt2.group(1)
-                else:
-                    # action_name KEY (any simple token: S-prnt, lrld, prnt, RS-spc, …)
-                    dt3 = re.search(r'action_\S+\s+([^\s()\n]+)', block_nc)
-                    if dt3:
-                        direct_val = dt3.group(1)
-            if direct_val is None:
-                if re.search(r'action_\S+\s+\(', block_nc):
-                    # Complex expression → signal label_from_action
-                    direct_val = "(action)"
+            for pattern in (
+                r'action_\S+\s+\(t!\s+unmod_all\s+([^\s)]+)',  # (t! unmod_all KEY)
+                r'action_\S+\s+(\$\S+)',                       # action_name $var
+                r'action_\S+\s+([^\s()\n]+)',                  # action_name KEY (S-prnt, lrld, …)
+            ):
+                m_direct = re.search(pattern, block_nc)
+                if m_direct:
+                    direct_val = m_direct.group(1)
+                    break
+            # Complex expression → signal label_from_action
+            if direct_val is None and re.search(r'action_\S+\s+\(', block_nc):
+                direct_val = "(action)"
 
         # Inline per-app values for bookmarks-style files (no separate app file)
         app_values: dict[str, str] = {}
@@ -681,7 +1069,6 @@ def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
                 app_values[av_app] = av_expr
 
         details[name] = {
-            "apps":       apps,
             "global":     global_val,
             "direct":     direct_val,
             "app_values": app_values,
@@ -690,27 +1077,20 @@ def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
     return order, details
 
 
-def parse_layer_actions(
-    domain: str, iface_action_set: set[str]
-) -> tuple[list[str], dict[str, str]]:
-    """Return (ordered_actions, key_map).
+def parse_layer_key_map(domain: str, iface_action_set: set[str]) -> dict[str, str]:
+    """{action_name: key_combo_suffix} — the physical key path for each
+    action, e.g. "h", "lsft + t", "move + h". Built from the first key that
+    maps to each action in layers/layer_{domain}.kbd, so the combo shown in
+    help is what the user actually presses.
 
-    ordered_actions: action names from the layer file, in file order,
-                     filtered to those defined in the iface.
-    key_map:         {action_name: key_combo_suffix} — physical key path for
-                     each action, e.g. "h", "lsft + t", "move + h".
-                     Built from the first key that maps to each action in the
-                     layer file, so the combo shows what the user actually presses.
-
-    Returns ([], {}) when the layer file is absent (caller falls back to iface order).
+    Empty when the layer file is absent (callers fall back to name-parsing
+    in combo_str).
     """
     layer_path = LAYERS_DIR / f"layer_{domain}.kbd"
     if not layer_path.exists():
-        return [], {}
+        return {}
 
     text = layer_path.read_text()
-    seen: set[str]           = set()
-    order: list[str]         = []
     key_map: dict[str, str]  = {}
     current_mod: str | None  = None
 
@@ -761,16 +1141,11 @@ def parse_layer_actions(
         if action not in iface_action_set:
             continue
 
-        if action not in seen:
-            seen.add(action)
-            order.append(action)
-
         # Record the first physical key that triggers this action
         if action not in key_map:
-            suffix = f"{current_mod} + {physical_key}" if current_mod else physical_key
-            key_map[action] = suffix
+            key_map[action] = f"{current_mod} + {physical_key}" if current_mod else physical_key
 
-    return order, key_map
+    return key_map
 
 
 def parse_app_file(path: Path, app: str) -> dict[str, str]:
@@ -794,6 +1169,17 @@ def parse_app_file(path: Path, app: str) -> dict[str, str]:
 
 
 # ── Domains layer parser ─────────────────────────────────────────────────────
+
+def _domains_physical_key(raw_key: str) -> str:
+    """The physical key a layer_domains.kbd line binds: "$modA|x" → "a",
+    "$toggle" → "toggle", "," → ",". The "mod" prefix on an alias is the
+    domains-layer naming convention for the key that opens a sub-domain,
+    not part of the key itself."""
+    if not raw_key.startswith("$"):
+        return raw_key
+    base = raw_key[1:].split("|")[0]
+    return base[3:] if base.startswith("mod") and len(base) > 3 else base
+
 
 def parse_domains_layer() -> tuple[
     list[tuple[str, str, str]],          # spc_entries: [(phys_key, mod_name, title)]
@@ -844,41 +1230,24 @@ def parse_domains_layer() -> tuple[
             pending_cmnt = ""
             continue
 
-        # Data line inside a block
+        # Data line inside a block: the physical key is always its first token
         pending_cmnt = ""
+        key_m = re.match(r'^(\S+)', s)
+        if not key_m or current_ctx is None:
+            continue
+        phys = _domains_physical_key(key_m.group(1))
 
         if current_ctx == "domains":
-            key_m = re.match(r'^(\S+)', s)
-            vk_m  = re.search(r'press-vkey vk_([^\s)]+)', s)
-            if key_m and vk_m:
-                raw_key  = key_m.group(1)
-                mod_name = vk_m.group(1)
-                if raw_key.startswith("$"):
-                    base = raw_key[1:].split("|")[0]
-                    phys = base[3:] if base.startswith("mod") and len(base) > 3 else base
-                else:
-                    phys = raw_key
+            vk_m = re.search(r'press-vkey vk_([^\s)]+)', s)
+            if vk_m:
                 # vk name is like "domains+A"; normalize to "a" to match sublayer keys
-                mod_key = mod_name.split("+", 1)[-1].lower() if "+" in mod_name else mod_name.lower()
-                domains_raw.append((phys, mod_key))
-
-        elif current_ctx is not None:
-            if s.startswith("_"):
-                continue
-            key_m = re.match(r'^(\S+)', s)
+                domains_raw.append((phys, vk_m.group(1).split("+", 1)[-1].lower()))
+        elif not s.startswith("_"):
             # Search (not match) so the action is found even when wrapped in
             # a template call, e.g. "\ (t! sft_switch $action_mod\+mod\ ...)"
             action_m = re.search(r'\$(action_\S+)', s)
-            if not key_m or not action_m:
-                continue
-            raw_key = key_m.group(1)
-            action  = action_m.group(1)
-            if raw_key.startswith("$"):
-                base = raw_key[1:].split("|")[0]
-                phys = base[3:] if base.startswith("mod") and len(base) > 3 else base
-            else:
-                phys = raw_key
-            sublayers[current_ctx].append((phys, action))
+            if action_m:
+                sublayers[current_ctx].append((phys, action_m.group(1)))
 
     spc_entries = [
         (phys, mod, layer_titles.get(mod, ""))
@@ -905,331 +1274,296 @@ def format_hlp(title: str, entries: list[tuple[str, str]], source_file: Path | N
 
 # ── main ──────────────────────────────────────────────────────────────────────
 
-def main(dry_run: bool = False) -> None:
-    HELP_DIR.mkdir(exist_ok=True)
-    written: set[Path] = set()
+class HelpWriter:
+    """Writes .hlp files and remembers which ones it wrote, so whatever is
+    left over from a previous run can be pruned at the end."""
 
-    def emit(out: Path, title: str, entries: list[tuple[str, str]], source: Path) -> None:
-        """Render, write and track a .hlp file (no-op write in dry-run mode)."""
-        written.add(out)
-        print(f"  {'[dry]' if dry_run else 'wrote'} {out.relative_to(ROOT)}")
-        if not dry_run:
+    def __init__(self, dry_run: bool = False):
+        self.dry_run = dry_run
+        self.written: set[Path] = set()
+
+    def emit(self, out: Path, title: str, entries: list[tuple[str, str]], source: Path) -> None:
+        """Render, write and track one .hlp file (no-op write in dry-run mode)."""
+        self.written.add(out)
+        print(f"  {'[dry]' if self.dry_run else 'wrote'} {out.relative_to(ROOT)}")
+        if not self.dry_run:
             out.parent.mkdir(exist_ok=True)
             out.write_text(format_hlp(title, entries, source))
 
-    iface_files = sorted(ACTIONS_DIR.glob("actions_*.iface.kbd"))
-    plain_files = sorted(
-        f for f in ACTIONS_DIR.glob("actions_*.kbd")
-        if ".iface." not in f.name
-    )
+    def prune(self) -> None:
+        """Delete .hlp files this run didn't write (root and app subdirs),
+        then drop any app subdirectory left with nothing in it."""
+        for stale in sorted(HELP_DIR.glob("**/*.hlp")):
+            if stale not in self.written:
+                print(f"  {'[dry]' if self.dry_run else 'removed'} {stale.relative_to(ROOT)}")
+                if not self.dry_run:
+                    stale.unlink()
+        if not self.dry_run:
+            for subdir in sorted(HELP_DIR.iterdir()):
+                if subdir.is_dir() and not any(subdir.glob("*.hlp")):
+                    subdir.rmdir()
+
+
+def emit_domain_help(w: HelpWriter, actions_path: Path, app_dirs: list[Path]) -> None:
+    """The global catalog and every per-app file for one ordinary domain."""
+    domain = domain_from_actions_path(actions_path)
+    short  = domain_short(domain)
+    title  = DOMAIN_TITLES.get(domain, domain.replace("_", " ").title())
+
+    iface_order, details = parse_iface(actions_path)
+    # Layer file provides the physical-key map for accurate combo strings.
+    # Action order always follows the actions file (iface_order).
+    key_map = parse_layer_key_map(domain, set(iface_order))
+
+    def entries_for(impl: dict[str, str] | None = None, app: str | None = None):
+        out = []
+        for a in iface_order:
+            label = entry_label(a, domain, details, impl, app)
+            if label is not None:
+                out.append((combo_str(a, domain, key_map), label))
+        return out
+
+    # ── Global help ──────────────────────────────────────────────────────
+    # Only combos with a real global default (or a direct binding) get an
+    # entry, but the file itself is always emitted — even title-only — so
+    # every domain you can hold has a help reminder of what it's for,
+    # regardless of how much of it is actually implemented yet.
+    w.emit(HELP_DIR / f"global_{short}.hlp", title, entries_for(), actions_path)
+
+    # ── Per-app help from separate app files ─────────────────────────────
+    for app_dir in app_dirs:
+        app      = app_dir.name
+        app_file = find_app_file(app_dir, app, domain)
+        if app_file is None:
+            continue
+        entries = entries_for(parse_app_file(app_file, app), app)
+        if entries:
+            w.emit(HELP_DIR / app / f"{app}_{short}.hlp", f"{title} - {app}", entries, app_file)
+
+    # ── Per-app help from inline values ──────────────────────────────────
+    # For non-iface files (bookmarks, …) where per-app implementations are
+    # embedded in the main actions file rather than separate app files.
+    inline_by_app: dict[str, list[tuple[str, str]]] = {}
+    for a in iface_order:
+        for av_app, av_val in details.get(a, {}).get("app_values", {}).items():
+            # Skip if a separate app file already handles this domain
+            if find_app_file(ACTIONS_DIR / av_app, av_app, domain) is not None:
+                continue
+            if av_val.startswith("$"):
+                label = label_from_var(av_val, av_app)
+            elif av_val.startswith("("):
+                label = label_from_action(a, domain)
+            else:
+                label = _titleize(av_val)
+            inline_by_app.setdefault(av_app, []).append((combo_str(a, domain, key_map), label))
+
+    for av_app, app_entries in inline_by_app.items():
+        if app_entries:
+            w.emit(HELP_DIR / av_app / f"{av_app}_{short}.hlp",
+                   f"{title} - {av_app}", app_entries, actions_path)
+
+
+def emit_domains_nav_help(w: HelpWriter, app_dirs: list[Path]) -> None:
+    """The SPC-mods system's two-level navigation help:
+      Level 1  global_domains.hlp       shown when holding spc
+      Level 2  global_domains+{key}.hlp shown when holding spc + key
+               {app}_domains+{key}      the same, inside a specific app
+    """
+    domains_iface = ACTIONS_DIR / "actions_domains.iface.kbd"
+    if not domains_iface.exists():
+        return
+    _, iface_details = parse_iface(domains_iface)
+    spc_entries, sublayers = parse_domains_layer()
+
+    # "/" can't appear in filenames; replace problematic chars
+    def fsafe(k: str) -> str:
+        return k.replace("/", "slash").replace("\\", "bslash")
+
+    # Sub-domains worth walking: titled, and with at least one binding.
+    walkable = [
+        (key, title, sublayers[mod])
+        for key, mod, title in spc_entries
+        if title and sublayers.get(mod)
+    ]
+
+    # Level 2 first, so the level-1 overview can be filtered to the same
+    # set — a domain with no real global default anywhere inside it (e.g.
+    # Git, per-app only) shouldn't be advertised as globally available at
+    # the top level either.
+    overview: list[tuple[str, str]] = []
+    for key, title, sub_actions in walkable:
+        entries = [
+            (f"spc + {key} + {sub_key}",
+             label_from_global_default(iface_details[action_name]["global"], action_name, "domains"))
+            for sub_key, action_name in sub_actions
+            if is_real_default(iface_details.get(action_name, {}).get("global"))
+        ]
+        if entries:
+            overview.append((f"spc + {key}", title))
+            w.emit(HELP_DIR / f"global_domains+{fsafe(key)}.hlp", title, entries, domains_iface)
+
+    if overview:
+        w.emit(HELP_DIR / "global_domains.hlp", "Domains", overview, domains_iface)
+
+    for app_dir in app_dirs:
+        app      = app_dir.name
+        app_file = app_dir / f"{app}_domains.kbd"
+        if not app_file.exists():
+            continue
+        impl         = parse_app_file(app_file, app)
+        app_overview: list[tuple[str, str]] = []
+
+        for key, title, sub_actions in walkable:
+            entries = [
+                (f"spc + {key} + {sub_key}",
+                 label_for_implemented_value(impl[action_name], action_name, "domains", app))
+                for sub_key, action_name in sub_actions
+                if action_name in impl
+            ]
+            if entries:
+                app_overview.append((f"spc + {key}", title))
+                w.emit(HELP_DIR / app / f"{app}_domains+{fsafe(key)}.hlp",
+                       f"{title} - {app}", entries, app_file)
+
+        if app_overview:
+            w.emit(HELP_DIR / app / f"{app}_domains.hlp", f"Domains - {app}", app_overview, app_file)
+
+
+def emit_physical_mods_help(
+    w: HelpWriter, app_dirs: list[Path], layer_stacks: list[LayerStack]
+) -> None:
+    """One help file per reachable modifier layer.
+
+    kwanata resolves help by stripping "_layer" off the *current kanata
+    layer* and looking up "{app}_{that}.hlp" / "global_{that}.hlp" — there
+    is no single "phys" layer a user ever holds, so (unlike every other
+    domain) this can't be one merged file; it needs one per actual
+    reachable layer, each rolling up its own descendants. See
+    physical_mods_available_nodes / physical_mods_node_entries.
+
+    Some physical keys push a multi-layer stack in one hold (see
+    LayerStack) where kanata only ever reports the topmost layer as
+    active — so that layer's file additionally folds in every shadowed
+    layer's own content (another physical_mods layer, a foreign domain's
+    base layer, or both), otherwise unreachable from here. Every layer
+    that's always shadowed and never itself a stack top (e.g. "lctl",
+    "lctl+lalt" — always the mid/base of some "!"-topped stack) gets no
+    standalone file at all, since it would just be dead weight; the
+    remaining, genuinely reachable layers always get a global help file,
+    a title-only placeholder if nothing is bound there yet — so every
+    modifier you can hold has a reminder of what it's for.
+    """
+    iface_path = ACTIONS_DIR / "actions_physical_mods.iface.kbd"
+    if not iface_path.exists():
+        return
+    domain     = "physical_mods"
+    base_title = DOMAIN_TITLES.get(domain, "Physical mods")
+    iface_order, details = parse_iface(iface_path)
+
+    actions: list[tuple[tuple[str, ...], str, str]] = []
+    for a in iface_order:
+        parsed = parse_physical_mods_action(a)
+        if parsed is not None:
+            actions.append((*parsed, a))
+
+    available_nodes = physical_mods_available_nodes(layer_stacks)
+    stacks = [s for s in layer_stacks if s.top_node in available_nodes]
+
+    def stacks_for(node: tuple[str, ...]) -> list[LayerStack]:
+        """Stacks whose top layer is `node` or one of its descendants — e.g.
+        node ("!lctl",) picks up the plain, +lsft and +rsft stacks alike,
+        mirroring physical_mods_node_entries' own roll-up so the base file
+        stays a full one-stop overview.
+        """
+        return [s for s in stacks if s.top_node[:len(node)] == node]
+
+    def merged_entries(
+        node: tuple[str, ...], app: str | None = None, impl: dict[str, str] | None = None
+    ) -> list[tuple[str, str]]:
+        """This layer's own roll-up plus everything folded in from the
+        layers it shadows (see LayerStack). app=None builds the global
+        catalog; passing app/impl resolves each entry against that app.
+        """
+        def labelled(pairs: list[tuple[str, str]]) -> list[tuple[str, str]]:
+            out = []
+            for combo, a in pairs:
+                label = entry_label(a, domain, details, impl, app)
+                if label is not None:
+                    out.append((combo, label))
+            return out
+
+        entries = labelled(physical_mods_node_entries(node, actions))
+        for stack in stacks_for(node):
+            for shadow_node in stack.shadowed_physical_mods_nodes():
+                entries += labelled(physical_mods_node_entries(shadow_node, actions, rollup=False))
+            for domain_name, shift in stack.shadowed_domains():
+                entries += combination_domain_entries(domain_name, shift, app=app)
+        return entries
+
+    for node in available_nodes:
+        layer_name = "+".join(node)
+        # Always emit — a title-only placeholder when nothing is bound yet
+        # still serves as a reminder of what this modifier is for.
+        w.emit(HELP_DIR / f"global_{layer_name}.hlp",
+               f"{base_title} ({layer_name})", merged_entries(node), iface_path)
+
+    for app_dir in app_dirs:
+        app      = app_dir.name
+        app_file = find_app_file(app_dir, app, domain)
+        impl     = parse_app_file(app_file, app) if app_file else {}
+
+        # Which shadowed foreign domains this app actually overrides — used
+        # below to avoid emitting a per-app file that would just duplicate
+        # the global one verbatim (matching the precedent set by the generic
+        # per-domain loop: no app file, no per-app help file, since the
+        # global one already covers it). Per-app files are never
+        # placeholders — only the global catalog is.
+        domain_overridden = {
+            domain_name: find_app_file(ACTIONS_DIR / app, app, domain_name) is not None
+            for stack in stacks
+            for domain_name, _shift in stack.shadowed_domains()
+        }
+
+        for node in available_nodes:
+            has_reason = app_file is not None or any(
+                domain_overridden[domain_name]
+                for stack in stacks_for(node)
+                for domain_name, _shift in stack.shadowed_domains()
+            )
+            if not has_reason:
+                continue
+            entries = merged_entries(node, app, impl)
+            if entries:
+                layer_name = "+".join(node)
+                w.emit(HELP_DIR / app / f"{app}_{layer_name}.hlp",
+                       f"{base_title} ({layer_name}) - {app}", entries, app_file or iface_path)
+
+
+def main(dry_run: bool = False) -> None:
+    HELP_DIR.mkdir(exist_ok=True)
+    w = HelpWriter(dry_run)
+
     # Every foreign domain shadowed by a LayerStack always gets pushed
     # underneath a physical_mods "!mod" top layer — kanata (and so kwanata)
     # only ever reports that top layer as active, so the shadowed domain's
     # own layer name is never independently reachable, and its standalone
     # help file would just be dead weight. Its content is instead folded
-    # into the physical_mods merge below.
+    # into the physical_mods merge (see emit_physical_mods_help).
     layer_stacks        = parse_layer_stacks()
     unreachable_domains = {"domains", "physical_mods"} | {
         domain_name for s in layer_stacks for domain_name, _shift in s.shadowed_domains()
     }
-    all_files = [
-        f for f in iface_files + plain_files
-        if domain_from_actions_path(f) not in unreachable_domains
-    ]
-    app_dirs  = sorted(d for d in ACTIONS_DIR.iterdir() if d.is_dir())
+    iface_files = sorted(ACTIONS_DIR.glob("actions_*.iface.kbd"))
+    plain_files = sorted(f for f in ACTIONS_DIR.glob("actions_*.kbd") if ".iface." not in f.name)
+    app_dirs    = sorted(d for d in ACTIONS_DIR.iterdir() if d.is_dir())
 
-    for actions_path in all_files:
-        domain = domain_from_actions_path(actions_path)
-        short  = domain_short(domain)
-        title  = DOMAIN_TITLES.get(domain, domain.replace("_", " ").title())
+    for actions_path in iface_files + plain_files:
+        if domain_from_actions_path(actions_path) not in unreachable_domains:
+            emit_domain_help(w, actions_path, app_dirs)
 
-        iface_order, details = parse_iface(actions_path)
-        iface_set = set(iface_order)
-
-        # Layer file provides the physical-key map for accurate combo strings.
-        # Action order always follows the actions file (iface_order).
-        _, key_map = parse_layer_actions(domain, iface_set)
-        actions = iface_order
-
-        # ── Global help ───────────────────────────────────────────────────────
-        # Only combos with a real global default (or a direct binding) get an
-        # entry, but the file itself is always emitted — even title-only —
-        # so every domain you can hold has a help reminder of what it's for,
-        # regardless of how much of it is actually implemented yet.
-        global_entries: list[tuple[str, str]] = []
-        for a in actions:
-            effective = effective_global_default(details, a, domain)
-            if effective is None:
-                continue
-            global_entries.append((
-                combo_str(a, domain, key_map),
-                label_from_global_default(effective, a, domain),
-            ))
-
-        emit(HELP_DIR / f"global_{short}.hlp", title, global_entries, actions_path)
-
-        # ── Per-app help from separate app files ──────────────────────────────
-        # Use iface_order (not layer_actions) so that domains where the layer
-        # uses templates (e.g. physical_mods) still expose all overridden actions.
-        for app_dir in app_dirs:
-            app      = app_dir.name
-            app_file = find_app_file(app_dir, app, domain)
-            if app_file is None:
-                continue
-
-            impl    = parse_app_file(app_file, app)
-            entries: list[tuple[str, str]] = []
-            for a in iface_order:
-                if a in impl:
-                    label = label_for_implemented_value(impl[a], a, domain, app)
-                else:
-                    # Fall back to global default for combos the app doesn't override
-                    effective = effective_global_default(details, a, domain)
-                    if effective is None:
-                        continue
-                    label = label_from_global_default(effective, a, domain)
-                entries.append((combo_str(a, domain, key_map), label))
-
-            if entries:
-                emit(HELP_DIR / app / f"{app}_{short}.hlp", f"{title} - {app}", entries, app_file)
-
-        # ── Per-app help from inline values ───────────────────────────────────
-        # For non-iface files (bookmarks, …) where per-app implementations are
-        # embedded in the main actions file rather than separate app files.
-        inline_by_app: dict[str, list[tuple[str, str]]] = {}
-        for a in actions:
-            avs = details.get(a, {}).get("app_values", {})
-            for av_app, av_val in avs.items():
-                # Skip if a separate app file already handles this domain
-                if find_app_file(ACTIONS_DIR / av_app, av_app, domain) is not None:
-                    continue
-                if av_val.startswith("$"):
-                    label = label_from_var(av_val, av_app)
-                elif av_val.startswith("("):
-                    label = label_from_action(a, domain)
-                else:
-                    label = av_val.replace("_", " ").replace("+", " ").title()
-                inline_by_app.setdefault(av_app, []).append(
-                    (combo_str(a, domain, key_map), label)
-                )
-
-        for av_app, app_entries in inline_by_app.items():
-            if app_entries:
-                emit(HELP_DIR / av_app / f"{av_app}_{short}.hlp",
-                     f"{title} - {av_app}", app_entries, actions_path)
-
-    # ── Domains: two-level navigation ────────────────────────────────────────
-    # Level 1  global_domains.hlp       shown when holding spc
-    # Level 2  global_domains+{key}.hlp shown when holding spc + key (global default)
-    #          {app}_domains+{key}      shown when holding spc + key in a specific app
-    domains_iface = ACTIONS_DIR / "actions_domains.iface.kbd"
-    if domains_iface.exists():
-        _, iface_details = parse_iface(domains_iface)
-        spc_entries, sublayers = parse_domains_layer()
-
-        # "/" can't appear in filenames; replace problematic chars
-        def fsafe(k: str) -> str:
-            return k.replace("/", "slash").replace("\\", "bslash")
-
-        # Level 2 — one file per sub-domain key (only those with a real
-        # global default). Computed first so the level-1 overview can be
-        # filtered to the same set — a domain with no real global default
-        # anywhere inside it (e.g. Git, per-app only) shouldn't be advertised
-        # as globally available at the top level either.
-        overview: list[tuple[str, str]] = []
-        for key, mod, title in spc_entries:
-            if not title or mod not in sublayers or not sublayers[mod]:
-                continue
-            sub_actions = sublayers[mod]
-
-            global_entries: list[tuple[str, str]] = []
-            for sub_key, action_name in sub_actions:
-                g = iface_details.get(action_name, {}).get("global")
-                if is_real_default(g):
-                    global_entries.append((
-                        f"spc + {key} + {sub_key}",
-                        label_from_global_default(g, action_name, "domains"),
-                    ))
-            if not global_entries:
-                continue
-
-            overview.append((f"spc + {key}", title))
-            emit(HELP_DIR / f"global_domains+{fsafe(key)}.hlp", title, global_entries, domains_iface)
-
-        # Level 1 — global_domains.hlp: spc + key → domain title
-        if overview:
-            emit(HELP_DIR / "global_domains.hlp", "Domains", overview, domains_iface)
-
-        # Per-app: help/{app}/domains.hlp (overview) + help/{app}/domains+{key}.hlp
-        for app_dir in app_dirs:
-            app      = app_dir.name
-            app_file = app_dir / f"{app}_domains.kbd"
-            if not app_file.exists():
-                continue
-            impl         = parse_app_file(app_file, app)
-            app_hlp_dir  = HELP_DIR / app
-            app_overview: list[tuple[str, str]] = []
-
-            for key, mod, title in spc_entries:
-                if not title or mod not in sublayers or not sublayers[mod]:
-                    continue
-                sub_actions = sublayers[mod]
-
-                entries = [
-                    (f"spc + {key} + {sub_key}",
-                     label_for_implemented_value(impl[action_name], action_name, "domains", app))
-                    for sub_key, action_name in sub_actions
-                    if action_name in impl
-                ]
-
-                if entries:
-                    app_overview.append((f"spc + {key}", title))
-                    emit(app_hlp_dir / f"{app}_domains+{fsafe(key)}.hlp", f"{title} - {app}", entries, app_file)
-
-            if app_overview:
-                emit(app_hlp_dir / f"{app}_domains.hlp", f"Domains - {app}", app_overview, app_file)
-
-    # ── Physical mods: one file per available (reachable) modifier layer ────
-    # kwanata resolves help by stripping "_layer" off the *current kanata
-    # layer* and looking up "{app}_{that}.hlp" / "global_{that}.hlp" — there
-    # is no single "phys" layer a user ever holds, so (unlike every other
-    # domain) this can't be one merged file; it needs one per actual
-    # reachable layer, each rolling up its own descendants. See
-    # physical_mods_available_nodes / physical_mods_node_entries.
-    #
-    # Some physical keys push a multi-layer stack in one hold (see
-    # LayerStack) where kanata only ever reports the topmost layer as
-    # active — so that layer's file additionally folds in every shadowed
-    # layer's own content (another physical_mods layer, a foreign domain's
-    # base layer, or both), otherwise unreachable from here. Every layer
-    # that's always shadowed and never itself a stack top (e.g. "lctl",
-    # "lctl+lalt" — always the mid/base of some "!"-topped stack) gets no
-    # standalone file at all, since it would just be dead weight; the
-    # remaining, genuinely reachable layers always get a global help file,
-    # a title-only placeholder if nothing is bound there yet — so every
-    # modifier you can hold has a reminder of what it's for.
-    physical_mods_iface = ACTIONS_DIR / "actions_physical_mods.iface.kbd"
-    if physical_mods_iface.exists():
-        domain     = "physical_mods"
-        base_title = DOMAIN_TITLES.get(domain, "Physical mods")
-        iface_order, details = parse_iface(physical_mods_iface)
-
-        actions: list[tuple[tuple[str, ...], str, str]] = []
-        for a in iface_order:
-            parsed = parse_physical_mods_action(a)
-            if parsed is None:
-                continue
-            mods, key = parsed
-            actions.append((mods, key, a))
-
-        available_nodes = physical_mods_available_nodes(layer_stacks)
-        stacks = [s for s in layer_stacks if s.top_node in available_nodes]
-
-        def stacks_for(node: tuple[str, ...]) -> list[LayerStack]:
-            """Stacks whose top layer is `node` or one of its descendants —
-            e.g. node ("!lctl",) picks up the plain, +lsft and +rsft stacks
-            alike, mirroring physical_mods_node_entries' own roll-up so the
-            base file stays a full one-stop overview.
-            """
-            depth = len(node)
-            return [s for s in stacks if s.top_node[:depth] == node]
-
-        def merged_global_entries(node: tuple[str, ...]) -> list[tuple[str, str]]:
-            entries: list[tuple[str, str]] = []
-            for combo, a in physical_mods_node_entries(node, actions):
-                effective = effective_global_default(details, a, domain)
-                if effective is None:
-                    continue
-                entries.append((combo, label_from_global_default(effective, a, domain)))
-            for stack in stacks_for(node):
-                for shadow_node in stack.shadowed_physical_mods_nodes():
-                    for combo, a in physical_mods_exact_entries(shadow_node, actions):
-                        effective = effective_global_default(details, a, domain)
-                        if effective is None:
-                            continue
-                        entries.append((combo, label_from_global_default(effective, a, domain)))
-                for domain_name, shift in stack.shadowed_domains():
-                    entries += combination_domain_entries(domain_name, shift, app=None)
-            return entries
-
-        def merged_app_entries(
-            node: tuple[str, ...], app: str, impl: dict[str, str]
-        ) -> list[tuple[str, str]]:
-            entries: list[tuple[str, str]] = []
-            for combo, a in physical_mods_node_entries(node, actions):
-                if a in impl:
-                    label = label_for_implemented_value(impl[a], a, domain, app)
-                else:
-                    effective = effective_global_default(details, a, domain)
-                    if effective is None:
-                        continue
-                    label = label_from_global_default(effective, a, domain)
-                entries.append((combo, label))
-            for stack in stacks_for(node):
-                for shadow_node in stack.shadowed_physical_mods_nodes():
-                    for combo, a in physical_mods_exact_entries(shadow_node, actions):
-                        if a in impl:
-                            label = label_for_implemented_value(impl[a], a, domain, app)
-                        else:
-                            effective = effective_global_default(details, a, domain)
-                            if effective is None:
-                                continue
-                            label = label_from_global_default(effective, a, domain)
-                        entries.append((combo, label))
-                for domain_name, shift in stack.shadowed_domains():
-                    entries += combination_domain_entries(domain_name, shift, app=app)
-            return entries
-
-        for node in available_nodes:
-            layer_name     = "+".join(node)
-            global_entries = merged_global_entries(node)
-            # Always emit — a title-only placeholder when nothing is bound
-            # yet still serves as a reminder of what this modifier is for.
-            emit(HELP_DIR / f"global_{layer_name}.hlp",
-                 f"{base_title} ({layer_name})", global_entries, physical_mods_iface)
-
-        for app_dir in app_dirs:
-            app      = app_dir.name
-            app_file = find_app_file(app_dir, app, domain)
-            impl     = parse_app_file(app_file, app) if app_file else {}
-
-            # Which shadowed foreign domains this app actually overrides —
-            # used below to avoid emitting a per-app file that would just
-            # duplicate the global one verbatim (matching the precedent set
-            # by the generic per-domain loop above: no app file, no per-app
-            # help file, since the global one already covers it). Per-app
-            # files are never placeholders — only the global catalog is.
-            domain_overridden = {
-                domain_name: find_app_file(ACTIONS_DIR / app, app, domain_name) is not None
-                for stack in stacks
-                for domain_name, _shift in stack.shadowed_domains()
-            }
-
-            for node in available_nodes:
-                layer_name = "+".join(node)
-                has_reason = app_file is not None or any(
-                    domain_overridden[domain_name]
-                    for stack in stacks_for(node)
-                    for domain_name, _shift in stack.shadowed_domains()
-                )
-                if not has_reason:
-                    continue
-                entries = merged_app_entries(node, app, impl)
-                if entries:
-                    emit(HELP_DIR / app / f"{app}_{layer_name}.hlp",
-                         f"{base_title} ({layer_name}) - {app}", entries, app_file or physical_mods_iface)
-
-    # Remove stale .hlp files (root and all app subdirectories)
-    for stale in sorted(HELP_DIR.glob("**/*.hlp")):
-        if stale not in written:
-            print(f"  {'[dry]' if dry_run else 'removed'} {stale.relative_to(ROOT)}")
-            if not dry_run:
-                stale.unlink()
-    # Remove empty app subdirectories
-    if not dry_run:
-        for subdir in sorted(HELP_DIR.iterdir()):
-            if subdir.is_dir() and not any(subdir.glob("*.hlp")):
-                subdir.rmdir()
+    emit_domains_nav_help(w, app_dirs)
+    emit_physical_mods_help(w, app_dirs, layer_stacks)
+    w.prune()
 
 
 if __name__ == "__main__":
