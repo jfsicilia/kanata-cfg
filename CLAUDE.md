@@ -23,7 +23,7 @@ kanata.kbd          ← main entry: includes everything in order
 templates.kbd       ← core macros (fast_th, map_keys, map_layers, alt_char, …)
 help.kbd            ← help message strings as defvar
 setup.kbd           ← defsrc, defvar (key aliases), defvirtualkeys, default layer
-layers/             ← deflayermap definitions for each domain layer
+layers/             ← deflayermap definitions for each mod layer
 layers_toggle/      ← toggle variable definitions (e.g. $toggle_omni_layer)
 actions/            ← action variable definitions, split by interface and app
 bookmarks.kbd       ← bookmark action definitions
@@ -40,12 +40,14 @@ Key templates:
 - `2x action` / `3x action` — double/triple-tap detectors
 - `map_keys action ignore_keys` — fills a layer with all alpha/symbol keys (pass `_` as action for pass-through)
 - `map_layers action layer ignore_keys` — wires modifier keys (f/j for lctl, s/l for lalt, a/; for lmet, d for lsft, k for rsft) to `+modifier` sub-layer variants
-- `mod_key_layer mod_key spc_action lsft+spc lsft+spc` — generates a complete domain layer with shift variants in one call
+- `mod_key_layer mod_key spc_action lsft+spc lsft+spc` — generates a complete mod layer with shift variants in one call
 - `char|alt_char letter` — outputs the letter normally, or with tap-dance accents when `vk_alt_chars` is active (Spanish mode)
 
 ### Layer system
 
-Every key with hold behavior produces two effects: a **tap** (the letter) and a **hold** (a domain layer). Domain layers are named `<mod>_layer` (e.g. `omni_layer`, `tabs_layer`, `modA_layer`). When a modifier key (f, s, a, j, l, ;) is also held inside a domain layer, a `+modifier` sub-layer is toggled on top (e.g. `modA+lctl_layer`).
+Every key with hold behavior produces two effects: a **tap** (the letter) and a **hold** (a mod layer). Mod layers are named `<mod>_layer` (e.g. `omni_layer`, `tabs_layer`, `modA_layer`). When a modifier key (f, s, a, j, l, ;) is also held inside a mod layer, a `+modifier` sub-layer is toggled on top (e.g. `modA+lctl_layer`).
+
+**Terminology**: a **mod** is anything you hold to open a layer — `omni`, `open`, `opts`, `lang`, `tabs`, `panes`, `lctl`, `select`, … A **domain** means only the SPC+ system (`domains_layer`, `action_domain<X>+<key>`), reached by holding space and then a key. The home-row keys are letters when tapped and mods when held.
 
 The `layers_toggle/` directory contains `$toggle_<name>_layer` variables that bind the correct combination of layer toggles and held modifiers.
 
@@ -63,12 +65,12 @@ App focus is detected externally (e.g. via a window manager hook) which toggles 
 
 ### Naming conventions
 
-- Layer files: `layers/layer_<domain>.kbd` — with two deliberate exceptions:
+- Layer files: `layers/layer_<mod>.kbd` — with two deliberate exceptions:
   - physical modifiers get one file per modifier (`layer_lctl.kbd`, `layer_lalt.kbd`, `layer_lmet.kbd`, plus `layer_sft.kbd` for `lsft`/`rsft`), each also holding that modifier's combination layers (`lctl+lalt`, `lctl+lalt+lmet`, … grouped under their first modifier)
-  - a domain that is only ever reachable stacked under a `!`-modifier lives in that modifier's file, named `layer_!<mod>&<domain>.kbd` (`layer_!lctl&select.kbd`, `layer_!lalt&search.kbd`, `layer_!lmet&replace.kbd`) — mirroring the `$toggle_<domain>_&_!<mod>_layer` stack that pushes them together
-- Toggle files: `layers_toggle/toggles_<domain>.kbd` — one per `layers/layer_<domain>.kbd`, with the same two exceptions (`toggles_lctl.kbd`, `toggles_!lctl&select.kbd`, `toggles_sft.kbd`, …). A toggle lives with the layer it *targets*, not the one its name starts with: `toggle_lsft+lctl+lalt_layer` targets `lctl+lalt+lsft_layer`, so it belongs in `toggles_lctl.kbd` alongside that layer — the several key orders that reach one layer all stay together
-- Interface files: `actions/actions_<domain>.iface.kbd` — mirroring `layers/` exactly, so physical modifiers get `actions_lctl.iface.kbd`, `actions_lalt.iface.kbd`, `actions_lmet.iface.kbd`, `actions_sft.iface.kbd`, and a domain only reachable under a `!`-modifier shares its file as `actions_!<mod>&<domain>.iface.kbd`
-- App action files: `actions/<app>/<app>_<domain>.kbd`, same two exceptions (`obsidian_!lctl&select.kbd`). An app only gets a file where it actually binds something — no empty placeholders, since an app with no file simply falls back to the global help/actions
+  - a mod that is only ever reachable stacked under a `!`-modifier lives in that modifier's file, named `layer_!<mod>&<name>.kbd` (`layer_!lctl&select.kbd`, `layer_!lalt&search.kbd`, `layer_!lmet&replace.kbd`) — mirroring the `$toggle_<name>_&_!<mod>_layer` stack that pushes them together
+- Toggle files: `layers_toggle/toggles_<mod>.kbd` — one per `layers/layer_<mod>.kbd`, with the same two exceptions (`toggles_lctl.kbd`, `toggles_!lctl&select.kbd`, `toggles_sft.kbd`, …). A toggle lives with the layer it *targets*, not the one its name starts with: `toggle_lsft+lctl+lalt_layer` targets `lctl+lalt+lsft_layer`, so it belongs in `toggles_lctl.kbd` alongside that layer — the several key orders that reach one layer all stay together
+- Interface files: `actions/actions_<mod>.iface.kbd` — mirroring `layers/` exactly, so physical modifiers get `actions_lctl.iface.kbd`, `actions_lalt.iface.kbd`, `actions_lmet.iface.kbd`, `actions_sft.iface.kbd`, and a mod only reachable under a `!`-modifier shares its file as `actions_!<mod>&<name>.iface.kbd`
+- App action files: `actions/<app>/<app>_<mod>.kbd`, same two exceptions (`obsidian_!lctl&select.kbd`). An app only gets a file where it actually binds something — no empty placeholders, since an app with no file simply falls back to the global help/actions
 - The `!` and `&` in these names are load-bearing for the sync scripts (`kanata_sync_apps.py` / `kanata_sync_interfaces.py` parse the interface name out of the filename), so their `IFACE_PRIORITY_RE` must keep accepting both characters
 - App-specific variables: `<app>_<action_name>` (e.g. `nvim_file_explorer`)
 

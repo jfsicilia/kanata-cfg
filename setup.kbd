@@ -43,10 +43,10 @@
 ;; and / (windows). Windows, tabs, and panes each have 2 keys to allow easy
 ;; access to certain combinations of these GUI elements.
 
-;; DOMAIN LAYERS
-;; -------------
+;; MOD LAYERS
+;; ----------
 ;;
-;; All keys can provide domain functionality when held, converting them into
+;; All keys can provide mod functionality when held, converting them into
 ;; new modifiers.
 ;;
 ;; UPPER ROW
@@ -62,8 +62,8 @@
 ;;
 ;; MIDDLE ROW
 ;; ----------
-;; a, s, d, f, j, k, l, and ; have dual functionality as modifiers and as simple domains.
-;; A simple domain has only one combo: <key> + space. Therefore, it can also be used
+;; a, s, d, f, j, k, l, and ; have dual functionality as modifiers and as simple mods.
+;; A simple mod has only one combo: <key> + space. Therefore, it can also be used
 ;; as a modifier (lmet/lalt/sft/lctl).
 ;;
 ;; Caps  → tap: esc        hold: omni_layer (main editing/file operations)
@@ -81,8 +81,8 @@
 ;;
 ;; LOWER ROW
 ;; ---------
-;; z, x, c, v, b, n, m, ,, and / have dual functionality as GUI elements and simple domains.
-;; A simple domain has only one combo: <key> + space. Therefore, it can also be used
+;; z, x, c, v, b, n, m, ,, and / have dual functionality as GUI elements and simple mods.
+;; A simple mod has only one combo: <key> + space. Therefore, it can also be used
 ;; as a modifier (lmet/lalt/sft/lctl).
 ;;
 ;; lsft  → tap: 2x tab_prev   hold: lsft_layer
@@ -304,10 +304,10 @@
       /|workspaces          /          ;; Tap: /,    Hold: workspaces_layer
   
   ;; Modifiers row
-  !lmet|replace             $!lmet     ;; Physical lctl is used as lmet, in combo with space works as replace domain. 
-  !lalt|search              $!lalt     ;; Physical lmet is used as lalt, in combo with space works as search domain.
-  !lctl|select              $!lctl     ;; Physical lalt is used as lctl, in combo with space works as select domain.
-    spc|domains             spc        ;; Spacebar is used as space and as spc mods layer when hold.
+  !lmet|replace             $!lmet     ;; Physical lctl is used as lmet, in combo with space works as replace mod. 
+  !lalt|search              $!lalt     ;; Physical lmet is used as lalt, in combo with space works as search mod.
+  !lctl|select              $!lctl     ;; Physical lalt is used as lctl, in combo with space works as select mod.
+    spc|domains             spc        ;; Spacebar is used as space and as domains layer when hold.
    ralt|apps                ralt       ;; Physical ralt key will be used for app launching/focusing.
    prnt|bookm               prnt       ;; Physical prnt key will be used for bookmark layer when hold.
 copilot|bookm               $copilot   ;; Physical copilot key will be used for bookmark layer when hold.
@@ -364,7 +364,7 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
   ;; Fixed modifiers.
   omni               caps       ;; Physical caps key will be used for omni layer when hold.
   open               tab        ;; Physical tab key will be used for open with layer when hold.
-  domains            spc        ;; Physical spc key will be used for spc mods layer when hold.
+  domains            spc        ;; Physical spc key will be used for domains layer when hold.
   apps               ralt       ;; Physical ralt key will be used for apps layer when hold.
   bookm              prnt       ;; Physical prnt key will be used for bookmark layer when hold.
   ;; Copilot key issues alt+sft+f23 when pressed. If present will be used as bookm key.

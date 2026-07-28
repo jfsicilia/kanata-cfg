@@ -24,7 +24,7 @@
 (include setup.kbd)
 
 ;; Layers =================================================================
-;; Physical modifiers (a "&" file also carries the domain stacked under it).
+;; Physical modifiers (a "&" file also carries the mod stacked under it).
 (include layers_toggle/toggles_lctl.kbd)
 (include layers_toggle/toggles_!lctl&select.kbd)
 (include layers_toggle/toggles_lalt.kbd)
@@ -40,7 +40,7 @@
 (include layers_toggle/toggles_groups.kbd)
 (include layers_toggle/toggles_sessions.kbd)
 (include layers_toggle/toggles_layouts.kbd)
-;; Domains.
+;; Mods.
 (include layers_toggle/toggles_apps.kbd)
 (include layers_toggle/toggles_bookmarks.kbd)
 (include layers_toggle/toggles_domains.kbd)

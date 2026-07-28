@@ -217,7 +217,7 @@
 
 ;; Hold modifier and toggle layer.
 ;; Holds a modifier key (e.g., lctl) while simultaneously activating a layer.
-;; Useful for creating modified layer contexts (e.g., lctl + domain_layer).
+;; Useful for creating modified layer contexts (e.g., lctl + mod_layer).
 ;;
 ;; Parameters:
 ;;   mod   - Modifier to hold (e.g., lctl, lalt, lmet, lsft, rsft)
@@ -259,7 +259,7 @@
 ;; Hold modifier and toggle two layers hierarchically.
 ;; Holds modifier(s) while activating base_layer then top_layer. The top
 ;; layer inherits all bindings from base_layer but can override any of them.
-;; Creates modified domain contexts (e.g., lsft + modA_layer + modA+lsft_layer).
+;; Creates modified mod contexts (e.g., lsft + modA_layer + modA+lsft_layer).
 ;;
 ;; Parameters:
 ;;   mod        - Modifier to hold
@@ -413,7 +413,7 @@
 ;; Internal: Map modifier connections to layer toggles (with tap action).
 ;; Like _default_map_layers but tap actions emit action+key combinations.
 ;; For example, if action is "action_lctl", tapping f produces "action_lctl+f".
-;; This allows domain layers to have both tap and hold behaviors on modifier keys.
+;; This allows mod layers to have both tap and hold behaviors on modifier keys.
 ;;
 ;; Parameters:
 ;;   action      - Action prefix for tap (e.g., "action_lctl")
@@ -517,7 +517,7 @@
 ;; Internal: Map all keys to action+key combinations.
 ;; Like _default_map_keys but prefixes each key with an action name.
 ;; For example, if action is "action_omni", key 'a' maps to "action_omni+a".
-;; This allows domain layers to dispatch different actions per key.
+;; This allows mod layers to dispatch different actions per key.
 ;;
 ;; Parameters:
 ;;   action      - Action prefix to prepend to each key
@@ -585,7 +585,7 @@
   (if-not-equal $action _ (t! _map_keys $action ($ignore_keys)))
 )
 
-;; Generate a complete domain layer with shift variants.
+;; Generate a complete mod layer with shift variants.
 ;; Creates three layer definitions in one call:
 ;; 1. Base layer (mod_key_layer) - all keys + modifier connections
 ;; 2. Left shift variant (mod_key+lsft_layer) - overrides space action
