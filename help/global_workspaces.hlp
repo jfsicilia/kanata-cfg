@@ -1,11 +1,11 @@
 # Workspaces (actions/actions_workspaces.kbd)
-**workspaces + spc**      -- Show Desktops
+**workspaces + spc**      -- Show Desktops (M-w)
 **workspaces + toggle**   -- Desktops Toggle
-**workspaces + j**        -- Next Screen
-**workspaces + k**        -- Prev Screen
-**workspaces + l**        -- Next Desktop
-**workspaces + h**        -- Prev Desktop
-**workspaces + move + j** -- Move Window To Next Screen
-**workspaces + move + k** -- Move Window To Prev Screen
-**workspaces + move + l** -- Move Window To Next Desktop
-**workspaces + move + h** -- Move Window To Prev Desktop
+**workspaces + j**        -- Next Screen (M-S-down)
+**workspaces + k**        -- Prev Screen (M-S-up)
+**workspaces + l**        -- Next Desktop (M-C-right)
+**workspaces + h**        -- Prev Desktop (M-C-left)
+**workspaces + move + j** -- Move Window To Next Screen (M-S-right)
+**workspaces + move + k** -- Move Window To Prev Screen (M-S-left)
+**workspaces + move + l** -- Move Window To Next Desktop (M-C-S-right)
+**workspaces + move + h** -- Move Window To Prev Desktop (M-C-S-left)

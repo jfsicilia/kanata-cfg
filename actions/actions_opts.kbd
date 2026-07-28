@@ -12,6 +12,7 @@
   reload_kanata           lrld
   debug_message           (push-msg "DEBUG: This is a DEBUG message to check communication")
   sleep_system            (multi (push-msg "NOTIFY: Sleeping...")         (cmd systemctl suspend))
+  toggle_verbose          (multi (push-msg "NOTIFY: Toggle verbosity...") (push-msg "SET:!verbose"))
 )
 
 (defvar
@@ -28,4 +29,5 @@
   action_opts+k         $reload_kanata
   action_opts+d         $debug_message
   action_opts+q         $sleep_system
+  action_opts+v         $toggle_verbose
 )

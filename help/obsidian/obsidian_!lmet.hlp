@@ -1,4 +1,4 @@
 # Physical mods (!lmet) - obsidian (actions/obsidian/obsidian_physical_mods.kbd)
-**!lmet + l**            -- Lock User Session
-**replace + spc**        -- Replace In File
-**replace + lsft + spc** -- Replace In Files
+**!lmet + l**            -- Lock User Session (M-l)
+**replace + spc**        -- Replace In File (C-A-h)
+**replace + lsft + spc** -- Replace In Files (C-A-S-h)

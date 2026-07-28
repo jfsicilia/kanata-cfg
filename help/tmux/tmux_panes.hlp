@@ -1,10 +1,10 @@
 # Panes - tmux (actions/tmux/tmux_panes.kbd)
-**panes + ent**    -- Pane Maximize
-**panes + h**      -- Pane Left
-**panes + l**      -- Pane Right
-**panes + up**     -- Pane Above
-**panes + j**      -- Pane Below
-**panes + -**      -- Pane H Split
-**panes + \**      -- Pane V Split
-**panes + w**      -- Pane Close
-**panes + toggle** -- Pane Toggle
+**panes + ent**    -- Pane Maximize (A-b z)
+**panes + h**      -- Pane Left (A-b [left])
+**panes + l**      -- Pane Right (A-b [right])
+**panes + up**     -- Pane Above (A-b [up])
+**panes + j**      -- Pane Below (A-b [down])
+**panes + -**      -- Pane H Split (A-b ")
+**panes + \**      -- Pane V Split (A-b %)
+**panes + w**      -- Pane Close (A-b x)
+**panes + toggle** -- Pane Toggle (A-b ;)

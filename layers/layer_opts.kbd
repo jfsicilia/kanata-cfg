@@ -9,6 +9,7 @@
   d $action_opts+d
   p $action_opts+p
   q $action_opts+q
+  v $action_opts+v 
 )
 
 (deflayermap (opts+lsft_layer)

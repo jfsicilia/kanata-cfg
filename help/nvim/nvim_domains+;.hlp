@@ -1,2 +1,2 @@
 # Commands - nvim (actions/nvim/nvim_domains.kbd)
-**spc + ; + ;** -- Commands
+**spc + ; + ;** -- Commands ([esc] :Telescope commands [ret])

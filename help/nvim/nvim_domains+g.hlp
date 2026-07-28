@@ -1,3 +1,3 @@
 # Git - nvim (actions/nvim/nvim_domains.kbd)
-**spc + g + g** -- Git
-**spc + g + l** -- Lazygit
+**spc + g + g** -- Git ([esc] :Telescope git_files [ret])
+**spc + g + l** -- Lazygit ([100ms] [esc] : [10ms] Laz [10ms] y [10ms] G [10ms] it [ret])

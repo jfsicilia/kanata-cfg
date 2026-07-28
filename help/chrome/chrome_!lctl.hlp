@@ -1,4 +1,4 @@
 # Physical mods (!lctl) - chrome (actions/actions_physical_mods.iface.kbd)
 **lctl + tab** -- Walk Through Apps
 **lctl + `**   -- Walk Through Same App
-**seek + spc** -- Seek And Select
+**seek + spc** -- Seek And Select (C-S-a)

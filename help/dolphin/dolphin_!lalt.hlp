@@ -1,4 +1,4 @@
 # Physical mods (!lalt) - dolphin (actions/dolphin/dolphin_physical_mods.kbd)
-**search + spc**        -- Search
-**search + lsft + spc** -- Omni Search
-**search + rsft + spc** -- Omni Search
+**search + spc**        -- Search (C-f)
+**search + lsft + spc** -- Omni Search (C-S-f)
+**search + rsft + spc** -- Omni Search (C-S-f)

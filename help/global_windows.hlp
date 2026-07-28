@@ -1,11 +1,11 @@
 # Windows (actions/actions_windows.kbd)
-**windows + spc**        -- Show All
-**windows + ent**        -- Maximize
-**windows + lsft + ent** -- Fullscreen
-**windows + rsft + ent** -- Fullscreen
-**windows + k**          -- Half Up
-**windows + j**          -- Half Down
-**windows + h**          -- Half Left
-**windows + l**          -- Half Right
-**windows + close**      -- Close
-**windows + toggle**     -- Apps Toggle
+**windows + spc**        -- Show All (C-f10)
+**windows + ent**        -- Maximize (M-pgup)
+**windows + lsft + ent** -- Fullscreen (M-S-m)
+**windows + rsft + ent** -- Fullscreen (M-S-m)
+**windows + k**          -- Half Up (M-up)
+**windows + j**          -- Half Down (M-down)
+**windows + h**          -- Half Left (M-left)
+**windows + l**          -- Half Right (M-right)
+**windows + close**      -- Close (A-f4)
+**windows + toggle**     -- Toggle (M-tab)

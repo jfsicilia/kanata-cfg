@@ -1,4 +1,4 @@
 # Open - obsidian (actions/obsidian/obsidian_open.kbd)
-**open + m** -- Open With Chrome
-**open + t** -- Open With Terminal
-**open + v** -- Open With Vim
+**open + m** -- Open With Chrome (C-A-p  Open with Chrome)
+**open + t** -- Open With Terminal (C-A-p  Open with terminal)
+**open + v** -- Open With Vim (C-A-p  Open with nvim)

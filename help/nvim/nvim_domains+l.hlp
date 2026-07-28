@@ -1,2 +1,2 @@
 # Locations - nvim (actions/nvim/nvim_domains.kbd)
-**spc + l + l** -- Locations
+**spc + l + l** -- Locations ([esc] :Telescope loclist [ret])

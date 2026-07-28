@@ -1,6 +1,6 @@
 # Apps (actions/actions_apps.kbd)
-**apps + spc**      -- App Finder
-**apps + !lctl**    -- Recent Files
+**apps + spc**      -- App Finder (RA-spc)
+**apps + !lctl**    -- Recent Files (recent_files.sh)
 **apps + 0**        -- Chrome Misc
 **apps + 1**        -- Chrome Mgmt
 **apps + 2**        -- Chrome Cloud

@@ -1,2 +1,2 @@
 # Tags - nvim (actions/nvim/nvim_domains.kbd)
-**spc + . + .** -- Tags
+**spc + . + .** -- Tags ([esc] :Telescope tags [ret])

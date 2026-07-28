@@ -1,15 +1,15 @@
 # Tabs (actions/actions_tabs.iface.kbd)
-**tabs + l**        -- Tab Next
-**tabs + h**        -- Tab Prev
-**tabs + t**        -- Tab New
-**tabs + w**        -- Tab Close
-**tabs + lsft + t** -- Tab Undo Close
-**tabs + 1**        -- Tab Goto 1
-**tabs + 2**        -- Tab Goto 2
-**tabs + 3**        -- Tab Goto 3
-**tabs + 4**        -- Tab Goto 4
-**tabs + 5**        -- Tab Goto 5
-**tabs + 6**        -- Tab Goto 6
-**tabs + 7**        -- Tab Goto 7
-**tabs + 8**        -- Tab Goto 8
-**tabs + 9**        -- Tab Goto Last
+**tabs + l**        -- Tab Next (C-tab)
+**tabs + h**        -- Tab Prev (C-S-tab)
+**tabs + t**        -- Tab New (C-t)
+**tabs + w**        -- Tab Close (C-w)
+**tabs + lsft + t** -- Tab Undo Close (C-S-t)
+**tabs + 1**        -- Tab Goto 1 (C-1)
+**tabs + 2**        -- Tab Goto 2 (C-2)
+**tabs + 3**        -- Tab Goto 3 (C-3)
+**tabs + 4**        -- Tab Goto 4 (C-4)
+**tabs + 5**        -- Tab Goto 5 (C-5)
+**tabs + 6**        -- Tab Goto 6 (C-6)
+**tabs + 7**        -- Tab Goto 7 (C-7)
+**tabs + 8**        -- Tab Goto 8 (C-8)
+**tabs + 9**        -- Tab Goto Last (C-9)

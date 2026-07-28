@@ -1,15 +1,15 @@
 # Tabs - zapzap (actions/zapzap/zapzap_tabs.kbd)
-**tabs + l**        -- Tabs Next
-**tabs + h**        -- Tabs Prev
-**tabs + t**        -- Tab New
-**tabs + w**        -- Tab Close
-**tabs + lsft + t** -- Tab Undo Close
-**tabs + 1**        -- Tabs Goto 1
-**tabs + 2**        -- Tabs Goto 2
-**tabs + 3**        -- Tabs Goto 3
-**tabs + 4**        -- Tabs Goto 4
-**tabs + 5**        -- Tabs Goto 5
-**tabs + 6**        -- Tabs Goto 6
-**tabs + 7**        -- Tabs Goto 7
-**tabs + 8**        -- Tabs Goto 8
-**tabs + 9**        -- Tab Goto Last
+**tabs + l**        -- Tabs Next (C-A-tab)
+**tabs + h**        -- Tabs Prev (C-A-S-tab)
+**tabs + t**        -- Tab New (C-t)
+**tabs + w**        -- Tab Close (C-w)
+**tabs + lsft + t** -- Tab Undo Close (C-S-t)
+**tabs + 1**        -- Tabs Goto 1 (C-A-/ [down] [ent])
+**tabs + 2**        -- Tabs Goto 2 (C-A-/ [down] [down] [ent])
+**tabs + 3**        -- Tabs Goto 3 (C-A-/ [down] [down] [down] [ent])
+**tabs + 4**        -- Tabs Goto 4 (C-A-/ [down] [down] [down] [down] [ent])
+**tabs + 5**        -- Tabs Goto 5 (C-A-/ [down] [down] [down] [down] [down] [ent])
+**tabs + 6**        -- Tabs Goto 6 (C-A-/ [down] [down] [down] [down] [down] [down] [ent])
+**tabs + 7**        -- Tabs Goto 7 (C-A-/ [down] [down] [down] [down] [down] [down] [down] [ent])
+**tabs + 8**        -- Tabs Goto 8 (C-A-/ [down] [down] [down] [down] [down] [down] [down] [down] [ent])
+**tabs + 9**        -- Tab Goto Last (C-9)

@@ -1,2 +1,2 @@
 # Bookmarks - nvim (actions/nvim/nvim_domains.kbd)
-**spc + b + b** -- Bookmarks
+**spc + b + b** -- Bookmarks ([esc] :Telescope marks [ret])

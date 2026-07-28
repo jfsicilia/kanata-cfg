@@ -1,4 +1,4 @@
 # Physical mods (!lalt) - zapzap (actions/actions_physical_mods.iface.kbd)
-**search + spc**        -- Search In Chat
-**search + lsft + spc** -- Search Chat
-**search + rsft + spc** -- Search Chat
+**search + spc**        -- Search In Chat (C-S-f)
+**search + lsft + spc** -- Search Chat (C-A-/)
+**search + rsft + spc** -- Search Chat (C-A-/)

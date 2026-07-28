@@ -18,8 +18,8 @@ tmux_pane_above              (macro $tmux_prefix up)
 tmux_pane_below              (macro $tmux_prefix down)
 tmux_pane_h_split            (macro $tmux_prefix S-')
 tmux_pane_v_split            (macro $tmux_prefix S-5)
-tmux_pane_close               (macro $tmux_prefix x)
-tmux_pane_toggle              (macro $tmux_prefix ;)
+tmux_pane_close              (macro $tmux_prefix x)
+tmux_pane_toggle             (macro $tmux_prefix ;)
 
 ;; tabs
 tmux_commands                (macro $tmux_prefix S-;)

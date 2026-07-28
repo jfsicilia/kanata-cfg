@@ -1,6 +1,6 @@
 # Compare - nvim (actions/nvim/nvim_domains.kbd)
 **spc + \ + \** -- Compare Toggle
-**spc + \ + j** -- Compare Next
-**spc + \ + k** -- Compare Prev
-**spc + \ + o** -- Compare Obtain
-**spc + \ + p** -- Compare Push
+**spc + \ + j** -- Compare Next (]c)
+**spc + \ + k** -- Compare Prev ([c)
+**spc + \ + o** -- Compare Obtain (do)
+**spc + \ + p** -- Compare Push (dp)

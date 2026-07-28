@@ -1,14 +1,14 @@
 # Panes - dolphin (actions/dolphin/dolphin_panes.kbd)
-**panes + ent**      -- Pane Max
-**panes + h**        -- Pane Toggle
-**panes + l**        -- Pane Toggle
-**panes + up**       -- Pane Toggle
-**panes + j**        -- Pane Toggle
-**panes + -**        -- Pane Split
-**panes + \**        -- Pane Split
-**panes + w**        -- Close Tab
-**panes + toggle**   -- Pane Toggle
-**panes + s**        -- Toggle Left Sidebar
-**panes + lsft + s** -- Toggle Right Sidebar
-**panes + g**        -- Focus Address Bar
-**panes + m**        -- Focus Main
+**panes + ent**      -- Pane Max ([f9] [f11])
+**panes + h**        -- Pane Toggle (tab)
+**panes + l**        -- Pane Toggle (tab)
+**panes + up**       -- Pane Toggle (tab)
+**panes + j**        -- Pane Toggle (tab)
+**panes + -**        -- Pane Split (f3)
+**panes + \**        -- Pane Split (f3)
+**panes + w**        -- Close Tab (C-w)
+**panes + toggle**   -- Pane Toggle (tab)
+**panes + s**        -- Toggle Left Sidebar (f9)
+**panes + lsft + s** -- Toggle Right Sidebar (f11)
+**panes + g**        -- Focus Address Bar (C-p C-l)
+**panes + m**        -- Focus Main (C-l C-p C-p)

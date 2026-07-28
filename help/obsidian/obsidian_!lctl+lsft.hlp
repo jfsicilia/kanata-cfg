@@ -1,4 +1,4 @@
 # Physical mods (!lctl+lsft) - obsidian (actions/obsidian/obsidian_physical_mods.kbd)
-**!lctl + lsft + p**  -- Commands
-**lctl + lsft + t**   -- Undo Close Tab
-**seek + lsft + spc** -- Seek And Select Folder
+**!lctl + lsft + p**  -- Commands (C-A-p)
+**lctl + lsft + t**   -- Undo Close Tab (A-C-S-t)
+**seek + lsft + spc** -- Seek And Select Folder (C-S-o)

@@ -1,2 +1,2 @@
 # Help - nvim (actions/nvim/nvim_domains.kbd)
-**spc + / + /** -- Help
+**spc + / + /** -- Help ([esc] :help [ret])

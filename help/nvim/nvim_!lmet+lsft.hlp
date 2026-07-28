@@ -1,2 +1,2 @@
 # Physical mods (!lmet+lsft) - nvim (actions/nvim/nvim_physical_mods.kbd)
-**replace + lsft + spc** -- Replace In Workspace
+**replace + lsft + spc** -- Replace In Workspace ([esc] :topleft vertical GrugFar [ret])

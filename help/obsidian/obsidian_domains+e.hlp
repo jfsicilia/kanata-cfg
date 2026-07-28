@@ -1,4 +1,4 @@
 # Explorer - obsidian (actions/obsidian/obsidian_domains.kbd)
-**spc + e + e** -- File Explorer
-**spc + e + f** -- File Explorer Reveal
-**spc + e + r** -- Recent
+**spc + e + e** -- File Explorer (A-e)
+**spc + e + f** -- File Explorer Reveal (A-S-e)
+**spc + e + r** -- Recent (A-r)

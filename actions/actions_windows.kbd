@@ -30,9 +30,9 @@
   ;; windows + l
   action_windows+l          $windows_half_right
 
-  ;; windows 
+  ;; windows
   action_windows_close      $windows_close
 
   ;; 2x apps
-  action_windows_toggle     $action_apps+toggle
+  action_windows_toggle     $windows_toggle
 )

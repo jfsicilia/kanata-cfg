@@ -1,4 +1,4 @@
 # References - nvim (actions/nvim/nvim_domains.kbd)
-**spc + r + r** -- References
-**spc + r + i** -- References Incoming
-**spc + r + o** -- References Outgoing
+**spc + r + r** -- References ([esc] :Telescope lsp_references [ret])
+**spc + r + i** -- References Incoming ([esc] :Telescope lsp_incoming_calls [ret])
+**spc + r + o** -- References Outgoing ([esc] :Telescope lsp_outgoing_calls [ret])

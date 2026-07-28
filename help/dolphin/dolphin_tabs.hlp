@@ -1,16 +1,16 @@
 # Tabs - dolphin (actions/dolphin/dolphin_tabs.kbd)
-**tabs + l**        -- Tab Next
-**tabs + h**        -- Tab Prev
-**tabs + t**        -- Tab New
-**tabs + w**        -- Tab Close
-**tabs + lsft + t** -- Tab Undo Close
-**tabs + 1**        -- Tab 1
-**tabs + 2**        -- Tab 2
-**tabs + 3**        -- Tab 3
-**tabs + 4**        -- Tab 4
-**tabs + 5**        -- Tab 5
-**tabs + 6**        -- Tab 6
-**tabs + 7**        -- Tab 7
-**tabs + 8**        -- Tab 8
-**tabs + 9**        -- Tab 9
+**tabs + l**        -- Tab Next (C-tab)
+**tabs + h**        -- Tab Prev (C-S-tab)
+**tabs + t**        -- Tab New (C-t)
+**tabs + w**        -- Tab Close (C-w)
+**tabs + lsft + t** -- Tab Undo Close (C-S-t)
+**tabs + 1**        -- Tab 1 (A-1)
+**tabs + 2**        -- Tab 2 (A-2)
+**tabs + 3**        -- Tab 3 (A-3)
+**tabs + 4**        -- Tab 4 (A-4)
+**tabs + 5**        -- Tab 5 (A-5)
+**tabs + 6**        -- Tab 6 (A-6)
+**tabs + 7**        -- Tab 7 (A-7)
+**tabs + 8**        -- Tab 8 (A-8)
+**tabs + 9**        -- Tab 9 (A-9)
 **tabs + toggle**   -- Toggle Tab

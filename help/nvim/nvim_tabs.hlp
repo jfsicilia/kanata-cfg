@@ -1,17 +1,17 @@
 # Tabs - nvim (actions/nvim/nvim_tabs.kbd)
-**tabs + spc**      -- Open Buffers
-**tabs + l**        -- Tabs Next
-**tabs + h**        -- Tabs Prev
-**tabs + t**        -- Tab New
-**tabs + w**        -- Close Tab
-**tabs + lsft + t** -- Tab Undo Close
-**tabs + 1**        -- Tab 1
-**tabs + 2**        -- Tab 2
-**tabs + 3**        -- Tab 3
-**tabs + 4**        -- Tab 4
-**tabs + 5**        -- Tab 5
-**tabs + 6**        -- Tab 6
-**tabs + 7**        -- Tab 7
-**tabs + 8**        -- Tab 8
-**tabs + 9**        -- Tab 9
-**tabs + toggle**   -- Toggle Tab
+**tabs + spc**      -- Open Buffers ([esc] :Telescope buffers [ret])
+**tabs + l**        -- Tabs Next ([esc] :bnext [ret])
+**tabs + h**        -- Tabs Prev ([esc] :bprevious [ret])
+**tabs + t**        -- Tab New (C-t)
+**tabs + w**        -- Close Tab ([esc] :bdelete [ent])
+**tabs + lsft + t** -- Tab Undo Close (C-S-t)
+**tabs + 1**        -- Tab 1 ([esc] :lua require('bufferline').go_to_buffer(1,true) [ent])
+**tabs + 2**        -- Tab 2 ([esc] :lua require('bufferline').go_to_buffer(2,true) [ent])
+**tabs + 3**        -- Tab 3 ([esc] :lua require('bufferline').go_to_buffer(3,true) [ent])
+**tabs + 4**        -- Tab 4 ([esc] :lua require('bufferline').go_to_buffer(4,true) [ent])
+**tabs + 5**        -- Tab 5 ([esc] :lua require('bufferline').go_to_buffer(5,true) [ent])
+**tabs + 6**        -- Tab 6 ([esc] :lua require('bufferline').go_to_buffer(6,true) [ent])
+**tabs + 7**        -- Tab 7 ([esc] :lua require('bufferline').go_to_buffer(7,true) [ent])
+**tabs + 8**        -- Tab 8 ([esc] :lua require('bufferline').go_to_buffer(8,true) [ent])
+**tabs + 9**        -- Tab 9 ([esc] :lua require('bufferline').go_to_buffer(0,true) [ent])
+**tabs + toggle**   -- Toggle Tab ([esc] :b# [ret])
