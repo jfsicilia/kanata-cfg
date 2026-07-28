@@ -36,78 +36,99 @@
 ;;
 ;; FIRST CLASS CITIZENS: GUI ELEMENTS
 ;; -----------------------------------
-;; GUI elements such as windows, workspaces (desktops/monitors), panes,
-;; tabs, groups, and sessions are treated as first-class citizens. Therefore,
-;; each of them has a dedicated key modifier: z (windows), x (workspaces),
-;; c (panes), v (tabs), b (groups/!tabs), n (sessions), m (tabs), , (panes),
-;; and / (windows). Windows, tabs, and panes each have 2 keys to allow easy
-;; access to certain combinations of these GUI elements.
-
+;; Windows, workspaces (desktops/monitors), panes, tabs, groups and sessions
+;; are first-class citizens: each gets its own mod key, and each is reachable
+;; with either hand. The lower row mirrors around its centre, so the same GUI
+;; element sits under symmetric fingers:
+;;
+;;        z     x     c     v     b   |   n     m     ,     .     /
+;;      wksp  grps  panes  tabs  sess | sess  tabs  panes  grps  wksp
+;;
+;; Windows are the exception: they live on g/h, the two index-finger keys of
+;; the home row.
+;;
 ;; MOD LAYERS
 ;; ----------
-;;
-;; All keys can provide mod functionality when held, converting them into
-;; new modifiers.
+;; Holding a key turns it into a mod: it opens that key's layer for as long as
+;; it stays down. Tapping still types the letter (fast-typing aware). The upper
+;; row mirrors the same way the lower row does.
 ;;
 ;; UPPER ROW
 ;; ---------
-;; Tab   → tap: tab        hold: open_layer
-;; q     → tap: q          hold: modQ_layer
-;; r     → tap: r          hold: modR_layer
-;; t     → tap: t          hold: modT_layer
-;; y     → tap: y          hold: modY_layer
-;; u     → tap: u          hold: modU_layer
-;; i     → tap: i          hold: modI_layer
-;; o     → tap: o          hold: modO_layer
+;; tab     → tap: tab           hold: open_layer
+;; q / p   → tap: q / p         hold: system_layer
+;; w / o   → tap: w / o         hold: workflow_layer
+;; e / i   → tap: e / i         hold: refactor_layer
+;; r / u   → tap: r / u         hold: run_layer
+;; t / y   → tap: t / y         hold: layouts_layer
+;; [ ] \   → tap: [ ] \         hold: (nothing yet — void_layer)
 ;;
 ;; MIDDLE ROW
 ;; ----------
-;; a, s, d, f, j, k, l, and ; have dual functionality as modifiers and as simple mods.
-;; A simple mod has only one combo: <key> + space. Therefore, it can also be used
-;; as a modifier (lmet/lalt/sft/lctl).
+;; The homerow mods. a/s/d/f and their mirrors j/k/l/; are letters when tapped
+;; and real modifiers when held, so they double as mods without costing a key.
 ;;
-;; Caps  → tap: esc        hold: omni_layer (main editing/file operations)
-;; a     → tap: a          hold: lmet_layer
-;; s     → tap: s          hold: lalt_layer
-;; d     → tap: d          hold: lsft_layer
-;; f     → tap: f          hold: lctl_layer
-;; g     → tap: g          hold: windows_layer
-;; h     → tap: h          hold: windows_layer
-;; j     → tap: j          hold: lctl_layer (special: mimics lalt for lctl+tab)
-;; k     → tap: k          hold: rsft_layer
-;; l     → tap: l          hold: lalt_layer
-;; ;     → tap: ;          hold: lmet_layer
-;; '     → tap: '          hold: mod'_layer
+;; caps    → tap: esc           hold: omni_layer (main editing/file operations)
+;; a / ;   → tap: a / ;         hold: lmet_layer
+;; s / l   → tap: s / l         hold: lalt_layer
+;; d       → tap: d             hold: lsft_layer
+;; k       → tap: k             hold: rsft_layer
+;; f / j   → tap: f / j         hold: lctl_layer (also releases vk_lalt, the
+;;                                    alt+tab emulation — see defvirtualkeys)
+;; g / h   → tap: g / h         hold: windows_layer
+;; '       → tap: '             hold: (nothing yet — void_layer)
 ;;
 ;; LOWER ROW
 ;; ---------
-;; z, x, c, v, b, n, m, ,, and / have dual functionality as GUI elements and simple mods.
-;; A simple mod has only one combo: <key> + space. Therefore, it can also be used
-;; as a modifier (lmet/lalt/sft/lctl).
-;;
-;; lsft  → tap: 2x tab_prev   hold: lsft_layer
-;; lang  → tap: toggle ES/US  hold: lang_layer (< > key on Spanish keyboard)
-;; z     → tap: z             hold: windows_layer     
-;; x     → tap: x             hold: workspaces_layer  
-;; c     → tap: c             hold: panes_layer       
-;; v     → tap: v             hold: tabs_layer        
-;; b     → tap: b             hold: groups_layer      
-;; n     → tap: n             hold: sessions_layer    
-;; m     → tap: m             hold: tabs_layer    
-;; ,     → tap: ,             hold: panes_mod,_layer  
-;; .     → tap: .             hold: mod._layer        
-;; /     → tap: /             hold: windows_layer     
-;; rsft  → tap: 2x tab_next   hold: rsft_layer
+;; lsft    → tap: 2x tab_prev   hold: lsft_layer
+;; lang    → tap: toggle ES/US  hold: lang_layer (< > key on Spanish keyboard)
+;; z / /   → tap: z / /         hold: workspaces_layer
+;; x / .   → tap: x / .         hold: groups_layer
+;; c / ,   → tap: c / ,         hold: panes_layer
+;; v / m   → tap: v / m         hold: tabs_layer
+;; b / n   → tap: b / n         hold: sessions_layer
+;; rsft    → tap: 2x tab_next   hold: rsft_layer
 ;;
 ;; MODIFIER ROW
 ;; ------------
-;; !lmet → tap: 2x desktop toggle   hold: !lmet_layer (physical lctl)
-;; !lalt → tap: 2x pane toggle      hold: !lalt_layer (physical lmet)
-;; !lctl → tap: 2x tab toggle       hold: !lctl_layer (physical lalt, mimics lalt+tab)
-;; spc   → tap: space               hold: spc+mods layers
-;; ralt  → tap: 2x app toggle       hold: apps_layer
-;; prnt  → tap: 2x session toggle   hold: bookmarks_layer
-;; rctl  → tap: 2x groups toggle    hold: opts_layer
+;; !lmet   → tap: 2x workspace toggle  hold: replace + !lmet (physical lctl)
+;; !lalt   → tap: 2x pane toggle       hold: search  + !lalt (physical lmet)
+;; !lctl   → tap: 2x tab toggle        hold: select  + !lctl (physical lalt)
+;; spc     → tap: space                hold: domains_layer
+;; ralt    → tap: 2x app toggle        hold: apps_layer
+;; prnt    → tap: 2x session toggle    hold: bookmarks_layer
+;; rctl    → tap: 2x groups toggle     hold: opts_layer
+;; esc     → tap: esc                  hold: opts_layer
+;;
+;; STACKED MODS: !lctl / !lalt / !lmet are two things at once
+;; ----------------------------------------------------------
+;; Holding one of the physical modifiers pushes three layers in a single go
+;; (see layers_toggle/toggles_!lctl&select.kbd and its siblings):
+;;
+;;   hold !lctl  →  select_layer + lctl_layer + !lctl_layer
+;;
+;; so while it is held you get both things at the same time:
+;;   - the modifier itself, i.e. every !lctl + <key> binding, and
+;;   - a mod of its own: !lctl + spc runs "select".
+;;
+;;   !lctl + spc → select   (seek & select: files, buffers, …)
+;;   !lalt + spc → search
+;;   !lmet + spc → replace
+;;
+;; This is why select/search/replace have no layer file of their own: they
+;; live in the file of the modifier they ride on (layer_!lctl&select.kbd, …).
+;; Kanata only ever reports the topmost layer as active, so their help is
+;; folded into the !mod help pages too.
+;;
+;; DOMAIN LAYERS (spc + key)
+;; -------------------------
+;; "Domain" means one thing only: the spc+ system. Holding spc opens
+;; domains_layer, a second level where each key opens its own sub-domain —
+;; spc+t terminal, spc+g git, spc+q quickfix, spc+r references, spc+s symbols,
+;; spc+u UI, … Every other thing you hold is a mod, not a domain.
+;;
+;; Each sub-domain also pops the help overlay (vk_help_open), so the available
+;; combos are listed on screen while you hold the keys.
 ;;
 ;; SPANISH CHARACTERS (vk_alt_chars)
 ;; ----------------------------------
