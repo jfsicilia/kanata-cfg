@@ -1,0 +1,12 @@
+;; "" !LMET&REPLACE_TOGGLES """""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_!lmet_layer                 $toggle_replace_&_!lmet_layer
+  toggle_!lmet+lsft_layer            $toggle_replace_&_!lmet+lsft_layer
+  toggle_!lmet+rsft_layer            $toggle_replace_&_!lmet+rsft_layer
+  toggle_replace_&_!lmet_layer             (t! toggle_mod_3layer  lmet       replace_layer      lmet_layer      !lmet_layer      )
+  toggle_replace_&_!lmet+lsft_layer        (t! toggle_2mod_3layer lmet lsft  replace+lsft_layer lmet+lsft_layer !lmet+lsft_layer)
+  toggle_replace_&_!lmet+rsft_layer        (t! toggle_2mod_3layer lmet rsft  replace+rsft_layer lmet+rsft_layer !lmet+rsft_layer)
+  toggle_replace_layer               $toggle_replace_&_!lmet_layer
+  toggle_replace+lsft_layer          $toggle_replace_&_!lmet+lsft_layer
+  toggle_replace+rsft_layer          $toggle_replace_&_!lmet+rsft_layer
+)

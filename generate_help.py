@@ -773,10 +773,10 @@ def physical_mods_directly_toggled_nodes() -> set[tuple[str, ...]]:
     (toggle_mod_layer / toggle_2mod_layer / toggle_3mod_layer /
     toggle_4mod_layer — i.e. not stacked with anything else) that's
     genuinely bound to a real key somewhere — referenced as
-    "$toggle_..._layer" outside its own declaration in
-    layers_toggle/toggles_physical_mods.kbd.
+    "$toggle_..._layer" somewhere other than the layers_toggle/ file that
+    declares it.
 
-    Every real-modifier combination gets such a toggle var *declared* there
+    Every real-modifier combination gets such a toggle var *declared*
     (e.g. holding both lctl+lalt has one), but most are never actually wired
     to a key — only genuinely-used ones count as independently reachable.
     The home-row mods are the prototypical case: holding physical f/j
@@ -785,25 +785,31 @@ def physical_mods_directly_toggled_nodes() -> set[tuple[str, ...]]:
     its mid layer — so "lctl" needs its own help file for that reason alone,
     regardless of whether it's also shadowed somewhere else.
     """
-    decl_path = TOGGLES_DIR / "toggles_physical_mods.kbd"
-    if not decl_path.exists():
-        return set()
-    decl_text = decl_path.read_text()
+    # {toggle var: (target layer, file that declares it)} — the declaring file
+    # is tracked per variable rather than assumed to be one shared file,
+    # since these declarations are spread across layers_toggle/ by modifier.
+    declared: dict[str, tuple[str, Path]] = {}
+    for decl_path in sorted(TOGGLES_DIR.glob("*.kbd")):
+        for m in _SINGLE_LAYER_TOGGLE_RE.finditer(decl_path.read_text()):
+            args = m.group(2).split()
+            if not args:
+                continue
+            target = args[-1].removesuffix("_layer")
+            # Scanning every toggle file also turns up toggles for ordinary
+            # domains (apps+lsft, tabs+rsft, …); only physical_mods layers
+            # belong here. Reading a single file used to imply this filter.
+            if LayerStack._is_physical_mods_layer(target):
+                declared[m.group(1)] = (target, decl_path)
 
-    declared: dict[str, str] = {}  # toggle var name -> target layer name
-    for m in _SINGLE_LAYER_TOGGLE_RE.finditer(decl_text):
-        args = m.group(2).split()
-        if args:
-            declared[m.group(1)] = args[-1].removesuffix("_layer")
-
+    # A variable counts as used only where it is referenced somewhere other
+    # than its own declaration.
     used: set[str] = set()
     for path in ROOT.rglob("*.kbd"):
-        if path == decl_path:
-            continue
         text = path.read_text()
-        used.update(var for var in declared if f"${var}" in text)
+        used.update(var for var, (_target, decl) in declared.items()
+                    if path != decl and f"${var}" in text)
 
-    return {tuple(declared[var].split("+")) for var in used}
+    return {tuple(declared[var][0].split("+")) for var in used}
 
 
 def physical_mods_available_nodes(layer_stacks: list["LayerStack"]) -> list[tuple[str, ...]]:

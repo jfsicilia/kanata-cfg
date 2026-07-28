@@ -1,0 +1,10 @@
+;; "" PANES_TOGGLES """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_panes_layer                  (t! toggle_layer             panes_layer)
+  toggle_panes+lsft_layer             (t! toggle_mod_layer   lsft  panes+lsft_layer)
+  toggle_panes+rsft_layer             (t! toggle_mod_layer   rsft  panes+rsft_layer)
+  toggle_panes+move_layer             (t! toggle_layer             panes+move_layer)
+  toggle_panes+resize_layer           (t! toggle_layer             panes+resize_layer)
+  toggle_panes+snap_layer             (t! toggle_layer             panes+snap_layer)
+  toggle_panes+swap_layer             (t! toggle_layer             panes+swap_layer)
+)

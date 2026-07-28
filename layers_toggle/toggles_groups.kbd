@@ -1,0 +1,6 @@
+;; "" GROUPS_TOGGLES """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_groups_layer                 (t! toggle_layer             groups_layer)
+  toggle_groups+lsft_layer            (t! toggle_mod_layer   lsft  groups+lsft_layer)
+  toggle_groups+rsft_layer            (t! toggle_mod_layer   rsft  groups+rsft_layer)
+)

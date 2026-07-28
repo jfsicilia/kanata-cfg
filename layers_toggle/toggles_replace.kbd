@@ -1,6 +1,0 @@
-(defvar
-  ;; Replace layer
-  toggle_replace_layer               $toggle_replace_&_!lmet_layer
-  toggle_replace+lsft_layer          $toggle_replace_&_!lmet+lsft_layer
-  toggle_replace+rsft_layer          $toggle_replace_&_!lmet+rsft_layer
-)

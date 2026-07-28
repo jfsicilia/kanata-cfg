@@ -1,0 +1,6 @@
+;; "" SESSIONS_TOGGLES """"""""""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_sessions_layer               (t! toggle_layer             sessions_layer)
+  toggle_sessions+lsft_layer          (t! toggle_mod_layer   lsft  sessions+lsft_layer)
+  toggle_sessions+rsft_layer          (t! toggle_mod_layer   rsft  sessions+rsft_layer)
+)

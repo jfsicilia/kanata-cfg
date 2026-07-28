@@ -1,0 +1,5 @@
+;; "" SFT_TOGGLES """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_lsft_layer                  (t! toggle_mod_layer   lsft  lsft_layer)
+  toggle_rsft_layer                  (t! toggle_mod_layer   rsft  rsft_layer)
+)

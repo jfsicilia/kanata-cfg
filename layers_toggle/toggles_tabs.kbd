@@ -1,0 +1,7 @@
+;; "" TABS_TOGGLES """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_tabs_layer                   (t! toggle_layer             tabs_layer)
+  toggle_tabs+lsft_layer              (t! toggle_mod_layer   lsft  tabs+lsft_layer)
+  toggle_tabs+rsft_layer              (t! toggle_mod_layer   rsft  tabs+rsft_layer)
+  toggle_tabs+move_layer              (t! toggle_layer             tabs+move_layer)
+)

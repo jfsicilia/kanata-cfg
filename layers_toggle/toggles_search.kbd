@@ -1,6 +1,0 @@
-(defvar
-  ;; Search layer
-  toggle_search_layer                $toggle_search_&_!lalt_layer
-  toggle_search+lsft_layer           $toggle_search_&_!lalt+lsft_layer
-  toggle_search+rsft_layer           $toggle_search_&_!lalt+rsft_layer
-)

@@ -1,0 +1,7 @@
+;; "" WORKSPACES_TOGGLES """"""""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_workspaces_layer             (t! toggle_layer             workspaces_layer)
+  toggle_workspaces+lsft_layer        (t! toggle_mod_layer   lsft  workspaces+lsft_layer)
+  toggle_workspaces+rsft_layer        (t! toggle_mod_layer   rsft  workspaces+rsft_layer)
+  toggle_workspaces+move_layer        (t! toggle_layer             workspaces+move_layer)
+)

@@ -1,0 +1,26 @@
+;; "" !LALT&SEARCH_TOGGLES """"""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_!lalt_layer                 $toggle_search_&_!lalt_layer
+  toggle_!lalt+lsft_layer            $toggle_search_&_!lalt+lsft_layer
+  toggle_!lalt+rsft_layer            $toggle_search_&_!lalt+rsft_layer
+  toggle_!lalt+lmet_layer            (t! toggle_2mod_2layer lalt lmet      lalt+lmet_layer      !lalt+lmet_layer)
+  toggle_!lalt+lmet+lsft_layer       (t! toggle_3mod_2layer lalt lmet lsft lalt+lmet+lsft_layer !lalt+lmet+lsft_layer)
+  toggle_!lalt+lmet+rsft_layer       (t! toggle_3mod_2layer lalt lmet rsft lalt+lmet+rsft_layer !lalt+lmet+rsft_layer)
+  toggle_!lalt+lsft+lmet_layer       (t! toggle_3mod_2layer lalt lmet lsft lalt+lmet+lsft_layer !lalt+lmet+lsft_layer)
+  toggle_!lalt+rsft+lmet_layer       (t! toggle_3mod_2layer lalt lmet rsft lalt+lmet+rsft_layer !lalt+lmet+rsft_layer)
+  toggle_!lsft+lalt+lmet_layer       (t! toggle_3mod_2layer lsft lalt lmet lalt+lmet+lsft_layer !lalt+lmet+lsft_layer)
+  toggle_!lsft+lmet+lalt_layer       (t! toggle_3mod_2layer lsft lalt lmet lalt+lmet+lsft_layer !lalt+lmet+lsft_layer)
+  toggle_!rsft+lalt+lmet_layer       (t! toggle_3mod_2layer rsft lalt lmet lalt+lmet+rsft_layer !lalt+lmet+rsft_layer)
+  toggle_!rsft+lmet+lalt_layer       (t! toggle_3mod_2layer rsft lalt lmet lalt+lmet+rsft_layer !lalt+lmet+rsft_layer)
+  toggle_!lmet+lalt_layer            (t! toggle_2mod_2layer lmet lalt      lalt+lmet_layer      !lalt+lmet_layer)
+  toggle_!lmet+lalt+lsft_layer       (t! toggle_3mod_2layer lmet lalt lsft lalt+lmet+lsft_layer !lalt+lmet+lsft_layer)
+  toggle_!lmet+lalt+rsft_layer       (t! toggle_3mod_2layer lmet lalt rsft lalt+lmet+rsft_layer !lalt+lmet+rsft_layer)
+  toggle_!lmet+lsft+lalt_layer       (t! toggle_3mod_2layer lmet lalt lsft lalt+lmet+lsft_layer !lalt+lmet+lsft_layer)
+  toggle_!lmet+rsft+lalt_layer       (t! toggle_3mod_2layer lmet lalt rsft lalt+lmet+rsft_layer !lalt+lmet+rsft_layer)
+  toggle_search_&_!lalt_layer              (t! toggle_mod_3layer  lalt       search_layer       lalt_layer      !lalt_layer      )
+  toggle_search_&_!lalt+lsft_layer         (t! toggle_2mod_3layer lalt lsft  search+lsft_layer  lalt+lsft_layer !lalt+lsft_layer )
+  toggle_search_&_!lalt+rsft_layer         (t! toggle_2mod_3layer lalt rsft  search+rsft_layer  lalt+rsft_layer !lalt+rsft_layer )
+  toggle_search_layer                $toggle_search_&_!lalt_layer
+  toggle_search+lsft_layer           $toggle_search_&_!lalt+lsft_layer
+  toggle_search+rsft_layer           $toggle_search_&_!lalt+rsft_layer
+)

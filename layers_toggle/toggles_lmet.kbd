@@ -1,0 +1,6 @@
+;; "" LMET_TOGGLES """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_lmet_layer                  (t! toggle_mod_layer  lmet       lmet_layer  )
+  toggle_lmet+lsft_layer             (t! toggle_2mod_layer lmet lsft  lmet+lsft_layer)
+  toggle_lmet+rsft_layer             (t! toggle_2mod_layer lmet rsft  lmet+rsft_layer)
+)

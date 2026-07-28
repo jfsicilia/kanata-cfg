@@ -1,0 +1,6 @@
+;; "" LAYOUTS_TOGGLES """""""""""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_layouts_layer               (t! toggle_layer             layouts_layer)
+  toggle_layouts+lsft_layer          (t! toggle_mod_layer   lsft  layouts+lsft_layer)
+  toggle_layouts+rsft_layer          (t! toggle_mod_layer   rsft  layouts+rsft_layer)
+)
