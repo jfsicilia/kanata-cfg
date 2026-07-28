@@ -1,0 +1,7 @@
+(defvar
+  ;; == SFT actions ==========================================================
+  action_sft+ent (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_foot)) $foot_action_sft+ent break
+    () S-ent break
+  ))
+)

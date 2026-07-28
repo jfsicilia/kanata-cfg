@@ -1,0 +1,9 @@
+(defvar
+;; == select ========================================================
+;; select + spc
+dolphin_action_select+spc                 $dolphin_go 
+;; select + lsft + spc
+dolphin_action_select+lsft+spc            (push-msg "NOTIFY:Seek and select folders not implemented!") 
+;; select + rsft + spc
+dolphin_action_select+rsft+spc            (push-msg "NOTIFY:Seek and select folders not implemented!") 
+)

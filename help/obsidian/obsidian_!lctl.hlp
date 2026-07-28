@@ -1,20 +1,20 @@
-# Physical mods (!lctl) - obsidian (actions/obsidian/obsidian_physical_mods.kbd)
-**!lctl + a**         -- Select All Text (ggVG)
-**!lctl + b**         -- Bold Text (C-A-b)
-**!lctl + e**         -- Toggle Edit Mode (C-A-e)
-**!lctl + p**         -- Select Files
-**!lctl + r**         -- Toggle Source Mode (C-A-S-e)
-**!lctl + ,**         -- Setting
-**!lctl + lsft + p**  -- Commands (C-A-p)
-**lctl + tab**        -- Walk Through Apps
-**lctl + `**          -- Walk Through Same App
-**lctl + b**          -- Page Up
-**lctl + f**          -- Page Down
-**lctl + t**          -- New Tab (A-C-t)
-**lctl + ,**          -- Setting
-**lctl + ;**          -- Vimola (C-A-M-e [50ms] ;)
-**lctl + [**          -- Forward (C-A-right)
-**lctl + ]**          -- Backward (C-A-left)
-**seek + spc**        -- Seek And Select File (C-A-o)
-**lctl + lsft + t**   -- Undo Close Tab (A-C-S-t)
-**seek + lsft + spc** -- Seek And Select Folder (C-S-o)
+# Physical mods (!lctl) - obsidian (actions/obsidian/obsidian_!lctl&select.kbd)
+**!lctl + a**           -- Select All Text (ggVG)
+**!lctl + b**           -- Bold Text (C-A-b)
+**!lctl + e**           -- Toggle Edit Mode (C-A-e)
+**!lctl + p**           -- Select Files
+**!lctl + r**           -- Toggle Source Mode (C-A-S-e)
+**!lctl + ,**           -- Setting
+**!lctl + lsft + p**    -- Commands (C-A-p)
+**lctl + tab**          -- Walk Through Apps
+**lctl + `**            -- Walk Through Same App
+**lctl + b**            -- Page Up
+**lctl + f**            -- Page Down
+**lctl + t**            -- New Tab (A-C-t)
+**lctl + ,**            -- Setting
+**lctl + ;**            -- Vimola (C-A-M-e [50ms] ;)
+**lctl + [**            -- Forward (C-A-right)
+**lctl + ]**            -- Backward (C-A-left)
+**select + spc**        -- Select File (C-A-o)
+**lctl + lsft + t**     -- Undo Close Tab (A-C-S-t)
+**select + lsft + spc** -- Select Folder (C-S-o)

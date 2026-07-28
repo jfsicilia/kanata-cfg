@@ -15,4 +15,5 @@
   foot_lazygit             (macro esc d d i l a z y g i t ent)
   foot_git_status          (macro esc d d i g i t spc s t a t u s ent)
   foot_force_new_line      (macro \ ent)
+  foot_select              C-f
 )

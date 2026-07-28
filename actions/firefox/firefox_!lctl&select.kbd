@@ -1,0 +1,17 @@
+(defvar
+firefox_action_!lctl+1                 $firefox_tabs_goto_1        
+firefox_action_!lctl+2                 $firefox_tabs_goto_2         
+firefox_action_!lctl+3                 $firefox_tabs_goto_3        
+firefox_action_!lctl+4                 $firefox_tabs_goto_4        
+firefox_action_!lctl+5                 $firefox_tabs_goto_5        
+firefox_action_!lctl+6                 $firefox_tabs_goto_6        
+firefox_action_!lctl+7                 $firefox_tabs_goto_7        
+firefox_action_!lctl+8                 $firefox_tabs_goto_8        
+firefox_action_!lctl+9                 $firefox_tabs_goto_9        
+firefox_action_!lctl+0                 $firefox_tabs_goto_0        
+;; == select ========================================================
+;; select + spc
+firefox_action_select+spc                      $firefox_select
+;; select + lsft + spc
+firefox_action_select+lsft+spc                 XX
+)

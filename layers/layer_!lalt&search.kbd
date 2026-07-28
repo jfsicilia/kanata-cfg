@@ -1,0 +1,44 @@
+;; "" !LALT_LAYER """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (!lalt_layer)
+  (t! map_layers "$action_!lalt" "!lalt" ($<lctl $>lctl $<lmet $>lmet $lsft $rsft $!lctl $!lmet lsft rsft))
+  (t! map_keys   "$action_!lalt"         ($<lctl $>lctl $<lmet $>lmet $lsft $rsft))
+)
+
+(deflayermap (!lalt+lsft_layer)
+  (t! map_layers "$action_!lalt+lsft" "!lalt+lsft" ($<lctl $>lctl $<lmet $>lmet $!lctl $!lmet))
+  (t! map_keys   "$action_!lalt+lsft"              ($<lctl $>lctl $<lmet $>lmet))
+)
+
+(deflayermap (!lalt+rsft_layer)
+  (t! map_layers "$action_!lalt+lsft" "!lalt+lsft" ($<lctl $>lctl $<lmet $>lmet $!lctl $!lmet))
+  (t! map_keys   "$action_!lalt+lsft"              ($<lctl $>lctl $<lmet $>lmet))
+)
+
+;; "" !LALT+LMET_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (!lalt+lmet_layer)
+  (t! map_layers _ "!lalt+lmet" ($<lctl $>lctl $lsft $rsft $!lctl lsft rsft))
+  (t! map_keys   _              ($<lctl $>lctl $lsft $rsft))
+)
+
+(deflayermap (!lalt+lmet+lsft_layer)
+  (t! map_layers _ "!lalt+lmet+lsft" ($<lctl $>lctl $!lctl))
+  (t! map_keys   _                   ($<lctl $>lctl))
+)
+
+(deflayermap (!lalt+lmet+rsft_layer)
+  (t! map_layers _ "!lalt+lmet+rsft" ($<lctl $>lctl $!lctl))
+  (t! map_keys   _                   ($<lctl $>lctl))
+)
+
+;; "" SEARCH_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+;; Always pushed together with !lalt (see toggle_search_&_!lalt_layer).
+(deflayermap (search_layer)
+    (t! map_layers _ "search" ($lsft $rsft lsft rsft))
+    spc $action_search+spc
+)
+(deflayermap (search+lsft_layer)
+    spc $action_search+lsft+spc
+)
+(deflayermap (search+rsft_layer)
+    spc $action_search+rsft+spc
+)

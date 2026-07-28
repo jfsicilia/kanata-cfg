@@ -1,0 +1,15 @@
+(defvar
+;; == !LCTL actions ==========================================================
+obsidian_action_!lctl+a                        $obsidian_select_all_text
+obsidian_action_!lctl+b                        $obsidian_bold_text
+obsidian_action_!lctl+e                        $obsidian_toggle_edit_mode
+obsidian_action_!lctl+p                        $obsidian_action_select_files
+obsidian_action_!lctl+r                        $obsidian_toggle_source_mode
+obsidian_action_!lctl+,                        $obsidian_action_setting
+obsidian_action_!lctl+lsft+p                   $obsidian_commands
+;; == select ========================================================
+;; select + spc
+obsidian_action_select+spc                   $obsidian_select_file
+;; select + lsft + spc
+obsidian_action_select+lsft+spc              $obsidian_select_folder
+)

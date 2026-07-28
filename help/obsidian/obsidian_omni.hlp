@@ -11,7 +11,7 @@
 **omni + rsft + c** -- Copy Path (C-S-c)
 **omni + d**        -- Duplicate (C-A-d)
 **omni + f**        -- Page Down
-**omni + g**        -- Seek And Select File (C-A-o)
+**omni + g**        -- Select File (C-A-o)
 **omni + h**        -- Nav Left (left)
 **omni + j**        -- Nav Down (down)
 **omni + k**        -- Nav Up (up)

@@ -63,10 +63,13 @@ App focus is detected externally (e.g. via a window manager hook) which toggles 
 
 ### Naming conventions
 
-- Layer files: `layers/layer_<domain>.kbd`
+- Layer files: `layers/layer_<domain>.kbd` — with two deliberate exceptions:
+  - physical modifiers get one file per modifier (`layer_lctl.kbd`, `layer_lalt.kbd`, `layer_lmet.kbd`, plus `layer_sft.kbd` for `lsft`/`rsft`), each also holding that modifier's combination layers (`lctl+lalt`, `lctl+lalt+lmet`, … grouped under their first modifier)
+  - a domain that is only ever reachable stacked under a `!`-modifier lives in that modifier's file, named `layer_!<mod>&<domain>.kbd` (`layer_!lctl&select.kbd`, `layer_!lalt&search.kbd`, `layer_!lmet&replace.kbd`) — mirroring the `$toggle_<domain>_&_!<mod>_layer` stack that pushes them together
 - Toggle files: `layers_toggle/toggles_<group>.kbd`
-- Interface files: `actions/actions_<domain>.iface.kbd`
-- App action files: `actions/<app>/<app>_<domain>.kbd`
+- Interface files: `actions/actions_<domain>.iface.kbd` — mirroring `layers/` exactly, so physical modifiers get `actions_lctl.iface.kbd`, `actions_lalt.iface.kbd`, `actions_lmet.iface.kbd`, `actions_sft.iface.kbd`, and a domain only reachable under a `!`-modifier shares its file as `actions_!<mod>&<domain>.iface.kbd`
+- App action files: `actions/<app>/<app>_<domain>.kbd`, same two exceptions (`obsidian_!lctl&select.kbd`). An app only gets a file where it actually binds something — no empty placeholders, since an app with no file simply falls back to the global help/actions
+- The `!` and `&` in these names are load-bearing for the sync scripts (`kanata_sync_apps.py` / `kanata_sync_interfaces.py` parse the interface name out of the filename), so their `IFACE_PRIORITY_RE` must keep accepting both characters
 - App-specific variables: `<app>_<action_name>` (e.g. `nvim_file_explorer`)
 
 ### Key alias variables (`setup.kbd`)

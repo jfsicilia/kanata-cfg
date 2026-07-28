@@ -1,7 +1,7 @@
 (defvar
 ;; omni + spc
 ;; If not implemented, defaults to: spc
-nvim_action_omni+spc               $nvim_action_seek+spc
+nvim_action_omni+spc               $nvim_action_select+spc
 ;; omni + ent
 nvim_action_omni+ent               (push-msg "NOTIFY:Omni combo not implemented!")
 ;; omni + a

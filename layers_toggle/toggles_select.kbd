@@ -1,0 +1,6 @@
+(defvar
+  ;; Seek_n_select layer
+  toggle_select_layer                  $toggle_select_&_!lctl_layer
+  toggle_select+lsft_layer             $toggle_select_&_!lctl+lsft_layer
+  toggle_select+rsft_layer             $toggle_select_&_!lctl+rsft_layer
+)

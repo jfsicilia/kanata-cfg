@@ -1,6 +1,0 @@
-(defvar
-  ;; Seek_n_select layer
-  toggle_seek_n_select_layer                  $toggle_seek_n_select_&_!lctl_layer
-  toggle_seek_n_select+lsft_layer             $toggle_seek_n_select_&_!lctl+lsft_layer
-  toggle_seek_n_select+rsft_layer             $toggle_seek_n_select_&_!lctl+rsft_layer
-)

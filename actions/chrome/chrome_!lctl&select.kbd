@@ -1,0 +1,7 @@
+(defvar
+;; == select ========================================================
+;; select + spc
+chrome_action_select+spc                      $chrome_select    
+;; select + lsft + spc
+chrome_action_select+lsft+spc                 XX
+)

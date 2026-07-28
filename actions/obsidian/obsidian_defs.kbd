@@ -90,7 +90,7 @@ obsidian_replace_in_files         C-A-S-h
 obsidian_search_in_file           C-A-m
 obsidian_search_in_files          C-A-S-m
 
-;; seek_n_select
-obsidian_seek_and_select_file     C-A-o
-obsidian_seek_and_select_folder   C-S-o
+;; select
+obsidian_select_file     C-A-o
+obsidian_select_folder   C-S-o
 )

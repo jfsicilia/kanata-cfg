@@ -1,0 +1,47 @@
+;; "" LSFT_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (lsft_layer)
+  ;; Pressing lsft+rsft (in that order) issues tab_next action.
+  rsft (multi (release-key lsft) $action_tabs+l)
+
+  ent $action_sft+ent
+
+  $apps             (t! th _ $toggle_apps+lsft_layer)
+  $open             (t! th _ $toggle_open+lsft_layer)
+  $bookm            (t! th _ $toggle_bookmarks+lsft_layer)
+  $omni             (t! th _ $toggle_omni+lsft_layer)
+
+  $<lctl            (t! th _ $toggle_lctl+lsft_layer)
+  $>lctl            (t! th _ $toggle_lctl+lsft_layer)
+  $!lctl            (t! th _ $toggle_select_&_!lctl+lsft_layer)
+
+  $<lalt            (t! th _ $toggle_lalt+lsft_layer)
+  $>lalt            (t! th _ $toggle_lalt+lsft_layer)
+  $!lalt            (t! th _ $toggle_search_&_!lalt+lsft_layer)
+
+  $<lmet            (t! th _ $toggle_lmet+lsft_layer)
+  $>lmet            (t! th _ $toggle_lmet+lsft_layer)
+  $!lmet            (t! th _ $toggle_replace_&_!lmet+lsft_layer)
+)
+
+;; "" RSFT_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (rsft_layer)
+  ;; Pressing rsft+lsft (in that order) issues tab_prev combo.
+  lsft (multi (release-key rsft) $action_tabs+h)
+
+  $apps             (t! th _ $toggle_apps+rsft_layer)
+  $open             (t! th _ $toggle_open+rsft_layer)
+  $bookm            (t! th _ $toggle_bookmarks+rsft_layer)
+  $omni             (t! th _ $toggle_omni+rsft_layer)
+
+  $<lctl            (t! th _ $toggle_lctl+rsft_layer)
+  $>lctl            (t! th _ $toggle_lctl+rsft_layer)
+  $!lctl            (t! th _ $toggle_select_&_!lctl+rsft_layer)
+
+  $<lalt            (t! th _ $toggle_lalt+rsft_layer)
+  $>lalt            (t! th _ $toggle_lalt+rsft_layer)
+  $!lalt            (t! th _ $toggle_search_&_!lalt+rsft_layer)
+
+  $<lmet            (t! th _ $toggle_lmet+rsft_layer)
+  $>lmet            (t! th _ $toggle_lmet+rsft_layer)
+  $!lmet            (t! th _ $toggle_replace_&_!lmet+rsft_layer)
+)

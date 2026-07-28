@@ -1,0 +1,419 @@
+(defvar
+  ;; == LMET actions ==========================================================
+  action_lmet+a (t! unmod_all (switch ;;@iface@ 
+    () M-a break
+  ))
+  action_lmet+b (t! unmod_all (switch ;;@iface@ 
+    () M-b break
+  ))
+  action_lmet+c  (t! unmod_all (switch ;;@iface@ 
+    () M-c  break
+  ))
+  action_lmet+d (t! unmod_all (switch ;;@iface@ 
+    () M-d break
+  ))
+  action_lmet+e  (t! unmod_all (switch ;;@iface@ 
+    () M-e  break
+  ))
+  action_lmet+f  (t! unmod_all (switch ;;@iface@ 
+    () M-f  break
+  ))
+  action_lmet+g  (t! unmod_all (switch ;;@iface@ 
+    () M-g  break
+  ))
+  action_lmet+h  (t! unmod_all (switch ;;@iface@ 
+    () M-h  break
+  ))
+  action_lmet+i  (t! unmod_all (switch ;;@iface@ 
+    () M-i  break
+  ))
+  action_lmet+j  (t! unmod_all (switch ;;@iface@ 
+    () M-j  break
+  ))
+  action_lmet+k  (t! unmod_all (switch ;;@iface@ 
+    () M-k  break
+  ))
+  action_lmet+l  (t! unmod_all (switch ;;@iface@ 
+    () M-l break
+  ))
+  action_lmet+m  (t! unmod_all (switch ;;@iface@ 
+    () M-m  break
+  ))
+  action_lmet+n  (t! unmod_all (switch ;;@iface@ 
+    () M-n  break
+  ))
+  action_lmet+o  (t! unmod_all (switch ;;@iface@ 
+    () M-o  break
+  ))
+  action_lmet+p  (t! unmod_all (switch ;;@iface@ 
+    () M-p  break
+  ))
+  action_lmet+q  (t! unmod_all (switch ;;@iface@ 
+    () M-q  break
+  ))
+  action_lmet+r  (t! unmod_all (switch ;;@iface@ 
+    () M-r  break
+  ))
+  action_lmet+s  (t! unmod_all (switch ;;@iface@ 
+    () M-s  break
+  ))
+  action_lmet+t  (t! unmod_all (switch ;;@iface@ 
+    () M-t  break
+  ))
+  action_lmet+u  (t! unmod_all (switch ;;@iface@ 
+    () M-u  break
+  ))
+  action_lmet+v  (t! unmod_all (switch ;;@iface@ 
+    () M-v  break
+  ))
+  action_lmet+w  (t! unmod_all (switch ;;@iface@ 
+    () M-w  break
+  ))
+  action_lmet+x  (t! unmod_all (switch ;;@iface@ 
+    () M-x  break
+  ))
+  action_lmet+y  (t! unmod_all (switch ;;@iface@ 
+    () M-y  break
+  ))
+  action_lmet+z  (t! unmod_all (switch ;;@iface@ 
+    () M-z break
+  ))
+  action_lmet+,  (t! unmod_all (switch ;;@iface@ 
+    () M-, break
+  ))
+  action_lmet+.  (t! unmod_all (switch ;;@iface@ 
+    () M-.  break
+  ))
+  action_lmet+/  (t! unmod_all (switch ;;@iface@ 
+    () M-/  break
+  ))
+  action_lmet+;  (t! unmod_all (switch ;;@iface@ 
+    () M-;  break
+  ))
+  action_lmet+'  (t! unmod_all (switch ;;@iface@ 
+    () M-'  break
+  ))
+  action_lmet+[  (t! unmod_all (switch ;;@iface@ 
+    () M-[  break
+  ))
+  action_lmet+]  (t! unmod_all (switch ;;@iface@ 
+    () M-]  break
+  ))  ;; ""
+  action_lmet+\  (t! unmod_all (switch ;;@iface@ 
+    () M-\  break
+  ))  ;; ""
+  action_lmet+-  (t! unmod_all (switch ;;@iface@ 
+    () M--  break
+  ))
+  action_lmet+=  (t! unmod_all (switch ;;@iface@ 
+    () M-=  break
+  ))
+  action_lmet+1  (t! unmod_all (switch ;;@iface@ 
+    () M-1  break
+  ))
+  action_lmet+2  (t! unmod_all (switch ;;@iface@ 
+    () M-2  break
+  ))
+  action_lmet+3  (t! unmod_all (switch ;;@iface@ 
+    () M-3  break
+  ))
+  action_lmet+4  (t! unmod_all (switch ;;@iface@ 
+    () M-4  break
+  ))
+  action_lmet+5  (t! unmod_all (switch ;;@iface@ 
+    () M-5  break
+  ))
+  action_lmet+6  (t! unmod_all (switch ;;@iface@ 
+    () M-6  break
+  ))
+  action_lmet+7  (t! unmod_all (switch ;;@iface@ 
+    () M-7  break
+  ))
+  action_lmet+8  (t! unmod_all (switch ;;@iface@ 
+    () M-8  break
+  ))
+  action_lmet+9  (t! unmod_all (switch ;;@iface@ 
+    () M-9  break
+  ))
+  action_lmet+0  (t! unmod_all (switch ;;@iface@ 
+    () M-0  break
+  ))
+  ;; == LMET+LSFT actions ==========================================================
+  action_lmet+lsft+a (t! unmod_all (switch ;;@iface@ 
+    () M-S-a break
+  ))
+  action_lmet+lsft+b (t! unmod_all (switch ;;@iface@ 
+    () M-S-b break
+  ))
+  action_lmet+lsft+c  (t! unmod_all (switch ;;@iface@ 
+    () M-S-c  break
+  ))
+  action_lmet+lsft+d (t! unmod_all (switch ;;@iface@ 
+    () M-S-d break
+  ))
+  action_lmet+lsft+e  (t! unmod_all (switch ;;@iface@ 
+    () M-S-e  break
+  ))
+  action_lmet+lsft+f  (t! unmod_all (switch ;;@iface@ 
+    () M-S-f  break
+  ))
+  action_lmet+lsft+g  (t! unmod_all (switch ;;@iface@ 
+    () M-S-g  break
+  ))
+  action_lmet+lsft+h  (t! unmod_all (switch ;;@iface@ 
+    () M-S-h  break
+  ))
+  action_lmet+lsft+i  (t! unmod_all (switch ;;@iface@ 
+    () M-S-i  break
+  ))
+  action_lmet+lsft+j  (t! unmod_all (switch ;;@iface@ 
+    () M-S-j  break
+  ))
+  action_lmet+lsft+k  (t! unmod_all (switch ;;@iface@ 
+    () M-S-k  break
+  ))
+  action_lmet+lsft+l  (t! unmod_all (switch ;;@iface@ 
+    () M-S-l  break
+  ))
+  action_lmet+lsft+m  (t! unmod_all (switch ;;@iface@ 
+    () M-S-m  break
+  ))
+  action_lmet+lsft+n  (t! unmod_all (switch ;;@iface@ 
+    () M-S-n  break
+  ))
+  action_lmet+lsft+o  (t! unmod_all (switch ;;@iface@ 
+    () M-S-o  break
+  ))
+  action_lmet+lsft+p  (t! unmod_all (switch ;;@iface@ 
+    () M-S-p  break
+  ))
+  action_lmet+lsft+q  (t! unmod_all (switch ;;@iface@ 
+    () M-S-q  break
+  ))
+  action_lmet+lsft+r  (t! unmod_all (switch ;;@iface@ 
+    () M-S-r  break
+  ))
+  action_lmet+lsft+s  (t! unmod_all (switch ;;@iface@ 
+    () M-S-s  break
+  ))
+  action_lmet+lsft+t  (t! unmod_all (switch ;;@iface@ 
+    () M-S-t  break
+  ))
+  action_lmet+lsft+u  (t! unmod_all (switch ;;@iface@ 
+    () M-S-u  break
+  ))
+  action_lmet+lsft+v  (t! unmod_all (switch ;;@iface@ 
+    () M-S-v  break
+  ))
+  action_lmet+lsft+w  (t! unmod_all (switch ;;@iface@ 
+    () M-S-w  break
+  ))
+  action_lmet+lsft+x  (t! unmod_all (switch ;;@iface@ 
+    () M-S-x  break
+  ))
+  action_lmet+lsft+y  (t! unmod_all (switch ;;@iface@ 
+    () M-S-y  break
+  ))
+  action_lmet+lsft+z  (t! unmod_all (switch ;;@iface@ 
+    () M-S-z break
+  ))
+  action_lmet+lsft+,  (t! unmod_all (switch ;;@iface@ 
+    () M-S-, break
+  ))
+  action_lmet+lsft+.  (t! unmod_all (switch ;;@iface@ 
+    () M-S-.  break
+  ))
+  action_lmet+lsft+/  (t! unmod_all (switch ;;@iface@ 
+    () M-S-/  break
+  ))
+  action_lmet+lsft+;  (t! unmod_all (switch ;;@iface@ 
+    () M-S-;  break
+  ))
+  action_lmet+lsft+'  (t! unmod_all (switch ;;@iface@ 
+    () M-S-'  break
+  ))
+  action_lmet+lsft+[  (t! unmod_all (switch ;;@iface@ 
+    () M-S-[  break
+  ))
+  action_lmet+lsft+]  (t! unmod_all (switch ;;@iface@ 
+    () M-S-]  break
+  ))  ;; ""
+  action_lmet+lsft+\  (t! unmod_all (switch ;;@iface@ 
+    () M-S-\  break
+  ))  ;; ""
+  action_lmet+lsft+-  (t! unmod_all (switch ;;@iface@ 
+    () M-S--  break
+  ))
+  action_lmet+lsft+=  (t! unmod_all (switch ;;@iface@ 
+    () M-S-=  break
+  ))
+  action_lmet+lsft+1  (t! unmod_all (switch ;;@iface@ 
+    () M-S-1  break
+  ))
+  action_lmet+lsft+2  (t! unmod_all (switch ;;@iface@ 
+    () M-S-2  break
+  ))
+  action_lmet+lsft+3  (t! unmod_all (switch ;;@iface@ 
+    () M-S-3  break
+  ))
+  action_lmet+lsft+4  (t! unmod_all (switch ;;@iface@ 
+    () M-S-4  break
+  ))
+  action_lmet+lsft+5  (t! unmod_all (switch ;;@iface@ 
+    () M-S-5  break
+  ))
+  action_lmet+lsft+6  (t! unmod_all (switch ;;@iface@ 
+    () M-S-6  break
+  ))
+  action_lmet+lsft+7  (t! unmod_all (switch ;;@iface@ 
+    () M-S-7  break
+  ))
+  action_lmet+lsft+8  (t! unmod_all (switch ;;@iface@ 
+    () M-S-8  break
+  ))
+  action_lmet+lsft+9  (t! unmod_all (switch ;;@iface@ 
+    () M-S-9  break
+  ))
+  action_lmet+lsft+0  (t! unmod_all (switch ;;@iface@ 
+    () M-S-0  break
+  ))
+  ;; == LMET+RSFT actions ==========================================================
+  action_lmet+rsft+a (t! unmod_all (switch ;;@iface@ 
+    () M-S-a break
+  ))
+  action_lmet+rsft+b (t! unmod_all (switch ;;@iface@ 
+    () M-S-b break
+  ))
+  action_lmet+rsft+c  (t! unmod_all (switch ;;@iface@ 
+    () M-S-c  break
+  ))
+  action_lmet+rsft+d (t! unmod_all (switch ;;@iface@ 
+    () M-S-d break
+  ))
+  action_lmet+rsft+e  (t! unmod_all (switch ;;@iface@ 
+    () M-S-e  break
+  ))
+  action_lmet+rsft+f  (t! unmod_all (switch ;;@iface@ 
+    () M-S-f  break
+  ))
+  action_lmet+rsft+g  (t! unmod_all (switch ;;@iface@ 
+    () M-S-g  break
+  ))
+  action_lmet+rsft+h  (t! unmod_all (switch ;;@iface@ 
+    () M-S-h  break
+  ))
+  action_lmet+rsft+i  (t! unmod_all (switch ;;@iface@ 
+    () M-S-i  break
+  ))
+  action_lmet+rsft+j  (t! unmod_all (switch ;;@iface@ 
+    () M-S-j  break
+  ))
+  action_lmet+rsft+k  (t! unmod_all (switch ;;@iface@ 
+    () M-S-k  break
+  ))
+  action_lmet+rsft+l  (t! unmod_all (switch ;;@iface@ 
+    () M-S-l  break
+  ))
+  action_lmet+rsft+m  (t! unmod_all (switch ;;@iface@ 
+    () M-S-m  break
+  ))
+  action_lmet+rsft+n  (t! unmod_all (switch ;;@iface@ 
+    () M-S-n  break
+  ))
+  action_lmet+rsft+o  (t! unmod_all (switch ;;@iface@ 
+    () M-S-o  break
+  ))
+  action_lmet+rsft+p  (t! unmod_all (switch ;;@iface@ 
+    () M-S-p  break
+  ))
+  action_lmet+rsft+q  (t! unmod_all (switch ;;@iface@ 
+    () M-S-q  break
+  ))
+  action_lmet+rsft+r  (t! unmod_all (switch ;;@iface@ 
+    () M-S-r  break
+  ))
+  action_lmet+rsft+s  (t! unmod_all (switch ;;@iface@ 
+    () M-S-s  break
+  ))
+  action_lmet+rsft+t  (t! unmod_all (switch ;;@iface@ 
+    () M-S-t  break
+  ))
+  action_lmet+rsft+u  (t! unmod_all (switch ;;@iface@ 
+    () M-S-u  break
+  ))
+  action_lmet+rsft+v  (t! unmod_all (switch ;;@iface@ 
+    () M-S-v  break
+  ))
+  action_lmet+rsft+w  (t! unmod_all (switch ;;@iface@ 
+    () M-S-w  break
+  ))
+  action_lmet+rsft+x  (t! unmod_all (switch ;;@iface@ 
+    () M-S-x  break
+  ))
+  action_lmet+rsft+y  (t! unmod_all (switch ;;@iface@ 
+    () M-S-y  break
+  ))
+  action_lmet+rsft+z  (t! unmod_all (switch ;;@iface@ 
+    () M-S-z break
+  ))
+  action_lmet+rsft+,  (t! unmod_all (switch ;;@iface@ 
+    () M-S-, break
+  ))
+  action_lmet+rsft+.  (t! unmod_all (switch ;;@iface@ 
+    () M-S-.  break
+  ))
+  action_lmet+rsft+/  (t! unmod_all (switch ;;@iface@ 
+    () M-S-/  break
+  ))
+  action_lmet+rsft+;  (t! unmod_all (switch ;;@iface@ 
+    () M-S-;  break
+  ))
+  action_lmet+rsft+'  (t! unmod_all (switch ;;@iface@ 
+    () M-S-'  break
+  ))
+  action_lmet+rsft+[  (t! unmod_all (switch ;;@iface@ 
+    () M-S-[  break
+  ))
+  action_lmet+rsft+]  (t! unmod_all (switch ;;@iface@ 
+    () M-S-]  break
+  ))  ;; ""
+  action_lmet+rsft+\  (t! unmod_all (switch ;;@iface@ 
+    () M-S-\  break
+  ))  ;; ""
+  action_lmet+rsft+-  (t! unmod_all (switch ;;@iface@ 
+    () M-S--  break
+  ))
+  action_lmet+rsft+=  (t! unmod_all (switch ;;@iface@ 
+    () M-S-=  break
+  ))
+  action_lmet+rsft+1  (t! unmod_all (switch ;;@iface@ 
+    () M-S-1  break
+  ))
+  action_lmet+rsft+2  (t! unmod_all (switch ;;@iface@ 
+    () M-S-2  break
+  ))
+  action_lmet+rsft+3  (t! unmod_all (switch ;;@iface@ 
+    () M-S-3  break
+  ))
+  action_lmet+rsft+4  (t! unmod_all (switch ;;@iface@ 
+    () M-S-4  break
+  ))
+  action_lmet+rsft+5  (t! unmod_all (switch ;;@iface@ 
+    () M-S-5  break
+  ))
+  action_lmet+rsft+6  (t! unmod_all (switch ;;@iface@ 
+    () M-S-6  break
+  ))
+  action_lmet+rsft+7  (t! unmod_all (switch ;;@iface@ 
+    () M-S-7  break
+  ))
+  action_lmet+rsft+8  (t! unmod_all (switch ;;@iface@ 
+    () M-S-8  break
+  ))
+  action_lmet+rsft+9  (t! unmod_all (switch ;;@iface@ 
+    () M-S-9  break
+  ))
+  action_lmet+rsft+0  (t! unmod_all (switch ;;@iface@ 
+    () M-S-0  break
+  ))
+)

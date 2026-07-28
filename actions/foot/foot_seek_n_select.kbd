@@ -1,5 +1,0 @@
-(defvar
-;; == seek_sel ========================================================
-;; seek_sel + spc
-foot_action_seek+spc        C-f
-)

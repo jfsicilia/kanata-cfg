@@ -1,4 +1,4 @@
-# Physical mods (!lctl) - zapzap (actions/actions_physical_mods.iface.kbd)
-**lctl + tab** -- Walk Through Apps
-**lctl + `**   -- Walk Through Same App
-**seek + spc** -- Omni Search (A-k [100ms] [bspc])
+# Physical mods (!lctl) - zapzap (actions/zapzap/zapzap_!lctl&select.kbd)
+**lctl + tab**   -- Walk Through Apps
+**lctl + `**     -- Walk Through Same App
+**select + spc** -- Omni Search (A-k [100ms] [bspc])

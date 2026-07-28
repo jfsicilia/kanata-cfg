@@ -306,8 +306,8 @@
   ;; Modifiers row
   !lmet|replace             $!lmet     ;; Physical lctl is used as lmet, in combo with space works as replace domain. 
   !lalt|search              $!lalt     ;; Physical lmet is used as lalt, in combo with space works as search domain.
-  !lctl|seek_sel            $!lctl     ;; Physical lalt is used as lctl, in combo with space works as seek_sel domain.
-    spc|domains            spc        ;; Spacebar is used as space and as spc mods layer when hold.
+  !lctl|select              $!lctl     ;; Physical lalt is used as lctl, in combo with space works as select domain.
+    spc|domains             spc        ;; Spacebar is used as space and as spc mods layer when hold.
    ralt|apps                ralt       ;; Physical ralt key will be used for app launching/focusing.
    prnt|bookm               prnt       ;; Physical prnt key will be used for bookmark layer when hold.
 copilot|bookm               $copilot   ;; Physical copilot key will be used for bookmark layer when hold.
@@ -364,7 +364,7 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
   ;; Fixed modifiers.
   omni               caps       ;; Physical caps key will be used for omni layer when hold.
   open               tab        ;; Physical tab key will be used for open with layer when hold.
-  domains           spc        ;; Physical spc key will be used for spc mods layer when hold.
+  domains            spc        ;; Physical spc key will be used for spc mods layer when hold.
   apps               ralt       ;; Physical ralt key will be used for apps layer when hold.
   bookm              prnt       ;; Physical prnt key will be used for bookmark layer when hold.
   ;; Copilot key issues alt+sft+f23 when pressed. If present will be used as bookm key.
@@ -374,7 +374,7 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
   opts               rctl       ;; Physical rctl key will be used for option layer when hold.    
   replace            $!lmet     ;; Physical lctl key will be used for replace layer when hold.
   search             $!lalt     ;; Physical lwin key will be used for search layer when hold.
-  seek_sel           $!lctl     ;; Physical lalt key will be used for seek_sel layer when hold.
+  select             $!lctl     ;; Physical lalt key will be used for select layer when hold.
 
   ;; GUI objects
   window             z          ;; Also /
@@ -469,7 +469,7 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
   ;; Modifiers row.
   $!lmet|replace           (t!      th  (t! 2x $action_workspaces+toggle)        $toggle_replace_&_!lmet_layer)
   $!lalt|search            (t!      th  (t! 2x $action_panes+toggle)             $toggle_search_&_!lalt_layer)
-  $!lctl|seek_sel          (t!      th  (t! 2x $action_tabs+toggle)       (multi $toggle_seek_n_select_&_!lctl_layer (on-release release-vkey vk_lalt)))
+  $!lctl|select            (t!      th  (t! 2x $action_tabs+toggle)       (multi $toggle_select_&_!lctl_layer (on-release release-vkey vk_lalt)))
     $spc|domains           (t! fast_th  spc                               (multi $toggle_domains_layer (t! release_domains)))
    $ralt|apps              (t!      th  (t! 2x $windows_toggle)                  $toggle_apps_layer)
    $prnt|bookm             (t!      th  (t! 2x $action_sessions+toggle)          $toggle_bookmarks_layer)

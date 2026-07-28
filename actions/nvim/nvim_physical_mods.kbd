@@ -1,4 +1,0 @@
-(defvar
-;; == !LCTL actions ==========================================================
-nvim_action_!lctl+a  $nvim_select_all                   
-)

@@ -1,0 +1,5 @@
+(defvar
+;; == select ========================================================
+;; select + spc
+foot_action_select+spc        $foot_select
+)

@@ -35,7 +35,7 @@ DOMAIN_TITLES: dict[str, str] = {
     "open":         "Open",
     "replace":      "Replace",
     "search":       "Search",
-    "seek_n_select": "Seek & Select",
+    "select":       "Select",
     "physical_mods": "Physical mods",
     "opts":         "Opts",
     "bookmarks":    "Bookmarks",
@@ -46,17 +46,95 @@ DOMAIN_TITLES: dict[str, str] = {
     "layouts":      "Layouts",
 }
 
-DOMAIN_SHORT: dict[str, str] = {
-    "seek_n_select": "seek",
-}
-# Reverse of DOMAIN_SHORT: action names embed the short form (e.g.
-# "action_seek+spc"), but domain files/details are keyed by the long form
-# (e.g. "actions_seek_n_select.iface.kbd") — action_domain() needs to
+# A domain whose action names embed a shorter alias than the name its own
+# files use, e.g. {"seek_n_select": "seek"} for "action_seek+spc" defined in
+# actions_seek_n_select.iface.kbd. Empty right now — every domain spells its
+# name the same way everywhere — but the indirection stays wired up so
+# reintroducing one is a single entry rather than a code change.
+DOMAIN_SHORT: dict[str, str] = {}
+# Reverse of DOMAIN_SHORT: action names embed the short form, but domain
+# files/details are keyed by the long form — action_domain() needs to
 # translate back to find them.
 _DOMAIN_FROM_SHORT: dict[str, str] = {short: long for long, short in DOMAIN_SHORT.items()}
 
 
 # ── helpers ──────────────────────────────────────────────────────────────────
+
+# The modifier tokens a layer/file name can be built from. "sft" is not a
+# layer of its own — it is the *file* family holding lsft_layer/rsft_layer,
+# mirroring the "sft+ent" action-name one-off (see parse_physical_mods_action).
+_PHYS_MOD_TOKENS = {"lctl", "!lctl", "lalt", "!lalt", "lmet", "!lmet", "lsft", "rsft"}
+_MOD_FAMILIES    = _PHYS_MOD_TOKENS | {"sft"}
+
+
+def _mod_family(mod: str) -> str:
+    """The file family a modifier belongs to — lsft/rsft share "sft"."""
+    return "sft" if mod in ("lsft", "rsft") else mod
+
+
+def _stem_parts(stem: str) -> tuple[list[str], list[str]]:
+    """(mod_families, domains) declared by a file-name stem.
+
+    A stem is "&"-joined, naming everything the file holds:
+      "tabs"         -> ([],        ["tabs"])
+      "lctl"         -> (["lctl"],  [])
+      "!lctl&select" -> (["!lctl"], ["select"])
+    Every modifier family maps to the single "physical_mods" domain, which is
+    how one logical domain ends up spread over several files.
+    """
+    fams, doms = [], []
+    for part in stem.split("&"):
+        (fams if part in _MOD_FAMILIES else doms).append(part)
+    return fams, doms
+
+
+def _actions_stem(path: Path) -> str:
+    """"actions_!lctl&select.iface.kbd" -> "!lctl&select"."""
+    name = path.name.removeprefix("actions_")
+    return name.removesuffix(".iface.kbd") if ".iface." in name else name.removesuffix(".kbd")
+
+
+def _app_stem(path: Path, app: str) -> str:
+    """"nvim_groups.1.kbd" -> "groups" (app prefix and priority suffix dropped)."""
+    return re.sub(r"\.\d+$", "", path.name[len(app) + 1:].removesuffix(".kbd"))
+
+
+def _stem_keys(stem: str) -> list[str]:
+    """Every domain a stem provides, modifier families folded into one key."""
+    fams, doms = _stem_parts(stem)
+    return doms + (["physical_mods"] if fams else [])
+
+
+_actions_index_cache: dict[str, list[Path]] | None = None
+
+
+def _actions_index() -> dict[str, list[Path]]:
+    """{domain: [top-level actions files defining it]}.
+
+    Replaces assuming a domain lives in actions_{domain}.kbd: after the
+    split, physical_mods spans seven files and select/search/replace each
+    share one with the modifier they are always stacked under. Bare
+    modifier names are deliberately NOT registered as domains of their own,
+    so a stray "$action_lctl+x" reference stays unresolvable exactly as it
+    was before the split.
+    """
+    global _actions_index_cache
+    if _actions_index_cache is None:
+        idx: dict[str, list[Path]] = {}
+        for f in sorted(ACTIONS_DIR.glob("actions_*.kbd")):
+            for key in _stem_keys(_actions_stem(f)):
+                idx.setdefault(key, []).append(f)
+        _actions_index_cache = idx
+    return _actions_index_cache
+
+
+def find_actions_family_file(family: str) -> Path | None:
+    """The top-level actions file holding `family`'s modifier actions."""
+    for f in sorted(ACTIONS_DIR.glob("actions_*.kbd")):
+        if family in _stem_parts(_actions_stem(f))[0]:
+            return f
+    return None
+
 
 def _deref(token: str) -> str:
     """"$foo"/"$~foo" → "foo" — the bare name a value references."""
@@ -80,23 +158,45 @@ def _strip_domain_prefix(name: str, domain: str) -> str:
 
 
 def domain_from_actions_path(path: Path) -> str:
-    name = path.name.removeprefix("actions_")
-    if ".iface." in name:
-        return name.removesuffix(".iface.kbd")
-    return name.removesuffix(".kbd")
+    """The domain a top-level actions file belongs to for the main loop.
+
+    A file naming a real domain reports it ("!lctl&select" -> "select");
+    one that is only modifier families reports "physical_mods", which has
+    its own dedicated pass.
+    """
+    fams, doms = _stem_parts(_actions_stem(path))
+    return doms[0] if doms else "physical_mods"
 
 
 def domain_short(domain: str) -> str:
     return DOMAIN_SHORT.get(domain, domain)
 
 
+def find_app_files(app_dir: Path, app: str, domain: str) -> list[Path]:
+    """Every per-app file for (app, domain), in name order.
+
+    Matched on what each file name declares rather than on an exact
+    "{app}_{domain}.kbd" spelling, so a domain sharing a file with the
+    modifier it is stacked under still resolves ("select" is found in
+    obsidian_!lctl&select.kbd), and physical_mods can span several files.
+    Optional numeric priority suffixes are ignored here.
+    """
+    return [f for f in sorted(app_dir.glob(f"{app}_*.kbd"))
+            if domain in _stem_keys(_app_stem(f, app))]
+
+
 def find_app_file(app_dir: Path, app: str, domain: str) -> Path | None:
-    """Return per-app file for (app, domain), accepting optional numeric priority suffix."""
-    exact = app_dir / f"{app}_{domain}.kbd"
-    if exact.exists():
-        return exact
-    candidates = sorted(app_dir.glob(f"{app}_{domain}.[0-9]*.kbd"))
-    return candidates[0] if candidates else None
+    """First per-app file for (app, domain), or None."""
+    files = find_app_files(app_dir, app, domain)
+    return files[0] if files else None
+
+
+def find_app_family_file(app_dir: Path, app: str, family: str) -> Path | None:
+    """The app's file holding `family`'s modifier actions, if it has one."""
+    for f in sorted(app_dir.glob(f"{app}_*.kbd")):
+        if family in _stem_parts(_app_stem(f, app))[0]:
+            return f
+    return None
 
 
 def combo_str(action_name: str, domain: str,
@@ -463,21 +563,22 @@ def action_domain(action_name: str) -> str:
     """The domain a fully-qualified action name belongs to — the part
     between "action_" and its first "+" (e.g. "action_tabs+move+h" -> "tabs").
 
-    Action names embed the domain's short form (e.g. "seek" in
-    "action_seek+spc"), which is translated back to the long form used by
-    domain files/details (e.g. "seek_n_select") via _DOMAIN_FROM_SHORT.
+    Where a domain aliases its name in action names, the short form is
+    translated back to the long form used by its files/details via
+    _DOMAIN_FROM_SHORT (currently empty — see DOMAIN_SHORT).
     """
     short = action_name.removeprefix("action_").split("+", 1)[0]
     return _DOMAIN_FROM_SHORT.get(short, short)
 
 
-_domain_iface_details_cache: dict[str, dict[str, dict]] = {}
+_domain_actions_cache: dict[str, tuple[list[str], dict[str, dict]]] = {}
 
 
-def _domain_iface_details(domain: str) -> dict[str, dict]:
-    """Cached parse_iface(...) details for `domain`'s own actions file, so
-    cross-domain action references can be resolved without re-reading the
-    same file for every entry that points at it.
+def parse_domain_actions(domain: str) -> tuple[list[str], dict[str, dict]]:
+    """Cached (order, details) for `domain`, merged over every actions file
+    that declares it (see _actions_index), so cross-domain references and
+    the physical_mods pass alike work without re-reading files or assuming
+    one file per domain.
 
     "domain<X>" (e.g. "domain,", "domainT") is a pseudo-domain: each punctuation
     key / nvim-style sub-domain under the "domains" (SPC mods) system gets
@@ -485,15 +586,21 @@ def _domain_iface_details(domain: str) -> dict[str, dict]:
     the single shared actions_domains.iface.kbd file rather than one file
     per pseudo-domain — so the lookup is redirected there.
     """
-    if domain not in _domain_iface_details_cache:
+    if domain not in _domain_actions_cache:
         lookup = "domains" if domain.startswith("domain") and domain != "domains" else domain
+        order: list[str] = []
         details: dict[str, dict] = {}
-        for path in (ACTIONS_DIR / f"actions_{lookup}.iface.kbd", ACTIONS_DIR / f"actions_{lookup}.kbd"):
-            if path.exists():
-                _, details = parse_iface(path)
-                break
-        _domain_iface_details_cache[domain] = details
-    return _domain_iface_details_cache[domain]
+        for path in _actions_index().get(lookup, []):
+            o, d = parse_iface(path)
+            order += o
+            details.update(d)
+        _domain_actions_cache[domain] = (order, details)
+    return _domain_actions_cache[domain]
+
+
+def _domain_iface_details(domain: str) -> dict[str, dict]:
+    """Just the details half of parse_domain_actions."""
+    return parse_domain_actions(domain)[1]
 
 
 def resolve_cross_domain_label(
@@ -617,7 +724,7 @@ def parse_physical_mods_action(action_name: str) -> tuple[tuple[str, ...], str] 
     is the final segment: the physical key pressed once that chord is
     already held.
 
-    "sft+ent" is a one-off: per layer_physical_mods.kbd it only fires while
+    "sft+ent" is a one-off: per layer_sft.kbd it only fires while
     holding lsft (lsft_layer), not from any "sft_layer" — aliased to "lsft"
     so it groups under a layer kwanata can actually report as active.
     """
@@ -634,20 +741,26 @@ _DEFLAYERMAP_RE = re.compile(r"\(deflayermap\s+\((\S+)\)")
 
 
 def parse_physical_mods_layer_names() -> list[str]:
-    """Every layer name declared in layers/layer_physical_mods.kbd
-    (deflayermap block names, "_layer" suffix stripped), in file order — the
-    authoritative list of every physical_mods layer that actually exists,
-    independent of whether any action is currently bound to it (unlike
-    deriving nodes from actions_physical_mods.iface.kbd, which would miss
-    layers with no bindings yet, e.g. multi-real-modifier combos).
+    """Every physical_mods layer declared anywhere under layers/
+    (deflayermap block names, "_layer" suffix stripped) — the authoritative
+    list of every such layer that actually exists, independent of whether
+    any action is currently bound to it (unlike deriving nodes from the
+    actions files, which would miss layers with no bindings yet, e.g.
+    multi-real-modifier combos).
+
+    A layer belongs to physical_mods when its name is nothing but
+    "+"-joined modifier tokens (see LayerStack._is_physical_mods_layer),
+    so these are found wherever they live — layer_lctl.kbd,
+    layer_!lctl&select.kbd, layer_sft.kbd, … — rather than by assuming one
+    fixed filename holds them all.
     """
-    path = LAYERS_DIR / "layer_physical_mods.kbd"
-    if not path.exists():
-        return []
-    return [
-        m.group(1).removesuffix("_layer")
-        for m in _DEFLAYERMAP_RE.finditer(path.read_text())
-    ]
+    names: list[str] = []
+    for path in sorted(LAYERS_DIR.glob("layer_*.kbd")):
+        for m in _DEFLAYERMAP_RE.finditer(path.read_text()):
+            name = m.group(1).removesuffix("_layer")
+            if LayerStack._is_physical_mods_layer(name):
+                names.append(name)
+    return names
 
 
 _SINGLE_LAYER_TOGGLE_RE = re.compile(
@@ -741,8 +854,6 @@ def physical_mods_node_entries(
     ]
 
 
-_PHYS_MOD_TOKENS = {"lctl", "!lctl", "lalt", "!lalt", "lmet", "!lmet", "lsft", "rsft"}
-
 
 class LayerStack:
     """An ordered kanata layer stack (base → top) pushed in one go by
@@ -761,8 +872,8 @@ class LayerStack:
         physical_mods_exact_entries. Occurs both in 2-layer stacks (two real
         modifiers held together, e.g. lctl+lalt → !lctl+lalt) and as the mid
         layer of 3-layer stacks.
-      - a foreign domain's own base layer (e.g. "seek_n_select",
-        "seek_n_select+lsft") — anything whose name isn't purely modifier
+      - a foreign domain's own base layer (e.g. "select",
+        "select+lsft") — anything whose name isn't purely modifier
         tokens — merged via combination_domain_entries. Only occurs as the
         base of a 3-layer stack.
     """
@@ -851,25 +962,27 @@ def combination_domain_entries(
     domain_name: str, shift: str | None, app: str | None
 ) -> list[tuple[str, str]]:
     """(combo_display, label) pairs for a shadowed foreign-domain layer of a
-    LayerStack (e.g. "seek_n_select") — its own actions belonging to
+    LayerStack (e.g. "select") — its own actions belonging to
     the given shift branch (None = unshifted), resolved for `app` if given
     (falling back to the global default for combos it doesn't override),
     else resolved globally. Shown with the domain's natural own combo (e.g.
-    "seek + spc"), same as its standalone help file.
+    "select + spc"), same as its standalone help file.
     """
-    iface_path = ACTIONS_DIR / f"actions_{domain_name}.iface.kbd"
-    if not iface_path.exists():
+    iface_order, details = parse_domain_actions(domain_name)
+    if not iface_order:
         return []
-    iface_order, details = parse_iface(iface_path)
     key_map = parse_layer_key_map(domain_name, set(iface_order))
 
-    branch_actions = [a for a in iface_order if action_shift_branch(a) == shift]
+    # Filter by owning domain: this domain shares its file with the modifier
+    # it is stacked under, so the file also holds that modifier's actions —
+    # without this they would surface here as "select + lctl + a".
+    branch_actions = [a for a in iface_order
+                      if action_domain(a) == domain_name and action_shift_branch(a) == shift]
 
     impl: dict[str, str] = {}
     if app is not None:
-        app_file = find_app_file(ACTIONS_DIR / app, app, domain_name)
-        if app_file is not None:
-            impl = parse_app_file(app_file, app)
+        for app_file in find_app_files(ACTIONS_DIR / app, app, domain_name):
+            impl.update(parse_app_file(app_file, app))
 
     entries: list[tuple[str, str]] = []
     for a in branch_actions:
@@ -1080,20 +1193,25 @@ def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
 def parse_layer_key_map(domain: str, iface_action_set: set[str]) -> dict[str, str]:
     """{action_name: key_combo_suffix} — the physical key path for each
     action, e.g. "h", "lsft + t", "move + h". Built from the first key that
-    maps to each action in layers/layer_{domain}.kbd, so the combo shown in
-    help is what the user actually presses.
+    maps to each action in the domain's own deflayermap blocks, so the
+    combo shown in help is what the user actually presses.
 
-    Empty when the layer file is absent (callers fall back to name-parsing
-    in combo_str).
+    All of layers/ is scanned rather than assuming a layer_{domain}.kbd,
+    because a domain's layers don't necessarily live in a file named after
+    it — "select" is declared inside layer_!lctl&select.kbd, alongside the
+    physical modifier it's always pushed with. Blocks belonging to any
+    other layer are skipped, so an action referenced from a foreign layer
+    (e.g. "tab $action_tabs+l" inside lmet_layer) can't be mistaken for
+    that action's own binding.
+
+    Empty when the domain declares no layer at all (callers fall back to
+    name-parsing in combo_str).
     """
-    layer_path = LAYERS_DIR / f"layer_{domain}.kbd"
-    if not layer_path.exists():
-        return {}
-
-    text = layer_path.read_text()
     key_map: dict[str, str]  = {}
     current_mod: str | None  = None
+    in_domain                = False
 
+    text = "\n".join(p.read_text() for p in sorted(LAYERS_DIR.glob("layer_*.kbd")))
     for line in text.splitlines():
         stripped = line.strip()
         if not stripped or stripped.startswith(";;"):
@@ -1102,17 +1220,16 @@ def parse_layer_key_map(domain: str, iface_action_set: set[str]) -> dict[str, st
         # Track which deflayermap block we are in and extract its modifier
         dlm_m = re.match(r"\(deflayermap\s+\((\S+)\)", stripped)
         if dlm_m:
-            layer_name = dlm_m.group(1)
-            if layer_name == f"{domain}_layer":
-                current_mod = None
-            elif layer_name.startswith(f"{domain}+"):
-                suffix      = layer_name[len(f"{domain}+"):]
-                current_mod = suffix.removesuffix("_layer")
-            else:
-                current_mod = None   # unrelated layer (e.g. from another domain)
+            layer_name  = dlm_m.group(1)
+            current_mod = None
+            in_domain   = True
+            if layer_name.startswith(f"{domain}+"):
+                current_mod = layer_name[len(f"{domain}+"):].removesuffix("_layer")
+            elif layer_name != f"{domain}_layer":
+                in_domain = False   # unrelated layer (another domain's, or a mod layer)
             continue
 
-        if "$action_" not in stripped:
+        if not in_domain or "$action_" not in stripped:
             continue
 
         # Physical key is the first token on the line
@@ -1453,12 +1570,11 @@ def emit_physical_mods_help(
     a title-only placeholder if nothing is bound there yet — so every
     modifier you can hold has a reminder of what it's for.
     """
-    iface_path = ACTIONS_DIR / "actions_physical_mods.iface.kbd"
-    if not iface_path.exists():
+    iface_order, details = parse_domain_actions("physical_mods")
+    if not iface_order:
         return
     domain     = "physical_mods"
     base_title = DOMAIN_TITLES.get(domain, "Physical mods")
-    iface_order, details = parse_iface(iface_path)
 
     actions: list[tuple[tuple[str, ...], str, str]] = []
     for a in iface_order:
@@ -1504,13 +1620,15 @@ def emit_physical_mods_help(
         layer_name = "+".join(node)
         # Always emit — a title-only placeholder when nothing is bound yet
         # still serves as a reminder of what this modifier is for.
+        fam_file = find_actions_family_file(_mod_family(node[0]))
         w.emit(HELP_DIR / f"global_{layer_name}.hlp",
-               f"{base_title} ({layer_name})", merged_entries(node), iface_path)
+               f"{base_title} ({layer_name})", merged_entries(node), fam_file)
 
     for app_dir in app_dirs:
         app      = app_dir.name
-        app_file = find_app_file(app_dir, app, domain)
-        impl     = parse_app_file(app_file, app) if app_file else {}
+        impl: dict[str, str] = {}
+        for f in find_app_files(app_dir, app, domain):
+            impl.update(parse_app_file(f, app))
 
         # Which shadowed foreign domains this app actually overrides — used
         # below to avoid emitting a per-app file that would just duplicate
@@ -1525,7 +1643,14 @@ def emit_physical_mods_help(
         }
 
         for node in available_nodes:
-            has_reason = app_file is not None or any(
+            # An app earns its own file here only where it actually says
+            # something: either it binds actions for this modifier family,
+            # or it overrides a domain this node's stack shadows. Otherwise
+            # the page would just repeat the global one, which kwanata
+            # already falls back to.
+            family   = _mod_family(node[0])
+            fam_file = find_app_family_file(app_dir, app, family)
+            has_reason = fam_file is not None or any(
                 domain_overridden[domain_name]
                 for stack in stacks_for(node)
                 for domain_name, _shift in stack.shadowed_domains()
@@ -1536,7 +1661,8 @@ def emit_physical_mods_help(
             if entries:
                 layer_name = "+".join(node)
                 w.emit(HELP_DIR / app / f"{app}_{layer_name}.hlp",
-                       f"{base_title} ({layer_name}) - {app}", entries, app_file or iface_path)
+                       f"{base_title} ({layer_name}) - {app}", entries,
+                       fam_file or find_actions_family_file(family))
 
 
 def main(dry_run: bool = False) -> None:

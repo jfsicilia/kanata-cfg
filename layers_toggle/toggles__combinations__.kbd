@@ -1,7 +1,7 @@
 (defvar
-  toggle_seek_n_select_&_!lctl_layer       (t! toggle_mod_3layer  lctl       seek_n_select_layer         lctl_layer      !lctl_layer      )
-  toggle_seek_n_select_&_!lctl+lsft_layer  (t! toggle_2mod_3layer lctl lsft  seek_n_select+lsft_layer    lctl+lsft_layer !lctl+lsft_layer )
-  toggle_seek_n_select_&_!lctl+rsft_layer  (t! toggle_2mod_3layer lctl rsft  seek_n_select+rsft_layer    lctl+rsft_layer !lctl+rsft_layer )
+  toggle_select_&_!lctl_layer       (t! toggle_mod_3layer  lctl       select_layer         lctl_layer      !lctl_layer      )
+  toggle_select_&_!lctl+lsft_layer  (t! toggle_2mod_3layer lctl lsft  select+lsft_layer    lctl+lsft_layer !lctl+lsft_layer )
+  toggle_select_&_!lctl+rsft_layer  (t! toggle_2mod_3layer lctl rsft  select+rsft_layer    lctl+rsft_layer !lctl+rsft_layer )
 
   toggle_replace_&_!lmet_layer             (t! toggle_mod_3layer  lmet       replace_layer      lmet_layer      !lmet_layer      )
   toggle_replace_&_!lmet+lsft_layer        (t! toggle_2mod_3layer lmet lsft  replace+lsft_layer lmet+lsft_layer !lmet+lsft_layer) 

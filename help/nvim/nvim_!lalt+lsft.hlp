@@ -1,2 +1,2 @@
-# Physical mods (!lalt+lsft) - nvim (actions/nvim/nvim_physical_mods.kbd)
+# Physical mods (!lalt+lsft) - nvim (actions/nvim/nvim_!lalt&search.kbd)
 **search + lsft + spc** -- Search In Workspace ([esc] :Telescope live_grep [ret])

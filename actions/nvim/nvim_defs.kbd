@@ -88,7 +88,7 @@ nvim_pane_resize_right   (macro C-w S-.)
 nvim_pane_resize_above   (macro C-w -)
 nvim_pane_resize_below   (macro C-w S-=)
 
-nvim_seek_and_select     (macro esc S-; S-t e l e s c o p e spc f i n d S-- f i l e s ret)  ;;""
+nvim_select     (macro esc S-; S-t e l e s c o p e spc f i n d S-- f i l e s ret)  ;;""
 nvim_search_in_buffer    (macro esc S-; S-t e l e s c o p e spc c u r r e n t S-- b u f f e r S-- f u z z y S-- f i n d ret)
 nvim_search_in_workspace (macro esc S-; S-t e l e s c o p e spc l i v e S-- g r e p ret)  ;;"" 
 nvim_replace_in_buffer   (macro esc S-; l u a spc r e q u i r e S-9 ' g r u g - f a r ' S-0 . o p e n S-9 S-[ spc w i n d o w S-c r e a t i o n S-c o m m a n d spc = spc ' t o p l e f t spc v e r t i c a l spc s p l i t ' , spc p r e f i l l s spc = spc S-[ spc p a t h s spc = spc v i m . f n . e x p a n d S-9 S-' S-5 S-' S-0 spc  S-] spc  S-] S-0 ret)

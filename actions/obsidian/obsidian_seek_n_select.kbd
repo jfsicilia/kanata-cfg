@@ -1,7 +1,0 @@
-(defvar
-;; == seek_sel ========================================================
-;; seek_sel + spc
-obsidian_action_seek+spc                   $obsidian_seek_and_select_file
-;; seek_sel + lsft + spc
-obsidian_action_seek+lsft+spc              $obsidian_seek_and_select_folder
-)

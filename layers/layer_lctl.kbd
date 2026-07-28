@@ -1,0 +1,68 @@
+;; "" LCTL_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (lctl_layer)
+  (t! map_layers "$action_lctl" "lctl" ($<lalt $>lalt $<lmet $>lmet $lsft $rsft $!lalt $!lmet lsft rsft))
+  (t! map_keys   "$action_lctl"        ($<lalt $>lalt $<lmet $>lmet $lsft $rsft))
+
+  ;; lctl is configured in the physical lalt key (like the cmd key in mac).
+  ;; Special treatment is used to allow lctl+tab to mimic alt+tab to switch 
+  ;; apps and lctl+` to mimic alt+` to switch apps of the same class.
+
+  tab  $action_lctl+tab
+  grv  $action_lctl+`
+) 
+
+(deflayermap (lctl+lsft_layer)
+  (t! map_layers "$action_lctl+lsft" "lctl+lsft" ($<lalt $>lalt $<lmet $>lmet $!lalt $!lmet))
+  (t! map_keys   "$action_lctl+lsft"             ($<lalt $>lalt $<lmet $>lmet))
+)
+
+(deflayermap (lctl+rsft_layer)
+  (t! map_layers "$action_lctl+rsft" "lctl+rsft" ($<lalt $>lalt $<lmet $>lmet $!lalt $!lmet))
+  (t! map_keys   "$action_lctl+rsft"             ($<lalt $>lalt $<lmet $>lmet))
+)
+
+;; "" LCTL+LALT_LAYER """""""""""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (lctl+lalt_layer)
+  (t! map_layers _ "lctl+lalt" ($<lmet $>lmet $lsft $rsft $!lmet lsft rsft))
+  (t! map_keys   _             ($<lmet $>lmet $lsft $rsft))
+) 
+
+(deflayermap (lctl+lalt+lsft_layer)
+  (t! map_layers _ "lctl+lalt+lsft" ($<lmet $>lmet $!lmet))
+  (t! map_keys   _                  ($<lmet $>lmet))
+)
+
+(deflayermap (lctl+lalt+rsft_layer)
+  (t! map_layers _ "lctl+lalt+rsft" ($<lmet $>lmet $!lmet))
+  (t! map_keys   _                  ($<lmet $>lmet))
+)
+
+;; "" LCTL+LMET_LAYER """""""""""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (lctl+lmet_layer)
+  (t! map_layers _ "lctl+lmet" ($<lalt $>lalt $lsft $rsft $!lalt lsft rsft))
+  (t! map_keys   _             ($<lalt $>lalt $lsft $rsft))
+) 
+
+(deflayermap (lctl+lmet+lsft_layer)
+  (t! map_layers _ "lctl+lmet+lsft" ($<lalt $>lalt $!lalt))
+  (t! map_keys   _                  ($<lalt $>lalt))
+)
+
+(deflayermap (lctl+lmet+rsft_layer)
+  (t! map_layers _ "lctl+lmet+rsft" ($<lalt $>lalt $!lalt))
+  (t! map_keys   _                  ($<lalt $>lalt))
+)
+
+;; "" LCTL+LALT+LMET_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""
+(deflayermap (lctl+lalt+lmet_layer)
+  (t! map_layers _ "lctl+lalt+lmet" ($lsft $rsft lsft rsft))
+  (t! map_keys   _                  ($lsft $rsft))
+) 
+
+(deflayermap (lctl+lalt+lmet+lsft_layer)
+  (t! map_keys _ ())
+)
+
+(deflayermap (lctl+lalt+lmet+rsft_layer)
+  (t! map_keys _ ())
+)
