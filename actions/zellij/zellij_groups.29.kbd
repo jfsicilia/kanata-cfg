@@ -1,11 +1,11 @@
 (defvar
-;; !tabs + spc
-zellij_action_!tabs+spc                  $zellij_action_tabs+spc
-;; !tabs + l | !tabs + right
-zellij_action_!tabs+l             $zellij_action_tabs+l             
-;; !tabs + h | !tabs + left
-zellij_action_!tabs+h             $zellij_action_tabs+h             
-;; == !tabs + toggle =====================================================
-;; !tabs + toggle
-zellij_action_!tabs+toggle           $zellij_action_tabs+toggle           
+;; groups + spc
+zellij_action_groups+spc                  $zellij_action_tabs+spc
+;; groups + l | groups + right
+zellij_action_groups+l             $zellij_action_tabs+l             
+;; groups + h | groups + left
+zellij_action_groups+h             $zellij_action_tabs+h             
+;; == groups + toggle =====================================================
+;; groups + toggle
+zellij_action_groups+toggle           $zellij_action_tabs+toggle           
 )

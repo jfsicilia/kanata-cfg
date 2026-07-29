@@ -158,7 +158,7 @@ tmux_action_omni+!lctl             (push-msg "NOTIFY:Tmux_Omni not implemented!"
 ;; If not implemented, defaults to: action_apps+toggle
 tmux_action_omni+ralt              (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + prnt|groups
-;; If not implemented, defaults to: action_!tabs+toggle
+;; If not implemented, defaults to: action_groups+toggle
 tmux_action_omni+prnt              (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + rctl|sessions
 ;; If not implemented, defaults to: action_sessions+toggle

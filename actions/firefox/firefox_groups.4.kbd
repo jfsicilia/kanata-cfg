@@ -1,36 +1,36 @@
 (defvar
-;; !tabs + spc
-firefox_action_!tabs+spc              $firefox_action_tabs+spc                  
-;; !tabs + l | !tabs + right
-firefox_action_!tabs+l             $firefox_action_tabs+l             
-;; !tabs + h | !tabs + left
-firefox_action_!tabs+h             $firefox_action_tabs+h             
-;; !tabs + t
-firefox_action_!tabs+t              $firefox_action_tabs+t              
-;; !tabs + w
-firefox_action_!tabs+w            $firefox_action_tabs+w            
-;; !tabs + lsft + t
-firefox_action_!tabs+lsft+t       $firefox_action_tabs+lsft+t       
-;; == !tabs go by number ==================================================
-;; !tabs + 1
-firefox_action_!tabs+1           $firefox_action_tabs+1           
-;; !tabs + 2
-firefox_action_!tabs+2           $firefox_action_tabs+2           
-;; !tabs + 3
-firefox_action_!tabs+3           $firefox_action_tabs+3           
-;; !tabs + 4
-firefox_action_!tabs+4           $firefox_action_tabs+4           
-;; !tabs + 5
-firefox_action_!tabs+5           $firefox_action_tabs+5           
-;; !tabs + 6
-firefox_action_!tabs+6           $firefox_action_tabs+6           
-;; !tabs + 7
-firefox_action_!tabs+7           $firefox_action_tabs+7           
-;; !tabs + 8
-firefox_action_!tabs+8           $firefox_action_tabs+8           
-;; !tabs + 9
-firefox_action_!tabs+9        $firefox_action_tabs+9        
-;; == !tabs + toggle =====================================================
-;; !tabs + toggle
-firefox_action_!tabs+toggle           $firefox_action_tabs+toggle           
+;; groups + spc
+firefox_action_groups+spc              $firefox_action_tabs+spc                  
+;; groups + l | groups + right
+firefox_action_groups+l             $firefox_action_tabs+l             
+;; groups + h | groups + left
+firefox_action_groups+h             $firefox_action_tabs+h             
+;; groups + t
+firefox_action_groups+t              $firefox_action_tabs+t              
+;; groups + w
+firefox_action_groups+w            $firefox_action_tabs+w            
+;; groups + lsft + t
+firefox_action_groups+lsft+t       $firefox_action_tabs+lsft+t       
+;; == groups go by number ==================================================
+;; groups + 1
+firefox_action_groups+1           $firefox_action_tabs+1           
+;; groups + 2
+firefox_action_groups+2           $firefox_action_tabs+2           
+;; groups + 3
+firefox_action_groups+3           $firefox_action_tabs+3           
+;; groups + 4
+firefox_action_groups+4           $firefox_action_tabs+4           
+;; groups + 5
+firefox_action_groups+5           $firefox_action_tabs+5           
+;; groups + 6
+firefox_action_groups+6           $firefox_action_tabs+6           
+;; groups + 7
+firefox_action_groups+7           $firefox_action_tabs+7           
+;; groups + 8
+firefox_action_groups+8           $firefox_action_tabs+8           
+;; groups + 9
+firefox_action_groups+9        $firefox_action_tabs+9        
+;; == groups + toggle =====================================================
+;; groups + toggle
+firefox_action_groups+toggle           $firefox_action_tabs+toggle           
 )

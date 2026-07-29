@@ -194,7 +194,7 @@ nvim_action_omni+!lctl             (push-msg "NOTIFY:Omni combo not implemented!
 ;; If not implemented, defaults to: action_apps+toggle
 nvim_action_omni+ralt              (push-msg "NOTIFY:Omni combo not implemented!")
 ;; omni + prnt|groups
-;; If not implemented, defaults to: action_!tabs+toggle
+;; If not implemented, defaults to: action_groups+toggle
 nvim_action_omni+prnt              (push-msg "NOTIFY:Omni combo not implemented!")
 ;; omni + rctl|sessions
 ;; If not implemented, defaults to: action_sessions+toggle

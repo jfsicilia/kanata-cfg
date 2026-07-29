@@ -26,7 +26,7 @@
   panes_toggle    $action_panes+toggle
   tabs_toggle     $action_tabs+toggle
   apps_toggle     $windows_toggle 
-  groups_toggle   $~action_!tabs+toggle
+  groups_toggle   $~action_groups+toggle
   sessions_toggle $action_sessions+toggle
 )
 
@@ -724,7 +724,7 @@
     () $apps_toggle break
   ))
   ;; omni + prnt|groups
-  ;; If not implemented, defaults to: action_!tabs+toggle
+  ;; If not implemented, defaults to: action_groups+toggle
   action_omni+prnt (t! unmod_all (switch ;;@iface@
     ((input virtual vk_dolphin)) $dolphin_action_omni+prnt break
     ((input virtual vk_nvim)) $nvim_action_omni+prnt break

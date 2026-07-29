@@ -1,39 +1,39 @@
 (defvar
-;; !tabs + spc
-tmux_action_!tabs+spc                  $tmux_action_tabs+spc
-;; !tabs + l | !tabs + right
-tmux_action_!tabs+l             $tmux_action_tabs+l             
-;; !tabs + h | !tabs + left
-tmux_action_!tabs+h             $tmux_action_tabs+h             
-;; !tabs + t
-tmux_action_!tabs+t              $tmux_action_tabs+t              
-;; !tabs + w
-tmux_action_!tabs+w            $tmux_action_tabs+w            
-;; == !tabs go by number ==================================================
-;; !tabs + 1
-tmux_action_!tabs+1           $tmux_action_tabs+1           
-;; !tabs + 2
-tmux_action_!tabs+2           $tmux_action_tabs+2           
-;; !tabs + 3
-tmux_action_!tabs+3           $tmux_action_tabs+3           
-;; !tabs + 4
-tmux_action_!tabs+4           $tmux_action_tabs+4           
-;; !tabs + 5
-tmux_action_!tabs+5           $tmux_action_tabs+5           
-;; !tabs + 6
-tmux_action_!tabs+6           $tmux_action_tabs+6           
-;; !tabs + 7
-tmux_action_!tabs+7           $tmux_action_tabs+7           
-;; !tabs + 8
-tmux_action_!tabs+8           $tmux_action_tabs+8           
-;; !tabs + 9
-tmux_action_!tabs+9        $tmux_action_tabs+9        
-;; == !tabs + toggle =====================================================
-;; !tabs + toggle
-tmux_action_!tabs+toggle           $tmux_action_tabs+toggle           
-;; == !tabs + move =====================================================
-;; !tabs + move + h | !tabs + move + left
-tmux_action_!tabs+move+h        $tmux_action_tabs+move+h        
-;; !tabs + move + l | !tabs + move + right
-tmux_action_!tabs+move+l       $tmux_action_tabs+move+l       
+;; groups + spc
+tmux_action_groups+spc                  $tmux_action_tabs+spc
+;; groups + l | groups + right
+tmux_action_groups+l             $tmux_action_tabs+l             
+;; groups + h | groups + left
+tmux_action_groups+h             $tmux_action_tabs+h             
+;; groups + t
+tmux_action_groups+t              $tmux_action_tabs+t              
+;; groups + w
+tmux_action_groups+w            $tmux_action_tabs+w            
+;; == groups go by number ==================================================
+;; groups + 1
+tmux_action_groups+1           $tmux_action_tabs+1           
+;; groups + 2
+tmux_action_groups+2           $tmux_action_tabs+2           
+;; groups + 3
+tmux_action_groups+3           $tmux_action_tabs+3           
+;; groups + 4
+tmux_action_groups+4           $tmux_action_tabs+4           
+;; groups + 5
+tmux_action_groups+5           $tmux_action_tabs+5           
+;; groups + 6
+tmux_action_groups+6           $tmux_action_tabs+6           
+;; groups + 7
+tmux_action_groups+7           $tmux_action_tabs+7           
+;; groups + 8
+tmux_action_groups+8           $tmux_action_tabs+8           
+;; groups + 9
+tmux_action_groups+9        $tmux_action_tabs+9        
+;; == groups + toggle =====================================================
+;; groups + toggle
+tmux_action_groups+toggle           $tmux_action_tabs+toggle           
+;; == groups + move =====================================================
+;; groups + move + h | groups + move + left
+tmux_action_groups+move+h        $tmux_action_tabs+move+h        
+;; groups + move + l | groups + move + right
+tmux_action_groups+move+l       $tmux_action_tabs+move+l       
 )

@@ -1,36 +1,36 @@
 (defvar
-;; !tabs + spc
-obsidian_action_!tabs+spc              $obsidian_action_tabs+spc
-;; !tabs + l | !tabs + right
-obsidian_action_!tabs+l             $obsidian_action_tabs+l             
-;; !tabs + h | !tabs + left
-obsidian_action_!tabs+h             $obsidian_action_tabs+h             
-;; !tabs + t
-obsidian_action_!tabs+t              $obsidian_action_tabs+t              
-;; !tabs + w
-obsidian_action_!tabs+w            $obsidian_action_tabs+w            
-;; !tabs + lsft + t
-obsidian_action_!tabs+lsft+t       $obsidian_action_tabs+lsft+t       
-;; == !tabs go by number ==================================================
-;; !tabs + 1
-obsidian_action_!tabs+1           $obsidian_action_tabs+1           
-;; !tabs + 2
-obsidian_action_!tabs+2           $obsidian_action_tabs+2           
-;; !tabs + 3
-obsidian_action_!tabs+3           $obsidian_action_tabs+3           
-;; !tabs + 4
-obsidian_action_!tabs+4           $obsidian_action_tabs+4           
-;; !tabs + 5
-obsidian_action_!tabs+5           $obsidian_action_tabs+5           
-;; !tabs + 6
-obsidian_action_!tabs+6           $obsidian_action_tabs+6           
-;; !tabs + 7
-obsidian_action_!tabs+7           $obsidian_action_tabs+7           
-;; !tabs + 8
-obsidian_action_!tabs+8           $obsidian_action_tabs+8           
-;; !tabs + 9
-obsidian_action_!tabs+9        $obsidian_action_tabs+9        
-;; == !tabs + toggle =====================================================
-;; !tabs + toggle
-obsidian_action_!tabs+toggle           $obsidian_action_tabs+toggle           
+;; groups + spc
+obsidian_action_groups+spc              $obsidian_action_tabs+spc
+;; groups + l | groups + right
+obsidian_action_groups+l             $obsidian_action_tabs+l             
+;; groups + h | groups + left
+obsidian_action_groups+h             $obsidian_action_tabs+h             
+;; groups + t
+obsidian_action_groups+t              $obsidian_action_tabs+t              
+;; groups + w
+obsidian_action_groups+w            $obsidian_action_tabs+w            
+;; groups + lsft + t
+obsidian_action_groups+lsft+t       $obsidian_action_tabs+lsft+t       
+;; == groups go by number ==================================================
+;; groups + 1
+obsidian_action_groups+1           $obsidian_action_tabs+1           
+;; groups + 2
+obsidian_action_groups+2           $obsidian_action_tabs+2           
+;; groups + 3
+obsidian_action_groups+3           $obsidian_action_tabs+3           
+;; groups + 4
+obsidian_action_groups+4           $obsidian_action_tabs+4           
+;; groups + 5
+obsidian_action_groups+5           $obsidian_action_tabs+5           
+;; groups + 6
+obsidian_action_groups+6           $obsidian_action_tabs+6           
+;; groups + 7
+obsidian_action_groups+7           $obsidian_action_tabs+7           
+;; groups + 8
+obsidian_action_groups+8           $obsidian_action_tabs+8           
+;; groups + 9
+obsidian_action_groups+9        $obsidian_action_tabs+9        
+;; == groups + toggle =====================================================
+;; groups + toggle
+obsidian_action_groups+toggle           $obsidian_action_tabs+toggle           
 )

@@ -496,7 +496,7 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
    $ralt|apps              (t!      th  (t! 2x $windows_toggle)                  $toggle_apps_layer)
    $prnt|bookm             (t!      th  (t! 2x $action_sessions+toggle)          $toggle_bookmarks_layer)
 $copilot|bookm             (t!      th  (t! 2x $action_sessions+toggle)          $toggle_bookmarks_layer)
-   $rctl|opts              (t!      th  (t! 2x $~action_!tabs+toggle)            $toggle_opts_layer)   
+   $rctl|opts              (t!      th  (t! 2x $~action_groups+toggle)           $toggle_opts_layer)
     $esc|opts              (t!      th  esc                                      $toggle_opts_layer)   
 )
 

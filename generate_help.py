@@ -1134,7 +1134,7 @@ def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
     order: list[str] = []
     details: dict[str, dict] = {}
 
-    header_re = re.compile(r"^\s{2}(action_\S+)", re.MULTILINE)
+    header_re = re.compile(r"^\s{2}~?(action_\S+)", re.MULTILINE)
     headers = list(header_re.finditer(text))
 
     for i, m in enumerate(headers):

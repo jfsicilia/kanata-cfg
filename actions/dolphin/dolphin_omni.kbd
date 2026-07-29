@@ -137,7 +137,7 @@ dolphin_action_omni+'          $dolphin_filter
 ;; see mod.
 dolphin_action_omni+.          $dolphin_tags
 ;; omni + prnt|groups
-;; If not implemented, defaults to: action_!tabs+toggle
+;; If not implemented, defaults to: action_groups+toggle
 dolphin_action_omni+prnt        (push-msg "NOTIFY:No groups toggle behaviour implemented!")       
 ;; omni + rctl|sessions
 ;; If not implemented, defaults to: action_sessions+toggle

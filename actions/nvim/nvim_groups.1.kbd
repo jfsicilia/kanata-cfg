@@ -1,32 +1,32 @@
 (defvar
-;; !tabs + spc
-nvim_action_!tabs+spc                  $nvim_action_tabs                  
-;; !tabs + l | !tabs + right
-nvim_action_!tabs+l             $nvim_action_tabs+l             
-;; !tabs + h | !tabs + left
-nvim_action_!tabs+h             $nvim_action_tabs+h             
-;; !tabs + w
-nvim_action_!tabs+w            $nvim_action_tabs+w            
-;; == !tabs go by number ==================================================
-;; !tabs + 1
-nvim_action_!tabs+1           $nvim_action_tabs+1           
-;; !tabs + 2
-nvim_action_!tabs+2           $nvim_action_tabs+2           
-;; !tabs + 3
-nvim_action_!tabs+3           $nvim_action_tabs+3           
-;; !tabs + 4
-nvim_action_!tabs+4           $nvim_action_tabs+4           
-;; !tabs + 5
-nvim_action_!tabs+5           $nvim_action_tabs+5           
-;; !tabs + 6
-nvim_action_!tabs+6           $nvim_action_tabs+6           
-;; !tabs + 7
-nvim_action_!tabs+7           $nvim_action_tabs+7           
-;; !tabs + 8
-nvim_action_!tabs+8           $nvim_action_tabs+8           
-;; !tabs + 9
-nvim_action_!tabs+9        $nvim_action_tabs+9        
-;; == !tabs + toggle =====================================================
-;; !tabs + toggle
-nvim_action_!tabs+toggle           $nvim_action_tabs+toggle           
+;; groups + spc
+nvim_action_groups+spc                  $nvim_action_tabs                  
+;; groups + l | groups + right
+nvim_action_groups+l             $nvim_action_tabs+l             
+;; groups + h | groups + left
+nvim_action_groups+h             $nvim_action_tabs+h             
+;; groups + w
+nvim_action_groups+w            $nvim_action_tabs+w            
+;; == groups go by number ==================================================
+;; groups + 1
+nvim_action_groups+1           $nvim_action_tabs+1           
+;; groups + 2
+nvim_action_groups+2           $nvim_action_tabs+2           
+;; groups + 3
+nvim_action_groups+3           $nvim_action_tabs+3           
+;; groups + 4
+nvim_action_groups+4           $nvim_action_tabs+4           
+;; groups + 5
+nvim_action_groups+5           $nvim_action_tabs+5           
+;; groups + 6
+nvim_action_groups+6           $nvim_action_tabs+6           
+;; groups + 7
+nvim_action_groups+7           $nvim_action_tabs+7           
+;; groups + 8
+nvim_action_groups+8           $nvim_action_tabs+8           
+;; groups + 9
+nvim_action_groups+9        $nvim_action_tabs+9        
+;; == groups + toggle =====================================================
+;; groups + toggle
+nvim_action_groups+toggle           $nvim_action_tabs+toggle           
 )
