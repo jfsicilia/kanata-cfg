@@ -1,0 +1,20 @@
+# Physical_mods - obsidian (actions/obsidian/obsidian_!lalt|search.kbd)
+**!lctl|select + spc**        -- Select File (C-A-o)
+**!lctl|select + lsft + spc** -- Select Folder (C-S-o)
+**!lctl|select + a**          -- Select All Text (ggVG)
+**!lctl|select + b**          -- Bold Text (C-A-b)
+**!lctl|select + e**          -- Toggle Edit Mode (C-A-e)
+**!lctl|select + p**          -- Select Files
+**!lctl|select + r**          -- Toggle Source Mode (C-A-S-e)
+**!lctl|select + ,**          -- Setting
+**!lctl|select + lsft + p**   -- Commands (C-A-p)
+**lctl + tab**                -- Walk Through Apps
+**lctl + `**                  -- Walk Through Same App
+**lctl + b**                  -- Page Up
+**lctl + f**                  -- Page Down
+**lctl + t**                  -- New Tab (A-C-t)
+**lctl + ,**                  -- Setting
+**lctl + ;**                  -- Vimola (C-A-M-e [50ms] ;)
+**lctl + [**                  -- Forward (C-A-right)
+**lctl + ]**                  -- Backward (C-A-left)
+**lctl + lsft + t**           -- Undo Close Tab (A-C-S-t)

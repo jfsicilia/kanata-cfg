@@ -1,0 +1,5 @@
+# Workspaces+move (actions/actions_workspaces.kbd)
+**workspaces + move + j** -- Move Window To Next Screen (M-S-right)
+**workspaces + move + k** -- Move Window To Prev Screen (M-S-left)
+**workspaces + move + l** -- Move Window To Next Desktop (M-C-S-right)
+**workspaces + move + h** -- Move Window To Prev Desktop (M-C-S-left)

@@ -1,5 +1,4 @@
 # Omni - nvim (actions/nvim/nvim_omni.kbd)
-**omni + omni**     -- Cancel (esc)
 **omni + spc**      -- Select ([esc] :Telescope find_files [ret])
 **omni + bcsp**     -- Delete (del)
 **omni + a**        -- Select All ([esc] ggVG)

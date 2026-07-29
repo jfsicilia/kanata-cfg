@@ -1,5 +1,4 @@
 # Omni - tmux (actions/tmux/tmux_omni.kbd)
-**omni + omni**     -- Cancel (esc)
 **omni + spc**      -- Space (spc)
 **omni + bcsp**     -- Delete (del)
 **omni + b**        -- Pgup (A-b [pgup])

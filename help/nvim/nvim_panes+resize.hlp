@@ -1,0 +1,5 @@
+# Panes+resize - nvim (actions/nvim/nvim_panes.kbd)
+**panes + resize + h** -- Pane Resize Left (C-w <)
+**panes + resize + l** -- Pane Resize Right (C-w >)
+**panes + resize + k** -- Pane Resize Above (C-w -)
+**panes + resize + j** -- Pane Resize Below (C-w +)

@@ -1,0 +1,4 @@
+# Omni+lsft (actions/actions_omni.iface.kbd)
+**omni + lsft + c** -- Copy Path (C-S-c)
+**omni + lsft + t** -- Tab Undo Close (C-S-t)
+**omni + lsft + z** -- Redo (C-S-z)

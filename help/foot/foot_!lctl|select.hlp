@@ -1,0 +1,4 @@
+# Physical_mods - foot (actions/foot/foot_!lctl|select.kbd)
+**!lctl|select + spc** -- Select (C-f)
+**lctl + tab**         -- Walk Through Apps
+**lctl + `**           -- Walk Through Same App

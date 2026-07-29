@@ -1,4 +1,0 @@
-# !lctl - tmux (actions/tmux/tmux_!lctl&select.kbd)
-**lctl + tab**   -- Walk Through Apps
-**lctl + `**     -- Walk Through Same App
-**select + spc** -- Select Tab (A-b w)

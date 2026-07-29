@@ -1,0 +1,3 @@
+# Tabs+move - tmux (actions/tmux/tmux_tabs.kbd)
+**tabs + move + h** -- Move Tab Left (A-b :swap-window -t +1;select-window -t +1 [ent])
+**tabs + move + l** -- Move Tab Right (A-b :swap-window -t -1;select-window -t -1 [ent])

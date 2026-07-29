@@ -1,5 +1,0 @@
-# !lctl - nvim (actions/nvim/nvim_!lctl&select.kbd)
-**!lctl + a**    -- Select All ([esc] ggVG)
-**lctl + tab**   -- Walk Through Apps
-**lctl + `**     -- Walk Through Same App
-**select + spc** -- Select ([esc] :Telescope find_files [ret])

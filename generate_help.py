@@ -90,10 +90,25 @@ def _app_stem(path: Path, app: str) -> str:
 
 
 def _stem_keys(stem: str) -> list[str]:
-    """The mod a file-name stem provides. Every physical-mod file folds into
-    the single "physical_mods" key, since that one logical mod is spread over
-    several files (one per modifier)."""
-    return ["physical_mods"] if _is_mod_name(stem) else [stem]
+    """The mod(s) a file-name stem provides.
+
+    A bare physical-mod stem (only modifier tokens, e.g. "lctl",
+    "lctl+lalt") folds into the single "physical_mods" key, since that one
+    logical mod is spread over several files (one per modifier) — and,
+    per _actions_index's docstring, is deliberately NOT registered under
+    its own name too.
+
+    A stem that also carries a "|<name>" suffix on one of its tokens (e.g.
+    "!lctl|select") is a compound mod with its own identity — the
+    modifier and the mod it's always held with share one file, but the
+    attached mod is still reachable by that name on its own (e.g. a
+    cross-mod reference to "action_!lctl|select+spc" from another mod).
+    It keeps its own key alongside "physical_mods", so _actions_index()
+    can find its file by either name.
+    """
+    if not _is_mod_name(stem):
+        return [stem]
+    return ["physical_mods", stem] if "|" in stem else ["physical_mods"]
 
 
 _actions_index_cache: dict[str, list[Path]] | None = None
@@ -107,7 +122,9 @@ def _actions_index() -> dict[str, list[Path]]:
     share one with the modifier they are always stacked under. Bare
     modifier names are deliberately NOT registered as mods of their own,
     so a stray "$action_lctl+x" reference stays unresolvable exactly as it
-    was before the split.
+    was before the split — but select/search/replace ARE registered under
+    their own compound name too (see _stem_keys), so a cross-mod reference
+    to e.g. "action_!lctl|select+spc" from another mod can still resolve.
     """
     global _actions_index_cache
     if _actions_index_cache is None:

@@ -1,4 +1,0 @@
-# !lmet - nvim (actions/nvim/nvim_!lmet&replace.kbd)
-**!lmet + l**            -- Lock User Session (M-l)
-**replace + spc**        -- Replace In Buffer ([esc] :lua require('grug-far').open({ windowCreationCommand = 'topleft vertical split', prefills = { paths = vim.fn.expand("%") } }) [ret])
-**replace + lsft + spc** -- Replace In Workspace ([esc] :topleft vertical GrugFar [ret])
