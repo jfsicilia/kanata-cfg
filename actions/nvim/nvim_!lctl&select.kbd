@@ -1,10 +1,10 @@
 (defvar
 ;; == !LCTL actions ==========================================================
-nvim_action_!lctl+a  $nvim_select_all                   
+nvim_action_!lctl&select+a  $nvim_select_all                   
 ;; == select ========================================================
 ;; select + spc
 ;; nvim_action_select+spc              `{esc}:Telescope find_files{ret}`
-nvim_action_select+spc                 $nvim_select    
+nvim_action_!lctl&select+spc                 $nvim_select    
 ;; select + lsft + spc
-nvim_action_select+lsft+spc            XX
+nvim_action_!lctl&select+lsft+spc            XX
 )

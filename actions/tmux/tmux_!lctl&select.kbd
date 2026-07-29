@@ -1,5 +1,5 @@
 (defvar
 ;; == select ========================================================
 ;; select + spc
-tmux_action_select+spc                   $tmux_select_tab
+tmux_action_!lctl&select+spc                   $tmux_select_tab
 )

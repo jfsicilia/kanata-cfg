@@ -12,15 +12,15 @@
 
   $<lctl            (t! th _ $toggle_lctl+lsft_layer)
   $>lctl            (t! th _ $toggle_lctl+lsft_layer)
-  $!lctl            (t! th _ $toggle_select_&_!lctl+lsft_layer)
+  $!lctl            (t! th _ $toggle_!lctl&select+lsft_layer)
 
   $<lalt            (t! th _ $toggle_lalt+lsft_layer)
   $>lalt            (t! th _ $toggle_lalt+lsft_layer)
-  $!lalt            (t! th _ $toggle_search_&_!lalt+lsft_layer)
+  $!lalt            (t! th _ $toggle_!lalt&search+lsft_layer)
 
   $<lmet            (t! th _ $toggle_lmet+lsft_layer)
   $>lmet            (t! th _ $toggle_lmet+lsft_layer)
-  $!lmet            (t! th _ $toggle_replace_&_!lmet+lsft_layer)
+  $!lmet            (t! th _ $toggle_!lmet&replace+lsft_layer)
 )
 
 ;; "" RSFT_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -35,13 +35,13 @@
 
   $<lctl            (t! th _ $toggle_lctl+rsft_layer)
   $>lctl            (t! th _ $toggle_lctl+rsft_layer)
-  $!lctl            (t! th _ $toggle_select_&_!lctl+rsft_layer)
+  $!lctl            (t! th _ $toggle_!lctl&select+rsft_layer)
 
   $<lalt            (t! th _ $toggle_lalt+rsft_layer)
   $>lalt            (t! th _ $toggle_lalt+rsft_layer)
-  $!lalt            (t! th _ $toggle_search_&_!lalt+rsft_layer)
+  $!lalt            (t! th _ $toggle_!lalt&search+rsft_layer)
 
   $<lmet            (t! th _ $toggle_lmet+rsft_layer)
   $>lmet            (t! th _ $toggle_lmet+rsft_layer)
-  $!lmet            (t! th _ $toggle_replace_&_!lmet+rsft_layer)
+  $!lmet            (t! th _ $toggle_!lmet&replace+rsft_layer)
 )

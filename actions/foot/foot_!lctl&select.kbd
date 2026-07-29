@@ -1,5 +1,5 @@
 (defvar
 ;; == select ========================================================
 ;; select + spc
-foot_action_select+spc        $foot_select
+foot_action_!lctl&select+spc        $foot_select
 )

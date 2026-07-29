@@ -488,9 +488,9 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
   rsft                     (t!      th (t! 2x $action_tabs+l)                    $toggle_rsft_layer)
 
   ;; Modifiers row.
-  $!lmet|replace           (t!      th  (t! 2x $action_workspaces+toggle)        $toggle_replace_&_!lmet_layer)
-  $!lalt|search            (t!      th  (t! 2x $action_panes+toggle)             $toggle_search_&_!lalt_layer)
-  $!lctl|select            (t!      th  (t! 2x $action_tabs+toggle)       (multi $toggle_select_&_!lctl_layer (on-release release-vkey vk_lalt)))
+  $!lmet|replace           (t!      th  (t! 2x $action_workspaces+toggle)        $toggle_!lmet&replace_layer)
+  $!lalt|search            (t!      th  (t! 2x $action_panes+toggle)             $toggle_!lalt&search_layer)
+  $!lctl|select            (t!      th  (t! 2x $action_tabs+toggle)       (multi $toggle_!lctl&select_layer (on-release release-vkey vk_lalt)))
     $spc|domains           (t! fast_th  spc                               (multi $toggle_domains_layer (t! release_domains)))
    $ralt|apps              (t!      th  (t! 2x $windows_toggle)                  $toggle_apps_layer)
    $prnt|bookm             (t!      th  (t! 2x $action_sessions+toggle)          $toggle_bookmarks_layer)

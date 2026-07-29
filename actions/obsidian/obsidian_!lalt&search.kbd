@@ -1,7 +1,7 @@
 (defvar
 ;; == search ============================================================
 ;; search + spc
-obsidian_action_search+spc               $obsidian_search_in_file
+obsidian_action_!lalt&search+spc               $obsidian_search_in_file
 ;; search + lsft + spc
-obsidian_action_search+lsft+spc         $obsidian_search_in_files
+obsidian_action_!lalt&search+lsft+spc         $obsidian_search_in_files
 )
