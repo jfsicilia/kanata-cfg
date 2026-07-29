@@ -23,8 +23,7 @@
 ;; Setup =================================================================
 (include setup.kbd)
 
-;; Layers =================================================================
-;; Physical modifiers (a "&" file also carries the mod stacked under it).
+;; Layers Toggle =======================================================
 (include layers_toggle/toggles_lctl.kbd)
 (include layers_toggle/toggles_!lctl&select.kbd)
 (include layers_toggle/toggles_lalt.kbd)
@@ -32,7 +31,6 @@
 (include layers_toggle/toggles_lmet.kbd)
 (include layers_toggle/toggles_!lmet&replace.kbd)
 (include layers_toggle/toggles_sft.kbd)
-;; GUI objects.
 (include layers_toggle/toggles_windows.kbd)
 (include layers_toggle/toggles_workspaces.kbd)
 (include layers_toggle/toggles_panes.kbd)
@@ -40,7 +38,6 @@
 (include layers_toggle/toggles_groups.kbd)
 (include layers_toggle/toggles_sessions.kbd)
 (include layers_toggle/toggles_layouts.kbd)
-;; Mods.
 (include layers_toggle/toggles_apps.kbd)
 (include layers_toggle/toggles_bookmarks.kbd)
 (include layers_toggle/toggles_domains.kbd)
@@ -53,6 +50,7 @@
 (include layers_toggle/toggles_workflow.kbd)
 (include layers_toggle/toggles_system.kbd)
 
+;; Layers ==============================================================
 (include layers/layer_windows.kbd)
 (include layers/layer_workspaces.kbd)
 (include layers/layer_panes.kbd)
