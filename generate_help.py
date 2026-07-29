@@ -36,7 +36,6 @@ MOD_TITLES: dict[str, str] = {
     "replace":      "Replace",
     "search":       "Search",
     "select":       "Select",
-    "physical_mods": "Physical mods",
     "opts":         "Opts",
     "bookmarks":    "Bookmarks",
     "apps":         "Apps",
@@ -1580,7 +1579,6 @@ def emit_physical_mods_help(
     if not iface_order:
         return
     mod     = "physical_mods"
-    base_title = MOD_TITLES.get(mod, "Physical mods")
 
     actions: list[tuple[tuple[str, ...], str, str]] = []
     for a in iface_order:
@@ -1628,7 +1626,7 @@ def emit_physical_mods_help(
         # still serves as a reminder of what this modifier is for.
         fam_file = find_actions_family_file(_mod_family(node[0]))
         w.emit(HELP_DIR / f"global_{layer_name}.hlp",
-               f"{base_title} ({layer_name})", merged_entries(node), fam_file)
+               layer_name, merged_entries(node), fam_file)
 
     for app_dir in app_dirs:
         app      = app_dir.name
@@ -1667,7 +1665,7 @@ def emit_physical_mods_help(
             if entries:
                 layer_name = "+".join(node)
                 w.emit(HELP_DIR / app / f"{app}_{layer_name}.hlp",
-                       f"{base_title} ({layer_name}) - {app}", entries,
+                       f"{layer_name} - {app}", entries,
                        fam_file or find_actions_family_file(family))
 
 
