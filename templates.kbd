@@ -389,24 +389,24 @@
 ;; Parameters:
 ;;   layer       - Base layer name (without +modifier suffix)
 ;;   connections - List of modifier connections to enable (e.g., ($!lctl $<lalt))
-(deftemplate _default_map_layers (layer connections)
+(deftemplate _map_layers_no_action (layer connections)
   ;; == LCTL =========================
-  (if-in-list $!lctl $connections $!lctl           (t! th _ (concat "$toggle_" $layer "+lctl_layer")))
+  (if-in-list $!lctl $connections $!lctl    (t! th _ (concat "$toggle_" $layer "+lctl_layer")))
   (if-in-list $<lctl $connections $f|lctl   (t! th _ (concat "$toggle_" $layer "+lctl_layer")))
   (if-in-list $>lctl $connections $j|lctl   (t! th _ (concat "$toggle_" $layer "+lctl_layer")))
   ;; == LALT =========================
-  (if-in-list $!lalt $connections $!lalt           (t! th _ (concat "$toggle_" $layer "+lalt_layer")))
+  (if-in-list $!lalt $connections $!lalt    (t! th _ (concat "$toggle_" $layer "+lalt_layer")))
   (if-in-list $<lalt $connections $s|lalt   (t! th _ (concat "$toggle_" $layer "+lalt_layer")))
   (if-in-list $>lalt $connections $l|lalt   (t! th _ (concat "$toggle_" $layer "+lalt_layer")))
   ;; == LMET =========================
-  (if-in-list $!lmet $connections $!lmet           (t! th _ (concat "$toggle_" $layer "+lmet_layer")))
+  (if-in-list $!lmet $connections $!lmet    (t! th _ (concat "$toggle_" $layer "+lmet_layer")))
   (if-in-list $<lmet $connections $a|lmet   (t! th _ (concat "$toggle_" $layer "+lmet_layer")))
   (if-in-list $>lmet $connections $;|lmet   (t! th _ (concat "$toggle_" $layer "+lmet_layer")))
   ;; == LSFT ====================
-  (if-in-list lsft   $connections lsft             (t! th _ (concat "$toggle_" $layer "+lsft_layer")))
+  (if-in-list lsft   $connections lsft      (t! th _ (concat "$toggle_" $layer "+lsft_layer")))
   (if-in-list $lsft  $connections $d|lsft   (t! th _ (concat "$toggle_" $layer "+lsft_layer")))
   ;; == RSFT ====================
-  (if-in-list rsft   $connections rsft             (t! th _ (concat "$toggle_" $layer "+rsft_layer")))
+  (if-in-list rsft   $connections rsft      (t! th _ (concat "$toggle_" $layer "+rsft_layer")))
   (if-in-list $rsft  $connections $k|rsft   (t! th _ (concat "$toggle_" $layer "+rsft_layer")))
 )
 
@@ -419,24 +419,24 @@
 ;;   action      - Action prefix for tap (e.g., "action_lctl")
 ;;   layer       - Base layer name (without +modifier suffix)
 ;;   connections - List of modifier connections to enable
-(deftemplate _map_layers (action layer connections)
+(deftemplate _map_layers_with_action (action layer connections)
   ;; == LCTL =========================
-  (if-in-list $!lctl $connections $!lctl           (t! th _                      (concat "$toggle_" $layer "+lctl_layer")))
+  (if-in-list $!lctl $connections $!lctl    (t! th _                      (concat "$toggle_" $layer "+lctl_layer")))
   (if-in-list $<lctl $connections $f|lctl   (t! th (concat $action "+" f) (concat "$toggle_" $layer "+lctl_layer")))
   (if-in-list $>lctl $connections $j|lctl   (t! th (concat $action "+" j) (concat "$toggle_" $layer "+lctl_layer")))
   ;; == LALT =========================
-  (if-in-list $!lalt $connections $!lalt           (t! th _                      (concat "$toggle_" $layer "+lalt_layer")))
+  (if-in-list $!lalt $connections $!lalt    (t! th _                      (concat "$toggle_" $layer "+lalt_layer")))
   (if-in-list $<lalt $connections $s|lalt   (t! th (concat $action "+" s) (concat "$toggle_" $layer "+lalt_layer")))
   (if-in-list $>lalt $connections $l|lalt   (t! th (concat $action "+" l) (concat "$toggle_" $layer "+lalt_layer")))
   ;; == LMET =========================
-  (if-in-list $!lmet $connections $!lmet           (t! th _                      (concat "$toggle_" $layer "+lmet_layer")))
+  (if-in-list $!lmet $connections $!lmet    (t! th _                      (concat "$toggle_" $layer "+lmet_layer")))
   (if-in-list $<lmet $connections $a|lmet   (t! th (concat $action "+" a) (concat "$toggle_" $layer "+lmet_layer")))
   (if-in-list $>lmet $connections $;|lmet   (t! th (concat $action "+" ;) (concat "$toggle_" $layer "+lmet_layer")))
   ;; == LSFT ====================
-  (if-in-list lsft   $connections lsft             (t! th _                      (concat "$toggle_" $layer "+lsft_layer")))
+  (if-in-list lsft   $connections lsft      (t! th _                      (concat "$toggle_" $layer "+lsft_layer")))
   (if-in-list $lsft  $connections $d|lsft   (t! th (concat $action "+" d) (concat "$toggle_" $layer "+lsft_layer")))
   ;; == RSFT ====================
-  (if-in-list rsft   $connections rsft             (t! th _                      (concat "$toggle_" $layer "+rsft_layer")))
+  (if-in-list rsft   $connections rsft      (t! th _                      (concat "$toggle_" $layer "+rsft_layer")))
   (if-in-list $rsft  $connections $k|rsft   (t! th (concat $action "+" k) (concat "$toggle_" $layer "+rsft_layer")))
 )
 
@@ -451,10 +451,10 @@
 ;; Parameters:
 ;;   action      - Tap action prefix ("_" for no tap action)
 ;;   layer       - Base layer name (e.g., "window", "omni")
-;;   ignore_keys - List of modifier connections to skip/exclude
-(deftemplate map_layers (action layer ignore_keys)
-  (if-equal     $action _ (t! _default_map_layers $layer ($ignore_keys)))
-  (if-not-equal $action _ (t! _map_layers $action $layer ($ignore_keys)))
+;;   connections - List of modifier connections to skip/exclude
+(deftemplate map_layers (action layer connections)
+  (if-equal     $action _ (t! _map_layers_no_action           $layer ($connections)))
+  (if-not-equal $action _ (t! _map_layers_with_action $action $layer ($connections)))
 )
 
 ;; Internal: Map all alphanumeric and symbol keys to themselves.
@@ -466,7 +466,7 @@
 ;;
 ;; Parameters:
 ;;   ignore_keys - List of keys to skip (don't create bindings for)
-(deftemplate _default_map_keys (ignore_keys)
+(deftemplate _map_keys_no_action (ignore_keys)
   (if-not-in-list a $ignore_keys (if-not-in-list $<lmet $ignore_keys a a))
   (if-not-in-list b $ignore_keys b b)
   (if-not-in-list c $ignore_keys c c)
@@ -522,7 +522,7 @@
 ;; Parameters:
 ;;   action      - Action prefix to prepend to each key
 ;;   ignore_keys - List of keys to skip (don't create bindings for)
-(deftemplate _map_keys (action ignore_keys)
+(deftemplate _map_keys_with_action (action ignore_keys)
   (if-not-in-list a $ignore_keys (if-not-in-list $<lmet $ignore_keys a (concat $action "+" a)))
   (if-not-in-list b $ignore_keys b (concat $action "+" b))
   (if-not-in-list c $ignore_keys c (concat $action "+" c))
@@ -581,8 +581,8 @@
 ;;   action      - Action prefix for key bindings ("_" for pass-through)
 ;;   ignore_keys - List of keys to skip/exclude from binding
 (deftemplate map_keys (action ignore_keys)
-  (if-equal     $action _ (t! _default_map_keys ($ignore_keys)))
-  (if-not-equal $action _ (t! _map_keys $action ($ignore_keys)))
+  (if-equal     $action _ (t! _map_keys_no_action           ($ignore_keys)))
+  (if-not-equal $action _ (t! _map_keys_with_action $action ($ignore_keys)))
 )
 
 ;; Generate a complete mod layer with shift variants.
