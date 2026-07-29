@@ -1,7 +1,0 @@
-(defvar
-;; == select ========================================================
-;; select + spc
-chrome_action_!lctl&select+spc                      $chrome_select    
-;; select + lsft + spc
-chrome_action_!lctl&select+lsft+spc                 XX
-)

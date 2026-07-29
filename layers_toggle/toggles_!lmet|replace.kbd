@@ -1,0 +1,7 @@
+;; "" !LMET|REPLACE_TOGGLES """""""""""""""""""""""""""""""""""""""""""""""""
+(defvar
+  toggle_!lmet|replace_layer             (t! toggle_mod_2layer  lmet       lmet_layer      !lmet|replace_layer      )
+
+  toggle_!lmet|replace+lsft_layer        (t! toggle_2mod_2layer lmet lsft  lmet+lsft_layer !lmet|replace+lsft_layer)
+  toggle_!lmet|replace+rsft_layer        (t! toggle_2mod_2layer lmet rsft  lmet+rsft_layer !lmet|replace+rsft_layer)
+)

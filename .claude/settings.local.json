@@ -19,7 +19,24 @@
       "Bash(sort -k2)",
       "Bash(kanata --check -c kanata.kbd)",
       "Bash(awk -F'+' '{print $1}')",
-      "Bash(grep -rnE '\\\\$~?action_!?\\(lctl|lalt|lmet|sft|lsft|rsft\\)\\\\+' --include=\"*.kbd\" .)"
+      "Bash(grep -rnE '\\\\$~?action_!?\\(lctl|lalt|lmet|sft|lsft|rsft\\)\\\\+' --include=\"*.kbd\" .)",
+      "Bash(git mv *)",
+      "Bash(xargs -0 sed -i -e 's/!lctl&select/!lctl|select/g' -e 's/!lalt&search/!lalt|search/g' -e 's/!lmet&replace/!lmet|replace/g')",
+      "Bash(echo \"remaining-check-exit:$?\")",
+      "Bash(echo \"check1:$?\")",
+      "Bash(xargs -0 sed -i -e 's/!LCTL&SELECT/!LCTL|SELECT/g' -e 's/!LALT&SEARCH/!LALT|SEARCH/g' -e 's/!LMET&REPLACE/!LMET|REPLACE/g')",
+      "Bash(echo \"check:$?\")",
+      "Bash(python3 generate_help.py)",
+      "Bash(cp -r help /tmp/help_afterfix)",
+      "Bash(echo \"idempotent:$?\")",
+      "Bash(grep -c 'action_.*+.*\\\\s\\\\$' actions/actions_apps.kbd)",
+      "Bash(awk '/^\\\\\\(defvar/{c++} {print c\": \"$0}' actions/actions_bookmarks.kbd)",
+      "Bash(awk '/^\\\\\\(defvar/{c++} {print c\": \"$0}' actions/actions_domains.iface.kbd)",
+      "Bash(echo \"diff-exit:$?\")",
+      "Bash(echo \"full-diff-exit:$?\")",
+      "Bash(echo \"idempotent-exit:$?\")",
+      "Bash(echo \"no-other-changes-exit:$?\")",
+      "Bash(echo \"grep-exit:$?\")"
     ]
   }
 }

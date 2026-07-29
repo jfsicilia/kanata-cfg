@@ -1,326 +1,151 @@
 (defvar
-  apps_app_finder RA-spc
-  apps_recent_files (cmd recent_files.sh) 
+  apps_app_finder     (t! unmod_all RA-spc)
+  apps_recent_files   (t! unmod_all (cmd recent_files.sh))
+
+  apps_chrome_misc    (t! unmod_all (push-msg "APP:chromeMisc"))
+  apps_chrome_mgmt    (t! unmod_all (push-msg "APP:chromeMgmt"))
+  apps_chrome_cloud   (t! unmod_all (push-msg "APP:chromeCloud"))
+  apps_chrome_ai      (t! unmod_all (push-msg "APP:chromeAI"))
+  apps_chrome_banks   (t! unmod_all (push-msg "APP:chromeBanks"))
+  apps_chrome_misc1   (t! unmod_all (push-msg "APP:chromeMisc1"))
+  apps_chrome_misc2   (t! unmod_all (push-msg "APP:chromeMisc2"))
+  apps_chrome_misc3   (t! unmod_all (push-msg "APP:chromeMisc3"))
+  apps_chrome_misc4   (t! unmod_all (push-msg "APP:chromeMisc4"))
+  apps_chrome_colab   (t! unmod_all (push-msg "APP:chromeColab"))
+  apps_claude_code    (t! unmod_all (push-msg "APP:claude_code"))
+  apps_fileexplorer   (t! unmod_all (push-msg "APP:fileexplorer"))
+  apps_firefox        (t! unmod_all (push-msg "APP:firefox"))
+  apps_keepassxc      (t! unmod_all (push-msg "APP:keepassxc"))
+  apps_chrome         (t! unmod_all (push-msg "APP:chrome"))
+  apps_obsidian       (t! unmod_all (push-msg "APP:obsidian"))
+  apps_sketchup       (t! unmod_all (push-msg "APP:sketchup"))
+  apps_terminal       (t! unmod_all (push-msg "APP:terminal"))
+  apps_nvim           (t! unmod_all (push-msg "APP:nvim"))
+  apps_zapzap         (t! unmod_all (push-msg "APP:zapzap"))
+  apps_calc           (t! unmod_all (push-msg "APP:calc"))
+  apps_firefox_misc   (t! unmod_all (push-msg "APP:firefoxMisc"))
+  apps_firefox_mgmt   (t! unmod_all (push-msg "APP:firefoxMgmt"))
+  apps_firefox_cloud  (t! unmod_all (push-msg "APP:firefoxCloud"))
+  apps_firefox_ai     (t! unmod_all (push-msg "APP:firefoxAI"))
+  apps_firefox_banks  (t! unmod_all (push-msg "APP:firefoxBanks"))
+  apps_firefox_colab  (t! unmod_all (push-msg "APP:firefoxColab"))
+  apps_fusion360      (t! unmod_all (push-msg "APP:fusion360"))
+  apps_okular         (t! unmod_all (push-msg "APP:okular"))
+  apps_onlyoffice     (t! unmod_all (push-msg "APP:onlyoffice"))
+  apps_telegram       (t! unmod_all (push-msg "APP:telegram"))
+  apps_orcaslicer     (t! unmod_all (push-msg "APP:orcaslicer"))
+
+  apps_not_bound      (t! unmod_all (push-msg "NOTIFY:No app bound"))
 )
 
 (defvar
-  action_apps+spc (t! unmod_all (switch
-    () $apps_app_finder break
-  ))
+  action_apps+spc          $apps_app_finder
+  action_apps+!lctl        $apps_recent_files
 
-  action_apps+!lctl (t! unmod_all (switch
-    () $apps_recent_files break
-  ))
+  action_apps+0            $apps_chrome_misc
+  action_apps+1            $apps_chrome_mgmt
+  action_apps+2            $apps_chrome_cloud
+  action_apps+3            $apps_chrome_ai
+  action_apps+4            $apps_chrome_banks
+  action_apps+5            $apps_chrome_misc1
+  action_apps+6            $apps_chrome_misc2
+  action_apps+7            $apps_chrome_misc3
+  action_apps+8            $apps_chrome_misc4
+  action_apps+9            $apps_chrome_colab
 
-  action_apps+0 (t! unmod_all (switch 
-    () (push-msg "APP:chromeMisc") break
-  ))
-  action_apps+1 (t! unmod_all (switch 
-    () (push-msg "APP:chromeMgmt") break
-  ))
-  action_apps+2 (t! unmod_all (switch 
-    () (push-msg "APP:chromeCloud") break
-  ))
-  action_apps+3 (t! unmod_all (switch 
-    () (push-msg "APP:chromeAI") break
-  ))
-  action_apps+4 (t! unmod_all (switch 
-    () (push-msg "APP:chromeBanks") break
-  ))
-  action_apps+5 (t! unmod_all (switch 
-    () (push-msg "APP:chromeMisc1") break
-  ))
-  action_apps+6 (t! unmod_all (switch 
-    () (push-msg "APP:chromeMisc2") break
-  ))
-  action_apps+7 (t! unmod_all (switch 
-    () (push-msg "APP:chromeMisc3") break
-  ))
-  action_apps+8 (t! unmod_all (switch 
-    () (push-msg "APP:chromeMisc4") break
-  ))
-  action_apps+9 (t! unmod_all (switch 
-    () (push-msg "APP:chromeColab") break
-  ))
+  action_apps+a            $apps_not_bound
+  action_apps+b            $apps_not_bound
+  action_apps+c            $apps_claude_code
+  action_apps+d            $apps_not_bound
+  action_apps+e            $apps_fileexplorer
+  action_apps+f            $apps_firefox
+  action_apps+g            $apps_not_bound
+  action_apps+h            $apps_not_bound
+  action_apps+i            $apps_not_bound
+  action_apps+j            $apps_not_bound
+  action_apps+k            $apps_keepassxc
+  action_apps+l            $apps_not_bound
+  action_apps+m            $apps_chrome
+  action_apps+n            $apps_not_bound
+  action_apps+o            $apps_obsidian
+  action_apps+p            $apps_not_bound
+  action_apps+q            $apps_not_bound
+  action_apps+r            $apps_not_bound
+  action_apps+s            $apps_sketchup
+  action_apps+t            $apps_terminal
+  action_apps+u            $apps_not_bound
+  action_apps+v            $apps_nvim
+  action_apps+w            $apps_zapzap
+  action_apps+x            $apps_calc
+  action_apps+y            $apps_not_bound
+  action_apps+z            $apps_not_bound
 
-  action_apps+a (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+b (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+c (t! unmod_all (switch
-    () (push-msg "APP:claude_code") break
-  ))
-  action_apps+d (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+e (t! unmod_all (switch 
-    () (push-msg "APP:fileexplorer") break
-  ))
-  action_apps+f (t! unmod_all (switch
-    () (push-msg "APP:firefox") break
-  ))
-  action_apps+g (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+h (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+i (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+j (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+k (t! unmod_all (switch
-    () (push-msg "APP:keepassxc") break
-  ))
-  action_apps+l (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+m (t! unmod_all (switch
-    () (push-msg "APP:chrome") break
-  ))
-  action_apps+n (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+o (t! unmod_all (switch 
-    () (push-msg "APP:obsidian") break
-  ))
-  action_apps+p (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+q (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+r (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+s (t! unmod_all (switch
-    () (push-msg "APP:sketchup") break
-  ))
-  action_apps+t (t! unmod_all (switch
-    () (push-msg "APP:terminal") break
-  ))
-  action_apps+u (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+v (t! unmod_all (switch 
-    () (push-msg "APP:nvim") break
-  ))
-  action_apps+w (t! unmod_all (switch 
-    () (push-msg "APP:zapzap") break
-  ))
-  action_apps+x (t! unmod_all (switch
-    () (push-msg "APP:calc") break
-  ))
-  action_apps+y (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+z (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
+  action_apps+lsft+0       $apps_firefox_misc
+  action_apps+lsft+1       $apps_firefox_mgmt
+  action_apps+lsft+2       $apps_firefox_cloud
+  action_apps+lsft+3       $apps_firefox_ai
+  action_apps+lsft+4       $apps_firefox_banks
+  action_apps+lsft+5       $apps_firefox_misc
+  action_apps+lsft+6       $apps_not_bound
+  action_apps+lsft+7       $apps_not_bound
+  action_apps+lsft+8       $apps_not_bound
+  action_apps+lsft+9       $apps_firefox_colab
 
-  action_apps+lsft+0 (t! unmod_all (switch 
-    () (push-msg "APP:firefoxMisc") break
-  ))
-  action_apps+lsft+1 (t! unmod_all (switch 
-    () (push-msg "APP:firefoxMgmt") break
-  ))
-  action_apps+lsft+2 (t! unmod_all (switch 
-    () (push-msg "APP:firefoxCloud") break
-  ))
-  action_apps+lsft+3 (t! unmod_all (switch 
-    () (push-msg "APP:firefoxAI") break
-  ))
-  action_apps+lsft+4 (t! unmod_all (switch 
-    () (push-msg "APP:firefoxBanks") break
-  ))
-  action_apps+lsft+5 (t! unmod_all (switch 
-    () (push-msg "APP:firefoxMisc") break
-  ))
-  action_apps+lsft+6 (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+7 (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+8 (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+9 (t! unmod_all (switch 
-    () (push-msg "APP:firefoxColab") break
-  ))
+  action_apps+lsft+a       $apps_not_bound
+  action_apps+lsft+b       $apps_not_bound
+  action_apps+lsft+c       $apps_not_bound
+  action_apps+lsft+d       $apps_not_bound
+  action_apps+lsft+e       $apps_not_bound
+  action_apps+lsft+f       $apps_fusion360
+  action_apps+lsft+g       $apps_not_bound
+  action_apps+lsft+h       $apps_not_bound
+  action_apps+lsft+i       $apps_not_bound
+  action_apps+lsft+j       $apps_not_bound
+  action_apps+lsft+k       $apps_okular
+  action_apps+lsft+l       $apps_not_bound
+  action_apps+lsft+m       $apps_not_bound
+  action_apps+lsft+n       $apps_not_bound
+  action_apps+lsft+o       $apps_onlyoffice
+  action_apps+lsft+p       $apps_not_bound
+  action_apps+lsft+q       $apps_not_bound
+  action_apps+lsft+r       $apps_not_bound
+  action_apps+lsft+s       $apps_not_bound
+  action_apps+lsft+t       $apps_telegram
+  action_apps+lsft+lsft+t  $apps_not_bound
+  action_apps+lsft+rsft+t  $apps_not_bound
+  action_apps+lsft+u       $apps_not_bound
+  action_apps+lsft+v       $apps_not_bound
+  action_apps+lsft+w       $apps_not_bound
+  action_apps+lsft+x       $apps_not_bound
+  action_apps+lsft+y       $apps_not_bound
+  action_apps+lsft+z       $apps_not_bound
 
-  action_apps+lsft+a (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+b (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+c (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+d (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+e (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+f (t! unmod_all (switch
-    () (push-msg "APP:fusion360") break
-  ))
-  action_apps+lsft+g (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+h (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+i (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+j (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+k (t! unmod_all (switch
-    () (push-msg "APP:okular") break
-  ))
-  action_apps+lsft+l (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+m (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+n (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+o (t! unmod_all (switch 
-    () (push-msg "APP:onlyoffice") break
-  ))
-  action_apps+lsft+p (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+q (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+r (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+s (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+t (t! unmod_all (switch
-    () (push-msg "APP:telegram") break
-  ))
-  action_apps+lsft+lsft+t (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+rsft+t (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+u (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+v (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+w (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+x (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+y (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+lsft+z (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-
-
-  action_apps+rsft+a (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+b (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+c (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+d (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+e (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+f (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+g (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+h (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+i (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+j (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+k (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+l (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+m (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+n (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+o (t! unmod_all (switch 
-    () (push-msg "APP:orcaslicer") break
-  ))
-  action_apps+rsft+p (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+q (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+r (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+s (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+t (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+lsft+t (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+rsft+t (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+u (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+v (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+w (t! unmod_all (switch 
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+x (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+y (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
-  action_apps+rsft+z (t! unmod_all (switch
-    () (push-msg "APP:") break
-  ))
+  action_apps+rsft+a       $apps_not_bound
+  action_apps+rsft+b       $apps_not_bound
+  action_apps+rsft+c       $apps_not_bound
+  action_apps+rsft+d       $apps_not_bound
+  action_apps+rsft+e       $apps_not_bound
+  action_apps+rsft+f       $apps_not_bound
+  action_apps+rsft+g       $apps_not_bound
+  action_apps+rsft+h       $apps_not_bound
+  action_apps+rsft+i       $apps_not_bound
+  action_apps+rsft+j       $apps_not_bound
+  action_apps+rsft+k       $apps_not_bound
+  action_apps+rsft+l       $apps_not_bound
+  action_apps+rsft+m       $apps_not_bound
+  action_apps+rsft+n       $apps_not_bound
+  action_apps+rsft+o       $apps_orcaslicer
+  action_apps+rsft+p       $apps_not_bound
+  action_apps+rsft+q       $apps_not_bound
+  action_apps+rsft+r       $apps_not_bound
+  action_apps+rsft+s       $apps_not_bound
+  action_apps+rsft+t       $apps_not_bound
+  action_apps+rsft+lsft+t  $apps_not_bound
+  action_apps+rsft+rsft+t  $apps_not_bound
+  action_apps+rsft+u       $apps_not_bound
+  action_apps+rsft+v       $apps_not_bound
+  action_apps+rsft+w       $apps_not_bound
+  action_apps+rsft+x       $apps_not_bound
+  action_apps+rsft+y       $apps_not_bound
+  action_apps+rsft+z       $apps_not_bound
 )

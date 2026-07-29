@@ -103,7 +103,7 @@
 ;; STACKED MODS: !lctl / !lalt / !lmet are two things at once
 ;; ----------------------------------------------------------
 ;; Holding one of the physical modifiers pushes three layers in a single go
-;; (see layers_toggle/toggles_!lctl&select.kbd and its siblings):
+;; (see layers_toggle/toggles_!lctl|select.kbd and its siblings):
 ;;
 ;;   hold !lctl  →  select_layer + lctl_layer + !lctl_layer
 ;;
@@ -116,7 +116,7 @@
 ;;   !lmet + spc → replace
 ;;
 ;; This is why select/search/replace have no layer file of their own: they
-;; live in the file of the modifier they ride on (layer_!lctl&select.kbd, …).
+;; live in the file of the modifier they ride on (layer_!lctl|select.kbd, …).
 ;; Kanata only ever reports the topmost layer as active, so their help is
 ;; folded into the !mod help pages too.
 ;;
@@ -489,9 +489,9 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
   rsft                     (t!      th (t! 2x $action_tabs+l)                    $toggle_rsft_layer)
 
   ;; Modifiers row.
-  $!lmet|replace           (t!      th  (t! 2x $action_workspaces+toggle)        $toggle_!lmet&replace_layer)
-  $!lalt|search            (t!      th  (t! 2x $action_panes+toggle)             $toggle_!lalt&search_layer)
-  $!lctl|select            (t!      th  (t! 2x $action_tabs+toggle)       (multi $toggle_!lctl&select_layer (on-release release-vkey vk_lalt)))
+  $!lmet|replace           (t!      th  (t! 2x $action_workspaces+toggle)        $toggle_!lmet|replace_layer)
+  $!lalt|search            (t!      th  (t! 2x $action_panes+toggle)             $toggle_!lalt|search_layer)
+  $!lctl|select            (t!      th  (t! 2x $action_tabs+toggle)       (multi $toggle_!lctl|select_layer (on-release release-vkey vk_lalt)))
     $spc|domains           (t! fast_th  spc                               (multi $toggle_domains_layer (t! release_domains)))
    $ralt|apps              (t!      th  (t! 2x $windows_toggle)                  $toggle_apps_layer)
    $prnt|bookm             (t!      th  (t! 2x $action_sessions+toggle)          $toggle_bookmarks_layer)

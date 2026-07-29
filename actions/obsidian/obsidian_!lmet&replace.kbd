@@ -1,7 +1,0 @@
-(defvar
-;; == replace ==========================================================
-;; replace + spc
-obsidian_action_!lmet&replace+spc            $obsidian_replace_in_file
-;; replace + lsft + spc
-obsidian_action_!lmet&replace+lsft+spc      $obsidian_replace_in_files
-)

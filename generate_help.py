@@ -15,35 +15,16 @@ Generates:
 Usage:
   python3 generate_help.py [--dry-run]
 """
+
 import re
 import sys
 from pathlib import Path
 
-ROOT         = Path(__file__).parent
-ACTIONS_DIR  = ROOT / "actions"
-LAYERS_DIR   = ROOT / "layers"
-TOGGLES_DIR  = ROOT / "layers_toggle"
-HELP_DIR     = ROOT / "help"
-
-MOD_TITLES: dict[str, str] = {
-    "domains":      "SPC mods",
-    "panes":        "Panes",
-    "tabs":         "Tabs",
-    "groups":       "Groups",
-    "sessions":     "Sessions",
-    "omni":         "Omni",
-    "open":         "Open",
-    "replace":      "Replace",
-    "search":       "Search",
-    "select":       "Select",
-    "opts":         "Opts",
-    "bookmarks":    "Bookmarks",
-    "apps":         "Apps",
-    "workspaces":   "Workspaces",
-    "windows":      "Windows",
-    "lang":         "Lang",
-    "layouts":      "Layouts",
-}
+ROOT = Path(__file__).parent
+ACTIONS_DIR = ROOT / "actions"
+LAYERS_DIR = ROOT / "layers"
+TOGGLES_DIR = ROOT / "layers_toggle"
+HELP_DIR = ROOT / "help"
 
 # A mod whose action names embed a shorter alias than the name its own
 # files use, e.g. {"seek_n_select": "seek"} for "action_seek+spc" defined in
@@ -59,11 +40,33 @@ _MOD_FROM_SHORT: dict[str, str] = {short: long for long, short in MOD_SHORT.item
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 
-# The modifier tokens a layer/file name can be built from. "sft" is not a
+# The modifier tokens a physical-mod layer name is built from. "sft" is not a
 # layer of its own — it is the *file* family holding lsft_layer/rsft_layer,
 # mirroring the "sft+ent" action-name one-off (see parse_physical_mods_action).
-_PHYS_MOD_TOKENS = {"lctl", "!lctl", "lalt", "!lalt", "lmet", "!lmet", "lsft", "rsft"}
-_MOD_FAMILIES    = _PHYS_MOD_TOKENS | {"sft"}
+# A token may carry an "|<name>" suffix ("!lctl|select"): the modifier and the
+# mod it is always held with share one layer, and the whole thing is a single
+# atomic name, not a composition to be taken apart.
+_PHYS_MOD_TOKENS = {
+    "lctl",
+    "!lctl",
+    "lalt",
+    "!lalt",
+    "lmet",
+    "!lmet",
+    "lsft",
+    "rsft",
+    "sft",
+}
+
+
+def _is_mod_name(name: str) -> bool:
+    """True when `name` names a physical-mod layer/file — every "+"-joined
+    token is a modifier, ignoring any "|<name>" suffix on it.
+
+      "lctl", "!lctl|select", "lctl+lalt+lsft"  -> True
+      "tabs", "omni", "domains"                 -> False
+    """
+    return all(t.split("|")[0] in _PHYS_MOD_TOKENS for t in name.split("+"))
 
 
 def _mod_family(mod: str) -> str:
@@ -71,37 +74,26 @@ def _mod_family(mod: str) -> str:
     return "sft" if mod in ("lsft", "rsft") else mod
 
 
-def _stem_parts(stem: str) -> tuple[list[str], list[str]]:
-    """(mod_families, mods) declared by a file-name stem.
-
-    A stem is "&"-joined, naming everything the file holds:
-      "tabs"         -> ([],        ["tabs"])
-      "lctl"         -> (["lctl"],  [])
-      "!lctl&select" -> (["!lctl"], ["select"])
-    Every modifier family maps to the single "physical_mods" mod, which is
-    how one logical mod ends up spread over several files.
-    """
-    fams, mods = [], []
-    for part in stem.split("&"):
-        (fams if part in _MOD_FAMILIES else mods).append(part)
-    return fams, mods
-
-
 def _actions_stem(path: Path) -> str:
-    """"actions_!lctl&select.iface.kbd" -> "!lctl&select"."""
+    """ "actions_!lctl|select.iface.kbd" -> "!lctl|select"."""
     name = path.name.removeprefix("actions_")
-    return name.removesuffix(".iface.kbd") if ".iface." in name else name.removesuffix(".kbd")
+    return (
+        name.removesuffix(".iface.kbd")
+        if ".iface." in name
+        else name.removesuffix(".kbd")
+    )
 
 
 def _app_stem(path: Path, app: str) -> str:
-    """"nvim_groups.1.kbd" -> "groups" (app prefix and priority suffix dropped)."""
-    return re.sub(r"\.\d+$", "", path.name[len(app) + 1:].removesuffix(".kbd"))
+    """ "nvim_groups.1.kbd" -> "groups" (app prefix and priority suffix dropped)."""
+    return re.sub(r"\.\d+$", "", path.name[len(app) + 1 :].removesuffix(".kbd"))
 
 
 def _stem_keys(stem: str) -> list[str]:
-    """Every mod a stem provides, modifier families folded into one key."""
-    fams, mods = _stem_parts(stem)
-    return mods + (["physical_mods"] if fams else [])
+    """The mod a file-name stem provides. Every physical-mod file folds into
+    the single "physical_mods" key, since that one logical mod is spread over
+    several files (one per modifier)."""
+    return ["physical_mods"] if _is_mod_name(stem) else [stem]
 
 
 _actions_index_cache: dict[str, list[Path]] | None = None
@@ -129,19 +121,22 @@ def _actions_index() -> dict[str, list[Path]]:
 
 def find_actions_family_file(family: str) -> Path | None:
     """The top-level actions file holding `family`'s modifier actions."""
-    for f in sorted(ACTIONS_DIR.glob("actions_*.kbd")):
-        if family in _stem_parts(_actions_stem(f))[0]:
-            return f
+    for path in (
+        ACTIONS_DIR / f"actions_{family}.iface.kbd",
+        ACTIONS_DIR / f"actions_{family}.kbd",
+    ):
+        if path.exists():
+            return path
     return None
 
 
 def _deref(token: str) -> str:
-    """"$foo"/"$~foo" → "foo" — the bare name a value references."""
+    """ "$foo"/"$~foo" → "foo" — the bare name a value references."""
     return token.lstrip("$").lstrip("~")
 
 
 def _titleize(name: str) -> str:
-    """"tab_new"/"tabs+w" → "Tab New"/"Tabs W" — the house style for turning
+    """ "tab_new"/"tabs+w" → "Tab New"/"Tabs W" — the house style for turning
     an identifier into a help label."""
     return name.replace("_", " ").replace("+", " ").title()
 
@@ -152,19 +147,8 @@ def _strip_mod_prefix(name: str, mod: str) -> str:
     ("action_" must already be removed)."""
     for prefix in (f"{mod}+", f"{mod}_"):
         if name.startswith(prefix):
-            return name[len(prefix):]
+            return name[len(prefix) :]
     return name
-
-
-def mod_from_actions_path(path: Path) -> str:
-    """The mod a top-level actions file belongs to for the main loop.
-
-    A file naming a real mod reports it ("!lctl&select" -> "select");
-    one that is only modifier families reports "physical_mods", which has
-    its own dedicated pass.
-    """
-    fams, mods = _stem_parts(_actions_stem(path))
-    return mods[0] if mods else "physical_mods"
 
 
 def mod_short(mod: str) -> str:
@@ -175,13 +159,15 @@ def find_app_files(app_dir: Path, app: str, mod: str) -> list[Path]:
     """Every per-app file for (app, mod), in name order.
 
     Matched on what each file name declares rather than on an exact
-    "{app}_{mod}.kbd" spelling, so a mod sharing a file with the
-    modifier it is stacked under still resolves ("select" is found in
-    obsidian_!lctl&select.kbd), and physical_mods can span several files.
-    Optional numeric priority suffixes are ignored here.
+    "{app}_{mod}.kbd" spelling, since physical_mods spans several files
+    (obsidian_lctl.kbd, obsidian_!lctl|select.kbd, …). Optional numeric
+    priority suffixes are ignored here.
     """
-    return [f for f in sorted(app_dir.glob(f"{app}_*.kbd"))
-            if mod in _stem_keys(_app_stem(f, app))]
+    return [
+        f
+        for f in sorted(app_dir.glob(f"{app}_*.kbd"))
+        if mod in _stem_keys(_app_stem(f, app))
+    ]
 
 
 def find_app_file(app_dir: Path, app: str, mod: str) -> Path | None:
@@ -190,16 +176,7 @@ def find_app_file(app_dir: Path, app: str, mod: str) -> Path | None:
     return files[0] if files else None
 
 
-def find_app_family_file(app_dir: Path, app: str, family: str) -> Path | None:
-    """The app's file holding `family`'s modifier actions, if it has one."""
-    for f in sorted(app_dir.glob(f"{app}_*.kbd")):
-        if family in _stem_parts(_app_stem(f, app))[0]:
-            return f
-    return None
-
-
-def combo_str(action_name: str, mod: str,
-              key_map: dict[str, str] | None = None) -> str:
+def combo_str(action_name: str, mod: str, key_map: dict[str, str] | None = None) -> str:
     """Convert an action name to a 'spc + e + e' style combo string.
 
     Prefers the physical key from key_map (built from the layer file) over
@@ -211,7 +188,7 @@ def combo_str(action_name: str, mod: str,
     layer_domains.kbd rather than calling this function.
     Falls back to name-parsing when key_map has no entry.
     """
-    dk   = mod_short(mod)
+    dk = mod_short(mod)
     name = action_name.removeprefix("action_")
 
     # Physical key from layer file takes priority over action-name semantics
@@ -220,6 +197,9 @@ def combo_str(action_name: str, mod: str,
 
     # Fallback: derive key from action name, splitting on the same separator
     # the mod prefix used ("_" only for the "{mod}_name" spelling).
+    first = name.split("+")[0]
+    if first != mod and _mod_family(first) == _mod_family(mod):
+        name = mod + name[len(first) :]  # "sft+ent" shown under lsft
     sub = _strip_mod_prefix(name, mod)
     sep = "_" if name.startswith(f"{mod}_") else "+"
     return dk + " + " + " + ".join(sub.split(sep))
@@ -253,10 +233,27 @@ _BASE_KEY_CHAR["spc"] = " "
 # US-QWERTY shift mapping for the symbol row — letters are handled via
 # .upper() instead, since that's uniform for every letter.
 _SHIFT_SYMBOL = {
-    "1": "!", "2": "@", "3": "#", "4": "$", "5": "%",
-    "6": "^", "7": "&", "8": "*", "9": "(", "0": ")",
-    "-": "_", "=": "+", "[": "{", "]": "}", "\\": "|",
-    ";": ":", "'": '"', ",": "<", ".": ">", "/": "?", "`": "~",
+    "1": "!",
+    "2": "@",
+    "3": "#",
+    "4": "$",
+    "5": "%",
+    "6": "^",
+    "7": "&",
+    "8": "*",
+    "9": "(",
+    "0": ")",
+    "-": "_",
+    "=": "+",
+    "[": "{",
+    "]": "}",
+    "\\": "|",
+    ";": ":",
+    "'": '"',
+    ",": "<",
+    ".": ">",
+    "/": "?",
+    "`": "~",
 }
 
 _MOD_CHORD_RE = re.compile(r"^(?:[LR]?[CAMS]-)+\S+$")
@@ -368,9 +365,9 @@ def _split_top_level(expr: str) -> list[str]:
     instead of being torn apart. Used to walk one level of an s-expression
     without a full parser."""
     parts: list[str] = []
-    depth   = 0
-    quoted  = False
-    start   = 0
+    depth = 0
+    quoted = False
+    start = 0
     for i, c in enumerate(expr):
         if c == '"':
             quoted = not quoted
@@ -547,7 +544,7 @@ def label_from_var(var_name: str, app: str) -> str:
     stripped = var
     for prefix in [f"{app}_action_", f"{app}_", "folder_", "action_"]:
         if stripped.startswith(prefix):
-            stripped = stripped[len(prefix):]
+            stripped = stripped[len(prefix) :]
             break
     label = _titleize(stripped)
     return with_combo(label, _var_value_table().get(var))
@@ -556,6 +553,29 @@ def label_from_var(var_name: str, app: str) -> str:
 def label_from_action(action_name: str, mod: str) -> str:
     """Fallback label derived from action name when no $variable is available."""
     return _titleize(_strip_mod_prefix(action_name.removeprefix("action_"), mod))
+
+
+def action_layer(action_name: str) -> str | None:
+    """The layer an action is bound in — everything before its final key.
+
+      "action_panes+move+h"     -> "panes+move"
+      "action_panes+h"          -> "panes"
+      "action_!lctl|select+a"   -> "!lctl|select"
+      "action_sft+ent"          -> "lsft"   (one-off, see below)
+
+    None when the name holds no "+" at all: those are plain definitions
+    ("action_windows_close", "action_omni"), not combos — nothing is bound
+    to a key called "close", and rendering them as "windows + close" would
+    advertise a combo that cannot be pressed.
+
+    "sft+ent" is a one-off: per layer_sft.kbd it only fires while holding
+    lsft (lsft_layer), not from any "sft_layer".
+    """
+    name = action_name.removeprefix("action_")
+    if "+" not in name:
+        return None
+    layer = name.rsplit("+", 1)[0]
+    return "lsft" if layer == "sft" else layer
 
 
 def action_mod(action_name: str) -> str:
@@ -629,9 +649,13 @@ def resolve_cross_mod_label(
         if app_file is not None:
             impl = parse_app_file(app_file, app)
             if action_name in impl:
-                return label_for_implemented_value(impl[action_name], action_name, ref_mod, app, seen)
+                return label_for_implemented_value(
+                    impl[action_name], action_name, ref_mod, app, seen
+                )
 
-    ref_default = effective_global_default(_mod_iface_details(ref_mod), action_name, ref_mod)
+    ref_default = effective_global_default(
+        _mod_iface_details(ref_mod), action_name, ref_mod
+    )
     if ref_default is not None:
         return label_from_global_default(ref_default, action_name, ref_mod, seen)
 
@@ -643,7 +667,6 @@ def label_from_global_default(
 ) -> str:
     """Human-readable label from a global default value.
 
-    '(push-msg "APP:claude_code")' → 'Claude Code'   (apps mod only)
     '$copy'                        → 'Copy'           (leaf var name, title-cased)
     '$action_tabs+w'               → resolved recursively (see
                                       resolve_cross_mod_label) since the
@@ -651,12 +674,6 @@ def label_from_global_default(
                                       no semantic word left to title-case.
     '(macro ...)', 'prnt', 'C-w'   → derives from action name
     """
-    # push-msg "APP:name" → app name as label (split camelCase + underscores)
-    app_m = re.search(r'"APP:([^"]+)"', default)
-    if app_m:
-        name = app_m.group(1)
-        name = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', name)  # camelCase → words
-        return name.replace("_", " ").title()
     # $leaf_var or $action_... → label from variable name
     if default.startswith("$"):
         var_name = _deref(default)
@@ -665,36 +682,74 @@ def label_from_global_default(
             return resolve_cross_mod_label(clean, mod, None, _seen)
         mod_pfx = f"{mod}_"
         if clean.startswith(mod_pfx):
-            clean = clean[len(mod_pfx):]
+            clean = clean[len(mod_pfx) :]
         label = _titleize(clean)
         return with_combo(label, _var_value_table().get(var_name))
     # Everything else (complex expressions, raw key tokens) → action name
-    return with_combo(label_from_action(action_name, mod),
-                      default if is_simple_combo(default) else None)
+    return with_combo(
+        label_from_action(action_name, mod),
+        default if is_simple_combo(default) else None,
+    )
+
+
+def _terminal_expr(value: str) -> str:
+    """Unwrap "(t! TEMPLATE ... LAST)" template-call wrappers (e.g.
+    unmod_all) down to the expression a value ultimately reduces to, the
+    same unwrapping _render_value does for the "t!" case — but returning
+    the terminal text unrendered, so the caller can inspect it. A value
+    that isn't a "(t! ...)" wrapper (bare token, "(multi ...)", …) is
+    already its own terminal expression: "multi" in particular is left
+    alone on purpose, since a push-msg bundled inside one is just a
+    side-effect notification, not the action's whole meaning (see
+    is_real_default).
+    """
+    value = value.strip()
+    if not value.startswith("(t!") or not value.endswith(")"):
+        return value
+    if value.count("(") != value.count(")"):
+        return value
+    parts = _split_top_level(value[1:-1].strip())
+    if len(parts) < 2 or parts[0] != "t!":
+        return value
+    return _terminal_expr(parts[-1])
 
 
 def is_real_default(value: str | None) -> bool:
-    """True when value is a usable global default — not None, XX, or unset/not-implemented push-msg.
+    """True when value is a usable global default — not None, XX, or a
+    not-implemented push-msg.
 
-    A push-msg is only ever a real default when it launches an app (APP:...);
-    every other push-msg (NOTIFY:...) is the convention for "not implemented",
-    regardless of the message text, same as XX.
+    A push-msg only disqualifies a value when it's the value's terminal
+    expression (see _terminal_expr) — the whole point of the value, not
+    just one side-effect bundled into a "(multi ...)" alongside real
+    actions (e.g. sync_and_reload_kanata's reload notification). A
+    terminal push-msg is real only when it launches an app (APP:...);
+    every other terminal push-msg (NOTIFY:..., DEBUG:..., an empty
+    APP:) is the "not implemented" convention, same as XX — checked
+    through any "(t! TEMPLATE ...)" wrapper (e.g. unmod_all), so a $var
+    whose whole job is to send one such message is still recognized as
+    a placeholder regardless of what mod it belongs to.
     """
     if not value:
         return False
     if value.upper() == "XX":
         return False
-    if value.startswith("(push-msg"):
-        app_m = re.search(r'"APP:([^"]+)"', value)
+    terminal = _terminal_expr(value)
+    if terminal.startswith("(push-msg"):
+        app_m = re.search(r'"APP:([^"]+)"', terminal)
         return bool(app_m and app_m.group(1).strip())
     return True
 
 
 _PHYS_MOD_LETTER = {
-    "lctl": "C", "!lctl": "C",
-    "lalt": "A", "!lalt": "A",
-    "lmet": "M", "!lmet": "M",
-    "sft":  "S", "lsft":  "S", "rsft": "S",
+    "lctl": "C",
+    "!lctl": "C",
+    "lalt": "A",
+    "!lalt": "A",
+    "lmet": "M",
+    "!lmet": "M",
+    "sft": "S",
+    "lsft": "S",
+    "rsft": "S",
 }
 
 
@@ -710,36 +765,17 @@ def is_physical_mods_passthrough(action_name: str, mod: str, value: str) -> bool
     if len(parts) < 2:
         return False
     *mods, key = parts
-    letters = [_PHYS_MOD_LETTER.get(m) for m in mods]
+    # Ignore any "|<name>" suffix: "!lctl|select" is still the C modifier.
+    letters = [_PHYS_MOD_LETTER.get(m.split("|")[0]) for m in mods]
     if any(letter is None for letter in letters):
         return False
     return value == "-".join(letters + [key])
 
 
-def parse_physical_mods_action(action_name: str) -> tuple[tuple[str, ...], str] | None:
-    """Split a physical_mods action name into (mods, key).
-
-    mods is the modifier-chord path (e.g. ("lctl", "lalt", "lsft")) and key
-    is the final segment: the physical key pressed once that chord is
-    already held.
-
-    "sft+ent" is a one-off: per layer_sft.kbd it only fires while
-    holding lsft (lsft_layer), not from any "sft_layer" — aliased to "lsft"
-    so it groups under a layer kwanata can actually report as active.
-    """
-    parts = action_name.removeprefix("action_").split("+")
-    if len(parts) < 2:
-        return None
-    *mods, key = parts
-    if mods == ["sft"]:
-        mods = ["lsft"]
-    return tuple(mods), key
-
-
 _DEFLAYERMAP_RE = re.compile(r"\(deflayermap\s+\((\S+)\)")
 
 
-def parse_physical_mods_layer_names() -> list[str]:
+def parse_layer_names() -> list[str]:
     """Every physical_mods layer declared anywhere under layers/
     (deflayermap block names, "_layer" suffix stripped) — the authoritative
     list of every such layer that actually exists, independent of whether
@@ -748,30 +784,74 @@ def parse_physical_mods_layer_names() -> list[str]:
     multi-real-modifier combos).
 
     A layer belongs to physical_mods when its name is nothing but
-    "+"-joined modifier tokens (see LayerStack._is_physical_mods_layer),
+    "+"-joined modifier tokens (see _is_mod_name),
     so these are found wherever they live — layer_lctl.kbd,
-    layer_!lctl&select.kbd, layer_sft.kbd, … — rather than by assuming one
+    layer_!lctl|select.kbd, layer_sft.kbd, … — rather than by assuming one
     fixed filename holds them all.
     """
     names: list[str] = []
     for path in sorted(LAYERS_DIR.glob("layer_*.kbd")):
         for m in _DEFLAYERMAP_RE.finditer(path.read_text()):
-            name = m.group(1).removesuffix("_layer")
-            if LayerStack._is_physical_mods_layer(name):
-                names.append(name)
+            names.append(m.group(1).removesuffix("_layer"))
     return names
 
 
+_layer_aliases_cache: dict[str, str] | None = None
+
+
+def _layer_root_aliases() -> dict[str, str]:
+    """{layer root: mod that owns it}, for the roots that don't already name
+    their own mod — a mod is free to call its layer something else than
+    "{mod}_layer" ("keyb" opens alt_chars_layer, since the key is named after
+    what you press and the layer after what it does).
+
+    Ownership comes from the declaring file: layers/layer_{mod}.kbd holds
+    {mod}'s layers whatever they are called (the same convention
+    _actions_index() reads actions_{mod}.kbd by), so nothing here needs
+    maintaining by hand.
+
+    Roots that are their own mod are deliberately left out, so every lookup
+    through here is the identity for them — physical modifiers included,
+    whose roots ("lsft" in layer_sft.kbd) name a modifier rather than the
+    file family they live in.
+    """
+    global _layer_aliases_cache
+    if _layer_aliases_cache is None:
+        aliases: dict[str, str] = {}
+        for path in sorted(LAYERS_DIR.glob("layer_*.kbd")):
+            mod = path.name.removeprefix("layer_").removesuffix(".kbd")
+            for m in _DEFLAYERMAP_RE.finditer(path.read_text()):
+                root = m.group(1).removesuffix("_layer").split("+")[0]
+                if root != mod and not _is_mod_name(root):
+                    aliases.setdefault(root, mod)
+        _layer_aliases_cache = aliases
+    return _layer_aliases_cache
+
+
+def mod_of_layer_root(root: str) -> str:
+    """The mod a layer root belongs to ("alt_chars" -> "keyb"), unchanged for
+    every layer named after its own mod."""
+    return _layer_root_aliases().get(root, root)
+
+
+def mod_base_layer(mod: str) -> str:
+    """Reverse of mod_of_layer_root: the root of the layer `mod` opens
+    ("keyb" -> "alt_chars"). Layer names — not mod names — are what kanata
+    reports and so what the .hlp files are named after."""
+    for root, owner in _layer_root_aliases().items():
+        if owner == mod:
+            return root
+    return mod
+
+
 _SINGLE_LAYER_TOGGLE_RE = re.compile(
-    r"^\s*(toggle_\S+)\s+\(t!\s+toggle_(?:mod|\dmod)_layer\s+(.+?)\)\s*$", re.MULTILINE
+    r"^\s*(toggle_\S+)\s+\(t!\s+toggle_(?:\d?mod_)?layer\s+(.+?)\)\s*$", re.MULTILINE
 )
 
 
-def physical_mods_directly_toggled_nodes() -> set[tuple[str, ...]]:
-    """physical_mods layers with their own single-layer toggle
-    (toggle_mod_layer / toggle_2mod_layer / toggle_3mod_layer /
-    toggle_4mod_layer — i.e. not stacked with anything else) that's
-    genuinely bound to a real key somewhere — referenced as
+def directly_toggled_layers() -> set[str]:
+    """Layers with their own single-layer toggle (not stacked with anything
+    else) that's genuinely bound to a real key somewhere — referenced as
     "$toggle_..._layer" somewhere other than the layers_toggle/ file that
     declares it.
 
@@ -780,38 +860,35 @@ def physical_mods_directly_toggled_nodes() -> set[tuple[str, ...]]:
     to a key — only genuinely-used ones count as independently reachable.
     The home-row mods are the prototypical case: holding physical f/j
     directly fires $toggle_lctl_layer (setup.kbd), completely independent of
-    the physical-Alt-as-!lctl stack that also happens to use "lctl_layer" as
-    its mid layer — so "lctl" needs its own help file for that reason alone,
+    the physical-Alt stack that also happens to use "lctl_layer" as its base
+    layer — so "lctl" needs its own help file for that reason alone,
     regardless of whether it's also shadowed somewhere else.
     """
     # {toggle var: (target layer, file that declares it)} — the declaring file
     # is tracked per variable rather than assumed to be one shared file,
-    # since these declarations are spread across layers_toggle/ by modifier.
+    # since these declarations are spread across layers_toggle/ by mod.
     declared: dict[str, tuple[str, Path]] = {}
     for decl_path in sorted(TOGGLES_DIR.glob("*.kbd")):
         for m in _SINGLE_LAYER_TOGGLE_RE.finditer(decl_path.read_text()):
             args = m.group(2).split()
-            if not args:
-                continue
-            target = args[-1].removesuffix("_layer")
-            # Scanning every toggle file also turns up toggles for ordinary
-            # mods (apps+lsft, tabs+rsft, …); only physical_mods layers
-            # belong here. Reading a single file used to imply this filter.
-            if LayerStack._is_physical_mods_layer(target):
-                declared[m.group(1)] = (target, decl_path)
+            if args:
+                declared[m.group(1)] = (args[-1].removesuffix("_layer"), decl_path)
 
     # A variable counts as used only where it is referenced somewhere other
     # than its own declaration.
     used: set[str] = set()
     for path in ROOT.rglob("*.kbd"):
         text = path.read_text()
-        used.update(var for var, (_target, decl) in declared.items()
-                    if path != decl and f"${var}" in text)
+        used.update(
+            var
+            for var, (_target, decl) in declared.items()
+            if path != decl and f"${var}" in text
+        )
 
-    return {tuple(declared[var][0].split("+")) for var in used}
+    return {declared[var][0] for var in used}
 
 
-def physical_mods_available_nodes(layer_stacks: list["LayerStack"]) -> list[tuple[str, ...]]:
+def reachable_layers(layer_stacks: list["LayerStack"]) -> list[str]:
     """Every declared physical_mods layer (see parse_physical_mods_layer_names)
     that a user can actually hold and have kwanata report as the active
     layer — every one except those always shadowed by some LayerStack's top
@@ -824,40 +901,12 @@ def physical_mods_available_nodes(layer_stacks: list["LayerStack"]) -> list[tupl
     no independent toggle wired to it anywhere, so it stays hidden (its
     content only ever shows up folded into "!lctl+lalt"'s file).
     """
-    declared        = [tuple(name.split("+")) for name in parse_physical_mods_layer_names()]
-    tops            = {s.top_node for s in layer_stacks}
-    shadowed        = {n for s in layer_stacks for n in s.shadowed_physical_mods_nodes()}
-    directly_toggled = physical_mods_directly_toggled_nodes()
-    shadowed_only   = shadowed - tops - directly_toggled
-    return [node for node in declared if node not in shadowed_only]
-
-
-def physical_mods_node_entries(
-    node: tuple[str, ...], actions: list[tuple[tuple[str, ...], str, str]],
-    rollup: bool = True,
-) -> list[tuple[str, str]]:
-    """(combo_display, action_name) pairs for the physical_mods help file of
-    `node` (e.g. ("lctl",) or ("lctl", "lalt")).
-
-    With rollup (the default) this takes every action whose chord *extends*
-    `node` — so the base "lctl" file browses the whole "lctl universe"
-    (lctl+lalt+c, lctl+lsft+a, …) while "lctl+lalt" only shows what's nested
-    under that chord specifically. The combo is always shown in full (e.g.
-    "lctl + lsft + a") since a roll-up file mixes several held-modifier
-    states together.
-
-    With rollup=False only chords exactly equal to `node` are taken — used
-    when merging a shadowed layer's contribution into a stacked-layer help
-    file (see LayerStack): only what's actually co-active there, not the
-    unrelated shift branches also reachable from that layer's own file.
-    """
-    depth = len(node)
-    return [
-        (" + ".join(mods + (key,)), action)
-        for mods, key, action in actions
-        if (mods[:depth] == node if rollup else mods == node)
-    ]
-
+    declared = parse_layer_names()
+    tops = {s.layers[-1] for s in layer_stacks}
+    shadowed = {n for s in layer_stacks for n in s.layers[:-1]}
+    directly_toggled = directly_toggled_layers()
+    shadowed_only = shadowed - tops - directly_toggled
+    return [name for name in declared if name not in shadowed_only]
 
 
 class LayerStack:
@@ -870,17 +919,10 @@ class LayerStack:
     is otherwise unreachable while the key is held — it needs folding into
     the top layer's file instead.
 
-    Two kinds of shadowed layer occur in this config, distinguished purely
-    by name (no need to know which toggle file produced the stack):
-      - a physical_mods layer, whose name is entirely "+"-joined modifier
-        tokens (e.g. "lctl+lsft", "!lctl") — merged via
-        physical_mods_exact_entries. Occurs both in 2-layer stacks (two real
-        modifiers held together, e.g. lctl+lalt → !lctl+lalt) and as the mid
-        layer of 3-layer stacks.
-      - a foreign mod's own base layer (e.g. "select",
-        "select+lsft") — anything whose name isn't purely modifier
-        tokens — merged via combination_mod_entries. Only occurs as the
-        base of a 3-layer stack.
+    Every shadowed layer is itself a physical_mods layer (e.g. "lctl"
+    under "!lctl|select", or "lctl+lalt" under "!lctl|select+lalt"), so
+    folding one in is just taking its own entries — see
+    physical_mods_node_entries(rollup=False).
     """
 
     def __init__(self, layer_names: list[str]):
@@ -890,33 +932,12 @@ class LayerStack:
     def top_node(self) -> tuple[str, ...]:
         return tuple(self.layers[-1].split("+"))
 
-    @staticmethod
-    def _is_physical_mods_layer(name: str) -> bool:
-        return all(t in _PHYS_MOD_TOKENS for t in name.split("+"))
-
     def shadowed_physical_mods_nodes(self) -> list[tuple[str, ...]]:
         """physical_mods mods-tuples for every shadowed layer that belongs
         to physical_mods itself (not some other mod)."""
         return [
-            tuple(name.split("+"))
-            for name in self.layers[:-1]
-            if self._is_physical_mods_layer(name)
+            tuple(name.split("+")) for name in self.layers[:-1] if _is_mod_name(name)
         ]
-
-    def shadowed_mods(self) -> list[tuple[str, str | None]]:
-        """(mod_name, shift) for every shadowed layer that belongs to a
-        foreign mod rather than physical_mods — shift is None, "lsft" or
-        "rsft"."""
-        result = []
-        for name in self.layers[:-1]:
-            if self._is_physical_mods_layer(name):
-                continue
-            if name.endswith(("+lsft", "+rsft")):
-                mod_name, _, shift = name.rpartition("+")
-                result.append((mod_name, shift))
-            else:
-                result.append((name, None))
-        return result
 
 
 _LAYER_STACK_RE = re.compile(r"\(t!\s+toggle_(?:\d?mod)_(\d)layer\s+(.+?)\)")
@@ -936,7 +957,7 @@ def parse_layer_stacks() -> list[LayerStack]:
     "!lctl+lalt_layer", just reached via a differently-ordered modifier
     hold — so duplicates (same layer list) are collapsed to one.
     """
-    seen:   dict[tuple[str, ...], None] = {}
+    seen: dict[tuple[str, ...], None] = {}
     for path in sorted(TOGGLES_DIR.glob("*.kbd")):
         text = path.read_text()
         for m in _LAYER_STACK_RE.finditer(text):
@@ -947,54 +968,6 @@ def parse_layer_stacks() -> list[LayerStack]:
             layer_names = tuple(t.removesuffix("_layer") for t in tokens[-n_layers:])
             seen.setdefault(layer_names, None)
     return [LayerStack(list(layer_names)) for layer_names in seen]
-
-
-def action_shift_branch(action_name: str) -> str | None:
-    """"lsft"/"rsft" if that's a middle segment of a fully-qualified action
-    name (between the mod and the final key), else None — e.g.
-    "action_search+lsft+spc" -> "lsft", "action_search+spc" -> None.
-    """
-    parts = action_name.removeprefix("action_").split("+")
-    middle = parts[1:-1]
-    if "lsft" in middle:
-        return "lsft"
-    if "rsft" in middle:
-        return "rsft"
-    return None
-
-
-def combination_mod_entries(
-    mod_name: str, shift: str | None, app: str | None
-) -> list[tuple[str, str]]:
-    """(combo_display, label) pairs for a shadowed foreign-mod layer of a
-    LayerStack (e.g. "select") — its own actions belonging to
-    the given shift branch (None = unshifted), resolved for `app` if given
-    (falling back to the global default for combos it doesn't override),
-    else resolved globally. Shown with the mod's natural own combo (e.g.
-    "select + spc"), same as its standalone help file.
-    """
-    iface_order, details = parse_mod_actions(mod_name)
-    if not iface_order:
-        return []
-    key_map = parse_layer_key_map(mod_name, set(iface_order))
-
-    # Filter by owning mod: this mod shares its file with the modifier
-    # it is stacked under, so the file also holds that modifier's actions —
-    # without this they would surface here as "select + lctl + a".
-    branch_actions = [a for a in iface_order
-                      if action_mod(a) == mod_name and action_shift_branch(a) == shift]
-
-    impl: dict[str, str] = {}
-    if app is not None:
-        for app_file in find_app_files(ACTIONS_DIR / app, app, mod_name):
-            impl.update(parse_app_file(app_file, app))
-
-    entries: list[tuple[str, str]] = []
-    for a in branch_actions:
-        label = entry_label(a, mod_name, details, impl, app)
-        if label is not None:
-            entries.append((combo_str(a, mod_name, key_map), label))
-    return entries
 
 
 def is_implemented(value: str) -> bool:
@@ -1029,7 +1002,10 @@ def _cross_ref_is_real(ref: str, seen: frozenset[str]) -> bool:
         # action being evaluated), so pre-adding it would make every
         # first-time cross-mod reference look like an immediate cycle.
         ref_mod = action_mod(ref)
-        return effective_global_default(_mod_iface_details(ref_mod), ref, ref_mod, seen) is not None
+        return (
+            effective_global_default(_mod_iface_details(ref_mod), ref, ref_mod, seen)
+            is not None
+        )
     seen = seen | {ref}
     raw = _raw_leaf_table().get(ref)
     if raw is None:
@@ -1072,7 +1048,11 @@ def effective_global_default(
 
 
 def label_for_implemented_value(
-    value: str, action_name: str, mod: str, app: str, _seen: frozenset[str] = frozenset()
+    value: str,
+    action_name: str,
+    mod: str,
+    app: str,
+    _seen: frozenset[str] = frozenset(),
 ) -> str:
     """Label for a value a per-app file binds directly to an action.
 
@@ -1082,10 +1062,12 @@ def label_for_implemented_value(
     resolve_cross_mod_label), rather than title-cased into "Tabs T".
     """
     if value.startswith("$"):
-        clean      = _deref(value)
+        clean = _deref(value)
         app_prefix = f"{app}_"
-        if clean.startswith(app_prefix) and clean[len(app_prefix):].startswith("action_"):
-            ref_action = clean[len(app_prefix):]
+        if clean.startswith(app_prefix) and clean[len(app_prefix) :].startswith(
+            "action_"
+        ):
+            ref_action = clean[len(app_prefix) :]
             if ref_action not in _seen:
                 return resolve_cross_mod_label(ref_action, mod, app, _seen)
         return label_from_var(value, app)
@@ -1095,8 +1077,11 @@ def label_for_implemented_value(
 
 
 def entry_label(
-    action: str, mod: str, details: dict[str, dict],
-    impl: dict[str, str] | None = None, app: str | None = None,
+    action: str,
+    mod: str,
+    details: dict[str, dict],
+    impl: dict[str, str] | None = None,
+    app: str | None = None,
 ) -> str | None:
     """The help label for one action: the app's own implementation when it
     overrides it, else the mod's real global default — or None when
@@ -1116,6 +1101,7 @@ def entry_label(
 
 # ── parsers ───────────────────────────────────────────────────────────────────
 
+
 def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
     """Parse an actions .kbd file (iface or plain).
 
@@ -1127,24 +1113,24 @@ def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
             'app_values': {app: var},   # inline per-app values (bookmarks-style)
         }}
     """
-    text    = path.read_text()
-    order:   list[str]       = []
+    text = path.read_text()
+    order: list[str] = []
     details: dict[str, dict] = {}
 
     header_re = re.compile(r"^\s{2}(action_\S+)", re.MULTILINE)
-    headers   = list(header_re.finditer(text))
+    headers = list(header_re.finditer(text))
 
     for i, m in enumerate(headers):
-        name        = m.group(1)
+        name = m.group(1)
         block_start = m.start()
-        block_end   = headers[i + 1].start() if i + 1 < len(headers) else len(text)
-        block       = text[block_start:block_end]
+        block_end = headers[i + 1].start() if i + 1 < len(headers) else len(text)
+        block = text[block_start:block_end]
 
         order.append(name)
         # Strip commented-out lines before all pattern searches so that
         # commented-out alternatives (e.g. ";; () (push-msg ...)") don't shadow
         # the real binding on the next line.
-        block_nc = re.sub(r'^\s*;;.*$', '', block, flags=re.MULTILINE)
+        block_nc = re.sub(r"^\s*;;.*$", "", block, flags=re.MULTILINE)
 
         # Catch-all value: capture full push-msg expression or simple token
         global_m = re.search(
@@ -1158,44 +1144,47 @@ def parse_iface(path: Path) -> tuple[list[str], dict[str, dict]]:
         direct_val = None
         if global_val is None and "switch" not in block_nc:
             for pattern in (
-                r'action_\S+\s+\(t!\s+unmod_all\s+([^\s)]+)',  # (t! unmod_all KEY)
-                r'action_\S+\s+(\$\S+)',                       # action_name $var
-                r'action_\S+\s+([^\s()\n]+)',                  # action_name KEY (S-prnt, lrld, …)
+                r"action_\S+\s+\(t!\s+unmod_all\s+([^\s)]+)",  # (t! unmod_all KEY)
+                r"action_\S+\s+(\$\S+)",  # action_name $var
+                r"action_\S+\s+([^\s()\n]+)",  # action_name KEY (S-prnt, lrld, …)
             ):
                 m_direct = re.search(pattern, block_nc)
                 if m_direct:
                     direct_val = m_direct.group(1)
                     break
             # Complex expression → signal label_from_action
-            if direct_val is None and re.search(r'action_\S+\s+\(', block_nc):
+            if direct_val is None and re.search(r"action_\S+\s+\(", block_nc):
                 direct_val = "(action)"
 
         # Inline per-app values for bookmarks-style files (no separate app file)
         app_values: dict[str, str] = {}
         for av_m in re.finditer(
-            r'\(\(input virtual vk_(\w+)\)\)\s+(.+?)\s+break',
-            block_nc, re.DOTALL,
+            r"\(\(input virtual vk_(\w+)\)\)\s+(.+?)\s+break",
+            block_nc,
+            re.DOTALL,
         ):
-            av_app  = av_m.group(1)
+            av_app = av_m.group(1)
             av_expr = av_m.group(2).strip()
             if av_expr.startswith("(push-msg") or av_expr.upper() == "XX":
                 continue
-            var_ref = re.search(r'\$(\w+)', av_expr)
+            var_ref = re.search(r"\$(\w+)", av_expr)
             if var_ref:
                 app_values[av_app] = "$" + var_ref.group(1)
             else:
                 app_values[av_app] = av_expr
 
         details[name] = {
-            "global":     global_val,
-            "direct":     direct_val,
+            "global": global_val,
+            "direct": direct_val,
             "app_values": app_values,
         }
 
     return order, details
 
 
-def parse_layer_key_map(mod: str, iface_action_set: set[str]) -> dict[str, str]:
+def parse_layer_bindings(
+    mod: str, iface_action_set: set[str]
+) -> tuple[dict[str, str], dict[str, str]]:
     """{action_name: key_combo_suffix} — the physical key path for each
     action, e.g. "h", "lsft + t", "move + h". Built from the first key that
     maps to each action in the mod's own deflayermap blocks, so the
@@ -1203,18 +1192,28 @@ def parse_layer_key_map(mod: str, iface_action_set: set[str]) -> dict[str, str]:
 
     All of layers/ is scanned rather than assuming a layer_{mod}.kbd,
     because a mod's layers don't necessarily live in a file named after
-    it — "select" is declared inside layer_!lctl&select.kbd, alongside the
+    it — "select" is declared inside layer_!lctl|select.kbd, alongside the
     physical modifier it's always pushed with. Blocks belonging to any
     other layer are skipped, so an action referenced from a foreign layer
     (e.g. "tab $action_tabs+l" inside lmet_layer) can't be mistaken for
     that action's own binding.
 
-    Empty when the mod declares no layer at all (callers fall back to
-    name-parsing in combo_str).
+    Also returns {action_name: layer} — which deflayermap the binding sits
+    in. That is ground truth: an action's name usually mirrors its layer,
+    but not always (groups_layer binds "$~action_!tabs+h"), so callers
+    prefer this over parsing the name. These are layer names, not mod names:
+    a mod whose layer goes by another name (keyb -> alt_chars_layer) reports
+    the layer, since that is what the caller matches its pages against.
+
+    Both are empty when the mod declares no layer, or declares it through
+    templates rather than explicit key lines (physical modifiers) — callers
+    then fall back to the action name.
     """
-    key_map: dict[str, str]  = {}
-    current_mod: str | None  = None
-    in_mod                = False
+    key_map: dict[str, str] = {}
+    layer_of: dict[str, str] = {}
+    current_mod: str | None = None
+    in_mod = False
+    base = mod_base_layer(mod)
 
     text = "\n".join(p.read_text() for p in sorted(LAYERS_DIR.glob("layer_*.kbd")))
     for line in text.splitlines():
@@ -1225,20 +1224,20 @@ def parse_layer_key_map(mod: str, iface_action_set: set[str]) -> dict[str, str]:
         # Track which deflayermap block we are in and extract its modifier
         dlm_m = re.match(r"\(deflayermap\s+\((\S+)\)", stripped)
         if dlm_m:
-            layer_name  = dlm_m.group(1)
+            layer_name = dlm_m.group(1)
             current_mod = None
-            in_mod   = True
-            if layer_name.startswith(f"{mod}+"):
-                current_mod = layer_name[len(f"{mod}+"):].removesuffix("_layer")
-            elif layer_name != f"{mod}_layer":
-                in_mod = False   # unrelated layer (another mod's, or a mod layer)
+            in_mod = True
+            if layer_name.startswith(f"{base}+"):
+                current_mod = layer_name[len(f"{base}+") :].removesuffix("_layer")
+            elif layer_name != f"{base}_layer":
+                in_mod = False  # unrelated layer (another mod's, or a mod layer)
             continue
 
         if not in_mod or "$action_" not in stripped:
             continue
 
         # Physical key is the first token on the line
-        parts   = stripped.split()
+        parts = stripped.split()
         raw_key = parts[0] if parts else ""
 
         # Skip template calls (but don't expand them — use iface_order for per-app)
@@ -1248,15 +1247,15 @@ def parse_layer_key_map(mod: str, iface_action_set: set[str]) -> dict[str, str]:
         # Resolve $var|alias style keys: "$k|rsft" → "k", "$toggle" → "toggle"
         # Skip keys starting with "!" (complex physical-mod aliases)
         if raw_key.startswith("$"):
-            base = raw_key[1:].split("|")[0]
-            if not base or base.startswith("!"):
+            alias_base = raw_key[1:].split("|")[0]
+            if not alias_base or alias_base.startswith("!"):
                 continue
-            physical_key = base
+            physical_key = alias_base
         else:
             physical_key = raw_key
 
         # First $action_* reference on the line
-        action_m = re.search(r"\$(action_\S+)", stripped)
+        action_m = re.search(r"\$~?(action_\S+)", stripped)
         if not action_m:
             continue
         action = action_m.group(1)
@@ -1265,9 +1264,12 @@ def parse_layer_key_map(mod: str, iface_action_set: set[str]) -> dict[str, str]:
 
         # Record the first physical key that triggers this action
         if action not in key_map:
-            key_map[action] = f"{current_mod} + {physical_key}" if current_mod else physical_key
+            key_map[action] = (
+                f"{current_mod} + {physical_key}" if current_mod else physical_key
+            )
+            layer_of[action] = f"{base}+{current_mod}" if current_mod else base
 
-    return key_map
+    return key_map, layer_of
 
 
 def parse_app_file(path: Path, app: str) -> dict[str, str]:
@@ -1277,7 +1279,7 @@ def parse_app_file(path: Path, app: str) -> dict[str, str]:
       - commented-out lines (starting with ;;)
       - (push-msg ...) not-implemented markers
     """
-    text    = path.read_text()
+    text = path.read_text()
     impl_re = re.compile(
         rf"^(?!\s*;;)\s*{re.escape(app)}_action_(\S+)\s+(\S+)",
         re.MULTILINE,
@@ -1292,6 +1294,7 @@ def parse_app_file(path: Path, app: str) -> dict[str, str]:
 
 # ── Domains layer parser ─────────────────────────────────────────────────────
 
+
 def _domains_physical_key(raw_key: str) -> str:
     """The physical key a layer_domains.kbd line binds: "$modA|x" → "a",
     "$toggle" → "toggle", "," → ",". The "mod" prefix on an alias is the
@@ -1304,21 +1307,21 @@ def _domains_physical_key(raw_key: str) -> str:
 
 
 def parse_domains_layer() -> tuple[
-    list[tuple[str, str, str]],          # spc_entries: [(phys_key, mod_name, title)]
-    dict[str, list[tuple[str, str]]],    # sublayers:   {mod_name: [(sub_key, action)]}
+    list[tuple[str, str, str]],  # spc_entries: [(phys_key, mod_name, title)]
+    dict[str, list[tuple[str, str]]],  # sublayers:   {mod_name: [(sub_key, action)]}
 ]:
     """Parse layer_domains.kbd into:
-      spc_entries  — ordered (phys_key, mod_name, mod_title) for each key in domains_layer
-      sublayers    — {mod_name: [(sub_key, action_name)]} for each spc+mod*_layer
+    spc_entries  — ordered (phys_key, mod_name, mod_title) for each key in domains_layer
+    sublayers    — {mod_name: [(sub_key, action_name)]} for each spc+mod*_layer
     """
     path = LAYERS_DIR / "layer_domains.kbd"
     text = path.read_text()
 
-    layer_titles: dict[str, str]                  = {}
-    sublayers:    dict[str, list[tuple[str, str]]] = {}
-    domains_raw:  list[tuple[str, str]]            = []  # (phys_key, mod_name)
+    layer_titles: dict[str, str] = {}
+    sublayers: dict[str, list[tuple[str, str]]] = {}
+    domains_raw: list[tuple[str, str]] = []  # (phys_key, mod_name)
 
-    current_ctx  = None   # "domains" | mod_name | None
+    current_ctx = None  # "domains" | mod_name | None
     pending_cmnt = ""
 
     for line in text.splitlines():
@@ -1327,23 +1330,23 @@ def parse_domains_layer() -> tuple[
             continue
 
         # Close of a deflayermap block: lone ")" possibly followed by a comment
-        if re.match(r'^\)\s*(;.*)?$', s):
+        if re.match(r"^\)\s*(;.*)?$", s):
             current_ctx = None
             continue
 
         if s.startswith(";;"):
             c = s.lstrip(";").strip()
-            c = re.sub(r'\s*;;.*$', '', c).strip()
+            c = re.sub(r"\s*;;.*$", "", c).strip()
             pending_cmnt = c
             continue
 
-        dlm = re.match(r'\(deflayermap\s+\((\S+)\)', s)
+        dlm = re.match(r"\(deflayermap\s+\((\S+)\)", s)
         if dlm:
             lname = dlm.group(1)
             if lname == "domains_layer":
                 current_ctx = "domains"
             elif lname.startswith("domains+") and lname.endswith("_layer"):
-                mod = lname[8:-6]           # strip "domains+" prefix and "_layer" suffix
+                mod = lname[8:-6]  # strip "domains+" prefix and "_layer" suffix
                 layer_titles[mod] = pending_cmnt
                 sublayers.setdefault(mod, [])
                 current_ctx = mod
@@ -1354,33 +1357,33 @@ def parse_domains_layer() -> tuple[
 
         # Data line inside a block: the physical key is always its first token
         pending_cmnt = ""
-        key_m = re.match(r'^(\S+)', s)
+        key_m = re.match(r"^(\S+)", s)
         if not key_m or current_ctx is None:
             continue
         phys = _domains_physical_key(key_m.group(1))
 
         if current_ctx == "domains":
-            vk_m = re.search(r'press-vkey vk_([^\s)]+)', s)
+            vk_m = re.search(r"press-vkey vk_([^\s)]+)", s)
             if vk_m:
                 # vk name is like "domains+A"; normalize to "a" to match sublayer keys
                 domains_raw.append((phys, vk_m.group(1).split("+", 1)[-1].lower()))
         elif not s.startswith("_"):
             # Search (not match) so the action is found even when wrapped in
             # a template call, e.g. "\ (t! sft_switch $action_mod\+mod\ ...)"
-            action_m = re.search(r'\$(action_\S+)', s)
+            action_m = re.search(r"\$(action_\S+)", s)
             if action_m:
                 sublayers[current_ctx].append((phys, action_m.group(1)))
 
-    spc_entries = [
-        (phys, mod, layer_titles.get(mod, ""))
-        for phys, mod in domains_raw
-    ]
+    spc_entries = [(phys, mod, layer_titles.get(mod, "")) for phys, mod in domains_raw]
     return spc_entries, sublayers
 
 
 # ── formatting ────────────────────────────────────────────────────────────────
 
-def format_hlp(title: str, entries: list[tuple[str, str]], source_file: Path | None = None) -> str:
+
+def format_hlp(
+    title: str, entries: list[tuple[str, str]], source_file: Path | None = None
+) -> str:
     """Render (combo, label) pairs as a .hlp file."""
     header = f"# {title}"
     if source_file is not None:
@@ -1396,6 +1399,7 @@ def format_hlp(title: str, entries: list[tuple[str, str]], source_file: Path | N
 
 # ── main ──────────────────────────────────────────────────────────────────────
 
+
 class HelpWriter:
     """Writes .hlp files and remembers which ones it wrote, so whatever is
     left over from a previous run can be pruned at the end."""
@@ -1404,7 +1408,9 @@ class HelpWriter:
         self.dry_run = dry_run
         self.written: set[Path] = set()
 
-    def emit(self, out: Path, title: str, entries: list[tuple[str, str]], source: Path) -> None:
+    def emit(
+        self, out: Path, title: str, entries: list[tuple[str, str]], source: Path
+    ) -> None:
         """Render, write and track one .hlp file (no-op write in dry-run mode)."""
         self.written.add(out)
         print(f"  {'[dry]' if self.dry_run else 'wrote'} {out.relative_to(ROOT)}")
@@ -1417,7 +1423,9 @@ class HelpWriter:
         then drop any app subdirectory left with nothing in it."""
         for stale in sorted(HELP_DIR.glob("**/*.hlp")):
             if stale not in self.written:
-                print(f"  {'[dry]' if self.dry_run else 'removed'} {stale.relative_to(ROOT)}")
+                print(
+                    f"  {'[dry]' if self.dry_run else 'removed'} {stale.relative_to(ROOT)}"
+                )
                 if not self.dry_run:
                     stale.unlink()
         if not self.dry_run:
@@ -1426,41 +1434,127 @@ class HelpWriter:
                     subdir.rmdir()
 
 
-def emit_mod_help(w: HelpWriter, actions_path: Path, app_dirs: list[Path]) -> None:
-    """The global catalog and every per-app file for one ordinary mod."""
-    mod = mod_from_actions_path(actions_path)
-    short  = mod_short(mod)
-    title  = MOD_TITLES.get(mod, mod.replace("_", " ").title())
+def layer_mod(layer: str) -> str:
+    """The mod a layer belongs to — every physical-modifier layer belongs to
+    the single "physical_mods" mod, anything else to its first segment, or to
+    whatever mod declares that segment when the two differ (see
+    mod_of_layer_root)."""
+    return (
+        "physical_mods"
+        if _is_mod_name(layer)
+        else mod_of_layer_root(layer.split("+")[0])
+    )
 
-    iface_order, details = parse_iface(actions_path)
-    # Layer file provides the physical-key map for accurate combo strings.
-    # Action order always follows the actions file (iface_order).
-    key_map = parse_layer_key_map(mod, set(iface_order))
 
-    def entries_for(impl: dict[str, str] | None = None, app: str | None = None):
+def layer_title(layer: str) -> str:
+    """MOD_TITLES is keyed by mod, so a base layer named after something
+    other than its mod (alt_chars -> keyb) still gets its mod's title.
+    Sub-layers keep their own name, which already says what they narrow."""
+    return (layer if "+" in layer else layer_mod(layer)).capitalize()
+    # return MOD_TITLES.get(layer if "+" in layer else layer_mod(layer), layer)
+
+
+def fsafe(key: str) -> str:
+    """ "/" and "\\" can't appear in filenames; kwanata escapes them the same
+    way when it looks the file up."""
+    return key.replace("/", "slash").replace("\\", "bslash")
+
+
+def emit_mod_help(
+    w: HelpWriter,
+    mod: str,
+    layers: list[str],
+    app_dirs: list[Path],
+    layer_stacks: list["LayerStack"],
+) -> None:
+    """One help file per reachable layer of `mod`, plus its per-app files.
+
+    Every layer gets its own page because kanata reports whichever layer is
+    active and kwanata looks the file up by that name — so a layer without a
+    file means the help overlay goes blank while you hold those keys. Each
+    page rolls up its descendants, so the base page still lists everything
+    under the mod and the sub-pages narrow it down.
+    """
+    iface_order, details = parse_mod_actions(mod)
+    key_map, bound_in = parse_layer_bindings(mod, set(iface_order))
+    # The layer file wins; the action name is the fallback for mods whose
+    # layers are generated by templates rather than explicit key lines.
+    layer_of = {a: bound_in.get(a) or action_layer(a) for a in iface_order}
+
+    def subtree(layer: str) -> list[str]:
+        """Actions bound in `layer` or any layer nested under it."""
+        return [
+            a
+            for a in iface_order
+            if layer_of[a]
+            and (layer_of[a] == layer or layer_of[a].startswith(layer + "+"))
+        ]
+
+    def entries_for(acts, impl=None, app=None):
         out = []
-        for a in iface_order:
+        for a in acts:
             label = entry_label(a, mod, details, impl, app)
             if label is not None:
-                out.append((combo_str(a, mod, key_map), label))
+                out.append(
+                    (
+                        combo_str(
+                            a, mod_of_layer_root(layer_of[a].split("+")[0]), key_map
+                        ),
+                        label,
+                    )
+                )
         return out
 
-    # ── Global help ──────────────────────────────────────────────────────
-    # Only combos with a real global default (or a direct binding) get an
-    # entry, but the file itself is always emitted — even title-only — so
-    # every mod you can hold has a help reminder of what it's for,
-    # regardless of how much of it is actually implemented yet.
-    w.emit(HELP_DIR / f"global_{short}.hlp", title, entries_for(), actions_path)
+    def shadowed_by(layer: str) -> list[str]:
+        """Actions of the layers a stack topped at `layer` hides. Kanata
+        reports only the topmost layer, so without this their combos would
+        be unreachable from any help page."""
+        out = []
+        for s in layer_stacks:
+            top = s.layers[-1]
+            if top != layer and not top.startswith(layer + "+"):
+                continue
+            for hidden in s.layers[:-1]:
+                out += [a for a in iface_order if layer_of[a] == hidden]
+        return out
 
-    # ── Per-app help from separate app files ─────────────────────────────
-    for app_dir in app_dirs:
-        app      = app_dir.name
-        app_file = find_app_file(app_dir, app, mod)
-        if app_file is None:
-            continue
-        entries = entries_for(parse_app_file(app_file, app), app)
-        if entries:
-            w.emit(HELP_DIR / app / f"{app}_{short}.hlp", f"{title} - {app}", entries, app_file)
+    for layer in layers:
+        src = find_actions_family_file(
+            _mod_family(layer.split("+")[0])
+        ) or find_actions_family_file(mod)
+        acts = subtree(layer) + shadowed_by(layer)
+
+        # The global page is always emitted — even title-only — so every
+        # layer you can hold has a reminder of what it is for, regardless of
+        # how much of it is implemented yet.
+        w.emit(
+            HELP_DIR / f"global_{fsafe(layer)}.hlp",
+            layer_title(layer),
+            entries_for(acts),
+            src,
+        )
+
+        for app_dir in app_dirs:
+            app = app_dir.name
+            app_files = find_app_files(app_dir, app, mod)
+            if not app_files:
+                continue
+            impl: dict[str, str] = {}
+            for f in app_files:
+                impl.update(parse_app_file(f, app))
+            # An app earns its own page only where it actually overrides
+            # something; otherwise the page would just repeat the global
+            # one, which kwanata already falls back to.
+            if not any(a in impl for a in acts):
+                continue
+            entries = entries_for(acts, impl, app)
+            if entries:
+                w.emit(
+                    HELP_DIR / app / f"{app}_{fsafe(layer)}.hlp",
+                    f"{layer_title(layer)} - {app}",
+                    entries,
+                    app_files[0],
+                )
 
     # ── Per-app help from inline values ──────────────────────────────────
     # For non-iface files (bookmarks, …) where per-app implementations are
@@ -1468,7 +1562,6 @@ def emit_mod_help(w: HelpWriter, actions_path: Path, app_dirs: list[Path]) -> No
     inline_by_app: dict[str, list[tuple[str, str]]] = {}
     for a in iface_order:
         for av_app, av_val in details.get(a, {}).get("app_values", {}).items():
-            # Skip if a separate app file already handles this mod
             if find_app_file(ACTIONS_DIR / av_app, av_app, mod) is not None:
                 continue
             if av_val.startswith("$"):
@@ -1477,29 +1570,31 @@ def emit_mod_help(w: HelpWriter, actions_path: Path, app_dirs: list[Path]) -> No
                 label = label_from_action(a, mod)
             else:
                 label = _titleize(av_val)
-            inline_by_app.setdefault(av_app, []).append((combo_str(a, mod, key_map), label))
+            inline_by_app.setdefault(av_app, []).append(
+                (combo_str(a, mod, key_map), label)
+            )
 
     for av_app, app_entries in inline_by_app.items():
         if app_entries:
-            w.emit(HELP_DIR / av_app / f"{av_app}_{short}.hlp",
-                   f"{title} - {av_app}", app_entries, actions_path)
+            w.emit(
+                HELP_DIR / av_app / f"{av_app}_{fsafe(mod)}.hlp",
+                f"{mod.capitalize()} - {av_app}",
+                app_entries,
+                find_actions_family_file(mod),
+            )
 
 
 def emit_domains_nav_help(w: HelpWriter, app_dirs: list[Path]) -> None:
     """The SPC-mods system's two-level navigation help:
-      Level 1  global_domains.hlp       shown when holding spc
-      Level 2  global_domains+{key}.hlp shown when holding spc + key
-               {app}_domains+{key}      the same, inside a specific app
+    Level 1  global_domains.hlp       shown when holding spc
+    Level 2  global_domains+{key}.hlp shown when holding spc + key
+             {app}_domains+{key}      the same, inside a specific app
     """
     domains_iface = ACTIONS_DIR / "actions_domains.iface.kbd"
     if not domains_iface.exists():
         return
     _, iface_details = parse_iface(domains_iface)
     spc_entries, sublayers = parse_domains_layer()
-
-    # "/" can't appear in filenames; replace problematic chars
-    def fsafe(k: str) -> str:
-        return k.replace("/", "slash").replace("\\", "bslash")
 
     # Sub-domains worth walking: titled, and with at least one binding.
     walkable = [
@@ -1515,184 +1610,86 @@ def emit_domains_nav_help(w: HelpWriter, app_dirs: list[Path]) -> None:
     overview: list[tuple[str, str]] = []
     for key, title, sub_actions in walkable:
         entries = [
-            (f"spc + {key} + {sub_key}",
-             label_from_global_default(iface_details[action_name]["global"], action_name, "domains"))
+            (
+                f"spc + {key} + {sub_key}",
+                label_from_global_default(
+                    iface_details[action_name]["global"], action_name, "domains"
+                ),
+            )
             for sub_key, action_name in sub_actions
             if is_real_default(iface_details.get(action_name, {}).get("global"))
         ]
         if entries:
             overview.append((f"spc + {key}", title))
-            w.emit(HELP_DIR / f"global_domains+{fsafe(key)}.hlp", title, entries, domains_iface)
+            w.emit(
+                HELP_DIR / f"global_domains+{fsafe(key)}.hlp",
+                title,
+                entries,
+                domains_iface,
+            )
 
     if overview:
         w.emit(HELP_DIR / "global_domains.hlp", "Domains", overview, domains_iface)
 
     for app_dir in app_dirs:
-        app      = app_dir.name
+        app = app_dir.name
         app_file = app_dir / f"{app}_domains.kbd"
         if not app_file.exists():
             continue
-        impl         = parse_app_file(app_file, app)
+        impl = parse_app_file(app_file, app)
         app_overview: list[tuple[str, str]] = []
 
         for key, title, sub_actions in walkable:
             entries = [
-                (f"spc + {key} + {sub_key}",
-                 label_for_implemented_value(impl[action_name], action_name, "domains", app))
+                (
+                    f"spc + {key} + {sub_key}",
+                    label_for_implemented_value(
+                        impl[action_name], action_name, "domains", app
+                    ),
+                )
                 for sub_key, action_name in sub_actions
                 if action_name in impl
             ]
             if entries:
                 app_overview.append((f"spc + {key}", title))
-                w.emit(HELP_DIR / app / f"{app}_domains+{fsafe(key)}.hlp",
-                       f"{title} - {app}", entries, app_file)
+                w.emit(
+                    HELP_DIR / app / f"{app}_domains+{fsafe(key)}.hlp",
+                    f"{title} - {app}",
+                    entries,
+                    app_file,
+                )
 
         if app_overview:
-            w.emit(HELP_DIR / app / f"{app}_domains.hlp", f"Domains - {app}", app_overview, app_file)
-
-
-def emit_physical_mods_help(
-    w: HelpWriter, app_dirs: list[Path], layer_stacks: list[LayerStack]
-) -> None:
-    """One help file per reachable modifier layer.
-
-    kwanata resolves help by stripping "_layer" off the *current kanata
-    layer* and looking up "{app}_{that}.hlp" / "global_{that}.hlp" — there
-    is no single "phys" layer a user ever holds, so (unlike every other
-    mod) this can't be one merged file; it needs one per actual
-    reachable layer, each rolling up its own descendants. See
-    physical_mods_available_nodes / physical_mods_node_entries.
-
-    Some physical keys push a multi-layer stack in one hold (see
-    LayerStack) where kanata only ever reports the topmost layer as
-    active — so that layer's file additionally folds in every shadowed
-    layer's own content (another physical_mods layer, a foreign mod's
-    base layer, or both), otherwise unreachable from here. Every layer
-    that's always shadowed and never itself a stack top (e.g. "lctl",
-    "lctl+lalt" — always the mid/base of some "!"-topped stack) gets no
-    standalone file at all, since it would just be dead weight; the
-    remaining, genuinely reachable layers always get a global help file,
-    a title-only placeholder if nothing is bound there yet — so every
-    modifier you can hold has a reminder of what it's for.
-    """
-    iface_order, details = parse_mod_actions("physical_mods")
-    if not iface_order:
-        return
-    mod     = "physical_mods"
-
-    actions: list[tuple[tuple[str, ...], str, str]] = []
-    for a in iface_order:
-        parsed = parse_physical_mods_action(a)
-        if parsed is not None:
-            actions.append((*parsed, a))
-
-    available_nodes = physical_mods_available_nodes(layer_stacks)
-    stacks = [s for s in layer_stacks if s.top_node in available_nodes]
-
-    def stacks_for(node: tuple[str, ...]) -> list[LayerStack]:
-        """Stacks whose top layer is `node` or one of its descendants — e.g.
-        node ("!lctl",) picks up the plain, +lsft and +rsft stacks alike,
-        mirroring physical_mods_node_entries' own roll-up so the base file
-        stays a full one-stop overview.
-        """
-        return [s for s in stacks if s.top_node[:len(node)] == node]
-
-    def merged_entries(
-        node: tuple[str, ...], app: str | None = None, impl: dict[str, str] | None = None
-    ) -> list[tuple[str, str]]:
-        """This layer's own roll-up plus everything folded in from the
-        layers it shadows (see LayerStack). app=None builds the global
-        catalog; passing app/impl resolves each entry against that app.
-        """
-        def labelled(pairs: list[tuple[str, str]]) -> list[tuple[str, str]]:
-            out = []
-            for combo, a in pairs:
-                label = entry_label(a, mod, details, impl, app)
-                if label is not None:
-                    out.append((combo, label))
-            return out
-
-        entries = labelled(physical_mods_node_entries(node, actions))
-        for stack in stacks_for(node):
-            for shadow_node in stack.shadowed_physical_mods_nodes():
-                entries += labelled(physical_mods_node_entries(shadow_node, actions, rollup=False))
-            for mod_name, shift in stack.shadowed_mods():
-                entries += combination_mod_entries(mod_name, shift, app=app)
-        return entries
-
-    for node in available_nodes:
-        layer_name = "+".join(node)
-        # Always emit — a title-only placeholder when nothing is bound yet
-        # still serves as a reminder of what this modifier is for.
-        fam_file = find_actions_family_file(_mod_family(node[0]))
-        w.emit(HELP_DIR / f"global_{layer_name}.hlp",
-               layer_name, merged_entries(node), fam_file)
-
-    for app_dir in app_dirs:
-        app      = app_dir.name
-        impl: dict[str, str] = {}
-        for f in find_app_files(app_dir, app, mod):
-            impl.update(parse_app_file(f, app))
-
-        # Which shadowed foreign mods this app actually overrides — used
-        # below to avoid emitting a per-app file that would just duplicate
-        # the global one verbatim (matching the precedent set by the generic
-        # per-mod loop: no app file, no per-app help file, since the
-        # global one already covers it). Per-app files are never
-        # placeholders — only the global catalog is.
-        mod_overridden = {
-            mod_name: find_app_file(ACTIONS_DIR / app, app, mod_name) is not None
-            for stack in stacks
-            for mod_name, _shift in stack.shadowed_mods()
-        }
-
-        for node in available_nodes:
-            # An app earns its own file here only where it actually says
-            # something: either it binds actions for this modifier family,
-            # or it overrides a mod this node's stack shadows. Otherwise
-            # the page would just repeat the global one, which kwanata
-            # already falls back to.
-            family   = _mod_family(node[0])
-            fam_file = find_app_family_file(app_dir, app, family)
-            has_reason = fam_file is not None or any(
-                mod_overridden[mod_name]
-                for stack in stacks_for(node)
-                for mod_name, _shift in stack.shadowed_mods()
+            w.emit(
+                HELP_DIR / app / f"{app}_domains.hlp",
+                f"Domains - {app}",
+                app_overview,
+                app_file,
             )
-            if not has_reason:
-                continue
-            entries = merged_entries(node, app, impl)
-            if entries:
-                layer_name = "+".join(node)
-                w.emit(HELP_DIR / app / f"{app}_{layer_name}.hlp",
-                       f"{layer_name} - {app}", entries,
-                       fam_file or find_actions_family_file(family))
 
 
 def main(dry_run: bool = False) -> None:
     HELP_DIR.mkdir(exist_ok=True)
     w = HelpWriter(dry_run)
 
-    # Every foreign mod shadowed by a LayerStack always gets pushed
-    # underneath a physical_mods "!mod" top layer — kanata (and so kwanata)
-    # only ever reports that top layer as active, so the shadowed mod's
-    # own layer name is never independently reachable, and its standalone
-    # help file would just be dead weight. Its content is instead folded
-    # into the physical_mods merge (see emit_physical_mods_help).
-    layer_stacks        = parse_layer_stacks()
-    unreachable_mods = {"domains", "physical_mods"} | {
-        mod_name for s in layer_stacks for mod_name, _shift in s.shadowed_mods()
-    }
-    iface_files = sorted(ACTIONS_DIR.glob("actions_*.iface.kbd"))
-    plain_files = sorted(f for f in ACTIONS_DIR.glob("actions_*.kbd") if ".iface." not in f.name)
-    app_dirs    = sorted(d for d in ACTIONS_DIR.iterdir() if d.is_dir())
+    layer_stacks = parse_layer_stacks()
+    layers = reachable_layers(layer_stacks)
+    app_dirs = sorted(d for d in ACTIONS_DIR.iterdir() if d.is_dir())
 
-    for actions_path in iface_files + plain_files:
-        if mod_from_actions_path(actions_path) not in unreachable_mods:
-            emit_mod_help(w, actions_path, app_dirs)
+    # Group the reachable layers by the mod that owns them, then emit one
+    # page per layer. "domains" is the one mod whose action names don't
+    # mirror its layer names (action_domainT+T lives in domains+t_layer),
+    # so it keeps its own two-level pass below.
+    by_mod: dict[str, list[str]] = {}
+    for layer in layers:
+        by_mod.setdefault(layer_mod(layer), []).append(layer)
+
+    for mod in sorted(by_mod):
+        if mod == "domains" or not _actions_index().get(mod):
+            continue
+        emit_mod_help(w, mod, by_mod[mod], app_dirs, layer_stacks)
 
     emit_domains_nav_help(w, app_dirs)
-    emit_physical_mods_help(w, app_dirs, layer_stacks)
     w.prune()
 
 

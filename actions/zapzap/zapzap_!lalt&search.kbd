@@ -1,9 +1,0 @@
-(defvar
-;; == search ============================================================
-;; search + spc
-zapzap_action_!lalt&search+spc                 $zapzap_search_in_chat
-;; search + lsft + spc
-zapzap_action_!lalt&search+lsft+spc            $zapzap_search_chat
-;; search + rsft + spc
-zapzap_action_!lalt&search+rsft+spc            $zapzap_search_chat
-)

@@ -1,0 +1,9 @@
+(defvar
+;; == replace ==========================================================
+;; replace + spc
+dolphin_action_!lmet|replace+spc               (push-msg "NOTIFY:Replace text in file not implemented!")
+;; replace + lsft + spc
+dolphin_action_!lmet|replace+lsft+spc          (push-msg "NOTIFY:Replace text in files not implemented!") 
+;; replace + rsft + spc
+dolphin_action_!lmet|replace+rsft+spc          (push-msg "NOTIFY:Replace text in files not implemented!") 
+)

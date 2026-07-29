@@ -1,5 +1,5 @@
 (defvar
 ;; == select ========================================================
 ;; select + spc
-zapzap_action_!lctl&select+spc        $zapzap_omni_search
+foot_action_!lctl|select+spc        $foot_select
 )
