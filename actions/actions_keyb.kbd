@@ -3,5 +3,5 @@
 )
 
 (defvar
-  action_lang+spc  $show_emojis
+  action_keyb+spc  $show_emojis
 )

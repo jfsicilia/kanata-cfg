@@ -116,6 +116,56 @@
   )
 )
 
+(deftemplate numpad (letter)
+  (if-equal $letter ` S-`) 
+  (if-equal $letter Digit1 S-1)
+  (if-equal $letter Digit2 S-2)
+  (if-equal $letter Digit3 S-3)
+  (if-equal $letter Digit4 S-4)
+  (if-equal $letter Digit5 S-5)
+  (if-equal $letter Digit6 S-6)
+  (if-equal $letter Digit7 S-7)
+  (if-equal $letter Digit8 S-8)
+  (if-equal $letter Digit9 S-9)
+  (if-equal $letter Digit0 S-0)
+  (if-equal $letter - S--)
+  (if-equal $letter = S-=)
+  (if-equal $letter q S-`)
+  (if-equal $letter w S-6)
+  (if-equal $letter e S-[)
+  (if-equal $letter r S-])
+  (if-equal $letter t '  )
+  (if-equal $letter y -  )
+  (if-equal $letter u 7  )
+  (if-equal $letter i 8  )
+  (if-equal $letter o 9  )
+  (if-equal $letter p S-8)
+  (if-equal $letter [ S-[)
+  (if-equal $letter ] S-])
+  (if-equal $letter \ S-\)
+  (if-equal $letter a `  )
+  (if-equal $letter s S-\)
+  (if-equal $letter d S-9)
+  (if-equal $letter f S-0)
+  (if-equal $letter g S-')
+  (if-equal $letter h S-=)
+  (if-equal $letter j 4  )
+  (if-equal $letter k 5  )
+  (if-equal $letter l 6  )
+  (if-equal $letter ; S-;)
+  (if-equal $letter ' S-')             ;;"
+  (if-equal $letter z S-4)
+  (if-equal $letter x S-7)
+  (if-equal $letter c [  )
+  (if-equal $letter v ]  )
+  (if-equal $letter b =  )
+  (if-equal $letter n 0  )
+  (if-equal $letter m 1  )
+  (if-equal $letter , 2  )
+  (if-equal $letter . 3  )
+  (if-equal $letter / \  )             ;;"
+)
+
 ;; Conditional alternative character input.
 ;; Uses alt_char template when vk_alt_chars virtual key is active,
 ;; otherwise outputs the plain letter. Allows toggling accented character
@@ -123,8 +173,9 @@
 ;;
 ;; Parameters:
 ;;   letter - The base letter key (e.g., a, e, i, o, u, n)
-(deftemplate char|alt_char (letter)
+(deftemplate char (letter)
   (switch
+    ((input virtual vk_numpad))    (t! numpad $letter)   break
     ((input virtual vk_alt_chars)) (t! alt_char $letter) break
     ()                             $letter               break
   )

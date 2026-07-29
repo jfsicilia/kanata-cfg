@@ -4,6 +4,7 @@
   rsft (multi (release-key lsft) $action_tabs+l)
 
   ent $action_sft+ent
+  $keyb             $toggle_alt_keyboard       
 
   $apps             (t! th _ $toggle_apps+lsft_layer)
   $open             (t! th _ $toggle_open+lsft_layer)
@@ -27,6 +28,9 @@
 (deflayermap (rsft_layer)
   ;; Pressing rsft+lsft (in that order) issues tab_prev combo.
   lsft (multi (release-key rsft) $action_tabs+h)
+
+  ent $action_sft+ent
+  $keyb             $toggle_alt_keyboard       
 
   $apps             (t! th _ $toggle_apps+rsft_layer)
   $open             (t! th _ $toggle_open+rsft_layer)

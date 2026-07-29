@@ -1,5 +1,5 @@
 ;; "" LANG_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-(deflayermap (lang_layer)
+(deflayermap (alt_chars_layer)
   a  (t! tilde a)
   e  (t! tilde e)
   i  (t! tilde i)
@@ -11,10 +11,10 @@
   k  up
   l  right
 
-  spc $action_lang+spc
+  spc $action_keyb+spc
 )
 
-(deflayermap (lang_alt_layer)
+(deflayermap (alt_chars+sft_layer)
   e (t! euro)
   u (t! dieresis u)
   o (t! dieresis o)

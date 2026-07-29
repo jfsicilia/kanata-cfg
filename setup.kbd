@@ -81,7 +81,7 @@
 ;; LOWER ROW
 ;; ---------
 ;; lsft    → tap: 2x tab_prev   hold: lsft_layer
-;; lang    → tap: toggle ES/US  hold: lang_layer (< > key on Spanish keyboard)
+;; keyb    → tap: toggle ES/US  hold: alt_chars_layer (< > key on Spanish keyboard)
 ;; z / /   → tap: z / /         hold: workspaces_layer
 ;; x / .   → tap: x / .         hold: groups_layer
 ;; c / ,   → tap: c / ,         hold: panes_layer
@@ -132,7 +132,7 @@
 ;;
 ;; SPANISH CHARACTERS (vk_alt_chars)
 ;; ----------------------------------
-;; Toggle the Lang key to enable Spanish character composition:
+;; Toggle the Keyb key to enable Spanish character composition:
 ;;   Double-tap vowels (a,e,i,o,u) → accented (á,é,í,ó,ú)
 ;;   Double-tap n → ñ
 ;;   Triple-tap e → €
@@ -147,6 +147,7 @@
 
   vk_alt_chars    XX ;; Used to toggle alternative character layout for other
                      ;; languages.
+  vk_numpad       XX ;; Used to toggle alternative keyboard: normal vs numpad.
 
   vk_fast_typing  XX ;; Used to allow fast typing without triggering modifier
                      ;; combos with homerowmod.
@@ -312,7 +313,7 @@
 
   ;; Low row keys. 
                          ;; <> Key (Spanish keyboard) - 
-  lang                      lsgt       ;; Tap: ES/US Hold: lang_layer
+  keyb                      lsgt       ;; Tap: ES/US Hold: alt_chars_layer
       z|workspaces          z          ;; Tap: z,    Hold: workspaces_layer
       x|groups              x          ;; Tap: x,    Hold: groups_layer 
       c|panes               c          ;; Tap: c,    Hold: panes_layer 
@@ -428,63 +429,63 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
 
 (deftemplate default_layer ()
   ;; Number row keys
-      $`|mod`              (t! fast_th `                                         (layer-toggle void_layer))
-      $0|mod0              (t! fast_th 0                                         (layer-toggle void_layer))
-      $1|mod1              (t! fast_th 1                                         (layer-toggle void_layer))
-      $2|mod2              (t! fast_th 2                                         (layer-toggle void_layer))
-      $3|mod3              (t! fast_th 3                                         (layer-toggle void_layer))
-      $4|mod4              (t! fast_th 4                                         (layer-toggle void_layer))
-      $5|mod5              (t! fast_th 5                                         (layer-toggle void_layer))
-      $6|mod6              (t! fast_th 6                                         (layer-toggle void_layer)) 
-      $7|mod7              (t! fast_th 7                                         (layer-toggle void_layer))
-      $8|mod8              (t! fast_th 8                                         (layer-toggle void_layer))
-      $9|mod9              (t! fast_th 9                                         (layer-toggle void_layer))
-      $-|mod-              (t! fast_th -                                         (layer-toggle void_layer))
-      $=|mod=              (t! fast_th =                                         (layer-toggle void_layer))
+      $`|mod`              (t! fast_th (t! char `)                               (layer-toggle void_layer))
+      $0|mod0              (t! fast_th (t! char Digit0)                          (layer-toggle void_layer))
+      $1|mod1              (t! fast_th (t! char Digit1)                          (layer-toggle void_layer))
+      $2|mod2              (t! fast_th (t! char Digit2)                          (layer-toggle void_layer))
+      $3|mod3              (t! fast_th (t! char Digit3)                          (layer-toggle void_layer))
+      $4|mod4              (t! fast_th (t! char Digit4)                          (layer-toggle void_layer))
+      $5|mod5              (t! fast_th (t! char Digit5)                          (layer-toggle void_layer))
+      $6|mod6              (t! fast_th (t! char Digit6)                          (layer-toggle void_layer)) 
+      $7|mod7              (t! fast_th (t! char Digit7)                          (layer-toggle void_layer))
+      $8|mod8              (t! fast_th (t! char Digit8)                          (layer-toggle void_layer))
+      $9|mod9              (t! fast_th (t! char Digit9)                          (layer-toggle void_layer))
+      $-|mod-              (t! fast_th (t! char -)                               (layer-toggle void_layer))
+      $=|mod=              (t! fast_th (t! char =)                               (layer-toggle void_layer))
 
   ;; Upper row keys
     $tab|open              (t! fast_th tab                                       $toggle_open_layer)   
-      $q|system            (t! fast_th q                                         $toggle_system_layer)
-      $w|workflow          (t! fast_th w                                         $toggle_workflow_layer)
-      $e|refactor          (t! fast_th (t! char|alt_char e)                      $toggle_refactor_layer)
-      $r|run               (t! fast_th r                                         $toggle_run_layer)
-      $t|layouts           (t! fast_th t                                         $toggle_layouts_layer)
-      $y|layouts           (t! fast_th y                                         $toggle_layouts_layer)
-      $u|run               (t! fast_th (t! char|alt_char u)                      $toggle_run_layer) 
-      $i|refactor          (t! fast_th (t! char|alt_char i)                      $toggle_refactor_layer) 
-      $o|workflow          (t! fast_th (t! char|alt_char o)                      $toggle_workflow_layer) 
-      $p|system            (t! fast_th p                                         $toggle_system_layer) 
-      $[|mod[              (t! fast_th [                                         (layer-toggle void_layer)) 
-      $]|mod]              (t! fast_th ]                                         (layer-toggle void_layer)) 
-      $\|mod\              (t! fast_th \                                         (layer-toggle void_layer)) 
+      $q|system            (t! fast_th (t! char q)                               $toggle_system_layer)
+      $w|workflow          (t! fast_th (t! char w)                               $toggle_workflow_layer)
+      $e|refactor          (t! fast_th (t! char e)                               $toggle_refactor_layer)
+      $r|run               (t! fast_th (t! char r)                               $toggle_run_layer)
+      $t|layouts           (t! fast_th (t! char t)                               $toggle_layouts_layer)
+      $y|layouts           (t! fast_th (t! char y)                               $toggle_layouts_layer)
+      $u|run               (t! fast_th (t! char u)                               $toggle_run_layer) 
+      $i|refactor          (t! fast_th (t! char i)                               $toggle_refactor_layer) 
+      $o|workflow          (t! fast_th (t! char o)                               $toggle_workflow_layer) 
+      $p|system            (t! fast_th (t! char p)                               $toggle_system_layer) 
+      $[|mod[              (t! fast_th (t! char [)                               (layer-toggle void_layer)) 
+      $]|mod]              (t! fast_th (t! char ])                               (layer-toggle void_layer)) 
+      $\|mod\              (t! fast_th (t! char \)                               (layer-toggle void_layer)) 
 
   ;; Medium row keys (a, s, d, f, j, k, l, ; work as lmet, lalt, lsft/rsft and lctl)
     $esc|omni              (t! fast_th $action_omni                              $toggle_omni_layer)  
-      $a|lmet              (t! fast_th (t! char|alt_char a)                      $toggle_lmet_layer)
-      $s|lalt              (t! fast_th s                                         $toggle_lalt_layer)
-      $d|lsft              (t! fast_th d                                         $toggle_lsft_layer)
-      $f|lctl              (t! fast_th f                                  (multi $toggle_lctl_layer (on-release release-vkey vk_lalt)))
-      $g|windows           (t! fast_th g                                         $toggle_windows_layer)
-      $h|windows           (t! fast_th h                                         $toggle_windows_layer)
-      $j|lctl              (t! fast_th j                                  (multi $toggle_lctl_layer (on-release release-vkey vk_lalt)))
-      $k|rsft              (t! fast_th k                                         $toggle_rsft_layer)
-      $l|lalt              (t! fast_th l                                         $toggle_lalt_layer)
-      $;|lmet              (t! fast_th ;                                         $toggle_lmet_layer)
-      $'|mod'              (t! fast_th '                                         (layer-toggle void_layer)) 
+      $a|lmet              (t! fast_th (t! char a)                               $toggle_lmet_layer)
+      $s|lalt              (t! fast_th (t! char s)                               $toggle_lalt_layer)
+      $d|lsft              (t! fast_th (t! char d)                               $toggle_lsft_layer)
+      $f|lctl              (t! fast_th (t! char f)                        (multi $toggle_lctl_layer (on-release release-vkey vk_lalt)))
+      $g|windows           (t! fast_th (t! char g)                               $toggle_windows_layer)
+      $h|windows           (t! fast_th (t! char h)                               $toggle_windows_layer)
+      $j|lctl              (t! fast_th (t! char j)                        (multi $toggle_lctl_layer (on-release release-vkey vk_lalt)))
+      $k|rsft              (t! fast_th (t! char k)                               $toggle_rsft_layer)
+      $l|lalt              (t! fast_th (t! char l)                               $toggle_lalt_layer)
+      $;|lmet              (t! fast_th (t! char ;)                               $toggle_lmet_layer)
+      $'|mod'              (t! fast_th (t! char ')                               (layer-toggle void_layer)) 
                      
   ;; Lower row keys (z, x, c, v, b, n, m, work as window, workspace, pane, tab, groups and session.
   lsft                     (t!      th (t! 2x $action_tabs+h)                    $toggle_lsft_layer)
-  $lang                    (t!      th $toggle_alt_chars                         $toggle_lang_layer)
-      $z|workspaces        (t! fast_th z                                         $toggle_workspaces_layer)
-      $x|groups            (t! fast_th x                                         $toggle_groups_layer)
-      $c|panes             (t! fast_th c                                         $toggle_panes_layer)
-      $v|tabs              (t! fast_th v                                         $toggle_tabs_layer)
-      $b|sessions          (t! fast_th b                                         $toggle_sessions_layer)
-      $n|sessions          (t! fast_th (t! char|alt_char n)                      $toggle_sessions_layer)
-      $m|tabs              (t! fast_th m                                         $toggle_tabs_layer)
-      $,|panes             (t! fast_th ,                                         $toggle_panes_layer)
-      $.|groups            (t! fast_th .                                         $toggle_groups_layer)
-      $/|workspaces        (t! fast_th /                                         $toggle_workspaces_layer)
+  $keyb                    (t!      th $toggle_alt_chars                         $toggle_alt_chars_layer)
+      $z|workspaces        (t! fast_th (t! char z)                               $toggle_workspaces_layer)
+      $x|groups            (t! fast_th (t! char x)                               $toggle_groups_layer)
+      $c|panes             (t! fast_th (t! char c)                               $toggle_panes_layer)
+      $v|tabs              (t! fast_th (t! char v)                               $toggle_tabs_layer)
+      $b|sessions          (t! fast_th (t! char b)                               $toggle_sessions_layer)
+      $n|sessions          (t! fast_th (t! char n)                               $toggle_sessions_layer)
+      $m|tabs              (t! fast_th (t! char m)                               $toggle_tabs_layer)
+      $,|panes             (t! fast_th (t! char ,)                               $toggle_panes_layer)
+      $.|groups            (t! fast_th (t! char .)                               $toggle_groups_layer)
+      $/|workspaces        (t! fast_th (t! char /)                               $toggle_workspaces_layer)
   rsft                     (t!      th (t! 2x $action_tabs+l)                    $toggle_rsft_layer)
 
   ;; Modifiers row.

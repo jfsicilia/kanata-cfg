@@ -1,6 +1,0 @@
-(defvar
-  ;; NumSym layer
-  toggle_num/sym_layer               (t! toggle_layer             num/sym_layer)
-  toggle_num/sym+lsft_layer          (t! toggle_mod_layer   lsft  num/sym+lsft_layer)
-  toggle_num/sym+rsft_layer          (t! toggle_mod_layer   rsft  num/sym+rsft_layer)
-)
