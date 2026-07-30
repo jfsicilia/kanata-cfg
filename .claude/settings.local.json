@@ -36,7 +36,8 @@
       "Bash(echo \"full-diff-exit:$?\")",
       "Bash(echo \"idempotent-exit:$?\")",
       "Bash(echo \"no-other-changes-exit:$?\")",
-      "Bash(echo \"grep-exit:$?\")"
+      "Bash(echo \"grep-exit:$?\")",
+      "Bash(echo \"exit=$?\")"
     ]
   }
 }

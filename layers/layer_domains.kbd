@@ -312,52 +312,52 @@
 
 ;; Activates corresponding layer.
 (deflayermap (domains_layer)
-  a     (multi (on-press press-vkey vk_domains+a) (on-press tap-vkey vk_help_open))
-  b     (multi (on-press press-vkey vk_domains+b) (on-press tap-vkey vk_help_open))
-  c     (multi (on-press press-vkey vk_domains+c) (on-press tap-vkey vk_help_open))
-  d     (multi (on-press press-vkey vk_domains+d) (on-press tap-vkey vk_help_open))
-  e     (multi (on-press press-vkey vk_domains+e) (on-press tap-vkey vk_help_open))
-  f     (multi (on-press press-vkey vk_domains+f) (on-press tap-vkey vk_help_open))
-  g     (multi (on-press press-vkey vk_domains+g) (on-press tap-vkey vk_help_open))
-  h     (multi (on-press press-vkey vk_domains+h) (on-press tap-vkey vk_help_open))
-  i     (multi (on-press press-vkey vk_domains+i) (on-press tap-vkey vk_help_open))
-  j     (multi (on-press press-vkey vk_domains+j) (on-press tap-vkey vk_help_open))
-  k     (multi (on-press press-vkey vk_domains+k) (on-press tap-vkey vk_help_open))
-  l     (multi (on-press press-vkey vk_domains+l) (on-press tap-vkey vk_help_open))
-  m     (multi (on-press press-vkey vk_domains+m) (on-press tap-vkey vk_help_open))
-  n     (multi (on-press press-vkey vk_domains+n) (on-press tap-vkey vk_help_open))
-  o     (multi (on-press press-vkey vk_domains+o) (on-press tap-vkey vk_help_open))
-  p     (multi (on-press press-vkey vk_domains+p) (on-press tap-vkey vk_help_open))
-  q     (multi (on-press press-vkey vk_domains+q) (on-press tap-vkey vk_help_open))
-  r     (multi (on-press press-vkey vk_domains+r) (on-press tap-vkey vk_help_open))
-  s     (multi (on-press press-vkey vk_domains+s) (on-press tap-vkey vk_help_open))
-  t     (multi (on-press press-vkey vk_domains+t) (on-press tap-vkey vk_help_open))
-  u     (multi (on-press press-vkey vk_domains+u) (on-press tap-vkey vk_help_open))
-  v     (multi (on-press press-vkey vk_domains+v) (on-press tap-vkey vk_help_open))
-  w     (multi (on-press press-vkey vk_domains+w) (on-press tap-vkey vk_help_open))
-  x     (multi (on-press press-vkey vk_domains+x) (on-press tap-vkey vk_help_open))
-  y     (multi (on-press press-vkey vk_domains+y) (on-press tap-vkey vk_help_open))
-  z     (multi (on-press press-vkey vk_domains+z) (on-press tap-vkey vk_help_open))
-  ;     (multi (on-press press-vkey vk_domains+;) (on-press tap-vkey vk_help_open))
-  '     (multi (on-press press-vkey vk_domains+') (on-press tap-vkey vk_help_open))
-  ,     (multi (on-press press-vkey vk_domains+,) (on-press tap-vkey vk_help_open))
-  .     (multi (on-press press-vkey vk_domains+.) (on-press tap-vkey vk_help_open))
-  /     (multi (on-press press-vkey vk_domains+/) (on-press tap-vkey vk_help_open))
-  \     (multi (on-press press-vkey vk_domains+\) (on-press tap-vkey vk_help_open))
-  [     (multi (on-press press-vkey vk_domains+[) (on-press tap-vkey vk_help_open))
-  ]     (multi (on-press press-vkey vk_domains+]) (on-press tap-vkey vk_help_open))
-  `     (multi (on-press press-vkey vk_domains+`) (on-press tap-vkey vk_help_open))
-  -     (multi (on-press press-vkey vk_domains+-) (on-press tap-vkey vk_help_open))
-  =     (multi (on-press press-vkey vk_domains+=) (on-press tap-vkey vk_help_open))
-  0     (multi (on-press press-vkey vk_domains+0) (on-press tap-vkey vk_help_open))
-  1     (multi (on-press press-vkey vk_domains+1) (on-press tap-vkey vk_help_open))
-  2     (multi (on-press press-vkey vk_domains+2) (on-press tap-vkey vk_help_open))
-  3     (multi (on-press press-vkey vk_domains+3) (on-press tap-vkey vk_help_open))
-  4     (multi (on-press press-vkey vk_domains+4) (on-press tap-vkey vk_help_open))
-  5     (multi (on-press press-vkey vk_domains+5) (on-press tap-vkey vk_help_open))
-  6     (multi (on-press press-vkey vk_domains+6) (on-press tap-vkey vk_help_open))
-  7     (multi (on-press press-vkey vk_domains+7) (on-press tap-vkey vk_help_open))
-  8     (multi (on-press press-vkey vk_domains+8) (on-press tap-vkey vk_help_open))
-  9     (multi (on-press press-vkey vk_domains+9) (on-press tap-vkey vk_help_open)) ;;""
-  $omni (multi (on-press press-vkey vk_domains+omni) (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close)) 
+  a     $action_domains+a     
+  b     $action_domains+b     
+  c     $action_domains+c     
+  d     $action_domains+d     
+  e     $action_domains+e     
+  f     $action_domains+f     
+  g     $action_domains+g     
+  h     $action_domains+h     
+  i     $action_domains+i     
+  j     $action_domains+j     
+  k     $action_domains+k     
+  l     $action_domains+l     
+  m     $action_domains+m     
+  n     $action_domains+n     
+  o     $action_domains+o     
+  p     $action_domains+p     
+  q     $action_domains+q     
+  r     $action_domains+r     
+  s     $action_domains+s     
+  t     $action_domains+t     
+  u     $action_domains+u     
+  v     $action_domains+v     
+  w     $action_domains+w     
+  x     $action_domains+x     
+  y     $action_domains+y     
+  z     $action_domains+z     
+  ;     $action_domains+;     
+  '     $action_domains+'     
+  ,     $action_domains+,     
+  .     $action_domains+.     
+  /     $action_domains+/     
+  \     $action_domains+\     
+  [     $action_domains+[     
+  ]     $action_domains+]     
+  `     $action_domains+`     
+  -     $action_domains+-     
+  =     $action_domains+=     
+  0     $action_domains+0     
+  1     $action_domains+1     
+  2     $action_domains+2     
+  3     $action_domains+3     
+  4     $action_domains+4     
+  5     $action_domains+5     
+  6     $action_domains+6     
+  7     $action_domains+7     
+  8     $action_domains+8     
+  9     $action_domains+9     
+  $omni $action_domains+omni  
 ) ;;""

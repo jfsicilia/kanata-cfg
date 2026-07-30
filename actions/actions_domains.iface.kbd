@@ -1,8 +1,106 @@
 (defvar
-  clipboard_history M-v
-  ai                (push-msg "NOTIFY: AI")
+  clipboard_history             M-v
+  ai                            (push-msg "NOTIFY: AI")
+
+  activate_domain_actions       (multi (on-press press-vkey vk_domains+a) (on-press tap-vkey vk_help_open))
+  activate_domain_bookmarks     (multi (on-press press-vkey vk_domains+b) (on-press tap-vkey vk_help_open))
+  activate_domain_calendar      (multi (on-press press-vkey vk_domains+c) (on-press tap-vkey vk_help_open))
+  activate_domain_definitions   (multi (on-press press-vkey vk_domains+d) (on-press tap-vkey vk_help_open))
+  activate_domain_explorer      (multi (on-press press-vkey vk_domains+e) (on-press tap-vkey vk_help_open))
+  activate_domain_filter        (multi (on-press press-vkey vk_domains+f) (on-press tap-vkey vk_help_open))
+  activate_domain_git           (multi (on-press press-vkey vk_domains+g) (on-press tap-vkey vk_help_open))
+  activate_domain_hyperlinks    (multi (on-press press-vkey vk_domains+h) (on-press tap-vkey vk_help_open))
+  activate_domain_info          (multi (on-press press-vkey vk_domains+i) (on-press tap-vkey vk_help_open))
+  activate_domain_jumps         (multi (on-press press-vkey vk_domains+j) (on-press tap-vkey vk_help_open))
+  activate_domain_keymaps       (multi (on-press press-vkey vk_domains+k) (on-press tap-vkey vk_help_open))
+  activate_domain_locations     (multi (on-press press-vkey vk_domains+l) (on-press tap-vkey vk_help_open))
+  activate_domain_mem           (multi (on-press press-vkey vk_domains+m) (on-press tap-vkey vk_help_open))
+  activate_domain_notebooks     (multi (on-press press-vkey vk_domains+n) (on-press tap-vkey vk_help_open))
+  activate_domain_output        (multi (on-press press-vkey vk_domains+o) (on-press tap-vkey vk_help_open))
+  activate_domain_properties    (multi (on-press press-vkey vk_domains+p) (on-press tap-vkey vk_help_open))
+  activate_domain_quickfix      (multi (on-press press-vkey vk_domains+q) (on-press tap-vkey vk_help_open))
+  activate_domain_references    (multi (on-press press-vkey vk_domains+r) (on-press tap-vkey vk_help_open))
+  activate_domain_symbols       (multi (on-press press-vkey vk_domains+s) (on-press tap-vkey vk_help_open))
+  activate_domain_terminal      (multi (on-press press-vkey vk_domains+t) (on-press tap-vkey vk_help_open))
+  activate_domain_UI            (multi (on-press press-vkey vk_domains+u) (on-press tap-vkey vk_help_open))
+  activate_domain_virtualization(multi (on-press press-vkey vk_domains+v) (on-press tap-vkey vk_help_open))
+  activate_domain_warnings      (multi (on-press press-vkey vk_domains+w) (on-press tap-vkey vk_help_open))
+  activate_domain_extensions    (multi (on-press press-vkey vk_domains+x) (on-press tap-vkey vk_help_open))
+  activate_domain_history       (multi (on-press press-vkey vk_domains+y) (on-press tap-vkey vk_help_open))
+  activate_domain_tests         (multi (on-press press-vkey vk_domains+z) (on-press tap-vkey vk_help_open))
+  activate_domain_commands      (multi (on-press press-vkey vk_domains+;) (on-press tap-vkey vk_help_open))
+  activate_domain_registries    (multi (on-press press-vkey vk_domains+') (on-press tap-vkey vk_help_open))
+  activate_domain_settings      (multi (on-press press-vkey vk_domains+,) (on-press tap-vkey vk_help_open))
+  activate_domain_tags          (multi (on-press press-vkey vk_domains+.) (on-press tap-vkey vk_help_open))
+  activate_domain_help          (multi (on-press press-vkey vk_domains+/) (on-press tap-vkey vk_help_open))
+  activate_domain_compare       (multi (on-press press-vkey vk_domains+\) (on-press tap-vkey vk_help_open))
+  activate_domain_backlinks     (multi (on-press press-vkey vk_domains+[) (on-press tap-vkey vk_help_open))
+  activate_domain_outlinks      (multi (on-press press-vkey vk_domains+]) (on-press tap-vkey vk_help_open))
+  activate_domain_`             (multi (on-press press-vkey vk_domains+`) (on-press tap-vkey vk_help_open))
+  activate_domain_-             (multi (on-press press-vkey vk_domains+-) (on-press tap-vkey vk_help_open))
+  activate_domain_format        (multi (on-press press-vkey vk_domains+=) (on-press tap-vkey vk_help_open))
+  activate_domain_0             (multi (on-press press-vkey vk_domains+0) (on-press tap-vkey vk_help_open))
+  activate_domain_1             (multi (on-press press-vkey vk_domains+1) (on-press tap-vkey vk_help_open))
+  activate_domain_2             (multi (on-press press-vkey vk_domains+2) (on-press tap-vkey vk_help_open))
+  activate_domain_3             (multi (on-press press-vkey vk_domains+3) (on-press tap-vkey vk_help_open))
+  activate_domain_4             (multi (on-press press-vkey vk_domains+4) (on-press tap-vkey vk_help_open))
+  activate_domain_5             (multi (on-press press-vkey vk_domains+5) (on-press tap-vkey vk_help_open))
+  activate_domain_6             (multi (on-press press-vkey vk_domains+6) (on-press tap-vkey vk_help_open))
+  activate_domain_7             (multi (on-press press-vkey vk_domains+7) (on-press tap-vkey vk_help_open))
+  activate_domain_8             (multi (on-press press-vkey vk_domains+8) (on-press tap-vkey vk_help_open))
+  activate_domain_9             (multi (on-press press-vkey vk_domains+9) (on-press tap-vkey vk_help_open)) ;;""
+  activate_domain_AI            (multi (on-press press-vkey vk_domains+omni) (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close)) 
+  
 )
 (defvar
+  action_domains+a    $activate_domain_actions 
+  action_domains+b    $activate_domain_bookmarks
+  action_domains+c    $activate_domain_calendar
+  action_domains+d    $activate_domain_definitions
+  action_domains+e    $activate_domain_explorer
+  action_domains+f    $activate_domain_filter
+  action_domains+g    $activate_domain_git
+  action_domains+h    $activate_domain_hyperlinks
+  action_domains+i    $activate_domain_info
+  action_domains+j    $activate_domain_jumps
+  action_domains+k    $activate_domain_keymaps
+  action_domains+l    $activate_domain_locations
+  action_domains+m    $activate_domain_mem
+  action_domains+n    $activate_domain_notebooks
+  action_domains+o    $activate_domain_output
+  action_domains+p    $activate_domain_properties
+  action_domains+q    $activate_domain_quickfix
+  action_domains+r    $activate_domain_references
+  action_domains+s    $activate_domain_symbols
+  action_domains+t    $activate_domain_terminal
+  action_domains+u    $activate_domain_UI
+  action_domains+v    $activate_domain_virtualization
+  action_domains+w    $activate_domain_warnings
+  action_domains+x    $activate_domain_extensions
+  action_domains+y    $activate_domain_history
+  action_domains+z    $activate_domain_tests
+  action_domains+;    $activate_domain_commands
+  action_domains+'    $activate_domain_registries
+  action_domains+,    $activate_domain_settings
+  action_domains+.    $activate_domain_tags
+  action_domains+/    $activate_domain_help
+  action_domains+\    $activate_domain_compare
+  action_domains+[    $activate_domain_backlinks
+  action_domains+]    $activate_domain_outlinks
+  action_domains+`    $activate_domain_`
+  action_domains+-    $activate_domain_-
+  action_domains+=    $activate_domain_format
+  action_domains+0    $activate_domain_0
+  action_domains+1    $activate_domain_1
+  action_domains+2    $activate_domain_2
+  action_domains+3    $activate_domain_3
+  action_domains+4    $activate_domain_4
+  action_domains+5    $activate_domain_5
+  action_domains+6    $activate_domain_6
+  action_domains+7    $activate_domain_7
+  action_domains+8    $activate_domain_8
+  action_domains+9    $activate_domain_9
+  action_domains+omni $activate_domain_AI
 
   ;; domains+a + a
   action_domains+a+a (t! unmod_all (switch ;;@iface@

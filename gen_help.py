@@ -14,11 +14,20 @@ per-name heuristics anywhere in the resolver:
      paren-counting.
   2. Build one flat {name: parsed_value} table from every (defvar ...) form
      found, across every file (var_table).
-  3. For each mod's own actions_<mod>[.iface].kbd file, find its root
-     "action_*"/"~action_*" defvar entries (root_actions) — the mod comes
-     from the FILE, not from parsing the action's own name (see the
-     "groups" case, whose actions used to be misnamed "!tabs+h" while
-     living in actions_groups.iface.kbd).
+  3. Every root "action_*"/"~action_*" defvar found anywhere under
+     actions/ (all_root_actions) is collected in one pass — no per-mod
+     file lookup. A layer's identity is derived purely from the action's
+     OWN name: everything between "action_" and its last "+"-segment
+     (layer_of), and every ancestor of that path is also a real layer
+     needing its own page even without a direct action of its own
+     (discover_layers) — this is what makes a two-level system like
+     domains ("action_domains+a" and "action_domains+a+a") or a
+     sub-layer like "action_omni+c+h" fall out for free: "domains+a" and
+     "omni+c" are discovered as layers purely by parsing action names,
+     with no MODS list and no per-level code. A layer's page rolls up
+     its own actions plus every descendant layer's (generate_layer),
+     since kanata only reports the topmost active layer to the
+     help-lookup mechanism.
   4. For each root action, discover_apps() looks at its OWN top-level
      "(switch ((input virtual vk_X)) ...)" once to find which apps exist —
      the only place app discovery happens.
@@ -46,12 +55,12 @@ per-name heuristics anywhere in the resolver:
      that never resolved to a value at all) is treated as not implemented
      and pruned from the output, same convention as generate_help.py.
 
-Currently scoped to a handful of mods (see MODS below) as a prototype,
-writing into hlp/ so its output can be diffed against generate_help.py's
-help/ output. bookmarks/domains fold into the same resolver in principle
-(see notes) but bookmarks.kbd needs to move under actions/ first for its
-variables to be scannable, and domains' two-level nav page is a separate
-concern layered on top — neither is wired up here yet.
+No hardcoded mod list anywhere: main() discovers every layer that exists
+by parsing actions/ and generates a page for each. Template calls are
+recognized under either kanata spelling, "(t! TEMPLATE ...)" or
+"(template-expand TEMPLATE ...)" (_TEMPLATE_CALL_HEADS). Writes into
+hlp/, which can be diffed against generate_help.py's (now-retired)
+help/ output for regression-checking.
 """
 
 import re
@@ -61,9 +70,6 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 ACTIONS_DIR = ROOT / "actions"
 HLP_DIR = ROOT / "hlp"
-
-# Mods to generate in this prototype run.
-MODS = ["tabs", "omni", "groups"]
 
 
 # ── tokenizer / parser ──────────────────────────────────────────────────────
@@ -288,19 +294,24 @@ def _switch_branch_app(condition: list) -> str | None:
     return None
 
 
+_TEMPLATE_CALL_HEADS = ("t!", "template-expand")
+
+
 def _unwrap_plumbing(expr, app):
-    """Peel "(t! TEMPLATE ... LAST)" wrappers and, for a "(switch ...)",
-    pick the single branch matching `app` (falling back to the "()"
-    catch-all) — pure structural plumbing that never becomes a node of
-    its own in the chain, just a way of getting from one def's raw value
-    to whatever it actually points at for the app we're resolving for.
-    Stops as soon as `expr` is neither shape — a bare atom (a literal, or
-    a "$..." reference for the caller to follow) or an unrecognized call
-    (macro/cmd/multi/push-msg/...), which is as far as plumbing goes.
+    """Peel "(t! TEMPLATE ... LAST)"/"(template-expand TEMPLATE ... LAST)"
+    wrappers (kanata accepts either spelling for invoking a template) and,
+    for a "(switch ...)", pick the single branch matching `app` (falling
+    back to the "()" catch-all) — pure structural plumbing that never
+    becomes a node of its own in the chain, just a way of getting from one
+    def's raw value to whatever it actually points at for the app we're
+    resolving for. Stops as soon as `expr` is neither shape — a bare atom
+    (a literal, or a "$..." reference for the caller to follow) or an
+    unrecognized call (macro/cmd/multi/push-msg/...), which is as far as
+    plumbing goes.
     """
     while isinstance(expr, list):
         h = head(expr)
-        if h == "t!":
+        if h in _TEMPLATE_CALL_HEADS:
             if len(expr) < 2:
                 return expr
             expr = expr[-1]
@@ -382,12 +393,12 @@ def resolve_root_for_app(root_value, app: str | None, seen: frozenset) -> tuple[
 
 def discover_apps(root_value) -> set[str]:
     """Every app named in a root action's OWN top-level "(switch ...)"
-    (peeling any "(t! ...)" wrapper first) — the only place app discovery
-    happens; nothing reached via a further "$..." reference gets to
-    introduce new apps of its own (see _unwrap_plumbing's single-branch
-    picking)."""
+    (peeling any template-call wrapper first — see _TEMPLATE_CALL_HEADS) —
+    the only place app discovery happens; nothing reached via a further
+    "$..." reference gets to introduce new apps of its own (see
+    _unwrap_plumbing's single-branch picking)."""
     expr = root_value
-    while isinstance(expr, list) and head(expr) == "t!":
+    while isinstance(expr, list) and head(expr) in _TEMPLATE_CALL_HEADS:
         if len(expr) < 2:
             return set()
         expr = expr[-1]
@@ -467,19 +478,13 @@ def is_real(expr) -> bool:
 _KNOWN_PREFIXES = ("folder_", "action_")
 
 
-def label_for(chain: list["Node"], action_name: str, mod: str, app: str | None) -> str:
+def label_for(chain: list["Node"], app: str | None) -> str:
     """The last named def in the chain — the "penultimate node" once the
     terminal value is counted as the chain's final element (see
-    build_chain/resolve_root_for_app) — is the label source. An empty
-    chain means the root's own value was already terminal with no "$..."
-    hop at all, so the label falls back to the action's own name."""
-    if not chain:
-        body = action_name.removeprefix("action_")
-        for sep in (f"{mod}+", f"{mod}_"):
-            if body.startswith(sep):
-                body = body[len(sep):]
-                break
-        return _titleize(body)
+    build_chain/resolve_root_for_app) — is the label source. Callers
+    only reach this with a non-empty chain (see entry_text): a root
+    action with no "$var" hop at all has no name of its own to describe
+    it, so no entry is generated for it in the first place."""
     name = chain[-1].name
     prefixes = list(_KNOWN_PREFIXES)
     if app:
@@ -491,69 +496,122 @@ def label_for(chain: list["Node"], action_name: str, mod: str, app: str | None) 
     return _titleize(name)
 
 
-def combo_for(action_name: str, mod: str) -> str:
+def combo_for(action_name: str) -> str:
+    """"action_omni+c+h" -> "omni + c + h" — the whole body split on "+",
+    no mod-relative stripping needed. A bare "action_X" (X already
+    established as its own layer, e.g. "action_omni" -> "omni") is its
+    layer's synthetic self-combo, "X + X" (see layer_of)."""
     body = action_name.removeprefix("action_")
-    for sep in (f"{mod}+", f"{mod}_"):
-        if body.startswith(sep):
-            body = body[len(sep):]
-            break
-    sep = "_" if action_name.removeprefix("action_").startswith(f"{mod}_") else "+"
-    return mod + " + " + " + ".join(body.split(sep))
+    if "+" not in body:
+        return f"{body} + {body}"
+    return " + ".join(body.split("+"))
 
 
-# ── mod discovery + driving loop ────────────────────────────────────────────
+def fsafe(key: str) -> str:
+    """"/" and "\\" can't appear in filenames; kwanata escapes them the
+    same way when it looks the file up."""
+    return key.replace("/", "slash").replace("\\", "bslash")
 
 
-def mod_actions_file(mod: str) -> Path | None:
-    for cand in (ACTIONS_DIR / f"actions_{mod}.iface.kbd", ACTIONS_DIR / f"actions_{mod}.kbd"):
-        if cand.exists():
-            return cand
-    return None
+# ── layer discovery + driving loop ──────────────────────────────────────────
+#
+# No MODS list: every layer that needs a help page is discovered purely by
+# parsing action names across actions/ — a mod is just the top-level segment
+# of whatever layer paths turn up. This is what lets a compound layer like
+# "domains+a" (the two-key level of the domains system) or "omni+c" (a
+# sub-layer of omni) get its own page automatically, with the exact same
+# mechanism that gives "tabs" or "omni" their pages — no per-mod, per-level
+# code anywhere.
 
 
-def app_override_file(app: str, mod: str) -> Path | None:
-    """The per-app override file for (app, mod), if one exists — e.g.
-    actions/chrome/chrome_groups.4.kbd — used only to attribute a per-app
-    help page's header to the file that actually customizes it, same as
-    generate_help.py does."""
+def all_root_actions() -> list[tuple[str, object, Path]]:
+    """[(action_name, raw_value, source_path)] for every top-level
+    "action_..."/"~action_..." defvar found anywhere under actions/ — not
+    scoped to any particular file. Per-app override files never match
+    (their own entries are named "<app>_action_...", not "action_..."),
+    so this naturally separates root actions from per-app overrides
+    without needing a separate mechanism."""
+    out = []
+    for path in sorted(ACTIONS_DIR.rglob("*.kbd")):
+        forms = parse_program(path.read_text())
+        for name, value in _iter_defvar_pairs(forms):
+            bare = name.lstrip("~")
+            if bare.startswith("action_"):
+                out.append((bare, value, path))
+    return out
+
+
+def discover_layers(roots: list[tuple[str, object, Path]]) -> set[str]:
+    """Every layer path implied by a root action name, plus every ancestor
+    of that path — e.g. "action_omni+c+h" establishes both "omni" and
+    "omni+c" as real layers (each gets its own .hlp page and rolls up its
+    descendants' entries), even though an ancestor doesn't necessarily
+    have an action of its own at that exact path."""
+    layers: set[str] = set()
+    for name, _, _ in roots:
+        body = name.removeprefix("action_")
+        if "+" not in body:
+            continue
+        parts = body.split("+")
+        for i in range(1, len(parts)):
+            layers.add("+".join(parts[:i]))
+    return layers
+
+
+def layer_of(action_name: str, known_layers: set[str]) -> str | None:
+    """The layer a root action belongs to, or None for a plain definition
+    with no layer of its own (e.g. "action_windows_close" — nothing is
+    bound to a key called "close", and "windows_close" isn't established
+    as a layer by any other action either — see generate_help.py's
+    action_layer docstring for the same distinction). A bare "action_X"
+    (no "+") belongs to layer X's own page as its self/tap entry (e.g.
+    "action_omni" -> the "omni" page's "omni + omni" row), but only when
+    X is already a real, independently-discovered layer.
+    """
+    body = action_name.removeprefix("action_")
+    if "+" in body:
+        return body.rsplit("+", 1)[0]
+    return body if body in known_layers else None
+
+
+def app_override_file(app: str, top_layer: str) -> Path | None:
+    """The per-app override file for (app, top_layer)'s mod, if one
+    exists — e.g. actions/chrome/chrome_groups.4.kbd — used only to
+    attribute a per-app help page's header to the file that actually
+    customizes it, same as generate_help.py does. Per-app override files
+    are named after the mod only (never a compound sub-layer), so a
+    sub-layer like "omni+c" looks under its top-level segment "omni"."""
     app_dir = ACTIONS_DIR / app
     if not app_dir.is_dir():
         return None
-    for cand in sorted(app_dir.glob(f"{app}_{mod}*.kbd")):
+    for cand in sorted(app_dir.glob(f"{app}_{top_layer}*.kbd")):
         return cand
     return None
 
 
-def root_actions(mod: str) -> list[tuple[str, object]]:
-    """[(action_name, raw_value)] for every "action_<mod>..."/"~action_<mod>..."
-    root defvar in the mod's own actions file, in file order."""
-    path = mod_actions_file(mod)
-    if path is None:
-        return []
-    forms = parse_program(path.read_text())
-    out = []
-    for name, value in _iter_defvar_pairs(forms):
-        bare = name.lstrip("~")
-        if bare == f"action_{mod}" or bare.startswith(f"action_{mod}+") or bare.startswith(f"action_{mod}_"):
-            out.append((bare, value))
-    return out
+def generate_layer(
+    layer: str, roots: list[tuple[str, object, Path]], known_layers: set[str]
+) -> None:
+    """`layer`'s own page: its own actions plus every descendant's (a
+    sub-layer's content is "rolled up" into its ancestors' pages, since
+    kanata reports only the topmost active layer — see generate_help.py's
+    same rollup for the rationale), and one per-app page for every app
+    that overrides something anywhere in that scope.
+    """
+    scope = []
+    for name, value, path in roots:
+        lo = layer_of(name, known_layers)
+        if lo == layer or (lo is not None and lo.startswith(layer + "+")):
+            scope.append((name, value, path))
+    if not scope:
+        return
 
-
-def generate_mod(mod: str) -> None:
-    actions = root_actions(mod)
-    src = mod_actions_file(mod)
-
-    # Per action: its combo string, the global (catch-all) branch, and
-    # whichever per-app branches its own switch forked into. An app's page
-    # isn't just "the combos it overrides" — same as generate_help.py, once
-    # an app has *any* override in this mod, its page shows every combo,
-    # falling back to the global default for the ones it didn't override.
     Resolved = tuple[list[Node], object]
     per_action: list[tuple[str, str, Resolved, dict[str, Resolved]]] = []
     apps_seen: set[str] = set()
 
-    for action_name, raw_value in actions:
-        combo = combo_for(action_name, mod)
+    for action_name, raw_value, _path in scope:
+        combo = combo_for(action_name)
         seen = frozenset({action_name})
         global_resolved = resolve_root_for_app(raw_value, None, seen)
         app_resolved = {
@@ -563,19 +621,26 @@ def generate_mod(mod: str) -> None:
         apps_seen.update(app_resolved)
         per_action.append((action_name, combo, global_resolved, app_resolved))
 
-    def entry_text(resolved: tuple[list[Node], object] | None, action_name: str, app: str | None) -> str | None:
+    def entry_text(resolved: tuple[list[Node], object] | None, app: str | None) -> str | None:
         if resolved is None:
             return None
         chain, terminal = resolved
+        # A root action pointing straight at a literal with no "$var" hop
+        # in between (empty chain) has no name of its own to describe it
+        # beyond the combo itself (e.g. "action_lalt+a" -> "A-a" directly)
+        # — nothing worth saying that the combo doesn't already say, so no
+        # entry is generated for it.
+        if not chain:
+            return None
         if not is_real(terminal):
             return None
         detail = render_terminal(terminal)
-        label = label_for(chain, action_name, mod, app)
+        label = label_for(chain, app)
         return f"{label} ({detail})" if detail else label
 
     global_entries: list[tuple[str, str]] = []
-    for action_name, combo, global_resolved, app_resolved in per_action:
-        text = entry_text(global_resolved, action_name, None)
+    for action_name, combo, global_resolved, _app_resolved in per_action:
+        text = entry_text(global_resolved, None)
         if text is not None:
             global_entries.append((combo, text))
 
@@ -590,33 +655,40 @@ def generate_mod(mod: str) -> None:
             # implemented" marker shouldn't hide a real global default
             # that would otherwise apply.
             chosen = resolved if (resolved is not None and is_real(resolved[1])) else global_resolved
-            text = entry_text(chosen, action_name, app)
+            text = entry_text(chosen, app)
             if text is not None:
                 per_app_entries.setdefault(app, []).append((combo, text))
 
     HLP_DIR.mkdir(exist_ok=True)
-    title = mod.capitalize()
+    title = layer.capitalize()
+    src = scope[0][2]
     lines = [f"# {title} ({src.relative_to(ROOT)})"]
     width = max((len(f"**{c}**") for c, _ in global_entries), default=0)
     for combo, text in global_entries:
         lines.append(f"**{combo}**".ljust(width) + f" -- {text}")
-    (HLP_DIR / f"global_{mod}.hlp").write_text("\n".join(lines) + "\n")
+    (HLP_DIR / f"global_{fsafe(layer)}.hlp").write_text("\n".join(lines) + "\n")
 
+    top_layer = layer.split("+")[0]
     for app, entries in per_app_entries.items():
+        if not entries:
+            continue
         app_dir = HLP_DIR / app
         app_dir.mkdir(exist_ok=True)
-        app_src = app_override_file(app, mod) or src
+        app_src = app_override_file(app, top_layer) or src
         lines = [f"# {title} - {app} ({app_src.relative_to(ROOT)})"]
         width = max(len(f"**{c}**") for c, _ in entries)
         for combo, text in entries:
             lines.append(f"**{combo}**".ljust(width) + f" -- {text}")
-        (app_dir / f"{app}_{mod}.hlp").write_text("\n".join(lines) + "\n")
+        (app_dir / f"{app}_{fsafe(layer)}.hlp").write_text("\n".join(lines) + "\n")
 
 
 def main():
-    for mod in MODS:
-        generate_mod(mod)
-        print(f"generated {mod}")
+    HLP_DIR.mkdir(exist_ok=True)
+    roots = all_root_actions()
+    known_layers = discover_layers(roots)
+    for layer in sorted(known_layers):
+        generate_layer(layer, roots, known_layers)
+        print(f"generated {layer}")
 
 
 if __name__ == "__main__":
