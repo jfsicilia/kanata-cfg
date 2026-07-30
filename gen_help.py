@@ -1,66 +1,78 @@
 #!/usr/bin/env python3
 """
-gen_help.py - Prototype help generator following an orthogonal, actions/-only
-methodology (see conversation notes / commit message for the full rationale).
+gen_help.py - Generates the kwanata help pages (help/*.hlp) from the kanata
+config's own action definitions under actions/.
 
-Unlike generate_help.py (which combines several different parsing paths —
-switch catch-all regexes, inline per-app app_values, separate per-app files,
-physical-mod folding, ...), this builds an explicit chain of named defs for
-each (action, app) pair and reads the label/value straight off it — no
-per-name heuristics anywhere in the resolver:
+WHAT THIS PRODUCES
 
-  1. Parse every .kbd file under actions/ into real s-expressions (see the
-     tokenizer/parser below) — no regex block-slicing, no manual
-     paren-counting.
-  2. Build one flat {name: parsed_value} table from every (defvar ...) form
-     found, across every file (var_table).
-  3. Every root "action_*"/"~action_*" defvar found anywhere under
-     actions/ (all_root_actions) is collected in one pass — no per-mod
-     file lookup. A layer's identity is derived purely from the action's
-     OWN name: everything between "action_" and its last "+"-segment
-     (layer_of), and every ancestor of that path is also a real layer
-     needing its own page even without a direct action of its own
-     (discover_layers) — this is what makes a two-level system like
-     domains ("action_domains+a" and "action_domains+a+a") or a
-     sub-layer like "action_omni+c+h" fall out for free: "domains+a" and
-     "omni+c" are discovered as layers purely by parsing action names,
-     with no MODS list and no per-level code. A layer's page rolls up
-     its own actions plus every descendant layer's (generate_layer),
-     since kanata only reports the topmost active layer to the
-     help-lookup mechanism.
-  4. For each root action, discover_apps() looks at its OWN top-level
-     "(switch ((input virtual vk_X)) ...)" once to find which apps exist —
-     the only place app discovery happens.
-  5. For each (action, app) pair (app=None meaning the global/catch-all
-     default), resolve_root_for_app() + build_chain() walk a straight,
-     explicit line of Nodes: unwrap "(t! TEMPLATE ... LAST)"/"(switch ...)"
-     plumbing (_unwrap_plumbing — never itself a node, just how you get
-     from one def's value to the next), and for every "$var" hop found
-     along the way, append a Node(name, value) and keep following it. The
-     chain stops at the first value that isn't a bare "$..." reference —
-     that value is the terminal (rendered for the "(detail)" text by
-     render_terminal); the LAST Node's name in the chain is the label
-     source (label_for) — equivalently "the def right before the terminal
-     value", with no name-shape filtering needed, because the config
-     always routes a dispatch-shaped var (action_<mod>+<combo>,
-     <app>_action_<mod>+<combo>) through a further, genuinely-named
-     variable before reaching a literal (a per-app override pointing
-     straight at a literal is a config gap to fix at the source instead —
-     see e.g. the dolphin_delete fix). A chain with no hops at all (the
-     root's own value was already terminal) falls back to the action's
-     own name for the label.
-  6. is_real() decides whether a resolved terminal is worth showing: not
-     None/XX, and a "(push-msg ...)" only counts when its payload starts
-     with "APP:" — anything else (including a dangling "$var" reference
-     that never resolved to a value at all) is treated as not implemented
-     and pruned from the output, same convention as generate_help.py.
+kwanata shows a small help overlay while a mod layer is held, listing every
+combo available in that layer and what it does. Each layer gets a ".hlp"
+file: help/global_<layer>.hlp for the layer's default (app-independent)
+bindings, plus help/<app>/<app>_<layer>.hlp for every app that overrides
+something in that layer (e.g. help/nvim/nvim_omni.hlp). Which file kwanata
+shows depends only on which kanata layer is currently active and which app
+has focus — this script's job is to have the right file, with the right
+content, sitting at the path kwanata expects.
 
-No hardcoded mod list anywhere: main() discovers every layer that exists
-by parsing actions/ and generates a page for each. Template calls are
-recognized under either kanata spelling, "(t! TEMPLATE ...)" or
-"(template-expand TEMPLATE ...)" (_TEMPLATE_CALL_HEADS). Writes into
-hlp/, which can be diffed against generate_help.py's (now-retired)
-help/ output for regression-checking.
+WHERE THE DATA COMES FROM
+
+Nothing about which layers exist, which mods there are, or which apps
+override what is hardcoded here. All of it is discovered by parsing the
+.kbd files under actions/, following this repo's naming convention:
+
+  - A root action is a top-level (defvar ...) entry named "action_<path>"
+    or "~action_<path>" (the "~" is a sync-tooling flag, irrelevant here)
+    — e.g. "action_omni+c", "action_domains+a+a". The "<path>" (everything
+    after "action_") is a "+"-separated list of keys, and it doubles as
+    both the layer the action lives in and the combo you'd show in the
+    help text: "action_omni+c+h" is the "h" key inside the "omni+c"
+    sub-layer, shown as "omni + c + h".
+
+  - The layer itself ("omni+c" above) doesn't need a defvar of its own —
+    it's implied by every root action whose path has that prefix. Layers
+    can nest arbitrarily deep this way (a plain mod like "tabs", a
+    sub-layer like "omni+c", a two-key system like "domains+a"), all
+    through the exact same mechanism: parse every root action's name,
+    and every prefix of its "+"-path is a real layer that needs a page.
+
+  - Per-app overrides live in actions/<app>/<app>_<layer>*.kbd, as defvars
+    named "<app>_action_<path>". A root action's own value is typically a
+    "(switch ((input virtual vk_<app>)) ... () <default>)" form that picks
+    one branch per app (see _unwrap_plumbing) — discover_apps() reads that
+    switch once, per root action, to find out which apps it distinguishes.
+
+  - From a chosen switch branch onward, the config is expected to route
+    through a chain of plain "$some_descriptive_name" variable references
+    before finally reaching a literal binding (a key chord, macro, cmd,
+    etc.). That chain of names is what makes the help text readable: the
+    LAST named variable before the literal becomes the entry's label (e.g.
+    "$nvim_select_all" -> label "Select All"), and the literal itself is
+    rendered as the "(detail)" shown alongside it. If a root action's
+    value resolves straight to a literal with no named variable at all in
+    between, there's nothing descriptive to show beyond the combo itself,
+    so no help entry is generated for that combo.
+
+HOW IT'S BUILT, END TO END (see main())
+
+  1. Parse every .kbd file under actions/ into s-expressions (tokenize +
+     parse_program) — real parsing, not regex block-slicing.
+  2. Flatten every (defvar ...) form, across every file, into one
+     {name: raw_value} lookup table (var_table).
+  3. Collect every root "action_*"/"~action_*" defvar, wherever it lives
+     (all_root_actions).
+  4. From those root names alone, derive the full set of layers that need
+     a help page — a name's path and every prefix of it (discover_layers).
+  5. For each layer, generate_layer() finds every root action belonging to
+     it or to one of its sub-layers (rolled up into the same page, since
+     kanata only reports the topmost active layer to the help-lookup
+     mechanism — a sub-layer's bindings need to show up on its parent's
+     page too), resolves each one for the global default and for every
+     app it distinguishes (resolve_root_for_app + build_chain, walking the
+     "$var" chain described above), and writes out the .hlp file(s).
+
+Run directly (`python3 gen_help.py`) to regenerate help/ from the current
+state of actions/. This is the only source of help/'s contents — edit
+actions/, not help/*.hlp directly.
 """
 
 import re
@@ -69,7 +81,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 ACTIONS_DIR = ROOT / "actions"
-HLP_DIR = ROOT / "hlp"
+HELP_DIR = ROOT / "help"
 
 
 # ── tokenizer / parser ──────────────────────────────────────────────────────
@@ -83,18 +95,38 @@ _TOKEN_RE = re.compile(r'"[^"]*"|\(|\)|[^\s()]+')
 
 
 def tokenize(text: str) -> list[str]:
-    # Strip ;; comments (to end of line) before tokenizing — a comment can't
-    # contain an unbalanced quote/paren in this codebase.
+    """Split kanata source into a flat list of tokens.
+
+    Args:
+        text: Raw contents of a .kbd file (or any kanata source snippet).
+
+    Returns:
+        Tokens in order: "(", ")", quoted strings (kept with their quotes),
+        and other atoms. ";;..." line comments are stripped first.
+    """
     text = re.sub(r";;.*$", "", text, flags=re.MULTILINE)
     return _TOKEN_RE.findall(text)
 
 
 class ParseError(Exception):
-    pass
+    """Raised by parse_program() on malformed (unbalanced-paren) input."""
 
 
 def parse_program(text: str) -> list:
-    """Every top-level form in `text` as a nested list-of-lists/atoms."""
+    """Parse kanata source into nested Python lists/atoms.
+
+    Args:
+        text: Raw contents of a .kbd file.
+
+    Returns:
+        A list of top-level forms. Each form is either a str atom or a
+        (possibly nested) list of atoms/lists, mirroring the s-expression
+        structure of the source — e.g. "(defvar a b)" becomes
+        ["defvar", "a", "b"].
+
+    Raises:
+        ParseError: if parens are unbalanced.
+    """
     tokens = tokenize(text)
     pos = 0
     forms = []
@@ -122,11 +154,22 @@ def parse_program(text: str) -> list:
 
 
 def is_atom(x) -> bool:
+    """True if `x` is a parsed atom (a str) rather than a nested list."""
     return isinstance(x, str)
 
 
 def head(expr) -> str | None:
-    """The leading atom of a list expr, or None (not a list / empty)."""
+    """The leading atom of a parsed list expression, if any.
+
+    Args:
+        expr: A parsed form (str atom or list, as produced by
+            parse_program).
+
+    Returns:
+        expr[0] if `expr` is a non-empty list whose first element is an
+        atom (e.g. head(["switch", ...]) == "switch"); None otherwise
+        (not a list, empty list, or first element isn't an atom).
+    """
     if isinstance(expr, list) and expr and is_atom(expr[0]):
         return expr[0]
     return None
@@ -136,9 +179,17 @@ def head(expr) -> str | None:
 
 
 def _iter_defvar_pairs(forms: list):
-    """Yield (name, value) for every name/value pair in every top-level
-    (defvar ...) form. defvar bodies are a flat name-value-name-value...
-    sequence, not nested structure, so consecutive items are paired up."""
+    """Yield every (name, value) pair defined across a file's top-level forms.
+
+    Args:
+        forms: Top-level forms as returned by parse_program().
+
+    Yields:
+        (name, value) tuples for every name/value pair in every top-level
+        (defvar ...) form. defvar bodies are a flat
+        name-value-name-value... sequence, not nested structure, so
+        consecutive items are paired up.
+    """
     for form in forms:
         if head(form) != "defvar":
             continue
@@ -158,8 +209,16 @@ _var_table: dict[str, object] | None = None
 
 
 def var_table() -> dict[str, object]:
-    """{name: parsed_value} across every (defvar ...) in every actions/**/*.kbd
-    file. First definition wins (matches generate_help.py's convention)."""
+    """The flattened {name: parsed_value} table for the whole config.
+
+    Scans every actions/**/*.kbd file once (cached after the first call).
+    If the same name is defined more than once across files, the first
+    definition encountered (in sorted file-path order) wins.
+
+    Returns:
+        Mapping from a defvar's name (with any leading "~" stripped) to
+        its parsed (but not yet plumbing-unwrapped) value.
+    """
     global _var_table
     if _var_table is None:
         table: dict[str, object] = {}
@@ -172,12 +231,23 @@ def var_table() -> dict[str, object]:
 
 
 def deref(name: str) -> str:
-    """"$foo"/"$~foo" -> "foo"."""
+    """Strip a variable reference down to its bare name.
+
+    Args:
+        name: A reference token, e.g. "$foo" or "$~foo".
+
+    Returns:
+        The bare name, e.g. "foo".
+    """
     return name.lstrip("$").lstrip("~")
 
 
-# ── rendering primitives (copied from generate_help.py — orthogonal to the
-#    resolution architecture above, not something this prototype changes) ──
+# ── rendering primitives ─────────────────────────────────────────────────────
+#
+# Turning a resolved literal binding (a key chord, a macro's key sequence,
+# a cmd string, ...) into the human-readable "(detail)" text shown next to
+# a help entry's label. Orthogonal to the resolution logic below — this is
+# just presentation.
 
 _BASE_KEY_CHAR = {c: c for c in "abcdefghijklmnopqrstuvwxyz0123456789,-./;'=[]\\`"}
 _BASE_KEY_CHAR["grave"] = "`"
@@ -193,12 +263,35 @@ _MOD_CHORD_RE = re.compile(r"^(?:[LR]?[CAMS]-)+\S+$")
 
 
 def _shifted_char(base_char: str) -> str | None:
+    """The shifted form of a base key character, if there is one.
+
+    Args:
+        base_char: A single "base" character as produced by _BASE_KEY_CHAR
+            (e.g. "a", "1", "-").
+
+    Returns:
+        The shifted character (e.g. "A", "!", "_"), or None if `base_char`
+        has no shifted form this table knows about.
+    """
     if base_char.isalpha():
         return base_char.upper()
     return _SHIFT_SYMBOL.get(base_char)
 
 
 def _render_macro_token(tok: str) -> tuple[str, str] | None:
+    """Render one whitespace-separated token from a macro body.
+
+    Args:
+        tok: A single macro token, e.g. "a", "S-a", "ent", "500", "$var".
+
+    Returns:
+        A (kind, rendered) pair where kind is "text" (a character to be
+        concatenated into a run of plain text, e.g. typed letters) or
+        "word" (a standalone chunk, e.g. "[ent]", shown with surrounding
+        spaces) — or None if `tok` has no known rendering, signalling the
+        caller to abort rendering the whole macro rather than show a
+        misleading partial result.
+    """
     if tok.startswith("$"):
         # A $var left un-expanded by _expand_macro_var_tokens (its own
         # value isn't a plain atom to inline — e.g. a bare key-tuple
@@ -225,12 +318,23 @@ def _render_macro_token(tok: str) -> tuple[str, str] | None:
 
 
 def _expand_macro_var_tokens(body: str, seen: frozenset) -> str | None:
-    """Expand $var tokens in a macro body to their raw values where
-    possible. A $var that can't be expanded — unresolvable, a cycle, or
-    itself a non-atom value (a bare key-tuple fragment like folder_trash,
-    meant to be spliced into a containing macro rather than rendered
-    alone) — is kept as a literal "$name" token instead of aborting the
-    whole macro's render (see _render_macro_token)."""
+    """Expand $var tokens in a macro body to their raw values where possible.
+
+    Args:
+        body: The macro's tokens joined by whitespace, e.g. "esc d d $x".
+        seen: Variable names already expanded on this call stack, to
+            detect and stop at cycles.
+
+    Returns:
+        `body` with every expandable "$var" token replaced by its own
+        (recursively expanded) raw value. A $var that can't be expanded —
+        unresolvable, a cycle, or itself a non-atom value (a bare
+        key-tuple fragment like folder_trash, meant to be spliced into a
+        containing macro rather than rendered alone) — is kept as a
+        literal "$name" token instead of aborting the whole macro's
+        render (see _render_macro_token). Never returns None itself; the
+        Optional return type mirrors _render_macro_token's for symmetry.
+    """
     out = []
     for tok in body.split():
         if not tok.startswith("$"):
@@ -253,6 +357,16 @@ def _expand_macro_var_tokens(body: str, seen: frozenset) -> str | None:
 
 
 def render_macro(body: str) -> str | None:
+    """Render a macro's key-sequence body as human-readable text.
+
+    Args:
+        body: The macro's tokens joined by whitespace, e.g. "esc d d i".
+
+    Returns:
+        The rendered text (e.g. typed letters concatenated, with special
+        keys like "[ent]" interspersed), or None if any token in the
+        (var-expanded) body has no known rendering.
+    """
     expanded = _expand_macro_var_tokens(body, frozenset())
     if expanded is None:
         return None
@@ -276,14 +390,30 @@ def render_macro(body: str) -> str | None:
 
 
 def _titleize(name: str) -> str:
+    """"some_name+with+parts" -> "Some Name With Parts", for use as a label."""
     return name.replace("_", " ").replace("+", " ").title()
 
 
 # ── the resolver ─────────────────────────────────────────────────────────────
+#
+# Follows a root action's value through the plumbing (switch/template
+# wrappers) and any chain of "$var" references, until it bottoms out at a
+# literal binding — see the module docstring's "HOW IT'S BUILT" section
+# for the overall picture.
 
 
 def _switch_branch_app(condition: list) -> str | None:
-    """"((input virtual vk_nvim))" -> "nvim". "()" -> None (catch-all)."""
+    """The app named by one (switch ...) branch's condition, if any.
+
+    Args:
+        condition: The condition list from one switch branch, e.g.
+            [["input", "virtual", "vk_nvim"]] or [] (catch-all).
+
+    Returns:
+        "nvim" for a condition of the form
+        "((input virtual vk_nvim))"; None for the catch-all "()" or any
+        other condition shape.
+    """
     if not condition:
         return None
     clause = condition[0]
@@ -298,16 +428,26 @@ _TEMPLATE_CALL_HEADS = ("t!", "template-expand")
 
 
 def _unwrap_plumbing(expr, app):
-    """Peel "(t! TEMPLATE ... LAST)"/"(template-expand TEMPLATE ... LAST)"
-    wrappers (kanata accepts either spelling for invoking a template) and,
-    for a "(switch ...)", pick the single branch matching `app` (falling
-    back to the "()" catch-all) — pure structural plumbing that never
-    becomes a node of its own in the chain, just a way of getting from one
-    def's raw value to whatever it actually points at for the app we're
-    resolving for. Stops as soon as `expr` is neither shape — a bare atom
-    (a literal, or a "$..." reference for the caller to follow) or an
-    unrecognized call (macro/cmd/multi/push-msg/...), which is as far as
-    plumbing goes.
+    """Peel structural wrappers off a value until a "real" shape is reached.
+
+    Args:
+        expr: A parsed value (atom or list) as found in var_table(), or
+            reached partway through a resolution chain.
+        app: The app to resolve a switch for ("nvim", ...), or None for
+            the global/catch-all default.
+
+    Returns:
+        `expr` with every "(t! TEMPLATE ... LAST)"/"(template-expand
+        TEMPLATE ... LAST)" wrapper peeled (kanata accepts either spelling
+        for invoking a template) and every "(switch ...)" replaced by the
+        single branch matching `app` (falling back to the "()" catch-all
+        if no branch matches). This is pure structural plumbing — it never
+        becomes a node of its own in a resolution chain, just a way of
+        getting from one def's raw value to whatever it actually points at
+        for the app being resolved. Stops as soon as what's left is
+        neither shape: a bare atom (a literal, or a "$..." reference for
+        the caller to follow) or an unrecognized call
+        (macro/cmd/multi/push-msg/...).
     """
     while isinstance(expr, list):
         h = head(expr)
@@ -335,10 +475,16 @@ def _unwrap_plumbing(expr, app):
 
 
 class Node:
-    """One named def in a resolution chain: its own name, its raw
-    (unwrapped-for-this-app) value, and the next Node reached by following
-    that value as a "$..." reference — or None once the value isn't a
-    reference anymore (see build_chain)."""
+    """One named def in a resolution chain.
+
+    Attributes:
+        name: The variable's own name (e.g. "nvim_select_all").
+        value: Its raw value, already plumbing-unwrapped for the app this
+            chain is being resolved for.
+        child: Unused placeholder for a linked-list-style next pointer;
+            build_chain() tracks the chain as a plain list instead, so
+            this is always left at its default.
+    """
 
     __slots__ = ("name", "value", "child")
 
@@ -349,15 +495,25 @@ class Node:
 
 
 def build_chain(name: str, app: str | None, seen: frozenset) -> tuple[list[Node], object]:
-    """The named-def chain starting at `name`, resolved for one app context
-    (app=None = global), plus the terminal value it bottoms out at.
+    """Follow a chain of "$var" references starting at `name` to its terminal value.
 
-    Each Node is one "$..." hop; the terminal is whatever the last Node's
-    (plumbing-unwrapped) value turns out to be once it's no longer a bare
-    reference — a literal, or a macro/cmd/multi/push-msg/... call, or None
-    if `name` itself doesn't resolve to anything (a dangling reference —
-    see is_real, which prunes this from the help output entirely, same as
-    an explicit "not implemented" marker).
+    Args:
+        name: The variable name to start resolving from (no leading "$").
+        app: The app to resolve for ("nvim", ...), or None for the
+            global/catch-all default.
+        seen: Names already visited earlier in this resolution (from the
+            root action onward), to detect cycles.
+
+    Returns:
+        (chain, terminal): `chain` is the list of Nodes visited, one per
+        "$..." hop followed (in order, root-relative); `terminal` is
+        whatever the last Node's (plumbing-unwrapped) value turns out to
+        be once it's no longer a bare "$..." reference — a literal, or a
+        macro/cmd/multi/push-msg/... call, or None if `name` doesn't
+        resolve to anything at all (a dangling reference) or a cycle was
+        hit. See is_real(), which treats a None terminal as "not
+        implemented" and prunes it from the help output, same as an
+        explicit not-implemented marker.
     """
     chain: list[Node] = []
     seen = set(seen)
@@ -378,12 +534,24 @@ def build_chain(name: str, app: str | None, seen: frozenset) -> tuple[list[Node]
 
 
 def resolve_root_for_app(root_value, app: str | None, seen: frozenset) -> tuple[list[Node], object]:
-    """The chain + terminal for a root action's OWN value, resolved for one
-    app (None = global) — the root's value is plumbing-unwrapped for that
-    app first (this is where a root's own "(switch ...)" picks its one
-    branch for this app; see discover_apps for where the app set itself
-    comes from), then build_chain takes over if what's left is a "$..."
-    reference to follow.
+    """Resolve a root action's own value for one app, chain and all.
+
+    Args:
+        root_value: The root action's raw (parsed) value, as found in
+            var_table().
+        app: The app to resolve for ("nvim", ...), or None for the
+            global/catch-all default.
+        seen: Names already visited (typically just the root action's own
+            name, to guard against a self-referential cycle).
+
+    Returns:
+        (chain, terminal), same shape as build_chain()'s return. The
+        root's value is plumbing-unwrapped for `app` first — this is
+        where the root's own "(switch ...)" picks its one branch for this
+        app (see discover_apps for where the app set itself comes from) —
+        and then build_chain() takes over if what's left is a "$..."
+        reference to keep following. If it's already a literal, the chain
+        is empty and that literal is the terminal directly.
     """
     value = _unwrap_plumbing(root_value, app)
     if is_atom(value) and value.startswith("$"):
@@ -392,11 +560,22 @@ def resolve_root_for_app(root_value, app: str | None, seen: frozenset) -> tuple[
 
 
 def discover_apps(root_value) -> set[str]:
-    """Every app named in a root action's OWN top-level "(switch ...)"
-    (peeling any template-call wrapper first — see _TEMPLATE_CALL_HEADS) —
-    the only place app discovery happens; nothing reached via a further
-    "$..." reference gets to introduce new apps of its own (see
-    _unwrap_plumbing's single-branch picking)."""
+    """Find every app a root action's own switch distinguishes.
+
+    Args:
+        root_value: The root action's raw (parsed) value, as found in
+            var_table().
+
+    Returns:
+        The set of app names (e.g. {"nvim", "obsidian"}) named in the
+        root action's OWN top-level "(switch ...)" (peeling any
+        template-call wrapper first — see _TEMPLATE_CALL_HEADS). This is
+        the only place app discovery happens: nothing reached via a
+        further "$..." reference gets to introduce new apps of its own
+        (see _unwrap_plumbing's single-branch picking, which already
+        committed to one app by that point). Empty set if the root value
+        isn't a switch at all.
+    """
     expr = root_value
     while isinstance(expr, list) and head(expr) in _TEMPLATE_CALL_HEADS:
         if len(expr) < 2:
@@ -418,9 +597,19 @@ def discover_apps(root_value) -> set[str]:
 
 
 def render_terminal(expr) -> str | None:
-    """Human-readable "(detail)" text for a resolved terminal value, or None
-    when there's nothing worth showing (a push-msg, or something with no
-    safe rendering)."""
+    """Human-readable "(detail)" text for a resolved terminal value.
+
+    Args:
+        expr: A terminal value as returned by build_chain()/
+            resolve_root_for_app() — a literal atom, or a
+            macro/cmd/multi/push-msg/... call.
+
+    Returns:
+        The rendered detail text, or None when there's nothing worth
+        showing (a push-msg, or a value with no safe rendering — e.g. a
+        macro containing a nested, non-atom token that can't be
+        represented without risking a misleading truncated result).
+    """
     if expr is None:
         return None
     if is_atom(expr):
@@ -459,9 +648,19 @@ def render_terminal(expr) -> str | None:
 
 
 def is_real(expr) -> bool:
-    """True when a resolved terminal value is worth showing at all — not
-    None/XX, and not a not-implemented push-msg (only an "APP:<name>"
-    payload counts as real, same convention as generate_help.py)."""
+    """Whether a resolved terminal value is worth showing as a help entry.
+
+    Args:
+        expr: A terminal value as returned by build_chain()/
+            resolve_root_for_app().
+
+    Returns:
+        False for None (unresolved/dangling) or the literal "XX"
+        (kanata's no-op, meaning "not bound"). For a "(push-msg ...)",
+        only a `"APP:<name>"` payload counts as real (an app-launch
+        action); any other push-msg is treated as a not-implemented
+        placeholder. Everything else counts as real.
+    """
     if expr is None:
         return False
     if is_atom(expr):
@@ -479,12 +678,25 @@ _KNOWN_PREFIXES = ("folder_", "action_")
 
 
 def label_for(chain: list["Node"], app: str | None) -> str:
-    """The last named def in the chain — the "penultimate node" once the
-    terminal value is counted as the chain's final element (see
-    build_chain/resolve_root_for_app) — is the label source. Callers
-    only reach this with a non-empty chain (see entry_text): a root
-    action with no "$var" hop at all has no name of its own to describe
-    it, so no entry is generated for it in the first place."""
+    """The human-readable label for a help entry.
+
+    Args:
+        chain: The (non-empty) Node chain from build_chain()/
+            resolve_root_for_app(). Callers only reach this with a
+            non-empty chain (see entry_text in generate_layer): a root
+            action with no "$var" hop at all has no descriptive name of
+            its own, so no entry is generated for it in the first place.
+        app: The app the chain was resolved for ("nvim", ...), or None
+            for the global/catch-all default — used only to strip a
+            per-app naming prefix (e.g. "nvim_action_") off the label
+            source before titleizing it.
+
+    Returns:
+        The last named def in the chain — the "penultimate node" once the
+        terminal value is counted as the chain's final element — with any
+        known naming prefix stripped and the rest titleized (e.g.
+        "$nvim_select_all" -> "Select All").
+    """
     name = chain[-1].name
     prefixes = list(_KNOWN_PREFIXES)
     if app:
@@ -497,10 +709,19 @@ def label_for(chain: list["Node"], app: str | None) -> str:
 
 
 def combo_for(action_name: str) -> str:
-    """"action_omni+c+h" -> "omni + c + h" — the whole body split on "+",
-    no mod-relative stripping needed. A bare "action_X" (X already
-    established as its own layer, e.g. "action_omni" -> "omni") is its
-    layer's synthetic self-combo, "X + X" (see layer_of)."""
+    """The key-combo text shown for a root action, e.g. "omni + c + h".
+
+    Args:
+        action_name: A root action's bare name (leading "~" already
+            stripped), e.g. "action_omni+c+h" or "action_omni".
+
+    Returns:
+        The "+"-separated path (after "action_") rendered as
+        " + "-separated text: "action_omni+c+h" -> "omni + c + h". A bare
+        "action_X" with no "+" at all (X already established as its own
+        layer, e.g. "action_omni" -> "omni") is its layer's synthetic
+        self-combo, "X + X" (see layer_of).
+    """
     body = action_name.removeprefix("action_")
     if "+" not in body:
         return f"{body} + {body}"
@@ -508,29 +729,42 @@ def combo_for(action_name: str) -> str:
 
 
 def fsafe(key: str) -> str:
-    """"/" and "\\" can't appear in filenames; kwanata escapes them the
-    same way when it looks the file up."""
+    """Escape filesystem-unsafe characters in a layer name for use in a filename.
+
+    Args:
+        key: A layer name or path segment, e.g. "domains+/" (containing a
+            literal "/" key name).
+
+    Returns:
+        `key` with "/" replaced by "slash" and "\\" replaced by "bslash" —
+        kwanata escapes them the same way when it looks the help file up,
+        since "/" and "\\" can't appear in a filename.
+    """
     return key.replace("/", "slash").replace("\\", "bslash")
 
 
 # ── layer discovery + driving loop ──────────────────────────────────────────
 #
-# No MODS list: every layer that needs a help page is discovered purely by
-# parsing action names across actions/ — a mod is just the top-level segment
-# of whatever layer paths turn up. This is what lets a compound layer like
-# "domains+a" (the two-key level of the domains system) or "omni+c" (a
-# sub-layer of omni) get its own page automatically, with the exact same
-# mechanism that gives "tabs" or "omni" their pages — no per-mod, per-level
-# code anywhere.
+# No hardcoded list of mods/layers anywhere: every layer that needs a help
+# page is discovered purely by parsing action names across actions/ — a mod
+# is just the top-level segment of whatever layer paths turn up. This is
+# what lets a compound layer like "domains+a" (the two-key level of the
+# domains system) or "omni+c" (a sub-layer of omni) get its own page
+# automatically, with the exact same mechanism that gives "tabs" or "omni"
+# their pages — no per-mod, per-level code anywhere.
 
 
 def all_root_actions() -> list[tuple[str, object, Path]]:
-    """[(action_name, raw_value, source_path)] for every top-level
-    "action_..."/"~action_..." defvar found anywhere under actions/ — not
-    scoped to any particular file. Per-app override files never match
-    (their own entries are named "<app>_action_...", not "action_..."),
-    so this naturally separates root actions from per-app overrides
-    without needing a separate mechanism."""
+    """Collect every root action defined anywhere under actions/.
+
+    Returns:
+        A list of (action_name, raw_value, source_path) tuples, one per
+        top-level "action_..."/"~action_..." defvar found (leading "~"
+        stripped from action_name). Per-app override files never match
+        here — their own entries are named "<app>_action_...", not
+        "action_..." — so this naturally separates root actions from
+        per-app overrides without needing a separate mechanism.
+    """
     out = []
     for path in sorted(ACTIONS_DIR.rglob("*.kbd")):
         forms = parse_program(path.read_text())
@@ -542,11 +776,19 @@ def all_root_actions() -> list[tuple[str, object, Path]]:
 
 
 def discover_layers(roots: list[tuple[str, object, Path]]) -> set[str]:
-    """Every layer path implied by a root action name, plus every ancestor
-    of that path — e.g. "action_omni+c+h" establishes both "omni" and
-    "omni+c" as real layers (each gets its own .hlp page and rolls up its
-    descendants' entries), even though an ancestor doesn't necessarily
-    have an action of its own at that exact path."""
+    """Derive the full set of layers that need a help page.
+
+    Args:
+        roots: Root actions as returned by all_root_actions().
+
+    Returns:
+        Every layer path implied by a root action name, plus every
+        ancestor of that path — e.g. "action_omni+c+h" establishes both
+        "omni" and "omni+c" as real layers (each gets its own .hlp page
+        and rolls up its descendants' entries), even though an ancestor
+        doesn't necessarily have a root action of its own at that exact
+        path.
+    """
     layers: set[str] = set()
     for name, _, _ in roots:
         body = name.removeprefix("action_")
@@ -559,14 +801,25 @@ def discover_layers(roots: list[tuple[str, object, Path]]) -> set[str]:
 
 
 def layer_of(action_name: str, known_layers: set[str]) -> str | None:
-    """The layer a root action belongs to, or None for a plain definition
-    with no layer of its own (e.g. "action_windows_close" — nothing is
-    bound to a key called "close", and "windows_close" isn't established
-    as a layer by any other action either — see generate_help.py's
-    action_layer docstring for the same distinction). A bare "action_X"
-    (no "+") belongs to layer X's own page as its self/tap entry (e.g.
-    "action_omni" -> the "omni" page's "omni + omni" row), but only when
-    X is already a real, independently-discovered layer.
+    """The layer a root action belongs to.
+
+    Args:
+        action_name: A root action's bare name, e.g. "action_omni+c+h" or
+            "action_omni".
+        known_layers: The full set of discovered layers, as returned by
+            discover_layers().
+
+    Returns:
+        For "action_<path>+<key>", the layer is "<path>" (everything
+        before the last "+"-segment) — e.g. "action_omni+c+h" belongs to
+        layer "omni+c". For a bare "action_X" with no "+" at all, it
+        belongs to layer X itself, as X's own self/tap entry (e.g.
+        "action_omni" -> the "omni" page's "omni + omni" row) — but only
+        when X is already a real, independently-discovered layer;
+        otherwise this is a plain definition with no layer of its own
+        (e.g. "action_windows_close", where nothing is bound to a key
+        called "close" and "windows_close" isn't established as a layer
+        by any other action either) and this returns None.
     """
     body = action_name.removeprefix("action_")
     if "+" in body:
@@ -575,12 +828,21 @@ def layer_of(action_name: str, known_layers: set[str]) -> str | None:
 
 
 def app_override_file(app: str, top_layer: str) -> Path | None:
-    """The per-app override file for (app, top_layer)'s mod, if one
-    exists — e.g. actions/chrome/chrome_groups.4.kbd — used only to
-    attribute a per-app help page's header to the file that actually
-    customizes it, same as generate_help.py does. Per-app override files
-    are named after the mod only (never a compound sub-layer), so a
-    sub-layer like "omni+c" looks under its top-level segment "omni"."""
+    """Find the file that customizes a given (app, layer) pair, for attribution.
+
+    Args:
+        app: An app name, e.g. "chrome".
+        top_layer: A layer's top-level segment (see generate_layer), e.g.
+            "groups" — per-app override files are named after the mod
+            only, never a compound sub-layer, so a sub-layer like "omni+c"
+            is looked up under its top-level segment "omni".
+
+    Returns:
+        The first matching actions/<app>/<app>_<top_layer>*.kbd path in
+        sorted order (e.g. actions/chrome/chrome_groups.4.kbd), used only
+        to attribute a per-app help page's header comment to the file
+        that actually customizes it. None if no such file exists.
+    """
     app_dir = ACTIONS_DIR / app
     if not app_dir.is_dir():
         return None
@@ -592,11 +854,25 @@ def app_override_file(app: str, top_layer: str) -> Path | None:
 def generate_layer(
     layer: str, roots: list[tuple[str, object, Path]], known_layers: set[str]
 ) -> None:
-    """`layer`'s own page: its own actions plus every descendant's (a
-    sub-layer's content is "rolled up" into its ancestors' pages, since
-    kanata reports only the topmost active layer — see generate_help.py's
-    same rollup for the rationale), and one per-app page for every app
-    that overrides something anywhere in that scope.
+    """Write the help/*.hlp file(s) for one layer.
+
+    Args:
+        layer: The layer to generate a page for, e.g. "omni" or
+            "domains+a".
+        roots: Every root action, as returned by all_root_actions().
+        known_layers: The full set of discovered layers, as returned by
+            discover_layers().
+
+    Writes:
+        help/global_<layer>.hlp with the layer's default entries, plus
+        help/<app>/<app>_<layer>.hlp for every app that overrides
+        anything in this layer's scope. A layer's scope is its own root
+        actions PLUS every descendant sub-layer's (e.g. "omni"'s page
+        includes "omni+c"'s entries too) — this rollup exists because
+        kanata only reports the topmost active layer to the help-lookup
+        mechanism, so a sub-layer's bindings need to already be visible
+        on its parent's page. Does nothing if the layer's scope turns out
+        to be empty.
     """
     scope = []
     for name, value, path in roots:
@@ -622,6 +898,8 @@ def generate_layer(
         per_action.append((action_name, combo, global_resolved, app_resolved))
 
     def entry_text(resolved: tuple[list[Node], object] | None, app: str | None) -> str | None:
+        """The "Label (detail)" text for one resolved (action, app) pair, or
+        None if no entry should be shown for it (see label_for/is_real)."""
         if resolved is None:
             return None
         chain, terminal = resolved
@@ -659,20 +937,20 @@ def generate_layer(
             if text is not None:
                 per_app_entries.setdefault(app, []).append((combo, text))
 
-    HLP_DIR.mkdir(exist_ok=True)
+    HELP_DIR.mkdir(exist_ok=True)
     title = layer.capitalize()
     src = scope[0][2]
     lines = [f"# {title} ({src.relative_to(ROOT)})"]
     width = max((len(f"**{c}**") for c, _ in global_entries), default=0)
     for combo, text in global_entries:
         lines.append(f"**{combo}**".ljust(width) + f" -- {text}")
-    (HLP_DIR / f"global_{fsafe(layer)}.hlp").write_text("\n".join(lines) + "\n")
+    (HELP_DIR / f"global_{fsafe(layer)}.hlp").write_text("\n".join(lines) + "\n")
 
     top_layer = layer.split("+")[0]
     for app, entries in per_app_entries.items():
         if not entries:
             continue
-        app_dir = HLP_DIR / app
+        app_dir = HELP_DIR / app
         app_dir.mkdir(exist_ok=True)
         app_src = app_override_file(app, top_layer) or src
         lines = [f"# {title} - {app} ({app_src.relative_to(ROOT)})"]
@@ -683,7 +961,9 @@ def generate_layer(
 
 
 def main():
-    HLP_DIR.mkdir(exist_ok=True)
+    """Regenerate help/ from scratch: discover every layer under actions/
+    and write its .hlp file(s)."""
+    HELP_DIR.mkdir(exist_ok=True)
     roots = all_root_actions()
     known_layers = discover_layers(roots)
     for layer in sorted(known_layers):
