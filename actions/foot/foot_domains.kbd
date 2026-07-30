@@ -1,10 +1,10 @@
 (defvar
-;; domainG + G
-foot_action_domainG+G              $foot_git_status
-;; domainG + L
-foot_action_domainG+L              $foot_lazygit
-;; domain\ + \
-foot_action_domain\+\                  $foot_compare                        ;;""
-;; domain\ + lsft + \
-foot_action_domain\+lsft+\             $foot_compare_dirs                   ;;""
+;; domains+g + g
+foot_action_domains+g+g              $foot_git_status
+;; domains+g + l
+foot_action_domains+g+l              $foot_lazygit
+;; domains+\ + \
+foot_action_domains+\+\                  $foot_compare                        ;;""
+;; domains+\ + lsft + \
+foot_action_domains+\+lsft+\             $foot_compare_dirs                   ;;""
 )

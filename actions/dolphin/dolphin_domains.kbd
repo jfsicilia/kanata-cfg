@@ -1,16 +1,16 @@
 (defvar
-;; domainE + E
-dolphin_action_domainE+E                 $dolphin_toggle_left_sidebar            
-;; domainI + I
-dolphin_action_domainI+I                    $dolphin_info
-;; domainK + K
-dolphin_action_domainK+K                  $dolphin_keymaps 
-;; domainT + T
-dolphin_action_domainT+T                    $dolphin_terminal
-;; domain, + ,
-dolphin_action_domain,+,                    $dolphin_settings 
-;; domain. + .
-dolphin_action_domain.+.                    $dolphin_tags
-;; domain/ + /
-dolphin_action_domain/+/                    $dolphin_help 
+;; domains+e + e
+dolphin_action_domains+e+e                 $dolphin_toggle_left_sidebar            
+;; domains+i + i
+dolphin_action_domains+i+i                    $dolphin_info
+;; domains+k + k
+dolphin_action_domains+k+k                  $dolphin_keymaps 
+;; domains+t + t
+dolphin_action_domains+t+t                    $dolphin_terminal
+;; domains+, + ,
+dolphin_action_domains+,+,                    $dolphin_settings 
+;; domains+. + .
+dolphin_action_domains+.+.                    $dolphin_tags
+;; domains+/ + /
+dolphin_action_domains+/+/                    $dolphin_help 
 )

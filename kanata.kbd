@@ -82,7 +82,6 @@
 
 ;; Global Actions =======================================================
 (include actions/actions_apps.kbd)
-(include actions/actions_bookmarks.kbd)
 (include actions/actions_keyb.kbd)
 (include actions/actions_opts.kbd)
 (include actions/actions_windows.kbd)
@@ -97,6 +96,7 @@
 (include actions/actions_lmet.iface.kbd)
 (include actions/actions_!lmet|replace.iface.kbd)
 (include actions/actions_sft.iface.kbd)
+(include actions/actions_bookmarks.iface.kbd)
 (include actions/actions_groups.iface.kbd)
 (include actions/actions_domains.iface.kbd)
 (include actions/actions_omni.iface.kbd)
@@ -143,6 +143,7 @@
 (include actions/dolphin/dolphin_!lalt|search.kbd)
 (include actions/dolphin/dolphin_!lctl|select.kbd)
 (include actions/dolphin/dolphin_!lmet|replace.kbd)
+(include actions/dolphin/dolphin_bookmarks.kbd)
 (include actions/dolphin/dolphin_defs.kbd)
 (include actions/dolphin/dolphin_domains.kbd)
 (include actions/dolphin/dolphin_omni.kbd)
@@ -158,6 +159,7 @@
 (include actions/firefox/firefox_panes.kbd)
 (include actions/firefox/firefox_tabs.kbd)
 (include actions/foot/foot_!lctl|select.kbd)
+(include actions/foot/foot_bookmarks.kbd)
 (include actions/foot/foot_defs.kbd)
 (include actions/foot/foot_domains.kbd)
 (include actions/foot/foot_omni.59.kbd)

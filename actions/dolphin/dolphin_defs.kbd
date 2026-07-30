@@ -1,6 +1,3 @@
-(deftemplate dolphin_goto_folder (folder)
-  (macro C-l $folder ent)
-)
 (defvirtualkeys
   ;; This virtual keys allow to iterate over the sort options of dolphin.
   vk_dolphin_sort1  XX
@@ -73,6 +70,7 @@
   dolphin_paste                          C-v
   dolphin_close_tab                      C-w
   dolphin_cut                            C-x
+  dolphin_delete                         (macro del 50 spc 50 ent 50 esc)
   dolphin_filter                         C-i
   dolphin_undo                           C-z
   dolphin_redo                           C-S-z
@@ -114,4 +112,24 @@
   dolphin_open_with_nvim                 (macro C-c 80 (cmd foot --maximized bash -c "nvim $(wl-paste|tr -d '\r'|tr '\n' ' '|sed 's|file://||g')"))
   dolphin_search                         C-f
   dolphin_omni_search                    C-S-f
+
+  dolphin_goto_trash        (macro C-l $folder_trash ent)
+  dolphin_goto_bookcase     (macro C-l $folder_bookcase ent)
+  dolphin_goto_scans        (macro C-l $folder_scans ent)
+  dolphin_goto_downloads    (macro C-l $folder_downloads ent)
+  dolphin_goto_enaire       (macro C-l $folder_enaire ent)
+  dolphin_goto_photo        (macro C-l $folder_photo ent)
+  dolphin_goto_guacimara    (macro C-l $folder_guacimara ent)
+  dolphin_goto_home         (macro C-l $folder_home ent)
+  dolphin_goto_inbox        (macro C-l $folder_inbox ent)
+  dolphin_goto_projects     (macro C-l $folder_projects ent)
+  dolphin_goto_kanata       (macro C-l $folder_kanata ent)
+  dolphin_goto_main         (macro C-l $folder_main ent)
+  dolphin_goto_screenshots  (macro C-l $folder_screenshots ent)
+  dolphin_goto_personal     (macro C-l $folder_personal ent)
+  dolphin_goto_resources    (macro C-l $folder_resources ent)
+  dolphin_goto_settings     (macro C-l $folder_settings ent)
+  dolphin_goto_tmp          (macro C-l $folder_tmp ent)
+  dolphin_goto_dev          (macro C-l $folder_dev ent)
+  dolphin_goto_workarea     (macro C-l $folder_workarea ent)
 )

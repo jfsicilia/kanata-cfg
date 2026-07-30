@@ -20,9 +20,9 @@
   cut             C-x
   ;; Other operations
   window_close    $windows_close
-  settings        $action_domain,+,
-  tags            $action_domain.+.
-  help            $action_domain/+/
+  settings        $action_domains+,+,
+  tags            $action_domains+.+.
+  help            $action_domains+/+/
   panes_toggle    $action_panes+toggle
   tabs_toggle     $action_tabs+toggle
   apps_toggle     $windows_toggle 

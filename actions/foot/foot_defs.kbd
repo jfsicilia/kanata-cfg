@@ -1,7 +1,3 @@
-(deftemplate foot_goto_folder (folder)
-  (macro esc d d i c d spc $folder ent)
-)
-
 (defvar
   foot_pgup                S-pgup
   foot_copy                C-S-c
@@ -16,4 +12,24 @@
   foot_git_status          (macro esc d d i g i t spc s t a t u s ent)
   foot_force_new_line      (macro \ ent)
   foot_select              C-f
+
+  foot_goto_trash        (macro esc d d i c d spc $folder_trash ent)
+  foot_goto_bookcase     (macro esc d d i c d spc $folder_bookcase ent)
+  foot_goto_scans        (macro esc d d i c d spc $folder_scans ent)
+  foot_goto_downloads    (macro esc d d i c d spc $folder_downloads ent)
+  foot_goto_enaire       (macro esc d d i c d spc $folder_enaire ent)
+  foot_goto_photo        (macro esc d d i c d spc $folder_photo ent)
+  foot_goto_guacimara    (macro esc d d i c d spc $folder_guacimara ent)
+  foot_goto_home         (macro esc d d i c d spc $folder_home ent)
+  foot_goto_inbox        (macro esc d d i c d spc $folder_inbox ent)
+  foot_goto_projects     (macro esc d d i c d spc $folder_projects ent)
+  foot_goto_kanata       (macro esc d d i c d spc $folder_kanata ent)
+  foot_goto_main         (macro esc d d i c d spc $folder_main ent)
+  foot_goto_screenshots  (macro esc d d i c d spc $folder_screenshots ent)
+  foot_goto_personal     (macro esc d d i c d spc $folder_personal ent)
+  foot_goto_resources    (macro esc d d i c d spc $folder_resources ent)
+  foot_goto_settings     (macro esc d d i c d spc $folder_settings ent)
+  foot_goto_tmp          (macro esc d d i c d spc $folder_tmp ent)
+  foot_goto_dev          (macro esc d d i c d spc $folder_dev ent)
+  foot_goto_workarea     (macro esc d d i c d spc $folder_workarea ent)
 )

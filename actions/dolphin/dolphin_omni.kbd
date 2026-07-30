@@ -5,7 +5,7 @@ dolphin_action_omni+spc        $dolphin_select
 ;; omni + ent
 dolphin_action_omni+ent        $dolphin_preview
 ;; omni + bcsp
-dolphin_action_omni+bcsp       (macro del 50 spc 50 ent 50 esc)
+dolphin_action_omni+bcsp       $dolphin_delete 
 ;; omni + a
 dolphin_action_omni+a          $dolphin_select_all
 ;; omni + lsft + a

@@ -1,0 +1,251 @@
+(defvar
+  ;; == bookmarks =========================================================
+  ;; bookmarks + spc
+  action_bookmarks+spc (t! unmod_all (switch ;;@iface@ 
+    () XX break
+  )) 
+  action_bookmarks+a (t! unmod_all (switch  ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+b (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+c (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+d (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+e (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+f (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+g (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+h (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+i (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+j (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+k (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+l (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'l' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+m (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+n (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'n' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+o (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+p (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+q (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'q' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+r (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+s (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+t (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+u (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'u' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+v (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+w (t! unmod_all (switch ;;@iface@
+    () XX break
+  )) 
+  action_bookmarks+x (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'x' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+y (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'y' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+z (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'z' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+- (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'-' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+a+lsft (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'A' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+b+lsft (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'B' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+c+lsft (t! unmod_all (switch ;;@iface@
+    () (push-msg "NOTIFY:'C' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+d+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'D' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+e+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'E' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+f+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'F' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+g+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'G' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+h+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'H' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+i+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'I' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+j+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'J' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+k+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'K' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+l+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'L' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+m+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'M' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+n+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'N' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+o+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'O' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+p+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'P' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+q+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'Q' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+r+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'R' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+s+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'S' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+t+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'T' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+u+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'U' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+v+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'V' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+w+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'W' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+x+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'X' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+y+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'Y' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+z+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'Z' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+-+lsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'-' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+a+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'B' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+b+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'B' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+c+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'C' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+d+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'D' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+e+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'E' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+f+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'F' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+g+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'G' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+h+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'H' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+i+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'I' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+j+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'J' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+k+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'K' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+l+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'L' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+m+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'M' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+n+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'N' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+o+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'O' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+p+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'P' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+q+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'Q' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+r+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'R' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+s+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'S' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+t+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'T' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+u+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'U' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+v+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'V' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+w+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'W' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+x+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'X' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+y+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'Y' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+z+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'Z' bookmark not yet implemented") break
+  )) 
+  action_bookmarks+-+rsft (t! unmod_all (switch ;;@iface@ 
+    () (push-msg "NOTIFY:'-' bookmark not yet implemented") break
+  )) 
+
+)

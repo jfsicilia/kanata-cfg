@@ -1,6 +1,6 @@
 (defvar
 ;; groups + spc
-nvim_action_groups+spc                  $nvim_action_tabs                  
+nvim_action_groups+spc           $nvim_action_tabs+spc
 ;; groups + l | groups + right
 nvim_action_groups+l             $nvim_action_tabs+l             
 ;; groups + h | groups + left

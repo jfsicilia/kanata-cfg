@@ -1,6 +1,6 @@
 (defvar
-;; domainK + K
-firefox_action_domainK+K                   $firefox_keybindings
-;; domain, + ,
-firefox_action_domain,+,                   $firefox_settings
+;; domains+k + k
+firefox_action_domains+k+k                   $firefox_keybindings
+;; domains+, + ,
+firefox_action_domains+,+,                   $firefox_settings
 )
