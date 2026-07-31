@@ -1,8 +1,0 @@
-# Omni+lsft - dolphin (actions/dolphin/dolphin_omni.kbd)
-**omni + lsft + a** -- Invert Selection (C-S-a)
-**omni + lsft + c** -- Copy Path (C-A-c)
-**omni + lsft + e** -- Compress (S-f10 [10ms] [up] [up] [up] [right] [down] [down] [ent])
-**omni + lsft + n** -- New Folder (C-S-n)
-**omni + lsft + s** -- Sort Order Toggle
-**omni + lsft + t** -- Undo Tab (C-S-t)
-**omni + lsft + z** -- Redo (C-S-z)

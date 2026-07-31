@@ -1,0 +1,3 @@
+(defvar
+  firefox_action_bookmarks+spc   $firefox_bookmarks
+)

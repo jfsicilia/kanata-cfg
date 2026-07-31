@@ -1,0 +1,3 @@
+(defvar
+  chrome_action_bookmarks+spc   $chrome_bookmarks
+)

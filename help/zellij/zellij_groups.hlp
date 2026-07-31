@@ -1,5 +1,0 @@
-# Groups - zellij (actions/zellij/zellij_groups.29.kbd)
-**groups + spc**    -- Tabs Spc
-**groups + l**      -- Tabs Next (C-g tl [ret])
-**groups + h**      -- Tabs Prev (C-g th [ret])
-**groups + toggle** -- Tabs Toggle (C-g t [tab] [ret])

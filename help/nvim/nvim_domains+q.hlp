@@ -1,2 +1,0 @@
-# Quickfix - nvim (actions/nvim/nvim_domains.kbd)
-**spc + q + q** -- Quickfix ([esc] :Telescope diagnostics [ret])

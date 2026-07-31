@@ -1,4 +1,0 @@
-# History - nvim (actions/nvim/nvim_domains.kbd)
-**spc + y + y**      -- History ([esc] :Telescope oldfiles [ret])
-**spc + y + ;**      -- History Commands ([esc] :Telescope command_history [ret])
-**spc + y + search** -- History Search ([esc] :Telescope search_history [ret])

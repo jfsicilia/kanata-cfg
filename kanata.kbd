@@ -130,6 +130,7 @@
 
 ;; Apps' Actions ========================================================
 (include actions/chrome/chrome_!lctl|select.kbd)
+(include actions/chrome/chrome_bookmarks.kbd)
 (include actions/chrome/chrome_defs.kbd)
 (include actions/chrome/chrome_domains.kbd)
 (include actions/chrome/chrome_groups.4.kbd)
@@ -151,6 +152,7 @@
 (include actions/dolphin/dolphin_panes.kbd)
 (include actions/dolphin/dolphin_tabs.kbd)
 (include actions/firefox/firefox_!lctl|select.kbd)
+(include actions/firefox/firefox_bookmarks.kbd)
 (include actions/firefox/firefox_defs.kbd)
 (include actions/firefox/firefox_domains.kbd)
 (include actions/firefox/firefox_groups.4.kbd)

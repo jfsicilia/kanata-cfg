@@ -2,6 +2,8 @@
   ;; == bookmarks =========================================================
   ;; bookmarks + spc
   action_bookmarks+spc (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_chrome)) $chrome_action_bookmarks+spc break
+    ((input virtual vk_firefox)) $firefox_action_bookmarks+spc break
     () XX break
   )) 
   action_bookmarks+a (t! unmod_all (switch  ;;@iface@

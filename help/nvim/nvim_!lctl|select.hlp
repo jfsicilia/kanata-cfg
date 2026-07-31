@@ -1,5 +1,0 @@
-# Physical_mods - nvim (actions/nvim/nvim_!lalt|search.kbd)
-**!lctl|select + spc** -- Select ([esc] :Telescope find_files [ret])
-**!lctl|select + a**   -- Select All ([esc] ggVG)
-**lctl + tab**         -- Walk Through Apps
-**lctl + `**           -- Walk Through Same App

@@ -1,2 +1,0 @@
-# Compare - foot (actions/foot/foot_domains.kbd)
-**spc + \ + \** -- Compare ([esc] ddinvim -d <file1> <file2> [esc] vbbbbb)

@@ -1,2 +1,0 @@
-# Actions - nvim (actions/nvim/nvim_domains.kbd)
-**spc + a + a** -- Autocommands ([esc] :Telescope autocommands [ret])

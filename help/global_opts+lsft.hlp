@@ -1,4 +1,0 @@
-# Opts+lsft (actions/actions_opts.kbd)
-**opts + lsft + q** -- Restart System (systemctl reboot)
-**opts + lsft + p** -- Print Window (S-prnt)
-**opts + lsft + k** -- Sync And Reload Kanata (kanata_sync.sh; lrld)

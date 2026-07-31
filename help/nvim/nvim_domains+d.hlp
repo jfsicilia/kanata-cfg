@@ -1,3 +1,0 @@
-# Definitions - nvim (actions/nvim/nvim_domains.kbd)
-**spc + d + d** -- Definitions ([esc] :Telescope lsp_definitions [ret])
-**spc + d + s** -- Source ([esc] :Telescope lsp_implementations [ret])

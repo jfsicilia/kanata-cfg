@@ -1,6 +1,0 @@
-# Omni+lsft - foot (actions/foot/foot_omni.59.kbd)
-**omni + lsft + c** -- Copy Path (C-S-c)
-**omni + lsft + e** -- Compress ([esc] dditar -czf <zipfile> <files and/or folders> [esc] vF<;)
-**omni + lsft + t** -- Tab Undo Close (C-S-t)
-**omni + lsft + z** -- Redo (C-S-z)
-**omni + lsft + \** -- Compare Dirs ([esc] ddinvim -c "DirDiff <dir1> <dir2>" [esc] hvF<;)

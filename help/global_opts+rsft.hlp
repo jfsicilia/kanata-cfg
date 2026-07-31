@@ -1,3 +1,0 @@
-# Opts+rsft (actions/actions_opts.kbd)
-**opts + rsft + k** -- Restart Kwanata (RA-spc [300ms] systemctl --user restart kwanata [300ms] [ent])
-**opts + rsft + q** -- Shutdown System (systemctl shutdown)

@@ -1,6 +1,0 @@
-# Panes - zellij (actions/zellij/zellij_panes.kbd)
-**panes + ent** -- Pane Maximize (C-g pf [ret])
-**panes + h**   -- Pane Left (C-g ph [ret])
-**panes + l**   -- Pane Right (C-g pl [ret])
-**panes + up**  -- Pane Above (C-g pk [ret])
-**panes + j**   -- Pane Below (C-g pj [ret])

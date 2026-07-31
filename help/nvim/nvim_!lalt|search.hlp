@@ -1,3 +1,0 @@
-# Physical_mods - nvim (actions/nvim/nvim_!lalt|search.kbd)
-**!lalt|search + spc**        -- Search In Buffer ([esc] :Telescope current_buffer_fuzzy_find [ret])
-**!lalt|search + lsft + spc** -- Search In Workspace ([esc] :Telescope live_grep [ret])

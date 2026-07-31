@@ -1,2 +1,0 @@
-# !lalt|search+lsft - nvim (actions/nvim/nvim_!lalt|search.kbd)
-**!lalt|search + lsft + spc** -- Search In Workspace ([esc] :Telescope live_grep [ret])

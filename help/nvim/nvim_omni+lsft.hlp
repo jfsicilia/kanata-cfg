@@ -1,6 +1,0 @@
-# Omni+lsft - nvim (actions/nvim/nvim_omni.kbd)
-**omni + lsft + c** -- Copy Path (C-S-c)
-**omni + lsft + n** -- New Folder ([esc] :!mkdir -p )
-**omni + lsft + s** -- Sort Reverse (:sort! [ent])
-**omni + lsft + t** -- Undo Tab
-**omni + lsft + z** -- Redo (C-r)
