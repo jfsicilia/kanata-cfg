@@ -2,10 +2,10 @@
 ;; ===========================================================
 ;;
 ;; This file defines:
-;;   - Virtual keys for fast-typing detection, language alternatives, and alt+tab
-;;     emulation
 ;;   - Variable mappings for all physical keys
 ;;   - The default layer with tap-hold behaviors
+;;   - Virtual keys for fast-typing detection, language alternatives, and alt+tab
+;;     emulation
 ;;
 ;; Fast-typing configuration from:
 ;; https://github.com/jtroo/kanata/discussions/1656#discussioncomment-14382030
@@ -68,7 +68,7 @@
 ;; The homerow mods. a/s/d/f and their mirrors j/k/l/; are letters when tapped
 ;; and real modifiers when held, so they double as mods without costing a key.
 ;;
-;; caps    → tap: esc           hold: omni_layer (main editing/file operations)
+;; caps    → tap: esc           hold: omni_layer (fast access editing/file operations)
 ;; a / ;   → tap: a / ;         hold: lmet_layer
 ;; s / l   → tap: s / l         hold: lalt_layer
 ;; d       → tap: d             hold: lsft_layer
@@ -95,21 +95,22 @@
 ;; !lalt   → tap: 2x pane toggle       hold: search  + !lalt (physical lmet)
 ;; !lctl   → tap: 2x tab toggle        hold: select  + !lctl (physical lalt)
 ;; spc     → tap: space                hold: domains_layer
-;; ralt    → tap: 2x app toggle        hold: apps_layer
+;; ralt    → tap: 2x windows toggle    hold: apps_layer
 ;; prnt    → tap: 2x session toggle    hold: bookmarks_layer
+;; copilot → tap: 2x session toggle    hold: bookmarks_layer (same as prnt; physical F23)
 ;; rctl    → tap: 2x groups toggle     hold: opts_layer
 ;; esc     → tap: esc                  hold: opts_layer
 ;;
 ;; STACKED MODS: !lctl / !lalt / !lmet are two things at once
 ;; ----------------------------------------------------------
-;; Holding one of the physical modifiers pushes three layers in a single go
+;; Holding one of the physical modifiers pushes two layers in a single go
 ;; (see layers_toggle/toggles_!lctl|select.kbd and its siblings):
 ;;
-;;   hold !lctl  →  select_layer + lctl_layer + !lctl_layer
+;;   hold !lctl  →  lctl_layer + !lctl|select_layer
 ;;
 ;; so while it is held you get both things at the same time:
-;;   - the modifier itself, i.e. every !lctl + <key> binding, and
-;;   - a mod of its own: !lctl + spc runs "select".
+;;   - !lctl|select+ behaviour if combo is defined. If not, it tries to find
+;;     if the combo is defined  lctl
 ;;
 ;;   !lctl + spc → select   (seek & select: files, buffers, …)
 ;;   !lalt + spc → search
@@ -126,9 +127,6 @@
 ;; domains_layer, a second level where each key opens its own sub-domain —
 ;; spc+t terminal, spc+g git, spc+q quickfix, spc+r references, spc+s symbols,
 ;; spc+u UI, … Every other thing you hold is a mod, not a domain.
-;;
-;; Each sub-domain also pops the help overlay (vk_help_open), so the available
-;; combos are listed on screen while you hold the keys.
 ;;
 ;; SPANISH CHARACTERS (vk_alt_chars)
 ;; ----------------------------------

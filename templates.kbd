@@ -3,9 +3,10 @@
 ;; == Fasttyping ==============================================
 
 ;; Fast-typing aware typing action.
-;; Temporarily activates vk_fast_typing virtual key for 55ms when typing
-;; without modifiers pressed. This signals other templates to prefer letter
-;; output over modifier activation during fast typing sequences.
+;; Temporarily activates vk_fast_typing virtual key for $fast_type_time
+;; milliseconds when typing without modifiers pressed. This signals other
+;; templates to prefer letter output over modifier activation during fast
+;; typing sequences.
 ;;
 ;; Parameters:
 ;;   action - The typing action to perform (e.g., a letter key)
@@ -24,7 +25,8 @@
 
 ;; Fast-typing aware tap-hold with default timings.
 ;; Similar to homerowmod but uses global $retap_time and $hold_time variables.
-;; Prefers tap action during fast typing sequences.
+;; Prefers tap action during fast typing sequences. On hold, also toggles
+;; vk_help_open/vk_help_close so the help overlay shows while held.
 ;;
 ;; Parameters:
 ;;   tap  - Action to perform on tap (e.g., a letter key)
@@ -38,9 +40,12 @@
 )
 
 ;; Tap-hold with default global timings.
-;; Convenient shorthand for tap-hold-press using $retap_time and $hold_time
-;; variables defined in setup. Uses press behavior (hold triggers on key press
-;; rather than release).
+;; Shorthand for tap-hold-press-timeout using $retap_time and $hold_time.
+;; Uses press behavior (hold triggers as soon as another key is pressed,
+;; rather than waiting for release). If instead the key is simply held past
+;; $hold_time with no other key pressed, the timeout action fires: it runs
+;; $hold and also toggles vk_help_open/vk_help_close so the help overlay
+;; shows while the layer is held.
 ;;
 ;; Parameters:
 ;;   tap  - Action to perform on tap (e.g., a key or macro)
@@ -116,6 +121,18 @@
   )
 )
 
+;; Alternative "numpad" keyboard layout.
+;; Remaps a physical key to the character it produces on a numpad-oriented
+;; layout: the right-hand keys u/i/o, j/k/l, m/,/. plus n reproduce the
+;; numpad digit grid (7 8 9 / 4 5 6 / 1 2 3 / 0). The remaining letters and
+;; the number row instead give quick access to shifted symbols (brackets,
+;; quotes, math operators, punctuation), since raw digits are already
+;; covered by the numpad grid above.
+;; Active while vk_numpad is toggled on (see $toggle_alt_keyboard in
+;; layers_toggle/toggles_keyb.kbd); dispatched from the `char` template.
+;;
+;; Parameters:
+;;   letter - The physical key identifier (a letter, symbol, or Digit0-Digit9)
 (deftemplate numpad (letter)
   (if-equal $letter ` S-`) 
   (if-equal $letter Digit1 S-1)
@@ -167,9 +184,9 @@
 )
 
 ;; Conditional alternative character input.
-;; Uses alt_char template when vk_alt_chars virtual key is active,
-;; otherwise outputs the plain letter. Allows toggling accented character
-;; input mode on/off.
+;; Dispatches to the numpad template when vk_numpad is active, to alt_char
+;; when vk_alt_chars is active, otherwise outputs the plain letter. Allows
+;; toggling numpad mode and accented character input mode independently.
 ;;
 ;; Parameters:
 ;;   letter - The base letter key (e.g., a, e, i, o, u, n)
@@ -184,8 +201,10 @@
 ;; == Util ================================================================
 
 ;; Executes different actions based on whether lsft, rsft, or no shift is pressed.
-;; This template is no longer used - replaced by explicit layer variants
-;; (base_layer, base+lsft_layer, base+rsft_layer).
+;; Most mod layers now use explicit layer variants (base_layer, base+lsft_layer,
+;; base+rsft_layer) instead, but this is still used directly where a single key
+;; needs shift-dependent behavior without a full layer variant (see the domains
+;; layer).
 ;;
 ;; Parameters:
 ;;   action       - Action to perform when no shift is pressed
@@ -430,10 +449,13 @@
 
 ;; Internal: Map modifier connections to layer toggles (no tap action).
 ;; Creates tap-hold bindings that activate modified layer variants based on
-;; which modifiers are in the connections list. Each modifier has three variants:
+;; which modifiers are in the connections list. lctl/lalt/lmet each have three
+;; variants:
 ;; - !mod: physical modifier key (e.g., !lctl)
 ;; - <mod: left-side key modifier (e.g., f for lctl, s for lalt)
 ;; - >mod: right-side key modifier (e.g., j for lctl, l for lalt)
+;; lsft and rsft are each their own mod with only two variants: the physical
+;; key (lsft/rsft) and a single homerow key (d for lsft, k for rsft).
 ;;
 ;; This is the default version where tap does nothing (_).
 ;;
@@ -462,7 +484,7 @@
 )
 
 ;; Internal: Map modifier connections to layer toggles (with tap action).
-;; Like _default_map_layers but tap actions emit action+key combinations.
+;; Like _map_layers_no_action but tap actions emit action+key combinations.
 ;; For example, if action is "action_lctl", tapping f produces "action_lctl+f".
 ;; This allows mod layers to have both tap and hold behaviors on modifier keys.
 ;;
@@ -492,9 +514,9 @@
 )
 
 ;; Map modifier connections to layer toggles.
-;; Public dispatcher that calls either _default_map_layers (when action is "_")
-;; or _map_layers (when action is provided). Creates tap-hold bindings for
-;; modifier keys that activate modified layer variants.
+;; Public dispatcher that calls either _map_layers_no_action (when action is
+;; "_") or _map_layers_with_action (when action is provided). Creates
+;; tap-hold bindings for modifier keys that activate modified layer variants.
 ;;
 ;; Used in deflayermap definitions to automatically connect modifier keys
 ;; to their corresponding layer variants (e.g., f+hold → base+lctl_layer).
@@ -502,7 +524,7 @@
 ;; Parameters:
 ;;   action      - Tap action prefix ("_" for no tap action)
 ;;   layer       - Base layer name (e.g., "window", "omni")
-;;   connections - List of modifier connections to skip/exclude
+;;   connections - List of modifier connections to enable (e.g., ($lsft $rsft lsft rsft))
 (deftemplate map_layers (action layer connections)
   (if-equal     $action _ (t! _map_layers_no_action           $layer ($connections)))
   (if-not-equal $action _ (t! _map_layers_with_action $action $layer ($connections)))
@@ -566,7 +588,7 @@
 ) ;;""
 
 ;; Internal: Map all keys to action+key combinations.
-;; Like _default_map_keys but prefixes each key with an action name.
+;; Like _map_keys_no_action but prefixes each key with an action name.
 ;; For example, if action is "action_omni", key 'a' maps to "action_omni+a".
 ;; This allows mod layers to dispatch different actions per key.
 ;;
@@ -622,9 +644,9 @@
 ) ;;""
 
 ;; Map all alphanumeric and symbol keys.
-;; Public dispatcher that calls either _default_map_keys (when action is "_")
-;; or _map_keys (when action is provided). Creates bindings for all letters,
-;; numbers, and symbols, excluding those in the ignore list.
+;; Public dispatcher that calls either _map_keys_no_action (when action is
+;; "_") or _map_keys_with_action (when action is provided). Creates bindings
+;; for all letters, numbers, and symbols, excluding those in the ignore list.
 ;;
 ;; Used in deflayermap definitions to automatically fill in key bindings.
 ;;
@@ -638,14 +660,17 @@
 
 ;; Generate a complete mod layer with shift variants.
 ;; Creates three layer definitions in one call:
-;; 1. Base layer (mod_key_layer) - all keys + modifier connections
+;; 1. Base layer (mod_key_layer) - modifier connections + space action + omni-key hold transfer
 ;; 2. Left shift variant (mod_key+lsft_layer) - overrides space action
 ;; 3. Right shift variant (mod_key+rsft_layer) - overrides space action
 ;;
 ;; The base layer automatically:
 ;; - Maps all modifier connections using map_layers (f/j for lctl, s/l for lalt, etc.)
-;; - Maps all alphanumeric keys using map_keys
 ;; - Binds space key to spc_action (if not XX)
+;; - Transfers the mod_key "hold" behavior to the omni key, so releasing
+;;   mod_key while still holding omni keeps this layer active
+;; Alphanumeric keys are not bound here - deflayermap already leaves unlisted
+;; keys transparent, falling through to the layer below.
 ;;
 ;; The shift variants only override the space key binding to provide different
 ;; shift+space behaviors.
@@ -672,74 +697,3 @@
   )
 )
 
-
-;;(deftemplate thx (tap hold)
-;;  (if-in-list $tap (b c d f g h j k l m p q r s t v w x y z , . / ; ' \ [ ] - = ` 0 1 2 3 4 5 6 7 8 9 spc tab esc)
-;;    (switch
-;;      ((input virtual vk_fast_typing)) (t! type $tap) break
-;;      () (tap-hold $retap_time $hold_time (t! type $tap) (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
-;;    )
-;;  )
-;;  (if-in-list $tap (a e i o u n)
-;;    (switch
-;;      ((input virtual vk_fast_typing)) (t! type (t! char|alt_char $tap)) break
-;;      () (tap-hold $retap_time $hold_time (t! type (t! char|alt_char $tab)) (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
-;;    )
-;;  )
-;;  (if-not-in-list $tap (a b c d e f g h i j k l m n o p q r s t u v w x y z , . / ; ' \ [ ] - = ` 0 1 2 3 4 5 6 7 8 9 spc tab esc)
-;;    (tap-hold-press-timeout $retap_time $hold_time $tap $hold (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
-;;  )
-;;)
-;;
-
-
-;; DEPRECATED: Homerow modifier with fast-typing detection.
-;; Creates a tap-hold key that outputs a letter when tapped or a modifier when
-;; held. Intelligently detects fast typing sequences and prefers letter output
-;; to avoid accidental modifier activation during normal typing.
-;;
-;; Parameters:
-;;   timeouttap  - Milliseconds before tap action is triggered (e.g., 200)
-;;   timeouthold - Milliseconds before hold action is triggered (e.g., 200)
-;;   keytap      - Key to output on tap (e.g., a, s, d, f)
-;;   keyhold     - Action to perform on hold (e.g., lmet, lalt, lsft, lctl)
-;;(deftemplate homerowmod (timeouttap timeouthold keytap keyhold)
-;;  (switch
-;;    ((input virtual vk_fast_typing)) (t! type $keytap) break
-;;    () (tap-hold $timeouttap $timeouthold
-;;         (t! type $keytap)
-;;         $keyhold
-;;       ) break
-;;  )
-;;)
-
-;;;; Fast-typing aware tap-hold with default timings.
-;;;; Similar to homerowmod but uses global $retap_time and $hold_time variables.
-;;;; Prefers tap action during fast typing sequences.
-;;;;
-;;;; Parameters:
-;;;;   tap  - Action to perform on tap (e.g., a letter key)
-;;;;   hold - Action to perform on hold (e.g., a layer toggle or modifier)
-;;(deftemplate fast_th (tap hold)
-;;  (switch
-;;    ((input virtual vk_fast_typing)) (t! type $tap) break
-;;    () (tap-hold $retap_time $hold_time (t! type $tap) (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
-;;    ;;() (tap-hold-press-timeout $retap_time 800 (t! type $tap) $hold (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
-;;    ;;() (tap-hold-release-timeout $retap_time 800 (t! type $tap) $hold (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
-;;  )
-;;)
-;;
-;;;; Tap-hold with default global timings.
-;;;; Convenient shorthand for tap-hold-press using $retap_time and $hold_time
-;;;; variables defined in setup. Uses press behavior (hold triggers on key press
-;;;; rather than release).
-;;;;
-;;;; Parameters:
-;;;;   tap  - Action to perform on tap (e.g., a key or macro)
-;;;;   hold - Action to perform on hold (e.g., layer toggle or modifier)
-;;(deftemplate th (tap hold)
-;;  (tap-hold-press-timeout $retap_time $hold_time $tap $hold (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
-;;;;  (tap-hold-press $retap_time $hold_time $tap $hold)
-;;;;  (tap-hold $retap_time $hold_time $tap (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
-;;;;  (tap-hold-press $retap_time $hold_time $tap (multi $hold (on-press press-vkey vk_help_open) (on-release tap-vkey vk_help_close)))
-;;)

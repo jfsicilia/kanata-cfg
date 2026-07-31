@@ -15,7 +15,6 @@
   tab $action_tabs+h
 )
 
-;; "" LMET+RSFT_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 (deflayermap (lmet+rsft_layer)
   (t! map_layers "$action_lmet+rsft" "lmet+rsft" ($<lctl $>lctl $<lalt $>lalt $!lctl $!lalt))
   (t! map_keys   "$action_lmet+rsft"             ($<lctl $>lctl $<lalt $>lalt tab))
