@@ -150,8 +150,8 @@
   vk_fast_typing  XX ;; Used to allow fast typing without triggering modifier
                      ;; combos with homerowmod.
 
-  vk_help_open  (push-msg "OPEN_HELP")  ;; Send message to open help.
-  vk_help_close (push-msg "CLOSE_HELP") ;; Send message to close help.
+  vk_help_open  $OPEN_HELP  ;; Send message to open help.
+  vk_help_close $CLOSE_HELP ;; Send message to close help.
 
   ;; Domains (see spc+letter combos)
   vk_domains+a (layer-while-held domains+a_layer) 
@@ -256,12 +256,16 @@
     (on-release release-vkey vk_domains+omni)
 ) ;;""
 
+
 ;; Variables ===============================================================
 (defvar
   ;; Time config
   retap_time  200
-  hold_time 150
-  fast_type_time 70
+  hold_time 160
+  fast_type_time 55
+
+  OPEN_HELP  (push-msg "OPEN_HELP")  ;; Send message to open help.
+  CLOSE_HELP (push-msg "CLOSE_HELP") ;; Send message to close help.
 
   ;; Number row keys.
       `|mod`                `           ;; Tap: `,   

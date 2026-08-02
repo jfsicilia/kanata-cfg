@@ -34,12 +34,16 @@
 (deftemplate fast_th (tap hold)
   (switch
     ((input virtual vk_fast_typing)) (t! type $tap) break
+    ;; NOTE: (on-press tap-vkey vk_help_open) was substited by $OPEN_HELP.
+    ;; Don't know the reason but now the keyboard is more usable. Must be 
+    ;; related with internal timings.
     () (tap-hold $retap_time $hold_time (t! type $tap) 
-      (multi $hold (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close))) break
+         (multi $hold $OPEN_HELP (on-release tap-vkey vk_help_close))) break
   )
 )
 
-;; Tap-hold with default global timings.
+
+;; Tap-hold with default global timings. 
 ;; Shorthand for tap-hold-press-timeout using $retap_time and $hold_time.
 ;; Uses press behavior (hold triggers as soon as another key is pressed,
 ;; rather than waiting for release). If instead the key is simply held past
@@ -52,7 +56,10 @@
 ;;   hold - Action to perform on hold (e.g., layer toggle or modifier)
 (deftemplate th (tap hold)
   (tap-hold-press-timeout $retap_time $hold_time $tap $hold 
-    (multi (on-press tap-vkey vk_help_open) (on-release tap-vkey vk_help_close) $hold))
+    ;; NOTE: (on-press tap-vkey vk_help_open) was substited by $OPEN_HELP.
+    ;; Don't know the reason but now the keyboard is more usable. Must be 
+    ;; related with internal timings.
+    (multi $OPEN_HELP (on-release tap-vkey vk_help_close) $hold))
 )
 
 ;; == Spanish letters templates ============================================
