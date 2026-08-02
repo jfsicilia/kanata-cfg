@@ -150,7 +150,7 @@
   vk_fast_typing  XX ;; Used to allow fast typing without triggering modifier
                      ;; combos with homerowmod.
 
-  vk_help_open  $OPEN_HELP  ;; Send message to open help.
+  ;;vk_help_open  $OPEN_HELP  ;; Send message to open help.
   vk_help_close $CLOSE_HELP ;; Send message to close help.
 
   ;; Domains (see spc+letter combos)
