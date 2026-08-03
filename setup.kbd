@@ -477,7 +477,7 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
                      
   ;; Lower row keys (z, x, c, v, b, n, m, work as window, workspace, pane, tab, groups and session.
   lsft                     (t!      th (t! 2x $action_tabs+h)                    $toggle_lsft_layer)
-  $keyb                    (t!      th $toggle_alt_chars                         $toggle_alt_chars_layer)
+  $keyb                    (t!      th $toggle_alt_chars                         $toggle_keyb_layer)
       $z|workspaces        (t! fast_th (t! char z)                               $toggle_workspaces_layer)
       $x|groups            (t! fast_th (t! char x)                               $toggle_groups_layer)
       $c|panes             (t! fast_th (t! char c)                               $toggle_panes_layer)

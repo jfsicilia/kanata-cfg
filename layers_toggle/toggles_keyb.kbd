@@ -10,5 +10,5 @@
                              ()                          (push-msg "NOTIFY:Numpad keyboard") break
                            ))
 
-  toggle_alt_chars_layer        (t! toggle_layer alt_chars_layer)
+  toggle_keyb_layer        (t! toggle_layer keyb_layer)
 )

@@ -1,7 +1,26 @@
 (defvar
+
+  action_toggle_alt_keyboard        (t! toggle_layer keyb_layer)
+)
+(defvar
   ;; == SFT actions ==========================================================
-  action_sft+ent (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_foot)) $foot_action_sft+ent break
+  action_lsft+ent (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_foot)) $foot_action_lsft+ent break
     () S-ent break
+  ))
+  action_rsft+ent (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_foot)) $foot_action_rsft+ent break
+    () S-ent break
+  ))
+
+  action_lsft+rsft  $action_tabs+l 
+
+  action_rsft+lsft  $action_tabs+h 
+
+  action_lsft+keyb (t! unmod_all (switch
+    () $action_toggle_alt_keyboard        break
+  ))
+  action_rsft+keyb (t! unmod_all (switch
+    () $action_toggle_alt_keyboard        break
   ))
 )

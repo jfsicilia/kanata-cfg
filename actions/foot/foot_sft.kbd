@@ -1,4 +1,5 @@
 (defvar
 ;; == SFT actions ==========================================================
-foot_action_sft+ent                 $foot_force_new_line
+foot_action_lsft+ent                 $foot_force_new_line
+foot_action_rsft+ent                 $foot_force_new_line
 )

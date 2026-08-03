@@ -1,10 +1,10 @@
 ;; "" LSFT_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 (deflayermap (lsft_layer)
   ;; Pressing lsft+rsft (in that order) issues tab_next action.
-  rsft (multi (release-key lsft) $action_tabs+l)
+  rsft              $action_lsft+rsft
 
-  ent $action_sft+ent
-  $keyb             $toggle_alt_keyboard       
+  ent               $action_lsft+ent
+  $keyb             $action_lsft+keyb
 
   $apps             (t! th _ $toggle_apps+lsft_layer)
   $open             (t! th _ $toggle_open+lsft_layer)
@@ -27,10 +27,10 @@
 ;; "" RSFT_LAYER """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 (deflayermap (rsft_layer)
   ;; Pressing rsft+lsft (in that order) issues tab_prev combo.
-  lsft (multi (release-key rsft) $action_tabs+h)
+  lsft              $action_rsft+lsft
 
-  ent $action_sft+ent
-  $keyb             $toggle_alt_keyboard       
+  ent               $action_rsft+ent
+  $keyb             $action_rsft+keyb 
 
   $apps             (t! th _ $toggle_apps+rsft_layer)
   $open             (t! th _ $toggle_open+rsft_layer)
