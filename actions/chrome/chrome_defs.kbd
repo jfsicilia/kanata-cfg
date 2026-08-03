@@ -23,6 +23,7 @@ chrome_tabs_goto_9         C-9
 chrome_panes_vsplit        A-S-n
 chrome_select              C-S-a
 chrome_bookmarks           A-S-h
+chrome_search              C-f
 
 ;; omni
 chrome_go                  C-l

@@ -3,6 +3,7 @@
 
   ;; !lalt|search + spc 
   action_!lalt|search+spc (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_chrome)) $chrome_action_!lalt|search+spc break
     ((input virtual vk_zapzap)) $zapzap_action_!lalt|search+spc break
     ((input virtual vk_obsidian)) $obsidian_action_!lalt|search+spc break
     ((input virtual vk_dolphin)) $dolphin_action_!lalt|search+spc break

@@ -1,0 +1,5 @@
+(defvar
+;; == search ============================================================
+;; search + spc
+chrome_action_!lalt|search+spc        $chrome_search
+)

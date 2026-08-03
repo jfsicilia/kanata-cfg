@@ -129,6 +129,7 @@
 )
 
 ;; Apps' Actions ========================================================
+(include actions/chrome/chrome_!lalt|search.kbd)
 (include actions/chrome/chrome_!lctl|select.kbd)
 (include actions/chrome/chrome_bookmarks.kbd)
 (include actions/chrome/chrome_defs.kbd)
