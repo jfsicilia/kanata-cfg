@@ -1,5 +1,15 @@
 (defvar
   show_emojis  M-.
+
+  toggle_alt_chars         (multi (on-press toggle-virtualkey vk_alt_chars) (switch
+                             ((input virtual vk_alt_chars)) (push-msg "NOTIFY:US keyboard")  break
+                             ()                             (push-msg "NOTIFY:ESP keyboard") break
+                           ))
+
+  toggle_alt_keyboard      (multi (on-press toggle-virtualkey vk_numpad) (switch
+                             ((input virtual vk_numpad)) (push-msg "NOTIFY:Normal keyboard") break
+                             ()                          (push-msg "NOTIFY:Numpad keyboard") break
+                           ))
 )
 
 (defvar

@@ -14,14 +14,3 @@
   spc $action_keyb+spc
 )
 
-;;(deflayermap (keyb+lsft_layer)
-;;  e (t! euro)
-;;  u (t! dieresis u)
-;;  o (t! dieresis o)
-;;)
-;;
-;;(deflayermap (keyb+rsft_layer)
-;;  e (t! euro)
-;;  u (t! dieresis u)
-;;  o (t! dieresis o)
-;;)

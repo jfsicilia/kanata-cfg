@@ -234,6 +234,9 @@
 (deftemplate 2x (action)
   (tap-dance-eager 300 (XX $action))
 )
+(deftemplate 1x|2x (1x_action 2x_action)
+  (tap-dance-eager 300 ($1x_action $2x_action))
+)
 
 ;; Triple-tap detector.
 ;; Executes action only when key is pressed three times within 400ms.

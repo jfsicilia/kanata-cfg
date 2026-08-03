@@ -1,0 +1,8 @@
+(defvar
+  OPEN_HELP_HELP        (push-msg "OPEN_HELP:help")
+)
+
+
+(defvar
+  toggle_help_layer     (multi $OPEN_HELP_HELP (layer-switch help_layer))   
+)

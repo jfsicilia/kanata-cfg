@@ -1,6 +1,5 @@
 (defvar
-
-  action_toggle_alt_keyboard        (t! toggle_layer keyb_layer)
+  action_toggle_alt_keyboard        $toggle_alt_keyboard
 )
 (defvar
   ;; == SFT actions ==========================================================
