@@ -25,8 +25,7 @@
 
 ;; Fast-typing aware tap-hold with default timings.
 ;; Similar to homerowmod but uses global $retap_time and $hold_time variables.
-;; Prefers tap action during fast typing sequences. On hold, also toggles
-;; vk_help_open/vk_help_close so the help overlay shows while held.
+;; Prefers tap action during fast typing sequences. 
 ;;
 ;; Parameters:
 ;;   tap  - Action to perform on tap (e.g., a letter key)
@@ -34,11 +33,11 @@
 (deftemplate fast_th (tap hold)
   (switch
     ((input virtual vk_fast_typing)) (t! type $tap) break
-    ;; NOTE: (on-press tap-vkey vk_help_open) was substited by $OPEN_HELP.
+    ;; NOTE: (on-press tap-vkey vk_help_open) was substited by $POPUP_HELP.
     ;; Don't know the reason but now the keyboard is more usable. Must be 
     ;; related with internal timings.
     () (tap-hold $retap_time $hold_time (t! type $tap) 
-         (multi $hold $OPEN_HELP (on-release tap-vkey vk_help_close))) break
+         (multi $hold $POPUP_HELP)) break
   )
 )
 
@@ -48,18 +47,17 @@
 ;; Uses press behavior (hold triggers as soon as another key is pressed,
 ;; rather than waiting for release). If instead the key is simply held past
 ;; $hold_time with no other key pressed, the timeout action fires: it runs
-;; $hold and also toggles vk_help_open/vk_help_close so the help overlay
-;; shows while the layer is held.
+;; $hold. 
 ;;
 ;; Parameters:
 ;;   tap  - Action to perform on tap (e.g., a key or macro)
 ;;   hold - Action to perform on hold (e.g., layer toggle or modifier)
 (deftemplate th (tap hold)
   (tap-hold-press-timeout $retap_time $hold_time $tap $hold 
-    ;; NOTE: (on-press tap-vkey vk_help_open) was substited by $OPEN_HELP.
+    ;; NOTE: (on-press tap-vkey vk_help_open) was substited by $POPUP_HELP.
     ;; Don't know the reason but now the keyboard is more usable. Must be 
     ;; related with internal timings.
-    (multi $OPEN_HELP (on-release tap-vkey vk_help_close) $hold))
+    (multi $POPUP_HELP $hold))
 )
 
 ;; == Spanish letters templates ============================================
@@ -235,7 +233,7 @@
   (tap-dance-eager 300 (XX $action))
 )
 (deftemplate 1x|2x (1x_action 2x_action)
-  (tap-dance-eager 300 ($1x_action $2x_action))
+  (tap-dance 300 ($1x_action $2x_action))
 )
 
 ;; Triple-tap detector.

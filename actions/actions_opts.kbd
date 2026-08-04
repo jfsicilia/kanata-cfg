@@ -13,6 +13,7 @@
   debug_message           (push-msg "DEBUG: This is a DEBUG message to check communication")
   sleep_system            (multi (push-msg "NOTIFY: Sleeping...")         (cmd systemctl suspend))
   toggle_verbose          (multi (push-msg "NOTIFY: Toggle verbosity...") (push-msg "SET:!verbose"))
+  toggle_popup_help       (multi (push-msg "NOTIFY: Toggle popup help...") (push-msg "SET:!popup_help"))
 )
 
 (defvar
@@ -30,4 +31,5 @@
   action_opts+d         $debug_message
   action_opts+q         $sleep_system
   action_opts+v         $toggle_verbose
+  action_opts+/         $toggle_popup_help
 )

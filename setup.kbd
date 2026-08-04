@@ -150,9 +150,6 @@
   vk_fast_typing  XX ;; Used to allow fast typing without triggering modifier
                      ;; combos with homerowmod.
 
-  ;;vk_help_open  $OPEN_HELP  ;; Send message to open help.
-  vk_help_close $CLOSE_HELP ;; Send message to close help.
-
   ;; Domains (see spc+letter combos)
   vk_domains+a (layer-while-held domains+a_layer) 
   vk_domains+b (layer-while-held domains+b_layer) 
@@ -264,8 +261,7 @@
   hold_time 160
   fast_type_time 55
 
-  OPEN_HELP  (push-msg "OPEN_HELP")  ;; Send message to open help.
-  CLOSE_HELP (push-msg "CLOSE_HELP") ;; Send message to close help.
+  POPUP_HELP  (push-msg "POPUP_HELP")  ;; Send message to open help.
 
   ;; Number row keys.
       `|mod`                `           ;; Tap: `,   
@@ -464,7 +460,7 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
       $\|mod\              (t! fast_th (t! char \)                                  (layer-toggle void_layer)) 
 
   ;; Medium row keys (a, s, d, f, j, k, l, ; work as lmet, lalt, lsft/rsft and lctl)
-    $esc|omni              (t! fast_th (t! 1x|2x $action_omni $toggle_help_layer)   $toggle_omni_layer)  
+    $esc|omni              (t! fast_th $action_omni                                 $toggle_omni_layer)  
       $a|lmet              (t! fast_th (t! char a)                                  $toggle_lmet_layer)
       $s|lalt              (t! fast_th (t! char s)                                  $toggle_lalt_layer)
       $d|lsft              (t! fast_th (t! char d)                                  $toggle_lsft_layer)

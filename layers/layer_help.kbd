@@ -1,5 +1,5 @@
 (deflayermap (help_layer)
-      $esc|opts      (t! 1x|2x (push-msg "OPEN_HELP:opts") (multi $CLOSE_HELP (layer-switch default)))
+      $esc|opts      (t! 1x|2x (push-msg "OPEN_HELP:opts") (layer-switch default))
 
       $`|mod`        (push-msg "OPEN_HELP:mod`")
       $0|mod0        (push-msg "OPEN_HELP:mod0")
@@ -32,7 +32,7 @@
       $\|mod\        (push-msg "OPEN_HELP:mod\") ;;"
 
   ;; Medium row keys
-    $esc|omni        (t! 1x|2x (push-msg "OPEN_HELP:omni") (multi $CLOSE_HELP (layer-switch default)))
+    $esc|omni        (t! 1x|2x (push-msg "OPEN_HELP:omni") (layer-switch default))
       $a|lmet        (push-msg "OPEN_HELP:lmet")   
       $s|lalt        (push-msg "OPEN_HELP:lalt")
       $d|lsft        (push-msg "OPEN_HELP:lsft")
