@@ -1,0 +1,43 @@
+(defvar
+;; omni + g
+whatsapp_action_omni+g                 $whatsapp_omni_search
+;; omni + n
+whatsapp_action_omni+n                 $whatsapp_new_chat
+;; omni + lsft + n
+whatsapp_action_omni+lsft+n            $whatsapp_new_group
+;; omni + rsft + n
+whatsapp_action_omni+rsft+n            $whatsapp_new_group
+;; omni + q
+;; If not implemented, defaults to: action_windows_close
+whatsapp_action_omni+q                 $whatsapp_quit
+;; omni + 1
+;; If not implemented, defaults to: C-1
+whatsapp_action_omni+1                 $whatsapp_tabs_goto_1
+;; omni + 2
+;; If not implemented, defaults to: C-2
+whatsapp_action_omni+2                 $whatsapp_tabs_goto_2
+;; omni + 3
+;; If not implemented, defaults to: C-3
+whatsapp_action_omni+3                 $whatsapp_tabs_goto_3
+;; omni + 4
+;; If not implemented, defaults to: C-4
+whatsapp_action_omni+4                 $whatsapp_tabs_goto_4
+;; omni + 5
+;; If not implemented, defaults to: C-5
+whatsapp_action_omni+5                 $whatsapp_tabs_goto_5
+;; omni + 6
+;; If not implemented, defaults to: C-6
+whatsapp_action_omni+6                 $whatsapp_tabs_goto_6
+;; omni + 7
+;; If not implemented, defaults to: C-7
+whatsapp_action_omni+7                 $whatsapp_tabs_goto_7
+;; omni + 8
+;; If not implemented, defaults to: C-8
+whatsapp_action_omni+8                 $whatsapp_tabs_goto_8
+;; omni + 9
+;; If not implemented, defaults to: C-9
+whatsapp_action_omni+9                 $whatsapp_tabs_goto_9
+;; omni + ,
+;; If not implemented, defaults to: action_domain,+,
+whatsapp_action_omni+,                 $whatsapp_settings
+)

@@ -1,0 +1,31 @@
+(defvar
+;; == select ========================================================
+;; select + spc
+whatsapp_action_!lctl|select+spc        $whatsapp_omni_search
+;; If not implemented, defaults to: C-1
+whatsapp_action_!lctl|select+1                 $whatsapp_tabs_goto_1
+;; !lctl|select + 2
+;; If not implemented, defaults to: C-2
+whatsapp_action_!lctl|select+2                 $whatsapp_tabs_goto_2
+;; !lctl|select + 3
+;; If not implemented, defaults to: C-3
+whatsapp_action_!lctl|select+3                 $whatsapp_tabs_goto_3
+;; !lctl|select + 4
+;; If not implemented, defaults to: C-4
+whatsapp_action_!lctl|select+4                 $whatsapp_tabs_goto_4
+;; !lctl|select + 5
+;; If not implemented, defaults to: C-5
+whatsapp_action_!lctl|select+5                 $whatsapp_tabs_goto_5
+;; !lctl|select + 6
+;; If not implemented, defaults to: C-6
+whatsapp_action_!lctl|select+6                 $whatsapp_tabs_goto_6
+;; !lctl|select + 7
+;; If not implemented, defaults to: C-7
+whatsapp_action_!lctl|select+7                 $whatsapp_tabs_goto_7
+;; !lctl|select + 8
+;; If not implemented, defaults to: C-8
+whatsapp_action_!lctl|select+8                 $whatsapp_tabs_goto_8
+;; !lctl|select + 9
+;; If not implemented, defaults to: C-9
+whatsapp_action_!lctl|select+9                 $whatsapp_tabs_goto_9
+)

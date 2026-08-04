@@ -1,0 +1,36 @@
+(defvar
+;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
+;; If not implemented, defaults to: C-tab
+whatsapp_action_tabs+l            $whatsapp_tabs_next              
+;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
+;; If not implemented, defaults to: C-S-tab
+whatsapp_action_tabs+h            $whatsapp_tabs_prev             
+;; == tabs go by number ==================================================
+;; tabs + 1
+;; If not implemented, defaults to: C-1
+whatsapp_action_tabs+1            $whatsapp_tabs_goto_1
+;; tabs + 2
+;; If not implemented, defaults to: C-2
+whatsapp_action_tabs+2            $whatsapp_tabs_goto_2
+;; tabs + 3
+;; If not implemented, defaults to: C-3
+whatsapp_action_tabs+3            $whatsapp_tabs_goto_3
+;; tabs + 4
+;; If not implemented, defaults to: C-4
+whatsapp_action_tabs+4            $whatsapp_tabs_goto_4
+;; tabs + 5
+;; If not implemented, defaults to: C-5
+whatsapp_action_tabs+5            $whatsapp_tabs_goto_5
+;; tabs + 6
+;; If not implemented, defaults to: C-6
+whatsapp_action_tabs+6            $whatsapp_tabs_goto_6
+;; tabs + 7
+;; If not implemented, defaults to: C-7
+whatsapp_action_tabs+7            $whatsapp_tabs_goto_7
+;; tabs + 8
+;; If not implemented, defaults to: C-8
+whatsapp_action_tabs+8            $whatsapp_tabs_goto_8
+;; tabs + 9
+;; If not implemented, defaults to: C-9
+whatsapp_action_tabs_goto_9            $whatsapp_tabs_goto_9
+)

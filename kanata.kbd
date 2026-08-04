@@ -126,6 +126,7 @@
   vk_obsidian     XX
   vk_tmux         XX
   vk_vscode       XX
+  vk_whatsapp     XX
   vk_zapzap       XX
   vk_zellij       XX
 )
@@ -203,6 +204,12 @@
 (include actions/tmux/tmux_tabs.kbd)
 (include actions/vscode/vscode_defs.kbd)
 (include actions/vscode/vscode_omni.kbd)
+(include actions/whatsapp/whatsapp_!lalt|search.10.kbd)
+(include actions/whatsapp/whatsapp_!lctl|select.10.kbd)
+(include actions/whatsapp/whatsapp_defs.kbd)
+(include actions/whatsapp/whatsapp_domains.10.kbd)
+(include actions/whatsapp/whatsapp_omni.10.kbd)
+(include actions/whatsapp/whatsapp_tabs.10.kbd)
 (include actions/zapzap/zapzap_!lalt|search.kbd)
 (include actions/zapzap/zapzap_!lctl|select.kbd)
 (include actions/zapzap/zapzap_defs.kbd)

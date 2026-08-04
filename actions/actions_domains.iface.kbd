@@ -419,6 +419,7 @@
 
   ;; domains+, + ,
   action_domains+,+, (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_whatsapp)) $whatsapp_action_domains+,+, break
     ((input virtual vk_chrome)) $chrome_action_domains+,+, break
     ((input virtual vk_zapzap)) $zapzap_action_domains+,+, break
     ((input virtual vk_obsidian)) $obsidian_action_domains+,+, break

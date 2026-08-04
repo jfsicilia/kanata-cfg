@@ -35,6 +35,7 @@
   ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
   ;; If not implemented, defaults to: C-tab
   action_tabs+l (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+l break
     ((input virtual vk_chrome)) $chrome_action_tabs+l break
     ((input virtual vk_zapzap)) $zapzap_action_tabs+l break
     ((input virtual vk_obsidian)) $obsidian_action_tabs+l break
@@ -47,6 +48,7 @@
   ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
   ;; If not implemented, defaults to: C-S-tab
   action_tabs+h (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+h break
     ((input virtual vk_chrome)) $chrome_action_tabs+h break
     ((input virtual vk_zapzap)) $zapzap_action_tabs+h break
     ((input virtual vk_obsidian)) $obsidian_action_tabs+h break
@@ -104,6 +106,7 @@
   ;; tabs + 1 
   ;; If not implemented, defaults to: C-1
   action_tabs+1 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+1 break
     ((input virtual vk_chrome)) $chrome_action_tabs+1 break
     ((input virtual vk_zapzap)) $zapzap_action_tabs+1 break
     ((input virtual vk_obsidian)) $obsidian_action_tabs+1 break
@@ -116,6 +119,7 @@
   ;; tabs + 2 
   ;; If not implemented, defaults to: C-2
   action_tabs+2 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+2 break
     ((input virtual vk_chrome)) $chrome_action_tabs+2 break
     ((input virtual vk_zapzap)) $zapzap_action_tabs+2 break
     ((input virtual vk_obsidian)) $obsidian_action_tabs+2 break
@@ -128,6 +132,7 @@
   ;; tabs + 3 
   ;; If not implemented, defaults to: C-3
   action_tabs+3 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+3 break
     ((input virtual vk_chrome)) $chrome_action_tabs+3 break
     ((input virtual vk_zapzap)) $zapzap_action_tabs+3 break
     ((input virtual vk_obsidian)) $obsidian_action_tabs+3 break
@@ -140,6 +145,7 @@
   ;; tabs + 4 
   ;; If not implemented, defaults to: C-4
   action_tabs+4 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+4 break
     ((input virtual vk_chrome)) $chrome_action_tabs+4 break
     ((input virtual vk_zapzap)) $zapzap_action_tabs+4 break
     ((input virtual vk_obsidian)) $obsidian_action_tabs+4 break
@@ -152,6 +158,7 @@
   ;; tabs + 5 
   ;; If not implemented, defaults to: C-5
   action_tabs+5 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+5 break
     ((input virtual vk_chrome)) $chrome_action_tabs+5 break
     ((input virtual vk_zapzap)) $zapzap_action_tabs+5 break
     ((input virtual vk_obsidian)) $obsidian_action_tabs+5 break
@@ -164,6 +171,7 @@
   ;; tabs + 6 
   ;; If not implemented, defaults to: C-6
   action_tabs+6 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+6 break
     ((input virtual vk_chrome)) $chrome_action_tabs+6 break
     ((input virtual vk_zapzap)) $zapzap_action_tabs+6 break
     ((input virtual vk_obsidian)) $obsidian_action_tabs+6 break
@@ -176,6 +184,7 @@
   ;; tabs + 7 
   ;; If not implemented, defaults to: C-7
   action_tabs+7 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+7 break
     ((input virtual vk_chrome)) $chrome_action_tabs+7 break
     ((input virtual vk_zapzap)) $zapzap_action_tabs+7 break
     ((input virtual vk_obsidian)) $obsidian_action_tabs+7 break
@@ -188,6 +197,7 @@
   ;; tabs + 8 
   ;; If not implemented, defaults to: C-8
   action_tabs+8 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+8 break
     ((input virtual vk_chrome)) $chrome_action_tabs+8 break
     ((input virtual vk_zapzap)) $zapzap_action_tabs+8 break
     ((input virtual vk_obsidian)) $obsidian_action_tabs+8 break

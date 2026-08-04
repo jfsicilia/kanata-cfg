@@ -1,41 +1,42 @@
 (defvar
-  apps_app_finder     (t! unmod_all RA-spc)
-  apps_recent_files   (t! unmod_all (cmd recent_files.sh))
+  apps_app_finder      (t! unmod_all RA-spc)
+  apps_recent_files    (t! unmod_all (cmd recent_files.sh))
 
-  apps_chrome_misc    (t! unmod_all (push-msg "APP:chromeMisc"))
-  apps_chrome_mgmt    (t! unmod_all (push-msg "APP:chromeMgmt"))
-  apps_chrome_cloud   (t! unmod_all (push-msg "APP:chromeCloud"))
-  apps_chrome_ai      (t! unmod_all (push-msg "APP:chromeAI"))
-  apps_chrome_banks   (t! unmod_all (push-msg "APP:chromeBanks"))
-  apps_chrome_misc1   (t! unmod_all (push-msg "APP:chromeMisc1"))
-  apps_chrome_misc2   (t! unmod_all (push-msg "APP:chromeMisc2"))
-  apps_chrome_misc3   (t! unmod_all (push-msg "APP:chromeMisc3"))
-  apps_chrome_misc4   (t! unmod_all (push-msg "APP:chromeMisc4"))
-  apps_chrome_colab   (t! unmod_all (push-msg "APP:chromeColab"))
-  apps_claude_code    (t! unmod_all (push-msg "APP:claude_code"))
-  apps_fileexplorer   (t! unmod_all (push-msg "APP:fileexplorer"))
-  apps_firefox        (t! unmod_all (push-msg "APP:firefox"))
-  apps_keepassxc      (t! unmod_all (push-msg "APP:keepassxc"))
-  apps_chrome         (t! unmod_all (push-msg "APP:chrome"))
-  apps_obsidian       (t! unmod_all (push-msg "APP:obsidian"))
-  apps_sketchup       (t! unmod_all (push-msg "APP:sketchup"))
-  apps_terminal       (t! unmod_all (push-msg "APP:terminal"))
-  apps_nvim           (t! unmod_all (push-msg "APP:nvim"))
-  apps_zapzap         (t! unmod_all (push-msg "APP:zapzap"))
-  apps_calc           (t! unmod_all (push-msg "APP:calc"))
-  apps_firefox_misc   (t! unmod_all (push-msg "APP:firefoxMisc"))
-  apps_firefox_mgmt   (t! unmod_all (push-msg "APP:firefoxMgmt"))
-  apps_firefox_cloud  (t! unmod_all (push-msg "APP:firefoxCloud"))
-  apps_firefox_ai     (t! unmod_all (push-msg "APP:firefoxAI"))
-  apps_firefox_banks  (t! unmod_all (push-msg "APP:firefoxBanks"))
-  apps_firefox_colab  (t! unmod_all (push-msg "APP:firefoxColab"))
-  apps_fusion360      (t! unmod_all (push-msg "APP:fusion360"))
-  apps_okular         (t! unmod_all (push-msg "APP:okular"))
-  apps_onlyoffice     (t! unmod_all (push-msg "APP:onlyoffice"))
-  apps_telegram       (t! unmod_all (push-msg "APP:telegram"))
-  apps_orcaslicer     (t! unmod_all (push-msg "APP:orcaslicer"))
+  apps_chrome_misc     (t! unmod_all (push-msg "APP:chromeMisc"))
+  apps_chrome_mgmt     (t! unmod_all (push-msg "APP:chromeMgmt"))
+  apps_chrome_cloud    (t! unmod_all (push-msg "APP:chromeCloud"))
+  apps_chrome_ai       (t! unmod_all (push-msg "APP:chromeAI"))
+  apps_chrome_banks    (t! unmod_all (push-msg "APP:chromeBanks"))
+  apps_chrome_misc1    (t! unmod_all (push-msg "APP:chromeMisc1"))
+  apps_chrome_misc2    (t! unmod_all (push-msg "APP:chromeMisc2"))
+  apps_chrome_misc3    (t! unmod_all (push-msg "APP:chromeMisc3"))
+  apps_chrome_misc4    (t! unmod_all (push-msg "APP:chromeMisc4"))
+  apps_chrome_whatsapp (t! unmod_all (push-msg "APP:chromeWhatsapp"))
+  apps_chrome_colab    (t! unmod_all (push-msg "APP:chromeColab"))
+  apps_claude_code     (t! unmod_all (push-msg "APP:claude_code"))
+  apps_fileexplorer    (t! unmod_all (push-msg "APP:fileexplorer"))
+  apps_firefox         (t! unmod_all (push-msg "APP:firefox"))
+  apps_keepassxc       (t! unmod_all (push-msg "APP:keepassxc"))
+  apps_chrome          (t! unmod_all (push-msg "APP:chrome"))
+  apps_obsidian        (t! unmod_all (push-msg "APP:obsidian"))
+  apps_sketchup        (t! unmod_all (push-msg "APP:sketchup"))
+  apps_terminal        (t! unmod_all (push-msg "APP:terminal"))
+  apps_nvim            (t! unmod_all (push-msg "APP:nvim"))
+  apps_zapzap          (t! unmod_all (push-msg "APP:zapzap"))
+  apps_calc            (t! unmod_all (push-msg "APP:calc"))
+  apps_firefox_misc    (t! unmod_all (push-msg "APP:firefoxMisc"))
+  apps_firefox_mgmt    (t! unmod_all (push-msg "APP:firefoxMgmt"))
+  apps_firefox_cloud   (t! unmod_all (push-msg "APP:firefoxCloud"))
+  apps_firefox_ai      (t! unmod_all (push-msg "APP:firefoxAI"))
+  apps_firefox_banks   (t! unmod_all (push-msg "APP:firefoxBanks"))
+  apps_firefox_colab   (t! unmod_all (push-msg "APP:firefoxColab"))
+  apps_fusion360       (t! unmod_all (push-msg "APP:fusion360"))
+  apps_okular          (t! unmod_all (push-msg "APP:okular"))
+  apps_onlyoffice      (t! unmod_all (push-msg "APP:onlyoffice"))
+  apps_telegram        (t! unmod_all (push-msg "APP:telegram"))
+  apps_orcaslicer      (t! unmod_all (push-msg "APP:orcaslicer"))
 
-  apps_not_bound      (t! unmod_all (push-msg "NOTIFY:No app bound"))
+  apps_not_bound       (t! unmod_all (push-msg "NOTIFY:No app bound"))
 )
 
 (defvar
@@ -75,10 +76,10 @@
   action_apps+t            $apps_terminal
   action_apps+u            $apps_not_bound
   action_apps+v            $apps_nvim
-  action_apps+w            $apps_zapzap
+  action_apps+w            $apps_chrome_whatsapp
   action_apps+x            $apps_calc
   action_apps+y            $apps_not_bound
-  action_apps+z            $apps_not_bound
+  action_apps+z            $apps_zapzap
 
   action_apps+lsft+0       $apps_firefox_misc
   action_apps+lsft+1       $apps_firefox_mgmt

@@ -1,0 +1,21 @@
+(defvar
+whatsapp_tabs_next      C-A-tab
+whatsapp_tabs_prev      C-A-S-tab
+
+whatsapp_tabs_goto_1    (macro C-A-/ down ent)
+whatsapp_tabs_goto_2    (macro C-A-/ down down ent)
+whatsapp_tabs_goto_3    (macro C-A-/ down down down ent)
+whatsapp_tabs_goto_4    (macro C-A-/ down down down down ent)
+whatsapp_tabs_goto_5    (macro C-A-/ down down down down down ent)
+whatsapp_tabs_goto_6    (macro C-A-/ down down down down down down ent)
+whatsapp_tabs_goto_7    (macro C-A-/ down down down down down down down ent)
+whatsapp_tabs_goto_8    (macro C-A-/ down down down down down down down down ent)
+whatsapp_tabs_goto_9    (macro C-A-/ down down down down down down down down down ent)
+whatsapp_new_chat       C-A-n
+whatsapp_new_group      C-A-S-n
+whatsapp_search_in_chat C-S-f
+whatsapp_search_chat    C-A-/
+whatsapp_omni_search    (macro A-k 100 bspc)
+whatsapp_settings       C-A-,
+whatsapp_quit           C-q
+)

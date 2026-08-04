@@ -1,0 +1,9 @@
+(defvar
+;; == search ============================================================
+;; search + spc
+whatsapp_action_!lalt|search+spc                 $whatsapp_search_in_chat
+;; search + lsft + spc
+whatsapp_action_!lalt|search+lsft+spc            $whatsapp_search_chat
+;; search + rsft + spc
+whatsapp_action_!lalt|search+rsft+spc            $whatsapp_search_chat
+)

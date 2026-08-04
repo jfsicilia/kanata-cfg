@@ -3,6 +3,7 @@
 
   ;; !lctl|select + spc 
   action_!lctl|select+spc (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_!lctl|select+spc break
     ((input virtual vk_chrome)) $chrome_action_!lctl|select+spc break
     ((input virtual vk_zapzap)) $zapzap_action_!lctl|select+spc break
     ((input virtual vk_obsidian)) $obsidian_action_!lctl|select+spc break
@@ -144,38 +145,47 @@
     () C-=  break
   ))
   action_!lctl|select+1  (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_!lctl|select+1 break
     ((input virtual vk_firefox)) $firefox_action_!lctl|select+1 break
     () C-1  break
   ))
   action_!lctl|select+2  (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_!lctl|select+2 break
     ((input virtual vk_firefox)) $firefox_action_!lctl|select+2 break
     () C-2  break
   ))
   action_!lctl|select+3  (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_!lctl|select+3 break
     ((input virtual vk_firefox)) $firefox_action_!lctl|select+3 break
     () C-3  break
   ))
   action_!lctl|select+4  (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_!lctl|select+4 break
     ((input virtual vk_firefox)) $firefox_action_!lctl|select+4 break
     () C-4  break
   ))
   action_!lctl|select+5  (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_!lctl|select+5 break
     ((input virtual vk_firefox)) $firefox_action_!lctl|select+5 break
     () C-5  break
   ))
   action_!lctl|select+6  (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_!lctl|select+6 break
     ((input virtual vk_firefox)) $firefox_action_!lctl|select+6 break
     () C-6  break
   ))
   action_!lctl|select+7  (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_!lctl|select+7 break
     ((input virtual vk_firefox)) $firefox_action_!lctl|select+7 break
     () C-7  break
   ))
   action_!lctl|select+8  (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_!lctl|select+8 break
     ((input virtual vk_firefox)) $firefox_action_!lctl|select+8 break
     () C-8  break
   ))
   action_!lctl|select+9  (t! unmod_all (switch ;;@iface@ 
+    ((input virtual vk_whatsapp)) $whatsapp_action_!lctl|select+9 break
     ((input virtual vk_firefox)) $firefox_action_!lctl|select+9 break
     () C-9  break
   ))
