@@ -4,7 +4,7 @@
   foot_action_bookmarks+c  $foot_goto_scans
   foot_action_bookmarks+d  $foot_goto_downloads
   foot_action_bookmarks+e  $foot_goto_enaire
-  foot_action_bookmarks+f  $foot_goto_photo
+  foot_action_bookmarks+f  $foot_goto_photos
   foot_action_bookmarks+g  $foot_goto_guacimara
   foot_action_bookmarks+h  $foot_goto_home
   foot_action_bookmarks+i  $foot_goto_inbox

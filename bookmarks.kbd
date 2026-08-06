@@ -17,7 +17,7 @@ folder_downloads          (S-grv 10 / i n b o x / d o w n l o a d s)
 folder_enaire             (S-grv 10 / p e r s o n a l / p r o f e s s i o n a l / e n a i r e)
 ;; f
 ;;folder_photo            `~/media/image/photo`
-folder_photo              (S-grv 10 / m e d i a / i m a g e / p h o t o)
+folder_photos              (S-grv 10 / m e d i a / i m a g e / p h o t o s)
 ;; g
 ;;folder_guacimara        `~/mnt/guacimara`
 folder_guacimara          (S-grv 10 / m n t / g u a c i m a r a)

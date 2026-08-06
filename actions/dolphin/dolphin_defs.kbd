@@ -118,7 +118,7 @@
   dolphin_goto_scans        (macro C-l $folder_scans ent)
   dolphin_goto_downloads    (macro C-l $folder_downloads ent)
   dolphin_goto_enaire       (macro C-l $folder_enaire ent)
-  dolphin_goto_photo        (macro C-l $folder_photo ent)
+  dolphin_goto_photos       (macro C-l $folder_photos ent)
   dolphin_goto_guacimara    (macro C-l $folder_guacimara ent)
   dolphin_goto_home         (macro C-l $folder_home ent)
   dolphin_goto_inbox        (macro C-l $folder_inbox ent)

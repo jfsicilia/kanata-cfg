@@ -18,7 +18,7 @@
   foot_goto_scans        (macro esc d d i c d spc $folder_scans ent)
   foot_goto_downloads    (macro esc d d i c d spc $folder_downloads ent)
   foot_goto_enaire       (macro esc d d i c d spc $folder_enaire ent)
-  foot_goto_photo        (macro esc d d i c d spc $folder_photo ent)
+  foot_goto_photos       (macro esc d d i c d spc $folder_photos ent)
   foot_goto_guacimara    (macro esc d d i c d spc $folder_guacimara ent)
   foot_goto_home         (macro esc d d i c d spc $folder_home ent)
   foot_goto_inbox        (macro esc d d i c d spc $folder_inbox ent)

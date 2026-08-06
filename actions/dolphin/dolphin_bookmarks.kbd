@@ -4,7 +4,7 @@
   dolphin_action_bookmarks+c  $dolphin_goto_scans
   dolphin_action_bookmarks+d  $dolphin_goto_downloads
   dolphin_action_bookmarks+e  $dolphin_goto_enaire
-  dolphin_action_bookmarks+f  $dolphin_goto_photo
+  dolphin_action_bookmarks+f  $dolphin_goto_photos
   dolphin_action_bookmarks+g  $dolphin_goto_guacimara
   dolphin_action_bookmarks+h  $dolphin_goto_home
   dolphin_action_bookmarks+i  $dolphin_goto_inbox
