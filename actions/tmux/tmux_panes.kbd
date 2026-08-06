@@ -1,31 +1,49 @@
 (defvar
 ;; panes + ent
 ;; #panes + ent
-tmux_action_panes+ent                       $tmux_pane_maximize ;; prefix + z (zoom pane)
+tmux_action_panes+ent                    $tmux_pane_maximize ;; prefix + z (zoom pane)
 ;; panes + h | panes + left
 ;; #panes + h | #panes + left
 tmux_action_panes+h                      $tmux_pane_left
 ;; panes + l | panes + right
 ;; #panes + l | #panes + right
-tmux_action_panes+l                     $tmux_pane_right
+tmux_action_panes+l                      $tmux_pane_right
 ;; panes + k | panes + up
 ;; #panes + k | #panes + up
-tmux_action_panes+k                     $tmux_pane_above
+tmux_action_panes+k                      $tmux_pane_above
 ;; panes + j | panes + down
 ;; #panes + j | #panes + down
-tmux_action_panes+j                     $tmux_pane_below
+tmux_action_panes+j                      $tmux_pane_below
 ;; panes + -
 ;; #panes + -
-tmux_action_panes+-                   $tmux_pane_h_split
+tmux_action_panes+-                      $tmux_pane_h_split
 ;; panes + \
 ;; #panes + \
-tmux_action_panes+\                   $tmux_pane_v_split
+tmux_action_panes+\                      $tmux_pane_v_split
 ;; panes + w
 ;; #panes + w
-tmux_action_panes+w                     $tmux_pane_close ;; prefix + x (kill pane)
+tmux_action_panes+w                      $tmux_pane_close ;; prefix + x (kill pane)
 ;; == panes + toggle ====================================================
 ;; panes + toggle | 2x !lalt
 ;; == #panes + #toggle ====================================================
 ;; #panes + #toggle | 2x !lalt
-tmux_action_panes+toggle                    $tmux_pane_toggle ;; prefix + ; (last pane)
+tmux_action_panes+toggle                 $tmux_pane_toggle ;; prefix + ; (last pane)
+;; == panes + move =====================================================
+;; panes + move + h | panes + move + left
+tmux_action_panes+move+h        $tmux_move_pane_left
+;; panes + move + l | panes + move + right
+tmux_action_panes+move+l        $tmux_move_pane_right
+;; panes + move + j | panes + move + down
+tmux_action_panes+move+j        $tmux_move_pane_down
+;; panes + move + k | panes + move + up
+tmux_action_panes+move+k        $tmux_move_pane_up
+;; == panes + resize =====================================================
+;; panes + resize + h | panes + resize + left
+tmux_action_panes+resize+h        $tmux_resize_pane_left
+;; panes + resize + l | panes + resize + right
+tmux_action_panes+resize+l        $tmux_resize_pane_right
+;; panes + resize + j | panes + resize + down
+tmux_action_panes+resize+j        $tmux_resize_pane_down
+;; panes + resize + k | panes + resize + up
+tmux_action_panes+resize+k        $tmux_resize_pane_up
 )

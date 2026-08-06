@@ -1,4 +1,5 @@
 (defvar
+tmux_action_tabs+r             $tmux_rename_tab
 ;; tabs + spc
 tmux_action_tabs+spc           $tmux_select_tab 
 ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab

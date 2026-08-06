@@ -87,7 +87,6 @@
 (include actions/actions_keyb.kbd)
 (include actions/actions_opts.kbd)
 (include actions/actions_windows.kbd)
-(include actions/actions_layouts.kbd)
 (include actions/actions_workspaces.kbd)
 
 ;; Apps Interface Actions =====================================================
@@ -98,6 +97,7 @@
 (include actions/actions_lmet.iface.kbd)
 (include actions/actions_!lmet|replace.iface.kbd)
 (include actions/actions_sft.iface.kbd)
+(include actions/actions_layouts.iface.kbd)
 (include actions/actions_bookmarks.iface.kbd)
 (include actions/actions_groups.iface.kbd)
 (include actions/actions_domains.iface.kbd)
@@ -198,7 +198,9 @@
 (include actions/tmux/tmux_defs.kbd)
 (include actions/tmux/tmux_domains.kbd)
 (include actions/tmux/tmux_groups.19.kbd)
-(include actions/tmux/tmux_omni.kbd)
+(include actions/tmux/tmux_layouts.kbd)
+(include actions/tmux/tmux_lctl.kbd)
+(include actions/tmux/tmux_omni.49.kbd)
 (include actions/tmux/tmux_panes.kbd)
 (include actions/tmux/tmux_sessions.kbd)
 (include actions/tmux/tmux_tabs.kbd)

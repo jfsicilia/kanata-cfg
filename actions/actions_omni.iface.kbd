@@ -126,18 +126,18 @@
   ;; omni + spc
   ;; If not implemented, defaults to: spc
   action_omni+spc (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+spc break
     ((input virtual vk_obsidian)) $obsidian_action_omni+spc break
     ((input virtual vk_dolphin)) $dolphin_action_omni+spc break
     ((input virtual vk_nvim)) $nvim_action_omni+spc break
-    ((input virtual vk_tmux)) $tmux_action_omni+spc break
     () $space break
   ))
 
   ;; omni + ent
   action_omni+ent (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+ent break
     ((input virtual vk_dolphin)) $dolphin_action_omni+ent break
     ((input virtual vk_nvim)) $nvim_action_omni+ent break
-    ((input virtual vk_tmux)) $tmux_action_omni+ent break
     () XX break
   ))
 
@@ -150,126 +150,126 @@
 
   ;; omni + a
   action_omni+a (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+a break
     ((input virtual vk_obsidian)) $obsidian_action_omni+a break
     ((input virtual vk_dolphin)) $dolphin_action_omni+a break
     ((input virtual vk_nvim)) $nvim_action_omni+a break
-    ((input virtual vk_tmux)) $tmux_action_omni+a break
     () XX break
   ))
   ;; omni + lsft + a
   action_omni+lsft+a (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+lsft+a break
     ((input virtual vk_obsidian)) $obsidian_action_omni+lsft+a break
     ((input virtual vk_dolphin)) $dolphin_action_omni+lsft+a break
     ((input virtual vk_nvim)) $nvim_action_omni+lsft+a break
-    ((input virtual vk_tmux)) $tmux_action_omni+lsft+a break
     () XX break
   ))
   ;; omni + rsft + a
   action_omni+rsft+a (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+rsft+a break
     ((input virtual vk_obsidian)) $obsidian_action_omni+rsft+a break
     ((input virtual vk_dolphin)) $dolphin_action_omni+rsft+a break
     ((input virtual vk_nvim)) $nvim_action_omni+rsft+a break
-    ((input virtual vk_tmux)) $tmux_action_omni+rsft+a break
     () XX break
   ))
 
   ;; omni + b
   ;; If not implemented, defaults to: pgup
   action_omni+b (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+b break
     ((input virtual vk_foot)) $foot_action_omni+b break
     ((input virtual vk_obsidian)) $obsidian_action_omni+b break
     ((input virtual vk_nvim)) $nvim_action_omni+b break
-    ((input virtual vk_tmux)) $tmux_action_omni+b break
     () $page_up break
   ))
 
   ;; omni + c
   ;; If not implemented, defaults to: C-c
   action_omni+c (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+c break
     ((input virtual vk_foot)) $foot_action_omni+c break
     ((input virtual vk_obsidian)) $obsidian_action_omni+c break
     ((input virtual vk_dolphin)) $dolphin_action_omni+c break
     ((input virtual vk_nvim)) $nvim_action_omni+c break
-    ((input virtual vk_tmux)) $tmux_action_omni+c break
     () $copy break
   ))
   ;; omni + lsft + c
   ;; If not implemented, defaults to: C-S-c
   action_omni+lsft+c (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+lsft+c break
     ((input virtual vk_dolphin)) $dolphin_action_omni+lsft+c break
     ((input virtual vk_nvim)) $nvim_action_omni+lsft+c break
-    ((input virtual vk_tmux)) $tmux_action_omni+lsft+c break
     () $copy_path break
   ))
   ;; omni + rsft + c
   ;; If not implemented, defaults to: C-S-c
   action_omni+rsft+c (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+rsft+c break
     ((input virtual vk_dolphin)) $dolphin_action_omni+rsft+c break
     ((input virtual vk_nvim)) $nvim_action_omni+rsft+c break
-    ((input virtual vk_tmux)) $tmux_action_omni+rsft+c break
     () $copy_path break
   ))
   ;; omni + c + left
   action_omni+c+left (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+c+left break
     ((input virtual vk_dolphin)) $dolphin_action_omni+c+left break
     ((input virtual vk_nvim)) $nvim_action_omni+c+left break
-    ((input virtual vk_tmux)) $tmux_action_omni+c+left break
     () XX break
   ))
   ;; omni + c + right
   action_omni+c+right (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+c+right break
     ((input virtual vk_dolphin)) $dolphin_action_omni+c+right break
     ((input virtual vk_nvim)) $nvim_action_omni+c+right break
-    ((input virtual vk_tmux)) $tmux_action_omni+c+right break
     () XX break
   ))
 
   ;; omni + d
   action_omni+d (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+d break
     ((input virtual vk_obsidian)) $obsidian_action_omni+d break
     ((input virtual vk_dolphin)) $dolphin_action_omni+d break
     ((input virtual vk_nvim)) $nvim_action_omni+d break
-    ((input virtual vk_tmux)) $tmux_action_omni+d break
     () XX break
   ))
 
   ;; omni + e
   action_omni+e (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+e break
     ((input virtual vk_foot)) $foot_action_omni+e break
     ((input virtual vk_dolphin)) $dolphin_action_omni+e break
     ((input virtual vk_nvim)) $nvim_action_omni+e break
-    ((input virtual vk_tmux)) $tmux_action_omni+e break
     () XX break
   ))
   ;; omni + lsft + e
   action_omni+lsft+e (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+lsft+e break
     ((input virtual vk_foot)) $foot_action_omni+lsft+e break
     ((input virtual vk_dolphin)) $dolphin_action_omni+lsft+e break
     ((input virtual vk_nvim)) $nvim_action_omni+lsft+e break
-    ((input virtual vk_tmux)) $tmux_action_omni+lsft+e break
     () XX break
   ))
 
   ;; omni + f
   ;; If not implemented, defaults to: pgdn
   action_omni+f (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+f break
     ((input virtual vk_foot)) $foot_action_omni+f break
     ((input virtual vk_obsidian)) $obsidian_action_omni+f break
     ((input virtual vk_nvim)) $nvim_action_omni+f break
-    ((input virtual vk_tmux)) $tmux_action_omni+f break
     () $page_down break
   ))
 
   ;; omni + g
   action_omni+g (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+g break
+    ((input virtual vk_tmux)) $tmux_action_omni+g break
     ((input virtual vk_chrome)) $chrome_action_omni+g break
     ((input virtual vk_zapzap)) $zapzap_action_omni+g break
     ((input virtual vk_obsidian)) $obsidian_action_omni+g break
     ((input virtual vk_dolphin)) $dolphin_action_omni+g break
     ((input virtual vk_firefox)) $firefox_action_omni+g break
     ((input virtual vk_nvim)) $nvim_action_omni+g break
-    ((input virtual vk_tmux)) $tmux_action_omni+g break
     () XX break
   ))
 
@@ -282,9 +282,9 @@
 
   ;; omni + i
   action_omni+i (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+i break
     ((input virtual vk_dolphin)) $dolphin_action_omni+i break
     ((input virtual vk_nvim)) $nvim_action_omni+i break
-    ((input virtual vk_tmux)) $tmux_action_omni+i break
     () XX break
   ))
 
@@ -319,6 +319,7 @@
   ;; omni + n
   action_omni+n (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+n break
+    ((input virtual vk_tmux)) $tmux_action_omni+n break
     ((input virtual vk_chrome)) $chrome_action_omni+n break
     ((input virtual vk_zapzap)) $zapzap_action_omni+n break
     ((input virtual vk_obsidian)) $obsidian_action_omni+n break
@@ -326,49 +327,48 @@
     ((input virtual vk_firefox)) $firefox_action_omni+n break
     ((input virtual vk_colab)) $colab_action_omni+n break
     ((input virtual vk_nvim)) $nvim_action_omni+n break
-    ((input virtual vk_tmux)) $tmux_action_omni+n break
     () XX break
   ))
   ;; omni + lsft + n
   action_omni+lsft+n (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+lsft+n break
+    ((input virtual vk_tmux)) $tmux_action_omni+lsft+n break
     ((input virtual vk_zapzap)) $zapzap_action_omni+lsft+n break
     ((input virtual vk_obsidian)) $obsidian_action_omni+lsft+n break
     ((input virtual vk_dolphin)) $dolphin_action_omni+lsft+n break
     ((input virtual vk_colab)) $colab_action_omni+lsft+n break
     ((input virtual vk_nvim)) $nvim_action_omni+lsft+n break
-    ((input virtual vk_tmux)) $tmux_action_omni+lsft+n break
     () XX break
   ))
   ;; omni + rsft + n
   action_omni+rsft+n (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+rsft+n break
+    ((input virtual vk_tmux)) $tmux_action_omni+rsft+n break
     ((input virtual vk_zapzap)) $zapzap_action_omni+rsft+n break
     ((input virtual vk_obsidian)) $obsidian_action_omni+rsft+n break
     ((input virtual vk_dolphin)) $dolphin_action_omni+rsft+n break
     ((input virtual vk_colab)) $colab_action_omni+rsft+n break
     ((input virtual vk_nvim)) $nvim_action_omni+rsft+n break
-    ((input virtual vk_tmux)) $tmux_action_omni+rsft+n break
     () XX break
   ))
 
   ;; omni + o
   ;; If not implemented, defaults to: right
   action_omni+o (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+o break
     ((input virtual vk_obsidian)) $obsidian_action_omni+o break
     ((input virtual vk_dolphin)) $dolphin_action_omni+o break
     ((input virtual vk_nvim)) $nvim_action_omni+o break
-    ((input virtual vk_tmux)) $tmux_action_omni+o break
     () $nav_next break
   ))
 
   ;; omni + p
   ;; If not implemented, defaults to: left
   action_omni+p (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+p break
     ((input virtual vk_obsidian)) $obsidian_action_omni+p break
     ((input virtual vk_dolphin)) $dolphin_action_omni+p break
     ((input virtual vk_nvim)) $nvim_action_omni+p break
-    ((input virtual vk_tmux)) $tmux_action_omni+p break
     () $nav_prev break
   ))
 
@@ -376,6 +376,7 @@
   ;; If not implemented, defaults to: action_windows_close
   action_omni+q (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+q break
+    ((input virtual vk_tmux)) $tmux_action_omni+q break
     ((input virtual vk_zapzap)) $zapzap_action_omni+q break
     ((input virtual vk_nvim)) $nvim_action_omni+q break
     () $window_close break
@@ -383,120 +384,120 @@
 
   ;; omni + r
   action_omni+r (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+r break
     ((input virtual vk_obsidian)) $obsidian_action_omni+r break
     ((input virtual vk_dolphin)) $dolphin_action_omni+r break
     ((input virtual vk_nvim)) $nvim_action_omni+r break
-    ((input virtual vk_tmux)) $tmux_action_omni+r break
     () XX break
   ))
 
   ;; omni + s
   action_omni+s (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+s break
     ((input virtual vk_dolphin)) $dolphin_action_omni+s break
     ((input virtual vk_nvim)) $nvim_action_omni+s break
-    ((input virtual vk_tmux)) $tmux_action_omni+s break
     () XX break
   ))
   ;; omni + lsft + s | omni + rsft + s
   action_omni+lsft+s (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+lsft+s break
     ((input virtual vk_dolphin)) $dolphin_action_omni+lsft+s break
     ((input virtual vk_nvim)) $nvim_action_omni+lsft+s break
-    ((input virtual vk_tmux)) $tmux_action_omni+lsft+s break
     () XX break
   ))
 
   ;; omni + t
   ;; If not implemented, defaults to: action_tabs+t
   action_omni+t (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+t break
     ((input virtual vk_dolphin)) $dolphin_action_omni+t break
     ((input virtual vk_nvim)) $nvim_action_omni+t break
-    ((input virtual vk_tmux)) $tmux_action_omni+t break
     () $action_tabs+t break
   ))
   ;; omni + lsft + t
   ;; If not implemented, defaults to: action_tabs+lsft+t
   action_omni+lsft+t (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+lsft+t break
     ((input virtual vk_dolphin)) $dolphin_action_omni+lsft+t break
     ((input virtual vk_nvim)) $nvim_action_omni+lsft+t break
-    ((input virtual vk_tmux)) $tmux_action_omni+lsft+t break
     () $action_tabs+lsft+t break
   ))
 
   ;; omni + u
   action_omni+u (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+u break
     ((input virtual vk_dolphin)) $dolphin_action_omni+u break
     ((input virtual vk_nvim)) $nvim_action_omni+u break
-    ((input virtual vk_tmux)) $tmux_action_omni+u break
     () XX break
   ))
 
   ;; omni + v
   ;; If not implemented, defaults to: C-v
   action_omni+v (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+v break
     ((input virtual vk_foot)) $foot_action_omni+v break
     ((input virtual vk_obsidian)) $obsidian_action_omni+v break
     ((input virtual vk_dolphin)) $dolphin_action_omni+v break
     ((input virtual vk_nvim)) $nvim_action_omni+v break
-    ((input virtual vk_tmux)) $tmux_action_omni+v break
     () $paste break
   ))
 
   ;; omni + w
   ;; If not implemented, defaults to: action_tabs+w
   action_omni+w (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+w break
     ((input virtual vk_dolphin)) $dolphin_action_omni+w break
     ((input virtual vk_nvim)) $nvim_action_omni+w break
-    ((input virtual vk_tmux)) $tmux_action_omni+w break
     () $action_tabs+w break
   ))
 
   ;; omni + x
   ;; If not implemented, defaults to: C-x
   action_omni+x (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+x break
     ((input virtual vk_obsidian)) $obsidian_action_omni+x break
     ((input virtual vk_dolphin)) $dolphin_action_omni+x break
     ((input virtual vk_nvim)) $nvim_action_omni+x break
-    ((input virtual vk_tmux)) $tmux_action_omni+x break
     () $cut break
   ))
   ;; omni + x + left
   action_omni+x+left (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+x+left break
     ((input virtual vk_dolphin)) $dolphin_action_omni+x+left break
     ((input virtual vk_nvim)) $nvim_action_omni+x+left break
-    ((input virtual vk_tmux)) $tmux_action_omni+x+left break
     () XX break
   ))
   ;; omni + x + right
   action_omni+x+right (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+x+right break
     ((input virtual vk_dolphin)) $dolphin_action_omni+x+right break
     ((input virtual vk_nvim)) $nvim_action_omni+x+right break
-    ((input virtual vk_tmux)) $tmux_action_omni+x+right break
     () XX break
   ))
   
   ;; omni + y
   action_omni+y (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+y break
     ((input virtual vk_foot)) $foot_action_omni+y break
     ((input virtual vk_dolphin)) $dolphin_action_omni+y break
     ((input virtual vk_nvim)) $nvim_action_omni+y break
-    ((input virtual vk_tmux)) $tmux_action_omni+y break
     () XX break
   ))
 
   ;; omni + z
   ;; If not implemented, defaults to: C-z
   action_omni+z (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+z break
     ((input virtual vk_dolphin)) $dolphin_action_omni+z break
     ((input virtual vk_nvim)) $nvim_action_omni+z break
-    ((input virtual vk_tmux)) $tmux_action_omni+z break
     () $undo break
   ))
   ;; omni + lsft + z
   ;; If not implemented, defaults to: C-S-z
   action_omni+lsft+z (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+lsft+z break
     ((input virtual vk_dolphin)) $dolphin_action_omni+lsft+z break
     ((input virtual vk_nvim)) $nvim_action_omni+lsft+z break
-    ((input virtual vk_tmux)) $tmux_action_omni+lsft+z break
     () $redo break
   ))
 
@@ -504,182 +505,182 @@
   ;; omni + 0
   ;; If not implemented, defaults to: C-0
   action_omni+0 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+0 break
     ((input virtual vk_dolphin)) $dolphin_action_omni+0 break
     ((input virtual vk_nvim)) $nvim_action_omni+0 break
-    ((input virtual vk_tmux)) $tmux_action_omni+0 break
     () $tab_goto_0 break
   ))
   ;; omni + 1
   ;; If not implemented, defaults to: C-1
   action_omni+1 (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+1 break
+    ((input virtual vk_tmux)) $tmux_action_omni+1 break
     ((input virtual vk_zapzap)) $zapzap_action_omni+1 break
     ((input virtual vk_dolphin)) $dolphin_action_omni+1 break
     ((input virtual vk_nvim)) $nvim_action_omni+1 break
-    ((input virtual vk_tmux)) $tmux_action_omni+1 break
     () $tab_goto_1 break
   ))
   ;; omni + 2
   ;; If not implemented, defaults to: C-2
   action_omni+2 (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+2 break
+    ((input virtual vk_tmux)) $tmux_action_omni+2 break
     ((input virtual vk_zapzap)) $zapzap_action_omni+2 break
     ((input virtual vk_dolphin)) $dolphin_action_omni+2 break
     ((input virtual vk_nvim)) $nvim_action_omni+2 break
-    ((input virtual vk_tmux)) $tmux_action_omni+2 break
     () $tab_goto_2 break
   ))
   ;; omni + 3
   ;; If not implemented, defaults to: C-3
   action_omni+3 (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+3 break
+    ((input virtual vk_tmux)) $tmux_action_omni+3 break
     ((input virtual vk_zapzap)) $zapzap_action_omni+3 break
     ((input virtual vk_dolphin)) $dolphin_action_omni+3 break
     ((input virtual vk_nvim)) $nvim_action_omni+3 break
-    ((input virtual vk_tmux)) $tmux_action_omni+3 break
     () $tab_goto_3 break
   ))
   ;; omni + 4
   ;; If not implemented, defaults to: C-4
   action_omni+4 (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+4 break
+    ((input virtual vk_tmux)) $tmux_action_omni+4 break
     ((input virtual vk_zapzap)) $zapzap_action_omni+4 break
     ((input virtual vk_dolphin)) $dolphin_action_omni+4 break
     ((input virtual vk_nvim)) $nvim_action_omni+4 break
-    ((input virtual vk_tmux)) $tmux_action_omni+4 break
     () $tab_goto_4 break
   ))
   ;; omni + 5
   ;; If not implemented, defaults to: C-5
   action_omni+5 (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+5 break
+    ((input virtual vk_tmux)) $tmux_action_omni+5 break
     ((input virtual vk_zapzap)) $zapzap_action_omni+5 break
     ((input virtual vk_dolphin)) $dolphin_action_omni+5 break
     ((input virtual vk_nvim)) $nvim_action_omni+5 break
-    ((input virtual vk_tmux)) $tmux_action_omni+5 break
     () $tab_goto_5 break
   ))
   ;; omni + 6
   ;; If not implemented, defaults to: C-6
   action_omni+6 (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+6 break
+    ((input virtual vk_tmux)) $tmux_action_omni+6 break
     ((input virtual vk_zapzap)) $zapzap_action_omni+6 break
     ((input virtual vk_dolphin)) $dolphin_action_omni+6 break
     ((input virtual vk_nvim)) $nvim_action_omni+6 break
-    ((input virtual vk_tmux)) $tmux_action_omni+6 break
     () $tab_goto_6 break
   ))
   ;; omni + 7
   ;; If not implemented, defaults to: C-7
   action_omni+7 (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+7 break
+    ((input virtual vk_tmux)) $tmux_action_omni+7 break
     ((input virtual vk_zapzap)) $zapzap_action_omni+7 break
     ((input virtual vk_dolphin)) $dolphin_action_omni+7 break
     ((input virtual vk_nvim)) $nvim_action_omni+7 break
-    ((input virtual vk_tmux)) $tmux_action_omni+7 break
     () $tab_goto_7 break
   ))
   ;; omni + 8
   ;; If not implemented, defaults to: C-8
   action_omni+8 (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+8 break
+    ((input virtual vk_tmux)) $tmux_action_omni+8 break
     ((input virtual vk_zapzap)) $zapzap_action_omni+8 break
     ((input virtual vk_dolphin)) $dolphin_action_omni+8 break
     ((input virtual vk_nvim)) $nvim_action_omni+8 break
-    ((input virtual vk_tmux)) $tmux_action_omni+8 break
     () $tab_goto_8 break
   ))
   ;; omni + 9
   ;; If not implemented, defaults to: C-9
   action_omni+9 (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+9 break
+    ((input virtual vk_tmux)) $tmux_action_omni+9 break
     ((input virtual vk_zapzap)) $zapzap_action_omni+9 break
     ((input virtual vk_dolphin)) $dolphin_action_omni+9 break
     ((input virtual vk_nvim)) $nvim_action_omni+9 break
-    ((input virtual vk_tmux)) $tmux_action_omni+9 break
     () $tab_goto_9 break
   ))
 
   ;; omni + `
   action_omni+` (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+` break
     ((input virtual vk_dolphin)) $dolphin_action_omni+` break
     ((input virtual vk_nvim)) $nvim_action_omni+` break
-    ((input virtual vk_tmux)) $tmux_action_omni+` break
     () XX break
   ))
   ;; omni + -
   action_omni+- (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+- break
     ((input virtual vk_dolphin)) $dolphin_action_omni+- break
     ((input virtual vk_nvim)) $nvim_action_omni+- break
-    ((input virtual vk_tmux)) $tmux_action_omni+- break
     () XX break
   ))
   ;; omni + =
   action_omni+= (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+= break
     ((input virtual vk_dolphin)) $dolphin_action_omni+= break
     ((input virtual vk_nvim)) $nvim_action_omni+= break
-    ((input virtual vk_tmux)) $tmux_action_omni+= break
     () XX break
   ))
 
   ;; omni + ] 
   action_omni+] (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+] break
     ((input virtual vk_chrome)) $chrome_action_omni+] break
     ((input virtual vk_kiwix)) $kiwix_action_omni+] break
     ((input virtual vk_obsidian)) $obsidian_action_omni+] break
     ((input virtual vk_dolphin)) $dolphin_action_omni+] break
     ((input virtual vk_firefox)) $firefox_action_omni+] break
     ((input virtual vk_nvim)) $nvim_action_omni+] break
-    ((input virtual vk_tmux)) $tmux_action_omni+] break
     () XX break
   )) ;;""
 
   ;; omni + [ 
   action_omni+[ (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+[ break
     ((input virtual vk_chrome)) $chrome_action_omni+[ break
     ((input virtual vk_kiwix)) $kiwix_action_omni+[ break
     ((input virtual vk_obsidian)) $obsidian_action_omni+[ break
     ((input virtual vk_dolphin)) $dolphin_action_omni+[ break
     ((input virtual vk_firefox)) $firefox_action_omni+[ break
     ((input virtual vk_nvim)) $nvim_action_omni+[ break
-    ((input virtual vk_tmux)) $tmux_action_omni+[ break
     () XX break
   ))
 
   ;; omni + \
   action_omni+\ (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+\ break
     ((input virtual vk_foot)) $foot_action_omni+\ break
     ((input virtual vk_dolphin)) $dolphin_action_omni+\ break
     ((input virtual vk_nvim)) $nvim_action_omni+\ break
-    ((input virtual vk_tmux)) $tmux_action_omni+\ break
     () XX break
   )) ;;""
   ;; omni + lsft + \
   action_omni+lsft+\ (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+lsft+\ break
     ((input virtual vk_foot)) $foot_action_omni+lsft+\ break
     ((input virtual vk_nvim)) $nvim_action_omni+lsft+\ break
-    ((input virtual vk_tmux)) $tmux_action_omni+lsft+\ break
     () XX break
   )) ;;""
   ;; omni + rsft + \
   action_omni+rsft+\ (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_omni+rsft+\ break
     ((input virtual vk_tmux)) $tmux_action_omni+rsft+\ break
+    ((input virtual vk_nvim)) $nvim_action_omni+rsft+\ break
     () XX break
   )) ;;""
 
   ;; omni + ;
   action_omni+; (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+; break
     ((input virtual vk_dolphin)) $dolphin_action_omni+; break
     ((input virtual vk_nvim)) $nvim_action_omni+; break
-    ((input virtual vk_tmux)) $tmux_action_omni+; break
     () XX break
   ))
   ;; omni + ' 
   action_omni+' (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+' break
     ((input virtual vk_dolphin)) $dolphin_action_omni+' break
     ((input virtual vk_nvim)) $nvim_action_omni+' break
-    ((input virtual vk_tmux)) $tmux_action_omni+' break
     () XX break
   )) ;;""
 
@@ -687,71 +688,71 @@
   ;; If not implemented, defaults to: action_domain,+,
   action_omni+, (t! unmod_all (switch ;;@iface@
     ((input virtual vk_whatsapp)) $whatsapp_action_omni+, break
+    ((input virtual vk_tmux)) $tmux_action_omni+, break
     ((input virtual vk_chrome)) $chrome_action_omni+, break
     ((input virtual vk_zapzap)) $zapzap_action_omni+, break
     ((input virtual vk_firefox)) $firefox_action_omni+, break
     ((input virtual vk_nvim)) $nvim_action_omni+, break
-    ((input virtual vk_tmux)) $tmux_action_omni+, break
     () $settings break
   ))
   ;; omni + .
   ;; If not implemented, defaults to: action_domain.+.
   action_omni+. (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+. break
     ((input virtual vk_dolphin)) $dolphin_action_omni+. break
     ((input virtual vk_nvim)) $nvim_action_omni+. break
-    ((input virtual vk_tmux)) $tmux_action_omni+. break
     () $tags break
   ))
   ;; omni + /
   ;; If not implemented, defaults to: action_domain/+/
   action_omni+/ (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_omni+/ break
     ((input virtual vk_tmux)) $tmux_action_omni+/ break
+    ((input virtual vk_nvim)) $nvim_action_omni+/ break
     () $help break
   )) ;;""
 
   ;; omni + !lmet|desktops
   ;; If not implemented, defaults to: action_workspaces+toggle
   action_omni+!lmet (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_omni+!lmet break
     ((input virtual vk_tmux)) $tmux_action_omni+!lmet break
+    ((input virtual vk_nvim)) $nvim_action_omni+!lmet break
     () $desktops_toggle break
   ))
   ;; omni + !lalt|panes
   ;; If not implemented, defaults to: action_panes+toggle
   action_omni+!lalt (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_omni+!lalt break
     ((input virtual vk_tmux)) $tmux_action_omni+!lalt break
+    ((input virtual vk_nvim)) $nvim_action_omni+!lalt break
     () $panes_toggle break
   ))
   ;; omni + !lctl|tabs
   ;; If not implemented, defaults to: action_tabs+toggle
   action_omni+!lctl (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_omni+!lctl break
     ((input virtual vk_tmux)) $tmux_action_omni+!lctl break
+    ((input virtual vk_nvim)) $nvim_action_omni+!lctl break
     () $tabs_toggle break
   ))
   ;; omni + ralt|apps
   ;; If not implemented, defaults to: action_apps+toggle
   action_omni+ralt (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_omni+ralt break
     ((input virtual vk_tmux)) $tmux_action_omni+ralt break
+    ((input virtual vk_nvim)) $nvim_action_omni+ralt break
     () $apps_toggle break
   ))
   ;; omni + prnt|groups
   ;; If not implemented, defaults to: action_groups+toggle
   action_omni+prnt (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+prnt break
     ((input virtual vk_dolphin)) $dolphin_action_omni+prnt break
     ((input virtual vk_nvim)) $nvim_action_omni+prnt break
-    ((input virtual vk_tmux)) $tmux_action_omni+prnt break
     () $groups_toggle break
   ))
   ;; omni + rctl|sessions
   ;; If not implemented, defaults to: action_sessions+toggle
   action_omni+rctl (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_omni+rctl break
     ((input virtual vk_dolphin)) $dolphin_action_omni+rctl break
     ((input virtual vk_nvim)) $nvim_action_omni+rctl break
-    ((input virtual vk_tmux)) $tmux_action_omni+rctl break
     () $sessions_toggle break
   ))
 

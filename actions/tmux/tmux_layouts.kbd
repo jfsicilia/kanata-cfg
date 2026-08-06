@@ -1,0 +1,3 @@
+(defvar
+  tmux_action_layouts+spc    $tmux_change_layout
+)

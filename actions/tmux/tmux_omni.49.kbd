@@ -51,6 +51,8 @@ tmux_action_omni+o                 (push-msg "NOTIFY:Tmux_Omni not implemented!"
 ;; omni + p
 ;; If not implemented, defaults to: left
 tmux_action_omni+p                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+;; omni + q
+tmux_action_omni+q                 $tmux_session_detach
 ;; omni + r
 tmux_action_omni+r                 $tmux_rename ;; prefix + , (rename window)
 ;; omni + s
@@ -64,13 +66,13 @@ tmux_action_omni+t                 $tmux_new_window ;; prefix + c (new window)
 ;; If not implemented, defaults to: action_tabs+lsft+t
 tmux_action_omni+lsft+t            (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + u
-tmux_action_omni+u                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+u                 $tmux_change_layout
 ;; omni + v
 ;; If not implemented, defaults to: C-v
 tmux_action_omni+v                 $tmux_paste ;; prefix + ] (paste buffer)  ;;""
 ;; omni + w
 ;; If not implemented, defaults to: action_tabs+w
-tmux_action_omni+w                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+w                 $tmux_close_tab
 ;; omni + x
 ;; If not implemented, defaults to: C-x
 tmux_action_omni+x                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
@@ -91,31 +93,31 @@ tmux_action_omni+lsft+z            (push-msg "NOTIFY:Tmux_Omni not implemented!"
 tmux_action_omni+0                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + 1
 ;; If not implemented, defaults to: C-1
-tmux_action_omni+1                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+1             $tmux_go_tab_1
 ;; omni + 2
 ;; If not implemented, defaults to: C-2
-tmux_action_omni+2                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+2             $tmux_go_tab_2
 ;; omni + 3
 ;; If not implemented, defaults to: C-3
-tmux_action_omni+3                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+3             $tmux_go_tab_3
 ;; omni + 4
 ;; If not implemented, defaults to: C-4
-tmux_action_omni+4                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+4             $tmux_go_tab_4
 ;; omni + 5
 ;; If not implemented, defaults to: C-5
-tmux_action_omni+5                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+5             $tmux_go_tab_5 
 ;; omni + 6
 ;; If not implemented, defaults to: C-6
-tmux_action_omni+6                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+6             $tmux_go_tab_6 
 ;; omni + 7
 ;; If not implemented, defaults to: C-7
-tmux_action_omni+7                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+7             $tmux_go_tab_7
 ;; omni + 8
 ;; If not implemented, defaults to: C-8
-tmux_action_omni+8                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+8             $tmux_go_tab_8
 ;; omni + 9
 ;; If not implemented, defaults to: C-9
-tmux_action_omni+9                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+9             $tmux_go_tab_9 
 ;; omni + `
 tmux_action_omni+`                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + -

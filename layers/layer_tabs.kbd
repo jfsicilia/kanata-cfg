@@ -10,6 +10,7 @@
   down  $action_tabs+j
   up    $action_tabs+k
 
+  r     $action_tabs+r
   t     $action_tabs+t
   w     $action_tabs+w
 

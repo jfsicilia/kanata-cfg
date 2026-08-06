@@ -2,4 +2,31 @@
 ;; == select ========================================================
 ;; select + spc
 tmux_action_!lctl|select+spc                   $tmux_select_tab
+;; !lctl|select + 1
+;; If not implemented, defaults to: C-1
+tmux_action_!lctl|select+1             $tmux_go_tab_1
+;; !lctl|select + 2
+;; If not implemented, defaults to: C-2
+tmux_action_!lctl|select+2             $tmux_go_tab_2
+;; !lctl|select + 3
+;; If not implemented, defaults to: C-3
+tmux_action_!lctl|select+3             $tmux_go_tab_3
+;; !lctl|select + 4
+;; If not implemented, defaults to: C-4
+tmux_action_!lctl|select+4             $tmux_go_tab_4
+;; !lctl|select + 5
+;; If not implemented, defaults to: C-5
+tmux_action_!lctl|select+5             $tmux_go_tab_5 
+;; !lctl|select + 6
+;; If not implemented, defaults to: C-6
+tmux_action_!lctl|select+6             $tmux_go_tab_6 
+;; !lctl|select + 7
+;; If not implemented, defaults to: C-7
+tmux_action_!lctl|select+7             $tmux_go_tab_7
+;; !lctl|select + 8
+;; If not implemented, defaults to: C-8
+tmux_action_!lctl|select+8             $tmux_go_tab_8
+;; !lctl|select + 9
+;; If not implemented, defaults to: C-9
+tmux_action_!lctl|select+9             $tmux_go_tab_9 
 )

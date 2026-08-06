@@ -1,0 +1,29 @@
+(defvar
+;; lctl + 1
+;; If not implemented, defaults to: C-1
+tmux_action_lctl+1             $tmux_go_tab_1
+;; lctl + 2
+;; If not implemented, defaults to: C-2
+tmux_action_lctl+2             $tmux_go_tab_2
+;; lctl + 3
+;; If not implemented, defaults to: C-3
+tmux_action_lctl+3             $tmux_go_tab_3
+;; lctl + 4
+;; If not implemented, defaults to: C-4
+tmux_action_lctl+4             $tmux_go_tab_4
+;; lctl + 5
+;; If not implemented, defaults to: C-5
+tmux_action_lctl+5             $tmux_go_tab_5 
+;; lctl + 6
+;; If not implemented, defaults to: C-6
+tmux_action_lctl+6             $tmux_go_tab_6 
+;; lctl + 7
+;; If not implemented, defaults to: C-7
+tmux_action_lctl+7             $tmux_go_tab_7
+;; lctl + 8
+;; If not implemented, defaults to: C-8
+tmux_action_lctl+8             $tmux_go_tab_8
+;; lctl + 9
+;; If not implemented, defaults to: C-9
+tmux_action_lctl+9             $tmux_go_tab_9 
+)

@@ -1,2 +1,10 @@
 (defvar
+  tmux_action_sessions+spc    $tmux_session_select
+  tmux_action_sessions+d      $tmux_session_detach
+  tmux_action_sessions+w      $tmux_session_kill
+  tmux_action_sessions+r      $tmux_session_rename
+  tmux_action_sessions+l      $tmux_session_next
+  tmux_action_sessions+j      $tmux_session_next
+  tmux_action_sessions+h      $tmux_session_prev
+  tmux_action_sessions+k      $tmux_session_prev
 )

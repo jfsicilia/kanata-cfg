@@ -68,7 +68,12 @@
     ((input virtual vk_dolphin)) $dolphin_action_tabs+k break
     () (push-msg "NOTIFY: Select last tab not implemented") break
   ))
-  
+  ;; tabs + r 
+  ;; If not implemented, defaults to: XX
+  action_tabs+r (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_tmux)) $tmux_action_tabs+r break
+    () XX break
+  ))
   ;; tabs + t 
   ;; If not implemented, defaults to: C-t
   action_tabs+t (t! unmod_all (switch ;;@iface@

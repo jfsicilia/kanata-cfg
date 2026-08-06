@@ -2,6 +2,8 @@
 
 tmux_prefix                  A-b
 
+tmux_commands                (macro $tmux_prefix S-;)
+
 ;; omni
 tmux_pgup                    (macro $tmux_prefix pgup)
 tmux_copy                    (macro $tmux_prefix [)
@@ -9,6 +11,7 @@ tmux_pgdn                    C-f
 tmux_new_window              (macro $tmux_prefix c)
 tmux_rename                  (macro $tmux_prefix ,)
 tmux_paste                   (macro $tmux_prefix ])
+tmux_change_layout           (macro $tmux_prefix spc)
 
 ;; panes
 tmux_pane_maximize           (macro $tmux_prefix z)
@@ -20,9 +23,17 @@ tmux_pane_h_split            (macro $tmux_prefix S-')
 tmux_pane_v_split            (macro $tmux_prefix S-5)
 tmux_pane_close              (macro $tmux_prefix x)
 tmux_pane_toggle             (macro $tmux_prefix ;)
+tmux_move_pane_right         (macro $tmux_prefix S-]) 
+tmux_move_pane_left          (macro $tmux_prefix S-[) 
+tmux_move_pane_up            (macro $tmux_prefix S-; s e l e c t - p a n e spc - S-u spc ; spc s w a p - p a n e spc - S-u ent) 
+tmux_move_pane_down          (macro $tmux_prefix S-; s e l e c t - p a n e spc - S-d spc ; spc s w a p - p a n e spc - S-d ent)
+tmux_resize_pane_right       (macro $tmux_prefix C-right) 
+tmux_resize_pane_left        (macro $tmux_prefix C-left) 
+tmux_resize_pane_up          (macro $tmux_prefix C-up)
+tmux_resize_pane_down        (macro $tmux_prefix C-down)
 
 ;; tabs
-tmux_commands                (macro $tmux_prefix S-;)
+tmux_rename_tab              (macro $tmux_prefix ,)
 tmux_select_tab              (macro $tmux_prefix w) ;; prefix + w (choose window) 
 tmux_right_tab               (macro $tmux_prefix n) 
 tmux_left_tab                (macro $tmux_prefix p) 
@@ -41,4 +52,11 @@ tmux_toggle_tab              (macro $tmux_prefix l)
 tmux_move_tab_right          (macro $tmux_prefix S-; s w a p - w i n d o w spc - t spc - Digit1 ; s e l e c t - w i n d o w spc - t spc - Digit1 ent) 
 tmux_move_tab_left           (macro $tmux_prefix S-; s w a p - w i n d o w spc - t spc S-= Digit1 ; s e l e c t - w i n d o w spc - t spc S-= Digit1 ent) 
 
+;; sessions
+tmux_session_select          (macro $tmux_prefix s)
+tmux_session_rename          (macro $tmux_prefix S-4)
+tmux_session_detach          (macro $tmux_prefix d)
+tmux_session_kill            (macro $tmux_prefix S-; c o n f i r m - b e f o r e spc - p S-' S-k i l l spc s e s s i o n spc S-3 S-s S-/ spc S-9 y / n S-0 S-' spc k i l l - s e s s i o n ent) 
+tmux_session_next            (macro $tmux_prefix S-9)
+tmux_session_prev            (macro $tmux_prefix S-0)
 )
