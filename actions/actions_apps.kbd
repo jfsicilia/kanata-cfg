@@ -23,7 +23,7 @@
   apps_terminal        (t! unmod_all (push-msg "APP:terminal"))
   apps_nvim            (t! unmod_all (push-msg "APP:nvim"))
   apps_zapzap          (t! unmod_all (push-msg "APP:zapzap"))
-  apps_calc            (t! unmod_all (push-msg "APP:calc"))
+  apps_tmux            (t! unmod_all (push-msg "APP:tmux"))
   apps_firefox_misc    (t! unmod_all (push-msg "APP:firefoxMisc"))
   apps_firefox_mgmt    (t! unmod_all (push-msg "APP:firefoxMgmt"))
   apps_firefox_cloud   (t! unmod_all (push-msg "APP:firefoxCloud"))
@@ -77,7 +77,7 @@
   action_apps+u            $apps_not_bound
   action_apps+v            $apps_nvim
   action_apps+w            $apps_chrome_whatsapp
-  action_apps+x            $apps_calc
+  action_apps+x            $apps_tmux
   action_apps+y            $apps_not_bound
   action_apps+z            $apps_zapzap
 
