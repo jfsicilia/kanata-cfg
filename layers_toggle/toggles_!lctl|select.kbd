@@ -1,6 +1,10 @@
 ;; "" !LCTL|SELECT_TOGGLES """"""""""""""""""""""""""""""""""""""""""""""""""
 (defvar
-  toggle_!lctl|select_layer                  (t! toggle_mod_2layer  lctl                lctl_layer                !lctl|select_layer      )
+  toggle_!lctl|select_layer           (multi (t! toggle_mod_2layer  lctl                lctl_layer                !lctl|select_layer      )
+                                        (on-release release-vkey vk_lalt)
+                                        (on-press press-vkey vk_apps_sort_desc) 
+                                        (on-release release-vkey vk_apps_sort_desc)
+                                      )
 
   toggle_!lctl|select+lsft_layer             (t! toggle_2mod_2layer lctl lsft           lctl+lsft_layer           !lctl|select+lsft_layer )
   toggle_!lctl|select+rsft_layer             (t! toggle_2mod_2layer lctl rsft           lctl+rsft_layer           !lctl|select+rsft_layer )

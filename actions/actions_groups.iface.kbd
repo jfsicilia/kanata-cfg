@@ -4,182 +4,375 @@
 
   ;; groups + spc
   action_groups+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_groups+spc break
-    ((input virtual vk_chrome)) $chrome_action_groups+spc break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+spc break
-    ((input virtual vk_firefox)) $firefox_action_groups+spc break
-    ((input virtual vk_tmux)) $tmux_action_groups+spc break
-    ((input virtual vk_zellij)) $zellij_action_groups+spc break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_zellij)) $zellij_action_groups+spc break
+      ((input virtual vk_tmux)) $tmux_action_groups+spc break
+      ((input virtual vk_firefox)) $firefox_action_groups+spc break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+spc break
+      ((input virtual vk_chrome)) $chrome_action_groups+spc break
+      ((input virtual vk_nvim)) $nvim_action_groups+spc break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+spc break
+      ((input virtual vk_chrome)) $chrome_action_groups+spc break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+spc break
+      ((input virtual vk_firefox)) $firefox_action_groups+spc break
+      ((input virtual vk_tmux)) $tmux_action_groups+spc break
+      ((input virtual vk_zellij)) $zellij_action_groups+spc break
+      () XX break
+    ) break
   ))
 
   ;; groups + l | groups + right  
-  ~action_groups+l (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_zellij)) $zellij_action_groups+l break
-    ((input virtual vk_tmux)) $tmux_action_groups+l break
-    ((input virtual vk_firefox)) $firefox_action_groups+l break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+l break
-    ((input virtual vk_chrome)) $chrome_action_groups+l break
-    ((input virtual vk_nvim)) $nvim_action_groups+l break
-    () C-tab break
+  action_groups+l (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_zellij)) $zellij_action_groups+l break
+      ((input virtual vk_tmux)) $tmux_action_groups+l break
+      ((input virtual vk_firefox)) $firefox_action_groups+l break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+l break
+      ((input virtual vk_chrome)) $chrome_action_groups+l break
+      ((input virtual vk_nvim)) $nvim_action_groups+l break
+      () C-tab break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+l break
+      ((input virtual vk_chrome)) $chrome_action_groups+l break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+l break
+      ((input virtual vk_firefox)) $firefox_action_groups+l break
+      ((input virtual vk_tmux)) $tmux_action_groups+l break
+      ((input virtual vk_zellij)) $zellij_action_groups+l break
+      () C-tab break
+    ) break
   )) 
   ;; groups + h | groups + left  
-  ~action_groups+h (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_zellij)) $zellij_action_groups+h break
-    ((input virtual vk_tmux)) $tmux_action_groups+h break
-    ((input virtual vk_firefox)) $firefox_action_groups+h break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+h break
-    ((input virtual vk_chrome)) $chrome_action_groups+h break
-    ((input virtual vk_nvim)) $nvim_action_groups+h break
-    () C-S-tab break
+  action_groups+h (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_zellij)) $zellij_action_groups+h break
+      ((input virtual vk_tmux)) $tmux_action_groups+h break
+      ((input virtual vk_firefox)) $firefox_action_groups+h break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+h break
+      ((input virtual vk_chrome)) $chrome_action_groups+h break
+      ((input virtual vk_nvim)) $nvim_action_groups+h break
+      () C-S-tab break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+h break
+      ((input virtual vk_chrome)) $chrome_action_groups+h break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+h break
+      ((input virtual vk_firefox)) $firefox_action_groups+h break
+      ((input virtual vk_tmux)) $tmux_action_groups+h break
+      ((input virtual vk_zellij)) $zellij_action_groups+h break
+      () C-S-tab break
+    ) break
   ))
   ;; groups + j | groups + down
-  ~action_groups+j  (t! unmod_all (switch ;;@iface@
-    () XX break
+  action_groups+j  (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      () XX break
+    ) break
+    () (switch 
+      () XX break
+    ) break
   ))
   ;; groups + k | groups + up
-  ~action_groups+k  (t! unmod_all (switch ;;@iface@
-    () XX break
+  action_groups+k  (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      () XX break
+    ) break
+    () (switch 
+      () XX break
+    ) break
   ))
 
   ;; groups + t 
-  ~action_groups+t (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+t break
-    ((input virtual vk_firefox)) $firefox_action_groups+t break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+t break
-    ((input virtual vk_chrome)) $chrome_action_groups+t break
-    () XX break
+  action_groups+t (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+t break
+      ((input virtual vk_firefox)) $firefox_action_groups+t break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+t break
+      ((input virtual vk_chrome)) $chrome_action_groups+t break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_groups+t break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+t break
+      ((input virtual vk_firefox)) $firefox_action_groups+t break
+      ((input virtual vk_tmux)) $tmux_action_groups+t break
+      () XX break
+    ) break
   ))
   ;; groups + w
-  ~action_groups+w (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+w break
-    ((input virtual vk_firefox)) $firefox_action_groups+w break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+w break
-    ((input virtual vk_chrome)) $chrome_action_groups+w break
-    ((input virtual vk_nvim)) $nvim_action_groups+w break
-    () XX break
+  action_groups+w (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+w break
+      ((input virtual vk_firefox)) $firefox_action_groups+w break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+w break
+      ((input virtual vk_chrome)) $chrome_action_groups+w break
+      ((input virtual vk_nvim)) $nvim_action_groups+w break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+w break
+      ((input virtual vk_chrome)) $chrome_action_groups+w break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+w break
+      ((input virtual vk_firefox)) $firefox_action_groups+w break
+      ((input virtual vk_tmux)) $tmux_action_groups+w break
+      () XX break
+    ) break
   ))
   ;; groups + lsft + t 
-  ~action_groups+lsft+t (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_firefox)) $firefox_action_groups+lsft+t break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+lsft+t break
-    ((input virtual vk_chrome)) $chrome_action_groups+lsft+t break
-    () XX break
+  action_groups+lsft+t (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_firefox)) $firefox_action_groups+lsft+t break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+lsft+t break
+      ((input virtual vk_chrome)) $chrome_action_groups+lsft+t break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_groups+lsft+t break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+lsft+t break
+      ((input virtual vk_firefox)) $firefox_action_groups+lsft+t break
+      () XX break
+    ) break
   ))
 
   ;; == groups go by number ==================================================
   ;; groups + 1
-  ~action_groups+1 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+1 break
-    ((input virtual vk_firefox)) $firefox_action_groups+1 break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+1 break
-    ((input virtual vk_chrome)) $chrome_action_groups+1 break
-    ((input virtual vk_nvim)) $nvim_action_groups+1 break
-    () XX break
+  action_groups+1 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+1 break
+      ((input virtual vk_firefox)) $firefox_action_groups+1 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+1 break
+      ((input virtual vk_chrome)) $chrome_action_groups+1 break
+      ((input virtual vk_nvim)) $nvim_action_groups+1 break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+1 break
+      ((input virtual vk_chrome)) $chrome_action_groups+1 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+1 break
+      ((input virtual vk_firefox)) $firefox_action_groups+1 break
+      ((input virtual vk_tmux)) $tmux_action_groups+1 break
+      () XX break
+    ) break
   ))
   ;; groups + 2
-  ~action_groups+2 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+2 break
-    ((input virtual vk_firefox)) $firefox_action_groups+2 break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+2 break
-    ((input virtual vk_chrome)) $chrome_action_groups+2 break
-    ((input virtual vk_nvim)) $nvim_action_groups+2 break
-    () XX break
+  action_groups+2 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+2 break
+      ((input virtual vk_firefox)) $firefox_action_groups+2 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+2 break
+      ((input virtual vk_chrome)) $chrome_action_groups+2 break
+      ((input virtual vk_nvim)) $nvim_action_groups+2 break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+2 break
+      ((input virtual vk_chrome)) $chrome_action_groups+2 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+2 break
+      ((input virtual vk_firefox)) $firefox_action_groups+2 break
+      ((input virtual vk_tmux)) $tmux_action_groups+2 break
+      () XX break
+    ) break
   ))
   ;; groups + 3
-  ~action_groups+3 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+3 break
-    ((input virtual vk_firefox)) $firefox_action_groups+3 break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+3 break
-    ((input virtual vk_chrome)) $chrome_action_groups+3 break
-    ((input virtual vk_nvim)) $nvim_action_groups+3 break
-    () XX break
+  action_groups+3 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+3 break
+      ((input virtual vk_firefox)) $firefox_action_groups+3 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+3 break
+      ((input virtual vk_chrome)) $chrome_action_groups+3 break
+      ((input virtual vk_nvim)) $nvim_action_groups+3 break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+3 break
+      ((input virtual vk_chrome)) $chrome_action_groups+3 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+3 break
+      ((input virtual vk_firefox)) $firefox_action_groups+3 break
+      ((input virtual vk_tmux)) $tmux_action_groups+3 break
+      () XX break
+    ) break
   ))
   ;; groups + 4
-  ~action_groups+4 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+4 break
-    ((input virtual vk_firefox)) $firefox_action_groups+4 break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+4 break
-    ((input virtual vk_chrome)) $chrome_action_groups+4 break
-    ((input virtual vk_nvim)) $nvim_action_groups+4 break
-    () XX break
+  action_groups+4 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+4 break
+      ((input virtual vk_firefox)) $firefox_action_groups+4 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+4 break
+      ((input virtual vk_chrome)) $chrome_action_groups+4 break
+      ((input virtual vk_nvim)) $nvim_action_groups+4 break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+4 break
+      ((input virtual vk_chrome)) $chrome_action_groups+4 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+4 break
+      ((input virtual vk_firefox)) $firefox_action_groups+4 break
+      ((input virtual vk_tmux)) $tmux_action_groups+4 break
+      () XX break
+    ) break
   ))
   ;; groups + 5
-  ~action_groups+5 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+5 break
-    ((input virtual vk_firefox)) $firefox_action_groups+5 break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+5 break
-    ((input virtual vk_chrome)) $chrome_action_groups+5 break
-    ((input virtual vk_nvim)) $nvim_action_groups+5 break
-    () XX break
+  action_groups+5 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+5 break
+      ((input virtual vk_firefox)) $firefox_action_groups+5 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+5 break
+      ((input virtual vk_chrome)) $chrome_action_groups+5 break
+      ((input virtual vk_nvim)) $nvim_action_groups+5 break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+5 break
+      ((input virtual vk_chrome)) $chrome_action_groups+5 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+5 break
+      ((input virtual vk_firefox)) $firefox_action_groups+5 break
+      ((input virtual vk_tmux)) $tmux_action_groups+5 break
+      () XX break
+    ) break
   ))
   ;; groups + 6
-  ~action_groups+6 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+6 break
-    ((input virtual vk_firefox)) $firefox_action_groups+6 break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+6 break
-    ((input virtual vk_chrome)) $chrome_action_groups+6 break
-    ((input virtual vk_nvim)) $nvim_action_groups+6 break
-    () XX break
+  action_groups+6 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+6 break
+      ((input virtual vk_firefox)) $firefox_action_groups+6 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+6 break
+      ((input virtual vk_chrome)) $chrome_action_groups+6 break
+      ((input virtual vk_nvim)) $nvim_action_groups+6 break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+6 break
+      ((input virtual vk_chrome)) $chrome_action_groups+6 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+6 break
+      ((input virtual vk_firefox)) $firefox_action_groups+6 break
+      ((input virtual vk_tmux)) $tmux_action_groups+6 break
+      () XX break
+    ) break
   ))
   ;; groups + 7
-  ~action_groups+7 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+7 break
-    ((input virtual vk_firefox)) $firefox_action_groups+7 break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+7 break
-    ((input virtual vk_chrome)) $chrome_action_groups+7 break
-    ((input virtual vk_nvim)) $nvim_action_groups+7 break
-    () XX break
+  action_groups+7 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+7 break
+      ((input virtual vk_firefox)) $firefox_action_groups+7 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+7 break
+      ((input virtual vk_chrome)) $chrome_action_groups+7 break
+      ((input virtual vk_nvim)) $nvim_action_groups+7 break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+7 break
+      ((input virtual vk_chrome)) $chrome_action_groups+7 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+7 break
+      ((input virtual vk_firefox)) $firefox_action_groups+7 break
+      ((input virtual vk_tmux)) $tmux_action_groups+7 break
+      () XX break
+    ) break
   ))
   ;; groups + 8
-  ~action_groups+8 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+8 break
-    ((input virtual vk_firefox)) $firefox_action_groups+8 break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+8 break
-    ((input virtual vk_chrome)) $chrome_action_groups+8 break
-    ((input virtual vk_nvim)) $nvim_action_groups+8 break
-    () XX break
+  action_groups+8 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+8 break
+      ((input virtual vk_firefox)) $firefox_action_groups+8 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+8 break
+      ((input virtual vk_chrome)) $chrome_action_groups+8 break
+      ((input virtual vk_nvim)) $nvim_action_groups+8 break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+8 break
+      ((input virtual vk_chrome)) $chrome_action_groups+8 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+8 break
+      ((input virtual vk_firefox)) $firefox_action_groups+8 break
+      ((input virtual vk_tmux)) $tmux_action_groups+8 break
+      () XX break
+    ) break
   ))
   ;; groups + 9
-  ~action_groups+9 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+9 break
-    ((input virtual vk_firefox)) $firefox_action_groups+9 break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+9 break
-    ((input virtual vk_chrome)) $chrome_action_groups+9 break
-    ((input virtual vk_nvim)) $nvim_action_groups+9 break
-    () XX break
+  action_groups+9 (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+9 break
+      ((input virtual vk_firefox)) $firefox_action_groups+9 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+9 break
+      ((input virtual vk_chrome)) $chrome_action_groups+9 break
+      ((input virtual vk_nvim)) $nvim_action_groups+9 break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+9 break
+      ((input virtual vk_chrome)) $chrome_action_groups+9 break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+9 break
+      ((input virtual vk_firefox)) $firefox_action_groups+9 break
+      ((input virtual vk_tmux)) $tmux_action_groups+9 break
+      () XX break
+    ) break
   ))
 
   ;; == groups + toggle =====================================================
   ;; groups + toggle
-  ~action_groups+toggle (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_zellij)) $zellij_action_groups+toggle break
-    ((input virtual vk_tmux)) $tmux_action_groups+toggle break
-    ((input virtual vk_firefox)) $firefox_action_groups+toggle break
-    ((input virtual vk_obsidian)) $obsidian_action_groups+toggle break
-    ((input virtual vk_chrome)) $chrome_action_groups+toggle break
-    ((input virtual vk_nvim)) $nvim_action_groups+toggle break
-    () XX break
+  action_groups+toggle (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_zellij)) $zellij_action_groups+toggle break
+      ((input virtual vk_tmux)) $tmux_action_groups+toggle break
+      ((input virtual vk_firefox)) $firefox_action_groups+toggle break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+toggle break
+      ((input virtual vk_chrome)) $chrome_action_groups+toggle break
+      ((input virtual vk_nvim)) $nvim_action_groups+toggle break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_groups+toggle break
+      ((input virtual vk_chrome)) $chrome_action_groups+toggle break
+      ((input virtual vk_obsidian)) $obsidian_action_groups+toggle break
+      ((input virtual vk_firefox)) $firefox_action_groups+toggle break
+      ((input virtual vk_tmux)) $tmux_action_groups+toggle break
+      ((input virtual vk_zellij)) $zellij_action_groups+toggle break
+      () XX break
+    ) break
   ))
 
   ;; == groups + move =====================================================
   ;; groups + move + h | groups + move + left
-  ~action_groups+move+h (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+move+h break
-    () XX break
+  action_groups+move+h (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+move+h break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+move+h break
+      () XX break
+    ) break
   ))
   ;; groups + move + l | groups + move + right
-  ~action_groups+move+l (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_groups+move+l break
-    () XX break
+  action_groups+move+l (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+move+l break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_groups+move+l break
+      () XX break
+    ) break
   ))
   ;; groups + move + k | groups + move + up
-  ~action_groups+move+j (t! unmod_all (switch ;;@iface@
-    () XX break
+  action_groups+move+j (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      () XX break
+    ) break
+    () (switch 
+      () XX break
+    ) break
   ))
   ;; groups + move + j | groups + move + down
-  ~action_groups+move+k (t! unmod_all (switch ;;@iface@
-    () XX break
+  action_groups+move+k (t! unmod_all (switch ;;@iface@
+    ((input virtual vk_apps_sort_desc)) (switch 
+      () XX break
+    ) break
+    () (switch 
+      () XX break
+    ) break
   ))
 
 )

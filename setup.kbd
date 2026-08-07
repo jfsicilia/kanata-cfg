@@ -141,14 +141,16 @@
 
 ;; Virtual Keys ============================================================
 (defvirtualkeys
-  vk_lalt lalt  ;; Used to mimic lalt+tab with lctl+tab.
+  vk_lalt           lalt ;; Used to mimic lalt+tab with lctl+tab.
 
-  vk_alt_chars    XX ;; Used to toggle alternative character layout for other
-                     ;; languages.
-  vk_numpad       XX ;; Used to toggle alternative keyboard: normal vs numpad.
+  vk_alt_chars      XX ;; Used to toggle alternative character layout for other
+                       ;; languages.
+  vk_numpad         XX ;; Used to toggle alternative keyboard: normal vs numpad.
 
-  vk_fast_typing  XX ;; Used to allow fast typing without triggering modifier
-                     ;; combos with homerowmod.
+  vk_apps_sort_desc  XX ;; Used to invert apps order when true in actions.
+
+  vk_fast_typing    XX ;; Used to allow fast typing without triggering modifier
+                       ;; combos with homerowmod.
 
   ;; Domains (see spc+letter combos)
   vk_domains+a (layer-while-held domains+a_layer) 
@@ -464,10 +466,10 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
       $a|lmet              (t! fast_th (t! char a)                                  $toggle_lmet_layer)
       $s|lalt              (t! fast_th (t! char s)                                  $toggle_lalt_layer)
       $d|lsft              (t! fast_th (t! char d)                                  $toggle_lsft_layer)
-      $f|lctl              (t! fast_th (t! char f)                           (multi $toggle_lctl_layer (on-release release-vkey vk_lalt)))
+      $f|lctl              (t! fast_th (t! char f)                                  $toggle_lctl_layer)
       $g|windows           (t! fast_th (t! char g)                                  $toggle_windows_layer)
       $h|windows           (t! fast_th (t! char h)                                  $toggle_windows_layer)
-      $j|lctl              (t! fast_th (t! char j)                           (multi $toggle_lctl_layer (on-release release-vkey vk_lalt)))
+      $j|lctl              (t! fast_th (t! char j)                                  $toggle_lctl_layer)
       $k|rsft              (t! fast_th (t! char k)                                  $toggle_rsft_layer)
       $l|lalt              (t! fast_th (t! char l)                                  $toggle_lalt_layer)
       $;|lmet              (t! fast_th (t! char ;)                                  $toggle_lmet_layer)
@@ -491,12 +493,12 @@ copilot|bookm               $copilot   ;; Physical copilot key will be used for 
   ;; Modifiers row.
   $!lmet|replace           (t!      th  (t! 2x $action_workspaces+toggle)           $toggle_!lmet|replace_layer)
   $!lalt|search            (t!      th  (t! 2x $action_panes+toggle)                $toggle_!lalt|search_layer)
-  $!lctl|select            (t!      th  (t! 2x $action_tabs+toggle)          (multi $toggle_!lctl|select_layer (on-release release-vkey vk_lalt)))
-    $spc|domains           (t! fast_th  spc                                  (multi $toggle_domains_layer (t! release_domains)))
+  $!lctl|select            (t!      th  (t! 2x $action_tabs+toggle)                 $toggle_!lctl|select_layer)
+    $spc|domains           (t! fast_th  spc                                         $toggle_domains_layer) 
    $ralt|apps              (t!      th  (t! 2x $windows_toggle)                     $toggle_apps_layer)
    $prnt|bookm             (t!      th  (t! 2x $action_sessions+toggle)             $toggle_bookmarks_layer)
 $copilot|bookm             (t!      th  (t! 2x $action_sessions+toggle)             $toggle_bookmarks_layer)
-   $rctl|opts              (t!      th  (t! 2x $~action_groups+toggle)              $toggle_opts_layer)
+   $rctl|opts              (t!      th  (t! 2x $action_groups+toggle)               $toggle_opts_layer)
 )
 
 (deflayermap (default)

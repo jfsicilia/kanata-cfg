@@ -1,36 +1,36 @@
 (defvar
 ;; groups + spc
-chrome_action_groups+spc              $chrome_action_tabs+spc                  
+chrome_action_groups+spc          $chrome_action_tabs+spc                  
 ;; groups + l | groups + right
-chrome_action_groups+l             $chrome_action_tabs+l             
+chrome_action_groups+l            $chrome_action_tabs+l             
 ;; groups + h | groups + left
-chrome_action_groups+h             $chrome_action_tabs+h             
+chrome_action_groups+h            $chrome_action_tabs+h             
 ;; groups + t
-chrome_action_groups+t              $chrome_action_tabs+t              
+chrome_action_groups+t            $chrome_action_tabs+t              
 ;; groups + w
 chrome_action_groups+w            $chrome_action_tabs+w            
 ;; groups + lsft + t
 chrome_action_groups+lsft+t       $chrome_action_tabs+lsft+t       
 ;; == groups go by number ==================================================
 ;; groups + 1
-chrome_action_groups+1           $chrome_action_tabs+1           
+chrome_action_groups+1            $chrome_action_tabs+1           
 ;; groups + 2
-chrome_action_groups+2           $chrome_action_tabs+2           
+chrome_action_groups+2            $chrome_action_tabs+2           
 ;; groups + 3
-chrome_action_groups+3           $chrome_action_tabs+3           
+chrome_action_groups+3            $chrome_action_tabs+3           
 ;; groups + 4
-chrome_action_groups+4           $chrome_action_tabs+4           
+chrome_action_groups+4            $chrome_action_tabs+4           
 ;; groups + 5
-chrome_action_groups+5           $chrome_action_tabs+5           
+chrome_action_groups+5            $chrome_action_tabs+5           
 ;; groups + 6
-chrome_action_groups+6           $chrome_action_tabs+6           
+chrome_action_groups+6            $chrome_action_tabs+6           
 ;; groups + 7
-chrome_action_groups+7           $chrome_action_tabs+7           
+chrome_action_groups+7            $chrome_action_tabs+7           
 ;; groups + 8
-chrome_action_groups+8           $chrome_action_tabs+8           
+chrome_action_groups+8            $chrome_action_tabs+8           
 ;; groups + 9
-chrome_action_groups+9        $chrome_action_tabs+9        
+chrome_action_groups+9            $chrome_action_tabs+9        
 ;; == groups + toggle =====================================================
 ;; groups + toggle
-chrome_action_groups+toggle           $chrome_action_tabs+toggle           
+chrome_action_groups+toggle       $chrome_action_tabs+toggle           
 )

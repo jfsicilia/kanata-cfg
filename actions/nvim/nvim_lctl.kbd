@@ -1,0 +1,29 @@
+(defvar
+;; lctl + 1
+;; If not implemented, defaults to: C-1
+nvim_action_lctl+1             $nvim_tab_1
+;; lctl + 2
+;; If not implemented, defaults to: C-2
+nvim_action_lctl+2             $nvim_tab_2
+;; lctl + 3
+;; If not implemented, defaults to: C-3
+nvim_action_lctl+3             $nvim_tab_3
+;; lctl + 4
+;; If not implemented, defaults to: C-4
+nvim_action_lctl+4             $nvim_tab_4
+;; lctl + 5
+;; If not implemented, defaults to: C-5
+nvim_action_lctl+5             $nvim_tab_5 
+;; lctl + 6
+;; If not implemented, defaults to: C-6
+nvim_action_lctl+6             $nvim_tab_6 
+;; lctl + 7
+;; If not implemented, defaults to: C-7
+nvim_action_lctl+7             $nvim_tab_7
+;; lctl + 8
+;; If not implemented, defaults to: C-8
+nvim_action_lctl+8             $nvim_tab_8
+;; lctl + 9
+;; If not implemented, defaults to: C-9
+nvim_action_lctl+9             $nvim_tab_9 
+)

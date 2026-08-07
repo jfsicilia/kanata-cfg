@@ -2,40 +2,93 @@
   ;; == sessions =====================================================
   ;; sessions + spc
   action_sessions+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_sessions+spc break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+spc break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+spc break
+      () XX break
+    ) break
   ))
   ;; sessions + toggle
   action_sessions+toggle  (t! unmod_all (switch ;;@iface@
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      () XX break
+    ) break
+    () (switch 
+      () XX break
+    ) break
   ))
   action_sessions+d  (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_sessions+d break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+d break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+d break
+      () XX break
+    ) break
   ))
   action_sessions+h  (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_sessions+h break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+h break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+h break
+      () XX break
+    ) break
   ))
   action_sessions+j  (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_sessions+j break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+j break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+j break
+      () XX break
+    ) break
   ))
   action_sessions+k  (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_sessions+k break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+k break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+k break
+      () XX break
+    ) break
   ))
   action_sessions+l  (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_sessions+l break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+l break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+l break
+      () XX break
+    ) break
   ))
   action_sessions+w  (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_sessions+w break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+w break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+w break
+      () XX break
+    ) break
   ))
   action_sessions+r (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_sessions+r break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+r break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_sessions+r break
+      () XX break
+    ) break
   ))
 
 )

@@ -1,3 +1,5 @@
 (defvar
-  toggle_domains_layer        (t! toggle_layer domains_layer)
+  toggle_domains_layer        (multi (t! toggle_layer domains_layer)
+                                     (t! release_domains)
+                              )
 )

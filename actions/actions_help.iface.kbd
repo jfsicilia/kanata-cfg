@@ -1,14 +1,32 @@
 (defvar
   action_help+d (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_help+d break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_nvim)) $nvim_action_help+d break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_help+d break
+      () XX break
+    ) break
   ))
   action_help+i (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_help+i break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_nvim)) $nvim_action_help+i break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_help+i break
+      () XX break
+    ) break
   ))
   action_help+spc (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_nvim)) $nvim_action_help+spc break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_nvim)) $nvim_action_help+spc break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_nvim)) $nvim_action_help+spc break
+      () XX break
+    ) break
   ))
 )

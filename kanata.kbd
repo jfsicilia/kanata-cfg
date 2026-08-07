@@ -179,6 +179,7 @@
 (include actions/nvim/nvim_domains.kbd)
 (include actions/nvim/nvim_groups.1.kbd)
 (include actions/nvim/nvim_help.kbd)
+(include actions/nvim/nvim_lctl.kbd)
 (include actions/nvim/nvim_omni.39.kbd)
 (include actions/nvim/nvim_open.kbd)
 (include actions/nvim/nvim_panes.kbd)

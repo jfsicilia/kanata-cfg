@@ -23,250 +23,499 @@
 
   ;; tabs + spc 
   action_tabs+spc         (t! unmod_all (switch ;;@iface@ 
-    ((input virtual vk_chrome)) $chrome_action_tabs+spc break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+spc break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+spc break
-    ((input virtual vk_firefox)) $firefox_action_tabs+spc break
-    ((input virtual vk_nvim)) $nvim_action_tabs+spc break
-    ((input virtual vk_tmux)) $tmux_action_tabs+spc break
-    () (push-msg "NOTIFY: Select tabs not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+spc break
+      ((input virtual vk_nvim)) $nvim_action_tabs+spc break
+      ((input virtual vk_firefox)) $firefox_action_tabs+spc break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+spc break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+spc break
+      ((input virtual vk_chrome)) $chrome_action_tabs+spc break
+      () (push-msg "NOTIFY: Select tabs not implemented") break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_tabs+spc break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+spc break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+spc break
+      ((input virtual vk_firefox)) $firefox_action_tabs+spc break
+      ((input virtual vk_nvim)) $nvim_action_tabs+spc break
+      ((input virtual vk_tmux)) $tmux_action_tabs+spc break
+      () (push-msg "NOTIFY: Select tabs not implemented") break
+    ) break
   ))
 
   ;; tabs + l | tabs + right | lsft + rsft | 2x rsft | !lmet + tab
   ;; If not implemented, defaults to: C-tab
   action_tabs+l (t! unmod_all (switch ;;@iface@ 
-    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+l break
-    ((input virtual vk_chrome)) $chrome_action_tabs+l break
-    ((input virtual vk_zapzap)) $zapzap_action_tabs+l break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+l break
-    ((input virtual vk_firefox)) $firefox_action_tabs+l break
-    ((input virtual vk_nvim)) $nvim_action_tabs+l break
-    ((input virtual vk_tmux)) $tmux_action_tabs+l break
-    ((input virtual vk_zellij)) $zellij_action_tabs+l break
-    () $tab_next break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_zellij)) $zellij_action_tabs+l break
+      ((input virtual vk_tmux)) $tmux_action_tabs+l break
+      ((input virtual vk_nvim)) $nvim_action_tabs+l break
+      ((input virtual vk_firefox)) $firefox_action_tabs+l break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+l break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+l break
+      ((input virtual vk_chrome)) $chrome_action_tabs+l break
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+l break
+      () $tab_next break
+    ) break
+    () (switch 
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+l break
+      ((input virtual vk_chrome)) $chrome_action_tabs+l break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+l break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+l break
+      ((input virtual vk_firefox)) $firefox_action_tabs+l break
+      ((input virtual vk_nvim)) $nvim_action_tabs+l break
+      ((input virtual vk_tmux)) $tmux_action_tabs+l break
+      ((input virtual vk_zellij)) $zellij_action_tabs+l break
+      () $tab_next break
+    ) break
   ))
   ;; tabs + h | tabs + left | rsft + lsft | 2x lsft | !lmet + sft + tab
   ;; If not implemented, defaults to: C-S-tab
   action_tabs+h (t! unmod_all (switch ;;@iface@ 
-    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+h break
-    ((input virtual vk_chrome)) $chrome_action_tabs+h break
-    ((input virtual vk_zapzap)) $zapzap_action_tabs+h break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+h break
-    ((input virtual vk_firefox)) $firefox_action_tabs+h break
-    ((input virtual vk_nvim)) $nvim_action_tabs+h break
-    ((input virtual vk_tmux)) $tmux_action_tabs+h break
-    ((input virtual vk_zellij)) $zellij_action_tabs+h break
-    () $tab_prev break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_zellij)) $zellij_action_tabs+h break
+      ((input virtual vk_tmux)) $tmux_action_tabs+h break
+      ((input virtual vk_nvim)) $nvim_action_tabs+h break
+      ((input virtual vk_firefox)) $firefox_action_tabs+h break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+h break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+h break
+      ((input virtual vk_chrome)) $chrome_action_tabs+h break
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+h break
+      () $tab_prev break
+    ) break
+    () (switch 
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+h break
+      ((input virtual vk_chrome)) $chrome_action_tabs+h break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+h break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+h break
+      ((input virtual vk_firefox)) $firefox_action_tabs+h break
+      ((input virtual vk_nvim)) $nvim_action_tabs+h break
+      ((input virtual vk_tmux)) $tmux_action_tabs+h break
+      ((input virtual vk_zellij)) $zellij_action_tabs+h break
+      () $tab_prev break
+    ) break
   ))
   ;; tabs + j | tabs + down
   action_tabs+j  (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+j break
-    () (push-msg "NOTIFY: Select first tab not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+j break
+      () (push-msg "NOTIFY: Select first tab not implemented") break
+    ) break
+    () (switch 
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+j break
+      () (push-msg "NOTIFY: Select first tab not implemented") break
+    ) break
   ))
   ;; tabs + k | tabs + up
   action_tabs+k  (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+k break
-    () (push-msg "NOTIFY: Select last tab not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+k break
+      () (push-msg "NOTIFY: Select last tab not implemented") break
+    ) break
+    () (switch 
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+k break
+      () (push-msg "NOTIFY: Select last tab not implemented") break
+    ) break
   ))
   ;; tabs + r 
   ;; If not implemented, defaults to: XX
   action_tabs+r (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_tmux)) $tmux_action_tabs+r break
-    () XX break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+r break
+      () XX break
+    ) break
+    () (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+r break
+      () XX break
+    ) break
   ))
   ;; tabs + t 
   ;; If not implemented, defaults to: C-t
   action_tabs+t (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_chrome)) $chrome_action_tabs+t break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+t break
-    ((input virtual vk_firefox)) $firefox_action_tabs+t break
-    ((input virtual vk_tmux)) $tmux_action_tabs+t break
-    () $tab_new break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+t break
+      ((input virtual vk_firefox)) $firefox_action_tabs+t break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+t break
+      ((input virtual vk_chrome)) $chrome_action_tabs+t break
+      () $tab_new break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_tabs+t break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+t break
+      ((input virtual vk_firefox)) $firefox_action_tabs+t break
+      ((input virtual vk_tmux)) $tmux_action_tabs+t break
+      () $tab_new break
+    ) break
   ))
   ;; tabs + v 
   action_tabs+v (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+v break
-    () (push-msg "NOTIFY: Tabs Vertical not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+v break
+      () (push-msg "NOTIFY: Tabs Vertical not implemented") break
+    ) break
+    () (switch 
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+v break
+      () (push-msg "NOTIFY: Tabs Vertical not implemented") break
+    ) break
   ))
   ;; tabs + w 
   ;; If not implemented, defaults to: C-w
   action_tabs+w (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_chrome)) $chrome_action_tabs+w break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+w break
-    ((input virtual vk_firefox)) $firefox_action_tabs+w break
-    ((input virtual vk_nvim)) $nvim_action_tabs+w break
-    ((input virtual vk_tmux)) $tmux_action_tabs+w break
-    () $tab_close break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+w break
+      ((input virtual vk_nvim)) $nvim_action_tabs+w break
+      ((input virtual vk_firefox)) $firefox_action_tabs+w break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+w break
+      ((input virtual vk_chrome)) $chrome_action_tabs+w break
+      () $tab_close break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_tabs+w break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+w break
+      ((input virtual vk_firefox)) $firefox_action_tabs+w break
+      ((input virtual vk_nvim)) $nvim_action_tabs+w break
+      ((input virtual vk_tmux)) $tmux_action_tabs+w break
+      () $tab_close break
+    ) break
   ))
   ;; tabs + lsft + t 
   ;; If not implemented, defaults to: C-S-t
   action_tabs+lsft+t (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_chrome)) $chrome_action_tabs+lsft+t break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+lsft+t break
-    ((input virtual vk_firefox)) $firefox_action_tabs+lsft+t break
-    () $tab_undo_close break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_firefox)) $firefox_action_tabs+lsft+t break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+lsft+t break
+      ((input virtual vk_chrome)) $chrome_action_tabs+lsft+t break
+      () $tab_undo_close break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_tabs+lsft+t break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+lsft+t break
+      ((input virtual vk_firefox)) $firefox_action_tabs+lsft+t break
+      () $tab_undo_close break
+    ) break
   ))
 
   ;; == tabs go by number ==================================================
   ;; tabs + 1 
   ;; If not implemented, defaults to: C-1
   action_tabs+1 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+1 break
-    ((input virtual vk_chrome)) $chrome_action_tabs+1 break
-    ((input virtual vk_zapzap)) $zapzap_action_tabs+1 break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+1 break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+1 break
-    ((input virtual vk_firefox)) $firefox_action_tabs+1 break
-    ((input virtual vk_nvim)) $nvim_action_tabs+1 break
-    ((input virtual vk_tmux)) $tmux_action_tabs+1 break
-    () $tab_goto_1 break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+1 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+1 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+1 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+1 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+1 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+1 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+1 break
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+1 break
+      () $tab_goto_1 break
+    ) break
+    () (switch 
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+1 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+1 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+1 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+1 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+1 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+1 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+1 break
+      ((input virtual vk_tmux)) $tmux_action_tabs+1 break
+      () $tab_goto_1 break
+    ) break
   ))
   ;; tabs + 2 
   ;; If not implemented, defaults to: C-2
   action_tabs+2 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+2 break
-    ((input virtual vk_chrome)) $chrome_action_tabs+2 break
-    ((input virtual vk_zapzap)) $zapzap_action_tabs+2 break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+2 break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+2 break
-    ((input virtual vk_firefox)) $firefox_action_tabs+2 break
-    ((input virtual vk_nvim)) $nvim_action_tabs+2 break
-    ((input virtual vk_tmux)) $tmux_action_tabs+2 break
-    () $tab_goto_2 break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+2 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+2 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+2 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+2 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+2 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+2 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+2 break
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+2 break
+      () $tab_goto_2 break
+    ) break
+    () (switch 
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+2 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+2 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+2 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+2 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+2 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+2 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+2 break
+      ((input virtual vk_tmux)) $tmux_action_tabs+2 break
+      () $tab_goto_2 break
+    ) break
   ))
   ;; tabs + 3 
   ;; If not implemented, defaults to: C-3
   action_tabs+3 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+3 break
-    ((input virtual vk_chrome)) $chrome_action_tabs+3 break
-    ((input virtual vk_zapzap)) $zapzap_action_tabs+3 break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+3 break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+3 break
-    ((input virtual vk_firefox)) $firefox_action_tabs+3 break
-    ((input virtual vk_nvim)) $nvim_action_tabs+3 break
-    ((input virtual vk_tmux)) $tmux_action_tabs+3 break
-    () $tab_goto_3 break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+3 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+3 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+3 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+3 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+3 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+3 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+3 break
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+3 break
+      () $tab_goto_3 break
+    ) break
+    () (switch 
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+3 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+3 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+3 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+3 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+3 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+3 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+3 break
+      ((input virtual vk_tmux)) $tmux_action_tabs+3 break
+      () $tab_goto_3 break
+    ) break
   ))
   ;; tabs + 4 
   ;; If not implemented, defaults to: C-4
   action_tabs+4 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+4 break
-    ((input virtual vk_chrome)) $chrome_action_tabs+4 break
-    ((input virtual vk_zapzap)) $zapzap_action_tabs+4 break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+4 break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+4 break
-    ((input virtual vk_firefox)) $firefox_action_tabs+4 break
-    ((input virtual vk_nvim)) $nvim_action_tabs+4 break
-    ((input virtual vk_tmux)) $tmux_action_tabs+4 break
-    () $tab_goto_4 break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+4 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+4 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+4 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+4 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+4 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+4 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+4 break
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+4 break
+      () $tab_goto_4 break
+    ) break
+    () (switch 
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+4 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+4 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+4 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+4 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+4 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+4 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+4 break
+      ((input virtual vk_tmux)) $tmux_action_tabs+4 break
+      () $tab_goto_4 break
+    ) break
   ))
   ;; tabs + 5 
   ;; If not implemented, defaults to: C-5
   action_tabs+5 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+5 break
-    ((input virtual vk_chrome)) $chrome_action_tabs+5 break
-    ((input virtual vk_zapzap)) $zapzap_action_tabs+5 break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+5 break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+5 break
-    ((input virtual vk_firefox)) $firefox_action_tabs+5 break
-    ((input virtual vk_nvim)) $nvim_action_tabs+5 break
-    ((input virtual vk_tmux)) $tmux_action_tabs+5 break
-    () $tab_goto_5 break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+5 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+5 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+5 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+5 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+5 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+5 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+5 break
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+5 break
+      () $tab_goto_5 break
+    ) break
+    () (switch 
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+5 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+5 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+5 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+5 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+5 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+5 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+5 break
+      ((input virtual vk_tmux)) $tmux_action_tabs+5 break
+      () $tab_goto_5 break
+    ) break
   ))
   ;; tabs + 6 
   ;; If not implemented, defaults to: C-6
   action_tabs+6 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+6 break
-    ((input virtual vk_chrome)) $chrome_action_tabs+6 break
-    ((input virtual vk_zapzap)) $zapzap_action_tabs+6 break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+6 break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+6 break
-    ((input virtual vk_firefox)) $firefox_action_tabs+6 break
-    ((input virtual vk_nvim)) $nvim_action_tabs+6 break
-    ((input virtual vk_tmux)) $tmux_action_tabs+6 break
-    () $tab_goto_6 break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+6 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+6 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+6 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+6 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+6 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+6 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+6 break
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+6 break
+      () $tab_goto_6 break
+    ) break
+    () (switch 
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+6 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+6 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+6 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+6 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+6 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+6 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+6 break
+      ((input virtual vk_tmux)) $tmux_action_tabs+6 break
+      () $tab_goto_6 break
+    ) break
   ))
   ;; tabs + 7 
   ;; If not implemented, defaults to: C-7
   action_tabs+7 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+7 break
-    ((input virtual vk_chrome)) $chrome_action_tabs+7 break
-    ((input virtual vk_zapzap)) $zapzap_action_tabs+7 break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+7 break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+7 break
-    ((input virtual vk_firefox)) $firefox_action_tabs+7 break
-    ((input virtual vk_nvim)) $nvim_action_tabs+7 break
-    ((input virtual vk_tmux)) $tmux_action_tabs+7 break
-    () $tab_goto_7 break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+7 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+7 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+7 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+7 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+7 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+7 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+7 break
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+7 break
+      () $tab_goto_7 break
+    ) break
+    () (switch 
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+7 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+7 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+7 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+7 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+7 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+7 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+7 break
+      ((input virtual vk_tmux)) $tmux_action_tabs+7 break
+      () $tab_goto_7 break
+    ) break
   ))
   ;; tabs + 8 
   ;; If not implemented, defaults to: C-8
   action_tabs+8 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_whatsapp)) $whatsapp_action_tabs+8 break
-    ((input virtual vk_chrome)) $chrome_action_tabs+8 break
-    ((input virtual vk_zapzap)) $zapzap_action_tabs+8 break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+8 break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+8 break
-    ((input virtual vk_firefox)) $firefox_action_tabs+8 break
-    ((input virtual vk_nvim)) $nvim_action_tabs+8 break
-    ((input virtual vk_tmux)) $tmux_action_tabs+8 break
-    () $tab_goto_8 break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+8 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+8 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+8 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+8 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+8 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+8 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+8 break
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+8 break
+      () $tab_goto_8 break
+    ) break
+    () (switch 
+      ((input virtual vk_whatsapp)) $whatsapp_action_tabs+8 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+8 break
+      ((input virtual vk_zapzap)) $zapzap_action_tabs+8 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+8 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+8 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+8 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+8 break
+      ((input virtual vk_tmux)) $tmux_action_tabs+8 break
+      () $tab_goto_8 break
+    ) break
   ))
   ;; tabs + 9 
   ;; If not implemented, defaults to: C-9
   action_tabs+9 (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_chrome)) $chrome_action_tabs+9 break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+9 break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+9 break
-    ((input virtual vk_firefox)) $firefox_action_tabs+9 break
-    ((input virtual vk_nvim)) $nvim_action_tabs+9 break
-    ((input virtual vk_tmux)) $tmux_action_tabs+9 break
-    () $tab_goto_last break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+9 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+9 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+9 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+9 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+9 break
+      ((input virtual vk_chrome)) $chrome_action_tabs+9 break
+      () $tab_goto_last break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_tabs+9 break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+9 break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+9 break
+      ((input virtual vk_firefox)) $firefox_action_tabs+9 break
+      ((input virtual vk_nvim)) $nvim_action_tabs+9 break
+      ((input virtual vk_tmux)) $tmux_action_tabs+9 break
+      () $tab_goto_last break
+    ) break
   ))
 
   ;; == tabs + toggle =====================================================
   ;; tabs + toggle | 2x !lctl
   action_tabs+toggle (t! unmod_all (switch ;;@iface@ 
-    ((input virtual vk_chrome)) $chrome_action_tabs+toggle break
-    ((input virtual vk_obsidian)) $obsidian_action_tabs+toggle break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+toggle break
-    ((input virtual vk_firefox)) $firefox_action_tabs+toggle break
-    ((input virtual vk_nvim)) $nvim_action_tabs+toggle break
-    ((input virtual vk_tmux)) $tmux_action_tabs+toggle break
-    ((input virtual vk_zellij)) $zellij_action_tabs+toggle break
-    () (push-msg "NOTIFY: Toggle recent tab not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_zellij)) $zellij_action_tabs+toggle break
+      ((input virtual vk_tmux)) $tmux_action_tabs+toggle break
+      ((input virtual vk_nvim)) $nvim_action_tabs+toggle break
+      ((input virtual vk_firefox)) $firefox_action_tabs+toggle break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+toggle break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+toggle break
+      ((input virtual vk_chrome)) $chrome_action_tabs+toggle break
+      () (push-msg "NOTIFY: Toggle recent tab not implemented") break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_tabs+toggle break
+      ((input virtual vk_obsidian)) $obsidian_action_tabs+toggle break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+toggle break
+      ((input virtual vk_firefox)) $firefox_action_tabs+toggle break
+      ((input virtual vk_nvim)) $nvim_action_tabs+toggle break
+      ((input virtual vk_tmux)) $tmux_action_tabs+toggle break
+      ((input virtual vk_zellij)) $zellij_action_tabs+toggle break
+      () (push-msg "NOTIFY: Toggle recent tab not implemented") break
+    ) break
   ))
 
   ;; == tabs + move =====================================================
   ;; tabs + move + h | tabs + move + left
   action_tabs+move+h (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_chrome)) $chrome_action_tabs+move+h break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+move+h break
-    ((input virtual vk_firefox)) $firefox_action_tabs+move+h break
-    ((input virtual vk_tmux)) $tmux_action_tabs+move+h break
-    () (push-msg "NOTIFY: Move tab left not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+move+h break
+      ((input virtual vk_firefox)) $firefox_action_tabs+move+h break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+move+h break
+      ((input virtual vk_chrome)) $chrome_action_tabs+move+h break
+      () (push-msg "NOTIFY: Move tab left not implemented") break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_tabs+move+h break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+move+h break
+      ((input virtual vk_firefox)) $firefox_action_tabs+move+h break
+      ((input virtual vk_tmux)) $tmux_action_tabs+move+h break
+      () (push-msg "NOTIFY: Move tab left not implemented") break
+    ) break
   ))
   ;; tabs + move + l | tabs + move + right
   action_tabs+move+l (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_chrome)) $chrome_action_tabs+move+l break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+move+l break
-    ((input virtual vk_firefox)) $firefox_action_tabs+move+l break
-    ((input virtual vk_tmux)) $tmux_action_tabs+move+l break
-    () (push-msg "NOTIFY: Move tab right not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_tmux)) $tmux_action_tabs+move+l break
+      ((input virtual vk_firefox)) $firefox_action_tabs+move+l break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+move+l break
+      ((input virtual vk_chrome)) $chrome_action_tabs+move+l break
+      () (push-msg "NOTIFY: Move tab right not implemented") break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_tabs+move+l break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+move+l break
+      ((input virtual vk_firefox)) $firefox_action_tabs+move+l break
+      ((input virtual vk_tmux)) $tmux_action_tabs+move+l break
+      () (push-msg "NOTIFY: Move tab right not implemented") break
+    ) break
   ))
   ;; tabs + move + k | tabs + move + up
   action_tabs+move+j (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_chrome)) $chrome_action_tabs+move+j break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+move+j break
-    ((input virtual vk_firefox)) $firefox_action_tabs+move+j break
-    () (push-msg "NOTIFY: Move tab first not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_firefox)) $firefox_action_tabs+move+j break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+move+j break
+      ((input virtual vk_chrome)) $chrome_action_tabs+move+j break
+      () (push-msg "NOTIFY: Move tab first not implemented") break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_tabs+move+j break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+move+j break
+      ((input virtual vk_firefox)) $firefox_action_tabs+move+j break
+      () (push-msg "NOTIFY: Move tab first not implemented") break
+    ) break
   ))
   ;; tabs + move + j | tabs + move + down
   action_tabs+move+k (t! unmod_all (switch ;;@iface@
-    ((input virtual vk_chrome)) $chrome_action_tabs+move+k break
-    ((input virtual vk_dolphin)) $dolphin_action_tabs+move+k break
-    ((input virtual vk_firefox)) $firefox_action_tabs+move+k break
-    () (push-msg "NOTIFY: Move tab last not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      ((input virtual vk_firefox)) $firefox_action_tabs+move+k break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+move+k break
+      ((input virtual vk_chrome)) $chrome_action_tabs+move+k break
+      () (push-msg "NOTIFY: Move tab last not implemented") break
+    ) break
+    () (switch 
+      ((input virtual vk_chrome)) $chrome_action_tabs+move+k break
+      ((input virtual vk_dolphin)) $dolphin_action_tabs+move+k break
+      ((input virtual vk_firefox)) $firefox_action_tabs+move+k break
+      () (push-msg "NOTIFY: Move tab last not implemented") break
+    ) break
   ))
 
 )

@@ -1,12 +1,12 @@
 (defvar
 ;; groups + spc
-nvim_action_groups+spc           $nvim_action_tabs+spc
+nvim_action_groups+spc         $nvim_action_tabs+spc
 ;; groups + l | groups + right
-nvim_action_groups+l             $nvim_action_tabs+l             
+nvim_action_groups+l           $nvim_action_tabs+l             
 ;; groups + h | groups + left
-nvim_action_groups+h             $nvim_action_tabs+h             
+nvim_action_groups+h           $nvim_action_tabs+h             
 ;; groups + w
-nvim_action_groups+w            $nvim_action_tabs+w            
+nvim_action_groups+w           $nvim_action_tabs+w            
 ;; == groups go by number ==================================================
 ;; groups + 1
 nvim_action_groups+1           $nvim_action_tabs+1           

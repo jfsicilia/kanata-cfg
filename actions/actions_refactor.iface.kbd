@@ -2,10 +2,20 @@
   ;; == refactor ============================================================
   ;; refactor + spc
   action_refactor+spc (t! unmod_all (switch ;;@iface@
-    () (push-msg "NOTIFY: Refactor not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      () (push-msg "NOTIFY: Refactor not implemented") break
+    ) break
+    () (switch 
+      () (push-msg "NOTIFY: Refactor not implemented") break
+    ) break
   ))
   ;; refactor + toggle
   action_refactor+toggle (t! unmod_all (switch ;;@iface@
-    () (push-msg "NOTIFY: Refactor not implemented") break
+    ((input virtual vk_apps_sort_desc)) (switch 
+      () (push-msg "NOTIFY: Refactor not implemented") break
+    ) break
+    () (switch 
+      () (push-msg "NOTIFY: Refactor not implemented") break
+    ) break
   ))
 )

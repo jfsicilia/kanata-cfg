@@ -7,4 +7,31 @@ nvim_action_!lctl|select+a  $nvim_select_all
 nvim_action_!lctl|select+spc                 $nvim_select    
 ;; select + lsft + spc
 nvim_action_!lctl|select+lsft+spc            XX
+;; !lctl|select + 1
+;; If not implemented, defaults to: C-1
+nvim_action_!lctl|select+1             $nvim_tab_1
+;; !lctl|select + 2
+;; If not implemented, defaults to: C-2
+nvim_action_!lctl|select+2             $nvim_tab_2
+;; !lctl|select + 3
+;; If not implemented, defaults to: C-3
+nvim_action_!lctl|select+3             $nvim_tab_3
+;; !lctl|select + 4
+;; If not implemented, defaults to: C-4
+nvim_action_!lctl|select+4             $nvim_tab_4
+;; !lctl|select + 5
+;; If not implemented, defaults to: C-5
+nvim_action_!lctl|select+5             $nvim_tab_5 
+;; !lctl|select + 6
+;; If not implemented, defaults to: C-6
+nvim_action_!lctl|select+6             $nvim_tab_6 
+;; !lctl|select + 7
+;; If not implemented, defaults to: C-7
+nvim_action_!lctl|select+7             $nvim_tab_7
+;; !lctl|select + 8
+;; If not implemented, defaults to: C-8
+nvim_action_!lctl|select+8             $nvim_tab_8
+;; !lctl|select + 9
+;; If not implemented, defaults to: C-9
+nvim_action_!lctl|select+9             $nvim_tab_9 
 )

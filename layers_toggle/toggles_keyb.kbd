@@ -1,4 +1,7 @@
 (defvar
   ;; Lang layer
-  toggle_keyb_layer        (t! toggle_layer keyb_layer)
+  toggle_keyb_layer        (multi (t! toggle_layer keyb_layer)
+                                  (on-press press-vkey vk_apps_sort_desc) 
+                                  (on-release release-vkey vk_apps_sort_desc)
+                           )
 )
