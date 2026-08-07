@@ -12,7 +12,7 @@ tmux_action_omni+lsft+a            (push-msg "NOTIFY:Tmux_Omni not implemented!"
 tmux_action_omni+rsft+a            (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + b
 ;; If not implemented, defaults to: pgup
-tmux_action_omni+b                    $tmux_pgup ;; prefix + PgUp (enter copy mode + page up)
+tmux_action_omni+b                 $tmux_pgup ;; prefix + PgUp (enter copy mode + page up)
 ;; omni + c
 ;; If not implemented, defaults to: C-c
 tmux_action_omni+c                 $tmux_copy ;; prefix + [ (enter copy mode) ;;""
@@ -52,7 +52,7 @@ tmux_action_omni+o                 (push-msg "NOTIFY:Tmux_Omni not implemented!"
 ;; If not implemented, defaults to: left
 tmux_action_omni+p                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + q
-tmux_action_omni+q                 $tmux_session_detach
+tmux_action_omni+q                 $tmux_session_save_and_detach
 ;; omni + r
 tmux_action_omni+r                 $tmux_rename ;; prefix + , (rename window)
 ;; omni + s
