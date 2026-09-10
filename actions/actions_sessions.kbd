@@ -3,15 +3,19 @@
   (t! 1app_action action_sessions+spc XX tmux)
   (t! 1app_action action_sessions+toggle XX tmux)
 
-  (t! 1app_action action_sessions+n XX tmux)
-  (t! 1app_action action_sessions+bspc XX tmux)
   (t! 1app_action action_sessions+d XX tmux)
-  (t! 1app_action action_sessions+w XX tmux)
-
   (t! 1app_action action_sessions+h XX tmux)
   (t! 1app_action action_sessions+l XX tmux)
-
+  (t! 1app_action action_sessions+n XX tmux)
   (t! 1app_action action_sessions+r XX tmux)
+  (t! 1app_action action_sessions+w XX tmux)
+  (t! 1app_action action_sessions+z XX tmux)
+  (t! 1app_action action_sessions+lsft+z XX tmux)
+  (t! 1app_action action_sessions+rsft+z XX tmux)
+  (t! 1app_action action_sessions+bspc XX tmux)
+  (t! 1app_action action_sessions+lsft+bspc XX tmux)
+  (t! 1app_action action_sessions+rsft+bspc XX tmux)
+
 
   (t! 1app_action action_sessions+0 XX tmux)
   (t! 1app_action action_sessions+1 XX tmux)

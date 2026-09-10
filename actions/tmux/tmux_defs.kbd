@@ -77,16 +77,26 @@ tmux_move_tab_left           (macro $tmux_prefix S-; 100 s w a p - w i n d o w s
 ;;== sessions ============================================================
 
 tmux_session_select          (macro $tmux_prefix s)
-tmux_session_rename          (macro $tmux_prefix S-4)
-tmux_session_detach          (macro $tmux_prefix d)
-tmux_session_save            (macro $tmux_prefix A-s)
-tmux_session_save_and_detach (macro $tmux_prefix A-s $tmux_prefix d)
-tmux_session_delete          (macro $_tmux: $_tmux_confirm S-k i l l spc s e s s i o n spc S-3 S-s S-/ spc S-9 y / n S-0 right spc k i l l - s e s s i o n ent) 
-tmux_session_new             (macro $tmux_prefix S-; 100 n e w spc - s spc)
 tmux_session_next            (macro $tmux_prefix S-0)
 tmux_session_prev            (macro $tmux_prefix S-9)
+tmux_session_toggle          (macro $tmux_prefix S-s t)
 
-tmux_session_toggle          (macro $_tmux: $_tmux_run s e s h spc l a s t ent)
+tmux_session_rename          (macro $tmux_prefix S-4)
+
+tmux_session_new             (macro $tmux_prefix S-s n)
+
+;; NOTE: tmux_prefix + A-w (turns off sidebar)
+;; tmux_session_detach          (macro $tmux_prefix A-w $tmux_prefix S-s d)
+;; tmux_session_save_and_detach (macro $tmux_prefix A-w $tmux_prefix S-s w)
+tmux_session_detach          (macro $tmux_prefix S-s d)
+tmux_session_save_and_detach (macro $tmux_prefix S-s w)
+tmux_session_save            (macro $tmux_prefix S-s s)
+
+tmux_session_sleep           (macro $tmux_prefix S-s z)
+tmux_session_awake           (macro $tmux_prefix S-s S-z)
+tmux_session_delete          (macro $tmux_prefix S-s k)
+tmux_session_revive          (macro $tmux_prefix S-s S-k)
+
 
 tmux_session_select_0        XX
 tmux_session_select_1        (macro $tmux_prefix A-1)

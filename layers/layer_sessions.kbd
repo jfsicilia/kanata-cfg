@@ -3,12 +3,13 @@
   $invert|keyb (t! invert_apps_sort $toggle_sessions_layer)
   spc             $action_sessions+spc
   $toggle         $action_sessions+toggle
-  w               $action_sessions+w
-  n               $action_sessions+n
-  r               $action_sessions+r 
-  h               $action_sessions+h
-  l               $action_sessions+l
-  bspc            $action_sessions+bspc
+  h               $action_sessions+h     ;; prev
+  l               $action_sessions+l     ;; next
+  n               $action_sessions+n     ;; new
+  r               $action_sessions+r     ;; rename
+  w               $action_sessions+w     ;; save and detach
+  z               $action_sessions+z     ;; sleep
+  bspc            $action_sessions+bspc  ;; kill
 
   0               $action_sessions+0
   1               $action_sessions+1
@@ -22,14 +23,18 @@
   9               $action_sessions+9
 
   ;; == SFT ======================
-  $d|lsft         (t! th $action_sessions+d   $toggle_sessions+lsft_layer)
-  $k|rsft         (t! th _                    $toggle_sessions+rsft_layer)
+  $d|lsft         (t! th $action_sessions+d   $toggle_sessions+lsft_layer) ;; detach
+  $k|rsft         (t! th _                    $toggle_sessions+rsft_layer) 
   lsft            (t! th _                    $toggle_sessions+lsft_layer)
   rsft            (t! th _                    $toggle_sessions+rsft_layer)
 )
 (deflayermap (sessions+lsft_layer)
   $invert|keyb (t! invert_apps_sort $toggle_sessions+lsft_layer)
+  z               $action_sessions+lsft+z     ;; awake
+  bspc            $action_sessions+lsft+bspc  ;; revive
 )
 (deflayermap (sessions+rsft_layer)
   $invert|keyb (t! invert_apps_sort $toggle_sessions+rsft_layer)
+  z               $action_sessions+rsft+z     ;; awake
+  bspc            $action_sessions+rsft+bspc  ;; revive
 )

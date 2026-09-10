@@ -3,15 +3,19 @@
   tmux_action_sessions+spc    $tmux_session_select
   tmux_action_sessions+toggle $tmux_session_toggle
 
-  tmux_action_sessions+n      $tmux_session_new
-  tmux_action_sessions+bspc   $tmux_session_delete
-  tmux_action_sessions+d      $tmux_session_save_and_detach
-  tmux_action_sessions+w      $tmux_session_save_and_detach
+  tmux_action_sessions+d           $tmux_session_detach
+  tmux_action_sessions+h           $tmux_session_prev
+  tmux_action_sessions+l           $tmux_session_next
+  tmux_action_sessions+n           $tmux_session_new
+  tmux_action_sessions+r           $tmux_session_rename
+  tmux_action_sessions+w           $tmux_session_save_and_detach
+  tmux_action_sessions+z           $tmux_session_sleep
+  tmux_action_sessions+lsft+z      $tmux_session_awake
+  tmux_action_sessions+rsft+z      $tmux_session_awake
+  tmux_action_sessions+bspc        $tmux_session_delete
+  tmux_action_sessions+lsft+bspc   $tmux_session_revive
+  tmux_action_sessions+rsft+bspc   $tmux_session_revive
 
-  tmux_action_sessions+h      $tmux_session_prev
-  tmux_action_sessions+l      $tmux_session_next
-
-  tmux_action_sessions+r      $tmux_session_rename
 
   tmux_action_sessions+0      $tmux_session_select_0
   tmux_action_sessions+1      $tmux_session_select_1 
