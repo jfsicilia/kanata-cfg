@@ -16,7 +16,6 @@ tmux_folder_picker           (macro $_tmux: $_tmux_popup t m u x - f i l e - p i
 
 ;;""
 ;;== omni ================================================================
-
 tmux_pgup                    (macro $tmux_prefix pgup)
 tmux_copy                    (macro $tmux_prefix [)
 tmux_pgdn                    C-f
@@ -25,13 +24,11 @@ tmux_change_layout           (macro $tmux_prefix spc)
 
 ;;""
 ;;== Windows =============================================================
-
 tmux_window_new              (macro $tmux_prefix c)
 tmux_window_rename           (macro $tmux_prefix ,)
 
 ;;""
 ;;== pane ================================================================
-
 tmux_pane_maximize           (macro $tmux_prefix z)
 tmux_pane_left               (macro $tmux_prefix left)
 tmux_pane_right              (macro $tmux_prefix right)
@@ -53,7 +50,6 @@ tmux_resize_pane_down        (macro $tmux_prefix C-down)
 
 ;;""
 ;;== tabs ================================================================
-
 tmux_rename_tab              (macro $tmux_prefix ,)
 tmux_select_tab              (macro $tmux_prefix w) ;; prefix + w (choose window) 
 tmux_right_tab               (macro $tmux_prefix n) 
@@ -75,8 +71,7 @@ tmux_move_tab_left           (macro $tmux_prefix S-; 100 s w a p - w i n d o w s
 
 ;;""
 ;;== sessions ============================================================
-
-tmux_session_select          (macro $tmux_prefix s)
+tmux_session_select          (macro $tmux_prefix S-s spc)
 tmux_session_next            (macro $tmux_prefix S-0)
 tmux_session_prev            (macro $tmux_prefix S-9)
 tmux_session_toggle          (macro $tmux_prefix S-s t)
@@ -99,65 +94,53 @@ tmux_session_revive          (macro $tmux_prefix S-s S-k)
 
 
 tmux_session_select_0        XX
-tmux_session_select_1        (macro $tmux_prefix A-1)
-tmux_session_select_2        (macro $tmux_prefix A-2)
-tmux_session_select_3        (macro $tmux_prefix A-3)
-tmux_session_select_4        (macro $tmux_prefix A-4)
-tmux_session_select_5        (macro $tmux_prefix A-5)
-tmux_session_select_6        (macro $tmux_prefix A-6)
-tmux_session_select_7        (macro $tmux_prefix A-7)
-tmux_session_select_8        (macro $tmux_prefix A-8)
-tmux_session_select_9        (macro $tmux_prefix A-9)
+tmux_session_select_1        (macro $tmux_prefix S-s Digit1)
+tmux_session_select_2        (macro $tmux_prefix S-s Digit2)
+tmux_session_select_3        (macro $tmux_prefix S-s Digit3)
+tmux_session_select_4        (macro $tmux_prefix S-s Digit4)
+tmux_session_select_5        (macro $tmux_prefix S-s Digit5)
+tmux_session_select_6        (macro $tmux_prefix S-s Digit6)
+tmux_session_select_7        (macro $tmux_prefix S-s Digit7)
+tmux_session_select_8        (macro $tmux_prefix S-s Digit8)
+tmux_session_select_9        (macro $tmux_prefix S-s Digit9)
 
 ;;""
 ;;== agents ==============================================================
+tmux_agent_select          (macro $tmux_prefix S-a spc)
 
-;;tmux_agent_select        display-popup -d "#{pane_current_path}" -E "workmux dashboard"
-_tmux_agent_select         ($_tmux_popup w o r k m u x spc d a s h b o a r d ent 100)
-tmux_agent_select          (macro $_tmux: $_tmux_agent_select)
-tmux_agent_done            (macro $_tmux: $_tmux_run w o r k m u x spc l a s t - d o n e ent) 
-tmux_agent_toggle          (macro $_tmux: $_tmux_run w o r k m u x spc l a s t - a g e n t ent)
-
-tmux_agent_select_1        (macro $_tmux: $_tmux_agent_select Digit1)
-tmux_agent_select_2        (macro $_tmux: $_tmux_agent_select Digit2)  
-tmux_agent_select_3        (macro $_tmux: $_tmux_agent_select Digit3) 
-tmux_agent_select_4        (macro $_tmux: $_tmux_agent_select Digit4) 
-tmux_agent_select_5        (macro $_tmux: $_tmux_agent_select Digit5) 
-tmux_agent_select_6        (macro $_tmux: $_tmux_agent_select Digit6) 
-tmux_agent_select_7        (macro $_tmux: $_tmux_agent_select Digit7) 
-tmux_agent_select_8        (macro $_tmux: $_tmux_agent_select Digit8) 
-tmux_agent_select_9        (macro $_tmux: $_tmux_agent_select Digit9) 
-
-tmux_agent_next            (macro $_tmux: $_tmux_run w o r k m u x spc s i d e b a r spc n e x t ent)
-tmux_agent_prev            (macro $_tmux: $_tmux_run w o r k m u x spc s i d e b a r spc p r e v ent)
+tmux_agent_done            (macro $tmux_prefix S-a d)
+tmux_agent_toggle          (macro $tmux_prefix S-a a)
+                                 
+tmux_agent_select_1        (macro $tmux_prefix S-a spc 50 Digit1)
+tmux_agent_select_2        (macro $tmux_prefix S-a spc 50 Digit2)
+tmux_agent_select_3        (macro $tmux_prefix S-a spc 50 Digit3)
+tmux_agent_select_4        (macro $tmux_prefix S-a spc 50 Digit4)
+tmux_agent_select_5        (macro $tmux_prefix S-a spc 50 Digit5)
+tmux_agent_select_6        (macro $tmux_prefix S-a spc 50 Digit6)
+tmux_agent_select_7        (macro $tmux_prefix S-a spc 50 Digit7)
+tmux_agent_select_8        (macro $tmux_prefix S-a spc 50 Digit8)
+tmux_agent_select_9        (macro $tmux_prefix S-a spc 50 Digit9)
+                                
+tmux_agent_next            (macro $tmux_prefix S-a l)
+tmux_agent_prev            (macro $tmux_prefix S-a h)
 
 ;;""
 ;;== worktree ============================================================
-
-;;_tmux_worktree_select    display-popup -d "#{pane_current_path}" -E "workmux dashboard -t worktrees"
-_tmux_worktree_select      ($_tmux: $_tmux_popup w o r k m u x spc d a s h b o a r d spc - t spc w o r k t r e e s ent 100)
-
-tmux_worktree_select       (macro $_tmux_worktree_select)
-tmux_worktree_select_1     (macro $_tmux_worktree_select Digit1)
-tmux_worktree_select_2     (macro $_tmux_worktree_select Digit2)
-tmux_worktree_select_3     (macro $_tmux_worktree_select Digit3)
-tmux_worktree_select_4     (macro $_tmux_worktree_select Digit4)
-tmux_worktree_select_5     (macro $_tmux_worktree_select Digit5)
-tmux_worktree_select_6     (macro $_tmux_worktree_select Digit6)
-tmux_worktree_select_7     (macro $_tmux_worktree_select Digit7)
-tmux_worktree_select_8     (macro $_tmux_worktree_select Digit8)
-tmux_worktree_select_9     (macro $_tmux_worktree_select Digit9)
-
-tmux_worktree_new          (macro $_tmux: $_tmux_popup w o r k m u x spc a d d spc)
-;;""
-;;tmux_worktree_merge      confirm-before -p "Merge worktree? (y/n)" 'display-popup -d "#{pane_current_path}" -E "workmux merge"'
-tmux_worktree_merge        (macro $_tmux: $_tmux_confirm S-m e r g e spc w o r k t r e e S-/ spc S-9 y / n S-0 right spc ' $_tmux_popup w o r k m u x spc m e r g e right ' ent)
-tmux_worktree_close        (macro $_tmux: $_tmux_float w o r k m u x spc c l o s e ent)
-;;""
-;;tmux_worktree_merge      confirm-before -p "Delete worktree? (y/n)" 'display-popup -d "#{pane_current_path}" -E "workmux remove"'
-tmux_worktree_delete       (macro $_tmux: $_tmux_confirm S-d e l e t e spc w o r k t r e e S-/ spc S-9 y / n S-0 right spc ' $_tmux_popup w o r k m u x spc r e m o v e right ' ent)
-;;""
-;;tmux_worktree_merge      confirm-before -p "Rebase worktree? (y/n)" 'display-popup -d "#{pane_current_path}" -E "workmux rebase"'
-tmux_worktree_rebase       (macro $_tmux: $_tmux_confirm S-r e b a s e spc w o r k t r e e S-/ spc S-9 y / n S-0 right spc ' $_tmux_popup w o r k m u x spc r e b a s e right ' ent)
-tmux_worktree_rename       (macro $_tmux: $_tmux_popup w o r k m u x spc r e n a m e spc)
+tmux_worktree_select       (macro $tmux_prefix S-w spc)
+tmux_worktree_select_1     (macro $tmux_prefix S-w spc 50 Digit1)
+tmux_worktree_select_2     (macro $tmux_prefix S-w spc 50 Digit2)
+tmux_worktree_select_3     (macro $tmux_prefix S-w spc 50 Digit3)
+tmux_worktree_select_4     (macro $tmux_prefix S-w spc 50 Digit4)
+tmux_worktree_select_5     (macro $tmux_prefix S-w spc 50 Digit5)
+tmux_worktree_select_6     (macro $tmux_prefix S-w spc 50 Digit6)
+tmux_worktree_select_7     (macro $tmux_prefix S-w spc 50 Digit7)
+tmux_worktree_select_8     (macro $tmux_prefix S-w spc 50 Digit8)
+tmux_worktree_select_9     (macro $tmux_prefix S-w spc 50 Digit9)
+                                 
+tmux_worktree_new          (macro $tmux_prefix S-w n)
+tmux_worktree_rename       (macro $tmux_prefix S-w r)
+tmux_worktree_merge        (macro $tmux_prefix S-w m)
+tmux_worktree_delete       (macro $tmux_prefix S-w k)
+tmux_worktree_rebase       (macro $tmux_prefix S-w b)
+tmux_worktree_close        (macro $tmux_prefix S-w w)
 )
