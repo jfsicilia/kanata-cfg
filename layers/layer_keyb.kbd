@@ -5,7 +5,7 @@
   i  $action_keyb+i
   o  $action_keyb+o
   u  $action_keyb+u
-  n  $action_keyb+n
+  n  (t! rev_th $action_keyb+n $toggle_rev_panes_layer)
 
   k  $action_keyb+k 
   l  $action_keyb+l 
@@ -14,7 +14,9 @@
   
   v  (t! invert_apps_sort $toggle_tabs_layer)
   m  (t! invert_apps_sort $toggle_tabs_layer)
-  c  (t! invert_apps_sort $toggle_panes_layer)
-  ,  (t! invert_apps_sort $toggle_panes_layer)
+  c  (t! invert_apps_sort $toggle_rev_tabs_layer)
+  ,  (t! invert_apps_sort $toggle_rev_tabs_layer)
+  b  (t! invert_apps_sort $toggle_rev_panes_layer)
+  ;; n  (t! invert_apps_sort $toggle_rev_panes_layer)
 )
 

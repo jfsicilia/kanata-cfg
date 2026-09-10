@@ -43,9 +43,9 @@
 ;;   citizen       left    right     row
 ;;   workspaces     z        /       lower  (pinky)
 ;;   sessions       x        .       lower  (ring)
-;;   panes          c        ,       lower  (middle)
+;;   panes          b        n       lower  (middle)
 ;;   tabs           v        m       lower  (index, inner)
-;;   rev_tabs       b        n       lower  (index, outer)   also keyb+v / keyb+m
+;;   rev_tabs       c        ,       lower  (index, outer)   also keyb+v / keyb+m
 ;;   rev_panes    keyb+c  keyb+,     via keyb layer
 ;;   windows        g        h       home   (index)
 ;;   agents         t        y       upper  (index)
@@ -54,7 +54,7 @@
 ;; The lower row mirrors around its centre:
 ;;
 ;;        z      x      c      v       b    |    n       m      ,      .      /
-;;      wksp   sess   panes   tabs  rev_tabs | rev_tabs  tabs  panes  sess   wksp
+;;      wksp   sess  rev_tabs tabs   panes  |  panes    tabs rev_tabs sess   wksp
 ;;
 ;; rev_tabs / rev_panes open the tabs / panes layer with the app-priority sort
 ;; flipped — use them to act on the *other* app when two are stacked (e.g. tmux
@@ -99,9 +99,9 @@
 ;;                                        emojis, rev_tabs / rev_panes)
 ;; z / /   → tap: z / /             hold: workspaces_layer
 ;; x / .   → tap: x / .             hold: sessions_layer
-;; c / ,   → tap: c / ,             hold: panes_layer
+;; c / ,   → tap: c / ,             hold: rev_tabs_layer  (tabs, sort flipped)
 ;; v / m   → tap: v / m             hold: tabs_layer
-;; b / n   → tap: b / n             hold: rev_tabs_layer  (tabs, sort flipped)
+;; b / n   → tap: b / n             hold: panes_layer  
 ;; rsft    → tap: 2x tab_next       hold: rsft_layer
 ;;
 ;; MODIFIER ROW
@@ -341,12 +341,12 @@
  invert|keyb                lsgt       ;; Tap: Invert apps sort, Hold: keyb_layer
       z|workspaces          z          ;; Tap: z,                Hold: workspaces_layer
       x|sessions            x          ;; Tap: x,                Hold: sessions_layer
-      c|panes               c          ;; Tap: c,                Hold: panes_layer 
+      c|rev_tabs            c          ;; Tap: c,                Hold: panes_layer 
       v|tabs                v          ;; Tap: v,                Hold: tabs_layer 
-      b|rev_tabs            b          ;; Tap: b,                Hold: rev(tabs_layer)
-      n|rev_tabs            n          ;; Tap: n,                Hold: rev(tabs_layer)
+      b|panes               b          ;; Tap: b,                Hold: rev(tabs_layer)
+      n|panes               n          ;; Tap: n,                Hold: rev(tabs_layer)
       m|tabs                m          ;; Tap: m,                Hold: tabs_layer 
-      ,|panes               ,          ;; Tap: ,,                Hold: panes_layer 
+      ,|rev_tabs            ,          ;; Tap: ,,                Hold: panes_layer 
       .|sessions            .          ;; Tap: .,                Hold: sessions_layer
       /|workspaces          /          ;; Tap: /,                Hold: workspaces_layer
   
@@ -466,17 +466,17 @@ copilot|sessions     $copilot          ;; Omni+: Last session
       $;|lmet              (t! fast_th (t! char ;)                            $toggle_lmet_layer)
       $'|mod'              (t! fast_th (t! char ')                            (layer-toggle void_layer)) 
                      
-  ;; Lower row keys: z/ = workspaces, x/. = sessions, c/, = panes, v/m = tabs, b/n = rev_tabs.
+  ;; Lower row keys: z/ = workspaces, x/. = sessions, c/, = rev_tabs, v/m = tabs, b/n = panes.
   lsft                     (t!      th (t! 2x $action_tabs+h)                 $toggle_lsft_layer)
  $invert|keyb              (t!      th $APPS_SORT_TOGGLE                      $toggle_keyb_layer)
       $z|workspaces        (t! fast_th (t! char z)                            $toggle_workspaces_layer)
       $x|sessions          (t! fast_th (t! char x)                            $toggle_sessions_layer)
-      $c|panes             (t! fast_th (t! char c)                            $toggle_panes_layer)
+      $c|rev_tabs          (t! fast_th (t! char c)                            $toggle_rev_tabs_layer)
       $v|tabs              (t! fast_th (t! char v)                            $toggle_tabs_layer)
-      $b|rev_tabs          (t! fast_th (t! char b)                            $toggle_rev_tabs_layer)
-      $n|rev_tabs          (t! fast_th (t! char n)                            $toggle_rev_tabs_layer)
+      $b|panes             (t! fast_th (t! char b)                            $toggle_panes_layer)
+      $n|panes             (t! fast_th (t! char n)                            $toggle_panes_layer)
       $m|tabs              (t! fast_th (t! char m)                            $toggle_tabs_layer)
-      $,|panes             (t! fast_th (t! char ,)                            $toggle_panes_layer)
+      $,|rev_tabs          (t! fast_th (t! char ,)                            $toggle_rev_tabs_layer)
       $.|sessions          (t! fast_th (t! char .)                            $toggle_sessions_layer)
       $/|workspaces        (t! fast_th (t! char /)                            $toggle_workspaces_layer)
   rsft                     (t!      th (t! 2x $action_tabs+l)                 $toggle_rsft_layer)
