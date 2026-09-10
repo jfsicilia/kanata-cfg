@@ -78,7 +78,7 @@
 )
 
 (deftemplate rev_action (action)
-  (macro (on-press tap-vkey vk_apps_sort_toggle) 
+  (multi (on-press tap-vkey vk_apps_sort_toggle) 
          $action
          (on-press tap-vkey vk_apps_sort_toggle) 
   )
