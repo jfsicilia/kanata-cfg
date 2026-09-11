@@ -6,6 +6,8 @@
   h            $action_windows+h
   l            $action_windows+l
   j            $action_windows+j
+  \            $action_windows+\ 
+  -            $action_windows+-
 
   $toggle      $action_windows+toggle
 

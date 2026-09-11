@@ -8,6 +8,8 @@
   windows_half_right            (t! unmod_all M-right)
   windows_close                 (t! unmod_all A-f4)
   windows_toggle                (t! unmod_all M-tab)
+  windows_side_by_side          (t! unmod_all (macro M-pgup M-left A-tab M-pgup M-right A-tab))
+  windows_top_and_bottom        (t! unmod_all (macro M-pgup M-up A-tab M-pgup M-down A-tab))
 )
 
 (defvar
@@ -21,6 +23,9 @@
   action_windows+j          $windows_half_down
   action_windows+h          $windows_half_left
   action_windows+l          $windows_half_right
+
+  action_windows+\          $windows_side_by_side
+  action_windows+-          $windows_top_and_bottom
 
   action_windows+toggle     $windows_toggle
 )
