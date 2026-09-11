@@ -46,9 +46,9 @@
 ;;   panes          b        n       lower  (middle)
 ;;   tabs           v        m       lower  (index, inner)
 ;;   rev_tabs       c        ,       lower  (index, outer)   also keyb+v / keyb+m
-;;   rev_panes    keyb+c  keyb+,     via keyb layer
 ;;   windows        g        h       home   (index)
-;;   agents         t        y       upper  (index)
+;;   rev_panes      t        y       upper  (index)
+;;   agents         e        i       upper  (inner)
 ;;   worktrees      w        o       upper  (ring)
 ;;
 ;; The lower row mirrors around its centre:
@@ -71,9 +71,9 @@
 ;; tab     → tap: tab           hold: open_layer
 ;; q / p   → tap: q / p         hold: system_layer
 ;; w / o   → tap: w / o         hold: worktrees_layer
-;; e / i   → tap: e / i         hold: refactor_layer
+;; e / i   → tap: e / i         hold: agents_layer
 ;; r / u   → tap: r / u         hold: run_layer
-;; t / y   → tap: t / y         hold: agents_layer
+;; t / y   → tap: t / y         hold: rev_panes_layer
 ;; [ ] \   → tap: [ ] \         hold: (nothing yet — void_layer)
 ;;
 ;; MIDDLE ROW
@@ -310,12 +310,12 @@
     tab|open                tab        ;; Tap: Tab,              Hold: open_with_layer
       q|system              q          ;; Tap: q,                Hold: system_layer
       w|worktrees           w          ;; Tap: w,                Hold: worktrees_layer 
-      e|refactor            e          ;; Tap: e,                Hold: refactor_layer 
+      e|agents              e          ;; Tap: e,                Hold: agents_layer 
       r|run                 r          ;; Tap: r,                Hold: run_layer 
-      t|agents              t          ;; Tap: t,                Hold: agents_layer 
-      y|agents              y          ;; Tap: y,                Hold: agents_layer
+      t|rev_panes           t          ;; Tap: t,                Hold: rev_panes_layer 
+      y|rev_panes           y          ;; Tap: y,                Hold: rev_panes_layer
       u|run                 u          ;; Tap: u,                Hold: run_layer 
-      i|refactor            i          ;; Tap: i,                Hold: refactor_layer 
+      i|agents              i          ;; Tap: i,                Hold: agents_layer 
       o|worktrees           o          ;; Tap: o,                Hold: worktrees_layer 
       p|system              p          ;; Tap: p,                Hold: system_layer 
       [|mod[                [          ;; Tap: [,                Hold: 
@@ -440,12 +440,12 @@ copilot|sessions     $copilot          ;; Omni+: Last session
     $tab|open              (t! fast_th tab                                    $toggle_open_layer)   
       $q|system            (t! fast_th (t! char q)                            $toggle_system_layer)
       $w|worktrees         (t! fast_th (t! char w)                            $toggle_worktrees_layer)
-      $e|refactor          (t! fast_th (t! char e)                            $toggle_refactor_layer)
+      $e|agents            (t! fast_th (t! char e)                            $toggle_agents_layer)
       $r|run               (t! fast_th (t! char r)                            $toggle_run_layer)
-      $t|agents            (t! fast_th (t! char t)                            $toggle_agents_layer)
-      $y|agents            (t! fast_th (t! char y)                            $toggle_agents_layer)
+      $t|rev_panes         (t! fast_th (t! char t)                            $toggle_rev_panes_layer)
+      $y|rev_panes         (t! fast_th (t! char y)                            $toggle_rev_panes_layer)
       $u|run               (t! fast_th (t! char u)                            $toggle_run_layer) 
-      $i|refactor          (t! fast_th (t! char i)                            $toggle_refactor_layer) 
+      $i|agents            (t! fast_th (t! char i)                            $toggle_agents_layer) 
       $o|worktrees         (t! fast_th (t! char o)                            $toggle_worktrees_layer) 
       $p|system            (t! fast_th (t! char p)                            $toggle_system_layer) 
       $[|mod[              (t! fast_th (t! char [)                            (layer-toggle void_layer)) 
