@@ -1,0 +1,90 @@
+(defvar
+;; == panes =============================================================
+;; ___TO_SET___ okular_action_panes+spc              
+
+;; ___TO_SET___ okular_action_panes+ent              
+
+;; ___TO_SET___ okular_action_panes+h                
+;; ___TO_SET___ okular_action_panes+l                
+;; ___TO_SET___ okular_action_panes+k                
+;; ___TO_SET___ okular_action_panes+j                
+
+;; ___TO_SET___ okular_action_panes+-                
+;; ___TO_SET___ okular_action_panes+\                
+
+;; ___TO_SET___ okular_action_panes+w                
+
+;; == panes + toggle ====================================================
+;; ___TO_SET___ okular_action_panes+toggle           
+
+;; == panes + float ====================================================
+;; ___TO_SET___ okular_action_panes+float            
+
+;; == panes + move ======================================================
+;; ___TO_SET___ okular_action_panes+move+h           
+;; ___TO_SET___ okular_action_panes+move+l           
+;; ___TO_SET___ okular_action_panes+move+k           
+;; ___TO_SET___ okular_action_panes+move+j           
+
+;; == panes + resize ====================================================
+;; ___TO_SET___ okular_action_panes+resize+h         
+;; ___TO_SET___ okular_action_panes+resize+l         
+;; ___TO_SET___ okular_action_panes+resize+k         
+;; ___TO_SET___ okular_action_panes+resize+j         
+
+;; == panes + swap ======================================================
+;; ___TO_SET___ okular_action_panes+swap+h           
+;; ___TO_SET___ okular_action_panes+swap+l           
+;; ___TO_SET___ okular_action_panes+swap+k           
+;; ___TO_SET___ okular_action_panes+swap+j           
+
+;; == panes go by number ============================================
+;; ___TO_SET___ okular_action_panes+1                
+;; ___TO_SET___ okular_action_panes+2                
+;; ___TO_SET___ okular_action_panes+3                
+;; ___TO_SET___ okular_action_panes+4                
+;; ___TO_SET___ okular_action_panes+5                
+;; ___TO_SET___ okular_action_panes+6                
+;; ___TO_SET___ okular_action_panes+7                
+;; ___TO_SET___ okular_action_panes+8                
+;; ___TO_SET___ okular_action_panes+9                
+
+;; == Misc panes  ====================================================
+;; ___TO_SET___ okular_action_panes+q                
+;; ___TO_SET___ okular_action_panes+e                
+;; ___TO_SET___ okular_action_panes+lsft+e           
+;; ___TO_SET___ okular_action_panes+r                
+;; ___TO_SET___ okular_action_panes+t                
+;; ___TO_SET___ okular_action_panes+u                
+;; ___TO_SET___ okular_action_panes+y                
+;; ___TO_SET___ okular_action_panes+i                
+;; ___TO_SET___ okular_action_panes+o                
+;; ___TO_SET___ okular_action_panes+lsft+o           
+;; ___TO_SET___ okular_action_panes+p                
+;; ___TO_SET___ okular_action_panes+lsft+p           
+;; ___TO_SET___ okular_action_panes+[                
+;; ___TO_SET___ okular_action_panes+]                
+;; ___TO_SET___ okular_action_panes+lsft+.           
+
+;; ___TO_SET___ okular_action_panes+a                
+okular_action_panes+s           $okular_toggle_sidebar
+;; ___TO_SET___ okular_action_panes+lsft+s           
+;; ___TO_SET___ okular_action_panes+d                
+;; ___TO_SET___ okular_action_panes+f                
+;; ___TO_SET___ okular_action_panes+g                
+;; ___TO_SET___ okular_action_panes+;                
+;; ___TO_SET___ okular_action_panes+'                
+
+;; ___TO_SET___ okular_action_panes+z                
+;; ___TO_SET___ okular_action_panes+x                
+;; ___TO_SET___ okular_action_panes+c                
+;; ___TO_SET___ okular_action_panes+lsft+c           
+;; ___TO_SET___ okular_action_panes+!day             
+;; ___TO_SET___ okular_action_panes+v                
+;; ___TO_SET___ okular_action_panes+b                
+;; ___TO_SET___ okular_action_panes+n                
+;; ___TO_SET___ okular_action_panes+m                
+;; ___TO_SET___ okular_action_panes+,                
+;; ___TO_SET___ okular_action_panes+.                
+;; ___TO_SET___ okular_action_panes+/                
+)

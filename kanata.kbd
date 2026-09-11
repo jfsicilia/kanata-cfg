@@ -125,6 +125,7 @@
   vk_kiwix        XX
   vk_nvim         XX
   vk_obsidian     XX
+  vk_okular       XX
   vk_tmux         XX
   vk_vscode       XX
   vk_whatsapp     XX
@@ -198,6 +199,8 @@
 (include actions/obsidian/obsidian_open.kbd)
 (include actions/obsidian/obsidian_panes.kbd)
 (include actions/obsidian/obsidian_tabs.kbd)
+(include actions/okular/okular_defs.kbd)
+(include actions/okular/okular_panes.kbd)
 (include actions/tmux/tmux_!lctl|select.kbd)
 (include actions/tmux/tmux_agents.kbd)
 (include actions/tmux/tmux_defs.kbd)

@@ -67,7 +67,7 @@
   (t! 0app_action action_panes+lsft+. (push-msg "NOTIFY: ... pane not implemented!"))
 
   (t! 0app_action action_panes+a (push-msg "NOTIFY: ... pane not implemented!"))
-  (t! 3app_action action_panes+s (push-msg "NOTIFY: Toggle left sidebar pane not implemented!") dolphin obsidian tmux)
+  (t! 4app_action action_panes+s (push-msg "NOTIFY: Toggle left sidebar pane not implemented!") dolphin obsidian okular tmux)
   (t! 2app_action action_panes+lsft+s (push-msg "NOTIFY: Toggle right sidebar pane not implemented!") dolphin obsidian)
   (t! 0app_action action_panes+d (push-msg "NOTIFY: Duplicate pane not implemented!"))
   (t! 0app_action action_panes+f (push-msg "NOTIFY: Focus find pane not implemented!"))
