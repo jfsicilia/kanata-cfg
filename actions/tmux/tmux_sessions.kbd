@@ -8,6 +8,7 @@
   tmux_action_sessions+l           $tmux_session_next
   tmux_action_sessions+n           $tmux_session_new
   tmux_action_sessions+r           $tmux_session_rename
+  tmux_action_sessions+s           $tmux_session_save
   tmux_action_sessions+w           $tmux_session_save_and_detach
   tmux_action_sessions+z           $tmux_session_sleep
   tmux_action_sessions+lsft+z      $tmux_session_awake

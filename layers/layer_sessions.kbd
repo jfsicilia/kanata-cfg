@@ -7,6 +7,7 @@
   l               $action_sessions+l     ;; next
   n               $action_sessions+n     ;; new
   r               $action_sessions+r     ;; rename
+  s               $action_sessions+s     ;; save
   w               $action_sessions+w     ;; save and detach
   z               $action_sessions+z     ;; sleep
   bspc            $action_sessions+bspc  ;; kill

@@ -8,6 +8,7 @@
   (t! 1app_action action_sessions+l XX tmux)
   (t! 1app_action action_sessions+n XX tmux)
   (t! 1app_action action_sessions+r XX tmux)
+  (t! 1app_action action_sessions+s XX tmux)
   (t! 1app_action action_sessions+w XX tmux)
   (t! 1app_action action_sessions+z XX tmux)
   (t! 1app_action action_sessions+lsft+z XX tmux)
