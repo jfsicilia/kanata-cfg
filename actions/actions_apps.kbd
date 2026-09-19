@@ -36,6 +36,7 @@
   apps_onlyoffice      (t! unmod_all (push-msg "APP:onlyoffice"))
   apps_telegram        (t! unmod_all (push-msg "APP:telegram"))
   apps_orcaslicer      (t! unmod_all (push-msg "APP:orcaslicer"))
+  apps_xournalpp       (t! unmod_all (push-msg "APP:xournalpp"))
 
   apps_not_bound       (t! unmod_all (push-msg "NOTIFY:No app bound"))
 )
@@ -118,7 +119,7 @@
   action_apps+lsft+u       $apps_not_bound
   action_apps+lsft+v       $apps_not_bound
   action_apps+lsft+w       $apps_not_bound
-  action_apps+lsft+x       $apps_not_bound
+  action_apps+lsft+x       $apps_xournalpp
   action_apps+lsft+y       $apps_not_bound
   action_apps+lsft+z       $apps_not_bound
 
