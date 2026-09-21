@@ -21,6 +21,7 @@ tmux_action_tabs+n             $tmux_new_tab
 ;; If not implemented, defaults to: C-w
 ;; tabs + v
 tmux_action_tabs+w             $tmux_close_tab         
+tmux_action_tabs+bspc          $tmux_close_tab         
 ;; ___TO_SET___ tmux_action_tabs+lsft+n            
 
 ;; == tabs go by number ==================================================

@@ -20,6 +20,7 @@ obsidian_action_tabs+v              $obsidian_vertical_tabs
 ;; If not implemented, defaults to: C-w
 ;; tabs + v
 obsidian_action_tabs+w              $obsidian_close_tab
+obsidian_action_tabs+bspc           $obsidian_close_tab
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t
 obsidian_action_tabs+lsft+n         $obsidian_undo_close_tab

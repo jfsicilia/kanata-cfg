@@ -14,6 +14,7 @@ dolphin_action_tabs+k              (push-msg "NOTIFY:Select last tab not impleme
 dolphin_action_tabs+n          $dolphin_new_tab
 ;; ___TO_SET___ dolphin_action_tabs+v                 
 ;; ___TO_SET___ dolphin_action_tabs+w                 
+;; ___TO_SET___ dolphin_action_tabs+bspc              
 dolphin_action_tabs+lsft+n     $dolphin_undo_tab
 
 ;; == tabs go by number ==================================================

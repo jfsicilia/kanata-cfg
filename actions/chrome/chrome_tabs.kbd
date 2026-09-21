@@ -19,6 +19,7 @@ chrome_action_tabs+n                        $chrome_tabs_new
 ;; If not implemented, defaults to: C-w
 ;; tabs + v
 chrome_action_tabs+w                      $chrome_tabs_close
+chrome_action_tabs+bspc                   $chrome_tabs_close
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t
 chrome_action_tabs+lsft+n                 $chrome_tabs_undo_close

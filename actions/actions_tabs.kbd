@@ -31,6 +31,7 @@
   (t! 6app_action action_tabs+n $tab_new chrome dolphin firefox nvim obsidian tmux)
   (t! 1app_action action_tabs+v (push-msg "NOTIFY: Tabs Vertical not implemented") obsidian)
   (t! 5app_action action_tabs+w $tab_close chrome firefox nvim obsidian tmux)
+  (t! 5app_action action_tabs+bspc $tab_close chrome firefox nvim obsidian tmux)
   (t! 4app_action action_tabs+lsft+n $tab_undo_close chrome dolphin firefox obsidian)
 
   ;; == tabs go by number ==================================================

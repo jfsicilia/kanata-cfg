@@ -20,6 +20,7 @@ firefox_action_tabs+n                        $firefox_tabs_new
 ;; If not implemented, defaults to: C-w
 ;; tabs + v
 firefox_action_tabs+w                      $firefox_tabs_close
+firefox_action_tabs+bspc                   $firefox_tabs_close
 ;; tabs + lsft + t
 ;; If not implemented, defaults to: C-S-t
 firefox_action_tabs+lsft+n                 $firefox_tabs_undo_close

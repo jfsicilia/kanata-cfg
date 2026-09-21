@@ -2,6 +2,7 @@
 (deflayermap (tabs_layer)
   $invert|keyb (t! invert_apps_sort $toggle_tabs_layer)
   spc   $action_tabs+spc
+  bspc  $action_tabs+bspc
 
   h     $action_tabs+h
   left  $action_tabs+h

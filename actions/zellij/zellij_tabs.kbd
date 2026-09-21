@@ -15,6 +15,7 @@ zellij_action_tabs+h             $zellij_tabs_prev
 ;; ___TO_SET___ zellij_action_tabs+n                 
 ;; ___TO_SET___ zellij_action_tabs+v                 
 ;; ___TO_SET___ zellij_action_tabs+w                 
+;; ___TO_SET___ zellij_action_tabs+bspc              
 ;; ___TO_SET___ zellij_action_tabs+lsft+n            
 
 ;; == tabs go by number ==================================================
