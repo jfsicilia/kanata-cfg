@@ -14,6 +14,9 @@
   sleep_system            (multi (push-msg "NOTIFY: Sleeping...")         (cmd systemctl suspend))
   toggle_verbose          (multi (push-msg "NOTIFY: Toggle verbosity...") (push-msg "SET:!verbose"))
   toggle_popup_help       (multi (push-msg "NOTIFY: Toggle popup help...") (push-msg "SET:!popup_help"))
+
+  toggle_cursor           (cmd toggle_cursor.sh)
+  toggle_touchpad         (cmd toggle_touchpad.sh)
 )
 
 (defvar
@@ -21,15 +24,24 @@
   action_opts+1         $set_quiet_profile
   action_opts+2         $set_balanced_profile
   action_opts+3         $set_performance_profile
+
+  action_opts+c         $toggle_cursor
+  action_opts+t         $toggle_touchpad
+
+  action_opts+k         $reload_kanata
   action_opts+rsft+k    $restart_kwanata
-  action_opts+lsft+q    $restart_system
-  action_opts+rsft+q    $shutdown_system
+  action_opts+lsft+k    $sync_and_reload_kanata
+
   action_opts+p         $print_screen
   action_opts+lsft+p    $print_window
-  action_opts+lsft+k    $sync_and_reload_kanata
-  action_opts+k         $reload_kanata
-  action_opts+d         $debug_message
+
   action_opts+q         $sleep_system
+  action_opts+lsft+q    $restart_system
+  action_opts+rsft+q    $shutdown_system
+
+  action_opts+d         $debug_message
+
   action_opts+v         $toggle_verbose
+
   action_opts+/         $toggle_popup_help
 )

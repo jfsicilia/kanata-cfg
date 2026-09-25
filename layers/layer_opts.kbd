@@ -6,10 +6,12 @@
   1 $action_opts+1
   2 $action_opts+2
   3 $action_opts+3
+  c $action_opts+c
   k $action_opts+k
   d $action_opts+d
   p $action_opts+p
   q $action_opts+q
+  t $action_opts+t
   v $action_opts+v 
   / $action_opts+/       
 )
