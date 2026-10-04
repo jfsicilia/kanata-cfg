@@ -492,7 +492,8 @@ copilot|sessions     $copilot          ;; Omni+: Last session
 $copilot|bookm             (t!      th $action_sessions+toggle                $toggle_bookmarks_layer)
   ;; $rctl|opts              (t!      th (t! 2x XX)                             $toggle_opts_layer)
 
-     enter                 (t!      th enter                                  (layer-toggle void_layer))
+     ;;holding enter in todobsidian was not working with void-layer.
+     ;;enter                 (t!      th enter                                  (layer-toggle void_layer))
 )
 
 (deflayermap (default)
