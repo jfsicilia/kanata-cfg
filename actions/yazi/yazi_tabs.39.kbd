@@ -1,0 +1,52 @@
+(defvar
+;; == tabs ===============================================================
+
+;; tabs + spc
+yazi_action_tabs+spc        (push-msg "NOTIFY:Select tab not implemented!")
+
+yazi_action_tabs+l          $yazi_next_tab
+yazi_action_tabs+h          $yazi_prev_tab
+;; tabs + j | tabs + down
+yazi_action_tabs+j          (push-msg "NOTIFY:Select first tab not implemented!")
+;; tabs + k | tabs + up
+yazi_action_tabs+k          (push-msg "NOTIFY:Select last tab not implemented!")
+yazi_action_tabs+r          $yazi_rename_tab
+yazi_action_tabs+n          $yazi_new_tab
+;; ___TO_SET___ yazi_action_tabs+v                 
+yazi_action_tabs+w          $yazi_close_tab
+yazi_action_tabs+bspc       $yazi_close_tab       
+yazi_action_tabs+lsft+n     (push-msg "NOTIFY:Close tab not implemented!")
+
+;; == tabs go by number ==================================================
+;; tabs + 1
+yazi_action_tabs+1             $yazi_tab_1 
+;; tabs + 2
+yazi_action_tabs+2             $yazi_tab_2 
+;; tabs + 3
+yazi_action_tabs+3             $yazi_tab_3 
+;; tabs + 4
+yazi_action_tabs+4             $yazi_tab_4 
+;; tabs + 5
+yazi_action_tabs+5             $yazi_tab_5 
+;; tabs + 6
+yazi_action_tabs+6             $yazi_tab_6 
+;; tabs + 7
+yazi_action_tabs+7             $yazi_tab_7 
+;; tabs + 8
+yazi_action_tabs+8             $yazi_tab_8 
+;; tabs + 9
+yazi_action_tabs+9             $yazi_tab_9 
+
+;; == tabs + toggle =====================================================
+yazi_action_tabs+toggle        $yazi_next_tab
+
+;; == tabs + move =====================================================
+;; tabs + move + h | tabs + move + left
+yazi_action_tabs+move+h       $yazi_swap_tab_left
+;; tabs + move + l | tabs + move + right
+yazi_action_tabs+move+l       $yazi_swap_tab_right
+;; tabs + move + k | tabs + move + up
+yazi_action_tabs+move+j       (push-msg "NOTIFY:Move tab first not implemented!")
+;; tabs + move + j | tabs + move + down
+yazi_action_tabs+move+k       (push-msg "NOTIFY:Move tab last not implemented!")
+)

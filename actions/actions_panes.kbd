@@ -2,20 +2,20 @@
   ;; == panes =============================================================
   (t! 0app_action action_panes+spc (push-msg "NOTIFY:Show panes not implemented!"))
 
-  (t! 6app_action action_panes+ent (push-msg "NOTIFY:Maximize pane not implemented!") dolphin herdr nvim obsidian tmux zellij)
+  (t! 7app_action action_panes+ent (push-msg "NOTIFY:Maximize pane not implemented!") yazi dolphin herdr nvim obsidian tmux zellij)
 
-  (t! 7app_action action_panes+h (push-msg "NOTIFY:Select left pane not implemented!") colab dolphin herdr nvim obsidian tmux zellij)
-  (t! 7app_action action_panes+l (push-msg "NOTIFY:Select right pane not implemented!") colab dolphin herdr nvim obsidian tmux zellij)
-  (t! 7app_action action_panes+k (push-msg "NOTIFY:Select above pane not implemented!") colab dolphin herdr nvim obsidian tmux zellij)
-  (t! 7app_action action_panes+j (push-msg "NOTIFY:Select below pane not implemented!") colab dolphin herdr nvim obsidian tmux zellij)
+  (t! 8app_action action_panes+h (push-msg "NOTIFY:Select left pane not implemented!") yazi colab dolphin herdr nvim obsidian tmux zellij)
+  (t! 8app_action action_panes+l (push-msg "NOTIFY:Select right pane not implemented!") yazi colab dolphin herdr nvim obsidian tmux zellij)
+  (t! 8app_action action_panes+k (push-msg "NOTIFY:Select above pane not implemented!") yazi colab dolphin herdr nvim obsidian tmux zellij)
+  (t! 8app_action action_panes+j (push-msg "NOTIFY:Select below pane not implemented!") yazi colab dolphin herdr nvim obsidian tmux zellij)
 
-  (t! 5app_action action_panes+- (push-msg "NOTIFY: Horizontal split pane not implemented!") dolphin herdr nvim obsidian tmux)
-  (t! 7app_action action_panes+\ (push-msg "NOTIFY: Vertical split pane not implemented!") chrome dolphin firefox herdr nvim obsidian tmux)
+  (t! 6app_action action_panes+- (push-msg "NOTIFY: Horizontal split pane not implemented!") yazi dolphin herdr nvim obsidian tmux)
+  (t! 8app_action action_panes+\ (push-msg "NOTIFY: Vertical split pane not implemented!") yazi chrome dolphin firefox herdr nvim obsidian tmux)
 
-  (t! 5app_action action_panes+w (push-msg "NOTIFY: Close pane not implemented!") dolphin herdr nvim obsidian tmux)
+  (t! 6app_action action_panes+w (push-msg "NOTIFY: Close pane not implemented!") yazi dolphin herdr nvim obsidian tmux)
 
   ;; == panes + toggle ====================================================
-  (t! 5app_action action_panes+toggle (push-msg "NOTIFY: Toggle pane not implemented!") dolphin herdr nvim obsidian tmux)
+  (t! 6app_action action_panes+toggle (push-msg "NOTIFY: Toggle pane not implemented!") yazi dolphin herdr nvim obsidian tmux)
   
   ;; == panes + float ====================================================
   (t! 0app_action action_panes+float (push-msg "NOTIFY: Float pane not implemented!"))

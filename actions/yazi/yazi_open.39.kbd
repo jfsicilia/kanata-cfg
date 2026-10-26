@@ -1,0 +1,12 @@
+(defvar
+
+;; == open =============================================================
+;; open + spc
+yazi_action_open+spc       $yazi_open_with
+;; open + m
+yazi_action_open+m         $yazi_open_with_chrome
+;; open + t
+yazi_action_open+t         $yazi_open_with_terminal
+;; open + v
+yazi_action_open+v         $yazi_open_with_nvim
+)

@@ -1,7 +1,7 @@
 (defvar
   ;; == !LCTL|SELECT actions ==========================================================
   (t! 0app_action action_!lctl|select+` C-`)
-  (t! 9app_action action_!lctl|select+spc XX whatsapp chrome dolphin firefox foot nvim obsidian tmux zapzap)
+  (t! 10app_action action_!lctl|select+spc XX whatsapp yazi chrome dolphin firefox foot nvim obsidian tmux zapzap)
 
   (t! 2app_action action_!lctl|select+a C-a nvim obsidian)
   (t! 1app_action action_!lctl|select+b C-b obsidian)
@@ -51,7 +51,7 @@
   (t! 1app_action action_!lctl|select+0 C-0 firefox) ;; ""
   ;; == !lctl|select+LSFT actions ======================================================
   (t! 0app_action action_!lctl|select+lsft+` C-S-`)
-  (t! 6app_action action_!lctl|select+lsft+spc XX chrome dolphin firefox foot obsidian tmux)
+  (t! 7app_action action_!lctl|select+lsft+spc XX yazi chrome dolphin firefox foot obsidian tmux)
 
   (t! 0app_action action_!lctl|select+lsft+a C-S-a)
   (t! 0app_action action_!lctl|select+lsft+b C-S-b)
@@ -101,7 +101,7 @@
   (t! 0app_action action_!lctl|select+lsft+0 C-S-0) ;; ""
   ;; == !lctl|select+RSFT actions ==========================================================
   (t! 0app_action action_!lctl|select+rsft+` C-S-`)
-  (t! 2app_action action_!lctl|select+rsft+spc XX dolphin foot)
+  (t! 3app_action action_!lctl|select+rsft+spc XX yazi dolphin foot)
 
   (t! 0app_action action_!lctl|select+rsft+a C-S-a)
   (t! 0app_action action_!lctl|select+rsft+b C-S-b)

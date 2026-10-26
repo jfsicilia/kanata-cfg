@@ -1,0 +1,157 @@
+(defvar
+;; == !LCTL|SELECT actions ==========================================================
+;; ___TO_SET___ yazi_action_!lctl|select+`         
+;; == !LCTL|SELECT actions ==========================================================
+;; == select ========================================================
+;; select + spc
+yazi_action_!lctl|select+spc                 $yazi_select_any
+
+;; ___TO_SET___ yazi_action_!lctl|select+a         
+;; ___TO_SET___ yazi_action_!lctl|select+b         
+;; ___TO_SET___ yazi_action_!lctl|select+c         
+;; ___TO_SET___ yazi_action_!lctl|select+d         
+;; ___TO_SET___ yazi_action_!lctl|select+e         
+;; ___TO_SET___ yazi_action_!lctl|select+f         
+;; ___TO_SET___ yazi_action_!lctl|select+g         
+;; ___TO_SET___ yazi_action_!lctl|select+h         
+;; ___TO_SET___ yazi_action_!lctl|select+i         
+;; ___TO_SET___ yazi_action_!lctl|select+j         
+;; ___TO_SET___ yazi_action_!lctl|select+k         
+;; ___TO_SET___ yazi_action_!lctl|select+l         
+;; ___TO_SET___ yazi_action_!lctl|select+m         
+;; ___TO_SET___ yazi_action_!lctl|select+n         
+;; ___TO_SET___ yazi_action_!lctl|select+o         
+;; ___TO_SET___ yazi_action_!lctl|select+p         
+;; ___TO_SET___ yazi_action_!lctl|select+q         
+;; ___TO_SET___ yazi_action_!lctl|select+r         
+;; ___TO_SET___ yazi_action_!lctl|select+s         
+;; ___TO_SET___ yazi_action_!lctl|select+t         
+;; ___TO_SET___ yazi_action_!lctl|select+u         
+;; ___TO_SET___ yazi_action_!lctl|select+v         
+;; ___TO_SET___ yazi_action_!lctl|select+w         
+;; ___TO_SET___ yazi_action_!lctl|select+x         
+;; ___TO_SET___ yazi_action_!lctl|select+y         
+;; ___TO_SET___ yazi_action_!lctl|select+z         
+;; ___TO_SET___ yazi_action_!lctl|select+,         
+;; ___TO_SET___ yazi_action_!lctl|select+.         
+;; ___TO_SET___ yazi_action_!lctl|select+/         
+;; ___TO_SET___ yazi_action_!lctl|select+;         
+;; ___TO_SET___ yazi_action_!lctl|select+'         
+;; ___TO_SET___ yazi_action_!lctl|select+[         
+;; ___TO_SET___ yazi_action_!lctl|select+]         
+;; ___TO_SET___ yazi_action_!lctl|select+\         
+;; ___TO_SET___ yazi_action_!lctl|select+-         
+;; ___TO_SET___ yazi_action_!lctl|select+=         
+;; ___TO_SET___ yazi_action_!lctl|select+1         
+;; ___TO_SET___ yazi_action_!lctl|select+2         
+;; ___TO_SET___ yazi_action_!lctl|select+3         
+;; ___TO_SET___ yazi_action_!lctl|select+4         
+;; ___TO_SET___ yazi_action_!lctl|select+5         
+;; ___TO_SET___ yazi_action_!lctl|select+6         
+;; ___TO_SET___ yazi_action_!lctl|select+7         
+;; ___TO_SET___ yazi_action_!lctl|select+8         
+;; ___TO_SET___ yazi_action_!lctl|select+9         
+;; ___TO_SET___ yazi_action_!lctl|select+0         
+;; == !lctl|select+LSFT actions ======================================================
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+`    
+;; select + lsft + spc
+yazi_action_!lctl|select+lsft+spc            $yazi_select_folder
+
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+a    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+b    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+c    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+d    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+e    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+f    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+g    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+h    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+i    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+j    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+k    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+l    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+m    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+n    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+o    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+p    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+q    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+r    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+s    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+t    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+u    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+v    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+w    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+x    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+y    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+z    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+,    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+.    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+/    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+;    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+'    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+[    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+]    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+\    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+-    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+=    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+1    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+2    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+3    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+4    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+5    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+6    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+7    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+8    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+9    
+;; ___TO_SET___ yazi_action_!lctl|select+lsft+0    
+;; == !lctl|select+RSFT actions ==========================================================
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+`    
+;; select + rsft + spc
+yazi_action_!lctl|select+rsft+spc            $yazi_select_folder
+
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+a    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+b    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+c    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+d    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+e    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+f    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+g    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+h    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+i    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+j    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+k    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+l    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+m    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+n    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+o    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+p    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+q    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+r    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+s    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+t    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+u    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+v    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+w    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+x    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+y    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+z    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+,    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+.    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+/    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+;    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+'    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+[    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+]    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+\    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+-    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+=    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+1    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+2    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+3    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+4    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+5    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+6    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+7    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+8    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+9    
+;; ___TO_SET___ yazi_action_!lctl|select+rsft+0    
+)

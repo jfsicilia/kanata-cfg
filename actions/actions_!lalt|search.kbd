@@ -2,7 +2,7 @@
   ;; == !LALT|SEARCH actions ==========================================================
 
   (t! 0app_action action_!lalt|search+` A-`)
-  (t! 6app_action action_!lalt|search+spc XX whatsapp chrome dolphin nvim obsidian zapzap)
+  (t! 7app_action action_!lalt|search+spc XX whatsapp yazi chrome dolphin nvim obsidian zapzap)
 
   (t! 0app_action action_!lalt|search+a A-a)
   (t! 0app_action action_!lalt|search+b A-b)
@@ -53,7 +53,7 @@
   ;;
   ;; == !lalt|search+LSFT actions ==========================================================
   (t! 0app_action action_!lalt|search+lsft+` A-`)
-  (t! 5app_action action_!lalt|search+lsft+spc XX whatsapp dolphin nvim obsidian zapzap)
+  (t! 6app_action action_!lalt|search+lsft+spc XX whatsapp yazi dolphin nvim obsidian zapzap)
 
   (t! 0app_action action_!lalt|search+lsft+a A-S-a)
   (t! 0app_action action_!lalt|search+lsft+b A-S-b)
@@ -104,7 +104,7 @@
   ;;
   ;; == !lalt|search+RSFT actions ==========================================================
   (t! 0app_action action_!lalt|search+rsft+` A-`)
-  (t! 3app_action action_!lalt|search+rsft+spc XX whatsapp dolphin zapzap)
+  (t! 4app_action action_!lalt|search+rsft+spc XX whatsapp yazi dolphin zapzap)
 
   (t! 0app_action action_!lalt|search+rsft+a A-S-a)
   (t! 0app_action action_!lalt|search+rsft+b A-S-b)

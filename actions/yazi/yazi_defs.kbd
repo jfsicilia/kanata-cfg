@@ -1,4 +1,176 @@
+;; Yazi (https://github.com/sxyazi/yazi) default keymap, from
+;; yazi-config/preset/keymap-default.toml (shipped branch). Yazi runs in a
+;; terminal and uses bare/vim-style keys (not Ctrl-combos like Dolphin), so
+;; most of these are single taps or short macros (two taps in sequence, e.g.
+;; "g g" or ", m") rather than chords.
 (defvar
-  yazi_open             right
-  yazi_parent           left
+
+  ;; == Navigation ==========================================================
+  yazi_up                     k
+  yazi_down                   j
+  yazi_parent                 left   ;; h / <Left>  : leave to parent dir
+  yazi_open                   (macro \ o)   ;; enter dir / open file (smart-enter, custom key in keymap.toml)
+  yazi_back                   S-h   ;; back to previous directory
+  yazi_forward                S-l   ;; forward to next directory
+  yazi_top                    (macro g g)
+  yazi_bottom                 S-g
+  yazi_page_up                C-b
+  yazi_page_down              C-f
+  yazi_half_page_up           C-u
+  yazi_half_page_down         C-d
+  yazi_preview_seek_up        S-k
+  yazi_preview_seek_down      S-j
+
+  ;; == Selection ============================================================
+  yazi_toggle_select          spc
+  yazi_select_all             C-a
+  yazi_invert_selection       C-r
+  yazi_visual_mode            v
+  yazi_visual_mode_unset      S-v
+
+  ;; == Settings =============================================================
+  yazi_settings               (macro \ ,)   ;; open yazi.toml in nvim (custom key in keymap.toml)
+
+  ;; == Open =================================================================
+  yazi_spot                 tab   ;; file info / spotter
+  yazi_open_with            S-o
+  yazi_open_with_chrome     (push-msg "NOTIFY:Open with chrome not implemented")
+  yazi_open_with_terminal   (push-msg "NOTIFY:Open with terminal not implemented")
+  yazi_open_with_nvim       (macro $yazi_open_with ent)
+
+;; == Copy / Cut / Paste / Link ============================================
+  yazi_yank                   y   ;; copy
+  yazi_unyank                 S-y   ;; cancel yank/cut status
+  yazi_cut                    x
+  yazi_paste                  p
+  yazi_paste_force            S-p   ;; overwrite on conflict
+  yazi_link                   -   ;; symlink, absolute path
+  yazi_link_relative          S--   ;; symlink, relative path
+  yazi_hardlink               C--
+
+  yazi_copy_path              (macro c c)
+  yazi_copy_url               (macro c S-c)
+  yazi_copy_dirpath           (macro c d)
+  yazi_copy_dirurl            (macro c S-d)
+  yazi_copy_filename          (macro c f)
+  yazi_copy_name_without_ext  (macro c n)
+
+  ;; == Create / Rename / Delete =============================================
+  yazi_create                 a   ;; new file; ends with / for a folder
+  yazi_bulk_create            S-a
+  yazi_rename                 r
+  yazi_remove                 d   ;; trash
+  yazi_remove_permanently     S-d
+
+  ;; == Search / Filter / Find ===============================================
+  yazi_search_fd              s               ;; fd in current folder, open hit in yazi
+  yazi_search_rg              S-s             ;; rg in current folder, open hit in yazi
+  yazi_cancel_search          C-s
+  yazi_filter                 f
+  yazi_find_next              /
+  yazi_find_prev              S-/
+  yazi_find_arrow_next        n
+  yazi_find_arrow_prev        S-n
+  yazi_fzf_jump               z
+  yazi_zoxide_jump            S-z
+  yazi_go_any                 $yazi_fzf_jump
+  yazi_go_folder              $yazi_zoxide_jump
+  yazi_select_any             (macro \ z)     ;; fzf files/folders in cwd and below (custom)
+  yazi_select_folder          (macro \ S-z)   ;; fzf folders in cwd and below (custom)
+  yazi_search_in_files        (macro \ s)     ;; rg in selected/hovered files, open hit in editor (custom)
+  yazi_search_in_workspace    (macro \ S-s)   ;; rg in current folder, open hit in editor (custom)
+  yazi_replace_in_files       (macro \ r)
+  yazi_replace_in_workspace   (macro \ S-r)
+
+  ;; == Hidden files / shell / help / quit ===================================
+  yazi_toggle_hidden          .
+  yazi_shell                  ;   ;; run shell command
+  yazi_shell_block            S-;   ;; run shell command, block until done
+  yazi_help                   f1
+  yazi_quit                   q
+  yazi_quit_no_cwd_file       S-q
+  yazi_escape                 esc   ;; unselect / exit visual / cancel search
+  yazi_close_tab_or_quit      C-c
+  yazi_suspend                C-z
+
+  ;; == Linemode (info column) ================================================
+  yazi_linemode_size          (macro m s)
+  yazi_linemode_permissions   (macro m p)
+  yazi_linemode_btime         (macro m b)
+  yazi_linemode_mtime         (macro m m)
+  yazi_linemode_owner         (macro m o)
+  yazi_linemode_none          (macro m n)
+
+  ;; == Sorting ===============================================================
+  yazi_sort_mtime             (macro , m)
+  yazi_sort_mtime_rev         (macro , S-m)
+  yazi_sort_btime             (macro , b)
+  yazi_sort_btime_rev         (macro , S-b)
+  yazi_sort_extension         (macro , e)
+  yazi_sort_extension_rev     (macro , S-e)
+  yazi_sort_alphabetical      (macro , a)
+  yazi_sort_alphabetical_rev  (macro , S-a)
+  yazi_sort_natural           (macro , n)
+  yazi_sort_natural_rev       (macro , S-n)
+  yazi_sort_size              (macro , s)
+  yazi_sort_size_rev          (macro , S-s)
+  yazi_sort_random            (macro , r)
+
+  ;; == Bookmarks ============================================================
+  yazi_goto_home              (macro g h)
+  yazi_goto_config            (macro g c)
+  yazi_goto_downloads         (macro g d)
+  yazi_goto_trash             (macro g t)
+  yazi_goto_bookcase          (macro g spc 100 $folder_bookcase    ent)
+  yazi_goto_scans             (macro g spc 100 $folder_scans       ent)
+  yazi_goto_enaire            (macro g spc 100 $folder_enaire      ent)
+  yazi_goto_photos            (macro g spc 100 $folder_photos      ent)
+  yazi_goto_guacimara         (macro g spc 100 $folder_guacimara   ent)  
+  yazi_goto_inbox             (macro g spc 100 $folder_inbox       ent)
+  yazi_goto_projects          (macro g spc 100 $folder_projects    ent)
+  yazi_goto_kanata            (macro g spc 100 $folder_kanata      ent)
+  yazi_goto_main              (macro g spc 100 $folder_main        ent)
+  yazi_goto_screenshots       (macro g spc 100 $folder_screenshots ent)
+  yazi_goto_personal          (macro g spc 100 $folder_personal    ent)
+  yazi_goto_resources         (macro g spc 100 $folder_resources   ent)
+  yazi_goto_settings          (macro g spc 100 $folder_settings    ent)
+  yazi_goto_tmp               (macro g spc 100 $folder_tmp         ent)
+  yazi_goto_dev               (macro g spc 100 $folder_dev         ent)
+  yazi_goto_workarea          (macro g spc 100 $folder_workarea    ent)
+  yazi_goto_root              (macro g spc 100 $folder_root        ent)
+
+  ;; == Goto ==================================================================
+  yazi_goto_interactive       (macro g spc)
+  yazi_follow_symlink         (macro g f)
+
+  ;; == Panes =================================================================
+  yazi_pane_toggle            (macro \ tab)
+  yazi_pane_max               (macro \ m)
+  yazi_pane_split             (macro \ \)
+  yazi_pane_left              $yazi_pane_toggle
+  yazi_pane_right             $yazi_pane_toggle
+  yazi_pane_copy              (macro \ c)   ;; copy selected/hovered to the other pane
+  yazi_pane_move              (macro \ x)   ;; move selected/hovered to the other pane
+  yazi_pane_preview           (macro \ p)   ;; toggle the split-tabs preview
+  
+  ;; == Tabs ==================================================================
+  yazi_new_tab                (macro t t)
+  yazi_rename_tab             (macro t r)
+  yazi_tab_1                  1
+  yazi_tab_2                  2
+  yazi_tab_3                  3
+  yazi_tab_4                  4
+  yazi_tab_5                  5
+  yazi_tab_6                  6
+  yazi_tab_7                  7
+  yazi_tab_8                  8
+  yazi_tab_9                  9
+  yazi_prev_tab               [
+  yazi_next_tab               ]
+  yazi_swap_tab_left          S-[
+  yazi_swap_tab_right         S-]
+  yazi_close_tab              C-c
+
+  ;; == Tasks =================================================================
+  yazi_show_tasks             w
 )

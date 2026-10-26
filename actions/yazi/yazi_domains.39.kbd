@@ -1,0 +1,130 @@
+(defvar
+
+;; ___TO_SET___ yazi_action_domains+a+a            
+
+;; ___TO_SET___ yazi_action_domains+b+b            
+
+;; ___TO_SET___ yazi_action_domains+c+c            
+;; ___TO_SET___ yazi_action_domains+c+d            
+;; ___TO_SET___ yazi_action_domains+c+y            
+
+;; ___TO_SET___ yazi_action_domains+d+d            
+;; ___TO_SET___ yazi_action_domains+d+s            
+
+;; ___TO_SET___ yazi_action_domains+e+e            
+;; ___TO_SET___ yazi_action_domains+e+r            
+;; ___TO_SET___ yazi_action_domains+e+f            
+
+;; ___TO_SET___ yazi_action_domains+f+f            
+
+;; ___TO_SET___ yazi_action_domains+g+g            
+;; ___TO_SET___ yazi_action_domains+g+l            
+
+;; ___TO_SET___ yazi_action_domains+h+h            
+;; ___TO_SET___ yazi_action_domains+h+o            
+
+;; ___TO_SET___ yazi_action_domains+i+i            
+
+;; ___TO_SET___ yazi_action_domains+j+j            
+
+;; domains+k + k
+yazi_action_domains+k+k                  $yazi_help
+
+;; ___TO_SET___ yazi_action_domains+l+l            
+
+;; ___TO_SET___ yazi_action_domains+m+m            
+
+;; ___TO_SET___ yazi_action_domains+n+n            
+
+;; ___TO_SET___ yazi_action_domains+o+o            
+
+;; ___TO_SET___ yazi_action_domains+p+p            
+;; ___TO_SET___ yazi_action_domains+p+a            
+
+;; ___TO_SET___ yazi_action_domains+q+q            
+
+;; ___TO_SET___ yazi_action_domains+r+r            
+;; ___TO_SET___ yazi_action_domains+r+i            
+;; ___TO_SET___ yazi_action_domains+r+o            
+;; ___TO_SET___ yazi_action_domains+r+s            
+
+;; ___TO_SET___ yazi_action_domains+s+s            
+;; ___TO_SET___ yazi_action_domains+s+w            
+
+;; ___TO_SET___ yazi_action_domains+t+t            
+;; ___TO_SET___ yazi_action_domains+t+toggle       
+
+;; ___TO_SET___ yazi_action_domains+u+u            
+;; ___TO_SET___ yazi_action_domains+u+g            
+
+;; ___TO_SET___ yazi_action_domains+v+v            
+
+;; ___TO_SET___ yazi_action_domains+w+w            
+
+;; ___TO_SET___ yazi_action_domains+x+x            
+
+;; ___TO_SET___ yazi_action_domains+y+y            
+;; ___TO_SET___ yazi_action_domains+y+;            
+;; ___TO_SET___ yazi_action_domains+y+search       
+
+;; ___TO_SET___ yazi_action_domains+z+z            
+
+;; ___TO_SET___ yazi_action_domains+`+`            
+
+;; ___TO_SET___ yazi_action_domains+-+-            
+
+;; ___TO_SET___ yazi_action_domains+=+=            
+
+;; ___TO_SET___ yazi_action_domains+[+[            
+
+;; ___TO_SET___ yazi_action_domains+]+]            
+;; ___TO_SET___ yazi_action_domains+]+a            
+
+;; ___TO_SET___ yazi_action_domains+\+\            
+;; ___TO_SET___ yazi_action_domains+\+lsft+\       
+;; ___TO_SET___ yazi_action_domains+\+j            
+;; ___TO_SET___ yazi_action_domains+\+k            
+;; ___TO_SET___ yazi_action_domains+\+o            
+;; ___TO_SET___ yazi_action_domains+\+p            
+
+;; ___TO_SET___ yazi_action_domains+;+;            
+
+;; ___TO_SET___ yazi_action_domains+'+'            
+
+;; domains+, + ,
+yazi_action_domains+,+,                    $yazi_settings 
+;; ___TO_SET___ yazi_action_domains+,+r            
+
+;; ___TO_SET___ yazi_action_domains+.+.            
+
+;; domains+/ + /
+yazi_action_domains+/+/                    $yazi_help 
+
+;; ___TO_SET___ yazi_action_domains+0+0            
+
+;; ___TO_SET___ yazi_action_domains+1+1            
+
+;; ___TO_SET___ yazi_action_domains+2+2            
+
+;; ___TO_SET___ yazi_action_domains+3+3            
+
+;; ___TO_SET___ yazi_action_domains+4+4            
+
+;; ___TO_SET___ yazi_action_domains+5+5            
+
+;; ___TO_SET___ yazi_action_domains+6+6            
+
+;; ___TO_SET___ yazi_action_domains+7+7            
+
+;; ___TO_SET___ yazi_action_domains+8+8            
+
+;; ___TO_SET___ yazi_action_domains+9+9            
+
+;; ___TO_SET___ yazi_action_domains+omni+omni      
+;; ___TO_SET___ yazi_action_domains+omni+a         
+;; ___TO_SET___ yazi_action_domains+omni+c         
+;; ___TO_SET___ yazi_action_domains+omni+s         
+;; ___TO_SET___ yazi_action_domains+omni+f         
+;; ___TO_SET___ yazi_action_domains+omni+p         
+;; ___TO_SET___ yazi_action_domains+omni+d         
+)

@@ -130,7 +130,7 @@
 
   (t! 1app_action action_domains+j+j (push-msg "NOTIFY: Jumps not implemented") nvim)
 
-  (t! 5app_action action_domains+k+k (push-msg "NOTIFY: Keymaps not implemented") chrome dolphin firefox nvim tmux)
+  (t! 6app_action action_domains+k+k (push-msg "NOTIFY: Keymaps not implemented") yazi chrome dolphin firefox nvim tmux)
 
   (t! 1app_action action_domains+l+l (push-msg "NOTIFY: Locations not implemented") nvim)
 
@@ -193,12 +193,12 @@
 
   (t! 1app_action action_domains+'+' (push-msg "NOTIFY: Registries not implemented") nvim)
 
-  (t! 7app_action action_domains+,+, (push-msg "NOTIFY: Settings not implemented") whatsapp chrome dolphin firefox nvim obsidian zapzap)
+  (t! 8app_action action_domains+,+, (push-msg "NOTIFY: Settings not implemented") whatsapp yazi chrome dolphin firefox nvim obsidian zapzap)
   (t! 1app_action action_domains+,+r (push-msg "NOTIFY: Reload Settings not implemented") tmux)
 
   (t! 2app_action action_domains+.+. (push-msg "NOTIFY: Tags not implemented") dolphin nvim)
 
-  (t! 2app_action action_domains+/+/ (push-msg "NOTIFY: Help not implemented") dolphin nvim)
+  (t! 3app_action action_domains+/+/ (push-msg "NOTIFY: Help not implemented") yazi dolphin nvim)
   action_domains+/+k $action_toggle_bare_layer 
 
   (t! 0app_action action_domains+0+0 (push-msg "NOTIFY: mod0 not implemented"))
