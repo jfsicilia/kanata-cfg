@@ -78,10 +78,11 @@
 )
 
 (deftemplate rev_action (action)
-  (multi (on-press tap-vkey vk_apps_sort_toggle) 
-         $action
-         (on-press tap-vkey vk_apps_sort_toggle) 
-  )
+  $action
+  ;; (multi (on-press tap-vkey vk_apps_sort_toggle) 
+  ;;        $action
+  ;;        (on-press tap-vkey vk_apps_sort_toggle) 
+  ;; )
 )
 
 (deftemplate rev_th (tap hold)
