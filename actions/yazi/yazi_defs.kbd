@@ -3,6 +3,15 @@
 ;; terminal and uses bare/vim-style keys (not Ctrl-combos like Dolphin), so
 ;; most of these are single taps or short macros (two taps in sequence, e.g.
 ;; "g g" or ", m") rather than chords.
+(defvirtualkeys
+  ;; These virtual keys let the sort and view actions cycle between options.
+  vk_yazi_sort1        XX
+  vk_yazi_sort2        XX
+  vk_yazi_sort_toggle  XX
+  vk_yazi_view1        XX
+  vk_yazi_view2        XX
+  vk_yazi_view3        XX
+)
 (defvar
 
   ;; == Navigation ==========================================================
@@ -156,6 +165,44 @@
   yazi_pane_copy              (macro \ c)   ;; copy selected/hovered to the other pane
   yazi_pane_move              (macro \ x)   ;; move selected/hovered to the other pane
   yazi_pane_preview           (macro \ p)   ;; toggle the split-tabs preview
+
+  ;; == Sort / view cycling (custom, mirrors the dolphin ones) ================
+  ;; Cycles the sort method: size, natural name, modified date.
+  yazi_toggle_sort_by (multi
+    (switch
+      ((input virtual vk_yazi_sort1)) (multi (on-press press-virtualkey vk_yazi_sort2) (on-press release-virtualkey vk_yazi_sort1)) break
+      ((input virtual vk_yazi_sort2)) (multi (on-press release-virtualkey vk_yazi_sort2)) break
+      ()                              (multi (on-press press-virtualkey vk_yazi_sort1)) break
+    )
+    (switch
+      ((input virtual vk_yazi_sort1)) (macro , n) break
+      ((input virtual vk_yazi_sort2)) (macro , m) break
+      ()                              (macro , s) break
+    )
+  )
+  ;; Toggles ascending / descending keeping the sort method (keys in keymap.toml).
+  yazi_sort_order_toggle (multi (on-press toggle-virtualkey vk_yazi_sort_toggle)
+    (switch
+      ((input virtual vk_yazi_sort_toggle)) (macro \ up)   break
+      ()                                    (macro \ down) break
+    )
+  )
+  ;; Cycles the info column: size, modified date, permissions, none (yazi's default look).
+  yazi_cycle_view (multi
+    (switch
+      ((input virtual vk_yazi_view3)) (multi (on-press release-virtualkey vk_yazi_view3)) break
+      ((input virtual vk_yazi_view2)) (multi (on-press press-virtualkey vk_yazi_view3) (on-press release-virtualkey vk_yazi_view2)) break
+      ((input virtual vk_yazi_view1)) (multi (on-press press-virtualkey vk_yazi_view2) (on-press release-virtualkey vk_yazi_view1)) break
+      ()                              (multi (on-press press-virtualkey vk_yazi_view1)) break
+    )
+    (switch
+      ((input virtual vk_yazi_view3)) (macro m n) break
+      ((input virtual vk_yazi_view2)) (macro m p) break
+      ((input virtual vk_yazi_view1)) (macro m m) break
+      ()                              (macro m s) break
+    )
+  )
+  yazi_vimdiff                (macro \ v)   ;; diff the two selected files/folders in nvim (custom)
   
   ;; == Tabs ==================================================================
   yazi_new_tab                (macro t t)

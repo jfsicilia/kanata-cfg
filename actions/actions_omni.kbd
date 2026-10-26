@@ -78,7 +78,7 @@
   (t! 5app_action action_omni+lsft+a XX nvim yazi tmux dolphin obsidian)
   (t! 5app_action action_omni+rsft+a XX nvim yazi tmux dolphin obsidian)
 
-  (t! 4app_action action_omni+b $page_up nvim tmux foot obsidian)
+  (t! 5app_action action_omni+b $page_up nvim yazi tmux foot obsidian)
 
   (t! 6app_action action_omni+c $copy nvim yazi tmux foot dolphin obsidian)
   (t! 4app_action action_omni+lsft+c $copy_path nvim yazi tmux dolphin)
@@ -91,7 +91,7 @@
   (t! 5app_action action_omni+e XX nvim yazi tmux foot dolphin)
   (t! 5app_action action_omni+lsft+e XX nvim yazi tmux foot dolphin)
 
-  (t! 4app_action action_omni+f $page_down nvim tmux foot obsidian)
+  (t! 5app_action action_omni+f $page_down nvim yazi tmux foot obsidian)
 
   (t! 9app_action action_omni+g XX whatsapp nvim yazi tmux chrome dolphin firefox obsidian zapzap)
 
@@ -127,13 +127,13 @@
 
   (t! 5app_action action_omni+r XX nvim yazi tmux dolphin obsidian)
 
-  (t! 3app_action action_omni+s XX nvim tmux dolphin)
-  (t! 3app_action action_omni+lsft+s XX nvim tmux dolphin)
+  (t! 4app_action action_omni+s XX nvim yazi tmux dolphin)
+  (t! 4app_action action_omni+lsft+s XX nvim yazi tmux dolphin)
 
   (t! 4app_action action_omni+t $action_tabs+n nvim yazi tmux dolphin)
   (t! 3app_action action_omni+lsft+t $action_tabs+lsft+n nvim tmux dolphin)
 
-  (t! 3app_action action_omni+u XX nvim tmux dolphin)
+  (t! 4app_action action_omni+u XX nvim yazi tmux dolphin)
 
   (t! 6app_action action_omni+v $paste nvim yazi tmux foot dolphin obsidian)
 
@@ -170,7 +170,7 @@
 
   (t! 8app_action action_omni+[ XX nvim yazi tmux chrome dolphin firefox kiwix obsidian)
 
-  (t! 4app_action action_omni+\ XX nvim tmux foot dolphin)
+  (t! 5app_action action_omni+\ XX nvim yazi tmux foot dolphin)
   (t! 3app_action action_omni+lsft+\ XX nvim tmux foot)
   (t! 2app_action action_omni+rsft+\ XX nvim tmux)
 

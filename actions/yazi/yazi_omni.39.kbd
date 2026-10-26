@@ -40,7 +40,7 @@ yazi_action_omni+a                $yazi_select_all
 yazi_action_omni+lsft+a           $yazi_invert_selection
 yazi_action_omni+rsft+a           $yazi_invert_selection
 
-;; ___TO_SET___ yazi_action_omni+b                 
+yazi_action_omni+b                $yazi_preview_seek_up
 
 yazi_action_omni+c                $yazi_yank
 yazi_action_omni+lsft+c           $yazi_copy_path
@@ -53,7 +53,7 @@ yazi_action_omni+d                $yazi_duplicate
 yazi_action_omni+e                $yazi_extract
 yazi_action_omni+lsft+e           $yazi_compress
 
-;; ___TO_SET___ yazi_action_omni+f                 
+yazi_action_omni+f                $yazi_preview_seek_down
 
 yazi_action_omni+g                $yazi_goto_interactive
 
@@ -89,13 +89,13 @@ yazi_action_omni+p                $yazi_parent
 
 yazi_action_omni+r                $yazi_rename
 
-;; ___TO_SET___ yazi_action_omni+s                 
-;; ___TO_SET___ yazi_action_omni+lsft+s            
+yazi_action_omni+s                $yazi_toggle_sort_by
+yazi_action_omni+lsft+s           $yazi_sort_order_toggle
 
 yazi_action_omni+t                $yazi_new_tab
 ;; ___TO_SET___ yazi_action_omni+lsft+t            
 
-;; ___TO_SET___ yazi_action_omni+u                 
+yazi_action_omni+u                $yazi_cycle_view
 
 yazi_action_omni+v                $yazi_paste
 
@@ -132,7 +132,7 @@ yazi_action_omni+]                $yazi_forward
 
 yazi_action_omni+[                $yazi_back
 
-;; ___TO_SET___ yazi_action_omni+\                 
+yazi_action_omni+\                $yazi_vimdiff
 ;; ___TO_SET___ yazi_action_omni+lsft+\            
 ;; ___TO_SET___ yazi_action_omni+rsft+\            
 
