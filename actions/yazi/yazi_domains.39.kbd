@@ -23,7 +23,7 @@
 ;; ___TO_SET___ yazi_action_domains+h+h            
 ;; ___TO_SET___ yazi_action_domains+h+o            
 
-;; ___TO_SET___ yazi_action_domains+i+i            
+yazi_action_domains+i+i                   $yazi_spot
 
 ;; ___TO_SET___ yazi_action_domains+j+j            
 
@@ -51,7 +51,7 @@ yazi_action_domains+k+k                  $yazi_help
 ;; ___TO_SET___ yazi_action_domains+s+s            
 ;; ___TO_SET___ yazi_action_domains+s+w            
 
-;; ___TO_SET___ yazi_action_domains+t+t            
+yazi_action_domains+t+t                   $yazi_terminal
 ;; ___TO_SET___ yazi_action_domains+t+toggle       
 
 ;; ___TO_SET___ yazi_action_domains+u+u            

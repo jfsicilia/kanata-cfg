@@ -20,7 +20,7 @@ yazi_action_panes+-                 (push-msg "NOTIFY:Horizontal split not imple
 yazi_action_panes+\                 $yazi_pane_split    ;;""
 
 ;; panes + w
-yazi_action_panes+w                 $yazi_pane_split
+yazi_action_panes+w                 $yazi_pane_close
 
 ;; == panes + toggle ====================================================
 ;; panes + toggle | 2x !lalt

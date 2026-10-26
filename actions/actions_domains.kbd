@@ -126,7 +126,7 @@
   (t! 0app_action action_domains+h+h (push-msg "NOTIFY: Hyperlinks not implemented"))
   (t! 2app_action action_domains+h+o (push-msg "NOTIFY: OutLine not implemented") nvim obsidian)
 
-  (t! 1app_action action_domains+i+i (push-msg "NOTIFY: Info not implemented") dolphin)
+  (t! 2app_action action_domains+i+i (push-msg "NOTIFY: Info not implemented") yazi dolphin)
 
   (t! 1app_action action_domains+j+j (push-msg "NOTIFY: Jumps not implemented") nvim)
 
@@ -153,7 +153,7 @@
   (t! 2app_action action_domains+s+s (push-msg "NOTIFY: Symbols not implemented") nvim obsidian)
   (t! 1app_action action_domains+s+w (push-msg "NOTIFY: Symbols (Workspace) not implemented") nvim)
 
-  (t! 2app_action action_domains+t+t (push-msg "NOTIFY: Terminal not implemented") dolphin nvim)
+  (t! 3app_action action_domains+t+t (push-msg "NOTIFY: Terminal not implemented") yazi dolphin nvim)
   (t! 1app_action action_domains+t+toggle (push-msg "NOTIFY: Toggle Terminal not implemented") nvim)
 
   (t! 0app_action action_domains+u+u (push-msg "NOTIFY: UI not implemented"))

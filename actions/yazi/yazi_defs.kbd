@@ -165,6 +165,7 @@
   yazi_pane_copy              (macro \ c)   ;; copy selected/hovered to the other pane
   yazi_pane_move              (macro \ x)   ;; move selected/hovered to the other pane
   yazi_pane_preview           (macro \ p)   ;; toggle the split-tabs preview
+  yazi_pane_close             (macro \ w)   ;; close the focused pane (custom)
 
   ;; == Sort / view cycling (custom, mirrors the dolphin ones) ================
   ;; Cycles the sort method: size, natural name, modified date.
@@ -203,6 +204,7 @@
     )
   )
   yazi_vimdiff                (macro \ v)   ;; diff the two selected files/folders in nvim (custom)
+  yazi_terminal               (macro \ t)   ;; shell in the current folder, `exit` returns to yazi (custom)
   
   ;; == Tabs ==================================================================
   yazi_new_tab                (macro t t)
