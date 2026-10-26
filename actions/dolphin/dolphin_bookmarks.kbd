@@ -3,7 +3,7 @@
 ;; ___TO_SET___ dolphin_action_bookmarks+spc          
   dolphin_action_bookmarks+a  $dolphin_goto_trash
   dolphin_action_bookmarks+b  $dolphin_goto_bookcase
-  dolphin_action_bookmarks+c  $dolphin_goto_scans
+  dolphin_action_bookmarks+c  $dolphin_goto_config
   dolphin_action_bookmarks+d  $dolphin_goto_downloads
   dolphin_action_bookmarks+e  $dolphin_goto_enaire
   dolphin_action_bookmarks+f  $dolphin_goto_photos
@@ -14,7 +14,7 @@
   dolphin_action_bookmarks+k  $dolphin_goto_kanata
 ;; ___TO_SET___ dolphin_action_bookmarks+l            
   dolphin_action_bookmarks+m  $dolphin_goto_main
-;; ___TO_SET___ dolphin_action_bookmarks+n            
+  dolphin_action_bookmarks+n  $dolphin_goto_scans
   dolphin_action_bookmarks+o  $dolphin_goto_screenshots
   dolphin_action_bookmarks+p  $dolphin_goto_personal
 ;; ___TO_SET___ dolphin_action_bookmarks+q            
@@ -28,6 +28,7 @@
 ;; ___TO_SET___ dolphin_action_bookmarks+y            
 ;; ___TO_SET___ dolphin_action_bookmarks+z            
 ;; ___TO_SET___ dolphin_action_bookmarks+-            
+dolphin_action_bookmarks+/    $dolphin_goto_root
 ;; ___TO_SET___ dolphin_action_bookmarks+a+lsft       
 ;; ___TO_SET___ dolphin_action_bookmarks+b+lsft       
 ;; ___TO_SET___ dolphin_action_bookmarks+c+lsft       
@@ -55,6 +56,7 @@
 ;; ___TO_SET___ dolphin_action_bookmarks+y+lsft       
 ;; ___TO_SET___ dolphin_action_bookmarks+z+lsft       
 ;; ___TO_SET___ dolphin_action_bookmarks+-+lsft       
+;; ___TO_SET___ dolphin_action_bookmarks+/+lsft       
 ;; ___TO_SET___ dolphin_action_bookmarks+a+rsft       
 ;; ___TO_SET___ dolphin_action_bookmarks+b+rsft       
 ;; ___TO_SET___ dolphin_action_bookmarks+c+rsft       
@@ -82,4 +84,5 @@
 ;; ___TO_SET___ dolphin_action_bookmarks+y+rsft       
 ;; ___TO_SET___ dolphin_action_bookmarks+z+rsft       
 ;; ___TO_SET___ dolphin_action_bookmarks+-+rsft       
+;; ___TO_SET___ dolphin_action_bookmarks+/+rsft       
 )

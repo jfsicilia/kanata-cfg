@@ -115,7 +115,7 @@
 
   dolphin_goto_trash        (macro C-l $folder_trash ent)
   dolphin_goto_bookcase     (macro C-l $folder_bookcase ent)
-  dolphin_goto_scans        (macro C-l $folder_scans ent)
+  dolphin_goto_config       (macro C-l $folder_config ent)
   dolphin_goto_downloads    (macro C-l $folder_downloads ent)
   dolphin_goto_enaire       (macro C-l $folder_enaire ent)
   dolphin_goto_photos       (macro C-l $folder_photos ent)
@@ -125,6 +125,7 @@
   dolphin_goto_projects     (macro C-l $folder_projects ent)
   dolphin_goto_kanata       (macro C-l $folder_kanata ent)
   dolphin_goto_main         (macro C-l $folder_main ent)
+  dolphin_goto_scans        (macro C-l $folder_scans ent)
   dolphin_goto_screenshots  (macro C-l $folder_screenshots ent)
   dolphin_goto_personal     (macro C-l $folder_personal ent)
   dolphin_goto_resources    (macro C-l $folder_resources ent)
@@ -132,4 +133,5 @@
   dolphin_goto_tmp          (macro C-l $folder_tmp ent)
   dolphin_goto_dev          (macro C-l $folder_dev ent)
   dolphin_goto_workarea     (macro C-l $folder_workarea ent)
+  dolphin_goto_root         (macro C-l $folder_root ent)
 )

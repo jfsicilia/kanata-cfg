@@ -3,7 +3,7 @@
 ;; ___TO_SET___ foot_action_bookmarks+spc          
   foot_action_bookmarks+a  $foot_goto_trash
   foot_action_bookmarks+b  $foot_goto_bookcase
-  foot_action_bookmarks+c  $foot_goto_scans
+  foot_action_bookmarks+c  $foot_goto_config
   foot_action_bookmarks+d  $foot_goto_downloads
   foot_action_bookmarks+e  $foot_goto_enaire
   foot_action_bookmarks+f  $foot_goto_photos
@@ -14,7 +14,7 @@
   foot_action_bookmarks+k  $foot_goto_kanata
 ;; ___TO_SET___ foot_action_bookmarks+l            
   foot_action_bookmarks+m  $foot_goto_main
-;; ___TO_SET___ foot_action_bookmarks+n            
+  foot_action_bookmarks+n  $foot_goto_scans
   foot_action_bookmarks+o  $foot_goto_screenshots
   foot_action_bookmarks+p  $foot_goto_personal
 ;; ___TO_SET___ foot_action_bookmarks+q            
@@ -28,6 +28,7 @@
 ;; ___TO_SET___ foot_action_bookmarks+y            
 ;; ___TO_SET___ foot_action_bookmarks+z            
 ;; ___TO_SET___ foot_action_bookmarks+-            
+  foot_action_bookmarks+/  $foot_goto_root
 ;; ___TO_SET___ foot_action_bookmarks+a+lsft       
 ;; ___TO_SET___ foot_action_bookmarks+b+lsft       
 ;; ___TO_SET___ foot_action_bookmarks+c+lsft       
@@ -55,6 +56,7 @@
 ;; ___TO_SET___ foot_action_bookmarks+y+lsft       
 ;; ___TO_SET___ foot_action_bookmarks+z+lsft       
 ;; ___TO_SET___ foot_action_bookmarks+-+lsft       
+;; ___TO_SET___ foot_action_bookmarks+/+lsft       
 ;; ___TO_SET___ foot_action_bookmarks+a+rsft       
 ;; ___TO_SET___ foot_action_bookmarks+b+rsft       
 ;; ___TO_SET___ foot_action_bookmarks+c+rsft       
@@ -82,4 +84,5 @@
 ;; ___TO_SET___ foot_action_bookmarks+y+rsft       
 ;; ___TO_SET___ foot_action_bookmarks+z+rsft       
 ;; ___TO_SET___ foot_action_bookmarks+-+rsft       
+;; ___TO_SET___ foot_action_bookmarks+/+rsft       
 )

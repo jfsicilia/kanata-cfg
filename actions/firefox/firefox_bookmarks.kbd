@@ -29,6 +29,7 @@
 ;; ___TO_SET___ firefox_action_bookmarks+y            
 ;; ___TO_SET___ firefox_action_bookmarks+z            
 ;; ___TO_SET___ firefox_action_bookmarks+-            
+;; ___TO_SET___ firefox_action_bookmarks+/            
 ;; ___TO_SET___ firefox_action_bookmarks+a+lsft       
 ;; ___TO_SET___ firefox_action_bookmarks+b+lsft       
 ;; ___TO_SET___ firefox_action_bookmarks+c+lsft       
@@ -56,6 +57,7 @@
 ;; ___TO_SET___ firefox_action_bookmarks+y+lsft       
 ;; ___TO_SET___ firefox_action_bookmarks+z+lsft       
 ;; ___TO_SET___ firefox_action_bookmarks+-+lsft       
+;; ___TO_SET___ firefox_action_bookmarks+/+lsft       
 ;; ___TO_SET___ firefox_action_bookmarks+a+rsft       
 ;; ___TO_SET___ firefox_action_bookmarks+b+rsft       
 ;; ___TO_SET___ firefox_action_bookmarks+c+rsft       
@@ -83,4 +85,5 @@
 ;; ___TO_SET___ firefox_action_bookmarks+y+rsft       
 ;; ___TO_SET___ firefox_action_bookmarks+z+rsft       
 ;; ___TO_SET___ firefox_action_bookmarks+-+rsft       
+;; ___TO_SET___ firefox_action_bookmarks+/+rsft       
 )

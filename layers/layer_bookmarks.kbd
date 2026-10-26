@@ -31,6 +31,7 @@
   y $action_bookmarks+y
   z $action_bookmarks+z
   - $action_bookmarks+-
+  / $action_bookmarks+/
 )
 
 (deflayermap (bookmarks+lsft_layer)
@@ -62,6 +63,7 @@
   y $action_bookmarks+y+lsft
   z $action_bookmarks+z+lsft
   - $action_bookmarks+-+lsft
+  / $action_bookmarks+/+lsft
 )
 
 (deflayermap (bookmarks+rsft_layer)
@@ -93,4 +95,5 @@
   y $action_bookmarks+y+rsft
   z $action_bookmarks+z+rsft
   - $action_bookmarks+-+rsft
+  / $action_bookmarks+/+rsft
 )
