@@ -15,12 +15,12 @@ yazi_action_panes+k                 (push-msg "NOTIFY:Pane navigation up/down no
 yazi_action_panes+j                 (push-msg "NOTIFY:Pane navigation up/down not implemented")
 
 ;; panes + -
-yazi_action_panes+-                 $yazi_pane_split
+yazi_action_panes+-                 (push-msg "NOTIFY:Horizontal split not implemented")
 ;; panes + \
 yazi_action_panes+\                 $yazi_pane_split    ;;""
 
 ;; panes + w
-yazi_action_panes+w                 $yazi_close_tab
+yazi_action_panes+w                 $yazi_pane_split
 
 ;; == panes + toggle ====================================================
 ;; panes + toggle | 2x !lalt

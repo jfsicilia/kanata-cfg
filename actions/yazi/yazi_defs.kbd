@@ -55,12 +55,14 @@
   yazi_copy_filename          (macro c f)
   yazi_copy_name_without_ext  (macro c n)
 
-  ;; == Create / Rename / Delete =============================================
-  yazi_create                 a   ;; new file; ends with / for a folder
+  ;; == Create / Rename / Delete / Duplicate ================================
+  yazi_create                 a                    ;; new file
+  yazi_create_folder          (macro a 10 / left)  ;; new folder
   yazi_bulk_create            S-a
   yazi_rename                 r
   yazi_remove                 d   ;; trash
   yazi_remove_permanently     S-d
+  yazi_duplicate              (macro y 10 p)
 
   ;; == Search / Filter / Find ===============================================
   yazi_search_fd              s               ;; fd in current folder, open hit in yazi
@@ -79,6 +81,8 @@
   yazi_select_folder          (macro \ S-z)   ;; fzf folders in cwd and below (custom)
   yazi_search_in_files        (macro \ s)     ;; rg in selected/hovered files, open hit in editor (custom)
   yazi_search_in_workspace    (macro \ S-s)   ;; rg in current folder, open hit in editor (custom)
+  yazi_extract                (macro \ e)   ;; extract selected/hovered archives with ouch (custom)
+  yazi_compress               (macro \ S-e)   ;; compress selected/hovered files with ouch (custom)
   yazi_replace_in_files       (macro \ r)
   yazi_replace_in_workspace   (macro \ S-r)
 
