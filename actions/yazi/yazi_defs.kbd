@@ -43,9 +43,9 @@
   ;; == Open =================================================================
   yazi_spot                 tab   ;; file info / spotter
   yazi_open_with            S-o
-  yazi_open_with_chrome     (push-msg "NOTIFY:Open with chrome not implemented")
-  yazi_open_with_terminal   (push-msg "NOTIFY:Open with terminal not implemented")
-  yazi_open_with_nvim       (macro $yazi_open_with ent)
+  yazi_open_with_chrome     (macro e m)   ;; new chrome window (custom, open-in plugin)
+  yazi_open_with_terminal   (macro e t)   ;; foot window in the folder (custom, open-in plugin)
+  yazi_open_with_nvim       (macro e v)   ;; nvim in a new foot window (custom, open-in plugin)
 
 ;; == Copy / Cut / Paste / Link ============================================
   yazi_yank                   y   ;; copy
