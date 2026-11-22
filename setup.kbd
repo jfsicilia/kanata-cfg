@@ -468,6 +468,7 @@ copilot|sessions     $copilot          ;; Omni+: Last session
                      
   ;; Lower row keys: z/ = workspaces, x/. = sessions, c/, = rev_tabs, v/m = tabs, b/n = panes.
   lsft                     (t!      th (t! 2x $action_tabs+h)                 $toggle_lsft_layer)
+ $invert|keyb              (t!      th (t! 2x $APPS_SORT_TOGGLE)              $toggle_keyb_layer)
  $invert|keyb              (t!      th $APPS_SORT_TOGGLE                      $toggle_keyb_layer)
       $z|workspaces        (t! fast_th (t! char z)                            $toggle_workspaces_layer)
       $x|sessions          (t! fast_th (t! char x)                            $toggle_sessions_layer)
