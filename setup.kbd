@@ -48,10 +48,10 @@
 ;;   sessions       b        n       lower  (middle)
 ;;   windows        g        h       home   (index)
 ;;   workspaces     t        y       upper  (index)
-;;   worktrees      z        /       lower  (pinky)
+;;   worktrees      w        o       upper  (ring)
 ;;   agents         x        .       lower  (ring)
 ;;   system         q        p       upper  (pinky)
-;;   run            w        o       upper  (ring)
+;;   run            z        /       lower  (pinky)
 ;;
 ;; rev_tabs / rev_panes open the tabs / panes layer with the app-priority sort
 ;; flipped — use them to act on the *other* app when two are stacked (e.g. tmux
@@ -67,7 +67,7 @@
 ;; ---------
 ;; tab     → tap: tab           hold: open_layer
 ;; q / p   → tap: q / p         hold: system_layer
-;; w / o   → tap: w / o         hold: run_layer
+;; w / o   → tap: w / o         hold: worktrees_layer
 ;; e / i   → tap: e / i         hold: rev_panes_layer
 ;; r / u   → tap: r / u         hold: rev_tabs_layer
 ;; t / y   → tap: t / y         hold: workspaces_layer
@@ -94,7 +94,7 @@
 ;; keyb    → tap: invert apps sort  hold: keyb_layer  (< > key on Spanish kbd;
 ;;                                        Spanish chars, ES/US toggle, numpad,
 ;;                                        emojis, rev_tabs / rev_panes)
-;; z / /   → tap: z / /             hold: worktrees_layer
+;; z / /   → tap: z / /             hold: run_layer
 ;; x / .   → tap: x / .             hold: agents_layer
 ;; c / ,   → tap: c / ,             hold: panes_layer
 ;; v / m   → tap: v / m             hold: tabs_layer
@@ -306,14 +306,14 @@
   ;; Upper row keys.
     tab|open                tab        ;; Tap: Tab,              Hold: open_with_layer
       q|system              q          ;; Tap: q,                Hold: system_layer
-      w|run                 w          ;; Tap: w,                Hold: run_layer 
+      w|worktrees           w          ;; Tap: w,                Hold: worktrees_layer 
       e|rev_panes           e          ;; Tap: e,                Hold: rev_panes_layer 
       r|rev_tabs            r          ;; Tap: r,                Hold: rev_tabs_layer 
       t|workspaces          t          ;; Tap: t,                Hold: workspaces_layer 
       y|workspaces          y          ;; Tap: y,                Hold: workspaces_layer
       u|rev_tabs            u          ;; Tap: u,                Hold: rev_tabs_layer 
       i|rev_panes           i          ;; Tap: i,                Hold: rev_panes_layer 
-      o|run                 o          ;; Tap: o,                Hold: run_layer 
+      o|worktrees           o          ;; Tap: o,                Hold: worktrees_layer 
       p|system              p          ;; Tap: p,                Hold: system_layer 
       [|mod[                [          ;; Tap: [,                Hold: 
       ]|mod]                ]          ;; Tap: ],                Hold:
@@ -336,7 +336,7 @@
 
   ;; Low row keys. 
  invert|keyb                lsgt       ;; Tap: Invert apps sort, Hold: keyb_layer
-      z|worktrees           z          ;; Tap: z,                Hold: worktrees_layer
+      z|run                 z          ;; Tap: z,                Hold: run_layer
       x|agents              x          ;; Tap: x,                Hold: agents_layer
       c|panes               c          ;; Tap: c,                Hold: panes_layer 
       v|tabs                v          ;; Tap: v,                Hold: tabs_layer 
@@ -345,7 +345,7 @@
       m|tabs                m          ;; Tap: m,                Hold: tabs_layer 
       ,|panes               ,          ;; Tap: ,,                Hold: panes_layer 
       .|agents              .          ;; Tap: .,                Hold: agents_layer
-      /|worktrees           /          ;; Tap: /,                Hold: worktrees_layer
+      /|run                 /          ;; Tap: /,                Hold: run_layer
   
   ;; Modifiers row
   !lmet|replace             $!lmet     ;; 2xTap: Last desktop,   Hold: !lmet_layer     Hold+spc: replace_layer 
@@ -436,14 +436,14 @@ copilot|sessions     $copilot          ;; Omni+: Last session
   ;; Upper row keys
     $tab|open              (t! fast_th tab                                    $toggle_open_layer)   
       $q|system            (t! fast_th (t! char q)                            $toggle_system_layer)
-      $w|run               (t! fast_th (t! char w)                            $toggle_run_layer)
+      $w|worktrees         (t! fast_th (t! char w)                            $toggle_worktrees_layer)
       $e|rev_panes         (t! fast_th (t! char e)                            $toggle_rev_panes_layer)
       $r|rev_tabs          (t! fast_th (t! char r)                            $toggle_rev_tabs_layer)
       $t|workspaces        (t! fast_th (t! char t)                            $toggle_workspaces_layer)
       $y|workspaces        (t! fast_th (t! char y)                            $toggle_workspaces_layer)
       $u|rev_tabs          (t! fast_th (t! char u)                            $toggle_rev_tabs_layer) 
       $i|rev_panes         (t! fast_th (t! char i)                            $toggle_rev_panes_layer) 
-      $o|run               (t! fast_th (t! char o)                            $toggle_run_layer) 
+      $o|worktrees         (t! fast_th (t! char o)                            $toggle_worktrees_layer) 
       $p|system            (t! fast_th (t! char p)                            $toggle_system_layer) 
       $[|mod[              (t! fast_th (t! char [)                            (layer-toggle void_layer)) 
       $]|mod]              (t! fast_th (t! char ])                            (layer-toggle void_layer)) 
@@ -463,10 +463,10 @@ copilot|sessions     $copilot          ;; Omni+: Last session
       $;|lmet              (t! fast_th (t! char ;)                            $toggle_lmet_layer)
       $'|mod'              (t! fast_th (t! char ')                            (layer-toggle void_layer)) 
                      
-  ;; Lower row keys: z/ = worktrees, x/. = agents, c/, = panes, v/m = tabs, b/n = sessions.
+  ;; Lower row keys: z/ = run, x/. = agents, c/, = panes, v/m = tabs, b/n = sessions.
   lsft                     (t!      th (t! 2x $action_tabs+h)                 $toggle_lsft_layer)
  $invert|keyb              (t!      th (t! 2x $APPS_SORT_TOGGLE)              $toggle_keyb_layer)
-      $z|worktrees         (t! fast_th (t! char z)                            $toggle_worktrees_layer)
+      $z|run               (t! fast_th (t! char z)                            $toggle_run_layer)
       $x|agents            (t! fast_th (t! char x)                            $toggle_agents_layer)
       $c|panes             (t! fast_th (t! char c)                            $toggle_panes_layer)
       $v|tabs              (t! fast_th (t! char v)                            $toggle_tabs_layer)
@@ -475,7 +475,7 @@ copilot|sessions     $copilot          ;; Omni+: Last session
       $m|tabs              (t! fast_th (t! char m)                            $toggle_tabs_layer)
       $,|panes             (t! fast_th (t! char ,)                            $toggle_panes_layer)
       $.|agents            (t! fast_th (t! char .)                            $toggle_agents_layer)
-      $/|worktrees         (t! fast_th (t! char /)                            $toggle_worktrees_layer)
+      $/|run               (t! fast_th (t! char /)                            $toggle_run_layer)
   rsft                     (t!      th (t! 2x $action_tabs+l)                 $toggle_rsft_layer)
 
   ;; Modifiers row.
