@@ -30,6 +30,7 @@ tmux_window_rename           (macro $tmux_prefix ,)
 ;;""
 ;;== pane ================================================================
 tmux_pane_maximize           (macro $tmux_prefix z)
+tmux_pane_float              (macro $tmux_prefix S-f)
 tmux_pane_left               (macro $tmux_prefix left)
 tmux_pane_right              (macro $tmux_prefix right)
 tmux_pane_above              (macro $tmux_prefix up)

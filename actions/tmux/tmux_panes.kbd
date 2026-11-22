@@ -37,7 +37,7 @@ tmux_action_panes+w                      $tmux_pane_close ;; prefix + x (kill pa
 tmux_action_panes+toggle                 $tmux_pane_toggle ;; prefix + ; (last pane)
 
 ;; == panes + float ====================================================
-;; ___TO_SET___ tmux_action_panes+float            
+tmux_action_panes+float                  $tmux_pane_float  ;; prefix + F
 
 ;; == panes + move ======================================================
 ;; panes + move + h | panes + move + left

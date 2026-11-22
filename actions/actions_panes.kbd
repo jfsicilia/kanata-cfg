@@ -18,7 +18,7 @@
   (t! 6app_action action_panes+toggle (push-msg "NOTIFY: Toggle pane not implemented!") yazi dolphin herdr nvim obsidian tmux)
   
   ;; == panes + float ====================================================
-  (t! 0app_action action_panes+float (push-msg "NOTIFY: Float pane not implemented!"))
+  (t! 1app_action action_panes+float (push-msg "NOTIFY: Float pane not implemented!") tmux)
 
   ;; == panes + move ======================================================
   (t! 3app_action action_panes+move+h (push-msg "NOTIFY: Move pane left not implemented!") colab herdr tmux)
