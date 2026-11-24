@@ -114,7 +114,9 @@ foot_action_omni+v                 $foot_paste
 
 ;; ___TO_SET___ foot_action_omni+w                 
 
-;; ___TO_SET___ foot_action_omni+x                 
+;; omni + x
+;; A terminal cannot cut: behaves like omni + c (copy).
+foot_action_omni+x                 $foot_copy
 ;; ___TO_SET___ foot_action_omni+x+left            
 ;; ___TO_SET___ foot_action_omni+x+right           
 

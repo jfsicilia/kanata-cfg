@@ -50,7 +50,7 @@ tmux_action_omni+b                 $tmux_pgup ;; prefix + PgUp (enter copy mode 
 
 ;; omni + c
 ;; If not implemented, defaults to: C-c
-tmux_action_omni+c                 $tmux_copy ;; prefix + [ (enter copy mode) ;;""
+tmux_action_omni+c                 $foot_copy ;; C-S-c: copy foot selection to system clipboard. In copy mode use y. ;;""
 ;; omni + lsft + c
 ;; If not implemented, defaults to: C-S-c
 tmux_action_omni+lsft+c            (push-msg "NOTIFY:Tmux_Omni not implemented!")
@@ -137,7 +137,7 @@ tmux_action_omni+u                 $tmux_change_layout
 
 ;; omni + v
 ;; If not implemented, defaults to: C-v
-tmux_action_omni+v                 $tmux_paste ;; prefix + ] (paste buffer)  ;;""
+tmux_action_omni+v                 $foot_paste ;; C-S-v: paste system clipboard ;;""
 
 ;; omni + w
 ;; If not implemented, defaults to: action_tabs+w
@@ -145,7 +145,7 @@ tmux_action_omni+w                 $tmux_close_tab
 
 ;; omni + x
 ;; If not implemented, defaults to: C-x
-tmux_action_omni+x                 (push-msg "NOTIFY:Tmux_Omni not implemented!")
+tmux_action_omni+x                 $foot_copy ;; a terminal cannot cut: same as omni+c
 ;; omni + x + left
 tmux_action_omni+x+left            (push-msg "NOTIFY:Tmux_Omni not implemented!")
 ;; omni + x + right

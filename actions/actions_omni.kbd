@@ -139,7 +139,7 @@
 
   (t! 4app_action action_omni+w $action_tabs+w nvim yazi tmux dolphin)
 
-  (t! 5app_action action_omni+x $cut nvim yazi tmux dolphin obsidian)
+  (t! 6app_action action_omni+x $cut nvim yazi tmux foot dolphin obsidian)
   (t! 4app_action action_omni+x+left XX nvim yazi tmux dolphin)
   (t! 4app_action action_omni+x+right XX nvim yazi tmux dolphin)
   
