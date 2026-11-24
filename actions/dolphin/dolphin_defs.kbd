@@ -93,7 +93,7 @@
   dolphin_back                           A-left
   dolphin_move_to_other_pane             S-f6
   dolphin_copy_to_other_pane             S-f5
-  dolphin_vimdiff                        (macro C-c (cmd foot --maximized bash -c "vimdiff.sh $(wl-paste | tr -d '\r' | tr '\n' ' ' | sed 's|file://||g')"))
+  dolphin_vimdiff                        (macro C-c (cmd bash -c "export WAYLAND_DISPLAY=$(basename $(ls $XDG_RUNTIME_DIR/wayland-? | head -1)); f=$(wl-paste | tr -d '\r' | tr '\n' ' ' | sed 's|file://||g'); exec foot --maximized vimdiff.sh $f"))
   dolphin_keymaps                        C-A-,  
   dolphin_settings                       C-S-,   
   dolphin_help                           f1      
@@ -106,10 +106,10 @@
   dolphin_focus_main                     (macro C-l C-p C-p)
   dolphin_focus_address_bar              (macro C-p C-l)
   dolphin_focus_sidebar                  (macro C-l C-p)
-  dolphin_open_with                      (macro C-c 80 (cmd bash -c "open_with.sh $(wl-paste|tr -d '\r'|tr '\n' ' '|sed 's|file://||g')"))
-  dolphin_open_with_chrome               (macro C-c 80 (cmd bash -c "google-chrome-stable --new-window $(wl-paste)"))
+  dolphin_open_with                      (macro C-c 80 (cmd bash -c "export WAYLAND_DISPLAY=$(basename $(ls $XDG_RUNTIME_DIR/wayland-? | head -1)); f=$(wl-paste | tr -d '\r' | tr '\n' ' ' | sed 's|file://||g'); exec open_with.sh $f"))
+  dolphin_open_with_chrome               (macro C-c 80 (cmd bash -c "export WAYLAND_DISPLAY=$(basename $(ls $XDG_RUNTIME_DIR/wayland-? | head -1)); exec google-chrome-stable --new-window $(wl-paste)"))
   dolphin_open_with_terminal             A-S-f4
-  dolphin_open_with_nvim                 (macro C-c 80 (cmd foot --maximized bash -c "nvim $(wl-paste|tr -d '\r'|tr '\n' ' '|sed 's|file://||g')"))
+  dolphin_open_with_nvim                 (macro C-c 80 (cmd bash -c "export WAYLAND_DISPLAY=$(basename $(ls $XDG_RUNTIME_DIR/wayland-? | head -1)); f=$(wl-paste | tr -d '\r' | tr '\n' ' ' | sed 's|file://||g'); exec foot --maximized nvim $f"))
   dolphin_search                         C-f
   dolphin_omni_search                    C-S-f
 
